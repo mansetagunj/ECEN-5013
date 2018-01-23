@@ -9,7 +9,7 @@ if [ $# -eq 1 ] && [ $1 = "-h" ]; then
 	-h : Help
 	-f : File [filename] e.g. $0 -f filename
 	"
-	exit 0
+	exit 1
 
 #elif [ $# -eq 1 ] && [ $1 = "-o" ]; then
 elif [ $# -eq 2 ] && [ $1 = "-f" ]; then
@@ -18,7 +18,7 @@ elif [ $# -eq 2 ] && [ $1 = "-f" ]; then
 else
 	echo "Invalid Parameters."
 	echo "Try -h option for help."
-	exit 0
+	exit 1
 fi
 
 echo "Time: $timeNow" >> $filename
@@ -57,3 +57,5 @@ echo "Info on File System Memory" >> $filename
 df -h >> $filename
 
 echo "" >> $filename
+
+exit 0
