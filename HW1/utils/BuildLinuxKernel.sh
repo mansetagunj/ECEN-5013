@@ -73,11 +73,6 @@ goToPath(){
 
 startBuild(){
 
-	#copy the current config file to the linux kernel build tree
-	cp /boot/config-$(uname -r) .config
-	#this gives a ui to alter i.e. add or remove kernel modules
-	make menuconfig
-
 	#this is used to store the num of cores available
 	numOfCPU=$(nproc)
 	
@@ -89,6 +84,12 @@ startBuild(){
 		#exit 0
 		return
 	fi
+
+	#copy the current config file to the linux kernel build tree
+        cp /boot/config-$(uname -r) .config
+        #this gives a ui to alter i.e. add or remove kernel modules
+        make menuconfig
+
 
 	START=$(date +%s);
 
@@ -104,7 +105,7 @@ startBuild(){
 startInstall(){
 	
 	echo ""
-	echo "Build done? $buildSuccess"
+	#echo "Build done? $buildSuccess"
 	#the varible buildSuccess is set to 1 only if the make commands for the kernel and modules build.
 	if [ $buildSuccess != 1 ]; then
 		echo "Kernel did not Build in this transaction."
@@ -112,7 +113,7 @@ startInstall(){
 		read -p "-> " continue
 	fi
 
-	if [ $continue != "Y" ] || [ $continue != "y" ]; then
+	if [ $continue != "Y" ] && [ $continue != "y" ]; then
 		exit 0
 	fi
 
@@ -134,7 +135,7 @@ startInstall(){
         echo $((END-START)) | awk '{print "Install Completed, took "int($1/60)" min and "int($1%60)" sec."}'
 }
 
-kernelVersion=4.14.0
+kernelVersion=4.14.14
 
 createInitrdFile(){
 
