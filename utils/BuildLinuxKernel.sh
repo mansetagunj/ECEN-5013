@@ -1,4 +1,4 @@
-#!/bin/sh -x 
+#!/bin/bash
 
 numOfCPU=
 path=
@@ -33,8 +33,8 @@ entrypoint(){
 	startInstall
 	createInitrdFile
 	
-	echo "Do you want to reboot your system to boot into the new kernel? [Yy]"
-	read ans
+	echo "Do you want to reboot your system to boot into the new kernel? [YyNn]"
+	read -p "-> " ans
 
 	if [ $ans = "Yes" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "y" ]; then
 		echo "REBOOTING........"
@@ -51,7 +51,7 @@ goToPath(){
 	
 	if [ -z $path ]; then
 		echo "Enter the correct path to the Linux source code Dir."
-		read path
+		read -p "-> " path
 
 		echo "Entered path: $path"
 	fi
@@ -73,15 +73,18 @@ goToPath(){
 
 startBuild(){
 
+	#copy the current config file to the linux kernel build tree
 	cp /boot/config-$(uname -r) .config
+	#this gives a ui to alter i.e. add or remove kernel modules
 	make menuconfig
 
+	#this is used to store the num of cores available
 	numOfCPU=$(nproc)
 	
 	timeStart=$(date +"%x %r %Z")
 	echo "Starting Build. Time: $timeStart"
 	echo "Do you want to continue? [YyNn]"
-	read ans
+	read -p "-> " ans
 	if [ $ans = "N" ] || [ $ans = "n" ]; then
 		#exit 0
 		return
@@ -89,11 +92,9 @@ startBuild(){
 
 	START=$(date +%s);
 
-	make -j $numOfCPU && make modules -j $numOfCPU
-set +x
+	make -j $numOfCPU && make modules -j $numOfCPU && buildSuccess=1
+
 	echo "Build Suc: $buildSucess"
-#	sleep 5
-#	make modules -j $numOfCPU
 	
 	END=$(date +%s);
 	echo $((END-START)) | awk '{print "Build Completed, took "int($1/60)" min and "int($1%60)" sec."}'
@@ -103,22 +104,23 @@ set +x
 startInstall(){
 	
 	echo ""
-	#echo "Build done? $buildSuccess"
-	#if [ $buildSuccess != 1 ]; then
-	#	echo "Kernel did not Build in this transaction. Cannot Install."
-	#	echo "Do you still want to continue? [YyNn]"
-	#	read continue
-	#fi
+	echo "Build done? $buildSuccess"
+	#the varible buildSuccess is set to 1 only if the make commands for the kernel and modules build.
+	if [ $buildSuccess != 1 ]; then
+		echo "Kernel did not Build in this transaction."
+		echo "Do you still want to continue with the Install? [YyNn]"
+		read -p "-> " continue
+	fi
 
-	#if [ $continue != "Y" ] || [ $continue != "y" ]; then
-	#	exit 0
-	#fi
+	if [ $continue != "Y" ] || [ $continue != "y" ]; then
+		exit 0
+	fi
 
 	timeStart=$(date +"%x %r %Z")
         echo "Starting Install. Time: $timeStart"
         echo "Do you want to continue? [YyNn]"
-        #read ans
-	ans="Y"
+        read -p "-> " ans
+
         if [ $ans = "N" ] || [ $ans = "n" ]; then
                 #exit 0
 		return
@@ -127,8 +129,6 @@ startInstall(){
 	START=$(date +%s);
 
 	sudo make modules_install -j $numOfCPU && sudo make install -j $numOfCPU
-#	sleep 3
-	sudo make install -j $numOfCPU
 	
 	END=$(date +%si);
         echo $((END-START)) | awk '{print "Install Completed, took "int($1/60)" min and "int($1%60)" sec."}'
@@ -144,9 +144,8 @@ createInitrdFile(){
 	sudo update-initramfs -c -k $kernelVersion
 
 	#updating the grub file to include this kernel in the grub menu which is done by changing the grub.cfg file using the below command
-	#
 	sudo update-grub
 }
 
-
+#starting point of the bash script
 entrypoint
