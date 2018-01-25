@@ -3,6 +3,7 @@
 numOfCPU=
 path=
 buildSuccess=0
+kernelVersion=
 
 if [ $# -gt 0 ]; then
 	if [ $# -lt 2 ] && [ $1 = "-h" ] || [ $1 = "--help" ] ; then
@@ -57,14 +58,15 @@ goToPath(){
 	fi
 
 	if [ -z $path ]; then
-		echo "Path is empty"
+		echo "No path entered"
 		exit 1
 	elif [ -d $path ]; then
+		echo "Contents of Dir:"
 		cd $path
 		ls
 		echo ""
 	elif [ -d $path != 1]; then
-		echo "The file is not a directory."	
+		echo "The file $path is not a directory."	
 	else
 		echo "Unknown Error"
 		exit 1
@@ -75,13 +77,17 @@ startBuild(){
 
 	#this is used to store the num of cores available
 	numOfCPU=$(nproc)
+	#multipying it with 2 as the number of threads per core can be 2
+	numOfCPU=$(($numOfCPU * 2))
 	
+	#gives the kernelversion in the linux source tree
+	kernelVersion=$(make -s kernelversion)
+
 	timeStart=$(date +"%x %r %Z")
-	echo "Starting Build. Time: $timeStart"
+	echo "Starting Build of Kernel v$kernelVersion. Time: $timeStart"
 	echo "Do you want to continue? [YyNn]"
 	read -p "-> " ans
 	if [ $ans = "N" ] || [ $ans = "n" ]; then
-		#exit 0
 		return
 	fi
 
@@ -94,8 +100,6 @@ startBuild(){
 	START=$(date +%s);
 
 	make -j $numOfCPU && make modules -j $numOfCPU && buildSuccess=1
-
-	echo "Build Suc: $buildSucess"
 	
 	END=$(date +%s);
 	echo $((END-START)) | awk '{print "Build Completed, took "int($1/60)" min and "int($1%60)" sec."}'
@@ -135,7 +139,8 @@ startInstall(){
         echo $((END-START)) | awk '{print "Install Completed, took "int($1/60)" min and "int($1%60)" sec."}'
 }
 
-kernelVersion=4.14.14
+#gives the kernelversion in the linux source tree
+#kernelVersion=$(make -s kernelversion)
 
 createInitrdFile(){
 
