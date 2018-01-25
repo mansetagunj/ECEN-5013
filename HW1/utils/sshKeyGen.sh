@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 entry(){
@@ -28,9 +28,7 @@ elif [ $option = "1" ]; then
 elif [ $option = "2" ]; then
 	copySSH
 else 
-	echo "Invalid Option"
-	#exit 0;
-	
+	echo "Invalid Option"	
 fi
 
 }
@@ -53,7 +51,7 @@ copySSH(){
 		#xclip < ~/.ssh/id_rsa.pub
 		echo "Copy the key manually"
 		echo ""
-		cat /home/gunj/.ssh/id_rsa.pub
+		cat $HOME/.ssh/id_rsa.pub
 		echo ""
 	fi
 }
