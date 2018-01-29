@@ -1,0 +1,51 @@
+execve("./prob2.out", ["./prob2.out"], [/* 64 vars */]) = 0
+brk(NULL)                               = 0x84be000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7ee3000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=101268, ...}) = 0
+mmap2(NULL, 101268, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb7eca000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/i386-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\3\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\320\207\1\0004\0\0\0"..., 512) = 512
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1786484, ...}) = 0
+mmap2(NULL, 1792540, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb7d14000
+mmap2(0xb7ec4000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1af000) = 0xb7ec4000
+mmap2(0xb7ec7000, 10780, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb7ec7000
+close(3)                                = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb7d13000
+set_thread_area({entry_number:-1, base_addr:0xb7d13700, limit:1048575, seg_32bit:1, contents:0, read_exec_only:0, limit_in_pages:1, seg_not_present:0, useable:1}) = 0 (entry_number:6)
+mprotect(0xb7ec4000, 8192, PROT_READ)   = 0
+mprotect(0x8049000, 4096, PROT_READ)    = 0
+mprotect(0xb7f0c000, 4096, PROT_READ)   = 0
+munmap(0xb7eca000, 101268)              = 0
+fstat64(1, {st_mode=S_IFREG|0664, st_size=1676, ...}) = 0
+brk(NULL)                               = 0x84be000
+brk(0x84e0000)                          = 0x84e0000
+open("homework2.file", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+close(3)                                = 0
+chmod("homework2.file", 0600)           = 0
+open("homework2.file", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+fstat64(3, {st_mode=S_IFREG|0600, st_size=0, ...}) = 0
+write(3, "c", 1)                        = 1
+close(3)                                = 0
+open("homework2.file", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+_llseek(3, 0, [1], SEEK_END)            = 0
+fstat64(0, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 1), ...}) = 0
+read(0, "Hello File\n", 1024)           = 11
+fstat64(3, {st_mode=S_IFREG|0600, st_size=1, ...}) = 0
+write(3, "Hello File\n", 11)            = 11
+close(3)                                = 0
+open("homework2.file", O_RDONLY)        = 3
+fstat64(3, {st_mode=S_IFREG|0600, st_size=12, ...}) = 0
+read(3, "cHello File\n", 4096)          = 12
+close(3)                                = 0
+write(1, "Hello Cruel World.\nEnter a strin"..., 95Hello Cruel World.
+Enter a string to write to the file.
+->Char read: c
+String Read: Hello File
+) = 95
+exit_group(0)                           = ?
++++ exited with 0 +++
