@@ -9,5 +9,5 @@ prob_2:
 
 .PHONY:clean
 clean:
-	rm prob2$(ext)
+	rm prob2$(ext) *.temp
 
