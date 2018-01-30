@@ -1,0 +1,107 @@
+  0.000000 SYS_brk(0xb7fa84e2)                                  = 0x9c77000 <0.000188>
+  0.000407 SYS_access("/etc/ld.so.nohwcap", 00)                 = -2 <0.000318>
+  0.000504 SYS_mmap2(0, 4, 0xb7fb6000, 0)                       = 0xb7f8c000 <0.000220>
+  0.000453 SYS_access("/etc/ld.so.preload", 04)                 = -2 <0.000331>
+  0.000515 SYS_open("\203\304\020\205\300xD\203\354\004\211\303\215D$\004PSj\003\350b\206", -1208298043, 02000000) = 3 <0.000342>
+  0.000526 SYS_fstat64(0xb7fa217e, 3, 3, 0xbf8ed8d0)            = 0 <0.000212>
+  0.000407 SYS_mmap2(0, 0, 0xb7fb6000, 0)                       = 0xb7f73000 <0.000209>
+  0.000388 SYS_close(3)                                         = 0 <0.000133>
+  0.000280 SYS_access("/etc/ld.so.nohwcap", 00)                 = -2 <0.000554>
+  0.000706 SYS_open("\203\304\020\203\370\377\211E\330\017\204\202\002", -1208434288, 02000000) = 3 <0.000203>
+  0.000312 SYS_read(-1208383581, "\003\004\005\006\a\b\t\n\v\f\r\016\017\020\021\022\023\024\025\026\027\030\031\032\033\034\035\036\037 !""..., 3213810160) = 512 <0.000124>
+  0.000498 SYS_fstat64(0xb7f97335, 3, 3, 0xbf8ed910)            = 0 <0.000216>
+  0.000374 SYS_mmap2(0, 0, 0xb7fb6000, 0)                       = 0xb7dbd000 <0.000256>
+  0.000376 SYS_mmap2(0, 0, 0xb7fb6000, 0)                       = 0xb7f6d000 <0.000203>
+  0.000411 SYS_mmap2(0, 0, 0xb7fb6000, 0)                       = 0xb7f70000 <0.000204>
+  0.000407 SYS_close(3)                                         = 0 <0.000168>
+  0.000349 SYS_mmap2(0xbf8edc60, 0, 0xb7fb6000, 0)              = 0xb7dbc000 <0.000181>
+  0.000369 SYS_set_thread_area(0xb7dbc700, 0xfffff, 81, 0)      = 0 <0.000183>
+  0.000442 SYS_mprotect(0xb7f9d017, -1208561664, 8192)          = 0 <0.000173>
+  0.000330 SYS_mprotect(0xb7f9d017, 134516736, 4096)            = 0 <0.000175>
+  0.000401 SYS_mprotect(0xb7f9d017, -1208266752, 4096)          = 0 <0.000179>
+  0.000311 SYS_munmap(0xb7f73000, 101268)                       = 0 <0.000167>
+  0.007104 __libc_start_main(0x80486eb, 1, 0xbf8edfa4, 0x8048980 <unfinished ...>
+  0.000477     puts("Hello Cruel World." <unfinished ...>
+  0.000521         SYS_fstat64(0xbf8edd70, 0xbf8edd70, 0xb7e921d5, 0xb7f6f000) = 0 <0.000207>
+  0.000428         SYS_brk(0xb7f6f000)                          = 0x9c77000 <0.000179>
+  0.000380         SYS_brk(0xb7f6f000)                          = 0x9c98000 <0.000172>
+  0.000360         SYS_write(19 <no return ...>
+error: maximum array length seems negative
+, "Hello Cruel World.\n", 3085511571  0.000384         <... SYS_write resumed> )                    = 19 <0.000381>
+  0.000185     <... puts resumed> )                             = 19 <0.002263>
+  0.000204     fopen("homework2.file", "w" <unfinished ...>
+  0.000528         SYS_open("\266\267\270\271\272\273\274\275\276\277\300\301\302\303\304\305\306\307\310\311\312\313\314\315\316\317\320\321\322\323\324\325"..., 577, 026772223423) = 3 <0.000331>
+  0.000495     <... fopen resumed> )                            = 0x9c77410 <0.001015>
+  0.000156     fclose(0x9c77410 <unfinished ...>
+  0.000337         SYS_close(0)                                 = 0 <0.000140>
+  0.000261     <... fclose resumed> )                           = 0 <0.000590>
+  0.000143     chmod("homework2.file", 0600 <unfinished ...>
+  0.000399         SYS_chmod(nil, 0600)                         = 0 <0.000196>
+  0.000316     <... chmod resumed> )                            = 0 <0.000710>
+  0.000197     fopen("homework2.file", "w" <unfinished ...>
+  0.000412         SYS_open("\266\267\270\271\272\273\274\275\276\277\300\301\302\303\304\305\306\307\310\311\312\313\314\315\316\317\320\321\322\323\324\325"..., 577, 026772223423) = 3 <0.000275>
+  0.000394     <... fopen resumed> )                            = 0x9c77410 <0.000797>
+  0.000146     fwrite("c\023\212\004\b\020t\307\t", 1, 1, 0x9c77410 <unfinished ...>
+  0.000352         SYS_fstat64(0xbf8edd70, 0xbf8edd70, 0xb7e921d5, 0xb7f6f000) = 0 <0.000142>
+  0.000267     <... fwrite resumed> )                           = 1 <0.000612>
+  0.000123     fclose(0x9c77410 <unfinished ...>
+  0.000258         SYS_write(1 <no return ...>
+error: maximum array length seems negative
+, "c", 3085511571  0.000137         <... SYS_write resumed> )                    = 1 <0.000154>
+  0.000085         SYS_close(0)                                 = 0 <0.000220>
+  0.000349     <... fclose resumed> )                           = 0 <0.000820>
+  0.000114     fopen("homework2.file", "a" <unfinished ...>
+  0.000359         SYS_open("\266\267\270\271\272\273\274\275\276\277\300\301\302\303\304\305\306\307\310\311\312\313\314\315\316\317\320\321\322\323\324\325"..., 1089, 026772223423) = 3 <0.000212>
+  0.000298         SYS__llseek(0, 0, 0xb7ea4116, 0x8180)        = 0 <0.000159>
+  0.000313     <... fopen resumed> )                            = 0x9c77410 <0.000961>
+  0.000150     malloc(50)                                       = 0x9c77570 <0.001046>
+  0.002006     memset(0x9c77570, '\0', 50)                      = 0x9c77570 <0.000280>
+  0.000391     printf("Enter a string to write to the f"... <unfinished ...>
+  0.005785         SYS_write(37 <no return ...>
+error: maximum array length seems negative
+, "Enter a string to write to the f"..., 3085511571  0.000614         <... SYS_write resumed> )                    = 37 <0.000632>
+  0.000530     <... printf resumed> )                           = 39 <0.006912>
+  0.000557     fgets( <unfinished ...>
+  0.000986         SYS_fstat64(0xbf8edcc0, 0xbf8edcc0, 0xb7e921d5, 0xb7f6f000) = 0 <0.000454>
+  0.000888         SYS_write(2 <no return ...>
+error: maximum array length seems negative
+, "->ter a string to write to the f"..., 3085511571  0.000556         <... SYS_write resumed> )                    = 2 <0.000552>
+  0.000175         SYS_read(1024, "Hello File\n", 3085511459)   = 11 <2.509181>
+  2.509435     <... fgets resumed> "Hello File\n", 50, 0xb7f6f5a0) = 0x9c77570 <2.512020>
+  0.000350     strlen("Hello File\n")                           = 11 <0.000567>
+  0.000811     fwrite("Hello File\n", 11, 1, 0x9c77410 <unfinished ...>
+  0.000630         SYS_fstat64(0xbf8edd70, 0xbf8edd70, 0xb7e921d5, 0xb7f6f000) = 0 <0.000262>
+  0.000496     <... fwrite resumed> )                           = 1 <0.001116>
+  0.000245     fflush(0x9c77410 <unfinished ...>
+  0.000540         SYS_write(11 <no return ...>
+error: maximum array length seems negative
+, "Hello File\n", 3085511571  0.000380         <... SYS_write resumed> )                    = 11 <0.000390>
+  0.000240     <... fflush resumed> )                           = 0 <0.001149>
+  0.000265     fclose(0x9c77410 <unfinished ...>
+  0.000557         SYS_close(0)                                 = 0 <0.000237>
+  0.000453     <... fclose resumed> )                           = 0 <0.000999>
+  0.000265     memset(0x9c77570, '\0', 50)                      = 0x9c77570 <0.000470>
+  0.000692     fopen("homework2.file", "r" <unfinished ...>
+  0.000661         SYS_open("\266\267\270\271\272\273\274\275\276\277\300\301\302\303\304\305\306\307\310\311\312\313\314\315\316\317\320\321\322\323\324\325"..., 0, 026772223423) = 3 <0.000339>
+  0.000523     <... fopen resumed> )                            = 0x9c77410 <0.001175>
+  0.000249     fgetc(0x9c77410 <unfinished ...>
+  0.000407         SYS_fstat64(0xbf8edd50, 0xbf8edd50, 0xb7e921d5, 0xb7f6f000) = 0 <0.000193>
+  0.000335         SYS_read(4096, "cHello File\n", 3085511459)  = 12 <0.000173>
+  0.000420     <... fgetc resumed> )                            = 'c' <0.001153>
+  0.000168     printf("Char read: %c\n", 'c' <unfinished ...>
+  0.000595         SYS_write(13 <no return ...>
+error: maximum array length seems negative
+, "Char read: c\ng to write to the f"..., 3085511571  0.000455         <... SYS_write resumed> )                    = 13 <0.000463>
+  0.000147     <... printf resumed> )                           = 13 <0.001189>
+  0.000156     fgets("Hello File\n", 50, 0x9c77410)             = 0x9c77570 <0.000414>
+  0.000659     printf("String Read: %s", "Hello File\n" <unfinished ...>
+  0.000873         SYS_write(24 <no return ...>
+error: maximum array length seems negative
+, "String Read: Hello File\nto the f"..., 3085511571  0.000850         <... SYS_write resumed> )                    = 24 <0.000858>
+  0.000149     <... printf resumed> )                           = 24 <0.001865>
+  0.000135     fclose(0x9c77410 <unfinished ...>
+  0.000309         SYS_close(0)                                 = 0 <0.000135>
+  0.000242     <... fclose resumed> )                           = 0 <0.000543>
+  0.000136     free(0x9c77570)                                  = <void> <0.000284>
+  0.000429     SYS_exit_group(1 <no return ...>
+  0.000239 +++ exited (status 0) +++
