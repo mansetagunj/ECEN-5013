@@ -11,8 +11,8 @@
 
 unsigned long g_sort(const int *buffer, int bufferLen, int *sortedBuffer)
 {
-	if(!buffer || !sortedBuffer)
-		return -1;
+	//if(!buffer || !sortedBuffer)
+		//return -1;
 
 	return syscall(__sys_g_ksort, buffer, bufferLen, sortedBuffer);
          
