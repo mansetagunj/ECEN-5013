@@ -10,15 +10,56 @@
 #include <linux/stat.h>
 #include <sys/stat.h>
 #include <string.h>
-/*
- * 
- */
+#include <linux/kernel.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+#include <errno.h>
+#include <linux/unistd.h>   
+#include <sys/time.h> 
+#include <time.h>
+#include <malloc.h>
+
+#define __sys_getpid		(20)	
+#define __sys_getuid		(199)	
+#define __sys_gettimeofday	(78)
+#define GET_PID()			syscall(__sys_getpid)
+#define GET_UID()			syscall(__sys_getuid)
+#define GET_TIMEOFDAY(x,y)	syscall(__sys_gettimeofday,x,y)
+#define FILE_NAME			"homework2.temp"
+
+void get_time_string(char *timeString)
+{
+	struct timeval tv;
+	struct tm* ptm;
+	char time_string[40] = {0};
+	long milliseconds;
+
+ 	/* Obtain the time of day using the system call */
+	unsigned long ret = GET_TIMEOFDAY(&tv,NULL);
+	if(ret != 0)
+	{
+		printf("Error.\n");
+		memset(timeString,0,1);
+	}
+	ptm = localtime (&tv.tv_sec);
+	/* Format the date and time. */
+	//strftime (time_string, sizeof (time_string), "%Y-%m-%d %H:%M:%S", ptm);
+	strftime (time_string, sizeof (time_string), "%x - %X", ptm);
+    memcpy(timeString,time_string,40);
+}
+
+
 int main(int argc, char** argv) {
 
     printf("Hello Cruel World.\n");
+
+    printf("Process ID:\t %ld\n", GET_PID());
+    printf("User ID:\t %ld\n", GET_UID());  
+    char timeString[40] = {0};
+    get_time_string(timeString);
+    printf("Date - Time:\t %s\n", timeString); 
     
-    
-    const char * filename = "homework2.file";
+    const char * filename = FILE_NAME;
     FILE *fp = NULL;
     
     /**
