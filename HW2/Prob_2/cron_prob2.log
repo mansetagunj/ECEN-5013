@@ -1,0 +1,28 @@
+Hello Cruel World.
+Process ID:	 9950
+User ID:	 1000
+Date - Time:	 02/03/18 - 02:50:01
+Enter a string to write to the file.
+->Char read: c
+String Read: HELLO FILE
+Hello Cruel World.
+Process ID:	 9994
+User ID:	 1000
+Date - Time:	 02/03/18 - 03:00:01
+Enter a string to write to the file.
+->Char read: c
+String Read: HELLO FILE
+Hello Cruel World.
+Process ID:	 10038
+User ID:	 1000
+Date - Time:	 02/03/18 - 03:10:01
+Enter a string to write to the file.
+->Char read: c
+String Read: HELLO FILE
+Hello Cruel World.
+Process ID:	 10099
+User ID:	 1000
+Date - Time:	 02/03/18 - 03:20:01
+Enter a string to write to the file.
+->Char read: c
+String Read: HELLO FILE
