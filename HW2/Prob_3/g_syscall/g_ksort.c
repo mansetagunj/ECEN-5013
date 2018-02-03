@@ -22,7 +22,7 @@ SYSCALL_DEFINE3(g_ksort,
 
 	if((in_bufferLen < MIN_BUFFER_LEN) || (in_bufferLen > MAX_BUFFER_LEN))
 	{
-		printk(KERN_DEBUG "BUFFER SIZE INVALID. ACCEPTED SIZE = [1,1023]. BUFFERSIZE:%d\n",in_bufferLen);
+		printk(KERN_INFO "BUFFER SIZE INVALID. ACCEPTED SIZE = [1,1023]. BUFFERSIZE:%d\n",in_bufferLen);
 		return -EINVAL;
 	}
 
@@ -35,7 +35,7 @@ SYSCALL_DEFINE3(g_ksort,
 	   (!access_ok(VERIFY_WRITE,in_out_p_buffer,in_bufferLen))
 	)
 	{
-		printk(KERN_DEBUG "ACCESS_OK FAILED FOR USER SPACE BUFFER\n");
+		printk(KERN_INFO "ACCESS_OK FAILED FOR USER SPACE BUFFER\n");
 		return -EFAULT;
 	}
 	
@@ -43,7 +43,7 @@ SYSCALL_DEFINE3(g_ksort,
 	p_kbuffer = (int*)kmalloc(in_bufferLen_bytes, GFP_KERNEL);
 	if(!p_kbuffer)
 	{	
-		printk(KERN_DEBUG "KMALLOC FAILED FOR KERNEL SPACE BUFFER\n");
+		printk(KERN_INFO "KMALLOC FAILED FOR KERNEL SPACE BUFFER\n");
 		return -ENOMEM;
 	}
 	printk(KERN_INFO "Buffer of Length %d\n",in_bufferLen);
@@ -52,7 +52,7 @@ SYSCALL_DEFINE3(g_ksort,
 	//(kernel_dst,user_src,len) - (to,from,len)
 	if(copy_from_user(p_kbuffer, in_p_buffer, in_bufferLen_bytes))
 	{	
-		printk(KERN_DEBUG "COPY_FROM_USER FAILED\n");
+		printk(KERN_INFO "COPY_FROM_USER FAILED\n");
 		kfree(p_kbuffer);
 		return -EFAULT;
 	}
@@ -78,7 +78,7 @@ SYSCALL_DEFINE3(g_ksort,
 	//(user_dst, kernel_src, len) - (to,from,len)
 	if(copy_to_user(in_out_p_buffer, p_kbuffer, in_bufferLen_bytes))
 	{
-		printk(KERN_DEBUG "COPY_TO_USER\n");	
+		printk(KERN_INFO "COPY_TO_USER\n");	
 		kfree(p_kbuffer);
 		return -EFAULT;
 	}
