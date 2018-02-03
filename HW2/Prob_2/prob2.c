@@ -98,9 +98,10 @@ int main(int argc, char** argv) {
     
     printf("Enter a string to write to the file.\n->");
     //using fgets instead of gets just to keep in check out of bound error 
-    fgets(user_string,50,stdin);
+    //fgets(user_string,50,stdin);
     
-    fwrite(user_string,strlen(user_string),1,fp);
+    fwrite("HELLO FILE",10,1,fp);
+    //fwrite(user_string,strlen(user_string),1,fp);
     //to make sure the file stream flushes the data into a file
     fflush(fp);
     fclose(fp);
@@ -116,7 +117,7 @@ int main(int argc, char** argv) {
     printf("Char read: %c\n",user_char);
     
     fgets(user_string,50,fp);
-    printf("String Read: %s",user_string);
+    printf("String Read: %s\n",user_string);
     
     fclose(fp);
     fp = NULL;
