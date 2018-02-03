@@ -5,7 +5,7 @@ ext=.out
 
 
 prob_2:
-	$(CC) -o prob2$(ext) prob2.c
+	$(CC) -o prob2$(ext) -g3 prob2.c
 
 .PHONY:clean
 clean:
