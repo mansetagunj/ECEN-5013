@@ -1,16 +1,16 @@
-# started on Mon Jan 29 18:04:49 2018
+# started on Sun Feb  4 14:51:45 2018
 
 
  Performance counter stats for './prob2.out':
 
-          0.890653      task-clock:u (msec)       #    0.000 CPUs utilized          
+          1.057974      task-clock:u (msec)       #    0.000 CPUs utilized          
                  0      context-switches:u        #    0.000 K/sec                  
                  0      cpu-migrations:u          #    0.000 K/sec                  
-                37      page-faults:u             #    0.042 M/sec                  
+                39      page-faults:u             #    0.037 M/sec                  
    <not supported>      cycles:u                                                    
    <not supported>      instructions:u                                              
    <not supported>      branches:u                                                  
    <not supported>      branch-misses:u                                             
 
-       3.390498078 seconds time elapsed
+       3.642352686 seconds time elapsed
 
