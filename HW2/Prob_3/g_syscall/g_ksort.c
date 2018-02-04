@@ -4,15 +4,12 @@
 #include <linux/slab.h>
 
 #define MAX_BUFFER_LEN (1023)
-#define MIN_BUFFER_LEN (0)
+#define MIN_BUFFER_LEN (1)
 
 SYSCALL_DEFINE3(g_ksort,
                 const int __user *, in_p_buffer,
                 int               , in_bufferLen,
                 int __user *      , in_out_p_buffer)
-/*asmlinkage long sys_g_ksort(const int __user *in_p_buffer,
-                            int in_bufferLen,
-                            int __user *in_out_p_buffer)*/
 {
 	int i,j;
 	unsigned long in_bufferLen_bytes;	
@@ -20,9 +17,14 @@ SYSCALL_DEFINE3(g_ksort,
 	
 	printk(KERN_INFO "Entered g_ksort\n");
 
+	if(in_p_buffer == NULL || in_out_p_buffer == NULL)
+	{
+		printk(KERN_ERR "[NULL ERROR] NULL POINTER AS PARAM.\n");
+		return -EFAULT;
+	}
 	if((in_bufferLen < MIN_BUFFER_LEN) || (in_bufferLen > MAX_BUFFER_LEN))
 	{
-		printk(KERN_INFO "BUFFER SIZE INVALID. ACCEPTED SIZE = [1,1023]. BUFFERSIZE:%d\n",in_bufferLen);
+		printk(KERN_INFO "[INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:%d\n",in_bufferLen);
 		return -EINVAL;
 	}
 
@@ -35,7 +37,7 @@ SYSCALL_DEFINE3(g_ksort,
 	   (!access_ok(VERIFY_WRITE,in_out_p_buffer,in_bufferLen))
 	)
 	{
-		printk(KERN_INFO "ACCESS_OK FAILED FOR USER SPACE BUFFER\n");
+		printk(KERN_ERR "[PERMISSION ERROR] ACCESS_OK FAILED FOR USER SPACE BUFFER\n");
 		return -EFAULT;
 	}
 	
@@ -43,16 +45,17 @@ SYSCALL_DEFINE3(g_ksort,
 	p_kbuffer = (int*)kmalloc(in_bufferLen_bytes, GFP_KERNEL);
 	if(!p_kbuffer)
 	{	
-		printk(KERN_INFO "KMALLOC FAILED FOR KERNEL SPACE BUFFER\n");
+		printk(KERN_ERR "[MEM ERROR] KMALLOC FAILED FOR KERNEL SPACE BUFFER\n");
 		return -ENOMEM;
 	}
+
 	printk(KERN_INFO "Buffer of Length %d\n",in_bufferLen);
 	
 	//copies the data from user space to the kernel space
 	//(kernel_dst,user_src,len) - (to,from,len)
 	if(copy_from_user(p_kbuffer, in_p_buffer, in_bufferLen_bytes))
 	{	
-		printk(KERN_INFO "COPY_FROM_USER FAILED\n");
+		printk(KERN_ERR "[ERROR] COPY_FROM_USER FAILED\n");
 		kfree(p_kbuffer);
 		return -EFAULT;
 	}
@@ -78,10 +81,12 @@ SYSCALL_DEFINE3(g_ksort,
 	//(user_dst, kernel_src, len) - (to,from,len)
 	if(copy_to_user(in_out_p_buffer, p_kbuffer, in_bufferLen_bytes))
 	{
-		printk(KERN_INFO "COPY_TO_USER\n");	
+		printk(KERN_ERR "[ERROR] COPY_TO_USER FAILED\n");	
 		kfree(p_kbuffer);
 		return -EFAULT;
 	}
+
+	kfree(p_kbuffer);
 
 	printk(KERN_INFO "Exiting g_ksort\n");
 
