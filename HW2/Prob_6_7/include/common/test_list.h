@@ -8,8 +8,11 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdarg.h>
 #include <cmocka.h>
+#include <stdint.h>
+#include <stdarg.h>
+#include <setjmp.h>
+#include <assert.h>
 #include "doublyLinkedList.h"
 
 struct info{
@@ -22,9 +25,7 @@ struct info{
 #define DELETE_INFO_STRUCT(p_list_node) \
     free(GET_LIST_CONTAINER(p_list_node,struct info, node))
 
-#define DESTROY_INFO_STRUCT(p_list_head)    \
-    DESTROY_LIST(p_list_head,struct info,node)
-    
+#define DESTROY_INFO_STRUCT(p_list_head)	DESTROY_LIST(p_list_head,struct info,node)
     
 static inline void print_INFO_LIST_data(LIST_NODE_T *data_list_head)
 {
@@ -40,27 +41,21 @@ static inline void print_INFO_LIST_data(LIST_NODE_T *data_list_head)
 * @brief - 
 * @return void
 **/
-void test_list_insert_begin(void);
+void test_list_insert_begin();
 
-void test_list_insert_end(void);
+void test_list_insert_end();
 
-void test_list_insert_pos(void);
+void test_list_insert_pos();
 
-void test_list_delete_begin(void);
+void test_list_delete_begin();
 
-void test_list_delete_end(void);
+void test_list_delete_end();
 
-void test_list_delete_pos(void);
+void test_list_delete_pos();
 
-void test_list_insert_end(void);
+void test_list_size();
 
-void test_list_size(void);
+void test_list_destroy();
 
-void test_list_insert_end(void);
-
-void test_list_destroy(void);
-
-void test_list_insert_end(void);
-
-void test_list_getcontainerof_macro(void);
+void test_list_getcontainerof_macro();
 
