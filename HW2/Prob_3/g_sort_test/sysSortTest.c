@@ -1,4 +1,5 @@
 #include <sys/types.h>
+#include <sys/time.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -12,6 +13,13 @@
 #else
 #define RAND_SEED	(40)
 #endif
+
+#define GET_TIME()			gettimeofday(&tm,NULL)
+#define PRINT_LATEST_TIME()	printf("Time Now: %ld:%ld\n",tm.tv_sec, tm.tv_usec);
+#define GET_PRINT_TIME()	{now_usec = tm.tv_usec; printf("Call executed\n"); GET_TIME(); PRINT_LATEST_TIME();}
+#define PRINT_DIFF()		{printf("Diff msec: %ld\n",tm.tv_usec - now_usec);}
+struct timeval tm = {0};
+long int now_usec = 0;
 
 int main()
 {
@@ -45,8 +53,11 @@ int main()
 	printf("\n");
 	printf("Invoking 'g_ksort' system call. <TEST: POSITIVE>\n");
 
+	GET_TIME();
+	PRINT_LATEST_TIME()
 	long ret_status = g_sort(buffer,BUFFER_LEN,outBuffer);
-
+	GET_PRINT_TIME()
+	PRINT_DIFF()
 	if(ret_status == 0) 
 	{
 		printf("System call  executed correctly. Use dmesg for details.\n");
@@ -74,9 +85,11 @@ int main()
 
 	printf("\n");
 	printf("Invoking 'g_ksort' system call. <TEST: NULL IN BUFFER>\n");
-
+	GET_TIME();
+	PRINT_LATEST_TIME()
 	ret_status = g_sort(NULL,BUFFER_LEN,outBuffer);
-
+	GET_PRINT_TIME()
+	PRINT_DIFF()
 	if(ret_status == 0) 
 	{
 		printf("System call  executed correctly. Use dmesg for details.\n");
@@ -104,9 +117,11 @@ int main()
 
 	printf("\n");
 	printf("Invoking 'g_ksort' system call. <TEST: INVALID BUFFER SIZE>\n");
-
+	GET_TIME();
+	PRINT_LATEST_TIME()
 	ret_status = g_sort(buffer,1024,outBuffer);
-
+	GET_PRINT_TIME()
+	PRINT_DIFF()
 	if(ret_status == 0) 
 	{
 		printf("System call  executed correctly. Use dmesg for details.\n");
@@ -135,8 +150,11 @@ int main()
 	printf("\n");
 	printf("Invoking 'g_ksort' system call. <TEST: INVALID BUFFER SIZE>\n");
 
+	GET_TIME();
+	PRINT_LATEST_TIME()
 	ret_status = g_sort(buffer,0,outBuffer);
-
+	GET_PRINT_TIME()
+	PRINT_DIFF()
 	if(ret_status == 0) 
 	{
 		printf("System call  executed correctly. Use dmesg for details.\n");
@@ -165,8 +183,11 @@ int main()
 	printf("\n");
 	printf("Invoking 'g_ksort' system call. <TEST: NULL OUTBUFFER>\n");
 
+	GET_TIME();
+	PRINT_LATEST_TIME()
 	ret_status = g_sort(buffer,BUFFER_LEN,NULL);
-
+	GET_PRINT_TIME()
+	PRINT_DIFF()
 	if(ret_status == 0) 
 	{
 		printf("System call  executed correctly. Use dmesg for details.\n");
