@@ -6,6 +6,14 @@
 * @date 4/2/2018
 **/
 
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <cmocka.h>
+#include <stdint.h>
+#include <stdarg.h>
+#include "doublyLinkedList.h"
+
 #include "test_list.h"
 
 

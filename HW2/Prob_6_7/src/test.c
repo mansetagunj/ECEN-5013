@@ -23,7 +23,7 @@ int main() {
 	cmocka_unit_test(test_list_delete_pos),
 	cmocka_unit_test(test_list_size),
 	cmocka_unit_test(test_list_destroy),
-	cmocka_unit_test(test_list_getcontainerof_macro),		
+	cmocka_unit_test(test_list_getcontainerof_macro)		
 	};
 
 	return cmocka_run_group_tests(tests, NULL, NULL);
