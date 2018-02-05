@@ -1,43 +1,43 @@
-[14241.954388] [NULL ERROR] NULL POINTER AS PARAM.
-[15216.300704] Entered g_ksort
-[15216.300706] Buffer of Length 20
-[15216.300707] SORTING STARTED
-[15216.300708] SORTING COMPLETED
-[15216.300709] Exiting g_ksort
-[15216.300706] Buffer of Length 20
-[15216.300707] SORTING STARTED
-[15216.300708] SORTING COMPLETED
-[15216.300709] Exiting g_ksort
-[15216.316163] Entered g_ksort
-[15216.316164] [NULL ERROR] NULL POINTER AS PARAM.
-[15216.300708] SORTING COMPLETED
-[15216.300709] Exiting g_ksort
-[15216.316163] Entered g_ksort
-[15216.316164] [NULL ERROR] NULL POINTER AS PARAM.
-[15216.332459] Entered g_ksort
-[15216.332461] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:1024
-[15216.316163] Entered g_ksort
-[15216.316164] [NULL ERROR] NULL POINTER AS PARAM.
-[15216.332459] Entered g_ksort
-[15216.332461] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:1024
-[15216.344824] Entered g_ksort
-[15216.344826] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:0
-[15216.332459] Entered g_ksort
-[15216.332461] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:1024
-[15216.344824] Entered g_ksort
-[15216.344826] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:0
-[15216.360311] Entered g_ksort
 [15216.360312] [NULL ERROR] NULL POINTER AS PARAM.
-Process ID:	 5090
+[15333.201819] Entered g_ksort
+[15333.201823] Buffer of Length 20
+[15333.201824] SORTING STARTED
+[15333.201826] SORTING COMPLETED
+[15333.201827] Exiting g_ksort
+[15333.201823] Buffer of Length 20
+[15333.201824] SORTING STARTED
+[15333.201826] SORTING COMPLETED
+[15333.201827] Exiting g_ksort
+[15333.224758] Entered g_ksort
+[15333.224760] [NULL ERROR] NULL POINTER AS PARAM.
+[15333.201826] SORTING COMPLETED
+[15333.201827] Exiting g_ksort
+[15333.224758] Entered g_ksort
+[15333.224760] [NULL ERROR] NULL POINTER AS PARAM.
+[15333.238370] Entered g_ksort
+[15333.238371] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:1024
+[15333.224758] Entered g_ksort
+[15333.224760] [NULL ERROR] NULL POINTER AS PARAM.
+[15333.238370] Entered g_ksort
+[15333.238371] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:1024
+[15333.248594] Entered g_ksort
+[15333.248596] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:0
+[15333.238370] Entered g_ksort
+[15333.238371] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:1024
+[15333.248594] Entered g_ksort
+[15333.248596] [INVALID] BUFFER SIZE INVALID - ACCEPTED SIZE = [1,1023]. BUFFERSIZE:0
+[15333.264292] Entered g_ksort
+[15333.264293] [NULL ERROR] NULL POINTER AS PARAM.
+Process ID:	 5185
 User ID:	 1000
 Buffer presort.
 [33] [36] [27] [15] [43] [35] [36] [42] [49] [21] [12] [27] [40] [9] [13] [26] [40] [26] [22] [36] 
 
 Invoking 'g_ksort' system call. <TEST: POSITIVE>
-Time Now: 1517792889:68075
+Time Now: 1517793005:969187
 Call executed
-Time Now: 1517792889:68085
-Diff msec: 10
+Time Now: 1517793005:969203
+Diff msec: 16
 System call  executed correctly. Use dmesg for details.
 Last 6 entries dmesg log 
 ---------------------------------------
@@ -46,9 +46,19 @@ Buffer post sort.
 [9] [12] [13] [15] [21] [22] [26] [26] [27] [27] [33] [35] [36] [36] [36] [40] [40] [42] [43] [49] 
 
 Invoking 'g_ksort' system call. <TEST: NULL IN BUFFER>
-Time Now: 1517792889:83534
+Time Now: 1517793005:992130
 Call executed
-Time Now: 1517792889:83544
+Time Now: 1517793005:992141
+Diff msec: 11
+System call  did not execute as expected. Use dmesg to check. Error:-1:Unknown error -1
+Last 6 entries dmesg log 
+---------------------------------------
+---------------------------------------
+
+Invoking 'g_ksort' system call. <TEST: INVALID BUFFER SIZE>
+Time Now: 1517793006:5739
+Call executed
+Time Now: 1517793006:5749
 Diff msec: 10
 System call  did not execute as expected. Use dmesg to check. Error:-1:Unknown error -1
 Last 6 entries dmesg log 
@@ -56,29 +66,19 @@ Last 6 entries dmesg log
 ---------------------------------------
 
 Invoking 'g_ksort' system call. <TEST: INVALID BUFFER SIZE>
-Time Now: 1517792889:99830
+Time Now: 1517793006:15963
 Call executed
-Time Now: 1517792889:99838
-Diff msec: 8
-System call  did not execute as expected. Use dmesg to check. Error:-1:Unknown error -1
-Last 6 entries dmesg log 
----------------------------------------
----------------------------------------
-
-Invoking 'g_ksort' system call. <TEST: INVALID BUFFER SIZE>
-Time Now: 1517792889:112195
-Call executed
-Time Now: 1517792889:112203
-Diff msec: 8
+Time Now: 1517793006:15973
+Diff msec: 10
 System call  did not execute as expected. Use dmesg to check. Error:-1:Unknown error -1
 Last 6 entries dmesg log 
 ---------------------------------------
 ---------------------------------------
 
 Invoking 'g_ksort' system call. <TEST: NULL OUTBUFFER>
-Time Now: 1517792889:127680
+Time Now: 1517793006:31660
 Call executed
-Time Now: 1517792889:127693
+Time Now: 1517793006:31673
 Diff msec: 13
 System call  did not execute as expected. Use dmesg to check. Error:-1:Unknown error -1
 Last 6 entries dmesg log 

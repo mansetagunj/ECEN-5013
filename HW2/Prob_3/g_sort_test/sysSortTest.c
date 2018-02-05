@@ -7,7 +7,7 @@
 #include <malloc.h>
 #include "g_sort.h"
 
-#define BUFFER_LEN	(20)
+#define BUFFER_LEN	(20)	
 #ifdef BUILD_TIME
 #define RAND_SEED	(BUILD_TIME)
 #else
