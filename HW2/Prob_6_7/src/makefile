@@ -23,7 +23,7 @@ TEST_OBJS =$(TEST_SRCS:.c=.o)
 compile-all: $(OBJS) $(TEST_OBJS)
 
 .PHONY:mytest
-mytest: doublyLinkedList.o
+mytest: doublyLinkedList.o my_test.o
 	$(CC) $(CFLAGS) $(INCLUDES) -o my_test.out doublyLinkedList.c my_test.c
 	
 .PHONY: test
@@ -32,10 +32,7 @@ test : $(TEST_EXE)
 
 $(TEST_EXE) : doublyLinkedList.o test_list.o test.o
 	#$(TEST_OBJS) $(OBJS) 
-	$(CC) -std=c99 $(INCLUDES) $(CMOCKA_LIBRARY) $(CMOCKA_INCLUDE_DIR) -o $@ $^
-
-#$(CMOCKA_LIBRARY) 
-
+	$(CC) $(CFLAGS) $(INCLUDES) -lcmocka -o $@ $^
 .PHONY:clean
 clean:
 	rm -rf *.o

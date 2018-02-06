@@ -217,7 +217,3 @@ size_t size(LIST_NODE_T *node)
 
 
 
-
-#ifdef __cplusplus
-}
-#endif

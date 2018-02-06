@@ -11,11 +11,15 @@
 #include <stdarg.h>
 #include <setjmp.h>
 #include <cmocka.h>
+#include <stdint.h>
+#include <stddef.h>
+#include <string.h>
+
 #include "test_list.h"
 
 int main() {
 	const struct CMUnitTest tests[] = {
-    cmocka_unit_test(test_list_insert_begin),
+	cmocka_unit_test(test_list_insert_begin),
 	cmocka_unit_test(test_list_insert_end),
 	cmocka_unit_test(test_list_insert_pos),
 	cmocka_unit_test(test_list_delete_begin),

@@ -6,15 +6,26 @@
 * @date 4/2/2018
 **/
 
-
+#ifndef __TEST_LIST_H__
+#define __TEST_LIST_H__
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <cmocka.h>
 #include <stdint.h>
+#include <cmocka.h>
 #include <stdarg.h>
+#include <setjmp.h>
 #include "doublyLinkedList.h"
+#include <string.h>
+#include <malloc.h>
 
+
+/**
+* @brief - 
+* @return void
+**/
+	
+	
 struct info{
 
 	int32_t data;
@@ -25,22 +36,9 @@ struct info{
 #define DELETE_INFO_STRUCT(p_list_node) \
     free(GET_LIST_CONTAINER(p_list_node,struct info, node))
 
-#define DESTROY_INFO_STRUCT(p_list_head)	DESTROY_LIST(p_list_head,struct info,node)
-    
-static inline void print_INFO_LIST_data(LIST_NODE_T *data_list_head)
-{
-    LIST_NODE_T *list_itr =data_list_head;
-    printf("-----------------\n");
-    for(int i = 0 ; list_itr ; i++, list_itr = list_itr->next)
-        printf("Node %d data: %d \n",i, GET_LIST_CONTAINER(list_itr,struct info,node)->data);
-    printf("-----------------\n");
-}
+#define DESTROY_INFO_STRUCT(p_list_head)    \
+    DESTROY_LIST(p_list_head,struct info,node)
 
-
-/**
-* @brief - 
-* @return void
-**/
 void test_list_insert_begin();
 
 void test_list_insert_end();
@@ -59,3 +57,4 @@ void test_list_destroy();
 
 void test_list_getcontainerof_macro();
 
+#endif
