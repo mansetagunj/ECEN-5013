@@ -3,20 +3,20 @@ include sources.mk
 TEST_EXE = test_doublyLL.out
 
 
-CMOCKA_LIBRARY = ./../lib/libcmocka.a
+CMOCKA_LIBRARY = $(LDFLAGS) #./../lib/libcmocka.a
 LIB_PATH =  ./../lib/
-LDFLAGS= -L$(LIB_PATH) -lcmocka
+LDFLAGS= -L$(LIB_PATH) -lcmocka 
 CC=gcc
-CMOCKA_INCLUDE_DIR=-I ./../include/cmocka/
+CMOCKA_INCLUDE_DIR=-I./../include/cmocka/
 CFLAGS=-std=gnu11
-INCLUDES=-I ./../include/common/
+INCLUDES=-I ./../include/common/ $(CMOCKA_INCLUDE_DIR)
 SRCS=$(SRCS_COMMON_C)
 OBJS=$(SRCS:.c=.o)
 TEST_OBJS =$(TEST_SRCS:.c=.o)
 
 %.o: %.c
 	@echo "Building $@ from $<"	
-	$(CC) $(CFLAGS) $(CMOCKA_LIBRARY) $(INCLUDES) $(CMOCKA_INCLUDE_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "Build Finish\n"
 
 .PHONY: compile-all
@@ -30,9 +30,8 @@ mytest: doublyLinkedList.o my_test.o
 test : $(TEST_EXE)
 	./$(TEST_EXE)
 
-$(TEST_EXE) : doublyLinkedList.o test_list.o test.o
-	#$(TEST_OBJS) $(OBJS) 
-	$(CC) $(CFLAGS) $(INCLUDES) -lcmocka -o $@ $^
+$(TEST_EXE) : $(TEST_OBJS) $(OBJS) 
+	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ $(CMOCKA_LIBRARY)
 .PHONY:clean
 clean:
 	rm -rf *.o

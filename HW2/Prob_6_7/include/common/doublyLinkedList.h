@@ -126,5 +126,9 @@ LIST_NODE_T* delete_from_position(LIST_NODE_T *base_node, int pos);
 size_t size(LIST_NODE_T *node);
 
 
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif /* DOUBLYLINKEDLIST_H_ */
