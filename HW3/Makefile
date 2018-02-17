@@ -5,7 +5,7 @@ CFLAGS= -g3
 LDFLAGS= -lpthread
 INCLUDES= -I ../include
 
-SRCS:= main.c
+SRCS:= main.c time.c
 
 
 $(filename): 
