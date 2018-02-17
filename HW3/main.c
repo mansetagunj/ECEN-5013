@@ -9,6 +9,7 @@
 #include <semaphore.h>
 #include <signal.h>
 
+#include "letterParser.h"
 #include "time.h"
 
 #define LOG_FILENAME 				"Homework3.log"
@@ -52,6 +53,7 @@ void* callBack_thread0(void* params)
 
 
 	/* TO DO - Add functions for parsing Valentines.txt */
+	parser_parse(
 
 	LOG("Waiting for SIGUSR.\n");
 	PRINT_THREAD_IDENTIFIER();
