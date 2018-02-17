@@ -52,8 +52,8 @@ typedef struct list_node{
  */	
 #define LIST_FOR_EACH_ENTRY(itr, list_head, container_listmember) \
 	for(itr = GET_LIST_CONTAINER(list_head, typeof(*itr), container_listmember); \
-	itr->container_listmember != NULL; \
-	itr = GET_LIST_CONTAINER(itr->container_listmember->next, typeof(*itr), container_listmember);	\
+	itr->container_listmember.next != NULL; \
+	itr = GET_LIST_CONTAINER(itr->container_listmember.next, typeof(*itr), container_listmember)	\
 	)
 
 
@@ -153,7 +153,7 @@ size_t size(LIST_NODE_T *node);
  * @param [in] int8_t reverse If true, sorts ascending
  * @return LIST_NODE_T* The new head of the node as the list got modified due to sorting
  */
-LIST_NODE_T* sort(LIST_NODE_T *node, int8_t reverse){}
+//LIST_NODE_T* sort(LIST_NODE_T *node, int8_t reverse){}
 
 #ifdef __cplusplus
 }
