@@ -5,7 +5,7 @@ CFLAGS= -g3
 LDFLAGS= -lpthread
 INCLUDES= -I ../include
 
-SRCS:= main.c time.c
+SRCS:= main.c time.c letterParser.c doublyLinkedList.c
 
 
 $(filename): 
