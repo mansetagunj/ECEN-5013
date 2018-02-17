@@ -1,12 +1,14 @@
 #ifndef __LETTER_PARSER_H__
 #define __LETTER_PARSER_H__
 
+#include <stdint.h>
+
 #include "doublyLinkedList.h"
 
 #ifdef _UNICODE
-typedef letterType uint16_t
+typedef int16_t letterType;
 #else
-typedef letterType char
+typedef char letterType;
 #endif
 
 
@@ -27,9 +29,17 @@ typedef struct parser_letter{
 
 int parser_parse(const char *filename);
 
-int parser_insert(LIST_NODE_T listHead, letterType letter);
+PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType letter);
 
-letterType* parser_getMaxThree(LIST_NODE_T listHead);
+void resetGlobalMax();
+
+void updateMax_onFly(PARSER_LETTER_T *parsedListNode);
+
+letterType* parser_getMaxThreeGlobalElements();
+
+uint32_t* parser_getMaxThreeGlobalElementsCount();
+
+letterType* parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead);
 
 
 

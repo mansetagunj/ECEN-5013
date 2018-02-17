@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "letterParser.h"
 
 
@@ -29,11 +31,11 @@ int parser_parse(const char *filename)
 	
 		ret = fread(&parsedChar,sizeof(letterType),1,fp);
 	}
-	if(foef(fp))
+	if(feof(fp))
 	{
 		/*LOG EOF */
 	}
-	else if(ferror(fp)
+	else if(ferror(fp))
 	{
 		/* LOF ERROR */
 		return 1;
@@ -60,7 +62,7 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 		g_max1_E = letter;
 		g_max1_C = 1;	
 		
-		return pasedListHead;
+		return parsedListHead;
 	}
 	else
 	{
@@ -71,7 +73,7 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 		*/
 		PARSER_LETTER_T *list_itr = parsedListHead;
 		uint8_t found = 0;
-		LIST_FOR_EACH_ENTRY(list_itr, list_itr->selfNode, selfNode)
+		LIST_FOR_EACH_ENTRY(list_itr, &list_itr->selfNode, selfNode)
 		{
 			if(list_itr->letterElement == letter)
 			{
@@ -92,14 +94,14 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 			{
 				.letterElement = letter,
 				.letterCount = 1,
-				.selfNode->next = NULL,
-				.selfNode->prev = NULL,
+				.selfNode.next = NULL,
+				.selfNode.prev = NULL,
 			};
 			
-			updateMax_onFly(newListNode);
+			updateMax_onFly(&newListNode);
 			
 			/* Using insert at beginning as to avoid traversing to the end */
-			return insert_at_beginning(&parsedListHead->selfNode,&newListNode.selfNode);		
+			return GET_LIST_CONTAINER(insert_at_beginning(&parsedListHead->selfNode,&newListNode.selfNode),PARSER_LETTER_T,selfNode);		
 		}
 		else
 			return parsedListHead;
@@ -112,19 +114,19 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 */
 void resetGlobalMax()
 {
-	g_max1_C = 0
+	g_max1_C = 0;
 	g_max2_C = 0;
 	g_max3_C = 0;
 	
-	g_max1_E = 0
+	g_max1_E = 0;
 	g_max2_E = 0;
 	g_max3_E = 0;
 
 }
 /* Using  this in the parser_insert for_each loop to optimize the time */
-void updateMax_onFly(PARSE_LETTER_T *parsedListNode)
+void updateMax_onFly(PARSER_LETTER_T *parsedListNode)
 {
-	if(parsedListNode->letterCount > max1_C)
+	if(parsedListNode->letterCount > g_max1_C)
 	{
 		g_max1_C = parsedListNode->letterCount;
 		g_max2_C = g_max1_C;
@@ -135,7 +137,7 @@ void updateMax_onFly(PARSE_LETTER_T *parsedListNode)
 		g_max3_E = g_max2_E;
 		
 	}
-	else if(parsedListNode->letterCount > max2_C)
+	else if(parsedListNode->letterCount > g_max2_C)
 	{
 		g_max2_C = parsedListNode->letterCount;
 		g_max3_C = g_max2_C;
@@ -143,7 +145,7 @@ void updateMax_onFly(PARSE_LETTER_T *parsedListNode)
 		g_max2_E = parsedListNode->letterElement;
 		g_max3_E = g_max2_E;		
 	}
-	else if(parsedListNode->letterCount > max3_C)
+	else if(parsedListNode->letterCount > g_max3_C)
 	{
 		g_max3_C = parsedListNode->letterCount;
 		
@@ -153,19 +155,31 @@ void updateMax_onFly(PARSE_LETTER_T *parsedListNode)
 
 }
 
-letterType[] parser_getMaxThreeGlobalElements()
+letterType* parser_getMaxThreeGlobalElements()
 {
-	return {g_max1_E, g_max2_E, g_max3_E};
+	static letterType max_arr[3] = {0};
+	max_arr[0] = g_max1_E;
+	max_arr[1] = g_max2_E;
+	max_arr[2] = g_max3_E;
+	
+	return max_arr;
 }
 
-uint32_t[] parser_getMaxThreeGlobalElementsCount()
+uint32_t* parser_getMaxThreeGlobalElementsCount()
 {
-	return {g_max1_C, g_max2_C, g_max3_C};
+	static uint32_t max_arr[3] = {0};
+	max_arr[0] = g_max1_C;
+	max_arr[1] = g_max2_C;
+	max_arr[2] = g_max3_C;
+	
+	return max_arr;
 }
 
-letterType[] parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead)
+letterType* parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead)
 {
-	PARSER_LETTER_T *list_itr = parsedListHead->next;
+	PARSER_LETTER_T *list_itr = GET_LIST_CONTAINER(parsedListHead->selfNode.next, PARSER_LETTER_T , selfNode);
+	
+	static letterType max_arr[3] = {0};
 	
 	letterType max1_E = parsedListHead->letterElement;
 	letterType max2_E = 0;
@@ -175,7 +189,11 @@ letterType[] parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead)
 	uint32_t max2_C = 0;
 	uint32_t max3_C = 0;
 	
-	LIST_FOR_EACH_ENTRY(list_itr, list_itr->selfNode, selfNode)
+	max_arr[0] = 0;
+	max_arr[1] = 0;
+	max_arr[2] = 0;
+	
+	LIST_FOR_EACH_ENTRY(list_itr, &list_itr->selfNode, selfNode)
 	{
 		if(list_itr->letterCount > max1_C)
 		{
@@ -205,6 +223,10 @@ letterType[] parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead)
 		
 	}
 
-	return {max1_E,max2_E,max3_E};
+	max_arr[0] = max1_E;
+	max_arr[1] = max2_E;
+	max_arr[2] = max3_E;
+	
+	return max_arr;
 
 }
