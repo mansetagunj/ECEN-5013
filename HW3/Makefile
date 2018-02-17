@@ -1,0 +1,17 @@
+CC=gcc
+ext=.out
+filename=pthread_hw$(ext)
+CFLAGS= -g3
+LDFLAGS= -lpthread
+INCLUDES= -I ../include
+
+SRCS:= main.c
+
+
+$(filename): 
+	$(CC) -o $@ $(SRCS) $(LDFLAGS)
+
+.PHONY:clean
+clean:
+	rm -rf *.o *$(ext)
+
