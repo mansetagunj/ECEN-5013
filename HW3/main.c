@@ -2,23 +2,23 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <semaphore.h>
 #include <signal.h>
 
-#define NUM_OF_THREADS (2)
+#include "time.h"
 
-#define PRINT_THREAD_IDENTIFIER()		printf("[PID:%ld] [TTID:%ld] [Pthread_TID:%lu] ",getpid(), pthread_self(), syscall(SYS_gettid))
-#define LOG_THREAD_IDENTIFIER() 		LOG("[PID:%ld] [TTID:%ld] [Pthread_TID:%lu] ",getpid(), pthread_self(), syscall(SYS_gettid))
+#define LOG_FILENAME 				"Homework3.log"
+#define LOG_INIT(filename)			FILE *fp = fopen(filename,"a+")
+#define GET_LOG_HANDLE() 			(fp)
+#define LOG(format,...) 			do { /*LOG_INIT(LOG_FILENAME);*/ LOG_THREAD_IDENTIFIER(); fprintf(GET_LOG_HANDLE(),format, ##__VA_ARGS__);fflush(GET_LOG_HANDLE()); } while(0)
+#define LOG_CLOSE() 				fclose(GET_LOG_HANDLE())
 
-
-#define LOG_FILENAME "Homework3.log"
-#define LOG_INIT(filename)	FILE *fp = fopen(filename,"a+")
-#define GET_LOG_HANDLE() fp
-#define LOG(format,...) LOG_THREAD_IDENTIFIER(); fprintf(fp, format,__VA_ARGS__)
-#define LOG_CLOSE() fclose(fp)
+#define PRINT_THREAD_IDENTIFIER()	printf("[PID:%ld] [TTID:%ld] [Pthread_TID:%lu] ",(long int)getpid(), (long int)syscall(SYS_gettid), pthread_self())
+#define LOG_THREAD_IDENTIFIER() 	fprintf(GET_LOG_HANDLE(),"[PID:%ld] [TTID:%ld] [Pthread_TID:%lu] ",(long int)getpid(), (long int)syscall(SYS_gettid), pthread_self())
 
 struct threadParams{
 
@@ -29,6 +29,8 @@ struct threadParams{
 
 sem_t gotSignal_sem;
 
+
+
 void* callBack_thread0(void* params)
 {
 	struct threadParams *inParams = (struct threadParams*)params;
@@ -37,51 +39,90 @@ void* callBack_thread0(void* params)
 	pid_t linux_threadID = syscall(SYS_gettid);
 
 	LOG_INIT(inParams->filename);
-	if(NULL == GET_LOG_HANDLE)
+	if(!GET_LOG_HANDLE())
 		printf("File open error\n");
 
+	char timeString[40] = {0};
+	if(get_time_string(timeString) == 0)
+		LOG("[ENTRY TIME] %s\n",timeString);
+	else
+		LOG("[ERROR] Gettimeofday().\n");
+	
 	LOG("Setup of Thread0 done\n");
 
 
 	/* TO DO - Add functions for parsing Valentines.txt */
 
-	LOG_PRINT("Waiting for SIGUSR.\n");
+	LOG("Waiting for SIGUSR.\n");
 	PRINT_THREAD_IDENTIFIER();
 	printf("Waiting for SIGUSR.\n");
 
 	sem_wait(&gotSignal_sem);
 
+	
 	LOG("Exiting Thread 0\n");
 	PRINT_THREAD_IDENTIFIER();
 	printf("Exiting thread 0.\n");
 
-	if(NULL != GET_FILE_HANDLE())
+	if(get_time_string(timeString) == 0)
+		LOG("[EXIT TIME] %s\n",timeString);
+	else
+		LOG("[ERROR] Gettimeofday().\n");
+	
+	if(GET_LOG_HANDLE())
 		LOG_CLOSE();
 
+	sem_post(&gotSignal_sem);
 }
+
+#if 0 
 
 struct thread_cleanup{
 
 	FILE *fp;
-	void **heapMemArray;
+	void *heapMemArray;
 
 };
-
 
 void thread1_cleanup(void *arg)
 {
 	/* We need to clear the dynamic memory and file pointers */
 	struct thread_cleanup *cleanup_mem = (struct thread_cleanup*)arg;
 
-	if(NULL != cleanup->fp)
+	if(cleanup_mem->fp)
 	{
-		LOG_CLOSE(cleanup->fp);
-		fp = NULL;
+		fclose(cleanup_mem->fp);
+		cleanup_mem->fp = NULL;
 	}
+
+	LOG("Exiting Thread 1 from Cleanup\n");
+	PRINT_THREAD_IDENTIFIER();
+	printf("Exiting thread 1 from Cleanup.\n");
 
 	/* TO DO -Free any heap memory */
 
 }
+
+#endif
+
+
+#define LOG_CPU_UTILIZATION() \
+	do{	\
+	char cpu_utilization_buff[300] = {0};	\
+	char *command = "cat /proc/stat | head -n 1"; \
+	/*char command = "top -n 1 | head -n 1"; */\
+	FILE *pipe_p = popen(command,"r");	\
+	if(pipe_p)	\
+	{	\
+		/*fgets(cpu_utilization_buff,100,pipe_p); */ \
+		fread(cpu_utilization_buff,sizeof(char),300,pipe_p);	\
+		/*printf("[CPU] %s\n",cpu_utilization_buff);*/	\
+		LOG("[CPU UTILIZATION %%] %s\n",cpu_utilization_buff);	\
+		pclose(pipe_p);	\
+	}	\
+	else	\
+		LOG("[ERROR] Cannot open Pipe.\n");	\
+	}while(0)
 
 void* callBack_thread1(void* params)
 {
@@ -92,48 +133,97 @@ void* callBack_thread1(void* params)
 	pthread_t self = pthread_self();
 
 	LOG_INIT(inParams->filename);
-	if(NULL == GET_LOG_HANDLE)
+	if(!GET_LOG_HANDLE())
 		printf("File open error\n");
 
+	char timeString[40] = {0};
+	if(get_time_string(timeString) == 0)
+		LOG("[ENTRY TIME] %s\n",timeString);
+	else
+		LOG("[ERROR] Gettimeofday().\n");
+	
 	
 	LOG("Setup of Thread1 done\n");
 
-	//LOG("Registering cleanup function\n");
+	LOG("Registering cleanup function\n");
 
-	//struct thread_cleanup cleanup_struct = { .fp = GET_FILEHANDLE() ; .headMemArray = NULL ; }
+	//struct thread_cleanup cleanup_struct = { .fp = GET_LOG_HANDLE() , .heapMemArray = NULL  };
 	//pthread_cleanup_push(thread1_cleanup,(void*)&cleanup_struct);
 
 	/* TO DO - Create and start 100ms timer with callback which prints CPU utilization */
 
-	LOG_PRINT("Waiting for SIGUSR.\n");
+	LOG("Waiting for SIGUSR.\n");
 	PRINT_THREAD_IDENTIFIER();
 	printf("Waiting for SIGUSR.\n");
 
-	sem_wait(&gotSignal_sem);
+	while(1)
+	{
+		if(sem_trywait(&gotSignal_sem) == 0)
+		{
+			printf("Got semaphore from try wait.\n");
+			break;
+		}
+		LOG_CPU_UTILIZATION();
+		sleep(5);
+		//nanosleep(100000);
+	}
 
+	/* Waiting for SIGUSR1 or SIGUSR2. Which releases the semaphore */
+	//sem_wait(&gotSignal_sem);
+
+	
 	LOG("Exiting Thread 1\n");
 	PRINT_THREAD_IDENTIFIER();
 	printf("Exiting thread 1.\n");
 
-	if(NULL != GET_FILE_HANDLE())
+	if(get_time_string(timeString) == 0)
+		LOG("[EXIT TIME] %s\n",timeString);
+	else
+		LOG("[ERROR] Gettimeofday().\n");
+	
+	if(GET_LOG_HANDLE())
 		LOG_CLOSE();
+	
+	/* Release the semaphore to be used by other thread */
+	sem_post(&gotSignal_sem);
 }
+
 
 void signal_handler(int signal)
 {
-	switch (signal):
-	case SIGUSR1:
-		LOG_PRINT("SIGUSR1 signal\n");
-		sem_post(&gotSignal_sem);
-		break;
-	case SIGUSR2:
-		LOG_PRINT("SIGUSR2 signal\n");
-		sem_post(&gotSignal_sem);
-		break;
-	default:
-		LOG_PRINT("Invalid signal\n");
-		break;
+	switch (signal)
+	{
 
+		case SIGUSR1:
+			printf("SIGUSR1 signal.\n");
+			//LOG("SIGUSR1 signal\n");
+			sem_post(&gotSignal_sem);
+			break;
+		case SIGUSR2:
+			printf("SIGUSR2 signal.\n");
+			//LOG("SIGUSR2 signal\n");
+			sem_post(&gotSignal_sem);
+			break;
+		case SIGINT:
+			printf("SIGINT signal.\n");
+			//LOG("SIGINT signal\n");
+			sem_post(&gotSignal_sem);
+			break;
+		case SIGTERM:
+			printf("SIGTERM signal.\n");
+			//LOG("SIGTERM signal\n");
+			sem_post(&gotSignal_sem);
+			break;
+		case SIGTSTP:
+			printf("SIGTSTP signal.\n");
+			//LOG("SIGTSTP signal\n");
+			sem_post(&gotSignal_sem);
+			break;
+		default:
+			printf("Invalid signal.\n");
+			//LOG("Invalid signal\n");
+			break;
+	}
 }
 
 int register_signalHandler(struct sigaction *sa,void (*handler)(int))
@@ -146,20 +236,44 @@ int register_signalHandler(struct sigaction *sa,void (*handler)(int))
 
 	int ret_error = 0;
 	
-	if (sigaction(SIGUSR1, sa, NULL) == SIG_ERR) 
+	if (sigaction(SIGUSR1, sa, NULL) == -1) 
 	{
 		ret_error++;
 		PRINT_THREAD_IDENTIFIER();
 		printf("Cannot handle SIGUSR1.\n");
-		LOG_PRINT("Cannot handle SIGUSR1.\n");
+		//LOG("Cannot handle SIGUSR1.\n");
 	}
 
-	if (sigaction(SIGUSR2, sa, NULL) == SIG_ERR) 
+	if (sigaction(SIGUSR2, sa, NULL) == -1) 
 	{
 		ret_error++;
 		PRINT_THREAD_IDENTIFIER();
 		printf("Cannot handle SIGUSR2.\n");
-		LOG_PRINT("Cannot handle SIGUSR2.\n");
+		//LOG("Cannot handle SIGUSR2.\n");
+	}
+	
+	if (sigaction(SIGINT, sa, NULL) == -1) 
+	{
+		ret_error++;
+		PRINT_THREAD_IDENTIFIER();
+		printf("Cannot handle SIGINT.\n");
+		//LOG("Cannot handle SIGUSR1.\n");
+	}
+	
+	if (sigaction(SIGTERM, sa, NULL) == -1) 
+	{
+		ret_error++;
+		PRINT_THREAD_IDENTIFIER();
+		printf("Cannot handle SIGTERM.\n");
+		//LOG("Cannot handle SIGUSR1.\n");
+	}
+	
+	if (sigaction(SIGTSTP, sa, NULL) == -1) 
+	{
+		ret_error++;
+		PRINT_THREAD_IDENTIFIER();
+		printf("Cannot handle SIGTSTOP.\n");
+		//LOG("Cannot handle SIGUSR1.\n");
 	}
 
 	return ret_error;
@@ -175,10 +289,14 @@ int main()
 	sem_init(&gotSignal_sem,0,0);
     
 	LOG_INIT(LOG_FILENAME);
-	if(NULL == GET_LOG_HANDLE())
+	if(!GET_LOG_HANDLE())
+	{
 		PRINT_THREAD_IDENTIFIER();
+		printf("Cannot open log\n");
+		return 1;
+	}
 
-	LOG_PRINT("Log initialized.\n");
+	LOG("Log initialized.\n");
     
 	register_signalHandler(&sa,signal_handler);
 
@@ -190,30 +308,35 @@ int main()
     thread_info[1].info	 		= "Thread1";    
 	thread_info[1].filename 	= LOG_FILENAME;
 
-	LOG_PRINT("Creating children Threads.\n");	
+	LOG("Creating children Threads.\n");	
 
-	ret = pthread_create(&p_threads[0], NULL, callBack_thread1, (void*)&thread_info[0]);
+	ret = pthread_create(&p_threads[0], NULL, callBack_thread0, (void*)&thread_info[0]);
 	if(ret != 0)
 	{
 		LOG("Cannot create child thread 0\n");
+		if(GET_LOG_HANDLE())
+			LOG_CLOSE();
 		return 1;
 	}
 
-	ret = pthread_create(&p_threads[1], NULL, callBack_thread2, (void*)&thread_info[1]);
+	ret = pthread_create(&p_threads[1], NULL, callBack_thread1, (void*)&thread_info[1]);
 	if(ret != 0)
 	{
 		LOG("Cannot create child thread 1\n");
+		if(GET_LOG_HANDLE())
+			LOG_CLOSE();
 		return 1;
 	}
 
-
-    LOG_PRINT("Thread created successfully\n");
+    LOG("Thread created successfully\n");
 	
 	/* Waiting on child threads to complete */	
 	ret = pthread_join(p_threads[0],NULL);
 	if(0 != ret)
 	{
 		LOG("Pthread JOIN error\n"); printf("Join Error Thread 0\n");
+		if(GET_LOG_HANDLE())
+			LOG_CLOSE();
 		return 1;
 	}
 	
@@ -221,6 +344,8 @@ int main()
 	if(0 != ret)
 	{
 		LOG("Pthread JOIN error\n"); printf("Join Error Thread 0\n");
+		if(GET_LOG_HANDLE())
+			LOG_CLOSE();
 		return 1;
 	}
 
@@ -228,5 +353,8 @@ int main()
 	sem_destroy(&gotSignal_sem);
 	printf("GoodBye!!\n");
 	
+	if(GET_LOG_HANDLE())
+		LOG_CLOSE();
+
     return EXIT_SUCCESS;
 }
