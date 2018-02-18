@@ -15,6 +15,6 @@
 
 typedef uint8_t REG_SIGNAL_FLAG_t ;
 
-int register_signalHandler(struct sigaction *sa,void (*handler)(int), REG_SIGNAL_FLAG_t signalMask);
+int register_signalHandler(struct sigaction *sa, void (*handler)(int), REG_SIGNAL_FLAG_t signalMask);
 
 #endif

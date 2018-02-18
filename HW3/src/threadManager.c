@@ -1,5 +1,6 @@
 #include <pthread.h>
 #include <time.h>
+#include <sys/time.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -8,9 +9,10 @@
 
 
 #include "letterParser.h"
-#include "time.h"
+#include "my_time.h"
 #include "my_signals.h"
 #include "threadManager.h"
+#include "posixTimer.h"
 
 #include "log_macros.h"
 
@@ -19,6 +21,7 @@
 #define TEXT_FILENAME	"Valentinesday.txt"
 
 sem_t gotSignal_sem;
+sem_t gotTimerSignal_sem;
 
 struct threadParams{
 
@@ -116,7 +119,7 @@ void* callBack_thread0(void* params)
 	PRINT_THREAD_IDENTIFIER();
 	printf("Waiting for SIGUSR.\n");
 
-	sem_wait(&gotSignal_sem);
+	//sem_wait(&gotSignal_sem);
 
 	
 	LOG("Exiting Thread 0\n");
@@ -131,7 +134,12 @@ void* callBack_thread0(void* params)
 	if(GET_LOG_HANDLE())
 		LOG_CLOSE();
 
-	sem_post(&gotSignal_sem);
+	//sem_post(&gotSignal_sem);
+}
+
+void timer_handler(union sigval sig)
+{		
+	sem_post(&gotTimerSignal_sem);
 }
 
 void* callBack_thread1(void* params)
@@ -142,6 +150,8 @@ void* callBack_thread1(void* params)
 	pid_t linux_threadID = syscall(SYS_gettid);
 	pthread_t self = pthread_self();
 
+	sem_init(&gotTimerSignal_sem,0,0);
+	
 	LOG_INIT(inParams->filename);
 	if(!GET_LOG_HANDLE())
 		printf("File open error\n");
@@ -152,6 +162,23 @@ void* callBack_thread1(void* params)
 	else
 		LOG("[ERROR] Gettimeofday().\n");
 	
+	timer_t timer_id;
+	
+	if(register_timer(&timer_id, timer_handler,&timer_id) == -1)
+	{
+		LOG("[ERROR] Register Timer\n");
+		//exit (1);
+	}
+	else
+		LOG("Timer created\n");
+	
+	if(start_timer(timer_id , 5000000, 0) == -1)
+	{
+		LOG("[ERROR] Start Timer\n");
+		//exit (1);
+	}
+	else
+		LOG("Timer started\n");
 	
 	LOG("Setup of Thread1 done\n");
 
@@ -160,11 +187,11 @@ void* callBack_thread1(void* params)
 	//struct thread_cleanup cleanup_struct = { .fp = GET_LOG_HANDLE() , .heapMemArray = NULL  };
 	//pthread_cleanup_push(thread1_cleanup,(void*)&cleanup_struct);
 
-	/* TO DO - Create and start 100ms timer with callback which prints CPU utilization */
 
 	LOG("Waiting for SIGUSR.\n");
 	PRINT_THREAD_IDENTIFIER();
 	printf("Waiting for SIGUSR.\n");
+
 
 	while(1)
 	{
@@ -174,26 +201,36 @@ void* callBack_thread1(void* params)
 			printf("Got semaphore from try wait.\n");
 			break;
 		}
-		LOG_CPU_UTILIZATION();
-		sleep(5);
-		//nanosleep(100000);
+		if(sem_trywait(&gotTimerSignal_sem) == 0)
+		{
+			LOG_CPU_UTILIZATION();
+		}
 	}
+
 
 	/* Waiting for SIGUSR1 or SIGUSR2. Which releases the semaphore */
 	//sem_wait(&gotSignal_sem);
 
-	
-	LOG("Exiting Thread 1\n");
-	PRINT_THREAD_IDENTIFIER();
-	printf("Exiting thread 1.\n");
+	if(delete_timer(timer_id) == -1)
+	{
+		LOG("[ERROR] Delete Timer\n");
+		//exit (1);
+	}
+	else
+		LOG("Timer deleted\n");
+		
+	sem_destroy(&gotTimerSignal_sem);
 
 	if(get_time_string(timeString) == 0)
-		LOG("[EXIT TIME] %s\n",timeString);
+		LOG("[EXIT TIME][THREAD1] %s\n",timeString);
 	else
 		LOG("[ERROR] Gettimeofday().\n");
 	
 	if(GET_LOG_HANDLE())
 		LOG_CLOSE();
+		
+	PRINT_THREAD_IDENTIFIER();
+	printf("Exiting thread 1.\n");
 	
 	/* Release the semaphore to be used by other thread */
 	sem_post(&gotSignal_sem);

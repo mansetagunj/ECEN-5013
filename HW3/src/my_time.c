@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "time.h"
+#include "my_time.h"
 
 #define GET_TIMEOFDAY(x,y)	gettimeofday(x,y)	//syscall(__sys_gettimeofday,x,y)
 

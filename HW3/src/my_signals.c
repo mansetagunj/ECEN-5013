@@ -3,7 +3,7 @@
 #include "my_signals.h"
 #include "log_macros.h"
 
-int register_signalHandler(struct sigaction *sa,void (*handler)(int), REG_SIGNAL_FLAG_t signalMask)
+int register_signalHandler(struct sigaction *sa, void (*handler)(int), REG_SIGNAL_FLAG_t signalMask)
 {
 	sa->sa_handler = handler;
 
