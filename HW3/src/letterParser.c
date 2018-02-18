@@ -3,46 +3,49 @@
 #include "letterParser.h"
 
 
-static letterType g_max1_E = 0;
-static letterType g_max2_E = 0;
-static letterType g_max3_E = 0;
-	
-static uint32_t g_max1_C = 0;
-static uint32_t g_max2_C = 0;
-static uint32_t g_max3_C = 0;
-	
+static inline int isUpperAlpha(letterType letter)
+{
+	return ((letter > 64 && letter < 91) ?  1 :  0);
+}
 
-int parser_parse(const char *filename)
+static inline letterType toLowerAlpha(letterType letter)
+{
+	return ((isUpperAlpha(letter)) ?  (letter + 32) : letter);
+}
+
+int parser_parse(const char *filename, PARSER_LETTER_T  **toBeParsedListHead)
 {
 	FILE *fp = NULL;
-	if( (fp = fopen(filename,"r")) != 0 )
+	if( (fp = fopen(filename,"r")) == NULL )
 	{
 		/* LOG OPEN ERROR */
+		printf("File open Error\n");
 		return 1;
 	}
 	
-	PARSER_LETTER_T *parsedListHead = NULL;
+	PARSER_LETTER_T *parsedListHead = *toBeParsedListHead;
 	letterType parsedChar;
 	int ret = fread(&parsedChar,sizeof(letterType),1,fp);
 	while(ret == 1)
 	{
 		
-		parsedListHead = parser_insert(parsedListHead, parsedChar);
+		parsedListHead = parser_insert(parsedListHead, toLowerAlpha(parsedChar));
 	
 		ret = fread(&parsedChar,sizeof(letterType),1,fp);
 	}
 	if(feof(fp))
 	{
 		/*LOG EOF */
+		printf("END OF FILE\n");
 	}
 	else if(ferror(fp))
 	{
 		/* LOF ERROR */
+		printf("FILE ERROR\n");
 		return 1;
 	}	
 	
-	/*Now we have the list ready with all the elements in the list */
-	//letterType max[3] = parser_getMaxThreeElements(parsedListHead);
+	*toBeParsedListHead = parsedListHead;
 	return 0;
 }
 
@@ -57,10 +60,6 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 		parsedListHead->letterElement = letter;
 		parsedListHead->letterCount = 1;
 		LIST_HEAD_INIT(&parsedListHead->selfNode);
-		
-		/* As this is the first element in the list, we can update the globals max1 directly */ 
-		g_max1_E = letter;
-		g_max1_C = 1;	
 		
 		return parsedListHead;
 	}
@@ -79,7 +78,6 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 			{
 				list_itr->letterCount++;
 				found = 1;
-				updateMax_onFly(list_itr);
 				break;
 			}
 			
@@ -90,18 +88,16 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 		*/
 		if(!found)
 		{
-			PARSER_LETTER_T newListNode = 
-			{
-				.letterElement = letter,
-				.letterCount = 1,
-				.selfNode.next = NULL,
-				.selfNode.prev = NULL,
-			};
+			PARSER_LETTER_T *newListNode = (PARSER_LETTER_T*)malloc(sizeof(PARSER_LETTER_T));
 			
-			updateMax_onFly(&newListNode);
+			newListNode->letterElement = letter;
+			newListNode->letterCount = 1;
+			newListNode->selfNode.next = NULL;
+			newListNode->selfNode.prev = NULL;
+
 			
 			/* Using insert at beginning as to avoid traversing to the end */
-			return GET_LIST_CONTAINER(insert_at_beginning(&parsedListHead->selfNode,&newListNode.selfNode),PARSER_LETTER_T,selfNode);		
+			return GET_LIST_CONTAINER(insert_at_beginning(&parsedListHead->selfNode,&newListNode->selfNode),PARSER_LETTER_T,selfNode);		
 		}
 		else
 			return parsedListHead;
@@ -109,75 +105,9 @@ PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType lette
 
 }
 
-/* Should call this before starting of the parse for safety as the variables are static.
-`Else call the parser_getMaxThreeElements() function
-*/
-void resetGlobalMax()
-{
-	g_max1_C = 0;
-	g_max2_C = 0;
-	g_max3_C = 0;
-	
-	g_max1_E = 0;
-	g_max2_E = 0;
-	g_max3_E = 0;
-
-}
-/* Using  this in the parser_insert for_each loop to optimize the time */
-void updateMax_onFly(PARSER_LETTER_T *parsedListNode)
-{
-	if(parsedListNode->letterCount > g_max1_C)
-	{
-		g_max1_C = parsedListNode->letterCount;
-		g_max2_C = g_max1_C;
-		g_max3_C = g_max2_C;
-		
-		g_max1_E = parsedListNode->letterElement;
-		g_max2_E = g_max1_E;
-		g_max3_E = g_max2_E;
-		
-	}
-	else if(parsedListNode->letterCount > g_max2_C)
-	{
-		g_max2_C = parsedListNode->letterCount;
-		g_max3_C = g_max2_C;
-		
-		g_max2_E = parsedListNode->letterElement;
-		g_max3_E = g_max2_E;		
-	}
-	else if(parsedListNode->letterCount > g_max3_C)
-	{
-		g_max3_C = parsedListNode->letterCount;
-		
-		g_max3_E = parsedListNode->letterElement;
-	}
-
-
-}
-
-letterType* parser_getMaxThreeGlobalElements()
-{
-	static letterType max_arr[3] = {0};
-	max_arr[0] = g_max1_E;
-	max_arr[1] = g_max2_E;
-	max_arr[2] = g_max3_E;
-	
-	return max_arr;
-}
-
-uint32_t* parser_getMaxThreeGlobalElementsCount()
-{
-	static uint32_t max_arr[3] = {0};
-	max_arr[0] = g_max1_C;
-	max_arr[1] = g_max2_C;
-	max_arr[2] = g_max3_C;
-	
-	return max_arr;
-}
-
 letterType* parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead)
 {
-	PARSER_LETTER_T *list_itr = GET_LIST_CONTAINER(parsedListHead->selfNode.next, PARSER_LETTER_T , selfNode);
+	PARSER_LETTER_T *list_itr = parsedListHead; //GET_LIST_CONTAINER(parsedListHead->selfNode.next, PARSER_LETTER_T , selfNode);
 	
 	static letterType max_arr[3] = {0};
 	
@@ -230,3 +160,40 @@ letterType* parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead)
 	return max_arr;
 
 }
+
+size_t get_occurenceN_letters(PARSER_LETTER_T *parsedListHead, letterType **inout_elemArray, uint32_t occurenceN)
+{
+	PARSER_LETTER_T *list_itr = parsedListHead;
+	size_t i = 0;
+	if(NULL == *inout_elemArray)
+	{
+		*inout_elemArray = (letterType*)malloc(sizeof(letterType)*10);
+		if(NULL == *inout_elemArray)
+		{
+			/*LOG ERROR*/
+			printf("MALLOC ERROR\n");
+			return 0;
+		}
+	}
+	
+	LIST_FOR_EACH_ENTRY(list_itr, &list_itr->selfNode, selfNode)
+	{
+		if(list_itr->letterCount == occurenceN)	
+		{
+			*(*inout_elemArray+i) = list_itr->letterElement;
+			i++;
+		}
+	}
+	
+	return i;
+}
+
+void cleanup_parser(PARSER_LETTER_T *parsedListHead)
+{
+	LIST_FOR_EACH_ENTRY(parsedListHead, &parsedListHead->selfNode, selfNode)
+	{
+		free(parsedListHead);
+	}	
+}
+
+

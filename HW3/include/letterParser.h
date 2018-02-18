@@ -27,7 +27,7 @@ typedef struct parser_letter{
     DESTROY_LIST(p_list_head,struct info,node)
 
 
-int parser_parse(const char *filename);
+int parser_parse(const char *filename, PARSER_LETTER_T  **toBeParsedListHead);
 
 PARSER_LETTER_T* parser_insert(PARSER_LETTER_T *parsedListHead, letterType letter);
 
@@ -41,10 +41,8 @@ uint32_t* parser_getMaxThreeGlobalElementsCount();
 
 letterType* parser_getMaxThreeElements(PARSER_LETTER_T *parsedListHead);
 
+size_t get_occurenceN_letters(PARSER_LETTER_T *parsedListHead, letterType **inout_elemArray, uint32_t occurenceN);
 
-
-
-
-
+void cleanup_parser(PARSER_LETTER_T *parsedListHead);
 
 #endif

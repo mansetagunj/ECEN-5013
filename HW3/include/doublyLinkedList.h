@@ -66,7 +66,6 @@ static inline void UPDATE_LIST_HEAD(LIST_NODE_T *head, LIST_NODE_T *new_head)
 //macro to initialize the head node which takes a local copy created statically
 #define INIT_LIST_HEAD()	{NULL, NULL}
 
-
 #define DESTROY_LIST(list_head_addr,container_type, container_member) 	\
 {	typeof(list_head_addr) list_itr = list_head_addr;	\
 	while(list_itr)										\
