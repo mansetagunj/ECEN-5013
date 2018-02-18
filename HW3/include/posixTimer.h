@@ -1,3 +1,10 @@
+/*
+ * @File posixTimer.h
+ *
+ * @Created on: 18-Feb-2018
+ * @Author: Gunj Manseta
+ */
+
 #ifndef __POSIX_TIMER_H__
 #define __POSIX_TIMER_H__
 

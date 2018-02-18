@@ -11,12 +11,14 @@
 
 #define LOG_INIT(filename)			FILE *fp = fopen(filename,"a+")
 #define GET_LOG_HANDLE() 			(fp)
-#define LOG(format,...) 			do { /*LOG_INIT(LOG_FILENAME);*/ LOG_THREAD_IDENTIFIER(); fprintf(GET_LOG_HANDLE(),format, ##__VA_ARGS__);fflush(GET_LOG_HANDLE()); } while(0)
+#define LOG(format,...) 			do { LOG_THREAD_IDENTIFIER(); fprintf(GET_LOG_HANDLE(),format, ##__VA_ARGS__);fflush(GET_LOG_HANDLE()); } while(0)
+#define LOG_PLAIN(format,...)		do { fprintf(GET_LOG_HANDLE(),format, ##__VA_ARGS__);fflush(GET_LOG_HANDLE()); } while(0)
 #define LOG_CLOSE() 				fclose(GET_LOG_HANDLE())
 
 #define PRINT_THREAD_IDENTIFIER()	printf("[PID:%ld] [TTID:%ld] [Pthread_TID:%lu] ",(long int)getpid(), (long int)syscall(SYS_gettid), pthread_self())
 #define LOG_THREAD_IDENTIFIER() 	fprintf(GET_LOG_HANDLE(),"[PID:%ld] [TTID:%ld] [Pthread_TID:%lu] ",(long int)getpid(), (long int)syscall(SYS_gettid), pthread_self())
 #define STDOUT_LOG(format, ...)		PRINT_THREAD_IDENTIFIER(); printf(format, ##__VA_ARGS__)
+#define STDOUT_LOG_PLAIN(format, ...)		printf(format, ##__VA_ARGS__)
 
 #define LOG_CPU_UTILIZATION() \
 	do{	\
