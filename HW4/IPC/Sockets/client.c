@@ -61,6 +61,7 @@ int main()
     /*First sending the size of the incoming payload */
     size_t sizeofPayload = sizeof(payloadSend);
     int bytesSent = send(fd,&sizeofPayload,sizeof(size_t), 0);
+    LOG("[INFO] Sent payload size\n");
 
     /*Sending the actual payload */
     bytesSent = send(fd , (char*)&payloadSend , sizeof(payloadSend), 0 );
