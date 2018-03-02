@@ -8,9 +8,13 @@
 #include <linux/kfifo.h>
 #include <linux/sched.h>
 
-#define MY_KFIFO_SIZE	(16)
 #define MY_KFIFO_NAME	mykfifo
 #define MY_KFIFO_NAME_P	&mykfifo
+
+/*Should be a power of 2 */
+#define SIZE_SHIFT		4
+#define MY_KFIFO_SIZE	(1<<SIZE_SHIFT)
+
 
 static DEFINE_MUTEX(fifo_lock);
 
@@ -90,7 +94,7 @@ int consumer_callback(void *params)
 			printk(KERN_INFO "Next Process ID: %d, Vruntime: %llu\n",list_next_entry(fifoData, tasks)->pid, list_next_entry(fifoData, tasks)->se.vruntime);
 			dataConsumedCount++;
 		}
-		
+
 		/* Unlock the mutex*/	
 		mutex_unlock(&fifo_lock);
 
