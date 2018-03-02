@@ -20,7 +20,7 @@ typedef struct{
 
 int main()
 {
-	int fd;
+	int fd, option = 1;
 	struct sockaddr_in addr, peer_addr;
 	int addrLen = sizeof(peer_addr);
 	payload_t payload_recvd;
@@ -32,10 +32,15 @@ int main()
 
 	LOG("[INFO] Socket Created\n");
 
+	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &(option), sizeof(option)))
+    {
+        LOG("[ERROR] Cannot Set socket options\n");
+        return 1;
+    }
 	/*Setting up the sockaddr_in structure */
 	addr.sin_family = AF_INET;
 	/* Change the below address to our IP addr */
-	addr.sin_addr.s_addr = INADDR_ANY;	
+	addr.sin_addr.s_addr = inet_addr("192.168.1.238");//INADDR_ANY;	
 	//addr.sin_addr.s_addr = htonl("192.168.1.238");	
 	addr.sin_port = htons(PORT);
 
