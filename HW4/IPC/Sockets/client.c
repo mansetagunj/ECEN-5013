@@ -22,7 +22,7 @@ typedef struct{
 int main()
 {
     struct sockaddr_in addr, server_addr = {0};
-    int fd = 0;
+    int client_socket = 0;
     const char* msg = "Hello from Client";
     char *payload_ptr;
     payload_t payloadSend;
@@ -32,7 +32,7 @@ int main()
     payloadSend.bufferLen = strlen(payloadSend.buffer);
     payloadSend.usrLed_onoff = 1;
 
-    if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
         LOG("[ERROR] Socket creation\n");
         return -1;
@@ -52,7 +52,7 @@ int main()
         return -1;
     }
   
-    if (connect(fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
+    if (connect(client_socket, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
     {
         LOG("[ERROR] Connection Failed \n");
         return -1;
@@ -60,11 +60,11 @@ int main()
 
     /*First sending the size of the incoming payload */
     size_t sizeofPayload = sizeof(payloadSend);
-    int bytesSent = send(fd,&sizeofPayload,sizeof(size_t), 0);
+    int bytesSent = send(client_socket,&sizeofPayload,sizeof(size_t), 0);
     LOG("[INFO] Sent payload size\n");
 
     /*Sending the actual payload */
-    bytesSent = send(fd , (char*)&payloadSend , sizeof(payloadSend), 0 );
+    bytesSent = send(client_socket , (char*)&payloadSend , sizeof(payloadSend), 0 );
 
     if(bytesSent < sizeof(payloadSend))
     {
@@ -75,7 +75,6 @@ int main()
     LOG("[INFO] Number of bytes send: %d\n",bytesSent);
     LOG("[INFO] Message sent\nMessage: %s\nMessageLen: %d\nUSRLED: %d\n",payloadSend.buffer,payloadSend.bufferLen,payloadSend.usrLed_onoff);
     
-    getchar();
-    close(fd);
+    close(client_socket);
     return 0;
 }

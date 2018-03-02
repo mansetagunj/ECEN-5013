@@ -20,11 +20,12 @@ typedef struct{
 
 int main()
 {
-	int fd, option = 1;
+	int server_socket, accepted_socket, option = 1;
 	struct sockaddr_in addr, peer_addr;
 	int addrLen = sizeof(peer_addr);
 	payload_t payload_recvd;
-	if((fd = socket(AF_INET,SOCK_STREAM,0)) == 0)
+	
+	if((server_socket = socket(AF_INET,SOCK_STREAM,0)) == 0)
 	{
 		LOG("[ERROR] Socket Creation\n");
 		return 1;
@@ -32,7 +33,7 @@ int main()
 
 	LOG("[INFO] Socket Created\n");
 
-	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &(option), sizeof(option)))
+	if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &(option), sizeof(option)))
     {
         LOG("[ERROR] Cannot Set socket options\n");
         return 1;
@@ -41,10 +42,9 @@ int main()
 	addr.sin_family = AF_INET;
 	/* Change the below address to our IP addr */
 	addr.sin_addr.s_addr = inet_addr("192.168.1.238");//INADDR_ANY;	
-	//addr.sin_addr.s_addr = htonl("192.168.1.238");	
 	addr.sin_port = htons(PORT);
 
-	if((bind(fd,(struct sockaddr*)&addr, sizeof(addr))) < 0)
+	if((bind(server_socket,(struct sockaddr*)&addr, sizeof(addr))) < 0)
 	{
 
 		LOG("[ERROR] Cannot bind the socket\n");
@@ -53,19 +53,16 @@ int main()
 
 	LOG("[INFO] Socket binded\n");
 
-	if(listen(fd,5) < 0)
+	if(listen(server_socket,5) < 0)
 	{
 		LOG("[ERROR] Cannot listen\n");
 		return 1;
 	}
 
-
-	int new_fd;
-
 	//while(1)
 	//{
-		new_fd = accept(fd, (struct sockaddr*)&peer_addr,(socklen_t*)&addrLen);
-		if(new_fd < 0)
+		accepted_socket = accept(server_socket, (struct sockaddr*)&peer_addr,(socklen_t*)&addrLen);
+		if(accepted_socket < 0)
 		{
 			LOG("[ERROR] Cannot accept\n");
 	//		continue;
@@ -78,7 +75,7 @@ int main()
 		char readBuffer[1024] = {0};
 		int bytesRead;
 		size_t payloadLen = 0;
-		bytesRead = read(new_fd, &payloadLen, sizeof(size_t));
+		bytesRead = read(accepted_socket, &payloadLen, sizeof(size_t));
 		if(bytesRead == sizeof(size_t))
 		{
 			LOG("[INFO] Size of incoming payload: %d\n",payloadLen);
@@ -89,7 +86,7 @@ int main()
 			return 1;
 		}
 		int i = 0;
-		while((bytesRead = read(new_fd, readBuffer+i, 1024)) < payloadLen)
+		while((bytesRead = read(accepted_socket, readBuffer+i, 1024)) < payloadLen)
 		{
 			LOG("[INFO] Number of bytes recvd: %d\n",bytesRead);
 			i+=bytesRead;	
@@ -97,7 +94,7 @@ int main()
 		payload_t *payloadptr= (payload_t*)readBuffer;
 		LOG("[INFO] Message Recvd\nMessage: %s\nMessageLen: %d\nUSRLED: %d\n",payloadptr->buffer,payloadptr->bufferLen,payloadptr->usrLed_onoff);
 	//}
-		close(new_fd);
+		close(accepted_socket);
 
 	return 0;
 }
