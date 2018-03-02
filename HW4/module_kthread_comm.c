@@ -16,15 +16,14 @@ static DEFINE_MUTEX(fifo_lock);
 
 static int dataProducedCount = 0;
 static int dataConsumedCount = 0;
-static unsigned long sproductiontime = 1;
 
 struct task_struct *producer_task;
 struct task_struct *consumer_task;
 
-//DECLARE_KFIFO(MY_KFIFO_NAME,struct task_struct,MY_KFIFO_SIZE);	
-static DECLARE_KFIFO(MY_KFIFO_NAME, int, MY_KFIFO_SIZE);	
+static DECLARE_KFIFO(MY_KFIFO_NAME,struct task_struct*,MY_KFIFO_SIZE);	
 
-module_param(sproductiontime, ulong, S_IRUGO | S_IWUSR);
+static unsigned long stimeInterval= 5;
+module_param(stimeInterval, ulong, S_IRUGO | S_IWUSR);
 	
 int producer_callback(void *params)
 {
@@ -36,22 +35,24 @@ int producer_callback(void *params)
 		if (mutex_lock_interruptible(&fifo_lock))
 		{
 			printk(KERN_ERR "Cannot get the lock\n");
-			return -1;
-			//return -ERESTARTSYS;
+			//return -1;
+			return -ERESTARTSYS;
 		}
 		/* Push the data into kfifo*/
-		if(0 == kfifo_put(MY_KFIFO_NAME_P, dataProducedCount))
+		if(0 == kfifo_put(MY_KFIFO_NAME_P, current))
 			printk(KERN_INFO "KFIFO FULL\n");
 		else
 		{
-			printk(KERN_INFO "Data pushed: %d\n",dataProducedCount);
+			//printk(KERN_INFO "Process pushed id: %d\n",current->pid);
 		}
+
 		/* Unlock the mutex*/
 		mutex_unlock(&fifo_lock);
+
 		/* Signal the condition variable */
 
 		dataProducedCount++;
-		ssleep(sproductiontime);
+		ssleep(stimeInterval);
 	}
 
 	printk(KERN_INFO "%s is terminated\n",__FUNCTION__);	
@@ -61,7 +62,7 @@ int producer_callback(void *params)
 
 int consumer_callback(void *params)
 {
-	static int dataVal;
+	struct task_struct *fifoData;
 	printk(KERN_INFO "From %s\n",__FUNCTION__);
 
 	while(!kthread_should_stop())
@@ -70,20 +71,29 @@ int consumer_callback(void *params)
 		if (mutex_lock_interruptible(&fifo_lock))
 		{
 			printk(KERN_ERR "Cannot get the lock\n");
-			return -1;
-			//return -ERESTARTSYS;
+			//return -1;
+			return -ERESTARTSYS;
 		}
+
 		/* Wait for the condition variable */
-		while
+
 		/* Pop the data from kfifo*/
-		if(0 == kfifo_get(MY_KFIFO_NAME_P, &dataVal))
-			printk(KERN_INFO "KFIFO EMPTY\n");
+		if(0 == kfifo_get(MY_KFIFO_NAME_P, &fifoData))
+		{
+			//printk(KERN_INFO "KFIFO EMPTY\n");
+		}
 		else	
-			printk(KERN_INFO "Data poped: %d\n",dataVal);
+		{
+			/* Process Id and Vruntime */
+			printk(KERN_INFO "Previous Process ID: %d, Vruntime: %llu\n",list_prev_entry(fifoData, tasks)->pid, list_prev_entry(fifoData, tasks)->se.vruntime);
+			printk(KERN_INFO "Current Process ID: %d, Vruntime: %llu\n",fifoData->pid, fifoData->se.vruntime);
+			printk(KERN_INFO "Next Process ID: %d, Vruntime: %llu\n",list_next_entry(fifoData, tasks)->pid, list_next_entry(fifoData, tasks)->se.vruntime);
+			dataConsumedCount++;
+		}
+		
 		/* Unlock the mutex*/	
 		mutex_unlock(&fifo_lock);
 
-		dataConsumedCount++;
 		
 	}
 
@@ -107,7 +117,6 @@ int __init gunjModule_kfifoEX_init(void)
 		return -1;
 	}
 
-#if 1
 	consumer_task = kthread_run(consumer_callback,NULL,"Consumer Task");
 	if(IS_ERR(consumer_task))	
 	{
@@ -120,7 +129,7 @@ int __init gunjModule_kfifoEX_init(void)
 		}
 		return -1;
 	}
-#endif
+
 	/* Everything went as expected */
 	return 0;
 }
@@ -128,7 +137,6 @@ int __init gunjModule_kfifoEX_init(void)
 
 void __exit gunjModule_kfifoEX_exit(void)
 {
-	//int ret;
 	/* Delete the kfifo */
 
 	/* Stop the kthreads created */
@@ -138,14 +146,13 @@ void __exit gunjModule_kfifoEX_exit(void)
 		printk(KERN_INFO "Producer thread has stopped. Data Produced Count:%d\n",ret);
 	}
 	else printk(KERN_ERR "Error in Producer Thread");	
-#if 1
+
 	ret = kthread_stop(consumer_task);
 	if(-1 != ret)
 	{
 		printk(KERN_INFO "Consumer thread has stopped. Data Consumed Count:%d\n",ret);
 	}
 	else printk(KERN_ERR "Error in Consumer Thread");
-#endif
 
 	printk(KERN_INFO "Exiting Kthread kfifo example Module. Function %s\n",__FUNCTION__);
 }
