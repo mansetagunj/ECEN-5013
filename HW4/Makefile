@@ -1,7 +1,8 @@
 KERNEL_DIR 	?= /lib/modules/$(shell uname -r)/build
 PWD 		= $(shell pwd)
 
-obj-m := module_proctree.o
+obj-m := module_kthread_comm.o
+#obj-m := module_proctree.o
 
 
 default:
