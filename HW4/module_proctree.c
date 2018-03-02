@@ -5,6 +5,21 @@
 #include <linux/sched.h>
 #include <linux/pid.h>
 
+
+#define getStatusString(state) ((state > 0) ? "Stopped" : ((state == 0) ? "Runnable" : ((state == -1) ? "Unrunnable" : "Unknown")))	
+
+#define getChildrenCount(child_taskStruct)		\
+({												\
+	static unsigned int child_count = 0;		\
+	struct list_head *list_itr	;				\
+	list_for_each(list_itr,child_taskStruct)	\
+	{											\
+		child_count++;							\
+	}											\
+	child_count;								\
+})
+
+
 static int process_id = -1;
 
 module_param(process_id,int,S_IRUGO | S_IWUSR);
@@ -26,11 +41,18 @@ int __init gunjModule_proctree_init(void)
 		task = pid_task(procid_struct, PIDTYPE_PID);
 	}
 
-    printk(KERN_INFO "Process got as parameter: %s, PID: %d", task->comm, task->pid);
+	/*
+	Thread Name
+	Process ID
+	Process Status
+	Number of children
+	Nice value
+	*/
+    printk(KERN_INFO "Process got as parameter: %s, PID: %d, State: %s, #Children: %u, Nice: %d", task->comm, task->pid, getStatusString(task->state), getChildrenCount(&task->children),  task_nice(task));
     do
     {
         task = task->parent;
-        printk(KERN_INFO "Parent process: %s, PID: %d", task->comm, task->pid);
+        printk(KERN_INFO "Parent process: %s, PID: %d, State: %s, #Children: %u, Nice: %d", task->comm, task->pid, getStatusString(task->state), getChildrenCount(&task->children),  task_nice(task));
 
     }while(0 != task->pid);
 
