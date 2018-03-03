@@ -78,6 +78,8 @@ int main()
         LOG("[INFO] Message Recvd\n{Message: %s\nMessageLen: %d\nUSRLED: %d}\n",payloadptr->buffer,payloadptr->bufferLen,payloadptr->usrLed_onoff);
 
         close(Ch_to_Par[0]);
+
+        exit(0);
     }
     /* child process */
     else
