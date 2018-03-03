@@ -23,7 +23,7 @@ int main()
 	int server_socket, accepted_socket, option = 1;
 	struct sockaddr_in addr, peer_addr;
 	int addrLen = sizeof(peer_addr);
-	payload_t payload_recvd;
+	payload_t payload_recvd = {0};
 	
 	if((server_socket = socket(AF_INET,SOCK_STREAM,0)) == 0)
 	{
@@ -46,7 +46,6 @@ int main()
 
 	if((bind(server_socket,(struct sockaddr*)&addr, sizeof(addr))) < 0)
 	{
-
 		LOG("[ERROR] Cannot bind the socket\n");
 		return 1;
 	}
@@ -76,6 +75,7 @@ int main()
 		int bytesRead;
 		size_t payloadLen = 0;
 		bytesRead = read(accepted_socket, &payloadLen, sizeof(size_t));
+
 		if(bytesRead == sizeof(size_t))
 		{
 			LOG("[INFO] Size of incoming payload: %d\n",payloadLen);
@@ -91,9 +91,12 @@ int main()
 			LOG("[INFO] Number of bytes recvd: %d\n",bytesRead);
 			i+=bytesRead;	
 		}
+
 		payload_t *payloadptr= (payload_t*)readBuffer;
 		LOG("[INFO] Message Recvd\nMessage: %s\nMessageLen: %d\nUSRLED: %d\n",payloadptr->buffer,payloadptr->bufferLen,payloadptr->usrLed_onoff);
 	//}
+
+		send(accepted_socket , "ACK" , 4, 0);
 		close(accepted_socket);
 
 	return 0;

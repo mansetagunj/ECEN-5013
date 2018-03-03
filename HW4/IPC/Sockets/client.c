@@ -25,10 +25,10 @@ int main()
     int client_socket = 0;
     const char* msg = "Hello from Client";
     char *payload_ptr;
-    payload_t payloadSend;
+    payload_t payloadSend;// = {0};
     payload_ptr = (char*)&payloadSend;
 
-    memmove(payloadSend.buffer,msg,strlen(msg));
+    memcpy(payloadSend.buffer,msg,strlen(msg)+1);
     payloadSend.bufferLen = strlen(payloadSend.buffer);
     payloadSend.usrLed_onoff = 1;
 
@@ -75,6 +75,10 @@ int main()
     LOG("[INFO] Number of bytes send: %d\n",bytesSent);
     LOG("[INFO] Message sent\nMessage: %s\nMessageLen: %d\nUSRLED: %d\n",payloadSend.buffer,payloadSend.bufferLen,payloadSend.usrLed_onoff);
     
+    char ack[4] = {0};
+    read(client_socket, ack, 4);
+    LOG("[INFO] return: %s\n",ack);
+
     close(client_socket);
     return 0;
 }
