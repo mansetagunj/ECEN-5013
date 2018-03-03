@@ -78,7 +78,7 @@ int main()
 
     memcpy(payload_cptr,(char*)shared_mem,SH_MEM_SIZE);
 
-    LOG("[INFO] Message From Shared Mem\n{Message: %s\nMessageLen: %d\nUSRLED: %d}\n",payloadRecv.buffer,payloadRecv.bufferLen,payloadRecv.usrLed_onoff);
+    LOG("[INFO] Message From Process 2 through Shared Mem\n{Message: %s\nMessageLen: %d\nUSRLED: %d}\n",payloadRecv.buffer,payloadRecv.bufferLen,payloadRecv.usrLed_onoff);
 
 	
 	/*Destroying the shared memory */

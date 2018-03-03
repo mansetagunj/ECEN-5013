@@ -26,7 +26,7 @@ typedef struct{
 
 int main()
 {
-	LOG("[INFO] Starting the process 1\n");	
+	LOG("[INFO] Starting the process 2\n");	
 	int shmem_fd = shm_open(SH_MEM_NAME, O_CREAT | O_RDWR, 0666);
 	if(shmem_fd < 0 )
 	{
