@@ -72,6 +72,6 @@ int main()
 	/*Closing the Q. Process 1 will destroy the queue */
 	mq_close(mySharedQ);
 
-	LOG("[ERROR] QUEUE CLOSED\n");
+	LOG("[INFO] QUEUE CLOSED\n");
 	return 0;
 }
