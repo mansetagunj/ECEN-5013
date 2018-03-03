@@ -7,8 +7,8 @@
 #include <arpa/inet.h>
 
 #define PORT 2000
-//#define IP "127.0.0.1"
-#define IP "192.168.1.238"
+#define IP "127.0.0.1"
+//#define IP "192.168.1.238"
 #define LOG(format, ...) printf(format, ##__VA_ARGS__)
 
 

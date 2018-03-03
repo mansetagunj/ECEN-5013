@@ -41,7 +41,8 @@ int main()
 	/*Setting up the sockaddr_in structure */
 	addr.sin_family = AF_INET;
 	/* Change the below address to our IP addr */
-	addr.sin_addr.s_addr = inet_addr("192.168.1.238");//INADDR_ANY;	
+	//addr.sin_addr.s_addr = inet_addr("192.168.1.238");//INADDR_ANY;	
+	addr.sin_addr.s_addr = INADDR_ANY;	//Using local loopback	
 	addr.sin_port = htons(PORT);
 
 	if((bind(server_socket,(struct sockaddr*)&addr, sizeof(addr))) < 0)
