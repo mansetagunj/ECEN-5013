@@ -79,7 +79,7 @@ void* socket_task_callback(void* threadparam)
         exit(ERR);
     }
 
-	LOG_STDOUT(INFO "SOCKET TASK INIT COMPLETEDs\n");
+	LOG_STDOUT(INFO "SOCKET TASK INIT COMPLETED\n");
 	pthread_barrier_wait(&tasks_barrier);
 
 	while(1)

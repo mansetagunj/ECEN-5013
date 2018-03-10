@@ -55,17 +55,19 @@ void logger_task_processMsg()
 
 void* logger_task_callback(void *threadparam)
 {
-    int ret = logger_task_init();    
+    LOG_STDOUT(INFO "LOGGER TASK STARTED\n");
+    int ret = logger_task_init();
     if(ERR == ret)
     {
         LOG_STDOUT(ERROR "LOGGER TASK INIT%s\n",strerror(errno));
         exit(ERR);
     }
 
-    LOG_STDOUT(INFO "LOGGER TASK INIT COMPLETEDs\n");
+    LOG_STDOUT(INFO "LOGGER TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
-    LOG_STDOUT(INFO "LOGGER TASK STARTED\n");
+    /* Process Log queue msg */
+    logger_task_processMsg();
 
     return (void*)SUCCESS;
 }
