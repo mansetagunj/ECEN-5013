@@ -12,7 +12,6 @@
 #include <mqueue.h>
 #include <string.h>
 #include <errno.h>
-#include <stdlib.h>
 
 #include "main_task.h"
 #include "logger_task.h"
@@ -48,7 +47,31 @@ int logger_task_init()
 
 void logger_task_processMsg()
 {
+    int ret,prio;
+    while(1)
+    {
+        LOGGERTASKQ_MSG_T queueData = {0};
+        ret = mq_receive(loggertask_q,(char*)&(queueData),sizeof(queueData),&prio);
+        if(ERR == ret)
+        {
+            LOG_STDOUT(ERROR "MQ_RECV:%s\n",strerror(errno));
+        }
+        switch(queueData.msgID)
+        {
+            case(LT_MSG_LOG):
+                if(g_loglevel >= queueData.loglevel)
+                {
+                    LOG_STDOUT(INFO "QUEUE LOG\n");
+                }
+                break;
+            case(LT_MSG_TASK_STATUS):
+                /* Send back task alive response to main task */
+                break;
 
+            default:
+                break;
+        }
+    }
 
 }
 
@@ -66,7 +89,7 @@ void* logger_task_callback(void *threadparam)
     LOG_STDOUT(INFO "LOGGER TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
-    /* Process Log queue msg */
+    /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
     logger_task_processMsg();
 
     return (void*)SUCCESS;
