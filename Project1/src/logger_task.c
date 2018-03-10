@@ -62,6 +62,7 @@ void logger_task_processMsg()
                 if(g_loglevel >= queueData.loglevel)
                 {
                     LOG_STDOUT(INFO "QUEUE LOG\n");
+                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                 }
                 break;
             case(LT_MSG_TASK_STATUS):
