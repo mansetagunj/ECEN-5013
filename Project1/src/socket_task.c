@@ -15,6 +15,8 @@
 #include <arpa/inet.h>
 		
 #include "socket_task.h"
+#include "logger_task.h"
+#include "main_task.h"
 #include "error_data.h"
 #include "common_helper.h"
 
@@ -82,6 +84,10 @@ void* socket_task_callback(void* threadparam)
 	LOG_STDOUT(INFO "SOCKET TASK INIT COMPLETED\n");
 	pthread_barrier_wait(&tasks_barrier);
 
+	DEFINE_LOG_STRUCT(logData,LT_MSG_LOG,SOCKET_TASK_ID,"SOCKET TOWARDS ACCEPT");
+	set_Log_currentTimestamp(&logData);
+	POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(),&logData,sizeof(logData));
+
 	while(1)
 	{
 		accepted_socket = accept(server_socket, (struct sockaddr*)&peer_addr,(socklen_t*)&addrLen);
@@ -92,11 +98,13 @@ void* socket_task_callback(void* threadparam)
 		}
 
 		char peer_IP[20] = {0};
+
 		LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 
 
-        /* Create a threade to handle the connection and go back to accepting */
+        /* Create a new thread to handle the connection and go back to accepting */
         close(accepted_socket);
+		LOG_STDOUT(INFO "Socket Closed\n");
         /* Think of a mechanism to close this socket task as there is a while(1) loop */
 
     }
