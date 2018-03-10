@@ -90,6 +90,7 @@ void* socket_task_callback(void* threadparam)
 
 	while(1)
 	{
+		LOG_STDOUT(INFO "Accepting connections...\n");
 		accepted_socket = accept(server_socket, (struct sockaddr*)&peer_addr,(socklen_t*)&addrLen);
 		if(accepted_socket < 0)
 		{
@@ -98,8 +99,10 @@ void* socket_task_callback(void* threadparam)
 		}
 
 		char peer_IP[20] = {0};
-
-		LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
+		snprintf(logData.msgData,sizeof(logData.msgData),"Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));  
+		set_Log_currentTimestamp(&logData);
+		POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(),&logData,sizeof(logData));
+		//LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 
 
         /* Create a new thread to handle the connection and go back to accepting */
