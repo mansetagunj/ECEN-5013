@@ -16,8 +16,9 @@
 		
 #include "socket_task.h"
 #include "error_data.h"
+#include "common_helper.h"
 
-#define SERVER_PORT 	2000
+#define SERVER_PORT 	3000
 #define SERVER_IP       "127.0.0.1"
 #define MAX_CONNECTIONS 5
 
@@ -34,20 +35,20 @@ int socket_task_init(int server_socket)
 
 	LOG_STDOUT(INFO "Socket Created\n");
 
-	if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &(option), sizeof(option)))
+	if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEPORT | SO_REUSEADDR, &(option), sizeof(option)))
     {
-        LOG_STDOUT(ERROR "Cannot Set socket options\n");
+        LOG_STDOUT(ERROR "Cannot Set socket options:%s\n",strerror(errno));
         return ERR;
     }
 	/*Setting up the sockaddr_in structure */
 	addr.sin_family = AF_INET;\
-	addr.sin_addr.s_addr = inet_addr(SERVER_IP);	
-	//addr.sin_addr.s_addr = INADDR_ANY;	//Using local loopback	
+	//addr.sin_addr.s_addr = inet_addr(SERVER_IP);	
+	addr.sin_addr.s_addr = INADDR_ANY;	//Using local loopback	
 	addr.sin_port = htons(SERVER_PORT);
 
 	if((bind(server_socket,(struct sockaddr*)&addr, sizeof(addr))) < 0)
 	{
-		LOG_STDOUT(ERROR "Cannot bind the socket\n");
+		LOG_STDOUT(ERROR "Cannot bind the socket:%s\n",strerror(errno));
 		return ERR;
 	}
 
@@ -55,7 +56,7 @@ int socket_task_init(int server_socket)
 
     if(listen(server_socket,MAX_CONNECTIONS) < 0)
 	{
-		LOG_STDOUT(ERROR "Cannot listen\n");
+		LOG_STDOUT(ERROR "Cannot listen:%s\n",strerror(errno));
 		return ERR;
 	}
 
@@ -77,6 +78,9 @@ void* socket_task_callback(void* threadparam)
         LOG_STDOUT(ERROR "Socket task init failed.\n");
         exit(ERR);
     }
+
+	LOG_STDOUT(INFO "SOCKET TASK INIT COMPLETEDs\n");
+	pthread_barrier_wait(&tasks_barrier);
 
 	while(1)
 	{
