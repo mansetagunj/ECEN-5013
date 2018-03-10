@@ -10,6 +10,16 @@
 #include "main_task.h"
 #include "logger_task.h"
 
+
+
+const char* const task_identifier_string[NUM_CHILD_THREADS+1] =
+{
+    (const char*)"Logger Task",
+    (const char*)"Socket Task",
+    (const char*)"Main Task",
+
+};
+
 mqd_t get_queue_handle(TASK_IDENTIFIER_T taskid)
 {
     mqd_t queueHandle;

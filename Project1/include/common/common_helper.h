@@ -21,6 +21,18 @@ typedef enum
 
 }TASK_IDENTIFIER_T;
 
+extern const char* const task_identifier_string[NUM_CHILD_THREADS+1];
+/**
+ * @brief Get the Task Identfier String
+ * 
+ * @param taskid 
+ * @return const char* 
+ */
+static inline const char* getTaskIdentfierString(TASK_IDENTIFIER_T taskid)
+{
+    return task_identifier_string[taskid];
+}
+
 pthread_t pthread_id[NUM_CHILD_THREADS];
 
 mqd_t get_queue_handle(TASK_IDENTIFIER_T taskid);
