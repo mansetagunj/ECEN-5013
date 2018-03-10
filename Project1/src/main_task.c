@@ -17,8 +17,9 @@
 #include "error_data.h"
 #include "logger_task.h"
 #include "socket_task.h"
+#include "my_signals.h"
 
-#define NUM_CHILD_THREADS 2
+
 #define MQ_MAINTASK_NAME "/maintask_queue"
 
 
@@ -31,6 +32,46 @@ void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
 
 
 static mqd_t maintask_q;
+
+/**
+ * @brief  Signal handler for the main task
+ *         Should not include stdout log in the handler as it is not thread safe. Find an alternative for this
+ *          Maybe use a global atomic type to set the signal type after cancelling all the thereads and check that 
+ *          atomic data in the main_task after the join call if a signal occured and then use a stdout log there
+ * 
+ * @param signal 
+ */
+static void signal_handler(int signal)
+{
+	switch (signal)
+	{
+
+		case SIGUSR1:
+			LOG_STDOUT(SIGNAL "SIGUSR1 signal.\n");
+			break;
+		case SIGUSR2:
+			LOG_STDOUT(SIGNAL "SIGUSR2 signal.\n");
+			break;
+		case SIGINT:
+			LOG_STDOUT(SIGNAL "SIGINT signal.\n");
+			break;
+		case SIGTERM:
+			LOG_STDOUT(SIGNAL "SIGTERM signal.\n");
+			break;
+		case SIGTSTP:
+			LOG_STDOUT(SIGNAL "SIGTSTP signal.\n");
+			break;
+		default:
+			LOG_STDOUT(SIGNAL "Invalid signal.\n");
+			break;
+	}
+
+    /* Cancelling all the threads for any signals */
+    for(int i = 0; i < NUM_CHILD_THREADS; i++)
+    {
+        pthread_cancel(pthread_id[i]);
+    }
+}
 
 mqd_t getHandle_MainTaskQueue()
 {
@@ -60,14 +101,16 @@ void main_task_processMsg()
 
 int main_task_entry()
 {
-    pthread_t pthread_id[NUM_CHILD_THREADS];
-
     int ret = main_task_init();    
     if(-1 == ret)
     {
         LOG_STDOUT(ERROR "MAIN TASK INIT%s\n",strerror(errno));
         return ret;
     }
+
+    struct sigaction sa;
+    /*Registering the signal callback handler*/
+	register_signalHandler(&sa,signal_handler, REG_SIG_ALL);
 
     /* Create a barrier for all the threads + the main task*/
     pthread_barrier_init(&tasks_barrier,NULL,NUM_CHILD_THREADS+1);
@@ -83,7 +126,7 @@ int main_task_entry()
         }
     }
 
-    LOG_STDOUT(INFO "MAIN TASK INIT COMPLETEDs\n");
+    LOG_STDOUT(INFO "MAIN TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
     /* Start message processing */
@@ -100,3 +143,4 @@ int main_task_entry()
 
     return SUCCESS;
 }
+

@@ -27,6 +27,7 @@ typedef enum{
 
 #define ERROR   "[ERROR] "
 #define INFO    "[INFO] "
+#define SIGNAL  "[SIGNAL] "
 
 
 #endif
