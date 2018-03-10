@@ -69,7 +69,8 @@ int main_task_entry()
         return ret;
     }
 
-    /* Create a barrier for all the threads */
+    /* Create a barrier for all the threads + the main task*/
+    pthread_barrier_init(&tasks_barrier,NULL,NUM_CHILD_THREADS+1);
 
     /* Create all the child threads */
     for(int i = 0; i < NUM_CHILD_THREADS; i++)
@@ -81,6 +82,10 @@ int main_task_entry()
             return ret;
         }
     }
+
+    LOG_STDOUT(INFO "MAIN TASK INIT COMPLETEDs\n");
+    pthread_barrier_wait(&tasks_barrier);
+
     /* Start message processing */
     
     for(int i = 0; i < NUM_CHILD_THREADS; i++)

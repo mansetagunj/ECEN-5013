@@ -9,6 +9,7 @@
 #define COMMON_HELPER_H
 
 #include <mqueue.h>
+#include <pthread.h>
 
 typedef enum
 {
@@ -20,5 +21,6 @@ typedef enum
 
 mqd_t get_queue_handle(TASK_IDENTIFIER_T taskid);
 
+pthread_barrier_t tasks_barrier;
 
 #endif

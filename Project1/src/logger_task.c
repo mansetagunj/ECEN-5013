@@ -62,6 +62,9 @@ void* logger_task_callback(void *threadparam)
         exit(ERR);
     }
 
+    LOG_STDOUT(INFO "LOGGER TASK INIT COMPLETEDs\n");
+    pthread_barrier_wait(&tasks_barrier);
+
     LOG_STDOUT(INFO "LOGGER TASK STARTED\n");
 
     return (void*)SUCCESS;
