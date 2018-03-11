@@ -7,6 +7,7 @@ else
 endif
 
 CC:=gcc
+CC_CROSS:=arm-linux-gnueabihf-gcc
 CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
 LDFLAGS:= -lpthread -lrt
 INCLUDES:= -I ../include/common -I ../include/cmocka -I ../include/BeagleBone
@@ -19,6 +20,11 @@ OUTPUT_FILE:= project1$(OUTPUT_FILE_EXT)
 build:
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUT_FILE) $(SRCS) $(LDFLAGS)
 
+.PHONY:cross
+cross:
+	$(CC_CROSS) $(CFLAGS) $(INCLUDES) -o BB_$(OUTPUT_FILE) $(SRCS) $(LDFLAGS)
+	scp BB_$(OUTPUT_FILE) ubuntu@192.168.7.2:~/
+
 .PHONY:run
 run: build
 	sudo ./project1.out
@@ -26,4 +32,4 @@ run: build
 
 .PHONY:clean
 clean:
-	rm -f *.o $(OUTPUT_FILE)
+	rm -f *.o $(OUTPUT_FILE) BB_$(OUTPUT_FILE)
