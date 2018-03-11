@@ -54,7 +54,7 @@ typedef struct
 #define POST_MESSAGE_MAINTASK(p_maintaskstruct, format, ...)  \
     do{ \
         snprintf((p_maintaskstruct)->msgData,sizeof((p_maintaskstruct)->msgData),format, ##__VA_ARGS__);   \
-        __POST_MESSAGE_LOGTASK(getHandle_MainTaskQueue(), p_maintaskstruct, sizeof(*p_maintaskstruct)); \
+        __POST_MESSAGE_MAINTASK(getHandle_MainTaskQueue(), p_maintaskstruct, sizeof(*p_maintaskstruct)); \
     }while(0)
 
 /**
