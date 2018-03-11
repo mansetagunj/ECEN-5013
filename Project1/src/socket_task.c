@@ -24,6 +24,14 @@
 #define SERVER_IP       "127.0.0.1"
 #define MAX_CONNECTIONS 5
 
+
+static void timer_handler_sendSTAliveMSG(union sigval sig)
+{		
+    pthread_mutex_lock(&aliveState_lock);
+	aliveStatus[SOCKET_TASK_ID]++;
+	pthread_mutex_unlock(&aliveState_lock);
+}
+
 int socket_task_init(int server_socket)
 {
     int option = 1;
@@ -43,7 +51,7 @@ int socket_task_init(int server_socket)
         return ERR;
     }
 	/*Setting up the sockaddr_in structure */
-	addr.sin_family = AF_INET;\
+	addr.sin_family = AF_INET;
 	//addr.sin_addr.s_addr = inet_addr(SERVER_IP);	
 	addr.sin_addr.s_addr = INADDR_ANY;	//Using local loopback	
 	addr.sin_port = htons(SERVER_PORT);
@@ -80,13 +88,15 @@ void* socket_task_callback(void* threadparam)
         LOG_STDOUT(ERROR "Socket task init failed.\n");
         exit(ERR);
     }
+	/* Registering a timer for 5 sec to check that the barrier is passed */
+    //timer_t timer_id;
+    //register_and_start_timer(&timer_id, timer_handler_sendSTAliveMSG, &timer_id);
 
 	LOG_STDOUT(INFO "SOCKET TASK INIT COMPLETED\n");
 	pthread_barrier_wait(&tasks_barrier);
 
-	DEFINE_LOG_STRUCT(logData,LT_MSG_LOG,SOCKET_TASK_ID,"SOCKET TOWARDS ACCEPT");
-	set_Log_currentTimestamp(&logData);
-	POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(),&logData,sizeof(logData));
+	DEFINE_LOG_STRUCT(logData,LT_MSG_LOG,SOCKET_TASK_ID);
+	POST_MESSAGE_LOGTASK(&logData,"SOCKET TOWARDS ACCEPT");
 
 	while(1)
 	{
@@ -99,9 +109,7 @@ void* socket_task_callback(void* threadparam)
 		}
 
 		char peer_IP[20] = {0};
-		snprintf(logData.msgData,sizeof(logData.msgData),"Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));  
-		set_Log_currentTimestamp(&logData);
-		POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(),&logData,sizeof(logData));
+		POST_MESSAGE_LOGTASK(&logData,"Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 		//LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 
 
