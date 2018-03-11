@@ -32,4 +32,4 @@ run: build
 
 .PHONY:clean
 clean:
-	rm -f *.o $(OUTPUT_FILE) BB_$(OUTPUT_FILE)
+	rm -f *.o *.log $(OUTPUT_FILE) BB_$(OUTPUT_FILE)
