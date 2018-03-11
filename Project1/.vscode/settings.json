@@ -1,5 +1,9 @@
 {
     "C_Cpp.errorSquiggles": "Enabled",
     "files.autoSave": "onFocusChange",
-    "doxdocgen.generic.authorTag": "@author Gunj Manseta"
+    "doxdocgen.generic.authorTag": "@author Gunj Manseta",
+    "C_Cpp.autocomplete": "Default",
+    "files.associations": {
+        "string.h": "c"
+    }
 }
