@@ -8,4 +8,4 @@
   prob2.c - contains various file operation      
   makefile - to build various programs  
 
-[![Analytics](https://ga-beacon.appspot.com/UA-115507173-1/ECEN-5013/readme?pixel)](https://github.com/mansetagunj/ECEN-5013)
+[![Analytics](https://ga-beacon.appspot.com/UA-115507173-1/ECEN-5013/readme?pixel)](https://github.com/igrigorik/ga-beacon)
