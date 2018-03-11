@@ -40,6 +40,7 @@ int logger_task_init()
         .mq_curmsgs = 0
     };
 
+    mq_unlink(MQ_LOGGERTASK_NAME);
     loggertask_q = mq_open(MQ_LOGGERTASK_NAME, O_CREAT | O_RDWR, 0666, &loggertaskQ_attr);
 
     return loggertask_q;;
@@ -48,9 +49,11 @@ int logger_task_init()
 void logger_task_processMsg()
 {
     int ret,prio;
+    LOGGERTASKQ_MSG_T queueData = {0};
+    DEFINE_MAINTASK_STRUCT(maintaskRsp,MT_MSG_STATUS_RSP,LOGGER_TASK_ID);
     while(1)
     {
-        LOGGERTASKQ_MSG_T queueData = {0};
+        memset(&queueData,0,sizeof(queueData));
         ret = mq_receive(loggertask_q,(char*)&(queueData),sizeof(queueData),&prio);
         if(ERR == ret)
         {
@@ -67,6 +70,7 @@ void logger_task_processMsg()
                 break;
             case(LT_MSG_TASK_STATUS):
                 /* Send back task alive response to main task */
+                POST_MESSAGE_MAINTASK(&maintaskRsp, "Logger Alive");
                 break;
 
             default:
