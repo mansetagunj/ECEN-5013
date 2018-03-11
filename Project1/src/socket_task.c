@@ -88,23 +88,21 @@ void* socket_task_callback(void* threadparam)
         LOG_STDOUT(ERROR "Socket task init failed.\n");
         exit(ERR);
     }
-	/* Registering a timer for 5 sec to check that the barrier is passed */
-    //timer_t timer_id;
-    //register_and_start_timer(&timer_id, timer_handler_sendSTAliveMSG, &timer_id);
+
 
 	LOG_STDOUT(INFO "SOCKET TASK INIT COMPLETED\n");
 	pthread_barrier_wait(&tasks_barrier);
 
 	DEFINE_LOG_STRUCT(logData,LT_MSG_LOG,SOCKET_TASK_ID);
-	POST_MESSAGE_LOGTASK(&logData,"SOCKET TOWARDS ACCEPT");
 
 	while(1)
 	{
-		LOG_STDOUT(INFO "Accepting connections...\n");
+		POST_MESSAGE_LOGTASK(&logData,"Accepting connections...\n");
 		accepted_socket = accept(server_socket, (struct sockaddr*)&peer_addr,(socklen_t*)&addrLen);
 		if(accepted_socket < 0)
 		{
-			LOG_STDOUT(ERROR "Cannot accept\n");
+			LOG_STDOUT(ERROR "Cannot accept:%s\n",strerror(errno));
+			POST_MESSAGE_LOGTASK(&logData,ERROR "Cannot accept:%s\n",strerror(errno));
 			continue;
 		}
 
@@ -116,6 +114,7 @@ void* socket_task_callback(void* threadparam)
         /* Create a new thread to handle the connection and go back to accepting */
         close(accepted_socket);
 		LOG_STDOUT(INFO "Socket Closed\n");
+		POST_MESSAGE_LOGTASK(&logData,INFO "Socket Closed\n");
         /* Think of a mechanism to close this socket task as there is a while(1) loop */
 
     }
