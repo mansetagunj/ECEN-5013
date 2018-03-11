@@ -19,7 +19,7 @@
 #include "error_data.h"
 
 
-#define LT_MSG_SIZE 20
+#define LT_MSG_SIZE 40
 
 typedef char LOGGER_TASK_MSGDATA_T;
 
@@ -53,15 +53,14 @@ typedef struct
  * @brief Defines a Log struct with the name given and params with some default values
  * 
  */
-#define DEFINE_LOG_STRUCT(name,msgId,sourceId,format, ...) \
+#define DEFINE_LOG_STRUCT(name,msgId,sourceId) \
     LOGGERTASKQ_MSG_T name = {      \
         .msgID      = msgId,        \
         .loglevel   = LOG_ALL,      \
         .sourceID   = sourceId,     \
-        .timestamp  = {0}           \
-    };                              \
-    /*memset(name.timestamp,20,0);*/  \
-    snprintf(name.msgData,sizeof(name.msgData),format, ##__VA_ARGS__) 
+        .timestamp  = {0},          \
+        .msgData    = {0}           \
+    };                               
 
 /**
  * @brief Set the Log loglevel
@@ -92,15 +91,26 @@ static inline void set_Log_currentTimestamp(LOGGERTASKQ_MSG_T *log_msg)
 mqd_t getHandle_LoggerTaskQueue();
 
 /**
+ * @brief 
+ * 
+ */
+#define POST_MESSAGE_LOGTASK(p_logstruct, format, ...)  \
+    do{ \
+        snprintf((p_logstruct)->msgData,sizeof((p_logstruct)->msgData),format, ##__VA_ARGS__);   \
+        set_Log_currentTimestamp(p_logstruct); \
+        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct)); \
+    }while(0)
+
+/**
  * @brief Post message to the log using the log queue handle and giving log struct
  * 
  * @param queue 
  * @param logstruct 
  * @param log_struct_size 
  */
-static inline void POST_MESSAGE_LOGTASK(mqd_t queue, const LOGGERTASKQ_MSG_T *logstruct, size_t log_struct_size)
+static inline void __POST_MESSAGE_LOGTASK(mqd_t queue, const LOGGERTASKQ_MSG_T *logstruct, size_t log_struct_size)
 {
-    if(-1 == mq_send(queue, (const char*)logstruct, log_struct_size,20))
+    if(-1 == mq_send(queue, (const char*)logstruct, log_struct_size, 20))
     {
         LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
     }
