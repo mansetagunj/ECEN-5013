@@ -17,7 +17,17 @@
 #include "logger_task.h"
 #include "error_data.h"
 
+#define LOG_DIR     "./log/"
+#define __LOG_PATH(x) LOG_DIR ## x
+#define LOG_PATH(x) __LOG_PATH(x)
+
 #define MQ_LOGGERTASK_NAME "/loggertask_queue"
+
+/**
+ * @brief USe it carefully as there is not NULL checking of the file stream provided
+ * 
+ */
+#define LT_LOG(fp,format, ...) fprintf(fp,"[PID:%d][TID:%ld]",getpid(),syscall(SYS_gettid)); fprintf(fp,format, ##__VA_ARGS__)
 
 /* Keeping the log level to the higest level to log everything. 
     Should be configure at compile time using compile time switch
@@ -31,7 +41,32 @@ mqd_t getHandle_LoggerTaskQueue()
     return loggertask_q;
 }
 
-int logger_task_init()
+FILE* logger_task_file_init(const char *logFileName)
+{
+    if(NULL == logFileName)
+        return NULL;
+    FILE *fp = fopen(logFileName,"r+");
+    /* check if the file already exists then close it and save it as old_log */
+    if(fp)
+    {
+        fclose(fp);
+        char newFilename[40] = {0};
+        snprintf(newFilename,sizeof(newFilename),"%u_%s",(unsigned)time(NULL),logFileName);
+        int ret = rename(logFileName, newFilename);
+        if(ret)
+        {
+            LOG_STDOUT(ERROR "Cannot backup old log file\n");
+        }
+    }
+    fp = fopen(logFileName,"w+");
+    if(NULL == fp)
+    {
+        LOG_STDOUT(INFO "Log file created\n");
+    }
+    return fp;
+}
+
+int logger_task_queue_init()
 {
     struct mq_attr loggertaskQ_attr = {
         .mq_msgsize = sizeof(LOGGERTASKQ_MSG_T),
@@ -46,7 +81,7 @@ int logger_task_init()
     return loggertask_q;;
 }
 
-void logger_task_processMsg()
+void logger_task_processMsg(FILE *fp)
 {
     int ret,prio;
     LOGGERTASKQ_MSG_T queueData = {0};
@@ -58,19 +93,26 @@ void logger_task_processMsg()
         if(ERR == ret)
         {
             LOG_STDOUT(ERROR "MQ_RECV:%s\n",strerror(errno));
+            continue;
         }
         switch(queueData.msgID)
         {
             case(LT_MSG_LOG):
                 if(g_loglevel >= queueData.loglevel)
                 {
-                    LOG_STDOUT(INFO "QUEUE LOG\n");
+                    //LOG_STDOUT(INFO "QUEUE LOG\n");
                     LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                 }
                 break;
             case(LT_MSG_TASK_STATUS):
-                /* Send back task alive response to main task */
-                POST_MESSAGE_MAINTASK(&maintaskRsp, "Logger Alive");
+                if(MAIN_TASK_ID == queueData.sourceID)
+                {
+                    /* Send back task alive response to main task */
+                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    POST_MESSAGE_MAINTASK(&maintaskRsp, "Logger Alive");
+                }
                 break;
 
             default:
@@ -80,11 +122,19 @@ void logger_task_processMsg()
 
 }
 
-
 void* logger_task_callback(void *threadparam)
 {
     LOG_STDOUT(INFO "LOGGER TASK STARTED\n");
-    int ret = logger_task_init();
+
+    //FILE * fp = logger_task_file_init((char*)threadparam);
+    FILE * fp = logger_task_file_init("project1.log");
+    if(NULL == fp)
+    {
+        LOG_STDOUT(ERROR "LOGGER TASK LOG FILE INIT FAIL\n");
+        exit(ERR);
+    }
+
+    int ret = logger_task_queue_init();
     if(ERR == ret)
     {
         LOG_STDOUT(ERROR "LOGGER TASK INIT%s\n",strerror(errno));
@@ -95,7 +145,8 @@ void* logger_task_callback(void *threadparam)
     pthread_barrier_wait(&tasks_barrier);
 
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
-    logger_task_processMsg();
+    logger_task_processMsg(fp);
 
+    fclose(fp);
     return (void*)SUCCESS;
 }
