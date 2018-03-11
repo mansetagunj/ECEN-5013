@@ -23,7 +23,7 @@
 #define MQ_MAINTASK_NAME "/maintask_queue"
 
 volatile int timeoutflag;
-//sigatomic_t timeout;
+volatile int signal_exit;
 
 void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
 {
@@ -67,6 +67,7 @@ static void signal_handler(int signal)
 			break;
 	}
 
+    signal_exit = 1;
     /* Cancelling all the threads for any signals */
     for(int i = 0; i < NUM_CHILD_THREADS; i++)
     {
@@ -153,13 +154,21 @@ void main_task_processMsg()
 {
     int ret,prio;
     MAINTASKQ_MSG_T queueData = {0};
-    while(1)
+    struct timespec recv_timeout = {0};
+    while(!signal_exit)
     {
         memset(&queueData,0,sizeof(queueData));
-        ret = mq_receive(maintask_q,(char*)&(queueData),sizeof(queueData),&prio);
+        clock_gettime(CLOCK_REALTIME, &recv_timeout);
+        recv_timeout.tv_sec += 3;
+        ret = mq_timedreceive(maintask_q,(char*)&(queueData),sizeof(queueData),&prio,&recv_timeout);
+        if(ERR == ret && ETIMEDOUT == errno)
+        {
+            continue;
+        }
         if(ERR == ret)
         {
             LOG_STDOUT(ERROR "MQ_RECV:%s\n",strerror(errno));
+            continue;
         }
         switch(queueData.msgID)
         {
@@ -182,6 +191,7 @@ int main_task_entry()
     This is to make sure that the barrier is passed within 5 secs. Extra safety feature which might not be neccessary at all.
     */
     timeoutflag = 1;
+    signal_exit = 0;
     int ret = main_task_init();    
     if(-1 == ret)
     {
