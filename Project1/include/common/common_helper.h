@@ -11,12 +11,14 @@
 #include <mqueue.h>
 #include <pthread.h>
 
-#define NUM_CHILD_THREADS 2
+#define NUM_CHILD_THREADS 4
 
 typedef enum
 {
     LOGGER_TASK_ID = 0,
     SOCKET_TASK_ID,
+    LIGHT_TASK_ID,
+    TEMPERATURE_TASK_ID,
     MAIN_TASK_ID
 
 }TASK_IDENTIFIER_T;

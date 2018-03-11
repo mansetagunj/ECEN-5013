@@ -16,6 +16,8 @@
 #include "error_data.h"
 #include "logger_task.h"
 #include "socket_task.h"
+#include "light_sensor_task.h"
+#include "temperature_sensor_task.h"
 #include "my_signals.h"
 #include "posixTimer.h"
 
@@ -24,11 +26,14 @@
 
 volatile int timeoutflag;
 volatile int signal_exit;
+volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
 
 void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
 {
     logger_task_callback,
-    socket_task_callback
+    socket_task_callback,
+    light_task_callback,
+    temperature_task_callback
 };
 
 
@@ -86,7 +91,7 @@ static void timer_handler_setup(union sigval sig)
     {
         LOG_STDOUT(ERROR "Past 5 sec\n");
         timeoutflag=0;
-        stop_timer(*(timer_t*)sig.sival_ptr);
+        //stop_timer(*(timer_t*)sig.sival_ptr);
         delete_timer(*(timer_t*)sig.sival_ptr);
         exit(1);
     }
@@ -94,23 +99,37 @@ static void timer_handler_setup(union sigval sig)
 
 static void timer_handler_aliveStatusCheck(union sigval sig)
 {		
-    if(aliveStatus[LOGGER_TASK_ID] && aliveStatus[SOCKET_TASK_ID])
+    if(!aliveStatus[LOGGER_TASK_ID] && !aliveStatus[LIGHT_TASK_ID] && !aliveStatus[TEMPERATURE_TASK_ID] /*&& !aliveStatus[SOCKET_TASK_ID]*/)
     {
         pthread_mutex_lock(&aliveState_lock);
-        aliveStatus[LOGGER_TASK_ID]--;
-        aliveStatus[SOCKET_TASK_ID]--;
+        aliveStatus[LOGGER_TASK_ID]++;
+        aliveStatus[LIGHT_TASK_ID]++;
+        aliveStatus[TEMPERATURE_TASK_ID]++;
+        //aliveStatus[SOCKET_TASK_ID]++;
         pthread_mutex_unlock(&aliveState_lock);
+        DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_STATUS,MAIN_TASK_ID);
+        DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_STATUS,MAIN_TASK_ID)
+        DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_STATUS,MAIN_TASK_ID)
+        POST_MESSAGE_LOGTASK(&logstruct,"Send Alive status");
+        POST_MESSAGE_LIGHTTASK(&lightstruct);
+        POST_MESSAGE_TEMPERATURETASK(&tempstruct);
     }
     else
     {
         LOG_STDOUT(ERROR "One of the task not alive\n");
         stop_timer(*(timer_t*)sig.sival_ptr);
         delete_timer(*(timer_t*)sig.sival_ptr);
-        exit(1);
+        signal_exit = 1;
+        /* Cancelling all the threads for any signals */
+        for(int i = 0; i < NUM_CHILD_THREADS; i++)
+        {
+            pthread_cancel(pthread_id[i]);
+        }
+        //exit(1);
     }
 }
 
-int register_and_start_timer(timer_t *timer_id, void (*timer_handler)(union sigval), void *handlerArgs)
+int register_and_start_timer(timer_t *timer_id, uint32_t usec, uint8_t oneshot, void (*timer_handler)(union sigval), void *handlerArgs)
 {
     if(register_timer(timer_id, timer_handler, timer_id) == -1)
 	{
@@ -120,7 +139,7 @@ int register_and_start_timer(timer_t *timer_id, void (*timer_handler)(union sigv
 	else
 		LOG_STDOUT("[INFO] Timer created\n");
 	
-	if(start_timer(*timer_id , 5000, 0) == -1)
+	if(start_timer(*timer_id , usec, 0) == -1)
 	{
 		LOG_STDOUT("[ERROR] Start Timer\n");
 		return ERR;
@@ -173,9 +192,11 @@ void main_task_processMsg()
         switch(queueData.msgID)
         {
             case(MT_MSG_STATUS_RSP):
-                
+                LOG_STDOUT(INFO "ALIVE:%s\n",getTaskIdentfierString(queueData.sourceID));
+                pthread_mutex_lock(&aliveState_lock);
+                aliveStatus[queueData.sourceID]--;
+                pthread_mutex_unlock(&aliveState_lock);
                 break;
-            
             default:
                 break;
         }
@@ -208,13 +229,14 @@ int main_task_entry()
 
     /* Registering a timer for 5 sec to check that the barrier is passed */
     timer_t timer_id;
-    register_and_start_timer(&timer_id, timer_handler_setup, &timer_id);
+    if(ERR == register_and_start_timer(&timer_id, 1*MICROSEC, 1, timer_handler_setup, &timer_id))
+    {
+        LOG_STDOUT(ERROR "Timer Error\n");
+        return ERR;
+    }
 
     /* Create a barrier for all the threads + the main task*/
     pthread_barrier_init(&tasks_barrier,NULL,NUM_CHILD_THREADS+1);
-
-    //delete_timer(timer_id);
-    //register_and_start_timer(&timer_id, timer_handler_aliveStatusCheck, &timer_id);
 
     /* Create all the child threads */
     for(int i = 0; i < NUM_CHILD_THREADS; i++)
@@ -230,10 +252,16 @@ int main_task_entry()
     LOG_STDOUT(INFO "MAIN TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
-    stop_timer(timer_id);
-    /* Resetting the timeoutflag as we are pas t the barrier */
+    //stop_timer(timer_id);
+    /* Resetting the timeoutflag as we are pass the barrier */
     timeoutflag = 0;
 
+    delete_timer(timer_id);
+    if(ERR == register_and_start_timer(&timer_id, 5*MICROSEC, 0 ,timer_handler_aliveStatusCheck, &timer_id))
+    {
+        LOG_STDOUT(ERROR "Timer Error\n");
+        return ERR;
+    }
     /* Start message processing which is a blocking call */
     main_task_processMsg();
     
@@ -247,8 +275,10 @@ int main_task_entry()
         }
     }
 
-    //timer_delete(timer_id);
+    timer_delete(timer_id);
     pthread_mutex_destroy(&aliveState_lock);
+
+    LOG_STDOUT(INFO "GOODBYE!!!\n");
 
     return SUCCESS;
 }
