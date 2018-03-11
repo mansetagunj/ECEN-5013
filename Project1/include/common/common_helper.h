@@ -21,7 +21,12 @@ typedef enum
 
 }TASK_IDENTIFIER_T;
 
+volatile int aliveStatus[NUM_CHILD_THREADS];
+
+pthread_mutex_t aliveState_lock;
+
 extern const char* const task_identifier_string[NUM_CHILD_THREADS+1];
+
 /**
  * @brief Get the Task Identfier String
  * 

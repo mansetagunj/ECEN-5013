@@ -10,7 +10,7 @@
 #include "main_task.h"
 #include "logger_task.h"
 
-
+volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
 
 const char* const task_identifier_string[NUM_CHILD_THREADS+1] =
 {
