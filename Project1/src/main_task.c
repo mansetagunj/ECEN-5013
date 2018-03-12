@@ -216,7 +216,7 @@ int main_task_entry()
     int ret = main_task_init();    
     if(-1 == ret)
     {
-        LOG_STDOUT(ERROR "MAIN TASK INIT%s\n",strerror(errno));
+        LOG_STDOUT(ERROR "MAIN TASK INIT:%s\n",strerror(errno));
         return ret;
     }
 

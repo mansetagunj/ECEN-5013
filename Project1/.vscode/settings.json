@@ -5,5 +5,10 @@
     "C_Cpp.autocomplete": "Default",
     "files.associations": {
         "string.h": "c"
-    }
+    },
+    "extensions.autoUpdate": true,
+    "extensions.ignoreRecommendations": false,
+    "extensions.showRecommendationsOnlyOnDemand": false,
+    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
 }

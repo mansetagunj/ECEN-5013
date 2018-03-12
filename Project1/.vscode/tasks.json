@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "make",
             "type": "shell",
             "command": "cd ${workspaceFolder}/src && make",
             "args": [
@@ -19,6 +19,26 @@
             },
             // Use the standard MS compiler pattern to detect errors, warnings and infos
             "problemMatcher": "$msCompile"
+        },
+
+        {
+            "label": "make cross",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/src && make cross",
+            "args": [
+                // Ask msbuild to generate full paths for file names.
+                //"/property:GenerateFullPaths=true",
+                //"/t:build"
+            ],
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "silent"
+            },
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": "$msCompile"
         }
     ]
+    
+    
 }
