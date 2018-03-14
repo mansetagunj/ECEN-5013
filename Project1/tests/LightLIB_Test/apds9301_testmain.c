@@ -21,9 +21,18 @@ int main()
         LOG_STDOUT(ERROR "I2C Master init failed\n"); 
     }
 
+    ret = APDS9301_poweron();
+    if(ret == 0) printf("Sensor ON\n");
     uint8_t sensor_id = 0x50;
     uint8_t data = 0;
+    ret  = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CTRL_REG, &data);
     ret = APDS9301_readID(&data);
-    printf("expected: %x ID: %x\n",sensor_id, data);
+    if(ret == 0) printf("expected: %x ID: %x\n",sensor_id, data);
+
+    if(ret = I2Cmaster_Destroy(&i2c) !=0)
+    {
+        printErrorCode(ret);
+        LOG_STDOUT(ERROR "I2C Master destroy failed\n"); 
+    }
 
 }
