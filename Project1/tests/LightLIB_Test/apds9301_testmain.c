@@ -8,7 +8,6 @@
 
 #include "my_i2c.h"
 #include "apds9301_sensor.h"
-#include "error_data.h"
 
 
 int main()
@@ -18,7 +17,7 @@ int main()
     if(ret = I2Cmaster_Init(&i2c) !=0)
     {
         printErrorCode(ret);
-        LOG_STDOUT(ERROR "I2C Master init failed\n"); 
+        printf("[ERROR] I2C Master init failed\n"); 
     }
 
     ret = APDS9301_poweron();
@@ -26,13 +25,19 @@ int main()
     uint8_t sensor_id = 0x50;
     uint8_t data = 0;
     ret  = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CTRL_REG, &data);
+    if(ret == 0) printf("CTRL REG: %x\n",data);
+
     ret = APDS9301_readID(&data);
     if(ret == 0) printf("expected: %x ID: %x\n",sensor_id, data);
+
+    double lux = APDS9301_getLux();
+    if(lux < 0) printf("Error. Lux is negative\n");
+    else    printf("Lux: %f\n",lux);
 
     if(ret = I2Cmaster_Destroy(&i2c) !=0)
     {
         printErrorCode(ret);
-        LOG_STDOUT(ERROR "I2C Master destroy failed\n"); 
+        printf("[ERROR] I2C Master destroy failed\n"); 
     }
 
 }
