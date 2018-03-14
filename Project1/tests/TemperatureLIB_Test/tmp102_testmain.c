@@ -21,8 +21,8 @@ int main()
     }
     
     double temperature = 0.0;
-    uint8_t data[2] = 0;
-    ret  = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, TMP102_REG_CONFIGURATION, data, sizeof(uint16_t));
+    uint8_t data[2] = {0};
+    ret  = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, TMP102_REG_CONFIGURATION, data, sizeof(data));
     if(ret == 0) printf("CONFIG REG: %x\n",*((uint16_t*)data));
 
     ret = TMP102_getTemp(&temperature, CELCIUS);
@@ -31,7 +31,7 @@ int main()
     ret = TMP102_getTemp(&temperature, FAHREN);
     if(ret == 0) printf("F Temp: %f\n",temperature);
 
-        ret = TMP102_getTemp(&temperature, KELVIN);
+    ret = TMP102_getTemp(&temperature, KELVIN);
     if(ret == 0) printf("K Temp: %f\n",temperature);
 
     if(ret = I2Cmaster_Destroy(&i2c) !=0)
