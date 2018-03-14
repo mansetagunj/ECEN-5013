@@ -29,4 +29,16 @@
 #define CONVERTER_RESOLUTION    (0x02)        /*Read only bits, sets temperature to a 12 bit resolution*/ 
 #define ONESHOT_CR              (0x00)        /*saves power between conversions when 1*/ 
 
+typedef enum temperature_unit
+{
+    CELCIUS = 0,
+    FAHREN,
+    KELVIN
+
+}TEMPERATURE_UNIT_T;
+
+
+
+int TMP102_getTemp(double *temp, TEMPERATURE_UNIT_T unit);
+
 #endif
