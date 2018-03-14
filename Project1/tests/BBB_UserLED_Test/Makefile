@@ -11,14 +11,14 @@ LDFLAGS:= -lpthread -lrt
 INCLUDES:= -I ../../include/BeagleBone
 
 OUTPUT_FILE_EXT:=.out
-OUTPUT_FILE:= project1$(OUTPUT_FILE_EXT)
+OUTPUT_FILE:= led_test$(OUTPUT_FILE_EXT)
 
 
 .PHONY:LED_TEST
 LED_TEST:
-	$(CC) $(CFLAGS) $(INCLUDES) -o led_test.out LED_test.c ../../src/BB_Led.c
-	scp led_test.out ubuntu@192.168.7.2:~/
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUT_FILE) LED_test.c ../../src/BB_Led.c
+	scp $(OUTPUT_FILE) gunj@192.168.7.2:~/
 
 .PHONY:clean
 clean:
-	rm -f *.o led_test.out
+	rm -f *.o $(OUTPUT_FILE)
