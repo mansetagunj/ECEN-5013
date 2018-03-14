@@ -8,7 +8,6 @@
 
 #include "my_i2c.h"
 #include "tmp102_sensor.h"
-#include "error_data.h"
 
 
 int main()
@@ -22,9 +21,9 @@ int main()
     }
     
     double temperature = 0.0;
-    uint16_t data = 0;
-    ret  = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, TMP102_REG_CONFIGURATION, (uint8_t*)data, sizeof(uint16_t));
-    if(ret == 0) printf("CONFIG REG: %x\n",data);
+    uint8_t data[2] = 0;
+    ret  = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, TMP102_REG_CONFIGURATION, data, sizeof(uint16_t));
+    if(ret == 0) printf("CONFIG REG: %x\n",*((uint16_t*)data));
 
     ret = TMP102_getTemp(&temperature, CELCIUS);
     if(ret == 0) printf("C Temp: %f\n",temperature);
@@ -38,7 +37,7 @@ int main()
     if(ret = I2Cmaster_Destroy(&i2c) !=0)
     {
         printErrorCode(ret);
-        LOG_STDOUT(ERROR "I2C Master destroy failed\n"); 
+        printf("[ERROR] I2C Master destroy failed\n"); 
     }
 
 }
