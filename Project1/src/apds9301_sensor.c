@@ -31,13 +31,51 @@ int APDS9301_readID(uint8_t *id)
     return ret;
 }
 
-int APDS9301_readCh0(uint16_t *ch0_data);
-int APDS9301_readCh1(uint16_t *ch1_data);
+int APDS9301_readCh0(uint16_t *ch0_data)
+{
+    int ret;
+    uint8_t ch0_data_L, ch0_data_H;
+    ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CH0_DATALOW, &ch0_data_L);
+    if(ret)
+        return ret;
+
+    ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CH0_DATAHIGH, &ch0_data_H);
+
+    if(!ret)
+        *ch0_data = (ch0_data_H << 8) | ch0_data_L ;
+    
+    return ret;
+}
+
+int APDS9301_readCh1(uint16_t *ch1_data)
+{
+    int ret;
+    uint8_t ch1_data_L, ch1_data_H;
+    ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CH1_DATALOW, &ch1_data_L);
+    if(ret)
+        return ret;
+
+    ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CH1_DATAHIGH, &ch1_data_H);
+    
+    if(!ret)
+        *ch1_data = (ch1_data_H << 8) | ch1_data_L;
+    
+    return ret;
+
+}
 
 double APDS9301_getLux()
 {
-    double ratio, lux;
+    double ratio, lux = -1;
     uint16_t Ch0, Ch1;
+
+    int ret  = APDS9301_readCh0(&Ch0);
+    if(ret)
+        return lux;
+
+    ret  = APDS9301_readCh1(&Ch1);
+    if(ret)
+        return lux;
 
     ratio = (double)Ch1/(double)Ch0;
 
@@ -62,5 +100,6 @@ double APDS9301_getLux()
 	{
 		lux = 0;
     }
+
     return lux;
 }
