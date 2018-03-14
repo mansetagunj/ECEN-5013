@@ -8,7 +8,7 @@
 
 #include "my_i2c.h"
 #include "tmp102_sensor.h"
-
+#include <unistd.h>
 
 int main()
 {
@@ -25,19 +25,23 @@ int main()
     ret  = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, TMP102_REG_CONFIGURATION, data, sizeof(data));
     if(ret == 0) printf("CONFIG REG: %x\n",*((uint16_t*)data));
 
-    ret = TMP102_getTemp(&temperature, CELCIUS);
-    if(ret == 0) printf("C Temp: %f\n",temperature);
+    while(1)
+    {
+		ret = TMP102_getTemp(&temperature, CELCIUS);
+		if(ret == 0) printf("C Temp: %f\n",temperature);
 
-    ret = TMP102_getTemp(&temperature, FAHREN);
-    if(ret == 0) printf("F Temp: %f\n",temperature);
+		ret = TMP102_getTemp(&temperature, FAHREN);
+		if(ret == 0) printf("F Temp: %f\n",temperature);
 
-    ret = TMP102_getTemp(&temperature, KELVIN);
-    if(ret == 0) printf("K Temp: %f\n",temperature);
-
+		ret = TMP102_getTemp(&temperature, KELVIN);
+		if(ret == 0) printf("K Temp: %f\n",temperature);
+	sleep(2);
+    }
+    
     if(ret = I2Cmaster_Destroy(&i2c) !=0)
     {
-        printErrorCode(ret);
-        printf("[ERROR] I2C Master destroy failed\n"); 
-    }
-
+		printErrorCode(ret);
+		printf("[ERROR] I2C Master destroy failed\n"); 
+	}
+	
 }

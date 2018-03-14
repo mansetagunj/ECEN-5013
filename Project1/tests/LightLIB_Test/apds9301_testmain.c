@@ -8,7 +8,7 @@
 
 #include "my_i2c.h"
 #include "apds9301_sensor.h"
-
+#include <unistd.h>
 
 int main()
 {
@@ -30,10 +30,13 @@ int main()
     ret = APDS9301_readID(&data);
     if(ret == 0) printf("expected: %x ID: %x\n",sensor_id, data);
 
+    while(1)
+{
     double lux = APDS9301_getLux();
     if(lux < 0) printf("Error. Lux is negative\n");
     else    printf("Lux: %f\n",lux);
-
+	sleep(2);
+}
     if(ret = I2Cmaster_Destroy(&i2c) !=0)
     {
         printErrorCode(ret);
