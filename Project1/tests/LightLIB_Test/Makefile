@@ -5,7 +5,12 @@ else
 	BB_TYPE:="green"
 endif
 
-CC:=arm-linux-gnueabihf-gcc
+ifeq ($(PLAT),BB)
+	CC:=arm-linux-gnueabihf-gcc
+else
+	CC:=gcc
+endif
+
 CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
 LDFLAGS:= -lpthread -lrt -lmraa
 INCLUDES:= -I ../../include/BeagleBone -I ../../include/common
