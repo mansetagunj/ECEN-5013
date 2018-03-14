@@ -9,7 +9,7 @@ endif
 CC:=gcc
 CC_CROSS:=arm-linux-gnueabihf-gcc
 CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
-LDFLAGS:= -lpthread -lrt -lmraa
+LDFLAGS:= -lpthread -lrt -lmraa -lm
 INCLUDES:= -I ../include/common -I ../include/cmocka -I ../include/BeagleBone
 
 OUTPUT_FILE_EXT:=.out

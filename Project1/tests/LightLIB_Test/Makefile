@@ -12,7 +12,7 @@ else
 endif
 
 CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
-LDFLAGS:= -lpthread -lrt -lmraa
+LDFLAGS:= -lpthread -lrt -lmraa -lm
 INCLUDES:= -I ../../include/BeagleBone -I ../../include/common
 
 OUTPUT_FILE_EXT:=.out
