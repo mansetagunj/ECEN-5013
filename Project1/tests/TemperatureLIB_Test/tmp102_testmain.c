@@ -18,7 +18,7 @@ int main()
     if(ret = I2Cmaster_Init(&i2c) !=0)
     {
         printErrorCode(ret);
-        LOG_STDOUT(ERROR "I2C Master init failed\n"); 
+        printf("[ERROR] I2C Master init failed\n"); 
     }
     
     double temperature = 0.0;

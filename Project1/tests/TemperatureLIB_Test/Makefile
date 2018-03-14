@@ -15,8 +15,8 @@ OUTPUT_FILE:= tmp102_test$(OUTPUT_FILE_EXT)
 
 SRCS:= ../../src/my_i2c.c ../../src/tmp102_sensor.c
 
-.PHONY:LED_TEST
-LED_TEST:
+.PHONY:TMP102_TEST
+TMP102_TEST:
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUT_FILE) tmp102_testmain.c $(SRCS) $(LDFLAGS)
 	scp $(OUTPUT_FILE) gunj@192.168.7.2:~/
 
