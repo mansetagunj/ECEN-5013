@@ -35,7 +35,11 @@
                 "/usr/include/i386-linux-gnu",
                 "/usr/include",
                 "${workspaceRoot}",
-                "${workspaceRoot}/include/common"
+                "${workspaceRoot}/include/common",
+                "${workspaceRoot}/include",
+                "/home/gunj/repos/mraa/api/mraa",
+                "/home/gunj/repos/mraa/api",
+                "${workspaceRoot}/include/BeagleBone"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
@@ -50,7 +54,10 @@
                     "/usr/include/i386-linux-gnu",
                     "/usr/include",
                     "${workspaceRoot}",
-                    "${workspaceRoot}/include/common"
+                    "${workspaceRoot}/include/common",
+                    "${workspaceRoot}/include",
+                    "${workspaceRoot}/src",
+                    "/home/gunj/repos/mraa/api/mraa"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

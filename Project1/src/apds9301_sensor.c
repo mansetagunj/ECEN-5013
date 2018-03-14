@@ -11,8 +11,19 @@
 #include"my_i2c.h"
 #include "error_data.h"
 
-int APDS9301_init()
+int APDS9301_test()
 {
+    uint8_t data, sensor_id = 0x50;
+    int ret = APDS9301_readID(&data);
+    if(ret == 0) 
+    {
+        (sensor_id == data) ? (ret = 0) : (ret = -1);
+    }
+    // else
+        // return ret;
+            
+    return ret; 
+    
 }
 
 int APDS9301_poweron()

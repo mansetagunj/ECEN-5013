@@ -29,6 +29,7 @@
  */
 int register_timer(timer_t *timer_id, void (*timer_handler)(union sigval), void *handlerArgs);
 
+
 /**
  * @brief Starts the timer 
  * 

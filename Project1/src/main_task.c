@@ -20,6 +20,7 @@
 #include "temperature_sensor_task.h"
 #include "my_signals.h"
 #include "posixTimer.h"
+#include "common_helper.h"
 
 
 #define MQ_MAINTASK_NAME "/maintask_queue"
@@ -127,26 +128,6 @@ static void timer_handler_aliveStatusCheck(union sigval sig)
         }
         //exit(1);
     }
-}
-
-int register_and_start_timer(timer_t *timer_id, uint32_t usec, uint8_t oneshot, void (*timer_handler)(union sigval), void *handlerArgs)
-{
-    if(register_timer(timer_id, timer_handler, timer_id) == -1)
-	{
-	    LOG_STDOUT("[ERROR] Register Timer\n");
-		return ERR;
-	}
-	else
-		LOG_STDOUT("[INFO] Timer created\n");
-	
-	if(start_timer(*timer_id , usec, 0) == -1)
-	{
-		LOG_STDOUT("[ERROR] Start Timer\n");
-		return ERR;
-	}
-	else
-		LOG_STDOUT("[INFO] Timer started\n");
-
 }
 
 mqd_t getHandle_MainTaskQueue()
@@ -275,7 +256,7 @@ int main_task_entry()
         }
     }
 
-    timer_delete(timer_id);
+    delete_timer(timer_id);
     pthread_mutex_destroy(&aliveState_lock);
 
     LOG_STDOUT(INFO "GOODBYE!!!\n");

@@ -11,6 +11,7 @@
 #include "logger_task.h"
 #include "light_sensor_task.h"
 #include "temperature_sensor_task.h"
+#include "posixTimer.h"
 
 //volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
 
@@ -50,5 +51,25 @@ mqd_t get_queue_handle(TASK_IDENTIFIER_T taskid)
     }
 
     return queueHandle;
+
+}
+
+int register_and_start_timer(timer_t *timer_id, uint32_t usec, uint8_t oneshot, void (*timer_handler)(union sigval), void *handlerArgs)
+{
+    if(register_timer(timer_id, timer_handler, timer_id) == -1)
+	{
+	    LOG_STDOUT("[ERROR] Register Timer\n");
+		return ERR;
+	}
+	else
+		LOG_STDOUT("[INFO] Timer created\n");
+	
+	if(start_timer(*timer_id , usec, 0) == -1)
+	{
+		LOG_STDOUT("[ERROR] Start Timer\n");
+		return ERR;
+	}
+	else
+		LOG_STDOUT("[INFO] Timer started\n");
 
 }

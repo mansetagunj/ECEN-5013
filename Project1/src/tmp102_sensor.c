@@ -10,7 +10,6 @@
 #include "tmp102_sensor.h"
 
 
-
 int TMP102_getTemp(double *temp, TEMPERATURE_UNIT_T unit)
 {
     uint8_t buff[2] = {0};

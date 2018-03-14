@@ -88,9 +88,9 @@ static inline void __POST_MESSAGE_TEMPERATURETASK(mqd_t queue, const TEMPERATURE
 /**
  * @brief Get the TempTask temperature object MT-safe
  * 
- * @return float 
+ * @return double 
  */
-float getTempTask_temperature();
+double getTempTask_temperature();
 
 /**
  * @brief Entry point of the temp task thread

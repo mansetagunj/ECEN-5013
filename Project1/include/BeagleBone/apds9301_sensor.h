@@ -29,14 +29,57 @@
 #define APDS9301_CTRL_POWERON   (0x03)   
 #define APDS9301_CTRL_POWEROFF  (0x00)
 
-
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int APDS9301_poweron();
+
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int APDS9301_powerdown();
+
+/**
+ * @brief 
+ * 
+ * @param id 
+ * @return int 
+ */
 int APDS9301_readID(uint8_t *id);
+
+/**
+ * @brief 
+ * 
+ * @param ch0_data 
+ * @return int 
+ */
 int APDS9301_readCh0(uint16_t *ch0_data);
+
+/**
+ * @brief 
+ * 
+ * @param ch1_data 
+ * @return int 
+ */
 int APDS9301_readCh1(uint16_t *ch1_data);
 
+/**
+ * @brief 
+ * 
+ * @return double 
+ */
 double APDS9301_getLux();
+
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
+int APDS9301_test();
 
 
 #endif

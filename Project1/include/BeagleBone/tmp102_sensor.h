@@ -37,7 +37,9 @@ typedef enum temperature_unit
 
 }TEMPERATURE_UNIT_T;
 
-
+#define TMP102_getTemp_Celcius(p_temp)  TMP102_getTemp(p_temp, CELCIUS)
+#define TMP102_getTemp_Kelvin(p_temp)   TMP102_getTemp(p_temp, KELVIN)
+#define TMP102_getTemp_Fahren(p_temp)   TMP102_getTemp(p_temp, FAHREN)
 
 int TMP102_getTemp(double *temp, TEMPERATURE_UNIT_T unit);
 

@@ -11,6 +11,8 @@
 #include <mqueue.h>
 #include <pthread.h>
 
+#include "posixTimer.h"
+
 #define NUM_CHILD_THREADS 4
 
 typedef enum
@@ -27,6 +29,14 @@ volatile int aliveStatus[NUM_CHILD_THREADS];
 
 pthread_mutex_t aliveState_lock;
 
+
+pthread_t pthread_id[NUM_CHILD_THREADS];
+
+mqd_t get_queue_handle(TASK_IDENTIFIER_T taskid);
+
+pthread_barrier_t tasks_barrier;
+
+
 extern const char* const task_identifier_string[NUM_CHILD_THREADS+1];
 
 /**
@@ -40,10 +50,18 @@ static inline const char* getTaskIdentfierString(TASK_IDENTIFIER_T taskid)
     return task_identifier_string[taskid];
 }
 
-pthread_t pthread_id[NUM_CHILD_THREADS];
 
-mqd_t get_queue_handle(TASK_IDENTIFIER_T taskid);
+/**
+ * @brief Registers a timer, addigns the handler and starts it
+ * 
+ * @param timer_id 
+ * @param usec 
+ * @param oneshot 
+ * @param timer_handler 
+ * @param handlerArgs 
+ * @return int 
+ */
+int register_and_start_timer(timer_t *timer_id, uint32_t usec, uint8_t oneshot, void (*timer_handler)(union sigval), void *handlerArgs);
 
-pthread_barrier_t tasks_barrier;
 
 #endif
