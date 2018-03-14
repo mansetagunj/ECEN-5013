@@ -86,7 +86,8 @@ void logger_task_processMsg(FILE *fp)
     int ret,prio;
     LOGGERTASKQ_MSG_T queueData = {0};
     DEFINE_MAINTASK_STRUCT(maintaskRsp,MT_MSG_STATUS_RSP,LOGGER_TASK_ID);
-    while(1)
+    uint8_t continue_flag= 1;
+    while(continue_flag)
     {
         memset(&queueData,0,sizeof(queueData));
         ret = mq_receive(loggertask_q,(char*)&(queueData),sizeof(queueData),&prio);
@@ -97,20 +98,24 @@ void logger_task_processMsg(FILE *fp)
         }
         switch(queueData.msgID)
         {
+            case(LT_MSG_TASK_EXIT):
+                continue_flag = 0;
+                LOG_STDOUT(INFO "Logger Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
+                break;
             case(LT_MSG_LOG):
                 if(g_loglevel >= queueData.loglevel)
                 {
                     //LOG_STDOUT(INFO "QUEUE LOG\n");
-                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
-                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    //LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                 }
                 break;
             case(LT_MSG_TASK_STATUS):
                 if(MAIN_TASK_ID == queueData.sourceID)
                 {
                     /* Send back task alive response to main task */
-                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
-                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s\n",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    //LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                     POST_MESSAGE_MAINTASK(&maintaskRsp, "Logger Alive");
                 }
                 break;
@@ -147,6 +152,8 @@ void* logger_task_callback(void *threadparam)
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
     logger_task_processMsg(fp);
 
+    fflush(fp);
     fclose(fp);
+    LOG_STDOUT(INFO "Logger Task Exit.\n");
     return (void*)SUCCESS;
 }

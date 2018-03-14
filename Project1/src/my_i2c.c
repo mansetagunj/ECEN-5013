@@ -81,6 +81,8 @@ int I2Cmaster_Destroy(I2C_MASTER_HANDLE_T *handle)
                 internal_master_handle = NULL;
         }
     }
+    else if(NULL == handle)
+        ret = 0;
     else
         ret = -1;
 

@@ -108,7 +108,7 @@ void* socket_task_callback(void* threadparam)
 
 		char peer_IP[20] = {0};
 		POST_MESSAGE_LOGTASK(&logData,"Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
-		//LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
+		LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 
 
         /* Create a new thread to handle the connection and go back to accepting */

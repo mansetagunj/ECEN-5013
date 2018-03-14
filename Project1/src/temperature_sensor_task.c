@@ -120,6 +120,7 @@ void temperature_task_processMsg()
                 break;
             case(TEMP_MSG_TASK_EXIT):
                 continue_flag = 0;
+                LOG_STDOUT(INFO "Temperature Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 break;
             default:
                 break;
@@ -128,6 +129,12 @@ void temperature_task_processMsg()
 
 }
 
+/**
+ * @brief 
+ * 
+ * @param i2c 
+ * @return int 
+ */
 int temperature_task_I2Cinit(I2C_MASTER_HANDLE_T *i2c)
 {
     int ret = 0;
@@ -140,10 +147,17 @@ int temperature_task_I2Cinit(I2C_MASTER_HANDLE_T *i2c)
     return ret;
 }
 
+/**
+ * @brief 
+ * 
+ * @param i2c 
+ * @return int 
+ */
 int temperature_task_I2Cdeinit(I2C_MASTER_HANDLE_T *i2c)
 {
     int ret = 0;
-    if(ret = I2Cmaster_Destroy(i2c) !=0)
+    ret = I2Cmaster_Destroy(i2c);
+    if(ret !=0)
     {
         printErrorCode(ret);
         LOG_STDOUT(ERROR "I2C Master destroy failed\n"); 
@@ -190,13 +204,19 @@ void* temperature_task_callback(void *threadparam)
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
     temperature_task_processMsg();
 
+    stop_timer(timer_id);
+    delete_timer(timer_id);
+
 FAIL_EXIT:
-    ret = temperature_task_I2Cdeinit(&i2c);
-    if(ERR == ret)
-    {
-        LOG_STDOUT(ERROR "LIGHT TASK SENSOR DEINIT:%s\n",strerror(errno));
-        exit(ERR);
-    }
+    /* Commented the i2x deint as the light sensor task will deinit the handle. THe handle within the low level i2c is common for a master */
+    // ret = temperature_task_I2Cdeinit(&i2c);
+    // if(ERR == ret)
+    // {
+    //     LOG_STDOUT(ERROR "TEMPERATURE TASK SENSOR DEINIT:%s\n",strerror(errno));
+    //     exit(ERR);
+    // }
+
+    LOG_STDOUT(INFO "Temperature task exit.\n");
 
     return (void*)SUCCESS;
 }

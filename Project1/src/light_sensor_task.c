@@ -133,6 +133,7 @@ void light_task_processMsg()
                 break;
             case(LIGHT_MSG_TASK_EXIT):
                 continue_flag = 0;
+                LOG_STDOUT(INFO "Light Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 break;
             default:
                 break;
@@ -164,8 +165,9 @@ int light_task_sensorDOWN(I2C_MASTER_HANDLE_T *i2c)
 {
     int ret = 0;
     ret = APDS9301_powerdown();
-    if(ret == 0) LOG_STDOUT(INFO "Sensor powered ON\n");
-    if(ret = I2Cmaster_Destroy(i2c) !=0)
+    if(ret == 0) LOG_STDOUT(INFO "Sensor powered DOWN\n");
+    ret = I2Cmaster_Destroy(i2c);
+    if(ret != 0)
     {
         printErrorCode(ret);
         LOG_STDOUT(ERROR "I2C Master destroy failed\n"); 
@@ -210,9 +212,10 @@ void* light_task_callback(void *threadparam)
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
     light_task_processMsg();
 
-FAIL_EXIT:
     stop_timer(timer_id);
     delete_timer(timer_id);
+
+FAIL_EXIT:
     mq_close(lighttask_q);
     ret = light_task_sensorDOWN(&i2c);
     if(ERR == ret)
@@ -221,5 +224,6 @@ FAIL_EXIT:
         exit(ERR);
     }
 
+    LOG_STDOUT(INFO "Light task exit.\n");
     return (void*)SUCCESS;
 }

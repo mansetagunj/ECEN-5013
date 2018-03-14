@@ -26,7 +26,7 @@
 #define MQ_MAINTASK_NAME "/maintask_queue"
 
 volatile int timeoutflag;
-volatile int signal_exit;
+volatile sig_atomic_t signal_exit;
 volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
 
 void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
@@ -75,10 +75,18 @@ static void signal_handler(int signal)
 
     signal_exit = 1;
     /* Cancelling all the threads for any signals */
-    for(int i = 0; i < NUM_CHILD_THREADS; i++)
-    {
-        pthread_cancel(pthread_id[i]);
-    }
+    // for(int i = 0; i < NUM_CHILD_THREADS; i++)
+    // {
+    //     pthread_cancel(pthread_id[i]);
+    // }
+
+    DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
+    DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
+    DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
+    POST_MESSAGE_LIGHTTASK_EXIT(&lightstruct);
+    POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
+    pthread_cancel(pthread_id[SOCKET_TASK_ID]);
+    POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
 }
 
 /**
@@ -245,6 +253,8 @@ int main_task_entry()
     }
     /* Start message processing which is a blocking call */
     main_task_processMsg();
+
+    stop_timer(timer_id);
     
     for(int i = 0; i < NUM_CHILD_THREADS; i++)
     {
@@ -258,8 +268,9 @@ int main_task_entry()
 
     delete_timer(timer_id);
     pthread_mutex_destroy(&aliveState_lock);
+    
 
-    LOG_STDOUT(INFO "GOODBYE!!!\n");
+    LOG_STDOUT(INFO "GOODBYE CRUEL WORLD!!!\n");
 
     return SUCCESS;
 }

@@ -67,7 +67,16 @@ mqd_t getHandle_TemperatureTaskQueue();
  */
 #define POST_MESSAGE_TEMPERATURETASK(p_tempstruct)  \
     do{  \
-        __POST_MESSAGE_TEMPERATURETASK(getHandle_TemperatureTaskQueue(), p_tempstruct, sizeof(*p_tempstruct)); \
+        __POST_MESSAGE_TEMPERATURETASK(getHandle_TemperatureTaskQueue(), p_tempstruct, sizeof(*p_tempstruct),20); \
+    }while(0)
+
+/**
+ * @brief 
+ * 
+ */
+#define POST_MESSAGE_TEMPERATURETASK_EXIT(p_tempstruct)  \
+    do{  \
+        __POST_MESSAGE_TEMPERATURETASK(getHandle_TemperatureTaskQueue(), p_tempstruct, sizeof(*p_tempstruct),50); \
     }while(0)
 
 /**
@@ -77,9 +86,9 @@ mqd_t getHandle_TemperatureTaskQueue();
  * @param p_tempstruct 
  * @param temp_struct_size 
  */
-static inline void __POST_MESSAGE_TEMPERATURETASK(mqd_t queue, const TEMPERATURETASKQ_MSG_T *p_tempstruct, size_t temp_struct_size)
+static inline void __POST_MESSAGE_TEMPERATURETASK(mqd_t queue, const TEMPERATURETASKQ_MSG_T *p_tempstruct, size_t temp_struct_size, int prio)
 {
-    if(-1 == mq_send(queue, (const char*)p_tempstruct, temp_struct_size, 20))
+    if(-1 == mq_send(queue, (const char*)p_tempstruct, temp_struct_size, prio))
     {
         LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
     }

@@ -75,7 +75,16 @@ mqd_t getHandle_LightTaskQueue();
 */
 #define POST_MESSAGE_LIGHTTASK(p_lightstruct)  \
     do{ \
-        __POST_MESSAGE_LIGHTTASK(getHandle_LightTaskQueue(), p_lightstruct, sizeof(*p_lightstruct)); \
+        __POST_MESSAGE_LIGHTTASK(getHandle_LightTaskQueue(), p_lightstruct, sizeof(*p_lightstruct),20); \
+    }while(0)
+
+/**
+ * @brief 
+ * 
+ */
+#define POST_MESSAGE_LIGHTTASK_EXIT(p_lightstruct)  \
+    do{ \
+        __POST_MESSAGE_LIGHTTASK(getHandle_LightTaskQueue(), p_lightstruct, sizeof(*p_lightstruct),50); \
     }while(0)
 
 /**
@@ -85,9 +94,9 @@ mqd_t getHandle_LightTaskQueue();
  * @param lightstruct 
  * @param light_struct_size 
  */
-static inline void __POST_MESSAGE_LIGHTTASK(mqd_t queue, const LIGHTTASKQ_MSG_T *lightstruct, size_t light_struct_size)
+static inline void __POST_MESSAGE_LIGHTTASK(mqd_t queue, const LIGHTTASKQ_MSG_T *lightstruct, size_t light_struct_size, int prio)
 {
-    if(-1 == mq_send(queue, (const char*)lightstruct, light_struct_size, 20))
+    if(-1 == mq_send(queue, (const char*)lightstruct, light_struct_size, prio))
     {
         LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
     }

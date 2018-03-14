@@ -27,6 +27,7 @@ typedef enum
 {
     LT_MSG_TASK_STATUS,
     LT_MSG_LOG,
+    LT_MSG_TASK_EXIT
     
 }LOGGERTASKQ_MSGID_T;
 
@@ -98,7 +99,14 @@ mqd_t getHandle_LoggerTaskQueue();
     do{ \
         snprintf((p_logstruct)->msgData,sizeof((p_logstruct)->msgData),format, ##__VA_ARGS__);   \
         set_Log_currentTimestamp(p_logstruct); \
-        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct)); \
+        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct), 20); \
+    }while(0)
+
+#define POST_MESSAGE_LOGTASK_EXIT(p_logstruct, format, ...)  \
+    do{ \
+        snprintf((p_logstruct)->msgData,sizeof((p_logstruct)->msgData),format, ##__VA_ARGS__);   \
+        set_Log_currentTimestamp(p_logstruct); \
+        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct), 50); \
     }while(0)
 
 /**
@@ -108,9 +116,9 @@ mqd_t getHandle_LoggerTaskQueue();
  * @param logstruct 
  * @param log_struct_size 
  */
-static inline void __POST_MESSAGE_LOGTASK(mqd_t queue, const LOGGERTASKQ_MSG_T *logstruct, size_t log_struct_size)
+static inline void __POST_MESSAGE_LOGTASK(mqd_t queue, const LOGGERTASKQ_MSG_T *logstruct, size_t log_struct_size, int prio)
 {
-    if(-1 == mq_send(queue, (const char*)logstruct, log_struct_size, 20))
+    if(-1 == mq_send(queue, (const char*)logstruct, log_struct_size, prio))
     {
         LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
     }
