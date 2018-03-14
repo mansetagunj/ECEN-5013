@@ -24,7 +24,8 @@ build:
 .PHONY:cross
 cross:
 	$(CC_CROSS) $(CFLAGS) $(INCLUDES) -o BB_$(OUTPUT_FILE) $(SRCS) $(LDFLAGS)
-	scp BB_$(OUTPUT_FILE) ubuntu@192.168.7.2:~/
+	scp BB_$(OUTPUT_FILE) gunj@192.168.7.2:~/
+	ssh gunj@192.168.7.2 sudo ./BB_$(OUTPUT_FILE)
 
 .PHONY:run
 run: build
