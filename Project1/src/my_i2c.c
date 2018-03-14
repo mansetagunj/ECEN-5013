@@ -173,7 +173,7 @@ int I2Cmaster_read_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, si
     if(0 == ret)
     {   
         ret = mraa_i2c_read_bytes_data(internal_master_handle->i2c_context, reg_addr, data , len);
-        //(ret == len) ? ret = 0 : ret = -1; 
+        (ret == len) ? ret = 0 : 0; 
     }
 
     pthread_spin_unlock(&internal_master_handle->handle_lock);
