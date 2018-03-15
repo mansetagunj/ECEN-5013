@@ -17,10 +17,10 @@
 
 const char* const task_identifier_string[NUM_CHILD_THREADS+1] =
 {
-    (const char*)"Logger Task",
     (const char*)"Socket Task",
     (const char*)"Light Task",
     (const char*)"Temperature Task",
+    (const char*)"Logger Task",
     (const char*)"Main Task",
 
 };

@@ -36,10 +36,11 @@ volatile static DAY_STATE_T isDay;
 DAY_STATE_T getLightTask_state()
 {
     DAY_STATE_T state;
-
+    LOG_STDOUT(INFO "Waiting for Light lock\n");
     pthread_mutex_lock(&stateChangeLock);
     state = isDay;
-    pthread_mutex_lock(&stateChangeLock);
+    pthread_mutex_unlock(&stateChangeLock);
+    LOG_STDOUT(INFO "Waiting for Light lock\n");
     return state;
 }
 
@@ -55,7 +56,7 @@ static void timer_handler_getAndUpdateState(union sigval sig)
     }
     else 
     {
-        LOG_STDOUT(INFO "Lux: %f\n",lux);
+        //LOG_STDOUT(INFO "Lux: %f\n",lux);
     }
 
     (lux < LUX_THRESHOLD) ? (state = NIGHT) : (state = DAY);
@@ -63,7 +64,7 @@ static void timer_handler_getAndUpdateState(union sigval sig)
     
     pthread_mutex_lock(&stateChangeLock);
     isDay = state;
-    pthread_mutex_lock(&stateChangeLock);
+    pthread_mutex_unlock(&stateChangeLock);
 }
 
 mqd_t getHandle_LightTaskQueue()

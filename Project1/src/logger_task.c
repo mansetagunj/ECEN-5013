@@ -100,6 +100,7 @@ void logger_task_processMsg(FILE *fp)
         {
             case(LT_MSG_TASK_EXIT):
                 continue_flag = 0;
+                LT_LOG(fp,INFO "Logger Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 LOG_STDOUT(INFO "Logger Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 break;
             case(LT_MSG_LOG):

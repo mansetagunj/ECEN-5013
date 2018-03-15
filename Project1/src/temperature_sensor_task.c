@@ -34,9 +34,11 @@ volatile static double latest_temperature;
 double getTempTask_temperature()
 {
     double temp;
+    LOG_STDOUT(INFO "Waiting for Temp lock\n");
     pthread_mutex_lock(&tempChangeLock);
     temp = latest_temperature;
-    pthread_mutex_lock(&tempChangeLock);
+    pthread_mutex_unlock(&tempChangeLock);
+    LOG_STDOUT(INFO "Unlcoking Temp lock\n");
     return temp;
 }
 
@@ -57,7 +59,7 @@ static void timer_handler_getAndUpdateTemperature(union sigval sig)
     
     pthread_mutex_lock(&tempChangeLock);
     latest_temperature = temperature;
-    pthread_mutex_lock(&tempChangeLock);
+    pthread_mutex_unlock(&tempChangeLock);
 }
 
 mqd_t getHandle_TemperatureTaskQueue()
@@ -197,8 +199,9 @@ void* temperature_task_callback(void *threadparam)
     if(ERR == register_and_start_timer(&timer_id, 2*MICROSEC, 1, timer_handler_getAndUpdateTemperature, &timer_id))
     {
         LOG_STDOUT(ERROR "Timer Error\n");
-        goto FAIL_EXIT;
+        //goto FAIL_EXIT;
         //return ERR;
+        exit(ERR);
     }
 
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
@@ -207,14 +210,14 @@ void* temperature_task_callback(void *threadparam)
     stop_timer(timer_id);
     delete_timer(timer_id);
 
-FAIL_EXIT:
+//FAIL_EXIT:
     /* Commented the i2x deint as the light sensor task will deinit the handle. THe handle within the low level i2c is common for a master */
-    // ret = temperature_task_I2Cdeinit(&i2c);
-    // if(ERR == ret)
-    // {
-    //     LOG_STDOUT(ERROR "TEMPERATURE TASK SENSOR DEINIT:%s\n",strerror(errno));
-    //     exit(ERR);
-    // }
+    ret = temperature_task_I2Cdeinit(&i2c);
+    if(ERR == ret)
+    {
+        LOG_STDOUT(ERROR "TEMPERATURE TASK SENSOR DEINIT:%s\n",strerror(errno));
+        exit(ERR);
+    }
 
     LOG_STDOUT(INFO "Temperature task exit.\n");
 

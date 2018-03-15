@@ -11,6 +11,42 @@
 #include <stdint.h>
 #include <semaphore.h>
 
+
+/***
+ * Required for remote client server communication 
+ **/
+typedef enum
+{
+    GET_TEMP_C,
+    GET_TEMP_F,
+    GET_TEMP_K,
+    GET_LUX,
+    GET_DAY_NIGHT,
+    GET_FUNC,
+    CONN_CLOSE_REQ,
+    CONN_CLOSE_RSP
+
+}REMOTE_REQRSP_ID;
+
+typedef struct
+{
+    REMOTE_REQRSP_ID request_id;
+
+}REMOTE_REQUEST_T;
+
+typedef struct
+{
+    REMOTE_REQRSP_ID rsp_id;
+    union data{
+        double floatingData;
+        uint8_t isNight;
+    }data;
+    char metadata[20];
+
+}REMOTE_RESPONSE_T;
+
+
+
 typedef uint8_t*    P_BUFF_T;
 typedef uint8_t     DEV_REG_T;
 typedef size_t      BUFF_LEN_T;

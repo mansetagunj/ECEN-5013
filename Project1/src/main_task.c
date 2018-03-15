@@ -75,18 +75,18 @@ static void signal_handler(int signal)
 
     signal_exit = 1;
     /* Cancelling all the threads for any signals */
-    // for(int i = 0; i < NUM_CHILD_THREADS; i++)
-    // {
-    //     pthread_cancel(pthread_id[i]);
-    // }
+    for(int i = 0; i < NUM_CHILD_THREADS; i++)
+    {
+        pthread_cancel(pthread_id[i]);
+    }
 
-    DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
-    DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
-    DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
-    POST_MESSAGE_LIGHTTASK_EXIT(&lightstruct);
-    POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
-    pthread_cancel(pthread_id[SOCKET_TASK_ID]);
-    POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
+    // DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
+    // DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
+    // DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
+    // POST_MESSAGE_LIGHTTASK_EXIT(&lightstruct);
+    // POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
+    // pthread_cancel(pthread_id[SOCKET_TASK_ID]);
+    // POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
 }
 
 /**

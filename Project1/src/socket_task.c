@@ -19,12 +19,27 @@
 #include "main_task.h"
 #include "error_data.h"
 #include "common_helper.h"
+#include "sensor_common_object.h"
+#include "light_sensor_task.h"
+#include "temperature_sensor_task.h"
 
 #define SERVER_PORT 	3000
 #define SERVER_IP       "127.0.0.1"
 #define MAX_CONNECTIONS 5
 
+/**
+ * @brief 
+ * 
+ * @param req_in 
+ * @return REMOTE_RESPONSE_T 
+ */
+REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in);
 
+/**
+ * @brief 
+ * 
+ * @param sigval 
+ */
 static void timer_handler_sendSTAliveMSG(union sigval sig)
 {		
     pthread_mutex_lock(&aliveState_lock);
@@ -32,6 +47,12 @@ static void timer_handler_sendSTAliveMSG(union sigval sig)
 	pthread_mutex_unlock(&aliveState_lock);
 }
 
+/**
+ * @brief 
+ * 
+ * @param server_socket 
+ * @return int 
+ */
 int socket_task_init(int server_socket)
 {
     int option = 1;
@@ -70,7 +91,7 @@ int socket_task_init(int server_socket)
 		return ERR;
 	}
 
-    LOG_STDOUT(INFO "Socket started listening\n");
+    LOG_STDOUT(INFO "Socket started listening on IP:%s PORT:%d\n",SERVER_IP,SERVER_PORT);
 
     return server_socket;
 }
@@ -110,6 +131,32 @@ void* socket_task_callback(void* threadparam)
 		POST_MESSAGE_LOGTASK(&logData,"Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 		LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 
+		while(1)
+		{
+			REMOTE_REQUEST_T req_in = {0};
+			REMOTE_RESPONSE_T rsp_out = {0};
+			int nbytes = 0;
+			do{
+				nbytes = recv(accepted_socket, (((char*)&(req_in))+nbytes), sizeof(req_in), 0);
+			}while(nbytes < sizeof(req_in) && nbytes != -1);
+
+			LOG_STDOUT(INFO "--CLIENT REQUEST: bytes:%d ID:%d\n",nbytes,req_in.request_id);
+			rsp_out = processRemoteRequest(req_in);
+			
+			if(rsp_out.rsp_id == CONN_CLOSE_RSP) 
+				{break;}
+		
+			nbytes = send(accepted_socket , (char*)&rsp_out , sizeof(rsp_out), 0 );
+			if(nbytes < sizeof(rsp_out))
+			{
+				LOG_STDOUT(ERROR "Cannot send complete data\n");
+				break;
+				//return 1;
+			}
+
+			LOG_STDOUT(INFO "Number of bytes sent: %d\n",nbytes);
+		
+		}
 
         /* Create a new thread to handle the connection and go back to accepting */
         close(accepted_socket);
@@ -119,4 +166,51 @@ void* socket_task_callback(void* threadparam)
 
     }
 
+}
+
+REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
+{
+	REMOTE_RESPONSE_T rsp_out = {0};
+	LOG_STDOUT(INFO "IN process msg\n");
+	switch(req_in.request_id)
+    {
+        case(GET_FUNC):
+			rsp_out.rsp_id=GET_FUNC;
+            strncpy(rsp_out.metadata,"GET_TEMP DAY_NIGHT\n", sizeof(rsp_out.metadata));
+            break;
+        case(GET_TEMP_C):
+			rsp_out.rsp_id=GET_TEMP_C;
+			rsp_out.data.floatingData = getTempTask_temperature();
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_C:%f\n",rsp_out.data.floatingData);
+            break;
+        case(GET_TEMP_F):
+			rsp_out.rsp_id=GET_TEMP_F;
+			rsp_out.data.floatingData = getTempTask_temperature();
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_F\n");
+            break;
+        case(GET_TEMP_K):
+			rsp_out.rsp_id=GET_TEMP_K;
+			rsp_out.data.floatingData = getTempTask_temperature();
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_K\n");
+            break;
+        case(GET_LUX):
+			rsp_out.rsp_id=GET_LUX;
+			rsp_out.data.floatingData = 1.0;
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_LUX\n");
+            break;
+        case(GET_DAY_NIGHT):
+			rsp_out.rsp_id=GET_DAY_NIGHT;
+			rsp_out.data.isNight = getLightTask_state();
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_DAY_NIGHT\n");
+            break;
+    	case(CONN_CLOSE_REQ):
+			rsp_out.rsp_id=CONN_CLOSE_RSP;
+			LOG_STDOUT(INFO "REMOTE REQUEST CLOSE CONNECTION\n");
+             break;
+        default:
+			LOG_STDOUT(INFO "REMOTE REQUEST INVALID\n");
+            break;
+
+    }
+	return rsp_out;
 }
