@@ -89,7 +89,7 @@ float APDS9301_getLux()
         return lux;
 
     if(Ch0 != 0)
-        ratio = (flo*at)Ch1/(float)Ch0;
+        ratio = (float)Ch1/(float)Ch0;
     else
         ratio = 0;
 
