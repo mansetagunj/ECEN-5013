@@ -186,16 +186,17 @@ REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
         case(GET_TEMP_F):
 			rsp_out.rsp_id=GET_TEMP_F;
 			rsp_out.data.floatingData = getTempTask_temperature();
+			rsp_out.data.floatingData = (rsp_out.data.floatingData * 1.8) + 32;
             LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_F\n");
             break;
         case(GET_TEMP_K):
 			rsp_out.rsp_id=GET_TEMP_K;
-			rsp_out.data.floatingData = getTempTask_temperature();
+			rsp_out.data.floatingData = getTempTask_temperature() + 273.15;
             LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_K\n");
             break;
         case(GET_LUX):
 			rsp_out.rsp_id=GET_LUX;
-			rsp_out.data.floatingData = 1.0;
+			rsp_out.data.floatingData = getLightTask_lux();
             LOG_STDOUT(INFO "REMOTE REQUEST GET_LUX\n");
             break;
         case(GET_DAY_NIGHT):
