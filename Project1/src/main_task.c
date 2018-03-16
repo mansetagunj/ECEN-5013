@@ -181,7 +181,7 @@ void main_task_processMsg()
         switch(queueData.msgID)
         {
             case(MT_MSG_STATUS_RSP):
-                LOG_STDOUT(INFO "ALIVE:%s\n",getTaskIdentfierString(queueData.sourceID));
+                //LOG_STDOUT(INFO "ALIVE:%s\n",getTaskIdentfierString(queueData.sourceID));
                 pthread_mutex_lock(&aliveState_lock);
                 aliveStatus[queueData.sourceID]--;
                 pthread_mutex_unlock(&aliveState_lock);

@@ -20,7 +20,7 @@ int main()
         printf("[ERROR] I2C Master init failed\n"); 
     }
     
-    double temperature = 0.0;
+    float temperature = 0.0;
     uint8_t data[2] = {0};
     ret  = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, TMP102_REG_CONFIGURATION, data, sizeof(data));
     if(ret == 0) printf("CONFIG REG: %x\n",*((uint16_t*)data));

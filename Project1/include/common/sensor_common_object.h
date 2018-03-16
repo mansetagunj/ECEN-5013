@@ -38,7 +38,7 @@ typedef struct
 {
     REMOTE_REQRSP_ID rsp_id;
     union data{
-        double floatingData;
+        float floatingData;
         uint8_t isNight;
     }data;
     char metadata[20];

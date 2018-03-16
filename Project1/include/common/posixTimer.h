@@ -38,7 +38,7 @@ int register_timer(timer_t *timer_id, void (*timer_handler)(union sigval), void 
  * @param oneshot 
  * @return int 
  */
-int start_timer(timer_t timer_id , uint32_t time_usec, uint8_t oneshot);
+int start_timer(timer_t timer_id , uint64_t time_usec, uint8_t oneshot);
 
 /**
  * @brief Stops the timer 

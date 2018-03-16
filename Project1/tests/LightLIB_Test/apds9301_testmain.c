@@ -32,7 +32,7 @@ int main()
 
     while(1)
     {
-        double lux = APDS9301_getLux();
+        float lux = APDS9301_getLux();
         if(lux < 0) printf("Error. Lux is negative\n");
         else    printf("Lux: %f\n",lux);
         sleep(2);

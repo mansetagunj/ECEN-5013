@@ -31,6 +31,7 @@ static mqd_t lighttask_q;
 pthread_mutex_t stateChangeLock;
 
 volatile static DAY_STATE_T isDay;
+volatile static float light_lux;
 
 
 DAY_STATE_T getLightTask_state()
@@ -48,7 +49,7 @@ static void timer_handler_getAndUpdateState(union sigval sig)
 {
     DAY_STATE_T state;
 
-    double lux = APDS9301_getLux();
+    float lux = APDS9301_getLux();
     if(lux < 0) 
     {
         LOG_STDOUT(ERROR "Lux is negative\n");

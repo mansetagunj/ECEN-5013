@@ -75,9 +75,9 @@ int APDS9301_readCh1(uint16_t *ch1_data)
 
 }
 
-double APDS9301_getLux()
+float APDS9301_getLux()
 {
-    double ratio, lux = -1;
+    float ratio, lux = -1;
     uint16_t Ch0, Ch1;
 
     int ret  = APDS9301_readCh0(&Ch0);
@@ -88,7 +88,10 @@ double APDS9301_getLux()
     if(ret)
         return lux;
 
-    ratio = (double)Ch1/(double)Ch0;
+    if(Ch0 != 0)
+        ratio = (flo*at)Ch1/(float)Ch0;
+    else
+        ratio = 0;
 
     //Calculate LUX - calculations are referred from the Sensor datasheet
 	if (ratio > 0 && ratio <= 0.50)

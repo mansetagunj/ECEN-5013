@@ -29,7 +29,7 @@ int register_timer(timer_t *timer_id, void (*timer_handler)(union sigval), void 
 	return ret;
 }
 
-int start_timer(timer_t timer_id , uint32_t time_usec, uint8_t oneshot)
+int start_timer(timer_t timer_id , uint64_t time_usec, uint8_t oneshot)
 {
 	if(NULL == timer_id)
 		return -1;

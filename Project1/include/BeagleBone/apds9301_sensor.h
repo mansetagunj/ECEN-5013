@@ -70,9 +70,9 @@ int APDS9301_readCh1(uint16_t *ch1_data);
 /**
  * @brief 
  * 
- * @return double 
+ * @return float 
  */
-double APDS9301_getLux();
+float APDS9301_getLux();
 
 /**
  * @brief 

@@ -28,12 +28,12 @@ static mqd_t temperaturetask_q;
 
 pthread_mutex_t tempChangeLock;
 
-volatile static double latest_temperature;
+volatile static float latest_temperature;
 
 
-double getTempTask_temperature()
+float getTempTask_temperature()
 {
-    double temp;
+    float temp;
     LOG_STDOUT(INFO "Waiting for Temp lock\n");
     pthread_mutex_lock(&tempChangeLock);
     temp = latest_temperature;
@@ -44,7 +44,7 @@ double getTempTask_temperature()
 
 static void timer_handler_getAndUpdateTemperature(union sigval sig)
 {
-    double temperature;
+    float temperature;
 
     int ret = TMP102_getTemp_Celcius(&temperature);
     if(ret == 0) 
