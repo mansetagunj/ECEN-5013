@@ -110,6 +110,13 @@ static inline void __POST_MESSAGE_LIGHTTASK(mqd_t queue, const LIGHTTASKQ_MSG_T 
 DAY_STATE_T getLightTask_state();
 
 /**
+ * @brief Get the LightTask lux object. MT-safe as it calls a MT-safe function within
+ * 
+ * @return float 
+ */
+float getLightTask_lux();
+
+/**
  * @brief Entry point of the light task thread
  * 
  * @param threadparam 

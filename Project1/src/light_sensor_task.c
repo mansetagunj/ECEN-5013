@@ -31,7 +31,6 @@ static mqd_t lighttask_q;
 pthread_mutex_t stateChangeLock;
 
 volatile static DAY_STATE_T isDay;
-volatile static float light_lux;
 
 
 DAY_STATE_T getLightTask_state()
@@ -43,6 +42,12 @@ DAY_STATE_T getLightTask_state()
     pthread_mutex_unlock(&stateChangeLock);
     LOG_STDOUT(INFO "Waiting for Light lock\n");
     return state;
+}
+
+float getLightTask_lux()
+{
+    float lux = APDS9301_getLux();
+    return lux;
 }
 
 static void timer_handler_getAndUpdateState(union sigval sig)
