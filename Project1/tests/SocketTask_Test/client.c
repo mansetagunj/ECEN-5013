@@ -101,6 +101,7 @@ int main()
         if(ans == 'n' || ans == 'N')
             continue_flag = 0;
         
+        i++;
     }while(continue_flag);
 
     req.request_id = CONN_CLOSE_REQ;
