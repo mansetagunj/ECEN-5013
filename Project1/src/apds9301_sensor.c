@@ -10,21 +10,129 @@
 #include "apds9301_sensor.h"
 #include"my_i2c.h"
 #include "error_data.h"
+#include <string.h>
+
+#define APDS9301_SENSOR_ID (0x50)
 
 int APDS9301_test()
 {
-    uint8_t data, sensor_id = 0x50;
+    uint8_t data;
     int ret = APDS9301_readID(&data);
     if(ret == 0) 
     {
-        (sensor_id == data) ? (ret = 0) : (ret = -1);
+        (APDS9301_SENSOR_ID == (data & 0xF0)) ? 0 : (ret = -1);
     }
-    // else
-        // return ret;
-            
+
     return ret; 
     
 }
+
+int APDS9301_write_ThLow(uint16_t thlow)
+{
+    int ret = I2Cmaster_write_word(APDS9301_SLAVE_ADDR, APDS9301_INT_TH_LL_REG | APDS9301_CMD_WORD_EN, thlow, 0);
+    return ret;
+}
+
+int APDS9301_write_ThHigh(uint16_t thhigh)
+{
+    int ret = I2Cmaster_write_word(APDS9301_SLAVE_ADDR, APDS9301_INT_TH_HL_REG | APDS9301_CMD_WORD_EN , thhigh, 0);
+    return ret;
+}
+
+int APDS9301_read_ThLow(uint16_t *thlow)
+{
+    int ret = I2Cmaster_read_bytes(APDS9301_SLAVE_ADDR, APDS9301_INT_TH_LL_REG, (uint8_t*)thlow, sizeof(thlow));
+    return ret;
+}
+
+int APDS9301_read_ThHigh(uint16_t *thhigh)
+{
+    int ret = I2Cmaster_read_bytes(APDS9301_SLAVE_ADDR, APDS9301_INT_TH_HL_REG, (uint8_t*)thhigh, sizeof(thhigh));
+    return ret;
+}
+
+int APDS9301_readControlReg(uint8_t *ctrl_reg)
+{
+    int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_CTRL_REG, ctrl_reg);
+    return ret;
+}
+
+int APDS9301_mode_highGain()
+{
+    uint8_t data;
+    int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, &data);
+    if(ret != 0)
+        return ret;
+
+    data |= (uint8_t)APDS9301_TIMING_GAIN;
+
+    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, data);
+
+    return ret;
+}
+int APDS9301_mode_lowGain_default()
+{
+    uint8_t data;
+    int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, &data);
+    if(ret != 0)
+        return ret;
+
+    data &= ~(uint8_t)APDS9301_TIMING_GAIN;
+
+    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, data);
+
+    return ret;
+
+}
+
+int APDS9301_mode_interrupt(uint8_t enable)
+{
+    uint8_t data;
+    int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_INT_CTRL_REG, &data);
+    if(ret != 0)
+        return ret;
+
+    if(enable)
+        data |= (uint8_t)APDS9301_INTCTRL_IEN;
+    else
+        data &= ~(uint8_t)APDS9301_INTCTRL_IEN;
+
+    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, data);
+
+    return ret;
+}
+int APDS9301_clearPendingInterrupt()
+{
+    int ret = I2Cmaster_write(APDS9301_SLAVE_ADDR, APDS9301_CMD_REG | APDS9301_CMD_INT_CLEAR);
+    return ret;    
+}
+
+int APDS9301_mode_manualcontrol(uint8_t on)
+{
+    uint8_t data;
+    int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, &data);
+    if(ret != 0)
+        return ret;
+
+    data &= ~(uint8_t)APDS9301_TIMING_MANUAL(1);
+    data |= (uint8_t)APDS9301_TIMING_INTEG(on);
+
+    return ret;
+}
+
+int APDS9301_mode_integrationTime(uint8_t x)
+{
+    uint8_t data;
+    int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, &data);
+    if(ret != 0)
+        return ret;
+    
+    data &= ~(uint8_t)APDS9301_TIMING_INTEG(3);
+    data |= (uint8_t)APDS9301_TIMING_INTEG(x);
+
+    return ret;
+}
+
 
 int APDS9301_poweron()
 {
@@ -116,4 +224,22 @@ float APDS9301_getLux()
     }
 
     return lux;
+}
+
+
+uint8_t* APDS9301_memDump()
+{
+    uint8_t *memdump = (uint8_t*)malloc(15*sizeof(uint8_t));
+    memset(memdump, 0 , 15);
+
+    for(uint8_t i = 0 ; i < 0x10; i++)
+    {
+        if(i == 0x7 ||  i == 0x9 || i == 0xB)
+            continue;
+        
+        int ret = I2Cmaster_read_byte(APDS9301_SLAVE_ADDR, i | APDS9301_CMD_REG, memdump+i);
+        if(ret != 0 ) continue;
+    }
+
+    return memdump;
 }

@@ -26,6 +26,13 @@ typedef struct i2c_handle
 }I2C_MASTER_HANDLE_T;
 
 /**
+ * @brief Get the MasterI2C handle object
+ * 
+ * @return I2C_MASTER_HANDLE_T 
+ */
+I2C_MASTER_HANDLE_T getMasterI2C_handle();
+
+/**
  * @brief Prints the error code string to stdout
  * 
  * @param errorCode 
@@ -71,6 +78,16 @@ int I2Cmaster_read_byte(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data);
  */
 int I2Cmaster_read_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len);
 
+
+/**
+ * @brief Writes a byte/pointer register to the slave
+ * 
+ * @param slave_addr 
+ * @param reg_addr 
+ * @return int 
+ */
+int I2Cmaster_write(uint8_t slave_addr, uint8_t reg_addr);
+
 /**
  * @brief 
  * 
@@ -91,6 +108,17 @@ int I2Cmaster_write_byte(uint8_t slave_addr, uint8_t reg_addr, uint8_t data);
  * @return int 
  */
 int I2Cmaster_write_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len);
+
+/**
+ * @brief 
+ * 
+ * @param slave_addr 
+ * @param reg_addr 
+ * @param data 
+ * @param lsb_first 
+ * @return int 
+ */
+int I2Cmaster_write_word(uint8_t slave_addr, uint8_t reg_addr, uint16_t data, uint8_t lsb_first);
 
 
 

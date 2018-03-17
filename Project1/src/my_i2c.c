@@ -117,8 +117,7 @@ int I2Cmaster_write_byte(uint8_t slave_addr, uint8_t reg_addr, uint8_t data)
     return ret;
 }
 
-#if 0
-int I2Cmaster_write_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len)
+int I2Cmaster_write(uint8_t slave_addr, uint8_t reg_addr)
 {
     if(NULL == internal_master_handle)
     {
@@ -130,7 +129,33 @@ int I2Cmaster_write_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, s
     mraa_result_t ret =  mraa_i2c_address(internal_master_handle->i2c_context, slave_addr);
     if(0 == ret)
     {   
-        ret = mraa_i2c_write_byte_data(internal_master_handle->i2c_context, data, reg_addr);
+        ret = mraa_i2c_write_byte(internal_master_handle->i2c_context, reg_addr);
+    }
+
+    pthread_spin_unlock(&internal_master_handle->handle_lock);
+
+    return ret;
+}
+
+
+int I2Cmaster_write_word(uint8_t slave_addr, uint8_t reg_addr, uint16_t data, uint8_t lsb_first)
+{
+    if(NULL == internal_master_handle)
+    {
+        return -1;
+    }
+    
+    if(lsb_first)
+    {
+        data = ( ((data & 0xF0)>>4)| ((data &0x0F)<<4) ); 
+    }
+
+    pthread_spin_lock(&internal_master_handle->handle_lock);
+
+    mraa_result_t ret =  mraa_i2c_address(internal_master_handle->i2c_context, slave_addr);
+    if(0 == ret)
+    {   
+        ret = mraa_i2c_write_word_data(internal_master_handle->i2c_context, data, reg_addr);
     }
 
     pthread_spin_unlock(&internal_master_handle->handle_lock);
@@ -138,7 +163,7 @@ int I2Cmaster_write_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, s
     return ret;
 
 }
-#endif
+
 
 int I2Cmaster_read_byte(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data)
 {
