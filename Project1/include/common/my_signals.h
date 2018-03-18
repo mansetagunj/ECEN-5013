@@ -1,8 +1,9 @@
-/*
- * @File my_signals.h
- *
- * @Created on: 18-Feb-2018
- * @Author: Gunj Manseta
+/**
+ * @brief 
+ * 
+ * @file my_signals.h
+ * @author Gunj Manseta
+ * @date 2018-03-18
  */
  
 #ifndef MY_SIGNALS_H

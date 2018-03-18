@@ -1,3 +1,11 @@
+/**
+ * @brief 
+ * 
+ * @file my_signals.c
+ * @author Gunj Manseta
+ * @date 2018-03-18
+ */
+
 #include "my_signals.h"
 #include "error_data.h"
 
