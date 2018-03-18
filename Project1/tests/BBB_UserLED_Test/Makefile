@@ -7,7 +7,7 @@ endif
 
 CC_CROSS:=arm-linux-gnueabihf-gcc
 CC:=gcc
-CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
+CFLAGS:= -g3 -O0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
 LDFLAGS:= -lpthread -lrt
 INCLUDES:= -I ../../include/BeagleBone
 

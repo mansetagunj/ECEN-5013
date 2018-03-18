@@ -7,7 +7,7 @@ endif
 
 CC_CROSS:=arm-linux-gnueabihf-gcc
 CC:=gcc
-CFLAGS:= -o0 -DBB_TYPE=$(BB_TYPE) -g3  #-std=gnu11
+CFLAGS:= -O0 -DBB_TYPE=$(BB_TYPE) -g3  #-std=gnu11
 LDFLAGS:= -pthread -lrt -lmraa -lm -lcmocka
 INCLUDES:= -I ../../include/BeagleBone -I ../../include/cmocka
 
