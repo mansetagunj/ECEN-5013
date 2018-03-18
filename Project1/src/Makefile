@@ -24,14 +24,18 @@ build:
 .PHONY:cross
 cross:
 	$(CC_CROSS) $(CFLAGS) $(INCLUDES) -o BB_$(OUTPUT_FILE) $(SRCS) $(LDFLAGS)
-	scp BB_$(OUTPUT_FILE) gunj@192.168.7.2:~/
+	scp BB_$(OUTPUT_FILE) configuration.dat gunj@192.168.7.2:~/
 	#ssh gunj@192.168.7.2 sudo ./BB_$(OUTPUT_FILE)
 
 .PHONY:run
 run: build
 	sudo ./project1.out
 
+.PHONY:TEST_CONFIG
+TEST_CONFIG:
+	$(CC) $(CFLAGS) -DSELF_TEST $(INCLUDES) -o test_readconfig readConfiguration.c
+
 
 .PHONY:clean
 clean:
-	rm -f *.o *.log $(OUTPUT_FILE) BB_$(OUTPUT_FILE)
+	rm -f *.o *.log $(OUTPUT_FILE) BB_$(OUTPUT_FILE) test_readconfig
