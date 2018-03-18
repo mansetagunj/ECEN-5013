@@ -1,8 +1,9 @@
-/*
- * @File posixTimer.h
- *
- * @Created on: 18-Feb-2018
- * @Author: Gunj Manseta
+/**
+ * @brief 
+ * 
+ * @file posixTimer.h
+ * @author Gunj Manseta
+ * @date 2018-03-18
  */
 
 #ifndef POSIX_TIMER_H

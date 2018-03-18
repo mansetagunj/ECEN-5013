@@ -1,3 +1,10 @@
+/**
+ * @brief 
+ * 
+ * @file my_time.c
+ * @author Gunj Manseta
+ * @date 2018-03-18
+ */
 #include <sys/time.h>
 #include <time.h>
 #include <string.h>

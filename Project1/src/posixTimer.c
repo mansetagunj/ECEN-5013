@@ -1,3 +1,10 @@
+/**
+ * @brief 
+ * 
+ * @file posixTimer.c
+ * @author Gunj Manseta
+ * @date 2018-03-18
+ */
 
 #include "posixTimer.h"
 
