@@ -91,37 +91,48 @@ static void testTMP102(void **state)
     assert_int_equal(memdump[2], 0x4b00);
     assert_int_equal(memdump[3], 0x5000);
 
+    /* Checking the Tlow = 75deg C and Thigh 80deg C */
+    float temp = (float)(memdump[2]>>4) * 0.0625;
+    assert_int_equal(temp,75.0);
+
+    temp = (float)(memdump[3]>>4) * 0.0625;
+    assert_int_equal(temp,80.0);
+
     free(memdump);
 
     float temperature = 0.0, celcius = 0.0f, dummy = 0.0;
     
     int i = 0;
-    // while(i<2)
-    // {
-	// 	int ret = TMP102_getTemp_Celcius(&temperature);
-    //     assert_int_equal(ret, 0);
-	// 	if(ret == 0) printf("C Temp: %.03f\n",temperature);
-    //     celcius = temperature;
 
-	// 	ret = TMP102_getTemp_Fahren(&temperature);
-    //     assert_int_equal(ret, 0);
-    //     dummy = (celcius*1.8) + 32;
-    //     assert_true(temperature == dummy);
-	// 	if(ret == 0) printf("F Temp: %.03f\n",temperature);
+    printf("\n---------TEMPERATURE VALUES--------------\n");
+    while(i<2)
+    {
+		int ret = TMP102_getTemp_Celcius(&temperature);
+        assert_int_equal(ret, 0);
+		if(ret == 0) printf("C Temp: %.03f\n",temperature);
+        celcius = temperature;
 
-	// 	ret = TMP102_getTemp_Kelvin(&temperature);
-    //     assert_int_equal(ret, 0);
-    //     dummy = celcius + 273.15;
-    //     assert_true(temperature == dummy);
-	// 	if(ret == 0) printf("K Temp: %.03f\n",temperature);
+		ret = TMP102_getTemp_Fahren(&temperature);
+        assert_int_equal(ret, 0);
+        dummy = (celcius*1.8) + 32;
+        assert_true(temperature == dummy);
+		if(ret == 0) printf("F Temp: %.03f\n",temperature);
+
+		ret = TMP102_getTemp_Kelvin(&temperature);
+        assert_int_equal(ret, 0);
+        dummy = celcius + 273.15;
+        assert_true(temperature == dummy);
+		if(ret == 0) printf("K Temp: %.03f\n",temperature);
 	    
-    //     i++;
-    //     sleep(2);
-    // } 
+        i++;
+        sleep(1);
+    } 
+    printf("------------------------------------------\n");
 
 
     ret = I2Cmaster_Destroy(&i2c);
     assert_int_equal(ret, 0);
+    assert_null((void*)getMasterI2C_handle());
 
 }
 
@@ -131,6 +142,7 @@ int main()
     const struct CMUnitTest tests[2] = {	
 	
     cmocka_unit_test(testTMP102)
+    
 	};
 
 	return cmocka_run_group_tests(tests, NULL, NULL);
