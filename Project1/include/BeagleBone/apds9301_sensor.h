@@ -55,6 +55,13 @@
 
 
 /**
+ * @brief Sets back the default configration of the sensor
+ * 
+ * @return int 
+ */
+int APDS9301__setmode_allDefault();
+
+/**
  * @brief Gives a memdump of 15 len. 
  *  **IMP** must free the address using return pointer 
  * @return uint8_t* 

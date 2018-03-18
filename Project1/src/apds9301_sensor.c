@@ -97,7 +97,7 @@ int APDS9301_mode_interrupt(uint8_t enable)
     else
         data &= ~(uint8_t)APDS9301_INTCTRL_IEN;
 
-    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, data);
+    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_INT_CTRL_REG, data);
 
     return ret;
 }
@@ -115,7 +115,9 @@ int APDS9301_mode_manualcontrol(uint8_t on)
         return ret;
 
     data &= ~(uint8_t)APDS9301_TIMING_MANUAL(1);
-    data |= (uint8_t)APDS9301_TIMING_INTEG(on);
+    data |= (uint8_t)APDS9301_TIMING_MANUAL(on);
+
+    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, data);
 
     return ret;
 }
@@ -129,6 +131,8 @@ int APDS9301_mode_integrationTime(uint8_t x)
     
     data &= ~(uint8_t)APDS9301_TIMING_INTEG(3);
     data |= (uint8_t)APDS9301_TIMING_INTEG(x);
+
+    ret = I2Cmaster_write_byte(APDS9301_SLAVE_ADDR, APDS9301_TIMING_REG, data);
 
     return ret;
 }
@@ -242,4 +246,16 @@ uint8_t* APDS9301_memDump()
     }
 
     return memdump;
+}
+
+int APDS9301__setmode_allDefault()
+{
+    int ret = APDS9301_mode_lowGain_default();
+    if(ret) return ret;
+    ret = APDS9301_mode_integrationTime2_default();
+    if(ret) return ret;
+    ret = APDS9301_mode_interruptDisable_default();
+    if(ret) return ret;
+    ret = APDS9301_mode_manualcontrolOFF_default();
+    return ret;
 }
