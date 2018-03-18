@@ -9,64 +9,125 @@
 #include "my_i2c.h"
 #include "apds9301_sensor.h"
 #include <unistd.h>
+#include "cmocka.h"
 
-int main()
+void testAPDS9301(void **state)
 {
     I2C_MASTER_HANDLE_T i2c;
     int ret = 0;
-    if(ret = I2Cmaster_Init(&i2c) !=0)
-    {
-        printErrorCode(ret);
-        printf("[ERROR] I2C Master init failed\n"); 
-    }
-
+    ret = I2Cmaster_Init(&i2c);
+    assert_int_equal(ret, 0);
+    assert_non_null((void*)getMasterI2C_handle());
+    assert_ptr_equal(&i2c,getMasterI2C_handle());
+    
     ret = APDS9301_poweron();
-    if(ret == 0) printf("Sensor ON\n");
-    uint8_t sensor_id = 0x50;
+    assert_int_equal(ret, 0);
+
+    ret = APDS9301_test();
+    assert_int_equal(ret, 0);
+
     uint8_t data = 0;
     ret  = APDS9301_readControlReg(&data);
-    if(ret == 0) printf("CTRL REG: %x\n",data);
+    assert_int_equal(ret, 0);
+    assert_int_equal((data & 0x3), 0x03);
 
-    uint16_t tlow;
-    ret = APDS9301_read_ThLow(&tlow);
-    if(ret == 0) printf("READ TLOW 0x%x\n",tlow);
 
-    tlow = 0xBB11;
+    uint16_t tlow = 0xBB11;
     ret = APDS9301_write_ThLow(tlow);
-    if(ret == 0) printf("WRITE TLOW 0x%x\n",tlow);
+    assert_int_equal(ret, 0);
 
-    tlow = 0xaaaa;
+    tlow = 0;
     ret = APDS9301_read_ThLow(&tlow);
-    if(ret == 0) printf("READ TLOW 0x%x\n",tlow);
+    assert_int_equal(ret, 0);
+    assert_int_equal(tlow, 0xBB11);
+
+    uint16_t thigh = 0xA5A5;
+    ret = APDS9301_write_ThHigh(thigh);
+    assert_int_equal(ret, 0);
+
+    thigh = 0 ; 
+    ret = APDS9301_read_ThHigh(&thigh);
+    assert_int_equal(ret, 0);
+    assert_int_equal(thigh, 0xA5A5);
+    
     
     ret = APDS9301_mode_highGain();
-    if(ret != 0) printf("ERROR\n");
+    assert_int_equal(ret, 0);
+
+    ret = APDS9301_mode_integrationTime3();
+    assert_int_equal(ret, 0);
+
+    ret = APDS9301_mode_interruptEnable();
+    assert_int_equal(ret, 0);
+
+    ret = APDS9301_mode_manualcontrolON();
+    assert_int_equal(ret, 0);
 
     uint8_t *memdump = APDS9301_memDump();
-    printf("----SENSOR DUMP-----\n");
-    for(uint8_t i = 0; i < 15; i++)
-        printf("%02dh : 0x%x\n",i,memdump[i]);
-    free(memdump);
-    printf("---------\n");
 
-    ret = APDS9301_mode_lowGain_default();
-    if(ret != 0) printf("ERROR\n");
+    assert_non_null(memdump);
+
+    /* Power up bits */
+    assert_int_equal(memdump[0] & 0x3, 0x3);
+
+    /* Timing register */
+    assert_int_equal(memdump[1] & 0x1B, 0x1B);
+    
+    /* Interrupt control reg */
+    assert_int_equal(memdump[6] & 0x3F, 0x10);
+
+    free(memdump);
+
+    // ret = APDS9301_mode_lowGain_default();
+    // assert_int_equal(ret, 0);
+
+    // ret = APDS9301_mode_integrationTime2_default();
+    // assert_int_equal(ret, 0);
+
+    // ret = APDS9301_mode_interruptDisable_default();
+    // assert_int_equal(ret, 0);
+
+    // ret = APDS9301_mode_manualcontrolOFF_default();
+    // assert_int_equal(ret, 0);
+
+    ret = APDS9301__setmode_allDefault();
+    assert_int_equal(ret, 0);
 
     ret = APDS9301_readID(&data);
-    if(ret == 0) printf("expected: %x ID: %x\n",sensor_id, data);
+    assert_int_equal(data&0xF0, 0x50);
 
-    while(1)
+    int i = 0;
+    while(i<2)
     {
         float lux = APDS9301_getLux();
-        if(lux < 0) printf("Error. Lux is negative\n");
-        else    printf("Lux: %f\n",lux);
-        sleep(2);
+        assert_int_not_equal(lux, -1);
+        assert_in_range(lux,0,100);
+
+        i++;
     }
     
-    if(ret = I2Cmaster_Destroy(&i2c) !=0)
-    {
-        printErrorCode(ret);
-        printf("[ERROR] I2C Master destroy failed\n"); 
-    }
+    ret = APDS9301_powerdown();
+    assert_int_equal(ret, 0);
+
+    ret = APDS9301_readControlReg(&data);
+    assert_int_equal(ret, 0);
+    assert_int_equal((data & 0x3), 0);
+
+    ret = I2Cmaster_Destroy(&i2c);
+    assert_int_equal(ret, 0);
+    assert_null((void*)getMasterI2C_handle());
+
+}
+
+
+int main()
+{
+    const struct CMUnitTest tests[2] = {	
+	
+    cmocka_unit_test(testAPDS9301)
+    
+	};
+
+	return cmocka_run_group_tests(tests, NULL, NULL);
 
 }
