@@ -5,9 +5,9 @@ else
 	BB_TYPE:="green"
 endif
 
-CC:=arm-linux-gnueabihf-gcc
-CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
-LDFLAGS:= -lpthread -lrt -lmraa -lm -lcmocka
+CC:=arm-linux-gnueabihf-gc
+CFLAGS:= -o0 -DBB_TYPE=$(BB_TYPE) -g3  #-std=gnu11
+LDFLAGS:= -pthread -lrt -lmraa -lm -lcmocka
 INCLUDES:= -I ../../include/BeagleBone -I ../../include/cmocka
 
 OUTPUT_FILE_EXT:=.out
