@@ -13,14 +13,13 @@
 #include "temperature_sensor_task.h"
 #include "posixTimer.h"
 
-//volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
 
 const char* const task_identifier_string[NUM_CHILD_THREADS+1] =
 {
+    (const char*)"Logger Task",
+    (const char*)"Temperature Task",    
     (const char*)"Socket Task",
     (const char*)"Light Task",
-    (const char*)"Temperature Task",
-    (const char*)"Logger Task",
     (const char*)"Main Task",
 
 };
@@ -61,15 +60,15 @@ int register_and_start_timer(timer_t *timer_id, uint32_t usec, uint8_t oneshot, 
 	    LOG_STDOUT("[ERROR] Register Timer\n");
 		return ERR;
 	}
-	else
-		LOG_STDOUT("[INFO] Timer created\n");
+	// else
+	// 	LOG_STDOUT("[INFO] Timer created\n");
 	
-	if(start_timer(*timer_id , usec, 0) == -1)
+	if(start_timer(*timer_id , usec, oneshot) == -1)
 	{
 		LOG_STDOUT("[ERROR] Start Timer\n");
 		return ERR;
 	}
-	else
-		LOG_STDOUT("[INFO] Timer started\n");
+	// else
+	// 	LOG_STDOUT("[INFO] Timer started\n");
 
 }

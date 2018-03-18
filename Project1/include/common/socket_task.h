@@ -9,7 +9,9 @@
 #ifndef SOCKET_TASK_H
 #define SOCKET_TASK_H
 
+#include <signal.h>
 
+sig_atomic_t socketTask_continue;
 
 /**
  * @brief 

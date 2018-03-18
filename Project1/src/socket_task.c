@@ -27,6 +27,8 @@
 #define SERVER_IP       "127.0.0.1"
 #define MAX_CONNECTIONS 5
 
+sig_atomic_t socketTask_continue = 1;
+
 /**
  * @brief 
  * 
@@ -116,7 +118,7 @@ void* socket_task_callback(void* threadparam)
 
 	DEFINE_LOG_STRUCT(logData,LT_MSG_LOG,SOCKET_TASK_ID);
 
-	while(1)
+	while(socketTask_continue)
 	{
 		POST_MESSAGE_LOGTASK(&logData,"Accepting connections...\n");
 		accepted_socket = accept(server_socket, (struct sockaddr*)&peer_addr,(socklen_t*)&addrLen);
@@ -128,10 +130,10 @@ void* socket_task_callback(void* threadparam)
 		}
 
 		char peer_IP[20] = {0};
-		POST_MESSAGE_LOGTASK(&logData,"Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
+		POST_MESSAGE_LOGTASK(&logData,INFO "Conn accepted. Peer Add: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 		LOG_STDOUT(INFO "Connection accepted from peer Addr: %s\n",inet_ntop(AF_INET, &peer_addr.sin_addr, peer_IP, sizeof(peer_IP)));
 
-		while(1)
+		while(socketTask_continue)
 		{
 			REMOTE_REQUEST_T req_in = {0};
 			REMOTE_RESPONSE_T rsp_out = {0};
@@ -141,21 +143,24 @@ void* socket_task_callback(void* threadparam)
 			}while(nbytes < sizeof(req_in) && nbytes != -1);
 
 			LOG_STDOUT(INFO "--CLIENT REQUEST: bytes:%d ID:%d\n",nbytes,req_in.request_id);
+			POST_MESSAGE_LOGTASK(&logData,INFO "--CLIENT REQUEST: bytes:%d ID:%d\n",nbytes,req_in.request_id);
 			rsp_out = processRemoteRequest(req_in);
 			
 			if(rsp_out.rsp_id == CONN_CLOSE_RSP) 
 				{break;}
+			if(rsp_out.rsp_id == CONN_KILL_APP_RSP) 
+				{/* socketTask_continue = 0; */ break;}
 		
 			nbytes = send(accepted_socket , (char*)&rsp_out , sizeof(rsp_out), 0 );
 			if(nbytes < sizeof(rsp_out))
 			{
 				LOG_STDOUT(ERROR "Cannot send complete data\n");
+				POST_MESSAGE_LOGTASK(&logData,ERROR "Cannot send complete data\n");
 				break;
-				//return 1;
 			}
 
 			LOG_STDOUT(INFO "Number of bytes sent: %d\n",nbytes);
-		
+			POST_MESSAGE_LOGTASK(&logData,INFO "Number of bytes sent: %d\n",nbytes);
 		}
 
         /* Create a new thread to handle the connection and go back to accepting */
@@ -166,12 +171,13 @@ void* socket_task_callback(void* threadparam)
 
     }
 
+	// signal(SIGUSR1, signal_handler);
+
 }
 
 REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
 {
 	REMOTE_RESPONSE_T rsp_out = {0};
-	LOG_STDOUT(INFO "IN process msg\n");
 	switch(req_in.request_id)
     {
         case(GET_FUNC):
@@ -181,23 +187,23 @@ REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
         case(GET_TEMP_C):
 			rsp_out.rsp_id=GET_TEMP_C;
 			rsp_out.data.floatingData = getTempTask_temperature();
-            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_C:%f\n",rsp_out.data.floatingData);
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_C:.03%f\n",rsp_out.data.floatingData);
             break;
         case(GET_TEMP_F):
 			rsp_out.rsp_id=GET_TEMP_F;
 			rsp_out.data.floatingData = getTempTask_temperature();
 			rsp_out.data.floatingData = (rsp_out.data.floatingData * 1.8) + 32;
-            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_F\n");
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_F:.03%f\n",rsp_out.data.floatingData);
             break;
         case(GET_TEMP_K):
 			rsp_out.rsp_id=GET_TEMP_K;
 			rsp_out.data.floatingData = getTempTask_temperature() + 273.15;
-            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_K\n");
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_TEMP_K:.03%f\n",rsp_out.data.floatingData);
             break;
         case(GET_LUX):
 			rsp_out.rsp_id=GET_LUX;
 			rsp_out.data.floatingData = getLightTask_lux();
-            LOG_STDOUT(INFO "REMOTE REQUEST GET_LUX\n");
+            LOG_STDOUT(INFO "REMOTE REQUEST GET_LUX:.03%f\n",rsp_out.data.floatingData);
             break;
         case(GET_DAY_NIGHT):
 			rsp_out.rsp_id=GET_DAY_NIGHT;
@@ -207,6 +213,10 @@ REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
     	case(CONN_CLOSE_REQ):
 			rsp_out.rsp_id=CONN_CLOSE_RSP;
 			LOG_STDOUT(INFO "REMOTE REQUEST CLOSE CONNECTION\n");
+             break;
+		case(CONN_KILL_APP_REQ):
+			rsp_out.rsp_id=CONN_KILL_APP_RSP;
+			LOG_STDOUT(INFO "REMOTE REQUEST KILL APP\n");
              break;
         default:
 			LOG_STDOUT(INFO "REMOTE REQUEST INVALID\n");

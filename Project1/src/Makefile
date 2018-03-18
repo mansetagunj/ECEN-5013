@@ -8,7 +8,7 @@ endif
 
 CC:=gcc
 CC_CROSS:=arm-linux-gnueabihf-gcc
-CFLAGS:= -g3 -o0 -DBB_TYPE=$(BB_TYPE) #-std=gnu11
+CFLAGS:= -g3 -O0 -DBB_TYPE=$(BB_TYPE) -DSTDOUT_ALIVE #-DVALUES #-DLOGVALUES #-DSTDOUT_LOG #-std=gnu11
 LDFLAGS:= -lpthread -lrt -lmraa -lm
 INCLUDES:= -I ../include/common -I ../include/cmocka -I ../include/BeagleBone
 
@@ -23,7 +23,7 @@ build:
 
 .PHONY:cross
 cross:
-	$(CC_CROSS) -O0 $(CFLAGS) $(INCLUDES) -o BB_$(OUTPUT_FILE) $(SRCS) $(LDFLAGS)
+	$(CC_CROSS) $(CFLAGS) $(INCLUDES) -o BB_$(OUTPUT_FILE) $(SRCS) $(LDFLAGS)
 	scp BB_$(OUTPUT_FILE) gunj@192.168.7.2:~/
 	#ssh gunj@192.168.7.2 sudo ./BB_$(OUTPUT_FILE)
 

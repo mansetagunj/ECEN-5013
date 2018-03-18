@@ -23,11 +23,12 @@
 
 #define MQ_LOGGERTASK_NAME "/loggertask_queue"
 
+
 /**
  * @brief USe it carefully as there is not NULL checking of the file stream provided
  * 
  */
-#define LT_LOG(fp,format, ...) fprintf(fp,"[PID:%d][TID:%ld]",getpid(),syscall(SYS_gettid)); fprintf(fp,format, ##__VA_ARGS__)
+#define LT_LOG(fp,format, ...) do{fprintf(fp,"[PID:%d][TID:%ld]",getpid(),syscall(SYS_gettid)); fprintf(fp,format, ##__VA_ARGS__); fflush(fp);}while(0)
 
 /* Keeping the log level to the higest level to log everything. 
     Should be configure at compile time using compile time switch
@@ -86,12 +87,21 @@ void logger_task_processMsg(FILE *fp)
     int ret,prio;
     LOGGERTASKQ_MSG_T queueData = {0};
     DEFINE_MAINTASK_STRUCT(maintaskRsp,MT_MSG_STATUS_RSP,LOGGER_TASK_ID);
+    //struct timespec recv_timeout = {0};
     uint8_t continue_flag= 1;
     while(continue_flag)
     {
         memset(&queueData,0,sizeof(queueData));
+        // clock_gettime(CLOCK_REALTIME, &recv_timeout);
+        // recv_timeout.tv_sec += 3;
+        // ret = mq_timedreceive(loggertask_q,(char*)&(queueData),sizeof(queueData),&prio, &recv_timeout);
         ret = mq_receive(loggertask_q,(char*)&(queueData),sizeof(queueData),&prio);
-        if(ERR == ret)
+        // if(ERR == ret && ETIMEDOUT == errno)
+        // {
+        //     //LOG_STDOUT(ERROR "MQ_RECV TIMEOUT:%s\n",strerror(errno));
+        //     continue;
+        // }
+        if(ERR == ret )
         {
             LOG_STDOUT(ERROR "MQ_RECV:%s\n",strerror(errno));
             continue;
@@ -106,8 +116,9 @@ void logger_task_processMsg(FILE *fp)
             case(LT_MSG_LOG):
                 if(g_loglevel >= queueData.loglevel)
                 {
-                    //LOG_STDOUT(INFO "QUEUE LOG\n");
-                    //LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    #ifdef STDOUT_LOG
+                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    #endif
                     LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                 }
                 break;
@@ -115,13 +126,13 @@ void logger_task_processMsg(FILE *fp)
                 if(MAIN_TASK_ID == queueData.sourceID)
                 {
                     /* Send back task alive response to main task */
-                    //LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                     LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
                     POST_MESSAGE_MAINTASK(&maintaskRsp, "Logger Alive");
                 }
                 break;
 
             default:
+            LOG_STDOUT(INFO "INVALID QUEUE LOG ID\n");
                 break;
         }
     }
@@ -148,11 +159,19 @@ void* logger_task_callback(void *threadparam)
     }
 
     LOG_STDOUT(INFO "LOGGER TASK INIT COMPLETED\n");
+    LT_LOG(fp,INFO "LOGGER TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
+    #ifdef VALUES
+    LOG_STDOUT(INFO "LOGGER TASK UP and RUNNING\n");
+    #endif
+    #ifdef LOGVALUES
+    LT_LOG(fp,INFO "LOGGER TASK UP and RUNNING\n");
+    #endif
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
     logger_task_processMsg(fp);
 
+    mq_close(loggertask_q);
     fflush(fp);
     fclose(fp);
     LOG_STDOUT(INFO "Logger Task Exit.\n");

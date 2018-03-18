@@ -23,6 +23,7 @@
 
 //typedef char LIGHT_TASK_MSGDATA_T;
 
+
 typedef enum
 {
     DAY = 0,
@@ -98,7 +99,7 @@ static inline void __POST_MESSAGE_LIGHTTASK(mqd_t queue, const LIGHTTASKQ_MSG_T 
 {
     if(-1 == mq_send(queue, (const char*)lightstruct, light_struct_size, prio))
     {
-        LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
+        LOG_STDOUT(ERROR "LIGHT:MQ_SEND:%s\n",strerror(errno));
     }
 }
 

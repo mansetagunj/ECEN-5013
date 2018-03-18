@@ -7,6 +7,7 @@
  */
 
 #include <errno.h>
+#include <string.h>
 #include "my_i2c.h"
 
 
@@ -15,7 +16,7 @@ static pthread_mutex_t init_destroy_lock = PTHREAD_MUTEX_INITIALIZER;
 
 void printErrorCode(int errorCode)
 {
-    #define VERBOSE
+    //#define VERBOSE
     #ifdef VERBOSE
     mraa_result_print(errorCode);
     #endif
@@ -26,32 +27,37 @@ int I2Cmaster_Init(I2C_MASTER_HANDLE_T *handle)
     int ret = 0;
     if(pthread_mutex_lock(&init_destroy_lock))
         return -1;
-
     if(NULL != internal_master_handle)
     {
-        *handle = *internal_master_handle;
+        handle = internal_master_handle;
         ret =  0;
     }
-    else
+    else if(handle)
     {
         handle->i2c_context = mraa_i2c_init_raw(BB_I2C_BUS_2);
+        /* internal i2c context failed to init */
         if(NULL == handle->i2c_context)
         {
             internal_master_handle = NULL;
             ret = -1;
         }
+        /* If spinlock init fails */
         else if( -1 == pthread_spin_init(&handle->handle_lock, PTHREAD_PROCESS_PRIVATE))
         {
             internal_master_handle = NULL;
             mraa_i2c_stop(handle->i2c_context);
             ret = -1;
         }
+        /* Everyting goes as expected */
         else
         {
             internal_master_handle = handle;
             ret = 0;
         }
     }
+    /* If handle is null */
+    else
+        ret = -1;
 
     if(pthread_mutex_unlock(&init_destroy_lock))
         return -1;
@@ -66,7 +72,7 @@ int I2Cmaster_Destroy(I2C_MASTER_HANDLE_T *handle)
         return -1;
 
     /* If the input handle is not null and the input initialized handle should match the internal handle */    
-    if(NULL != handle && internal_master_handle == handle)
+    if(NULL != handle && internal_master_handle == handle && NULL != internal_master_handle)
     {
         ret = mraa_i2c_stop(handle->i2c_context);
         if(ret == 0)
@@ -78,13 +84,19 @@ int I2Cmaster_Destroy(I2C_MASTER_HANDLE_T *handle)
             }while(EBUSY == ret && timeout > 0);
 
             if(ret == 0)
+            {
                 internal_master_handle = NULL;
+            }
         }
     }
-    else if(NULL == handle)
+    else if(NULL == internal_master_handle)
+    {
         ret = 0;
-    else
+    }
+    else 
+    {
         ret = -1;
+    }
 
     if(pthread_mutex_unlock(&init_destroy_lock))
         return -1;

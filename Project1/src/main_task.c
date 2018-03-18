@@ -32,9 +32,9 @@ volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
 void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
 {
     logger_task_callback,
+    temperature_task_callback,
     socket_task_callback,
     light_task_callback,
-    temperature_task_callback
 };
 
 
@@ -72,21 +72,13 @@ static void signal_handler(int signal)
 			LOG_STDOUT(SIGNAL "Invalid signal.\n");
 			break;
 	}
+    /* Cancelling all the threads for any signals */
+    // for(int i = 0; i < NUM_CHILD_THREADS; i++)
+    // {
+    //     pthread_cancel(pthread_id[i]);
+    // }
 
     signal_exit = 1;
-    /* Cancelling all the threads for any signals */
-    for(int i = 0; i < NUM_CHILD_THREADS; i++)
-    {
-        pthread_cancel(pthread_id[i]);
-    }
-
-    // DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
-    // DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
-    // DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
-    // POST_MESSAGE_LIGHTTASK_EXIT(&lightstruct);
-    // POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
-    // pthread_cancel(pthread_id[SOCKET_TASK_ID]);
-    // POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
 }
 
 /**
@@ -98,9 +90,8 @@ static void timer_handler_setup(union sigval sig)
 {		
     if(1 == timeoutflag)
     {
-        LOG_STDOUT(ERROR "Past 5 sec\n");
+        LOG_STDOUT(ERROR "TIMEOUT. App could not be setup in time\n");
         timeoutflag=0;
-        //stop_timer(*(timer_t*)sig.sival_ptr);
         delete_timer(*(timer_t*)sig.sival_ptr);
         exit(1);
     }
@@ -108,13 +99,12 @@ static void timer_handler_setup(union sigval sig)
 
 static void timer_handler_aliveStatusCheck(union sigval sig)
 {		
-    if(!aliveStatus[LOGGER_TASK_ID] && !aliveStatus[LIGHT_TASK_ID] && !aliveStatus[TEMPERATURE_TASK_ID] /*&& !aliveStatus[SOCKET_TASK_ID]*/)
+    if(!aliveStatus[LOGGER_TASK_ID] && !aliveStatus[LIGHT_TASK_ID] && !aliveStatus[TEMPERATURE_TASK_ID])
     {
         pthread_mutex_lock(&aliveState_lock);
         aliveStatus[LOGGER_TASK_ID]++;
         aliveStatus[LIGHT_TASK_ID]++;
         aliveStatus[TEMPERATURE_TASK_ID]++;
-        //aliveStatus[SOCKET_TASK_ID]++;
         pthread_mutex_unlock(&aliveState_lock);
         DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_STATUS,MAIN_TASK_ID);
         DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_STATUS,MAIN_TASK_ID)
@@ -128,13 +118,20 @@ static void timer_handler_aliveStatusCheck(union sigval sig)
         LOG_STDOUT(ERROR "One of the task not alive\n");
         stop_timer(*(timer_t*)sig.sival_ptr);
         delete_timer(*(timer_t*)sig.sival_ptr);
-        signal_exit = 1;
         /* Cancelling all the threads for any signals */
         for(int i = 0; i < NUM_CHILD_THREADS; i++)
         {
-            pthread_cancel(pthread_id[i]);
+            #ifdef VALUES
+            LOG_STDOUT(INFO "Child thread cancelled: %d %s\n",i, getTaskIdentfierString(i));
+            #endif
+            if(pthread_cancel(pthread_id[i]))
+                LOG_STDOUT(INFO "Child thread cancelled failed: %d\n",i);
         }
-        //exit(1);
+        #ifdef VALUES
+        LOG_STDOUT(INFO "All child thread cancelled\n");
+        #endif
+        /* Signaling main task to quit */
+        signal_exit = 1;
     }
 }
 
@@ -167,7 +164,7 @@ void main_task_processMsg()
     {
         memset(&queueData,0,sizeof(queueData));
         clock_gettime(CLOCK_REALTIME, &recv_timeout);
-        recv_timeout.tv_sec += 3;
+        recv_timeout.tv_sec += 2;
         ret = mq_timedreceive(maintask_q,(char*)&(queueData),sizeof(queueData),&prio,&recv_timeout);
         if(ERR == ret && ETIMEDOUT == errno)
         {
@@ -175,23 +172,38 @@ void main_task_processMsg()
         }
         if(ERR == ret)
         {
-            LOG_STDOUT(ERROR "MQ_RECV:%s\n",strerror(errno));
+            LOG_STDOUT(ERROR "MAIN TASK:MQ_RECV:%s\n",strerror(errno));
             continue;
         }
         switch(queueData.msgID)
         {
             case(MT_MSG_STATUS_RSP):
-                //LOG_STDOUT(INFO "ALIVE:%s\n",getTaskIdentfierString(queueData.sourceID));
+                #ifdef STDOUT_ALIVE
+                LOG_STDOUT(INFO "ALIVE:%s\n",getTaskIdentfierString(queueData.sourceID));
+                #endif
                 pthread_mutex_lock(&aliveState_lock);
                 aliveStatus[queueData.sourceID]--;
                 pthread_mutex_unlock(&aliveState_lock);
                 break;
             default:
+                LOG_STDOUT(INFO "Invalid Main task queue id\n");
                 break;
         }
     }
 
+    LOG_STDOUT(INFO "MAIN TASK GOT EXIT\n");
 
+}
+
+void POST_EXIT_MESSAGE_ALL()
+{
+    DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
+    DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
+    DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
+    POST_MESSAGE_LIGHTTASK_EXIT(&lightstruct);
+    POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
+    POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
+    pthread_cancel(pthread_id[SOCKET_TASK_ID]);
 }
 
 int main_task_entry()
@@ -209,23 +221,23 @@ int main_task_entry()
         return ret;
     }
 
-    struct sigaction sa;
-    /*Registering the signal callback handler*/
-	register_signalHandler(&sa,signal_handler, REG_SIG_ALL);
-
     /* Mutex init */
     pthread_mutex_init(&aliveState_lock, NULL);
 
     /* Registering a timer for 5 sec to check that the barrier is passed */
     timer_t timer_id;
-    if(ERR == register_and_start_timer(&timer_id, 1*MICROSEC, 1, timer_handler_setup, &timer_id))
+    if(ERR == register_and_start_timer(&timer_id, 2*MICROSEC, 1, timer_handler_setup, &timer_id))
     {
-        LOG_STDOUT(ERROR "Timer Error\n");
+        // LOG_STDOUT(ERROR "Timer Error\n");
         return ERR;
     }
 
     /* Create a barrier for all the threads + the main task*/
     pthread_barrier_init(&tasks_barrier,NULL,NUM_CHILD_THREADS+1);
+
+    struct sigaction sa;
+    /*Registering the signal callback handler*/
+	register_signalHandler(&sa,signal_handler, REG_SIG_ALL);
 
     /* Create all the child threads */
     for(int i = 0; i < NUM_CHILD_THREADS; i++)
@@ -241,24 +253,40 @@ int main_task_entry()
     LOG_STDOUT(INFO "MAIN TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
-    //stop_timer(timer_id);
     /* Resetting the timeoutflag as we are pass the barrier */
     timeoutflag = 0;
 
-    delete_timer(timer_id);
+    ret= stop_timer(timer_id);
+    if(ERR == ret)
+    {
+        LOG_STDOUT(ERROR "MAIN TASK CANNOT STOP TIMER:%s\n",strerror(errno));
+        return ERR;
+    }
+
+    ret == delete_timer(timer_id);
+    if(ERR == ret)
+    {
+        LOG_STDOUT(ERROR "MAIN TASK CANNOT DELETE TIMER:%s\n",strerror(errno));
+    }
+
     if(ERR == register_and_start_timer(&timer_id, 5*MICROSEC, 0 ,timer_handler_aliveStatusCheck, &timer_id))
     {
-        LOG_STDOUT(ERROR "Timer Error\n");
+        // LOG_STDOUT(ERROR "Timer Start Error\n");
         return ERR;
     }
     /* Start message processing which is a blocking call */
     main_task_processMsg();
 
-    stop_timer(timer_id);
+    delete_timer(timer_id);
+
+    POST_EXIT_MESSAGE_ALL();
     
     for(int i = 0; i < NUM_CHILD_THREADS; i++)
     {
-        ret = pthread_join(pthread_id[i],NULL);
+        int retThread = 0;
+        //  LOG_STDOUT(INFO "Pthread JOIN:%d\n",i);
+        ret = pthread_join(pthread_id[i],(void*)&retThread);
+        //  LOG_STDOUT(INFO "ThreadID %d: Ret:%d\n",i,retThread);
         if(ret  != 0)
         {
             LOG_STDOUT(ERROR "Pthread join:%d:%s\n",i,strerror(errno));
@@ -266,7 +294,6 @@ int main_task_entry()
         }
     }
 
-    delete_timer(timer_id);
     pthread_mutex_destroy(&aliveState_lock);
     
 

@@ -120,7 +120,7 @@ static inline void __POST_MESSAGE_LOGTASK(mqd_t queue, const LOGGERTASKQ_MSG_T *
 {
     if(-1 == mq_send(queue, (const char*)logstruct, log_struct_size, prio))
     {
-        LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
+        LOG_STDOUT(ERROR "LOGGER:MQ_SEND:%s\n",strerror(errno));
     }
 }
 

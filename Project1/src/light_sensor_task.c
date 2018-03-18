@@ -36,11 +36,9 @@ volatile static DAY_STATE_T isDay;
 DAY_STATE_T getLightTask_state()
 {
     DAY_STATE_T state;
-    LOG_STDOUT(INFO "Waiting for Light lock\n");
     pthread_mutex_lock(&stateChangeLock);
     state = isDay;
     pthread_mutex_unlock(&stateChangeLock);
-    LOG_STDOUT(INFO "Waiting for Light lock\n");
     return state;
 }
 
@@ -54,19 +52,30 @@ static void timer_handler_getAndUpdateState(union sigval sig)
 {
     DAY_STATE_T state;
 
+    DEFINE_LOG_STRUCT(logtaskstruct,LT_MSG_LOG,LIGHT_TASK_ID);
+
     float lux = APDS9301_getLux();
     if(lux < 0) 
     {
-        LOG_STDOUT(ERROR "Lux is negative\n");
+        LOG_STDOUT(ERROR "Light sensor inactive\n");
+        POST_MESSAGE_LOGTASK(&logtaskstruct,ERROR "Light sensor inactive\n");
         return;
     }
     else 
     {
-        //LOG_STDOUT(INFO "Lux: %f\n",lux);
+        #ifdef VALUES
+        LOG_STDOUT(INFO "Lux: %.03f\n",lux);
+        #endif
+
+        #ifdef LOGVALUES
+        POST_MESSAGE_LOGTASK(&logtaskstruct,INFO "Lux: %.03f\n",lux);
+        #endif
     }
 
     (lux < LUX_THRESHOLD) ? (state = NIGHT) : (state = DAY);
+    #ifdef VALUES
     LOG_STDOUT(INFO "State: %s\n", ((state == DAY)?"DAY":"NIGHT"));
+    #endif
     
     pthread_mutex_lock(&stateChangeLock);
     isDay = state;
@@ -104,10 +113,16 @@ void light_task_processMsg()
     LIGHTTASKQ_MSG_T queueData = {0};
     DEFINE_MAINTASK_STRUCT(maintaskRsp,MT_MSG_STATUS_RSP,LIGHT_TASK_ID);
     DEFINE_LOG_STRUCT(logtaskstruct,LT_MSG_LOG,LIGHT_TASK_ID);
+    //struct timespec recv_timeout = {0};
     uint8_t continue_flag = 1;
+    /* Uncomment to check the keep alive feature. Only a cancellable function defined by POSIX can be used below as the we are using pthread_cancel */
+    //sleep(10);
     while(continue_flag)
     {
         memset(&queueData,0,sizeof(queueData));
+        //clock_gettime(CLOCK_REALTIME, &recv_timeout);
+        //recv_timeout.tv_sec += 3;
+        //ret = mq_timedreceive(lighttask_q,(char*)&(queueData),sizeof(queueData),&prio, &recv_timeout);
         ret = mq_receive(lighttask_q,(char*)&(queueData),sizeof(queueData),&prio);
         if(ERR == ret)
         {
@@ -141,6 +156,7 @@ void light_task_processMsg()
             case(LIGHT_MSG_TASK_EXIT):
                 continue_flag = 0;
                 LOG_STDOUT(INFO "Light Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
+                POST_MESSAGE_LOGTASK(&logtaskstruct,INFO "Light Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 break;
             default:
                 break;
@@ -152,14 +168,15 @@ void light_task_processMsg()
 int light_task_sensorUP(I2C_MASTER_HANDLE_T *i2c)
 {
     int ret = 0;
-    if(ret = I2Cmaster_Init(i2c) !=0)
+    ret = I2Cmaster_Init(i2c);
+    if(ret !=0)
     {
         printErrorCode(ret);
         LOG_STDOUT(ERROR "I2C Master init failed\n"); 
     }
 
     ret = APDS9301_poweron();
-    if(ret == 0) LOG_STDOUT(INFO "Sensor powered ON\n");
+    if(ret == 0) LOG_STDOUT(INFO "[OK] Sensor powered ON\n");
 
     ret = APDS9301_test();
     if(ret == 0) {LOG_STDOUT(INFO "[OK] Sensor Test\n");}
@@ -177,7 +194,7 @@ int light_task_sensorDOWN(I2C_MASTER_HANDLE_T *i2c)
     if(ret != 0)
     {
         printErrorCode(ret);
-        LOG_STDOUT(ERROR "I2C Master destroy failed\n"); 
+        LOG_STDOUT(WARNING "I2C Master destroy failed\n"); 
     }
 
     return ret;
@@ -199,38 +216,36 @@ void* light_task_callback(void *threadparam)
     if(ERR == ret)
     {
         LOG_STDOUT(ERROR "LIGHT TASK SENSOR INIT:%s\n",strerror(errno));
-        goto FAIL_EXIT;
-        //exit(ERR);
+        goto FAIL_EXIT_SENSOR;
     }
 
     
     LOG_STDOUT(INFO "[OK] LIGHT TASK INIT COMPLETED\n");
     pthread_barrier_wait(&tasks_barrier);
 
-    /* Registering a timer for 1 sec to update the state of the snesor value by getting the lux value from the sensor*/
+    /* Registering a timer for 2 sec to update the state of the snesor value by getting the lux value from the sensor*/
     timer_t timer_id;
-    if(ERR == register_and_start_timer(&timer_id, 2*MICROSEC, 1, timer_handler_getAndUpdateState, &timer_id))
+    if(ERR == register_and_start_timer(&timer_id, 2*MICROSEC, 0, timer_handler_getAndUpdateState, &timer_id))
     {
-        LOG_STDOUT(ERROR "Timer Error\n");
+        // LOG_STDOUT(ERROR "Timer Error\n");
         goto FAIL_EXIT;
-        //return ERR;
     }
 
     /* Process Log queue msg which executes untill the log_task_end flag is set to true*/
     light_task_processMsg();
 
-    stop_timer(timer_id);
-    delete_timer(timer_id);
-
-FAIL_EXIT:
-    mq_close(lighttask_q);
-    ret = light_task_sensorDOWN(&i2c);
+    ret = delete_timer(timer_id);
     if(ERR == ret)
     {
-        LOG_STDOUT(ERROR "LIGHT TASK SENSOR END:%s\n",strerror(errno));
-        exit(ERR);
+        LOG_STDOUT(ERROR "LIGHT TASK DELETE TIMER:%s\n",strerror(errno));
     }
 
+FAIL_EXIT:
+
+    light_task_sensorDOWN(&i2c);
+
+FAIL_EXIT_SENSOR:
+    mq_close(lighttask_q);
     LOG_STDOUT(INFO "Light task exit.\n");
-    return (void*)SUCCESS;
+    return SUCCESS;
 }

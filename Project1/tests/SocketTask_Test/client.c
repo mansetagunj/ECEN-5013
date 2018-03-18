@@ -104,7 +104,8 @@ int main()
         i++;
     }while(continue_flag);
 
-    req.request_id = CONN_CLOSE_REQ;
+    // req.request_id = CONN_CLOSE_REQ;
+    req.request_id = CONN_KILL_APP_REQ;
     nbytes = send(client_socket , (char*)&req , sizeof(req), 0 );
     if(nbytes < sizeof(req))
     {
@@ -131,10 +132,10 @@ void printResponse(REMOTE_RESPONSE_T rsp)
             LOG("degree C : %0.3f\n",rsp.data.floatingData);
             break;
         case(GET_TEMP_F):
-            LOG("degree K : %0.3f\n",rsp.data.floatingData);
+            LOG("degree F : %0.3f\n",rsp.data.floatingData);
             break;
         case(GET_TEMP_K):
-            LOG("degree F : %0.3f\n",rsp.data.floatingData);
+            LOG("degree K : %0.3f\n",rsp.data.floatingData);
             break;
         case(GET_LUX):
             LOG("LUX : %0.3f\n",rsp.data.floatingData);

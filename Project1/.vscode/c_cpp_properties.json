@@ -39,7 +39,8 @@
                 "${workspaceRoot}/include",
                 "/home/gunj/repos/mraa/api/mraa",
                 "/home/gunj/repos/mraa/api",
-                "${workspaceRoot}/include/BeagleBone"
+                "${workspaceRoot}/include/BeagleBone",
+                "${workspaceRoot}/include/cmocka"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

@@ -31,8 +31,8 @@ int register_timer(timer_t *timer_id, void (*timer_handler)(union sigval), void 
 
 int start_timer(timer_t timer_id , uint64_t time_usec, uint8_t oneshot)
 {
-	if(NULL == timer_id)
-		return -1;
+	// if(NULL == timer_id)
+	// 	return -1;
 		
 	struct itimerspec ts;
 	
@@ -56,8 +56,8 @@ int start_timer(timer_t timer_id , uint64_t time_usec, uint8_t oneshot)
 
 int stop_timer(timer_t timer_id)
 {
-	if(NULL == timer_id)
-		return -1;
+	// if(NULL == timer_id)
+	// 	return -1;
 		
 	struct itimerspec ts;
 	
@@ -74,8 +74,8 @@ int stop_timer(timer_t timer_id)
 
 int delete_timer(timer_t timer_id)
 {
-	if(NULL == timer_id)
-		return -1;
+	// if(NULL == timer_id)
+	// 	return -1;
 	
 	int ret = timer_delete(timer_id);
 

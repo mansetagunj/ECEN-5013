@@ -90,7 +90,7 @@ static inline void __POST_MESSAGE_TEMPERATURETASK(mqd_t queue, const TEMPERATURE
 {
     if(-1 == mq_send(queue, (const char*)p_tempstruct, temp_struct_size, prio))
     {
-        LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
+        LOG_STDOUT(ERROR "TEMP:MQ_SEND:%s\n",strerror(errno));
     }
 }
 

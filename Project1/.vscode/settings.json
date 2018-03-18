@@ -4,7 +4,9 @@
     "doxdocgen.generic.authorTag": "@author Gunj Manseta",
     "C_Cpp.autocomplete": "Default",
     "files.associations": {
-        "string.h": "c"
+        "string.h": "c",
+        "tmp102_sensor.h": "c",
+        "my_i2c.h": "c"
     },
     "extensions.autoUpdate": true,
     "extensions.ignoreRecommendations": false,

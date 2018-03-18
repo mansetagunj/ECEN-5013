@@ -68,7 +68,7 @@ static inline void __POST_MESSAGE_MAINTASK(mqd_t queue, const MAINTASKQ_MSG_T *m
 {
     if(-1 == mq_send(queue, (const char*)main_task_struct, maintask_struct_size, 20))
     {
-        LOG_STDOUT(ERROR "MQ_SEND:%s\n",strerror(errno));
+        LOG_STDOUT(ERROR "MAIN:MQ_SEND:%s\n",strerror(errno));
     }
 }
 
