@@ -16,6 +16,7 @@
 #include "main_task.h"
 #include "logger_task.h"
 #include "error_data.h"
+#include "readConfiguration.h"
 
 #define LOG_DIR     "./log/"
 #define __LOG_PATH(x) LOG_DIR ## x
@@ -143,8 +144,18 @@ void* logger_task_callback(void *threadparam)
 {
     LOG_STDOUT(INFO "LOGGER TASK STARTED\n");
 
-    //FILE * fp = logger_task_file_init((char*)threadparam);
-    FILE * fp = logger_task_file_init("project1.log");
+    char *filename = configdata_getLogpath();
+    FILE *fp;
+    if(filename)
+    {
+        fp = logger_task_file_init(filename);
+    }
+    else
+    {
+        LOG_STDOUT(WARNING "No filename found from config file\n");
+        fp = logger_task_file_init("project1.log");
+    }
+    
     if(NULL == fp)
     {
         LOG_STDOUT(ERROR "LOGGER TASK LOG FILE INIT FAIL\n");

@@ -21,6 +21,7 @@
 #include "my_signals.h"
 #include "posixTimer.h"
 #include "common_helper.h"
+#include "readConfiguration.h"
 
 
 #define MQ_MAINTASK_NAME "/maintask_queue"
@@ -221,6 +222,10 @@ int main_task_entry()
         return ret;
     }
 
+    ret = configdata_setup();
+    if(ret)
+        LOG_STDOUT(ERROR "Could not setup data from config file\n");
+
     /* Mutex init */
     pthread_mutex_init(&aliveState_lock, NULL);
 
@@ -296,6 +301,7 @@ int main_task_entry()
 
     pthread_mutex_destroy(&aliveState_lock);
     
+    configdata_flush();
 
     LOG_STDOUT(INFO "GOODBYE CRUEL WORLD!!!\n");
 
