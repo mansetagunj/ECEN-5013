@@ -105,7 +105,7 @@ static void testTMP102(void **state)
     int i = 0;
 
     printf("\n---------TEMPERATURE VALUES--------------\n");
-    while(i<2)
+    while(i<3)
     {
 		int ret = TMP102_getTemp_Celcius(&temperature);
         assert_int_equal(ret, 0);
@@ -139,7 +139,7 @@ static void testTMP102(void **state)
 
 int main()
 {
-    const struct CMUnitTest tests[2] = {	
+    const struct CMUnitTest tests[] = {	
 	
     cmocka_unit_test(testTMP102)
     

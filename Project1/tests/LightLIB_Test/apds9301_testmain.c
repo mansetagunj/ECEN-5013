@@ -122,7 +122,7 @@ void testAPDS9301(void **state)
 
 int main()
 {
-    const struct CMUnitTest tests[2] = {	
+    const struct CMUnitTest tests[] = {	
 	
     cmocka_unit_test(testAPDS9301)
     
