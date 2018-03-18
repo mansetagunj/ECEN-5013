@@ -28,9 +28,9 @@ typedef struct i2c_handle
 /**
  * @brief Get the MasterI2C handle object
  * 
- * @return I2C_MASTER_HANDLE_T 
+ * @return I2C_MASTER_HANDLE_T *
  */
-I2C_MASTER_HANDLE_T getMasterI2C_handle();
+I2C_MASTER_HANDLE_T* getMasterI2C_handle();
 
 /**
  * @brief Prints the error code string to stdout
