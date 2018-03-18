@@ -5,16 +5,14 @@
 {\ttfamily \#include $<$string.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}common\+\_\+helper.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
-Include dependency graph for main\+\_\+task.\+h\+:
-\nopagebreak
+Include dependency graph for main\+\_\+task.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{main__task_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -184,7 +182,7 @@ int
 242 
 243     \textcolor{keyword}{struct }sigaction sa;
 244     \textcolor{comment}{/*Registering the signal callback handler*/}
-245     register\_signalHandler(&sa,signal\_handler, REG\_SIG\_ALL);
+245     \hyperlink{my__signals_8c_ab23ded226351ef07fcd948a6d04a06e7}{register\_signalHandler}(&sa,signal\_handler, REG\_SIG\_ALL);
 246 
 247     \textcolor{comment}{/* Create all the child threads */}
 248     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < NUM\_CHILD\_THREADS; i++)

@@ -19,232 +19,232 @@
     <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
     <includes refid="readConfiguration_8h" local="yes">readConfiguration.h</includes>
     <incdepgraph>
-      <node id="799">
+      <node id="820">
         <label>sys/stat.h</label>
       </node>
-      <node id="803">
+      <node id="824">
         <label>main_task.h</label>
         <link refid="main__task_8h"/>
-        <childnode refid="800" relation="include">
+        <childnode refid="821" relation="include">
         </childnode>
-        <childnode refid="802" relation="include">
+        <childnode refid="823" relation="include">
         </childnode>
-        <childnode refid="801" relation="include">
+        <childnode refid="822" relation="include">
         </childnode>
-        <childnode refid="804" relation="include">
+        <childnode refid="825" relation="include">
         </childnode>
-        <childnode refid="812" relation="include">
+        <childnode refid="833" relation="include">
         </childnode>
       </node>
-      <node id="808">
+      <node id="829">
         <label>stdint.h</label>
       </node>
-      <node id="816">
+      <node id="837">
         <label>stdlib.h</label>
       </node>
-      <node id="822">
+      <node id="843">
         <label>temperature_sensor_task.h</label>
         <link refid="temperature__sensor__task_8h"/>
-        <childnode refid="816" relation="include">
+        <childnode refid="837" relation="include">
         </childnode>
-        <childnode refid="802" relation="include">
+        <childnode refid="823" relation="include">
         </childnode>
-        <childnode refid="801" relation="include">
+        <childnode refid="822" relation="include">
         </childnode>
-        <childnode refid="800" relation="include">
+        <childnode refid="821" relation="include">
         </childnode>
-        <childnode refid="804" relation="include">
+        <childnode refid="825" relation="include">
         </childnode>
-        <childnode refid="817" relation="include">
+        <childnode refid="838" relation="include">
         </childnode>
-        <childnode refid="812" relation="include">
+        <childnode refid="833" relation="include">
         </childnode>
-        <childnode refid="820" relation="include">
+        <childnode refid="841" relation="include">
         </childnode>
       </node>
-      <node id="817">
+      <node id="838">
         <label>my_time.h</label>
         <link refid="my__time_8h"/>
       </node>
-      <node id="815">
+      <node id="836">
         <label>logger_task.h</label>
         <link refid="logger__task_8h"/>
-        <childnode refid="816" relation="include">
+        <childnode refid="837" relation="include">
         </childnode>
-        <childnode refid="802" relation="include">
+        <childnode refid="823" relation="include">
         </childnode>
-        <childnode refid="801" relation="include">
+        <childnode refid="822" relation="include">
         </childnode>
-        <childnode refid="800" relation="include">
+        <childnode refid="821" relation="include">
         </childnode>
-        <childnode refid="804" relation="include">
+        <childnode refid="825" relation="include">
         </childnode>
-        <childnode refid="817" relation="include">
+        <childnode refid="838" relation="include">
         </childnode>
-        <childnode refid="812" relation="include">
+        <childnode refid="833" relation="include">
         </childnode>
       </node>
-      <node id="796">
+      <node id="817">
         <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
         <link refid="main_task.c"/>
-        <childnode refid="797" relation="include">
-        </childnode>
-        <childnode refid="798" relation="include">
-        </childnode>
-        <childnode refid="799" relation="include">
-        </childnode>
-        <childnode refid="800" relation="include">
-        </childnode>
-        <childnode refid="801" relation="include">
-        </childnode>
-        <childnode refid="802" relation="include">
-        </childnode>
-        <childnode refid="803" relation="include">
-        </childnode>
-        <childnode refid="812" relation="include">
-        </childnode>
-        <childnode refid="815" relation="include">
-        </childnode>
         <childnode refid="818" relation="include">
         </childnode>
         <childnode refid="819" relation="include">
+        </childnode>
+        <childnode refid="820" relation="include">
+        </childnode>
+        <childnode refid="821" relation="include">
         </childnode>
         <childnode refid="822" relation="include">
         </childnode>
         <childnode refid="823" relation="include">
         </childnode>
-        <childnode refid="805" relation="include">
-        </childnode>
-        <childnode refid="804" relation="include">
-        </childnode>
         <childnode refid="824" relation="include">
         </childnode>
+        <childnode refid="833" relation="include">
+        </childnode>
+        <childnode refid="836" relation="include">
+        </childnode>
+        <childnode refid="839" relation="include">
+        </childnode>
+        <childnode refid="840" relation="include">
+        </childnode>
+        <childnode refid="843" relation="include">
+        </childnode>
+        <childnode refid="844" relation="include">
+        </childnode>
+        <childnode refid="826" relation="include">
+        </childnode>
+        <childnode refid="825" relation="include">
+        </childnode>
+        <childnode refid="845" relation="include">
+        </childnode>
       </node>
-      <node id="802">
+      <node id="823">
         <label>errno.h</label>
       </node>
-      <node id="798">
+      <node id="819">
         <label>fcntl.h</label>
       </node>
-      <node id="800">
+      <node id="821">
         <label>mqueue.h</label>
       </node>
-      <node id="812">
+      <node id="833">
         <label>error_data.h</label>
         <link refid="error__data_8h"/>
-        <childnode refid="810" relation="include">
+        <childnode refid="831" relation="include">
         </childnode>
-        <childnode refid="813" relation="include">
+        <childnode refid="834" relation="include">
         </childnode>
-        <childnode refid="809" relation="include">
+        <childnode refid="830" relation="include">
         </childnode>
-        <childnode refid="814" relation="include">
+        <childnode refid="835" relation="include">
         </childnode>
       </node>
-      <node id="805">
+      <node id="826">
         <label>posixTimer.h</label>
         <link refid="posixTimer_8h"/>
-        <childnode refid="806" relation="include">
+        <childnode refid="827" relation="include">
         </childnode>
-        <childnode refid="807" relation="include">
+        <childnode refid="828" relation="include">
         </childnode>
-        <childnode refid="808" relation="include">
+        <childnode refid="829" relation="include">
         </childnode>
-        <childnode refid="809" relation="include">
+        <childnode refid="830" relation="include">
         </childnode>
-        <childnode refid="810" relation="include">
+        <childnode refid="831" relation="include">
         </childnode>
-        <childnode refid="811" relation="include">
+        <childnode refid="832" relation="include">
+        </childnode>
+      </node>
+      <node id="839">
+        <label>socket_task.h</label>
+        <link refid="socket__task_8h"/>
+        <childnode refid="832" relation="include">
         </childnode>
       </node>
       <node id="818">
-        <label>socket_task.h</label>
-        <link refid="socket__task_8h"/>
-        <childnode refid="811" relation="include">
-        </childnode>
-      </node>
-      <node id="797">
         <label>pthread.h</label>
       </node>
-      <node id="809">
+      <node id="830">
         <label>sys/types.h</label>
       </node>
-      <node id="801">
+      <node id="822">
         <label>string.h</label>
       </node>
-      <node id="804">
+      <node id="825">
         <label>common_helper.h</label>
         <link refid="common__helper_8h"/>
-        <childnode refid="800" relation="include">
+        <childnode refid="821" relation="include">
         </childnode>
-        <childnode refid="797" relation="include">
+        <childnode refid="818" relation="include">
         </childnode>
-        <childnode refid="805" relation="include">
+        <childnode refid="826" relation="include">
         </childnode>
       </node>
-      <node id="810">
+      <node id="831">
         <label>unistd.h</label>
       </node>
-      <node id="821">
+      <node id="842">
         <label>semaphore.h</label>
       </node>
-      <node id="811">
+      <node id="832">
         <label>signal.h</label>
       </node>
-      <node id="823">
+      <node id="844">
         <label>my_signals.h</label>
-        <link refid="my__signals_8h_source"/>
-        <childnode refid="809" relation="include">
+        <link refid="my__signals_8h"/>
+        <childnode refid="830" relation="include">
         </childnode>
-        <childnode refid="810" relation="include">
+        <childnode refid="831" relation="include">
         </childnode>
-        <childnode refid="811" relation="include">
+        <childnode refid="832" relation="include">
         </childnode>
-        <childnode refid="808" relation="include">
+        <childnode refid="829" relation="include">
         </childnode>
       </node>
-      <node id="824">
+      <node id="845">
         <label>readConfiguration.h</label>
         <link refid="readConfiguration_8h"/>
       </node>
-      <node id="806">
+      <node id="827">
         <label>time.h</label>
       </node>
-      <node id="819">
+      <node id="840">
         <label>light_sensor_task.h</label>
         <link refid="light__sensor__task_8h"/>
-        <childnode refid="816" relation="include">
+        <childnode refid="837" relation="include">
         </childnode>
-        <childnode refid="802" relation="include">
+        <childnode refid="823" relation="include">
         </childnode>
-        <childnode refid="801" relation="include">
-        </childnode>
-        <childnode refid="800" relation="include">
-        </childnode>
-        <childnode refid="804" relation="include">
-        </childnode>
-        <childnode refid="817" relation="include">
-        </childnode>
-        <childnode refid="812" relation="include">
-        </childnode>
-        <childnode refid="820" relation="include">
-        </childnode>
-      </node>
-      <node id="807">
-        <label>linux/types.h</label>
-      </node>
-      <node id="813">
-        <label>sys/syscall.h</label>
-      </node>
-      <node id="814">
-        <label>stdio.h</label>
-      </node>
-      <node id="820">
-        <label>sensor_common_object.h</label>
-        <link refid="sensor__common__object_8h"/>
-        <childnode refid="808" relation="include">
+        <childnode refid="822" relation="include">
         </childnode>
         <childnode refid="821" relation="include">
+        </childnode>
+        <childnode refid="825" relation="include">
+        </childnode>
+        <childnode refid="838" relation="include">
+        </childnode>
+        <childnode refid="833" relation="include">
+        </childnode>
+        <childnode refid="841" relation="include">
+        </childnode>
+      </node>
+      <node id="828">
+        <label>linux/types.h</label>
+      </node>
+      <node id="834">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="835">
+        <label>stdio.h</label>
+      </node>
+      <node id="841">
+        <label>sensor_common_object.h</label>
+        <link refid="sensor__common__object_8h"/>
+        <childnode refid="829" relation="include">
+        </childnode>
+        <childnode refid="842" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -492,7 +492,7 @@
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="socket__task_8h" kindref="compound">socket_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="light__sensor__task_8h" kindref="compound">light_sensor_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="temperature__sensor__task_8h" kindref="compound">temperature_sensor_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;my_signals.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__signals_8h" kindref="compound">my_signals.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="posixTimer_8h" kindref="compound">posixTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="readConfiguration_8h" kindref="compound">readConfiguration.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -703,7 +703,7 @@
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
 <codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sigaction<sp/>sa;</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*Registering<sp/>the<sp/>signal<sp/>callback<sp/>handler*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>register_signalHandler(&amp;sa,signal_handler,<sp/>REG_SIG_ALL);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="my__signals_8c_1ab23ded226351ef07fcd948a6d04a06e7" kindref="member">register_signalHandler</ref>(&amp;sa,signal_handler,<sp/>REG_SIG_ALL);</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"></highlight></codeline>
 <codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Create<sp/>all<sp/>the<sp/>child<sp/>threads<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NUM_CHILD_THREADS;<sp/>i++)</highlight></codeline>

@@ -13,6 +13,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>A<sp/>multithreaded<sp/>console<sp/>application<sp/>for<sp/>BeagleBone<sp/>black/green(Linux)<sp/>having<sp/>sensor<sp/>interface,<sp/>server,<sp/>and<sp/>logger</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Code<sp/>Documentation<sp/>can<sp/>be<sp/>found<sp/>at<sp/>-<sp/>[Project<sp/>Code<sp/>Documentation<sp/>webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html<sp/>&quot;Documentation<sp/>WebPage&quot;)<sp/>(Ctrl+click<sp/>for<sp/>new<sp/>tab)</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">The<sp/>project<sp/>includes<sp/>1<sp/>parent<sp/>thread<sp/>which<sp/>is<sp/>the<sp/>main<sp/>task.<sp/>The<sp/>main<sp/>task<sp/>spawns<sp/>4<sp/>child<sp/>threads</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">1.<sp/>Temperature<sp/><sp/>sensor<sp/>task<sp/>which<sp/>is<sp/>responsible<sp/>for<sp/>talking<sp/>with<sp/>the<sp/>TMP102<sp/>sensor.</highlight></codeline>

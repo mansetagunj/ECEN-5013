@@ -5,54 +5,54 @@
     <includes refid="my__signals_8h" local="yes">my_signals.h</includes>
     <includes refid="error__data_8h" local="yes">error_data.h</includes>
     <incdepgraph>
-      <node id="838">
+      <node id="859">
         <label>stdint.h</label>
       </node>
-      <node id="839">
+      <node id="860">
         <label>error_data.h</label>
         <link refid="error__data_8h"/>
-        <childnode refid="836" relation="include">
+        <childnode refid="857" relation="include">
         </childnode>
-        <childnode refid="840" relation="include">
+        <childnode refid="861" relation="include">
         </childnode>
-        <childnode refid="835" relation="include">
+        <childnode refid="856" relation="include">
         </childnode>
-        <childnode refid="841" relation="include">
+        <childnode refid="862" relation="include">
         </childnode>
       </node>
-      <node id="835">
+      <node id="856">
         <label>sys/types.h</label>
       </node>
-      <node id="836">
+      <node id="857">
         <label>unistd.h</label>
       </node>
-      <node id="837">
+      <node id="858">
         <label>signal.h</label>
       </node>
-      <node id="834">
+      <node id="855">
         <label>my_signals.h</label>
-        <link refid="my__signals_8h_source"/>
-        <childnode refid="835" relation="include">
+        <link refid="my__signals_8h"/>
+        <childnode refid="856" relation="include">
         </childnode>
-        <childnode refid="836" relation="include">
+        <childnode refid="857" relation="include">
         </childnode>
-        <childnode refid="837" relation="include">
+        <childnode refid="858" relation="include">
         </childnode>
-        <childnode refid="838" relation="include">
+        <childnode refid="859" relation="include">
         </childnode>
       </node>
-      <node id="840">
+      <node id="861">
         <label>sys/syscall.h</label>
       </node>
-      <node id="833">
+      <node id="854">
         <label>/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c</label>
         <link refid="my_signals.c"/>
-        <childnode refid="834" relation="include">
+        <childnode refid="855" relation="include">
         </childnode>
-        <childnode refid="839" relation="include">
+        <childnode refid="860" relation="include">
         </childnode>
       </node>
-      <node id="841">
+      <node id="862">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
@@ -103,59 +103,63 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c" line="4" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c" bodystart="4" bodyend="45"/>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c" line="12" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c" bodystart="12" bodyend="53"/>
+        <referencedby refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" compoundref="main__task_8c" startline="210" endline="309">main_task_entry</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-18 </para></simplesect>
+</para>    </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;my_signals.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>register_signalHandler(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sigaction<sp/>*sa,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*handler)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">),<sp/>REG_SIGNAL_FLAG_t<sp/>signalMask)</highlight></codeline>
-<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>sa-&gt;sa_handler<sp/>=<sp/>handler;</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>sa-&gt;sa_flags<sp/>=<sp/>SA_RESTART;</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>sigfillset(&amp;sa-&gt;sa_mask);</highlight></codeline>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__signals_8h" kindref="compound">my_signals.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret_error<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_USR1)<sp/>&amp;&amp;<sp/>sigaction(SIGUSR1,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGUSR1.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="12" refid="my__signals_8h_1ab23ded226351ef07fcd948a6d04a06e7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__signals_8c_1ab23ded226351ef07fcd948a6d04a06e7" kindref="member">register_signalHandler</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sigaction<sp/>*sa,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*handler)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">),<sp/>REG_SIGNAL_FLAG_t<sp/>signalMask)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>sa-&gt;sa_handler<sp/>=<sp/>handler;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>sa-&gt;sa_flags<sp/>=<sp/>SA_RESTART;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>sigfillset(&amp;sa-&gt;sa_mask);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_USR2)<sp/>&amp;&amp;<sp/>sigaction(SIGUSR2,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGUSR2.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_INT)<sp/>&amp;&amp;<sp/>sigaction(SIGINT,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGINT.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_TSTP)<sp/>&amp;&amp;<sp/>sigaction(SIGTERM,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGTERM.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_TSTP)<sp/>&amp;&amp;<sp/>sigaction(SIGTSTP,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGTSTOP.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret_error;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret_error<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_USR1)<sp/>&amp;&amp;<sp/>sigaction(SIGUSR1,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGUSR1.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_USR2)<sp/>&amp;&amp;<sp/>sigaction(SIGUSR2,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGUSR2.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_INT)<sp/>&amp;&amp;<sp/>sigaction(SIGINT,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGINT.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_TSTP)<sp/>&amp;&amp;<sp/>sigaction(SIGTERM,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGTERM.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((signalMask<sp/>&amp;<sp/>REG_SIG_TSTP)<sp/>&amp;&amp;<sp/>sigaction(SIGTSTP,<sp/>sa,<sp/>NULL)<sp/>==<sp/>-1)<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret_error++;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>handle<sp/>SIGTSTOP.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret_error;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c"/>
   </compounddef>

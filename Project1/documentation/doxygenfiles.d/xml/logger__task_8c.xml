@@ -13,151 +13,151 @@
     <includes refid="error__data_8h" local="yes">error_data.h</includes>
     <includes refid="readConfiguration_8h" local="yes">readConfiguration.h</includes>
     <incdepgraph>
-      <node id="757">
+      <node id="778">
         <label>sys/stat.h</label>
       </node>
-      <node id="761">
+      <node id="782">
         <label>main_task.h</label>
         <link refid="main__task_8h"/>
-        <childnode refid="758" relation="include">
+        <childnode refid="779" relation="include">
         </childnode>
-        <childnode refid="760" relation="include">
+        <childnode refid="781" relation="include">
         </childnode>
-        <childnode refid="759" relation="include">
+        <childnode refid="780" relation="include">
         </childnode>
-        <childnode refid="762" relation="include">
+        <childnode refid="783" relation="include">
         </childnode>
-        <childnode refid="770" relation="include">
+        <childnode refid="791" relation="include">
         </childnode>
       </node>
-      <node id="766">
+      <node id="787">
         <label>stdint.h</label>
       </node>
-      <node id="774">
+      <node id="795">
         <label>stdlib.h</label>
       </node>
-      <node id="775">
+      <node id="796">
         <label>my_time.h</label>
         <link refid="my__time_8h"/>
       </node>
-      <node id="773">
+      <node id="794">
         <label>logger_task.h</label>
         <link refid="logger__task_8h"/>
-        <childnode refid="774" relation="include">
+        <childnode refid="795" relation="include">
         </childnode>
-        <childnode refid="760" relation="include">
+        <childnode refid="781" relation="include">
         </childnode>
-        <childnode refid="759" relation="include">
+        <childnode refid="780" relation="include">
         </childnode>
-        <childnode refid="758" relation="include">
+        <childnode refid="779" relation="include">
         </childnode>
-        <childnode refid="762" relation="include">
+        <childnode refid="783" relation="include">
         </childnode>
-        <childnode refid="775" relation="include">
+        <childnode refid="796" relation="include">
         </childnode>
-        <childnode refid="770" relation="include">
+        <childnode refid="791" relation="include">
         </childnode>
       </node>
-      <node id="760">
+      <node id="781">
         <label>errno.h</label>
       </node>
-      <node id="756">
+      <node id="777">
         <label>fcntl.h</label>
       </node>
-      <node id="758">
+      <node id="779">
         <label>mqueue.h</label>
       </node>
-      <node id="770">
+      <node id="791">
         <label>error_data.h</label>
         <link refid="error__data_8h"/>
-        <childnode refid="768" relation="include">
+        <childnode refid="789" relation="include">
         </childnode>
-        <childnode refid="771" relation="include">
+        <childnode refid="792" relation="include">
         </childnode>
-        <childnode refid="767" relation="include">
+        <childnode refid="788" relation="include">
         </childnode>
-        <childnode refid="772" relation="include">
+        <childnode refid="793" relation="include">
         </childnode>
       </node>
-      <node id="763">
+      <node id="784">
         <label>posixTimer.h</label>
         <link refid="posixTimer_8h"/>
-        <childnode refid="764" relation="include">
+        <childnode refid="785" relation="include">
         </childnode>
-        <childnode refid="765" relation="include">
+        <childnode refid="786" relation="include">
         </childnode>
-        <childnode refid="766" relation="include">
+        <childnode refid="787" relation="include">
         </childnode>
-        <childnode refid="767" relation="include">
+        <childnode refid="788" relation="include">
         </childnode>
-        <childnode refid="768" relation="include">
+        <childnode refid="789" relation="include">
         </childnode>
-        <childnode refid="769" relation="include">
+        <childnode refid="790" relation="include">
         </childnode>
-      </node>
-      <node id="755">
-        <label>pthread.h</label>
-      </node>
-      <node id="767">
-        <label>sys/types.h</label>
-      </node>
-      <node id="759">
-        <label>string.h</label>
-      </node>
-      <node id="762">
-        <label>common_helper.h</label>
-        <link refid="common__helper_8h"/>
-        <childnode refid="758" relation="include">
-        </childnode>
-        <childnode refid="755" relation="include">
-        </childnode>
-        <childnode refid="763" relation="include">
-        </childnode>
-      </node>
-      <node id="768">
-        <label>unistd.h</label>
-      </node>
-      <node id="769">
-        <label>signal.h</label>
       </node>
       <node id="776">
-        <label>readConfiguration.h</label>
-        <link refid="readConfiguration_8h"/>
+        <label>pthread.h</label>
       </node>
-      <node id="764">
-        <label>time.h</label>
+      <node id="788">
+        <label>sys/types.h</label>
       </node>
-      <node id="765">
-        <label>linux/types.h</label>
+      <node id="780">
+        <label>string.h</label>
       </node>
-      <node id="771">
-        <label>sys/syscall.h</label>
-      </node>
-      <node id="754">
-        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
-        <link refid="logger_task.c"/>
-        <childnode refid="755" relation="include">
-        </childnode>
-        <childnode refid="756" relation="include">
-        </childnode>
-        <childnode refid="757" relation="include">
-        </childnode>
-        <childnode refid="758" relation="include">
-        </childnode>
-        <childnode refid="759" relation="include">
-        </childnode>
-        <childnode refid="760" relation="include">
-        </childnode>
-        <childnode refid="761" relation="include">
-        </childnode>
-        <childnode refid="773" relation="include">
-        </childnode>
-        <childnode refid="770" relation="include">
+      <node id="783">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="779" relation="include">
         </childnode>
         <childnode refid="776" relation="include">
         </childnode>
+        <childnode refid="784" relation="include">
+        </childnode>
       </node>
-      <node id="772">
+      <node id="789">
+        <label>unistd.h</label>
+      </node>
+      <node id="790">
+        <label>signal.h</label>
+      </node>
+      <node id="797">
+        <label>readConfiguration.h</label>
+        <link refid="readConfiguration_8h"/>
+      </node>
+      <node id="785">
+        <label>time.h</label>
+      </node>
+      <node id="786">
+        <label>linux/types.h</label>
+      </node>
+      <node id="792">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="775">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger_task.c"/>
+        <childnode refid="776" relation="include">
+        </childnode>
+        <childnode refid="777" relation="include">
+        </childnode>
+        <childnode refid="778" relation="include">
+        </childnode>
+        <childnode refid="779" relation="include">
+        </childnode>
+        <childnode refid="780" relation="include">
+        </childnode>
+        <childnode refid="781" relation="include">
+        </childnode>
+        <childnode refid="782" relation="include">
+        </childnode>
+        <childnode refid="794" relation="include">
+        </childnode>
+        <childnode refid="791" relation="include">
+        </childnode>
+        <childnode refid="797" relation="include">
+        </childnode>
+      </node>
+      <node id="793">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
