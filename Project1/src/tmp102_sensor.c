@@ -411,14 +411,10 @@ uint16_t* TMP102_memDump()
     memset(memdump, 0 , 4);
 
     for(uint8_t i = 0 ; i < 0x4; i++)
-    {       
-        //uint8_t buff[2] = {0}; 
-
+    {      
         int ret = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, i , (uint8_t*)(memdump+i), sizeof(uint16_t));
         memdump[i] = (memdump[i]<<8) | (memdump[i]>>8);
-
-        //int ret = I2Cmaster_read_bytes(TMP102_SLAVE_ADDR, i , buff, sizeof(uint16_t));
-        //memdump[i] = ((uint16_t)buff[0])<<8 | buff[1];
+        
         //float temp = (float)(memdump[i]>>4) * 0.0625;
         //printf(" - F:%.02f - ",temp);
     }
