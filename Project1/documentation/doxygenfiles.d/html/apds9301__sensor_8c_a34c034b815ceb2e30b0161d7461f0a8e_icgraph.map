@@ -1,0 +1,6 @@
+<map id="APDS9301_readCh1" name="APDS9301_readCh1">
+<area shape="rect" id="node2" href="$apds9301__sensor_8h.html#a55e164e7dd0586de71a8dd5b25ae9ef3" title="APDS9301_getLux" alt="" coords="196,5,329,32"/>
+<area shape="rect" id="node3" href="$light__sensor__task_8h.html#ac88a5567bdeac532053519330e94c6ab" title="Get the LightTask lux object. MT&#45;safe as it calls a MT&#45;safe function within. " alt="" coords="377,5,499,32"/>
+<area shape="rect" id="node4" href="$socket__task_8c.html#adb9b673e72054ada7a350a7bb51dff05" title="processRemoteRequest" alt="" coords="547,5,709,32"/>
+<area shape="rect" id="node5" href="$socket__task_8h.html#a11efeb37f1a462e32c153a30ba11f53a" title="socket_task_callback" alt="" coords="757,5,905,32"/>
+</map>

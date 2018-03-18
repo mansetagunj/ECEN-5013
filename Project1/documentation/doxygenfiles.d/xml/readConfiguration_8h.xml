@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="readConfiguration_8h" kind="file" language="C++">
+    <compoundname>readConfiguration.h</compoundname>
+    <includedby refid="logger__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="readConfiguration_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c</includedby>
+    <invincdepgraph>
+      <node id="636">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="637">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c</label>
+        <link refid="readConfiguration_8c"/>
+      </node>
+      <node id="634">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h</label>
+        <link refid="readConfiguration.h"/>
+        <childnode refid="635" relation="include">
+        </childnode>
+        <childnode refid="636" relation="include">
+        </childnode>
+        <childnode refid="637" relation="include">
+        </childnode>
+      </node>
+      <node id="635">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger__task_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="readConfiguration_8h_1a6ec4251859d1107c4a9f457ff5ead99c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* configdata_getLogpath</definition>
+        <argsstring>()</argsstring>
+        <name>configdata_getLogpath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>char* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h" line="17" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c" bodystart="30" bodyend="33"/>
+        <referencedby refid="logger__task_8h_1a7322e57eb5c8763112ad4d4a946601bf" compoundref="logger__task_8c" startline="143" endline="190">logger_task_callback</referencedby>
+        <referencedby refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" compoundref="readConfiguration_8c" startline="66" endline="73">configdata_flush</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="readConfiguration_8h_1a622fe97941be32a0343567a4cfbd24e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t configdata_getSetupTime</definition>
+        <argsstring>()</argsstring>
+        <name>configdata_getSetupTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint32_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h" line="24" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c" bodystart="35" bodyend="38"/>
+        <referencedby refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" compoundref="readConfiguration_8c" startline="66" endline="73">configdata_flush</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="readConfiguration_8h_1a3936001fcb10cb50f534070c1e0d3058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t configdata_getAliveTimeout</definition>
+        <argsstring>()</argsstring>
+        <name>configdata_getAliveTimeout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint32_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h" line="31" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c" bodystart="39" bodyend="42"/>
+        <referencedby refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" compoundref="readConfiguration_8c" startline="66" endline="73">configdata_flush</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="readConfiguration_8h_1af04c65a7de574da1abe2b9bd0f403c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int configdata_setup</definition>
+        <argsstring>()</argsstring>
+        <name>configdata_setup</name>
+        <briefdescription>
+<para>Should be called in the main task at the beginning. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h" line="38" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c" bodystart="44" bodyend="64"/>
+        <referencedby refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" compoundref="main__task_8c" startline="210" endline="309">main_task_entry</referencedby>
+        <referencedby refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" compoundref="readConfiguration_8c" startline="66" endline="73">configdata_flush</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void configdata_flush</definition>
+        <argsstring>()</argsstring>
+        <name>configdata_flush</name>
+        <briefdescription>
+<para>Should be called at teh end of main task. If not called, memory leak will occur. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h" line="44" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/readConfiguration.c" bodystart="66" bodyend="73"/>
+        <referencedby refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" compoundref="main__task_8c" startline="210" endline="309">main_task_entry</referencedby>
+        <referencedby refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" compoundref="readConfiguration_8c" startline="66" endline="73">configdata_flush</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-17 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>READCONIFG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>READCONIFG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="readConfiguration_8h_1a6ec4251859d1107c4a9f457ff5ead99c" kindref="member">configdata_getLogpath</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">uint32_t<sp/><ref refid="readConfiguration_8h_1a622fe97941be32a0343567a4cfbd24e7" kindref="member">configdata_getSetupTime</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">uint32_t<sp/><ref refid="readConfiguration_8h_1a3936001fcb10cb50f534070c1e0d3058" kindref="member">configdata_getAliveTimeout</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="readConfiguration_8h_1af04c65a7de574da1abe2b9bd0f403c64" kindref="member">configdata_setup</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" kindref="member">configdata_flush</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/readConfiguration.h"/>
+  </compounddef>
+</doxygen>

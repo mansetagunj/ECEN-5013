@@ -1,0 +1,270 @@
+\hypertarget{light__sensor__task_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/light\+\_\+sensor\+\_\+task.c File Reference}
+\label{light__sensor__task_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/light\+\_\+sensor\+\_\+task.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/light\+\_\+sensor\+\_\+task.\+c}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+{\ttfamily \#include $<$mqueue.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}main\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}logger\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}light\+\_\+sensor\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}apds9301\+\_\+sensor.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}my\+\_\+i2c.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}common\+\_\+helper.\+h\char`\"{}}\\*
+Include dependency graph for light\+\_\+sensor\+\_\+task.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{light__sensor__task_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries M\+Q\+\_\+\+L\+I\+G\+H\+T\+T\+A\+S\+K\+\_\+\+N\+A\+ME}~\char`\"{}/lighttask\+\_\+queue\char`\"{}\hypertarget{light__sensor__task_8c_ae2249f66e4862406c8764ed4cd9363bc}{}\label{light__sensor__task_8c_ae2249f66e4862406c8764ed4cd9363bc}
+
+\item 
+\#define {\bfseries L\+U\+X\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}~(50)\hypertarget{light__sensor__task_8c_aa9e233b2be76e595f18840667556a4e4}{}\label{light__sensor__task_8c_aa9e233b2be76e595f18840667556a4e4}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+D\+A\+Y\+\_\+\+S\+T\+A\+T\+E\+\_\+T \hyperlink{light__sensor__task_8c_a2fb8d8bd6f3ac82658743d379b205a51}{get\+Light\+Task\+\_\+state} ()
+\begin{DoxyCompactList}\small\item\em Get the Light\+Task state object M\+T-\/safe. \end{DoxyCompactList}\item 
+float \hyperlink{light__sensor__task_8c_ac88a5567bdeac532053519330e94c6ab}{get\+Light\+Task\+\_\+lux} ()
+\begin{DoxyCompactList}\small\item\em Get the Light\+Task lux object. M\+T-\/safe as it calls a M\+T-\/safe function within. \end{DoxyCompactList}\item 
+mqd\+\_\+t \hyperlink{light__sensor__task_8c_ace4b0c78a43f482e74bc1d7a717c753c}{get\+Handle\+\_\+\+Light\+Task\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Get the Handle Light\+Task\+Queue object. \end{DoxyCompactList}\item 
+int \hyperlink{light__sensor__task_8c_abb5f74ca3376b1b610b7dac47ecae8d8}{light\+\_\+task\+\_\+queue\+\_\+init} ()
+\item 
+void {\bfseries light\+\_\+task\+\_\+process\+Msg} ()\hypertarget{light__sensor__task_8c_ae16f9a1e9ceb36148bf684f96084c443}{}\label{light__sensor__task_8c_ae16f9a1e9ceb36148bf684f96084c443}
+
+\item 
+int {\bfseries light\+\_\+task\+\_\+sensor\+UP} (\hyperlink{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$i2c)\hypertarget{light__sensor__task_8c_aba967e916dcf121140bbd500e16d008e}{}\label{light__sensor__task_8c_aba967e916dcf121140bbd500e16d008e}
+
+\item 
+int {\bfseries light\+\_\+task\+\_\+sensor\+D\+O\+WN} (\hyperlink{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$i2c)\hypertarget{light__sensor__task_8c_acaf5a7caea21e526ecb6f3d9eaae9caa}{}\label{light__sensor__task_8c_acaf5a7caea21e526ecb6f3d9eaae9caa}
+
+\item 
+void $\ast$ \hyperlink{light__sensor__task_8c_a638f4ba787ad818d90477af9e572771c}{light\+\_\+task\+\_\+callback} (void $\ast$threadparam)
+\begin{DoxyCompactList}\small\item\em Entry point of the light task thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+mutex\+\_\+t {\bfseries state\+Change\+Lock}\hypertarget{light__sensor__task_8c_a6339de82665875d7612427ea12f68733}{}\label{light__sensor__task_8c_a6339de82665875d7612427ea12f68733}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/11 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}!get\+Handle\+\_\+\+Light\+Task\+Queue@{get\+Handle\+\_\+\+Light\+Task\+Queue}}
+\index{get\+Handle\+\_\+\+Light\+Task\+Queue@{get\+Handle\+\_\+\+Light\+Task\+Queue}!light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{get\+Handle\+\_\+\+Light\+Task\+Queue()}{getHandle_LightTaskQueue()}}]{\setlength{\rightskip}{0pt plus 5cm}mqd\+\_\+t get\+Handle\+\_\+\+Light\+Task\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{light__sensor__task_8c_ace4b0c78a43f482e74bc1d7a717c753c}{}\label{light__sensor__task_8c_ace4b0c78a43f482e74bc1d7a717c753c}
+
+
+Get the Handle Light\+Task\+Queue object. 
+
+\begin{DoxyReturn}{Returns}
+mqd\+\_\+t 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+86 \{
+87     \textcolor{keywordflow}{return} lighttask\_q;
+88 \}
+\end{DoxyCode}
+\index{light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}!get\+Light\+Task\+\_\+lux@{get\+Light\+Task\+\_\+lux}}
+\index{get\+Light\+Task\+\_\+lux@{get\+Light\+Task\+\_\+lux}!light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{get\+Light\+Task\+\_\+lux()}{getLightTask_lux()}}]{\setlength{\rightskip}{0pt plus 5cm}float get\+Light\+Task\+\_\+lux (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{light__sensor__task_8c_ac88a5567bdeac532053519330e94c6ab}{}\label{light__sensor__task_8c_ac88a5567bdeac532053519330e94c6ab}
+
+
+Get the Light\+Task lux object. M\+T-\/safe as it calls a M\+T-\/safe function within. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+46 \{
+47     \textcolor{keywordtype}{float} lux = \hyperlink{apds9301__sensor_8c_a55e164e7dd0586de71a8dd5b25ae9ef3}{APDS9301\_getLux}();
+48     \textcolor{keywordflow}{return} lux;
+49 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{light__sensor__task_8c_ac88a5567bdeac532053519330e94c6ab_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}!get\+Light\+Task\+\_\+state@{get\+Light\+Task\+\_\+state}}
+\index{get\+Light\+Task\+\_\+state@{get\+Light\+Task\+\_\+state}!light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{get\+Light\+Task\+\_\+state()}{getLightTask_state()}}]{\setlength{\rightskip}{0pt plus 5cm}D\+A\+Y\+\_\+\+S\+T\+A\+T\+E\+\_\+T get\+Light\+Task\+\_\+state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{light__sensor__task_8c_a2fb8d8bd6f3ac82658743d379b205a51}{}\label{light__sensor__task_8c_a2fb8d8bd6f3ac82658743d379b205a51}
+
+
+Get the Light\+Task state object M\+T-\/safe. 
+
+\begin{DoxyReturn}{Returns}
+D\+A\+Y\+\_\+\+S\+T\+A\+T\+E\+\_\+T 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+37 \{
+38     DAY\_STATE\_T state;
+39     pthread\_mutex\_lock(&stateChangeLock);
+40     state = isDay;
+41     pthread\_mutex\_unlock(&stateChangeLock);
+42     \textcolor{keywordflow}{return} state;
+43 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{light__sensor__task_8c_a2fb8d8bd6f3ac82658743d379b205a51_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}!light\+\_\+task\+\_\+callback@{light\+\_\+task\+\_\+callback}}
+\index{light\+\_\+task\+\_\+callback@{light\+\_\+task\+\_\+callback}!light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{light\+\_\+task\+\_\+callback(void $\ast$threadparam)}{light_task_callback(void *threadparam)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ light\+\_\+task\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{threadparam}
+\end{DoxyParamCaption}
+)}\hypertarget{light__sensor__task_8c_a638f4ba787ad818d90477af9e572771c}{}\label{light__sensor__task_8c_a638f4ba787ad818d90477af9e572771c}
+
+
+Entry point of the light task thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em threadparam} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+204 \{
+205     LOG\_STDOUT(INFO \textcolor{stringliteral}{"LIGHT TASK STARTED\(\backslash\)n"});
+206 
+207     \textcolor{keywordtype}{int} ret = \hyperlink{light__sensor__task_8c_abb5f74ca3376b1b610b7dac47ecae8d8}{light\_task\_queue\_init}();
+208     \textcolor{keywordflow}{if}(ERR == ret)
+209     \{
+210         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"LIGHT TASK QUEUE INIT:%s\(\backslash\)n"},strerror(errno));
+211         exit(ERR);
+212     \}
+213 
+214     \hyperlink{structi2c__handle}{I2C\_MASTER\_HANDLE\_T} i2c;
+215     ret = light\_task\_sensorUP(&i2c);
+216     \textcolor{keywordflow}{if}(ERR == ret)
+217     \{
+218         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"LIGHT TASK SENSOR INIT:%s\(\backslash\)n"},strerror(errno));
+219         \textcolor{keywordflow}{goto} FAIL\_EXIT\_SENSOR;
+220     \}
+221 
+222     
+223     LOG\_STDOUT(INFO \textcolor{stringliteral}{"[OK] LIGHT TASK INIT COMPLETED\(\backslash\)n"});
+224     pthread\_barrier\_wait(&tasks\_barrier);
+225 
+226     \textcolor{comment}{/* Registering a timer for 2 sec to update the state of the snesor value by getting the lux value from
+       the sensor*/}
+227     timer\_t timer\_id;
+228     \textcolor{keywordflow}{if}(ERR == \hyperlink{common__helper_8c_a23124253b968391b9777fc3b8a0cc5ec}{register\_and\_start\_timer}(&timer\_id, 2*MICROSEC, 0, 
+      timer\_handler\_getAndUpdateState, &timer\_id))
+229     \{
+230         \textcolor{comment}{// LOG\_STDOUT(ERROR "Timer Error\(\backslash\)n");}
+231         \textcolor{keywordflow}{goto} FAIL\_EXIT;
+232     \}
+233 
+234     \textcolor{comment}{/* Process Log queue msg which executes untill the log\_task\_end flag is set to true*/}
+235     light\_task\_processMsg();
+236 
+237     ret = \hyperlink{posixTimer_8c_a91f15230e46caba2a2132b04e9c73e47}{delete\_timer}(timer\_id);
+238     \textcolor{keywordflow}{if}(ERR == ret)
+239     \{
+240         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"LIGHT TASK DELETE TIMER:%s\(\backslash\)n"},strerror(errno));
+241     \}
+242 
+243 FAIL\_EXIT:
+244 
+245     light\_task\_sensorDOWN(&i2c);
+246 
+247 FAIL\_EXIT\_SENSOR:
+248     mq\_close(lighttask\_q);
+249     LOG\_STDOUT(INFO \textcolor{stringliteral}{"Light task exit.\(\backslash\)n"});
+250     \textcolor{keywordflow}{return} SUCCESS;
+251 \}\end{DoxyCode}
+\index{light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}!light\+\_\+task\+\_\+queue\+\_\+init@{light\+\_\+task\+\_\+queue\+\_\+init}}
+\index{light\+\_\+task\+\_\+queue\+\_\+init@{light\+\_\+task\+\_\+queue\+\_\+init}!light\+\_\+sensor\+\_\+task.\+c@{light\+\_\+sensor\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{light\+\_\+task\+\_\+queue\+\_\+init()}{light_task_queue_init()}}]{\setlength{\rightskip}{0pt plus 5cm}int light\+\_\+task\+\_\+queue\+\_\+init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{light__sensor__task_8c_abb5f74ca3376b1b610b7dac47ecae8d8}{}\label{light__sensor__task_8c_abb5f74ca3376b1b610b7dac47ecae8d8}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+96 \{
+97     \textcolor{keyword}{struct }mq\_attr lighttaskQ\_attr = \{
+98         .mq\_msgsize = \textcolor{keyword}{sizeof}(\hyperlink{structLIGHTTASKQ__MSG__T}{LIGHTTASKQ\_MSG\_T}),
+99         .mq\_maxmsg = 128,
+100         .mq\_flags = 0,
+101         .mq\_curmsgs = 0
+102     \};
+103 
+104     mq\_unlink(MQ\_LIGHTTASK\_NAME);
+105     lighttask\_q = mq\_open(MQ\_LIGHTTASK\_NAME, O\_CREAT | O\_RDWR, 0666, &lighttaskQ\_attr);
+106 
+107     \textcolor{keywordflow}{return} lighttask\_q;;
+108 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{light__sensor__task_8c_abb5f74ca3376b1b610b7dac47ecae8d8_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,73 @@
+\hypertarget{my__time_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/my\+\_\+time.h File Reference}
+\label{my__time_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/my\+\_\+time.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/my\+\_\+time.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__time_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{my__time_8h_a3385e59201decd0fae390437721a7d7e}{get\+\_\+time\+\_\+string} (char $\ast$time\+String, int len)
+\begin{DoxyCompactList}\small\item\em Get the time string object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/18 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{my\+\_\+time.\+h@{my\+\_\+time.\+h}!get\+\_\+time\+\_\+string@{get\+\_\+time\+\_\+string}}
+\index{get\+\_\+time\+\_\+string@{get\+\_\+time\+\_\+string}!my\+\_\+time.\+h@{my\+\_\+time.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+time\+\_\+string(char $\ast$time\+String, int len)}{get_time_string(char *timeString, int len)}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+time\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{time\+String, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}\hypertarget{my__time_8h_a3385e59201decd0fae390437721a7d7e}{}\label{my__time_8h_a3385e59201decd0fae390437721a7d7e}
+
+
+Get the time string object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+String} & \\
+\hline
+{\em len} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+18 \{
+19     \textcolor{keyword}{struct }timeval tv;
+20     \textcolor{comment}{//struct tm* ptm;}
+21     \textcolor{keywordtype}{char} time\_string[20] = \{0\};
+22 
+23     \textcolor{comment}{/* Obtain the time of day using the system call */}
+24     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} ret = GET\_TIMEOFDAY(&tv,NULL);
+25     \textcolor{keywordflow}{if}(ret != 0)
+26     \{
+27         memset(timeString,0,len);
+28         \textcolor{keywordflow}{return} ERR;
+29     \}
+30     snprintf(time\_string,\textcolor{keyword}{sizeof}(time\_string),\textcolor{stringliteral}{"%ld.%ld"},tv.tv\_sec,tv.tv\_usec);
+31     \textcolor{comment}{//ptm = localtime (&tv.tv\_sec);}
+32     \textcolor{comment}{/* Format the date and time. */}
+33     \textcolor{comment}{//strftime (time\_string, sizeof (time\_string), "%Y-%m-%d %H:%M:%S", ptm);}
+34     \textcolor{comment}{//strftime (time\_string, sizeof (time\_string), "%X", ptm);}
+35     memcpy(timeString,time\_string, len);
+36     
+37     \textcolor{keywordflow}{return} SUCCESS;
+38 \}
+\end{DoxyCode}

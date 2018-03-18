@@ -1,0 +1,814 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="tmp102__sensor_8h" kind="file" language="C++">
+    <compoundname>tmp102_sensor.h</compoundname>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <includedby refid="tmp102__sensor_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c</includedby>
+    <includedby refid="tmp102__testmain_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/tests/TemperatureLIB_Test/tmp102_testmain.c</includedby>
+    <invincdepgraph>
+      <node id="480">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="479">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h</label>
+        <link refid="tmp102_sensor.h"/>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+      </node>
+      <node id="481">
+        <label>/home/gunj/repos/ECEN-5013/Project1/tests/TemperatureLIB_Test/tmp102_testmain.c</label>
+        <link refid="tmp102__testmain_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTMP102__CONFIG__REG__SETTINGS__T" prot="public">TMP102_CONFIG_REG_SETTINGS_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tmp102__sensor_8h_1a5092a6804ba3b3746307a370defbd886" prot="public" static="no">
+        <name>TMP102_SLAVE_ADDR</name>
+        <initializer>(0x48)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="12" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1aea6533288f31ec0c0315dd54f929fee5" prot="public" static="no">
+        <name>TMP102_REG_TEMPERATURE</name>
+        <initializer>(0x00)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="16" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1ad0625a9e3e89c267c5060a3c01f34011" prot="public" static="no">
+        <name>TMP102_REG_CONFIGURATION</name>
+        <initializer>(0x01)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="17" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a26f5d3c790581774f55998360b248769" prot="public" static="no">
+        <name>TMP102_REG_TLOW</name>
+        <initializer>(0x02)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="18" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a2705c0ccf3404fffcf0f3566914f98ba" prot="public" static="no">
+        <name>TMP102_REG_THIGH</name>
+        <initializer>(0x03)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="19" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a88a716e4fccaa747f3ff9c2ff98b3eec" prot="public" static="no">
+        <name>TMP102_CONFIG_SD</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="23" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1abf3813bf9769e2d22bdc37e5e0e7b2f9" prot="public" static="no">
+        <name>TMP102_CONFIG_TM</name>
+        <initializer>(1&lt;&lt;1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="24" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a008cb8f9704db90f09d4e4b2dd8c040b" prot="public" static="no">
+        <name>TMP102_CONFIG_POL</name>
+        <initializer>(1&lt;&lt;2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="25" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a5bba383a7572ce8264417e7f6426ce88" prot="public" static="no">
+        <name>TMP102_CONFIG_EM</name>
+        <initializer>(1&lt;&lt;12)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="26" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a6daed77089fc130171b75fb77dfb3661" prot="public" static="no">
+        <name>TMP102_CONFIG_AL</name>
+        <initializer>(1&lt;&lt;13)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="27" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a54602466d5eaacf584b283c626c06eb9" prot="public" static="no">
+        <name>TMP102_CONFIG_CR</name>
+        <param><defname>x</defname></param>
+        <initializer>(x&lt;&lt;14)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="28" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a87bc9726a0037e6f8a3baf036a50cc34" prot="public" static="no">
+        <name>TMP102_CONFIG_FAULTBITS</name>
+        <initializer>(3&lt;&lt;3)              /*generates alert after 4 consecutive faults*/</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="30" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1aff0b28b78374e0658675e4d38ef62d2e" prot="public" static="no">
+        <name>TMP102_CONFIG_ONESHOT_CR</name>
+        <initializer>(1&lt;7)              /*saves power between conversions when 1*/</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="31" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1ae9063947dd29fb325ca720853d6a7265" prot="public" static="no">
+        <name>TMP102_CONFIG_DEFAULT_ASSIGN</name>
+        <initializer>{\
+    .SD_MODE = 0,\
+    .TM_MODE = 0,\
+    .POL     = 0,\
+    .OS      = 0,\
+    .EM_MODE = 0,\
+    .CR      = 2\
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="64" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1ab79ca2cd8f6ac2c6edb369185a4ec9e2" prot="public" static="no">
+        <name>TMP102_getTemp_Celcius</name>
+        <param><defname>p_temp</defname></param>
+        <initializer><ref refid="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" kindref="member">TMP102_getTemp</ref>(p_temp, CELCIUS)</initializer>
+        <briefdescription>
+<para>Abstracted macros for different units. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="96" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a164eefae884728c9725a07253de91b34" prot="public" static="no">
+        <name>TMP102_getTemp_Kelvin</name>
+        <param><defname>p_temp</defname></param>
+        <initializer><ref refid="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" kindref="member">TMP102_getTemp</ref>(p_temp, KELVIN)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="97" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tmp102__sensor_8h_1a614c139921346bfb450e1e51c5239e75" prot="public" static="no">
+        <name>TMP102_getTemp_Fahren</name>
+        <param><defname>p_temp</defname></param>
+        <initializer><ref refid="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" kindref="member">TMP102_getTemp</ref>(p_temp, FAHREN)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="98" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26a" prot="public" static="no">
+        <name>temperature_unit</name>
+        <enumvalue id="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26aa6600ab5b3b178055238cfb794ca39499" prot="public">
+          <name>CELCIUS</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26aa0024f078d68f31a6ff79a0fb50298c99" prot="public">
+          <name>FAHREN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26aa1ee6e694f8ea36c8ed7c0e5c76439b50" prot="public">
+          <name>KELVIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="34" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="33" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tmp102__sensor_8h_1a2ffc14fbf10761dbe31056dc66d1986e" prot="public" static="no">
+        <type>enum temperature_unit</type>
+        <definition>typedef enum temperature_unit TEMPERATURE_UNIT_T</definition>
+        <argsstring></argsstring>
+        <name>TEMPERATURE_UNIT_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="39" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="tmp102__sensor_8h_1ae8c25eda33c17bf746db7b91fe54c85c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structTMP102__CONFIG__REG__SETTINGS__T" kindref="compound">TMP102_CONFIG_REG_SETTINGS_T</ref></type>
+        <definition>const TMP102_CONFIG_REG_SETTINGS_T TMP102_CONFIG_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>TMP102_CONFIG_DEFAULT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>temp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>unit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="74" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tmp102__sensor_8h_1ae5d236342ee1df3c285e70ec22d9a48e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode</definition>
+        <argsstring>(TMP102_CONFIG_REG_SETTINGS_T mode)</argsstring>
+        <name>TMP102_setMode</name>
+        <param>
+          <type><ref refid="structTMP102__CONFIG__REG__SETTINGS__T" kindref="compound">TMP102_CONFIG_REG_SETTINGS_T</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="76" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="36" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setmode_allDefault</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setmode_allDefault</name>
+        <briefdescription>
+<para>Brings back to default. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="83" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="23" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a1ea9cb5a6a2e798b33564f9142d7afa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t *</type>
+        <definition>uint16_t* TMP102_memDump</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_memDump</name>
+        <briefdescription>
+<para>Gives a memdump of 4 len. <bold>IMP</bold> must free the address using return pointer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint8_t* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="90" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="405" bodyend="423"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_getTemp</definition>
+        <argsstring>(float *temp, TEMPERATURE_UNIT_T unit)</argsstring>
+        <name>TMP102_getTemp</name>
+        <param>
+          <type>float *</type>
+          <declname>temp</declname>
+        </param>
+        <param>
+          <type>TEMPERATURE_UNIT_T</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+<para>Gets the temperature value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>temp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>unit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="108" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="374" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a7d4d57387ef6a5db5bfc8d14a94d9ee4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_SD_PowerSaving</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_SD_PowerSaving</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="115" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="43" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a4309a30e9d006753c2cdd6f6c9af2650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_SD_Continuous_default</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_SD_Continuous_default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="122" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="59" bodyend="73"/>
+        <referencedby refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" compoundref="tmp102__sensor_8c" startline="23" endline="35">TMP102_setmode_allDefault</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a81c75dba63b6c0727ab602ea631b3a22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_TM_ComparatorMode_default</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_TM_ComparatorMode_default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="129" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="75" bodyend="90"/>
+        <referencedby refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" compoundref="tmp102__sensor_8c" startline="23" endline="35">TMP102_setmode_allDefault</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a4386703b35277dc71be5cd9b57d0f3ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_TM_InterruptMode</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_TM_InterruptMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="136" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="91" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a899854f020db34f588f89adffcdc8433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_ALERT_ActiveLow_default</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_ALERT_ActiveLow_default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="143" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="107" bodyend="122"/>
+        <referencedby refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" compoundref="tmp102__sensor_8c" startline="23" endline="35">TMP102_setmode_allDefault</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1aa7438de8c6766d48b649e132cabf88e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_ALERT_ActiveHigh</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_ALERT_ActiveHigh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="150" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="123" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1aa96f470639b851a96f524ae6524dd266" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_EM_NormalMode_default</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_EM_NormalMode_default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="157" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="139" bodyend="155"/>
+        <referencedby refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" compoundref="tmp102__sensor_8c" startline="23" endline="35">TMP102_setmode_allDefault</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a2df18183afad1339903fe59997aaf9a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_EM_ExtendedMode</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_EM_ExtendedMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="164" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="156" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a3f6277d742af4a10dcec568e84ad1d5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_CR_250mHZ</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_CR_250mHZ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="171" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="172" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a110d2f8672865d85670f2681e5dc9aed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_CR_1HZ</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_CR_1HZ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="178" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="188" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a6d24a33a5e009441edb99bd1a727afec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_CR_4HZ_default</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_CR_4HZ_default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="185" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="205" bodyend="221"/>
+        <referencedby refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" compoundref="tmp102__sensor_8c" startline="23" endline="35">TMP102_setmode_allDefault</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a031c7291b177515876ebb29d24dc97b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_setMode_CR_8HZ</definition>
+        <argsstring>()</argsstring>
+        <name>TMP102_setMode_CR_8HZ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="192" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="223" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a98961eafa743b9a651a3cd2f3787f858" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_readMode_ALERT</definition>
+        <argsstring>(uint8_t *al_bit)</argsstring>
+        <name>TMP102_readMode_ALERT</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>al_bit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>al_bit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="200" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="239" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a6296f70167b1f662c7f9b56b15fe037c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_write_Tlow</definition>
+        <argsstring>(float tlow_C)</argsstring>
+        <name>TMP102_write_Tlow</name>
+        <param>
+          <type>float</type>
+          <declname>tlow_C</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tlow_C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="208" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="253" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a32a4b8bbc5611a7ca967cdaaeb732ae1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_write_Thigh</definition>
+        <argsstring>(float thigh_C)</argsstring>
+        <name>TMP102_write_Thigh</name>
+        <param>
+          <type>float</type>
+          <declname>thigh_C</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thigh_C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="216" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="290" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1aa8531a04dcf776f0d81d190b384bfab5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_read_Tlow</definition>
+        <argsstring>(float *tlow_C)</argsstring>
+        <name>TMP102_read_Tlow</name>
+        <param>
+          <type>float *</type>
+          <declname>tlow_C</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tlow_C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="224" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="329" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="tmp102__sensor_8h_1a63bbac70f6558fd10f034a45d1fa140c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TMP102_read_Thigh</definition>
+        <argsstring>(float *thigh_C)</argsstring>
+        <name>TMP102_read_Thigh</name>
+        <param>
+          <type>float *</type>
+          <declname>thigh_C</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thigh_C</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="232" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c" bodystart="351" bodyend="371"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-13 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>TMP102SENSOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102SENSOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_SLAVE_ADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x48)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Register<sp/>address<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_REG_TEMPERATURE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x00)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_REG_CONFIGURATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x01)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_REG_TLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x02)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_REG_THIGH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x03)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_SD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_TM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1&lt;&lt;1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_POL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1&lt;&lt;2)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_EM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1&lt;&lt;12)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_AL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1&lt;&lt;13)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_CR(x)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(x&lt;&lt;14)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_FAULTBITS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3&lt;&lt;3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*generates<sp/>alert<sp/>after<sp/>4<sp/>consecutive<sp/>faults*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_ONESHOT_CR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1&lt;7)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*saves<sp/>power<sp/>between<sp/>conversions<sp/>when<sp/>1*/</highlight><highlight class="preprocessor"><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>temperature_unit</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>CELCIUS<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>FAHREN,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>KELVIN</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}TEMPERATURE_UNIT_T;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structTMP102__CONFIG__REG__SETTINGS__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a81f77be9673afe30da33edb8e6e62b55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>SD_MODE:1;</highlight></codeline>
+<codeline lineno="46" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a635d77b82a949a2299e1981d7ace305d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>TM_MODE:1;</highlight></codeline>
+<codeline lineno="48" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a2225a8d1e41436fe30577b474c99c737" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>POL:1;</highlight></codeline>
+<codeline lineno="50" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a6c73d5cc6105f5afd1dbb33454705ec3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>FAULT:2;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>RES0:2;</highlight></codeline>
+<codeline lineno="53" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a09870f580e0e800f3eb23f640f07a3c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>OS:1;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>RES1:4;</highlight></codeline>
+<codeline lineno="56" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a9837531af532e0c8a1fdd39095c250fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>EM_MODE:1;</highlight></codeline>
+<codeline lineno="58" refid="structTMP102__CONFIG__REG__SETTINGS__T_1a7bd3f8bf4d72156773a9cb9abde52596" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>RO_AL_MODE:1;</highlight></codeline>
+<codeline lineno="60" refid="structTMP102__CONFIG__REG__SETTINGS__T_1aa0d2ccdd3d62d5f817bd34be36ddb2b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>CR:2;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}<ref refid="structTMP102__CONFIG__REG__SETTINGS__T" kindref="compound">TMP102_CONFIG_REG_SETTINGS_T</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_CONFIG_DEFAULT_ASSIGN<sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor">{\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>.SD_MODE<sp/>=<sp/>0,\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>.TM_MODE<sp/>=<sp/>0,\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>.POL<sp/><sp/><sp/><sp/><sp/>=<sp/>0,\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>.OS<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>.EM_MODE<sp/>=<sp/>0,\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>.CR<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor">}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTMP102__CONFIG__REG__SETTINGS__T" kindref="compound">TMP102_CONFIG_REG_SETTINGS_T</ref><sp/><ref refid="tmp102__sensor_8h_1ae8c25eda33c17bf746db7b91fe54c85c" kindref="member">TMP102_CONFIG_DEFAULT</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>TMP102_setMode(<ref refid="structTMP102__CONFIG__REG__SETTINGS__T" kindref="compound">TMP102_CONFIG_REG_SETTINGS_T</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" kindref="member">TMP102_setmode_allDefault</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">uint16_t*<sp/><ref refid="tmp102__sensor_8h_1a1ea9cb5a6a2e798b33564f9142d7afa1" kindref="member">TMP102_memDump</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="tmp102__sensor_8h_1ab79ca2cd8f6ac2c6edb369185a4ec9e2" refkind="member"><highlight class="preprocessor">#define<sp/>TMP102_getTemp_Celcius(p_temp)<sp/><sp/>TMP102_getTemp(p_temp,<sp/>CELCIUS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_getTemp_Kelvin(p_temp)<sp/><sp/><sp/>TMP102_getTemp(p_temp,<sp/>KELVIN)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TMP102_getTemp_Fahren(p_temp)<sp/><sp/><sp/>TMP102_getTemp(p_temp,<sp/>FAHREN)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" kindref="member">TMP102_getTemp</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*temp,<sp/>TEMPERATURE_UNIT_T<sp/>unit);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a7d4d57387ef6a5db5bfc8d14a94d9ee4" kindref="member">TMP102_setMode_SD_PowerSaving</ref>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a4309a30e9d006753c2cdd6f6c9af2650" kindref="member">TMP102_setMode_SD_Continuous_default</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a81c75dba63b6c0727ab602ea631b3a22" kindref="member">TMP102_setMode_TM_ComparatorMode_default</ref>();</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a4386703b35277dc71be5cd9b57d0f3ce" kindref="member">TMP102_setMode_TM_InterruptMode</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a899854f020db34f588f89adffcdc8433" kindref="member">TMP102_setMode_ALERT_ActiveLow_default</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1aa7438de8c6766d48b649e132cabf88e9" kindref="member">TMP102_setMode_ALERT_ActiveHigh</ref>();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1aa96f470639b851a96f524ae6524dd266" kindref="member">TMP102_setMode_EM_NormalMode_default</ref>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a2df18183afad1339903fe59997aaf9a2" kindref="member">TMP102_setMode_EM_ExtendedMode</ref>();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a3f6277d742af4a10dcec568e84ad1d5d" kindref="member">TMP102_setMode_CR_250mHZ</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a110d2f8672865d85670f2681e5dc9aed" kindref="member">TMP102_setMode_CR_1HZ</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a6d24a33a5e009441edb99bd1a727afec" kindref="member">TMP102_setMode_CR_4HZ_default</ref>();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a031c7291b177515876ebb29d24dc97b4" kindref="member">TMP102_setMode_CR_8HZ</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a98961eafa743b9a651a3cd2f3787f858" kindref="member">TMP102_readMode_ALERT</ref>(uint8_t<sp/>*al_bit);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a6296f70167b1f662c7f9b56b15fe037c" kindref="member">TMP102_write_Tlow</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>tlow_C);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a32a4b8bbc5611a7ca967cdaaeb732ae1" kindref="member">TMP102_write_Thigh</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thigh_C);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1aa8531a04dcf776f0d81d190b384bfab5" kindref="member">TMP102_read_Tlow</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*tlow_C);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tmp102__sensor_8h_1a63bbac70f6558fd10f034a45d1fa140c" kindref="member">TMP102_read_Thigh</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*thigh_C);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h"/>
+  </compounddef>
+</doxygen>

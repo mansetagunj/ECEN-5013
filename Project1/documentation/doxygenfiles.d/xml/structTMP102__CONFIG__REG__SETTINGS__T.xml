@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structTMP102__CONFIG__REG__SETTINGS__T" kind="struct" language="C++" prot="public">
+    <compoundname>TMP102_CONFIG_REG_SETTINGS_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a81f77be9673afe30da33edb8e6e62b55" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::SD_MODE</definition>
+        <argsstring></argsstring>
+        <name>SD_MODE</name>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>(D)0 = Continuous conversion; 1 = Can sleep*/ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="44" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a635d77b82a949a2299e1981d7ace305d" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::TM_MODE</definition>
+        <argsstring></argsstring>
+        <name>TM_MODE</name>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>(D)0 = Comparatore mode; 1 = Interrupt mode*/ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="46" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a2225a8d1e41436fe30577b474c99c737" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::POL</definition>
+        <argsstring></argsstring>
+        <name>POL</name>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>(D)0 = ALERT pin becomes active low; 1 = ALERT pin becomes active high and the state of the ALERT pin is inverted. */ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="48" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a6c73d5cc6105f5afd1dbb33454705ec3" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::FAULT</definition>
+        <argsstring></argsstring>
+        <name>FAULT</name>
+        <bitfield>2</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>(D)0 = 1Fault; 1= 2Faults; 3 = 4Faults; 4=6Faults */ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="50" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1ae0c076ab9ff772db54bd811ecf1cef71" prot="public" static="no" mutable="no">
+        <type>const uint16_t</type>
+        <definition>const uint16_t TMP102_CONFIG_REG_SETTINGS_T::RES0</definition>
+        <argsstring></argsstring>
+        <name>RES0</name>
+        <bitfield>2</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="51" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a09870f580e0e800f3eb23f640f07a3c3" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::OS</definition>
+        <argsstring></argsstring>
+        <name>OS</name>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>(D)0 = During the conversion, the OS bit reads &apos;0&apos;; 1 = writing a 1 to the OS bit starts a single temperature conversion */ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="53" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a62bc2c4b934d561e2f32949c61f6b016" prot="public" static="no" mutable="no">
+        <type>const uint16_t</type>
+        <definition>const uint16_t TMP102_CONFIG_REG_SETTINGS_T::RES1</definition>
+        <argsstring></argsstring>
+        <name>RES1</name>
+        <bitfield>4</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="54" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a9837531af532e0c8a1fdd39095c250fb" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::EM_MODE</definition>
+        <argsstring></argsstring>
+        <name>EM_MODE</name>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>(D)0 = Normal mode(12bit); 1= Extended mode(13 bit) */ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="56" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1a7bd3f8bf4d72156773a9cb9abde52596" prot="public" static="no" mutable="no">
+        <type>const uint16_t</type>
+        <definition>const uint16_t TMP102_CONFIG_REG_SETTINGS_T::RO_AL_MODE</definition>
+        <argsstring></argsstring>
+        <name>RO_AL_MODE</name>
+        <bitfield>1</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Reads the AL bit*/ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="58" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structTMP102__CONFIG__REG__SETTINGS__T_1aa0d2ccdd3d62d5f817bd34be36ddb2b1" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t TMP102_CONFIG_REG_SETTINGS_T::CR</definition>
+        <argsstring></argsstring>
+        <name>CR</name>
+        <bitfield>2</bitfield>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>0 = 0.25Hz ; 1 = 1Hz ; (D)2 = 4Hz ; 3 = 8Hz */ </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="60" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" line="42" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/tmp102_sensor.h" bodystart="41" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1aa0d2ccdd3d62d5f817bd34be36ddb2b1" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>CR</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a9837531af532e0c8a1fdd39095c250fb" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>EM_MODE</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a6c73d5cc6105f5afd1dbb33454705ec3" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>FAULT</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a09870f580e0e800f3eb23f640f07a3c3" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>OS</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a2225a8d1e41436fe30577b474c99c737" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>POL</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1ae0c076ab9ff772db54bd811ecf1cef71" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>RES0</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a62bc2c4b934d561e2f32949c61f6b016" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>RES1</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a7bd3f8bf4d72156773a9cb9abde52596" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>RO_AL_MODE</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a81f77be9673afe30da33edb8e6e62b55" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>SD_MODE</name></member>
+      <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a635d77b82a949a2299e1981d7ace305d" prot="public" virt="non-virtual"><scope>TMP102_CONFIG_REG_SETTINGS_T</scope><name>TM_MODE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

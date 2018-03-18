@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="temperature__sensor__task_8h" kind="file" language="C++">
+    <compoundname>temperature_sensor_task.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">mqueue.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <includes refid="my__time_8h" local="yes">my_time.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes refid="sensor__common__object_8h" local="yes">sensor_common_object.h</includes>
+    <includedby refid="common__helper_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <incdepgraph>
+      <node id="664">
+        <label>stdint.h</label>
+      </node>
+      <node id="655">
+        <label>stdlib.h</label>
+      </node>
+      <node id="654">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</label>
+        <link refid="temperature_sensor_task.h"/>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="656" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+        <childnode refid="658" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+        <childnode refid="668" relation="include">
+        </childnode>
+        <childnode refid="669" relation="include">
+        </childnode>
+        <childnode refid="672" relation="include">
+        </childnode>
+      </node>
+      <node id="668">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="656">
+        <label>errno.h</label>
+      </node>
+      <node id="658">
+        <label>mqueue.h</label>
+      </node>
+      <node id="669">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="666" relation="include">
+        </childnode>
+        <childnode refid="670" relation="include">
+        </childnode>
+        <childnode refid="665" relation="include">
+        </childnode>
+        <childnode refid="671" relation="include">
+        </childnode>
+      </node>
+      <node id="661">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="662" relation="include">
+        </childnode>
+        <childnode refid="663" relation="include">
+        </childnode>
+        <childnode refid="664" relation="include">
+        </childnode>
+        <childnode refid="665" relation="include">
+        </childnode>
+        <childnode refid="666" relation="include">
+        </childnode>
+        <childnode refid="667" relation="include">
+        </childnode>
+      </node>
+      <node id="660">
+        <label>pthread.h</label>
+      </node>
+      <node id="665">
+        <label>sys/types.h</label>
+      </node>
+      <node id="657">
+        <label>string.h</label>
+      </node>
+      <node id="659">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="658" relation="include">
+        </childnode>
+        <childnode refid="660" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="666">
+        <label>unistd.h</label>
+      </node>
+      <node id="673">
+        <label>semaphore.h</label>
+      </node>
+      <node id="667">
+        <label>signal.h</label>
+      </node>
+      <node id="662">
+        <label>time.h</label>
+      </node>
+      <node id="663">
+        <label>linux/types.h</label>
+      </node>
+      <node id="670">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="671">
+        <label>stdio.h</label>
+      </node>
+      <node id="672">
+        <label>sensor_common_object.h</label>
+        <link refid="sensor__common__object_8h"/>
+        <childnode refid="664" relation="include">
+        </childnode>
+        <childnode refid="673" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="678">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="677">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="674">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</label>
+        <link refid="temperature_sensor_task.h"/>
+        <childnode refid="675" relation="include">
+        </childnode>
+        <childnode refid="676" relation="include">
+        </childnode>
+        <childnode refid="677" relation="include">
+        </childnode>
+        <childnode refid="678" relation="include">
+        </childnode>
+      </node>
+      <node id="676">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="675">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structTEMPERATURETASKQ__MSG__T" prot="public">TEMPERATURETASKQ_MSG_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="temperature__sensor__task_8h_1a9b5251efca0e6cd5011d8f5c2120663c" prot="public" static="no">
+        <name>DEFINE_TEMP_STRUCT</name>
+        <param><defname>name</defname></param>
+        <param><defname>msgId</defname></param>
+        <param><defname>sourceId</defname></param>
+        <initializer><ref refid="structTEMPERATURETASKQ__MSG__T" kindref="compound">TEMPERATURETASKQ_MSG_T</ref> name = {      \
+        .msgID      = msgId,        \
+        .sourceID   = sourceId,     \
+        .packet     = {0}           \
+    };</initializer>
+        <briefdescription>
+<para>Defines a temp struct with the name given and params with some default values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="50" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="temperature__sensor__task_8h_1a61149876799f1d6645ef6a48ee0f73b8" prot="public" static="no">
+        <name>POST_MESSAGE_TEMPERATURETASK</name>
+        <param><defname>p_tempstruct</defname></param>
+        <initializer>do{  \
+        __POST_MESSAGE_TEMPERATURETASK(<ref refid="temperature__sensor__task_8h_1afebaba221409b026d6f4648ac50b0c4e" kindref="member">getHandle_TemperatureTaskQueue</ref>(), p_tempstruct, sizeof(*p_tempstruct),20); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="68" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="temperature__sensor__task_8h_1a6c732386ebba2631f3b28e7a39ec648c" prot="public" static="no">
+        <name>POST_MESSAGE_TEMPERATURETASK_EXIT</name>
+        <param><defname>p_tempstruct</defname></param>
+        <initializer>do{  \
+        __POST_MESSAGE_TEMPERATURETASK(<ref refid="temperature__sensor__task_8h_1afebaba221409b026d6f4648ac50b0c4e" kindref="member">getHandle_TemperatureTaskQueue</ref>(), p_tempstruct, sizeof(*p_tempstruct),50); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="77" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8d" prot="public" static="no">
+        <name>TEMPERATURETASKQ_MSGID_T</name>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8da54abc736de63550efe2609bf1fd78129" prot="public">
+          <name>TEMP_MSG_TASK_STATUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8dabb6336781c41a38dca516306c753953a" prot="public">
+          <name>TEMP_MSG_TASK_GET_TEMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8da4f2e365deb69ddef7a5c4e1b915a9e8a" prot="public">
+          <name>TEMP_MSG_TASK_READ_DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8dafd25e9ccacfd90bfcf879969325b2e4e" prot="public">
+          <name>TEMP_MSG_TASK_WRITE_CMD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8daf70ea81d3542ccfcbcc8bba01aa86986" prot="public">
+          <name>TEMP_MSG_TASK_POWERDOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8da6d2d5749b0f0c9305fd80785bf7c1c2f" prot="public">
+          <name>TEMP_MSG_TASK_POWERUP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8dae3682e731985fd3df35dba694d25972f" prot="public">
+          <name>TEMP_MSG_TASK_EXIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="24" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" bodystart="23" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="temperature__sensor__task_8h_1afebaba221409b026d6f4648ac50b0c4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_TemperatureTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_TemperatureTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle TemperatureTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="62" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8h_1a4d02bf806d75bfa3fbc1cc224472eedb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void __POST_MESSAGE_TEMPERATURETASK</definition>
+        <argsstring>(mqd_t queue, const TEMPERATURETASKQ_MSG_T *p_tempstruct, size_t temp_struct_size, int prio)</argsstring>
+        <name>__POST_MESSAGE_TEMPERATURETASK</name>
+        <param>
+          <type>mqd_t</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structTEMPERATURETASKQ__MSG__T" kindref="compound">TEMPERATURETASKQ_MSG_T</ref> *</type>
+          <declname>p_tempstruct</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>temp_struct_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>prio</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p_tempstruct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>temp_struct_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="89" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" bodystart="89" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8h_1a4bea76689b1b882f95e488a1bb41f5f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float getTempTask_temperature</definition>
+        <argsstring>()</argsstring>
+        <name>getTempTask_temperature</name>
+        <briefdescription>
+<para>Get the TempTask temperature object MT-safe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="101" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="34" bodyend="41"/>
+        <referencedby refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" compoundref="socket__task_8c" startline="178" endline="227">processRemoteRequest</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* temperature_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>temperature_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+<para>Entry point of the temp task thread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h" line="109" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="184" bodyend="238"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-11 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>TEMPSENSOR_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEMPSENSOR_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__time_8h" kindref="compound">my_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sensor__common__object_8h" kindref="compound">sensor_common_object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_STATUS,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_GET_TEMP,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_READ_DATA,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_WRITE_CMD,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_POWERDOWN,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_POWERUP,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMP_MSG_TASK_EXIT,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}TEMPERATURETASKQ_MSGID_T;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structTEMPERATURETASKQ__MSG__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMPERATURETASKQ_MSGID_T<sp/>msgID;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_IDENTIFIER_T<sp/>sourceID;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOBJECT__PACKET__T" kindref="compound">OBJECT_PACKET_T</ref><sp/>packet;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//LOGGER_TASK_MSGDATA_T<sp/>msgData[LightT_MSG_SIZE];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<ref refid="structTEMPERATURETASKQ__MSG__T" kindref="compound">TEMPERATURETASKQ_MSG_T</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="temperature__sensor__task_8h_1a9b5251efca0e6cd5011d8f5c2120663c" refkind="member"><highlight class="preprocessor">#define<sp/>DEFINE_TEMP_STRUCT(name,msgId,sourceId)<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>TEMPERATURETASKQ_MSG_T<sp/>name<sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.msgID<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>msgId,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.sourceID<sp/><sp/><sp/>=<sp/>sourceId,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.packet<sp/><sp/><sp/><sp/><sp/>=<sp/>{0}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">mqd_t<sp/><ref refid="temperature__sensor__task_8h_1afebaba221409b026d6f4648ac50b0c4e" kindref="member">getHandle_TemperatureTaskQueue</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor">#define<sp/>POST_MESSAGE_TEMPERATURETASK(p_tempstruct)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_TEMPERATURETASK(getHandle_TemperatureTaskQueue(),<sp/>p_tempstruct,<sp/>sizeof(*p_tempstruct),20);<sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor">#define<sp/>POST_MESSAGE_TEMPERATURETASK_EXIT(p_tempstruct)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_TEMPERATURETASK(getHandle_TemperatureTaskQueue(),<sp/>p_tempstruct,<sp/>sizeof(*p_tempstruct),50);<sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__POST_MESSAGE_TEMPERATURETASK(mqd_t<sp/>queue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structTEMPERATURETASKQ__MSG__T" kindref="compound">TEMPERATURETASKQ_MSG_T</ref><sp/>*p_tempstruct,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>temp_struct_size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prio)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(-1<sp/>==<sp/>mq_send(queue,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)p_tempstruct,<sp/>temp_struct_size,<sp/>prio))</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;TEMP:MQ_SEND:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="temperature__sensor__task_8h_1a4bea76689b1b882f95e488a1bb41f5f8" kindref="member">getTempTask_temperature</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" kindref="member">temperature_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*threadparam);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h"/>
+  </compounddef>
+</doxygen>

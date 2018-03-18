@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="light__sensor__task_8h" kind="file" language="C++">
+    <compoundname>light_sensor_task.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">mqueue.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <includes refid="my__time_8h" local="yes">my_time.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes refid="sensor__common__object_8h" local="yes">sensor_common_object.h</includes>
+    <includedby refid="common__helper_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</includedby>
+    <includedby refid="light__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <incdepgraph>
+      <node id="531">
+        <label>stdint.h</label>
+      </node>
+      <node id="522">
+        <label>stdlib.h</label>
+      </node>
+      <node id="535">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="523">
+        <label>errno.h</label>
+      </node>
+      <node id="525">
+        <label>mqueue.h</label>
+      </node>
+      <node id="536">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="533" relation="include">
+        </childnode>
+        <childnode refid="537" relation="include">
+        </childnode>
+        <childnode refid="532" relation="include">
+        </childnode>
+        <childnode refid="538" relation="include">
+        </childnode>
+      </node>
+      <node id="528">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="529" relation="include">
+        </childnode>
+        <childnode refid="530" relation="include">
+        </childnode>
+        <childnode refid="531" relation="include">
+        </childnode>
+        <childnode refid="532" relation="include">
+        </childnode>
+        <childnode refid="533" relation="include">
+        </childnode>
+        <childnode refid="534" relation="include">
+        </childnode>
+      </node>
+      <node id="527">
+        <label>pthread.h</label>
+      </node>
+      <node id="532">
+        <label>sys/types.h</label>
+      </node>
+      <node id="524">
+        <label>string.h</label>
+      </node>
+      <node id="526">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="525" relation="include">
+        </childnode>
+        <childnode refid="527" relation="include">
+        </childnode>
+        <childnode refid="528" relation="include">
+        </childnode>
+      </node>
+      <node id="533">
+        <label>unistd.h</label>
+      </node>
+      <node id="540">
+        <label>semaphore.h</label>
+      </node>
+      <node id="534">
+        <label>signal.h</label>
+      </node>
+      <node id="529">
+        <label>time.h</label>
+      </node>
+      <node id="521">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</label>
+        <link refid="light_sensor_task.h"/>
+        <childnode refid="522" relation="include">
+        </childnode>
+        <childnode refid="523" relation="include">
+        </childnode>
+        <childnode refid="524" relation="include">
+        </childnode>
+        <childnode refid="525" relation="include">
+        </childnode>
+        <childnode refid="526" relation="include">
+        </childnode>
+        <childnode refid="535" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+        <childnode refid="539" relation="include">
+        </childnode>
+      </node>
+      <node id="530">
+        <label>linux/types.h</label>
+      </node>
+      <node id="537">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="538">
+        <label>stdio.h</label>
+      </node>
+      <node id="539">
+        <label>sensor_common_object.h</label>
+        <link refid="sensor__common__object_8h"/>
+        <childnode refid="531" relation="include">
+        </childnode>
+        <childnode refid="540" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="545">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="544">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="542">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="543">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="541">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</label>
+        <link refid="light_sensor_task.h"/>
+        <childnode refid="542" relation="include">
+        </childnode>
+        <childnode refid="543" relation="include">
+        </childnode>
+        <childnode refid="544" relation="include">
+        </childnode>
+        <childnode refid="545" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structLIGHTTASKQ__MSG__T" prot="public">LIGHTTASKQ_MSG_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="light__sensor__task_8h_1ad3c64139927109ac2021342f1912828b" prot="public" static="no">
+        <name>DEFINE_LIGHT_STRUCT</name>
+        <param><defname>name</defname></param>
+        <param><defname>msgId</defname></param>
+        <param><defname>sourceId</defname></param>
+        <initializer><ref refid="structLIGHTTASKQ__MSG__T" kindref="compound">LIGHTTASKQ_MSG_T</ref> name = {      \
+        .msgID      = msgId,        \
+        .sourceID   = sourceId,     \
+        .packet     = {0}           \
+    };</initializer>
+        <briefdescription>
+<para>Defines a light struct with the name given and params with some default values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="59" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="light__sensor__task_8h_1ae936fca69f20a6a81f530eb38806bd3c" prot="public" static="no">
+        <name>POST_MESSAGE_LIGHTTASK</name>
+        <param><defname>p_lightstruct</defname></param>
+        <initializer>do{ \
+        __POST_MESSAGE_LIGHTTASK(<ref refid="light__sensor__task_8h_1ace4b0c78a43f482e74bc1d7a717c753c" kindref="member">getHandle_LightTaskQueue</ref>(), p_lightstruct, sizeof(*p_lightstruct),20); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="77" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="light__sensor__task_8h_1abafa6c4697460e4887f6d6e9c1f15749" prot="public" static="no">
+        <name>POST_MESSAGE_LIGHTTASK_EXIT</name>
+        <param><defname>p_lightstruct</defname></param>
+        <initializer>do{ \
+        __POST_MESSAGE_LIGHTTASK(<ref refid="light__sensor__task_8h_1ace4b0c78a43f482e74bc1d7a717c753c" kindref="member">getHandle_LightTaskQueue</ref>(), p_lightstruct, sizeof(*p_lightstruct),50); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="86" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="light__sensor__task_8h_1a7d714c313df3e00dc24e02490e1c4c08" prot="public" static="no">
+        <name>DAY_STATE_T</name>
+        <enumvalue id="light__sensor__task_8h_1a7d714c313df3e00dc24e02490e1c4c08a8e85ce474d6e6c5ef5b03a415dee454a" prot="public">
+          <name>DAY</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1a7d714c313df3e00dc24e02490e1c4c08a285422c5a00f46be59fd905a9e255139" prot="public">
+          <name>NIGHT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="28" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="27" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="enum" id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1" prot="public" static="no">
+        <name>LIGHTTASKQ_MSGID_T</name>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a7538edaf9e49997c43f4f765b3ba6896" prot="public">
+          <name>LIGHT_MSG_TASK_STATUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1aa06268a027a0ced927bce0fdd097adfa" prot="public">
+          <name>LIGHT_MSG_TASK_GET_STATE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a59644ebd057fe3a6e2b1ee23679d3a3c" prot="public">
+          <name>LIGHT_MSG_TASK_READ_DATA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1ac266d856b474c5bec5d1cf7f8e64613c" prot="public">
+          <name>LIGHT_MSG_TASK_WRITE_CMD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1ab777533038759c2f2b60cf001dbafd1d" prot="public">
+          <name>LIGHT_MSG_TASK_POWERDOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a642c56b0d2b981bb810c90a92280b3eb" prot="public">
+          <name>LIGHT_MSG_TASK_POWERUP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a2e5b2bbe11fa95ad4d354f372e1363ba" prot="public">
+          <name>LIGHT_MSG_TASK_EXIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="34" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="33" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="light__sensor__task_8h_1ace4b0c78a43f482e74bc1d7a717c753c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_LightTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_LightTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle LightTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="71" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8h_1a1e4979afaab83ae0ed818bf038c3dbf7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void __POST_MESSAGE_LIGHTTASK</definition>
+        <argsstring>(mqd_t queue, const LIGHTTASKQ_MSG_T *lightstruct, size_t light_struct_size, int prio)</argsstring>
+        <name>__POST_MESSAGE_LIGHTTASK</name>
+        <param>
+          <type>mqd_t</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structLIGHTTASKQ__MSG__T" kindref="compound">LIGHTTASKQ_MSG_T</ref> *</type>
+          <declname>lightstruct</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>light_struct_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>prio</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lightstruct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>light_struct_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="98" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="98" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8h_1a2fb8d8bd6f3ac82658743d379b205a51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DAY_STATE_T</type>
+        <definition>DAY_STATE_T getLightTask_state</definition>
+        <argsstring>()</argsstring>
+        <name>getLightTask_state</name>
+        <briefdescription>
+<para>Get the LightTask state object MT-safe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>DAY_STATE_T </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="111" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="36" bodyend="43"/>
+        <referencedby refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" compoundref="socket__task_8c" startline="178" endline="227">processRemoteRequest</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8h_1ac88a5567bdeac532053519330e94c6ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float getLightTask_lux</definition>
+        <argsstring>()</argsstring>
+        <name>getLightTask_lux</name>
+        <briefdescription>
+<para>Get the LightTask lux object. MT-safe as it calls a MT-safe function within. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="118" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="45" bodyend="49"/>
+        <referencedby refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" compoundref="socket__task_8c" startline="178" endline="227">processRemoteRequest</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8h_1a638f4ba787ad818d90477af9e572771c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* light_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>light_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+<para>Entry point of the light task thread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="126" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="203" bodyend="251"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-11 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>LIGHTSENSOR_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIGHTSENSOR_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__time_8h" kindref="compound">my_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sensor__common__object_8h" kindref="compound">sensor_common_object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>LightT_MSG_SIZE<sp/>40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//typedef<sp/>char<sp/>LIGHT_TASK_MSGDATA_T;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>DAY<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>NIGHT<sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}DAY_STATE_T;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_STATUS,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_GET_STATE,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_READ_DATA,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_WRITE_CMD,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_POWERDOWN,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_POWERUP,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_MSG_TASK_EXIT,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}LIGHTTASKQ_MSGID_T;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="structLIGHTTASKQ__MSG__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHTTASKQ_MSGID_T<sp/>msgID;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_IDENTIFIER_T<sp/>sourceID;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structOBJECT__PACKET__T" kindref="compound">OBJECT_PACKET_T</ref><sp/>packet;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//LOGGER_TASK_MSGDATA_T<sp/>msgData[LightT_MSG_SIZE];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<ref refid="structLIGHTTASKQ__MSG__T" kindref="compound">LIGHTTASKQ_MSG_T</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="light__sensor__task_8h_1ad3c64139927109ac2021342f1912828b" refkind="member"><highlight class="preprocessor">#define<sp/>DEFINE_LIGHT_STRUCT(name,msgId,sourceId)<sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>LIGHTTASKQ_MSG_T<sp/>name<sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.msgID<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>msgId,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.sourceID<sp/><sp/><sp/>=<sp/>sourceId,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.packet<sp/><sp/><sp/><sp/><sp/>=<sp/>{0}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">mqd_t<sp/><ref refid="light__sensor__task_8h_1ace4b0c78a43f482e74bc1d7a717c753c" kindref="member">getHandle_LightTaskQueue</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor">#define<sp/>POST_MESSAGE_LIGHTTASK(p_lightstruct)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_LIGHTTASK(getHandle_LightTaskQueue(),<sp/>p_lightstruct,<sp/>sizeof(*p_lightstruct),20);<sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor">#define<sp/>POST_MESSAGE_LIGHTTASK_EXIT(p_lightstruct)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_LIGHTTASK(getHandle_LightTaskQueue(),<sp/>p_lightstruct,<sp/>sizeof(*p_lightstruct),50);<sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__POST_MESSAGE_LIGHTTASK(mqd_t<sp/>queue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structLIGHTTASKQ__MSG__T" kindref="compound">LIGHTTASKQ_MSG_T</ref><sp/>*lightstruct,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>light_struct_size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prio)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(-1<sp/>==<sp/>mq_send(queue,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)lightstruct,<sp/>light_struct_size,<sp/>prio))</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LIGHT:MQ_SEND:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">DAY_STATE_T<sp/><ref refid="light__sensor__task_8h_1a2fb8d8bd6f3ac82658743d379b205a51" kindref="member">getLightTask_state</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="light__sensor__task_8h_1ac88a5567bdeac532053519330e94c6ab" kindref="member">getLightTask_lux</ref>();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="light__sensor__task_8h_1a638f4ba787ad818d90477af9e572771c" kindref="member">light_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*threadparam);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h"/>
+  </compounddef>
+</doxygen>

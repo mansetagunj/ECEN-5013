@@ -1,0 +1,606 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="socket__task_8c" kind="file" language="C++">
+    <compoundname>socket_task.c</compoundname>
+    <includes local="no">sys/socket.h</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">netinet/in.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">arpa/inet.h</includes>
+    <includes refid="socket__task_8h" local="yes">socket_task.h</includes>
+    <includes refid="logger__task_8h" local="yes">logger_task.h</includes>
+    <includes refid="main__task_8h" local="yes">main_task.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <includes refid="sensor__common__object_8h" local="yes">sensor_common_object.h</includes>
+    <includes refid="light__sensor__task_8h" local="yes">light_sensor_task.h</includes>
+    <includes refid="temperature__sensor__task_8h" local="yes">temperature_sensor_task.h</includes>
+    <incdepgraph>
+      <node id="878">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="880">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="873">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket_task.c"/>
+        <childnode refid="874" relation="include">
+        </childnode>
+        <childnode refid="875" relation="include">
+        </childnode>
+        <childnode refid="876" relation="include">
+        </childnode>
+        <childnode refid="877" relation="include">
+        </childnode>
+        <childnode refid="878" relation="include">
+        </childnode>
+        <childnode refid="879" relation="include">
+        </childnode>
+        <childnode refid="880" relation="include">
+        </childnode>
+        <childnode refid="881" relation="include">
+        </childnode>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="896" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="897" relation="include">
+        </childnode>
+        <childnode refid="899" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+      </node>
+      <node id="896">
+        <label>main_task.h</label>
+        <link refid="main__task_8h"/>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="879" relation="include">
+        </childnode>
+        <childnode refid="876" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+      </node>
+      <node id="890">
+        <label>stdint.h</label>
+      </node>
+      <node id="877">
+        <label>stdlib.h</label>
+      </node>
+      <node id="900">
+        <label>temperature_sensor_task.h</label>
+        <link refid="temperature__sensor__task_8h"/>
+        <childnode refid="877" relation="include">
+        </childnode>
+        <childnode refid="879" relation="include">
+        </childnode>
+        <childnode refid="876" relation="include">
+        </childnode>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="892" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+        <childnode refid="897" relation="include">
+        </childnode>
+      </node>
+      <node id="892">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="883">
+        <label>logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="877" relation="include">
+        </childnode>
+        <childnode refid="879" relation="include">
+        </childnode>
+        <childnode refid="876" relation="include">
+        </childnode>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="892" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+      </node>
+      <node id="879">
+        <label>errno.h</label>
+      </node>
+      <node id="884">
+        <label>mqueue.h</label>
+      </node>
+      <node id="893">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="875" relation="include">
+        </childnode>
+        <childnode refid="894" relation="include">
+        </childnode>
+        <childnode refid="891" relation="include">
+        </childnode>
+        <childnode refid="895" relation="include">
+        </childnode>
+      </node>
+      <node id="887">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="888" relation="include">
+        </childnode>
+        <childnode refid="889" relation="include">
+        </childnode>
+        <childnode refid="890" relation="include">
+        </childnode>
+        <childnode refid="891" relation="include">
+        </childnode>
+        <childnode refid="875" relation="include">
+        </childnode>
+        <childnode refid="882" relation="include">
+        </childnode>
+      </node>
+      <node id="881">
+        <label>socket_task.h</label>
+        <link refid="socket__task_8h"/>
+        <childnode refid="882" relation="include">
+        </childnode>
+      </node>
+      <node id="886">
+        <label>pthread.h</label>
+      </node>
+      <node id="891">
+        <label>sys/types.h</label>
+      </node>
+      <node id="876">
+        <label>string.h</label>
+      </node>
+      <node id="885">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="886" relation="include">
+        </childnode>
+        <childnode refid="887" relation="include">
+        </childnode>
+      </node>
+      <node id="875">
+        <label>unistd.h</label>
+      </node>
+      <node id="898">
+        <label>semaphore.h</label>
+      </node>
+      <node id="882">
+        <label>signal.h</label>
+      </node>
+      <node id="888">
+        <label>time.h</label>
+      </node>
+      <node id="874">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="899">
+        <label>light_sensor_task.h</label>
+        <link refid="light__sensor__task_8h"/>
+        <childnode refid="877" relation="include">
+        </childnode>
+        <childnode refid="879" relation="include">
+        </childnode>
+        <childnode refid="876" relation="include">
+        </childnode>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="892" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+        <childnode refid="897" relation="include">
+        </childnode>
+      </node>
+      <node id="889">
+        <label>linux/types.h</label>
+      </node>
+      <node id="894">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="895">
+        <label>stdio.h</label>
+      </node>
+      <node id="897">
+        <label>sensor_common_object.h</label>
+        <link refid="sensor__common__object_8h"/>
+        <childnode refid="890" relation="include">
+        </childnode>
+        <childnode refid="898" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="socket__task_8c_1ac42367fe5c999ec6650de83e9d72fe8c" prot="public" static="no">
+        <name>SERVER_PORT</name>
+        <initializer>3000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="26" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="socket__task_8c_1a28d06fc286f28044ed3380969700ff3f" prot="public" static="no">
+        <name>SERVER_IP</name>
+        <initializer>&quot;127.0.0.1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="27" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="socket__task_8c_1a053b7859476cc9867ec62c49e68d3fa1" prot="public" static="no">
+        <name>MAX_CONNECTIONS</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="28" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="socket__task_8c_1aa89fd33489e6b5755ebe654eb5ca5151" prot="public" static="no" mutable="no">
+        <type>sig_atomic_t</type>
+        <definition>sig_atomic_t socketTask_continue</definition>
+        <argsstring></argsstring>
+        <name>socketTask_continue</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="30" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref></type>
+        <definition>REMOTE_RESPONSE_T processRemoteRequest</definition>
+        <argsstring>(REMOTE_REQUEST_T req_in)</argsstring>
+        <name>processRemoteRequest</name>
+        <param>
+          <type><ref refid="structREMOTE__REQUEST__T" kindref="compound">REMOTE_REQUEST_T</ref></type>
+          <declname>req_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>req_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="38" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="178" bodyend="227"/>
+        <referencedby refid="socket__task_8h_1a11efeb37f1a462e32c153a30ba11f53a" compoundref="socket__task_8c" startline="101" endline="176">socket_task_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="socket__task_8c_1a662e3875dac70dfb9e54f4e37768f1d4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void timer_handler_sendSTAliveMSG</definition>
+        <argsstring>(union sigval sig)</argsstring>
+        <name>timer_handler_sendSTAliveMSG</name>
+        <param>
+          <type>union sigval</type>
+          <declname>sig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sigval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="45" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="45" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="socket__task_8c_1ace71e6ac2b8b6275085bc2dfda91e29c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int socket_task_init</definition>
+        <argsstring>(int server_socket)</argsstring>
+        <name>socket_task_init</name>
+        <param>
+          <type>int</type>
+          <declname>server_socket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>server_socket</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="58" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="58" bodyend="99"/>
+        <referencedby refid="socket__task_8h_1a11efeb37f1a462e32c153a30ba11f53a" compoundref="socket__task_8c" startline="101" endline="176">socket_task_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="socket__task_8c_1a11efeb37f1a462e32c153a30ba11f53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* socket_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>socket_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" line="101" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="101" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;netinet/in.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;arpa/inet.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="socket__task_8h" kindref="compound">socket_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger__task_8h" kindref="compound">logger_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="main__task_8h" kindref="compound">main_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sensor__common__object_8h" kindref="compound">sensor_common_object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="light__sensor__task_8h" kindref="compound">light_sensor_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="temperature__sensor__task_8h" kindref="compound">temperature_sensor_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVER_PORT<sp/><sp/><sp/><sp/><sp/>3000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVER_IP<sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;127.0.0.1&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_CONNECTIONS<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">sig_atomic_t<sp/>socketTask_continue<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref><sp/><ref refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" kindref="member">processRemoteRequest</ref>(<ref refid="structREMOTE__REQUEST__T" kindref="compound">REMOTE_REQUEST_T</ref><sp/>req_in);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>timer_handler_sendSTAliveMSG(</highlight><highlight class="keyword">union</highlight><highlight class="normal"><sp/>sigval<sp/>sig)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_lock(&amp;aliveState_lock);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>aliveStatus[SOCKET_TASK_ID]++;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_unlock(&amp;aliveState_lock);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="socket__task_8c_1ace71e6ac2b8b6275085bc2dfda91e29c" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="socket__task_8c_1ace71e6ac2b8b6275085bc2dfda91e29c" kindref="member">socket_task_init</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>server_socket)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>option<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sockaddr_in<sp/>addr;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((server_socket<sp/>=<sp/>socket(AF_INET,SOCK_STREAM,0))<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>Creation:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ERR;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>Created\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(setsockopt(server_socket,<sp/>SOL_SOCKET,<sp/>SO_REUSEPORT<sp/>|<sp/>SO_REUSEADDR,<sp/>&amp;(option),<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(option)))</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>Set<sp/>socket<sp/>options:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ERR;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*Setting<sp/>up<sp/>the<sp/>sockaddr_in<sp/>structure<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>addr.sin_family<sp/>=<sp/>AF_INET;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//addr.sin_addr.s_addr<sp/>=<sp/>inet_addr(SERVER_IP);<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>addr.sin_addr.s_addr<sp/>=<sp/>INADDR_ANY;<sp/><sp/></highlight><highlight class="comment">//Using<sp/>local<sp/>loopback<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>addr.sin_port<sp/>=<sp/>htons(SERVER_PORT);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">((bind(server_socket,(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sockaddr*)&amp;addr,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(addr)))<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>bind<sp/>the<sp/>socket:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ERR;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>binded\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(listen(server_socket,MAX_CONNECTIONS)<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>listen:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ERR;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>started<sp/>listening<sp/>on<sp/>IP:%s<sp/>PORT:%d\n&quot;</highlight><highlight class="normal">,SERVER_IP,SERVER_PORT);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>server_socket;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="socket__task_8h_1a11efeb37f1a462e32c153a30ba11f53a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="socket__task_8c_1a11efeb37f1a462e32c153a30ba11f53a" kindref="member">socket_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>threadparam)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>server_socket,accepted_socket,<sp/>option<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sockaddr_in<sp/>peer_addr;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>addrLen<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(peer_addr);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;SOCKET<sp/>TASK<sp/>STARTED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>server_socket<sp/><sp/>=<sp/><ref refid="socket__task_8c_1ace71e6ac2b8b6275085bc2dfda91e29c" kindref="member">socket_task_init</ref>(server_socket);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>server_socket)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>task<sp/>init<sp/>failed.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(ERR);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;SOCKET<sp/>TASK<sp/>INIT<sp/>COMPLETED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_barrier_wait(&amp;tasks_barrier);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" kindref="member">DEFINE_LOG_STRUCT</ref>(logData,LT_MSG_LOG,SOCKET_TASK_ID);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(socketTask_continue)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,</highlight><highlight class="stringliteral">&quot;Accepting<sp/>connections...\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>accepted_socket<sp/>=<sp/>accept(server_socket,<sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sockaddr*)&amp;peer_addr,(socklen_t*)&amp;addrLen);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(accepted_socket<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>accept:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>accept:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>peer_IP[20]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,INFO<sp/></highlight><highlight class="stringliteral">&quot;Conn<sp/>accepted.<sp/>Peer<sp/>Add:<sp/>%s\n&quot;</highlight><highlight class="normal">,inet_ntop(AF_INET,<sp/>&amp;peer_addr.sin_addr,<sp/>peer_IP,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(peer_IP)));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Connection<sp/>accepted<sp/>from<sp/>peer<sp/>Addr:<sp/>%s\n&quot;</highlight><highlight class="normal">,inet_ntop(AF_INET,<sp/>&amp;peer_addr.sin_addr,<sp/>peer_IP,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(peer_IP)));</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(socketTask_continue)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structREMOTE__REQUEST__T" kindref="compound">REMOTE_REQUEST_T</ref><sp/>req_in<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref><sp/>rsp_out<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbytes<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbytes<sp/>=<sp/>recv(accepted_socket,<sp/>(((</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;(req_in))+nbytes),<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(req_in),<sp/>0);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(nbytes<sp/>&lt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(req_in)<sp/>&amp;&amp;<sp/>nbytes<sp/>!=<sp/>-1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;--CLIENT<sp/>REQUEST:<sp/>bytes:%d<sp/>ID:%d\n&quot;</highlight><highlight class="normal">,nbytes,req_in.request_id);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,INFO<sp/></highlight><highlight class="stringliteral">&quot;--CLIENT<sp/>REQUEST:<sp/>bytes:%d<sp/>ID:%d\n&quot;</highlight><highlight class="normal">,nbytes,req_in.request_id);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out<sp/>=<sp/><ref refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" kindref="member">processRemoteRequest</ref>(req_in);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(rsp_out.rsp_id<sp/>==<sp/>CONN_CLOSE_RSP)<sp/></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(rsp_out.rsp_id<sp/>==<sp/>CONN_KILL_APP_RSP)<sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment">/*<sp/>socketTask_continue<sp/>=<sp/>0;<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbytes<sp/>=<sp/>send(accepted_socket<sp/>,<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;rsp_out<sp/>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(rsp_out),<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nbytes<sp/>&lt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(rsp_out))</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>send<sp/>complete<sp/>data\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>send<sp/>complete<sp/>data\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>bytes<sp/>sent:<sp/>%d\n&quot;</highlight><highlight class="normal">,nbytes);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,INFO<sp/></highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>bytes<sp/>sent:<sp/>%d\n&quot;</highlight><highlight class="normal">,nbytes);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Create<sp/>a<sp/>new<sp/>thread<sp/>to<sp/>handle<sp/>the<sp/>connection<sp/>and<sp/>go<sp/>back<sp/>to<sp/>accepting<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close(accepted_socket);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>Closed\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logData,INFO<sp/></highlight><highlight class="stringliteral">&quot;Socket<sp/>Closed\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Think<sp/>of<sp/>a<sp/>mechanism<sp/>to<sp/>close<sp/>this<sp/>socket<sp/>task<sp/>as<sp/>there<sp/>is<sp/>a<sp/>while(1)<sp/>loop<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>signal(SIGUSR1,<sp/>signal_handler);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" refkind="member"><highlight class="normal"><ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref><sp/><ref refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" kindref="member">processRemoteRequest</ref>(<ref refid="structREMOTE__REQUEST__T" kindref="compound">REMOTE_REQUEST_T</ref><sp/>req_in)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref><sp/>rsp_out<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(req_in.request_id)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(GET_FUNC):</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=GET_FUNC;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strncpy(rsp_out.metadata,</highlight><highlight class="stringliteral">&quot;GET_TEMP<sp/>DAY_NIGHT\n&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(rsp_out.metadata));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(GET_TEMP_C):</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=GET_TEMP_C;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.data.floatingData<sp/>=<sp/><ref refid="temperature__sensor__task_8c_1a4bea76689b1b882f95e488a1bb41f5f8" kindref="member">getTempTask_temperature</ref>();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>GET_TEMP_C:.03%f\n&quot;</highlight><highlight class="normal">,rsp_out.data.floatingData);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(GET_TEMP_F):</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=GET_TEMP_F;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.data.floatingData<sp/>=<sp/><ref refid="temperature__sensor__task_8c_1a4bea76689b1b882f95e488a1bb41f5f8" kindref="member">getTempTask_temperature</ref>();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.data.floatingData<sp/>=<sp/>(rsp_out.data.floatingData<sp/>*<sp/>1.8)<sp/>+<sp/>32;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>GET_TEMP_F:%.03f\n&quot;</highlight><highlight class="normal">,rsp_out.data.floatingData);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(GET_TEMP_K):</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=GET_TEMP_K;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.data.floatingData<sp/>=<sp/><ref refid="temperature__sensor__task_8c_1a4bea76689b1b882f95e488a1bb41f5f8" kindref="member">getTempTask_temperature</ref>()<sp/>+<sp/>273.15;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>GET_TEMP_K:%.03f\n&quot;</highlight><highlight class="normal">,rsp_out.data.floatingData);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(GET_LUX):</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=GET_LUX;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.data.floatingData<sp/>=<sp/><ref refid="light__sensor__task_8c_1ac88a5567bdeac532053519330e94c6ab" kindref="member">getLightTask_lux</ref>();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>GET_LUX:%.03f\n&quot;</highlight><highlight class="normal">,rsp_out.data.floatingData);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(GET_DAY_NIGHT):</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=GET_DAY_NIGHT;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.data.isNight<sp/>=<sp/><ref refid="light__sensor__task_8c_1a2fb8d8bd6f3ac82658743d379b205a51" kindref="member">getLightTask_state</ref>();</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>GET_DAY_NIGHT\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(CONN_CLOSE_REQ):</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=CONN_CLOSE_RSP;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>CLOSE<sp/>CONNECTION\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(CONN_KILL_APP_REQ):</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rsp_out.rsp_id=CONN_KILL_APP_RSP;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>KILL<sp/>APP\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;REMOTE<sp/>REQUEST<sp/>INVALID\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rsp_out;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c"/>
+  </compounddef>
+</doxygen>

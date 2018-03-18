@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>ECEN5013<sp/>Project<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Author<sp/>-<sp/>Gunj<sp/>Manseta<sp/>(Embedded<sp/>Systems<sp/>Engineering<sp/>-<sp/>University<sp/>of<sp/>Colorado<sp/>Boulder)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>A<sp/>multithreaded<sp/>console<sp/>application<sp/>for<sp/>BeagleBone<sp/>black/green(Linux)<sp/>having<sp/>sensor<sp/>interface,<sp/>server,<sp/>and<sp/>logger</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>project<sp/>includes<sp/>1<sp/>parent<sp/>thread<sp/>which<sp/>is<sp/>the<sp/>main<sp/>task.<sp/>The<sp/>main<sp/>task<sp/>spawns<sp/>4<sp/>child<sp/>threads</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Temperature<sp/><sp/>sensor<sp/>task<sp/>which<sp/>is<sp/>responsible<sp/>for<sp/>talking<sp/>with<sp/>the<sp/>TMP102<sp/>sensor.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Light<sp/>sensor<sp/>task<sp/>which<sp/>is<sp/>responsible<sp/>for<sp/>talking<sp/>with<sp/>the<sp/>APDS9301<sp/>light<sp/>sensor.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">3.<sp/>Socket<sp/>task<sp/>which<sp/>is<sp/>runs<sp/>a<sp/>TCP<sp/>server<sp/>and<sp/>accepts<sp/>connection<sp/>from<sp/>the<sp/>client<sp/>with<sp/>various<sp/>requests<sp/>suchs<sp/>as<sp/>getting<sp/>temperature<sp/>and<sp/>lux<sp/>value<sp/>from<sp/>the<sp/>sensor.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Logger<sp/>task<sp/>which<sp/>is<sp/>solely<sp/>responsible<sp/>for<sp/>logging<sp/>to<sp/>a<sp/>file<sp/>setup<sp/>in<sp/>the<sp/>config<sp/>file.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>sensor<sp/>tasks<sp/>talks<sp/>with<sp/>the<sp/>sensor<sp/>via<sp/>a<sp/>MT-safe<sp/>I2Cmaster<sp/>wrapper<sp/>written<sp/>around<sp/>the<sp/>Intel<sp/>open<sp/>source<sp/>project<sp/>mraa<sp/>library<sp/>intended<sp/>for<sp/>various<sp/>boards.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>main<sp/>task<sp/>which<sp/>is<sp/>the<sp/>parent<sp/>task<sp/>keeps<sp/>a<sp/>check<sp/>of<sp/>the<sp/>children<sp/>task<sp/>if<sp/>they<sp/>are<sp/>alive<sp/>or<sp/>not<sp/>and<sp/>if<sp/>any<sp/>of<sp/>the<sp/>thread<sp/>is<sp/>found<sp/>to<sp/>be<sp/>dead<sp/>or<sp/>stuck<sp/>for<sp/>more<sp/>than<sp/>the<sp/>timeout<sp/>set<sp/>by<sp/>in<sp/>the<sp/>config<sp/>file,<sp/>the<sp/>main<sp/>task<sp/>closes<sp/>all<sp/>the<sp/>threads<sp/>and<sp/>exits<sp/>gracefully.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>This<sp/>project<sp/>is<sp/>intended<sp/>to<sp/>run<sp/>on<sp/>the<sp/>BeagleBone<sp/>black/green.&quot;</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/README.md"/>
+  </compounddef>
+</doxygen>

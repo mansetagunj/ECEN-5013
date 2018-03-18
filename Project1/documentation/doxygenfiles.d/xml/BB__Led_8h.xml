@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="BB__Led_8h" kind="file" language="C++">
+    <compoundname>BB_Led.h</compoundname>
+    <includedby refid="BB__Led_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/BB_Led.c</includedby>
+    <includedby refid="LED__test_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/tests/BBB_UserLED_Test/LED_test.c</includedby>
+    <invincdepgraph>
+      <node id="467">
+        <label>/home/gunj/repos/ECEN-5013/Project1/tests/BBB_UserLED_Test/LED_test.c</label>
+        <link refid="LED__test_8c"/>
+      </node>
+      <node id="465">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h</label>
+        <link refid="BB_Led.h"/>
+        <childnode refid="466" relation="include">
+        </childnode>
+        <childnode refid="467" relation="include">
+        </childnode>
+      </node>
+      <node id="466">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/BB_Led.c</label>
+        <link refid="BB__Led_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59" prot="public" static="no">
+        <name>USER_LED_T</name>
+        <enumvalue id="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59aa688958b70395170ecf516290f2634a5" prot="public">
+          <name>LED0</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59adac6477842247cab1a8c02c65f431b44" prot="public">
+          <name>LED1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59a8379bbaa96d151e6adac488b2a147b7a" prot="public">
+          <name>LED2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59a5dec293e081e0fc78369c842fab8452b" prot="public">
+          <name>LED3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h" line="13" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h" bodystart="12" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="BB__Led_8h_1a86628a099822bb243b1c7d57133e627b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BB_LedON</definition>
+        <argsstring>(USER_LED_T lednum)</argsstring>
+        <name>BB_LedON</name>
+        <param>
+          <type>USER_LED_T</type>
+          <declname>lednum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lednum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h" line="26" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/BB_Led.c" bodystart="27" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="BB__Led_8h_1a84494234e8807c093bee8d16d7b2008b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BB_LedOFF</definition>
+        <argsstring>(USER_LED_T lednum)</argsstring>
+        <name>BB_LedOFF</name>
+        <param>
+          <type>USER_LED_T</type>
+          <declname>lednum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lednum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h" line="34" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/BB_Led.c" bodystart="48" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="BB__Led_8h_1a36a765a1771de0098fe83028d53827e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BB_LedDefault</definition>
+        <argsstring>()</argsstring>
+        <name>BB_LedDefault</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lednum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h" line="42" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/BB_Led.c" bodystart="69" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-10 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>BB_LED_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BB_LED_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>LED0,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>LED1,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>LED2,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>LED3</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}USER_LED_T;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="BB__Led_8h_1a86628a099822bb243b1c7d57133e627b" kindref="member">BB_LedON</ref>(USER_LED_T<sp/>lednum);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="BB__Led_8h_1a84494234e8807c093bee8d16d7b2008b" kindref="member">BB_LedOFF</ref>(USER_LED_T<sp/>lednum);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="BB__Led_8h_1a36a765a1771de0098fe83028d53827e1" kindref="member">BB_LedDefault</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/BB_Led.h"/>
+  </compounddef>
+</doxygen>

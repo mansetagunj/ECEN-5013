@@ -1,0 +1,12 @@
+<map id="/home/gunj/repos/ECEN&#45;5013/Project1/src/temperature_sensor_task.c" name="/home/gunj/repos/ECEN&#45;5013/Project1/src/temperature_sensor_task.c">
+<area shape="rect" id="node8" href="$main__task_8h.html" title="main_task.h" alt="" coords="444,117,537,143"/>
+<area shape="rect" id="node9" href="$common__helper_8h.html" title="common_helper.h" alt="" coords="341,199,466,225"/>
+<area shape="rect" id="node17" href="$error__data_8h.html" title="error_data.h" alt="" coords="1014,199,1105,225"/>
+<area shape="rect" id="node20" href="$logger__task_8h.html" title="logger_task.h" alt="" coords="663,117,763,143"/>
+<area shape="rect" id="node23" href="$temperature__sensor__task_8h.html" title="temperature_sensor\l_task.h" alt="" coords="787,109,924,151"/>
+<area shape="rect" id="node26" href="$my__i2c_8h.html" title="my_i2c.h" alt="" coords="217,117,292,143"/>
+<area shape="rect" id="node28" href="$tmp102__sensor_8h.html" title="tmp102_sensor.h" alt="" coords="1000,117,1122,143"/>
+<area shape="rect" id="node10" href="$posixTimer_8h.html" title="posixTimer.h" alt="" coords="571,273,668,300"/>
+<area shape="rect" id="node22" href="$my__time_8h.html" title="my_time.h" alt="" coords="769,199,852,225"/>
+<area shape="rect" id="node24" href="$sensor__common__object_8h.html" title="sensor_common_object.h" alt="" coords="1129,199,1300,225"/>
+</map>

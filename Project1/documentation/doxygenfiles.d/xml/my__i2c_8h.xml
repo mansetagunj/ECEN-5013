@@ -1,0 +1,619 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="my__i2c_8h" kind="file" language="C++">
+    <compoundname>my_i2c.h</compoundname>
+    <includes local="no">pthread.h</includes>
+    <includes local="yes">mraa/i2c.h</includes>
+    <includedby refid="apds9301__sensor_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c</includedby>
+    <includedby refid="light__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</includedby>
+    <includedby refid="my__i2c_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c</includedby>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <includedby refid="tmp102__sensor_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/tmp102_sensor.c</includedby>
+    <includedby refid="apds9301__myTest_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/tests/LightLIB_Test/apds9301_myTest.c</includedby>
+    <includedby refid="apds9301__testmain_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/tests/LightLIB_Test/apds9301_testmain.c</includedby>
+    <includedby refid="tmp102__testmain_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/tests/TemperatureLIB_Test/tmp102_testmain.c</includedby>
+    <incdepgraph>
+      <node id="468">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h</label>
+        <link refid="my_i2c.h"/>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
+      </node>
+      <node id="470">
+        <label>mraa/i2c.h</label>
+      </node>
+      <node id="469">
+        <label>pthread.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="475">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="471">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h</label>
+        <link refid="my_i2c.h"/>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="473" relation="include">
+        </childnode>
+        <childnode refid="474" relation="include">
+        </childnode>
+        <childnode refid="475" relation="include">
+        </childnode>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+      </node>
+      <node id="472">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c</label>
+        <link refid="apds9301__sensor_8c"/>
+      </node>
+      <node id="474">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c</label>
+        <link refid="my__i2c_8c"/>
+      </node>
+      <node id="477">
+        <label>/home/gunj/repos/ECEN-5013/Project1/tests/TemperatureLIB_Test/tmp102_testmain.c</label>
+        <link refid="tmp102__testmain_8c"/>
+      </node>
+      <node id="473">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="476">
+        <label>/home/gunj/repos/ECEN-5013/Project1/tests/LightLIB_Test/apds9301_testmain.c</label>
+        <link refid="apds9301__testmain_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structi2c__handle" prot="public">i2c_handle</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="my__i2c_8h_1aa74d389e1b1373ac3449ed510de40cc7" prot="public" static="no">
+        <name>BB_I2C_BUS_2</name>
+        <initializer>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="14" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" prot="public" static="no">
+        <type>struct <ref refid="structi2c__handle" kindref="compound">i2c_handle</ref></type>
+        <definition>typedef struct i2c_handle I2C_MASTER_HANDLE_T</definition>
+        <argsstring></argsstring>
+        <name>I2C_MASTER_HANDLE_T</name>
+        <briefdescription>
+<para>This is the handle for I2C mster and each master should have only one handle. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="26" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="my__i2c_8h_1a896771a0a066b06b606d35bb81809fa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+        <definition>I2C_MASTER_HANDLE_T* getMasterI2C_handle</definition>
+        <argsstring>()</argsstring>
+        <name>getMasterI2C_handle</name>
+        <briefdescription>
+<para>Get the MasterI2C handle object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>I2C_MASTER_HANDLE_T * </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="33" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1a24206855ca77b181de1cfbe8e9e5051a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void printErrorCode</definition>
+        <argsstring>(int errorCode)</argsstring>
+        <name>printErrorCode</name>
+        <param>
+          <type>int</type>
+          <declname>errorCode</declname>
+        </param>
+        <briefdescription>
+<para>Prints the error code string to stdout. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>errorCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="40" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="17" bodyend="23"/>
+        <referencedby refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" compoundref="light__sensor__task_8c" startline="95" endline="108">light_task_queue_init</referencedby>
+        <referencedby refid="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" compoundref="temperature__sensor__task_8c" startline="153" endline="163">temperature_task_I2Cinit</referencedby>
+        <referencedby refid="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" compoundref="temperature__sensor__task_8c" startline="171" endline="182">temperature_task_I2Cdeinit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1acea2b6a0875bf63a179959a46b3cdf7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_Init</definition>
+        <argsstring>(I2C_MASTER_HANDLE_T *handle)</argsstring>
+        <name>I2Cmaster_Init</name>
+        <param>
+          <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+<para>Inits the I2C master handle There is an internal state of the context which is maintained which gets updated with every init call Internal context goes to NULL is error in init This context points to the new handle that is passed as the parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int SUCCESS=0 and ERROR =-1 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="50" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="25" bodyend="66"/>
+        <referencedby refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" compoundref="light__sensor__task_8c" startline="95" endline="108">light_task_queue_init</referencedby>
+        <referencedby refid="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" compoundref="temperature__sensor__task_8c" startline="153" endline="163">temperature_task_I2Cinit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1a15136dcc397f046d0a000a781d060139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_Destroy</definition>
+        <argsstring>(I2C_MASTER_HANDLE_T *handle)</argsstring>
+        <name>I2Cmaster_Destroy</name>
+        <param>
+          <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="58" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="68" bodyend="105"/>
+        <referencedby refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" compoundref="light__sensor__task_8c" startline="95" endline="108">light_task_queue_init</referencedby>
+        <referencedby refid="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" compoundref="temperature__sensor__task_8c" startline="171" endline="182">temperature_task_I2Cdeinit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1a8024ad1f3558034ee998758f45d456d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_read_byte</definition>
+        <argsstring>(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data)</argsstring>
+        <name>I2Cmaster_read_byte</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>slave_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slave_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="68" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="180" bodyend="200"/>
+        <referencedby refid="apds9301__sensor_8h_1a2aa3244d3848324ba9f4afc7b1990ce1" compoundref="apds9301__sensor_8c" startline="54" endline="58">APDS9301_readControlReg</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a5e527c870fed599e87d712a151e47172" compoundref="apds9301__sensor_8c" startline="60" endline="72">APDS9301_mode_highGain</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1aa8c71ee19fe0ef5ff8880f87daa2757a" compoundref="apds9301__sensor_8c" startline="73" endline="86">APDS9301_mode_lowGain_default</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a69d91df573c8c448a30715ae605262d7" compoundref="apds9301__sensor_8c" startline="88" endline="103">APDS9301_mode_interrupt</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ad22326035668d08e6d7cade8cde126e4" compoundref="apds9301__sensor_8c" startline="110" endline="123">APDS9301_mode_manualcontrol</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ac14a5a102513243824d12e6028abbeb8" compoundref="apds9301__sensor_8c" startline="125" endline="138">APDS9301_mode_integrationTime</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a82dac2bc9fc0e11fc4589f3492bec13e" compoundref="apds9301__sensor_8c" startline="151" endline="155">APDS9301_readID</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ae41babc910792ba1bbb19e837fd45d4c" compoundref="apds9301__sensor_8c" startline="157" endline="171">APDS9301_readCh0</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a34c034b815ceb2e30b0161d7461f0a8e" compoundref="apds9301__sensor_8c" startline="173" endline="188">APDS9301_readCh1</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1acae5d5b1cfb4008743589e5482d7578b" compoundref="apds9301__sensor_8c" startline="234" endline="249">APDS9301_memDump</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1ab25650a9cf74e65561b1fced3555f36c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_read_bytes</definition>
+        <argsstring>(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len)</argsstring>
+        <name>I2Cmaster_read_bytes</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>slave_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slave_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="79" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="202" bodyend="221"/>
+        <referencedby refid="apds9301__sensor_8h_1ad0dcd5037cad9e4ed654da7d9d548010" compoundref="apds9301__sensor_8c" startline="42" endline="46">APDS9301_read_ThLow</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ab7d8d5ac5b780bcdb0a399f286b7f224" compoundref="apds9301__sensor_8c" startline="48" endline="52">APDS9301_read_ThHigh</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a7d4d57387ef6a5db5bfc8d14a94d9ee4" compoundref="tmp102__sensor_8c" startline="43" endline="58">TMP102_setMode_SD_PowerSaving</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a4309a30e9d006753c2cdd6f6c9af2650" compoundref="tmp102__sensor_8c" startline="59" endline="73">TMP102_setMode_SD_Continuous_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a81c75dba63b6c0727ab602ea631b3a22" compoundref="tmp102__sensor_8c" startline="75" endline="90">TMP102_setMode_TM_ComparatorMode_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a4386703b35277dc71be5cd9b57d0f3ce" compoundref="tmp102__sensor_8c" startline="91" endline="106">TMP102_setMode_TM_InterruptMode</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a899854f020db34f588f89adffcdc8433" compoundref="tmp102__sensor_8c" startline="107" endline="122">TMP102_setMode_ALERT_ActiveLow_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1aa7438de8c6766d48b649e132cabf88e9" compoundref="tmp102__sensor_8c" startline="123" endline="138">TMP102_setMode_ALERT_ActiveHigh</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1aa96f470639b851a96f524ae6524dd266" compoundref="tmp102__sensor_8c" startline="139" endline="155">TMP102_setMode_EM_NormalMode_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a2df18183afad1339903fe59997aaf9a2" compoundref="tmp102__sensor_8c" startline="156" endline="171">TMP102_setMode_EM_ExtendedMode</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a3f6277d742af4a10dcec568e84ad1d5d" compoundref="tmp102__sensor_8c" startline="172" endline="187">TMP102_setMode_CR_250mHZ</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a110d2f8672865d85670f2681e5dc9aed" compoundref="tmp102__sensor_8c" startline="188" endline="204">TMP102_setMode_CR_1HZ</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a6d24a33a5e009441edb99bd1a727afec" compoundref="tmp102__sensor_8c" startline="205" endline="221">TMP102_setMode_CR_4HZ_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a031c7291b177515876ebb29d24dc97b4" compoundref="tmp102__sensor_8c" startline="223" endline="238">TMP102_setMode_CR_8HZ</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a98961eafa743b9a651a3cd2f3787f858" compoundref="tmp102__sensor_8c" startline="239" endline="251">TMP102_readMode_ALERT</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a6296f70167b1f662c7f9b56b15fe037c" compoundref="tmp102__sensor_8c" startline="253" endline="288">TMP102_write_Tlow</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a32a4b8bbc5611a7ca967cdaaeb732ae1" compoundref="tmp102__sensor_8c" startline="290" endline="327">TMP102_write_Thigh</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1aa8531a04dcf776f0d81d190b384bfab5" compoundref="tmp102__sensor_8c" startline="329" endline="349">TMP102_read_Tlow</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a63bbac70f6558fd10f034a45d1fa140c" compoundref="tmp102__sensor_8c" startline="351" endline="371">TMP102_read_Thigh</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" compoundref="tmp102__sensor_8c" startline="374" endline="403">TMP102_getTemp</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a1ea9cb5a6a2e798b33564f9142d7afa1" compoundref="tmp102__sensor_8c" startline="405" endline="423">TMP102_memDump</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1af92cf5a5d893ef9bbf6b4ee6de0b0ef8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_write</definition>
+        <argsstring>(uint8_t slave_addr, uint8_t reg_addr)</argsstring>
+        <name>I2Cmaster_write</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>slave_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <briefdescription>
+<para>Writes a byte/pointer register to the slave. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slave_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="89" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="132" bodyend="150"/>
+        <referencedby refid="apds9301__sensor_8h_1aedfa265fc5f3043cea294a0a5d30da04" compoundref="apds9301__sensor_8c" startline="104" endline="108">APDS9301_clearPendingInterrupt</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1a202be1d68320e3ba93c759821ba2f695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_write_byte</definition>
+        <argsstring>(uint8_t slave_addr, uint8_t reg_addr, uint8_t data)</argsstring>
+        <name>I2Cmaster_write_byte</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>slave_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slave_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="99" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="112" bodyend="130"/>
+        <referencedby refid="apds9301__sensor_8h_1a5e527c870fed599e87d712a151e47172" compoundref="apds9301__sensor_8c" startline="60" endline="72">APDS9301_mode_highGain</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1aa8c71ee19fe0ef5ff8880f87daa2757a" compoundref="apds9301__sensor_8c" startline="73" endline="86">APDS9301_mode_lowGain_default</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a69d91df573c8c448a30715ae605262d7" compoundref="apds9301__sensor_8c" startline="88" endline="103">APDS9301_mode_interrupt</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ad22326035668d08e6d7cade8cde126e4" compoundref="apds9301__sensor_8c" startline="110" endline="123">APDS9301_mode_manualcontrol</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ac14a5a102513243824d12e6028abbeb8" compoundref="apds9301__sensor_8c" startline="125" endline="138">APDS9301_mode_integrationTime</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a5f0928561f20743cccb1a4f6336ddff4" compoundref="apds9301__sensor_8c" startline="141" endline="145">APDS9301_poweron</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" compoundref="apds9301__sensor_8c" startline="146" endline="150">APDS9301_powerdown</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1a3a48cfc824f745c311bc081479ee6b9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_write_bytes</definition>
+        <argsstring>(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len)</argsstring>
+        <name>I2Cmaster_write_bytes</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>slave_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slave_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="110" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="my__i2c_8h_1a19c6244da5ea2d4e65a25001582498c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int I2Cmaster_write_word</definition>
+        <argsstring>(uint8_t slave_addr, uint8_t reg_addr, uint16_t data, uint8_t lsb_first)</argsstring>
+        <name>I2Cmaster_write_word</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>slave_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>lsb_first</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slave_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lsb_first</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="121" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_i2c.c" bodystart="153" bodyend="177"/>
+        <referencedby refid="apds9301__sensor_8h_1a27508ac9add1cd27cb2c143631f3a55f" compoundref="apds9301__sensor_8c" startline="30" endline="34">APDS9301_write_ThLow</referencedby>
+        <referencedby refid="apds9301__sensor_8h_1ad75b8b8d703f549994213adeaea90c64" compoundref="apds9301__sensor_8c" startline="36" endline="40">APDS9301_write_ThHigh</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" compoundref="tmp102__sensor_8c" startline="23" endline="35">TMP102_setmode_allDefault</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a7d4d57387ef6a5db5bfc8d14a94d9ee4" compoundref="tmp102__sensor_8c" startline="43" endline="58">TMP102_setMode_SD_PowerSaving</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a4309a30e9d006753c2cdd6f6c9af2650" compoundref="tmp102__sensor_8c" startline="59" endline="73">TMP102_setMode_SD_Continuous_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a81c75dba63b6c0727ab602ea631b3a22" compoundref="tmp102__sensor_8c" startline="75" endline="90">TMP102_setMode_TM_ComparatorMode_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a4386703b35277dc71be5cd9b57d0f3ce" compoundref="tmp102__sensor_8c" startline="91" endline="106">TMP102_setMode_TM_InterruptMode</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a899854f020db34f588f89adffcdc8433" compoundref="tmp102__sensor_8c" startline="107" endline="122">TMP102_setMode_ALERT_ActiveLow_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1aa7438de8c6766d48b649e132cabf88e9" compoundref="tmp102__sensor_8c" startline="123" endline="138">TMP102_setMode_ALERT_ActiveHigh</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1aa96f470639b851a96f524ae6524dd266" compoundref="tmp102__sensor_8c" startline="139" endline="155">TMP102_setMode_EM_NormalMode_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a2df18183afad1339903fe59997aaf9a2" compoundref="tmp102__sensor_8c" startline="156" endline="171">TMP102_setMode_EM_ExtendedMode</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a3f6277d742af4a10dcec568e84ad1d5d" compoundref="tmp102__sensor_8c" startline="172" endline="187">TMP102_setMode_CR_250mHZ</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a110d2f8672865d85670f2681e5dc9aed" compoundref="tmp102__sensor_8c" startline="188" endline="204">TMP102_setMode_CR_1HZ</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a6d24a33a5e009441edb99bd1a727afec" compoundref="tmp102__sensor_8c" startline="205" endline="221">TMP102_setMode_CR_4HZ_default</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a031c7291b177515876ebb29d24dc97b4" compoundref="tmp102__sensor_8c" startline="223" endline="238">TMP102_setMode_CR_8HZ</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a6296f70167b1f662c7f9b56b15fe037c" compoundref="tmp102__sensor_8c" startline="253" endline="288">TMP102_write_Tlow</referencedby>
+        <referencedby refid="tmp102__sensor_8h_1a32a4b8bbc5611a7ca967cdaaeb732ae1" compoundref="tmp102__sensor_8c" startline="290" endline="327">TMP102_write_Thigh</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-13 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>MYI2C_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MYI2C_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mraa/i2c.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BB_I2C_BUS_2<sp/><sp/>(2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="structi2c__handle" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structi2c__handle" kindref="compound">i2c_handle</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>This<sp/>context<sp/>is<sp/>a<sp/>typedef&apos;ed<sp/>pointer<sp/>within<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>mraa_i2c_context<sp/>i2c_context;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_spinlock_t<sp/>handle_lock;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref>*<sp/><ref refid="my__i2c_8h_1a896771a0a066b06b606d35bb81809fa0" kindref="member">getMasterI2C_handle</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1a24206855ca77b181de1cfbe8e9e5051a" kindref="member">printErrorCode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>errorCode);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1acea2b6a0875bf63a179959a46b3cdf7d" kindref="member">I2Cmaster_Init</ref>(<ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>*handle);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1a15136dcc397f046d0a000a781d060139" kindref="member">I2Cmaster_Destroy</ref>(<ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>*handle);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(uint8_t<sp/>slave_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint8_t<sp/>*data);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1ab25650a9cf74e65561b1fced3555f36c" kindref="member">I2Cmaster_read_bytes</ref>(uint8_t<sp/>slave_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1af92cf5a5d893ef9bbf6b4ee6de0b0ef8" kindref="member">I2Cmaster_write</ref>(uint8_t<sp/>slave_addr,<sp/>uint8_t<sp/>reg_addr);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(uint8_t<sp/>slave_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint8_t<sp/>data);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1a3a48cfc824f745c311bc081479ee6b9b" kindref="member">I2Cmaster_write_bytes</ref>(uint8_t<sp/>slave_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__i2c_8h_1a19c6244da5ea2d4e65a25001582498c8" kindref="member">I2Cmaster_write_word</ref>(uint8_t<sp/>slave_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint16_t<sp/>data,<sp/>uint8_t<sp/>lsb_first);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h"/>
+  </compounddef>
+</doxygen>

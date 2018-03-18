@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structREMOTE__REQUEST__T" kind="struct" language="C++" prot="public">
+    <compoundname>REMOTE_REQUEST_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structREMOTE__REQUEST__T_1aa9abf86717ba38441b7620ce1a435379" prot="public" static="no" mutable="no">
+        <type>REMOTE_REQRSP_ID</type>
+        <definition>REMOTE_REQRSP_ID REMOTE_REQUEST_T::request_id</definition>
+        <argsstring></argsstring>
+        <name>request_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="35" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="34" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="33" bodyend="37"/>
+    <listofallmembers>
+      <member refid="structREMOTE__REQUEST__T_1aa9abf86717ba38441b7620ce1a435379" prot="public" virt="non-virtual"><scope>REMOTE_REQUEST_T</scope><name>request_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<map id="/home/gunj/repos/ECEN&#45;5013/Project1/include/common/error_data.h" name="/home/gunj/repos/ECEN&#45;5013/Project1/include/common/error_data.h">
+<area shape="rect" id="node2" href="$apds9301__sensor_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/apds9301\l_sensor.c" alt="" coords="5,109,193,165"/>
+<area shape="rect" id="node3" href="$main__task_8h.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/include\l/common/main_task.h" alt="" coords="537,109,701,165"/>
+<area shape="rect" id="node5" href="$light__sensor__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/light\l_sensor_task.c" alt="" coords="152,213,316,269"/>
+<area shape="rect" id="node6" href="$logger__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/logger\l_task.c" alt="" coords="931,213,1097,269"/>
+<area shape="rect" id="node7" href="$main__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/main\l_task.c" alt="" coords="340,213,504,269"/>
+<area shape="rect" id="node8" href="$socket__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/socket\l_task.c" alt="" coords="735,213,906,269"/>
+<area shape="rect" id="node9" href="$temperature__sensor__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/temperature\l_sensor_task.c" alt="" coords="1121,213,1323,269"/>
+<area shape="rect" id="node10" href="$logger__task_8h.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/include\l/common/logger_task.h" alt="" coords="725,109,889,165"/>
+<area shape="rect" id="node11" href="$light__sensor__task_8h.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/include\l/common/light_sensor_task.h" alt="" coords="320,109,513,165"/>
+<area shape="rect" id="node12" href="$temperature__sensor__task_8h.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/include\l/common/temperature_sensor_task.h" alt="" coords="913,109,1152,165"/>
+<area shape="rect" id="node13" href="$my__time_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/my\l_time.c" alt="" coords="1329,109,1493,165"/>
+<area shape="rect" id="node4" href="$common__helper_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/common\l_helper.c" alt="" coords="528,213,711,269"/>
+</map>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_77984282896fb3d6e4c0af9c2fb020f6" kind="dir">
+    <compoundname>/home/gunj/repos/ECEN-5013/Project1/tests/LightLIB_Test</compoundname>
+    <innerfile refid="apds9301__myTest_8c">apds9301_myTest.c</innerfile>
+    <innerfile refid="apds9301__testmain_8c">apds9301_testmain.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/tests/LightLIB_Test/"/>
+  </compounddef>
+</doxygen>

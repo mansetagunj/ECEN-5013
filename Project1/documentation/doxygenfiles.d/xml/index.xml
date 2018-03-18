@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="unionREMOTE__RESPONSE__T_1_1data" kind="union"><name>REMOTE_RESPONSE_T::data</name>
+    <member refid="unionREMOTE__RESPONSE__T_1_1data_1ae2e376d49080e8828ed00fb9ff1b5f63" kind="variable"><name>floatingData</name></member>
+    <member refid="unionREMOTE__RESPONSE__T_1_1data_1a9cb654e8e2aa8cbcc234170ba4913e62" kind="variable"><name>isNight</name></member>
+  </compound>
+  <compound refid="structi2c__handle" kind="struct"><name>i2c_handle</name>
+    <member refid="structi2c__handle_1aa381f1dd467b2f93f7283854e8f3ebca" kind="variable"><name>i2c_context</name></member>
+    <member refid="structi2c__handle_1aaf1918ec0bdd529f793b5d3850280229" kind="variable"><name>handle_lock</name></member>
+  </compound>
+  <compound refid="structLIGHTTASKQ__MSG__T" kind="struct"><name>LIGHTTASKQ_MSG_T</name>
+    <member refid="structLIGHTTASKQ__MSG__T_1a6d0d6fad55adda1f3922616bc34a7902" kind="variable"><name>msgID</name></member>
+    <member refid="structLIGHTTASKQ__MSG__T_1a73522367ea6c6c3c9a3e98a817d4c50f" kind="variable"><name>sourceID</name></member>
+    <member refid="structLIGHTTASKQ__MSG__T_1a9ab5b74f39c56fe79cabf08e00bcd339" kind="variable"><name>packet</name></member>
+  </compound>
+  <compound refid="structLOGGERTASKQ__MSG__T" kind="struct"><name>LOGGERTASKQ_MSG_T</name>
+    <member refid="structLOGGERTASKQ__MSG__T_1a6f3f926915ee4fed9eefaa2ae02565a0" kind="variable"><name>msgID</name></member>
+    <member refid="structLOGGERTASKQ__MSG__T_1ad92d934c36ea8b693e20bd585b12dd36" kind="variable"><name>timestamp</name></member>
+    <member refid="structLOGGERTASKQ__MSG__T_1abe7f4a15b1008087838d78abe25fd9d1" kind="variable"><name>loglevel</name></member>
+    <member refid="structLOGGERTASKQ__MSG__T_1a4bbfcb4a9e1a7846b56410dc69926b92" kind="variable"><name>sourceID</name></member>
+    <member refid="structLOGGERTASKQ__MSG__T_1a3105fa742571aeee5d90f15925eded89" kind="variable"><name>msgData</name></member>
+  </compound>
+  <compound refid="structMAINTASKQ__MSG__T" kind="struct"><name>MAINTASKQ_MSG_T</name>
+    <member refid="structMAINTASKQ__MSG__T_1a42b4bf212bc5f1e3cff97ca900552c0e" kind="variable"><name>msgID</name></member>
+    <member refid="structMAINTASKQ__MSG__T_1a5bbb761b7478733f356d9fe742f47f47" kind="variable"><name>sourceID</name></member>
+    <member refid="structMAINTASKQ__MSG__T_1a0bdf6667da37ec4eff16226085889fcd" kind="variable"><name>msgData</name></member>
+  </compound>
+  <compound refid="structOBJECT__PACKET__T" kind="struct"><name>OBJECT_PACKET_T</name>
+    <member refid="structOBJECT__PACKET__T_1a1648380d5d2dd74ec2e13957949e505e" kind="variable"><name>is_sync</name></member>
+    <member refid="structOBJECT__PACKET__T_1a13b703828ad6478fbffdb99e3c24941c" kind="variable"><name>sync_semaphore</name></member>
+    <member refid="structOBJECT__PACKET__T_1a7b42c85d01c47b432bbd8a86d80b1881" kind="variable"><name>dev_addr</name></member>
+    <member refid="structOBJECT__PACKET__T_1a927d74894329c73aa0a192f110d47671" kind="variable"><name>reg_value</name></member>
+    <member refid="structOBJECT__PACKET__T_1a1f397ae898402a439fc093c5347459ae" kind="variable"><name>buffLen</name></member>
+  </compound>
+  <compound refid="structREMOTE__REQUEST__T" kind="struct"><name>REMOTE_REQUEST_T</name>
+    <member refid="structREMOTE__REQUEST__T_1aa9abf86717ba38441b7620ce1a435379" kind="variable"><name>request_id</name></member>
+  </compound>
+  <compound refid="structREMOTE__RESPONSE__T" kind="struct"><name>REMOTE_RESPONSE_T</name>
+    <member refid="structREMOTE__RESPONSE__T_1aeffb937926ea1d5ae378d59eec691357" kind="variable"><name>rsp_id</name></member>
+    <member refid="structREMOTE__RESPONSE__T_1a7cf162cedf8f984c2f287815632fdfd0" kind="variable"><name>data</name></member>
+    <member refid="structREMOTE__RESPONSE__T_1a3382443efefd8a97a65e01578dfa9246" kind="variable"><name>metadata</name></member>
+  </compound>
+  <compound refid="structTEMPERATURETASKQ__MSG__T" kind="struct"><name>TEMPERATURETASKQ_MSG_T</name>
+    <member refid="structTEMPERATURETASKQ__MSG__T_1a3193f82c175e24995eae8c2819c410e3" kind="variable"><name>msgID</name></member>
+    <member refid="structTEMPERATURETASKQ__MSG__T_1ae8775f7bc7322da94b6827c42f28ffd1" kind="variable"><name>sourceID</name></member>
+    <member refid="structTEMPERATURETASKQ__MSG__T_1ad8ac382a5319e5252b1af86b45333fb8" kind="variable"><name>packet</name></member>
+  </compound>
+  <compound refid="structTMP102__CONFIG__REG__SETTINGS__T" kind="struct"><name>TMP102_CONFIG_REG_SETTINGS_T</name>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a81f77be9673afe30da33edb8e6e62b55" kind="variable"><name>SD_MODE</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a635d77b82a949a2299e1981d7ace305d" kind="variable"><name>TM_MODE</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a2225a8d1e41436fe30577b474c99c737" kind="variable"><name>POL</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a6c73d5cc6105f5afd1dbb33454705ec3" kind="variable"><name>FAULT</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1ae0c076ab9ff772db54bd811ecf1cef71" kind="variable"><name>RES0</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a09870f580e0e800f3eb23f640f07a3c3" kind="variable"><name>OS</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a62bc2c4b934d561e2f32949c61f6b016" kind="variable"><name>RES1</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a9837531af532e0c8a1fdd39095c250fb" kind="variable"><name>EM_MODE</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1a7bd3f8bf4d72156773a9cb9abde52596" kind="variable"><name>RO_AL_MODE</name></member>
+    <member refid="structTMP102__CONFIG__REG__SETTINGS__T_1aa0d2ccdd3d62d5f817bd34be36ddb2b1" kind="variable"><name>CR</name></member>
+  </compound>
+  <compound refid="apds9301__sensor_8h" kind="file"><name>apds9301_sensor.h</name>
+    <member refid="apds9301__sensor_8h_1aa45ac33ec93739717b49de5343f7f05c" kind="define"><name>APDS9301_SLAVE_ADDR</name></member>
+    <member refid="apds9301__sensor_8h_1aa8cbe8551313b2f06715d25f0b6c6468" kind="define"><name>APDS9301_CMD_REG</name></member>
+    <member refid="apds9301__sensor_8h_1ac95a6add6403cbf8552ff1cbc6f98d2a" kind="define"><name>APDS9301_CMD_WORD_EN</name></member>
+    <member refid="apds9301__sensor_8h_1a37a0f41c63f37ab143b7263867199fd8" kind="define"><name>APDS9301_CMD_INT_CLEAR</name></member>
+    <member refid="apds9301__sensor_8h_1aeb73944a113591006450246b4e00c532" kind="define"><name>APDS9301_CTRL_REG</name></member>
+    <member refid="apds9301__sensor_8h_1ad633b4f59b5c3b8aa0f1e3ff310f6d8b" kind="define"><name>APDS9301_TIMING_REG</name></member>
+    <member refid="apds9301__sensor_8h_1a6af905a9f6d4e38491bd03dbde2115ec" kind="define"><name>APDS9301_ID_REG</name></member>
+    <member refid="apds9301__sensor_8h_1a4730042ee11dee3cbc7b4b81255b900e" kind="define"><name>APDS9301_INT_CTRL_REG</name></member>
+    <member refid="apds9301__sensor_8h_1acccb3291ba8767dc6bc2922edcef4579" kind="define"><name>APDS9301_CH0_DATALOW</name></member>
+    <member refid="apds9301__sensor_8h_1abf415770e699fa605cf146b790c93bd4" kind="define"><name>APDS9301_CH0_DATAHIGH</name></member>
+    <member refid="apds9301__sensor_8h_1a5b84ad3188b098cdff2627ea85e54940" kind="define"><name>APDS9301_CH1_DATALOW</name></member>
+    <member refid="apds9301__sensor_8h_1ad9688e08e3516468dcef1b4eebaf3ed3" kind="define"><name>APDS9301_CH1_DATAHIGH</name></member>
+    <member refid="apds9301__sensor_8h_1a3acf2fb4357537fe9ab495ce47c0fc5c" kind="define"><name>APDS9301_INT_TH_LL_REG</name></member>
+    <member refid="apds9301__sensor_8h_1a01be36bf3154f6890b784cd88b27e555" kind="define"><name>APDS9301_INT_TH_LH_REG</name></member>
+    <member refid="apds9301__sensor_8h_1a2f501fc33fa9cd4f214bd8534e2d74d1" kind="define"><name>APDS9301_INT_TH_HL_REG</name></member>
+    <member refid="apds9301__sensor_8h_1a5444a0c9d6096969c7b61f53f2fe2ba3" kind="define"><name>APDS9301_INT_TH_HH_REG</name></member>
+    <member refid="apds9301__sensor_8h_1a58ecb82a7e59d10bde67c25919e36318" kind="define"><name>APDS9301_CTRL_POWERON</name></member>
+    <member refid="apds9301__sensor_8h_1a055ed2e5866eb44e95a42c7eb4d15c0b" kind="define"><name>APDS9301_CTRL_POWEROFF</name></member>
+    <member refid="apds9301__sensor_8h_1a2c0fc865805a46cf0201e83709b1baa8" kind="define"><name>APDS9301_INTCTRL_IEN</name></member>
+    <member refid="apds9301__sensor_8h_1ac7c6e4d4cfadea533b4900a7eb8b22e0" kind="define"><name>APDS9301_TIMING_GAIN</name></member>
+    <member refid="apds9301__sensor_8h_1a5009a0fd5e8c53d8344052d32314a795" kind="define"><name>APDS9301_TIMING_INTEG</name></member>
+    <member refid="apds9301__sensor_8h_1a06f5d2b2d11c014ef1cc3f5be02499ae" kind="define"><name>APDS9301_TIMING_MANUAL</name></member>
+    <member refid="apds9301__sensor_8h_1ae15d59f5c495e9d5e449d9b6f599897a" kind="define"><name>APDS9301_mode_interruptEnable</name></member>
+    <member refid="apds9301__sensor_8h_1ab1fe9d83af8cf8bd3ee5460929f838b7" kind="define"><name>APDS9301_mode_interruptDisable_default</name></member>
+    <member refid="apds9301__sensor_8h_1a1fcaec74836bad96d90047dd19c85a5c" kind="define"><name>APDS9301_mode_integrationTime0</name></member>
+    <member refid="apds9301__sensor_8h_1a788fee4148ee77b9d76823863a993b9b" kind="define"><name>APDS9301_mode_integrationTime1</name></member>
+    <member refid="apds9301__sensor_8h_1a676201611684c91fb9366092ce94f0b3" kind="define"><name>APDS9301_mode_integrationTime2_default</name></member>
+    <member refid="apds9301__sensor_8h_1af27c3657abe0650af0ed5be14975c558" kind="define"><name>APDS9301_mode_integrationTime3</name></member>
+    <member refid="apds9301__sensor_8h_1a7de8faabda7b71580405dcc09ae485af" kind="define"><name>APDS9301_mode_manualcontrolON</name></member>
+    <member refid="apds9301__sensor_8h_1a505b8936bd1996058d89a8cdb9ec3f77" kind="define"><name>APDS9301_mode_manualcontrolOFF_default</name></member>
+    <member refid="apds9301__sensor_8h_1a47621b827697481f12f3bf6257118f70" kind="function"><name>APDS9301__setmode_allDefault</name></member>
+    <member refid="apds9301__sensor_8h_1acae5d5b1cfb4008743589e5482d7578b" kind="function"><name>APDS9301_memDump</name></member>
+    <member refid="apds9301__sensor_8h_1a27508ac9add1cd27cb2c143631f3a55f" kind="function"><name>APDS9301_write_ThLow</name></member>
+    <member refid="apds9301__sensor_8h_1ad75b8b8d703f549994213adeaea90c64" kind="function"><name>APDS9301_write_ThHigh</name></member>
+    <member refid="apds9301__sensor_8h_1ad0dcd5037cad9e4ed654da7d9d548010" kind="function"><name>APDS9301_read_ThLow</name></member>
+    <member refid="apds9301__sensor_8h_1ab7d8d5ac5b780bcdb0a399f286b7f224" kind="function"><name>APDS9301_read_ThHigh</name></member>
+    <member refid="apds9301__sensor_8h_1a2aa3244d3848324ba9f4afc7b1990ce1" kind="function"><name>APDS9301_readControlReg</name></member>
+    <member refid="apds9301__sensor_8h_1a5e527c870fed599e87d712a151e47172" kind="function"><name>APDS9301_mode_highGain</name></member>
+    <member refid="apds9301__sensor_8h_1aa8c71ee19fe0ef5ff8880f87daa2757a" kind="function"><name>APDS9301_mode_lowGain_default</name></member>
+    <member refid="apds9301__sensor_8h_1ad22326035668d08e6d7cade8cde126e4" kind="function"><name>APDS9301_mode_manualcontrol</name></member>
+    <member refid="apds9301__sensor_8h_1ac14a5a102513243824d12e6028abbeb8" kind="function"><name>APDS9301_mode_integrationTime</name></member>
+    <member refid="apds9301__sensor_8h_1a69d91df573c8c448a30715ae605262d7" kind="function"><name>APDS9301_mode_interrupt</name></member>
+    <member refid="apds9301__sensor_8h_1aedfa265fc5f3043cea294a0a5d30da04" kind="function"><name>APDS9301_clearPendingInterrupt</name></member>
+    <member refid="apds9301__sensor_8h_1a5f0928561f20743cccb1a4f6336ddff4" kind="function"><name>APDS9301_poweron</name></member>
+    <member refid="apds9301__sensor_8h_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" kind="function"><name>APDS9301_powerdown</name></member>
+    <member refid="apds9301__sensor_8h_1a82dac2bc9fc0e11fc4589f3492bec13e" kind="function"><name>APDS9301_readID</name></member>
+    <member refid="apds9301__sensor_8h_1ae41babc910792ba1bbb19e837fd45d4c" kind="function"><name>APDS9301_readCh0</name></member>
+    <member refid="apds9301__sensor_8h_1a34c034b815ceb2e30b0161d7461f0a8e" kind="function"><name>APDS9301_readCh1</name></member>
+    <member refid="apds9301__sensor_8h_1a55e164e7dd0586de71a8dd5b25ae9ef3" kind="function"><name>APDS9301_getLux</name></member>
+    <member refid="apds9301__sensor_8h_1a29ea2301a68de775fc0281dd1b4b03aa" kind="function"><name>APDS9301_test</name></member>
+  </compound>
+  <compound refid="BB__Led_8h" kind="file"><name>BB_Led.h</name>
+    <member refid="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59" kind="enum"><name>USER_LED_T</name></member>
+    <member refid="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59aa688958b70395170ecf516290f2634a5" kind="enumvalue"><name>LED0</name></member>
+    <member refid="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59adac6477842247cab1a8c02c65f431b44" kind="enumvalue"><name>LED1</name></member>
+    <member refid="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59a8379bbaa96d151e6adac488b2a147b7a" kind="enumvalue"><name>LED2</name></member>
+    <member refid="BB__Led_8h_1aaf8196f69b509b42a5d7984d9b5e9f59a5dec293e081e0fc78369c842fab8452b" kind="enumvalue"><name>LED3</name></member>
+    <member refid="BB__Led_8h_1a86628a099822bb243b1c7d57133e627b" kind="function"><name>BB_LedON</name></member>
+    <member refid="BB__Led_8h_1a84494234e8807c093bee8d16d7b2008b" kind="function"><name>BB_LedOFF</name></member>
+    <member refid="BB__Led_8h_1a36a765a1771de0098fe83028d53827e1" kind="function"><name>BB_LedDefault</name></member>
+  </compound>
+  <compound refid="my__i2c_8h" kind="file"><name>my_i2c.h</name>
+    <member refid="my__i2c_8h_1aa74d389e1b1373ac3449ed510de40cc7" kind="define"><name>BB_I2C_BUS_2</name></member>
+    <member refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kind="typedef"><name>I2C_MASTER_HANDLE_T</name></member>
+    <member refid="my__i2c_8h_1a896771a0a066b06b606d35bb81809fa0" kind="function"><name>getMasterI2C_handle</name></member>
+    <member refid="my__i2c_8h_1a24206855ca77b181de1cfbe8e9e5051a" kind="function"><name>printErrorCode</name></member>
+    <member refid="my__i2c_8h_1acea2b6a0875bf63a179959a46b3cdf7d" kind="function"><name>I2Cmaster_Init</name></member>
+    <member refid="my__i2c_8h_1a15136dcc397f046d0a000a781d060139" kind="function"><name>I2Cmaster_Destroy</name></member>
+    <member refid="my__i2c_8h_1a8024ad1f3558034ee998758f45d456d9" kind="function"><name>I2Cmaster_read_byte</name></member>
+    <member refid="my__i2c_8h_1ab25650a9cf74e65561b1fced3555f36c" kind="function"><name>I2Cmaster_read_bytes</name></member>
+    <member refid="my__i2c_8h_1af92cf5a5d893ef9bbf6b4ee6de0b0ef8" kind="function"><name>I2Cmaster_write</name></member>
+    <member refid="my__i2c_8h_1a202be1d68320e3ba93c759821ba2f695" kind="function"><name>I2Cmaster_write_byte</name></member>
+    <member refid="my__i2c_8h_1a3a48cfc824f745c311bc081479ee6b9b" kind="function"><name>I2Cmaster_write_bytes</name></member>
+    <member refid="my__i2c_8h_1a19c6244da5ea2d4e65a25001582498c8" kind="function"><name>I2Cmaster_write_word</name></member>
+  </compound>
+  <compound refid="tmp102__sensor_8h" kind="file"><name>tmp102_sensor.h</name>
+    <member refid="tmp102__sensor_8h_1a5092a6804ba3b3746307a370defbd886" kind="define"><name>TMP102_SLAVE_ADDR</name></member>
+    <member refid="tmp102__sensor_8h_1aea6533288f31ec0c0315dd54f929fee5" kind="define"><name>TMP102_REG_TEMPERATURE</name></member>
+    <member refid="tmp102__sensor_8h_1ad0625a9e3e89c267c5060a3c01f34011" kind="define"><name>TMP102_REG_CONFIGURATION</name></member>
+    <member refid="tmp102__sensor_8h_1a26f5d3c790581774f55998360b248769" kind="define"><name>TMP102_REG_TLOW</name></member>
+    <member refid="tmp102__sensor_8h_1a2705c0ccf3404fffcf0f3566914f98ba" kind="define"><name>TMP102_REG_THIGH</name></member>
+    <member refid="tmp102__sensor_8h_1a88a716e4fccaa747f3ff9c2ff98b3eec" kind="define"><name>TMP102_CONFIG_SD</name></member>
+    <member refid="tmp102__sensor_8h_1abf3813bf9769e2d22bdc37e5e0e7b2f9" kind="define"><name>TMP102_CONFIG_TM</name></member>
+    <member refid="tmp102__sensor_8h_1a008cb8f9704db90f09d4e4b2dd8c040b" kind="define"><name>TMP102_CONFIG_POL</name></member>
+    <member refid="tmp102__sensor_8h_1a5bba383a7572ce8264417e7f6426ce88" kind="define"><name>TMP102_CONFIG_EM</name></member>
+    <member refid="tmp102__sensor_8h_1a6daed77089fc130171b75fb77dfb3661" kind="define"><name>TMP102_CONFIG_AL</name></member>
+    <member refid="tmp102__sensor_8h_1a54602466d5eaacf584b283c626c06eb9" kind="define"><name>TMP102_CONFIG_CR</name></member>
+    <member refid="tmp102__sensor_8h_1a87bc9726a0037e6f8a3baf036a50cc34" kind="define"><name>TMP102_CONFIG_FAULTBITS</name></member>
+    <member refid="tmp102__sensor_8h_1aff0b28b78374e0658675e4d38ef62d2e" kind="define"><name>TMP102_CONFIG_ONESHOT_CR</name></member>
+    <member refid="tmp102__sensor_8h_1ae9063947dd29fb325ca720853d6a7265" kind="define"><name>TMP102_CONFIG_DEFAULT_ASSIGN</name></member>
+    <member refid="tmp102__sensor_8h_1ab79ca2cd8f6ac2c6edb369185a4ec9e2" kind="define"><name>TMP102_getTemp_Celcius</name></member>
+    <member refid="tmp102__sensor_8h_1a164eefae884728c9725a07253de91b34" kind="define"><name>TMP102_getTemp_Kelvin</name></member>
+    <member refid="tmp102__sensor_8h_1a614c139921346bfb450e1e51c5239e75" kind="define"><name>TMP102_getTemp_Fahren</name></member>
+    <member refid="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26a" kind="enum"><name>temperature_unit</name></member>
+    <member refid="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26aa6600ab5b3b178055238cfb794ca39499" kind="enumvalue"><name>CELCIUS</name></member>
+    <member refid="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26aa0024f078d68f31a6ff79a0fb50298c99" kind="enumvalue"><name>FAHREN</name></member>
+    <member refid="tmp102__sensor_8h_1a97e99b5bf85609e1aa08fadbc777f26aa1ee6e694f8ea36c8ed7c0e5c76439b50" kind="enumvalue"><name>KELVIN</name></member>
+    <member refid="tmp102__sensor_8h_1a2ffc14fbf10761dbe31056dc66d1986e" kind="typedef"><name>TEMPERATURE_UNIT_T</name></member>
+    <member refid="tmp102__sensor_8h_1ae8c25eda33c17bf746db7b91fe54c85c" kind="variable"><name>TMP102_CONFIG_DEFAULT</name></member>
+    <member refid="tmp102__sensor_8h_1ae5d236342ee1df3c285e70ec22d9a48e" kind="function"><name>TMP102_setMode</name></member>
+    <member refid="tmp102__sensor_8h_1a4725fb3e4cf18de4220d6067a7dc5dd4" kind="function"><name>TMP102_setmode_allDefault</name></member>
+    <member refid="tmp102__sensor_8h_1a1ea9cb5a6a2e798b33564f9142d7afa1" kind="function"><name>TMP102_memDump</name></member>
+    <member refid="tmp102__sensor_8h_1a847d6333b56e33f815bb5e1101056e42" kind="function"><name>TMP102_getTemp</name></member>
+    <member refid="tmp102__sensor_8h_1a7d4d57387ef6a5db5bfc8d14a94d9ee4" kind="function"><name>TMP102_setMode_SD_PowerSaving</name></member>
+    <member refid="tmp102__sensor_8h_1a4309a30e9d006753c2cdd6f6c9af2650" kind="function"><name>TMP102_setMode_SD_Continuous_default</name></member>
+    <member refid="tmp102__sensor_8h_1a81c75dba63b6c0727ab602ea631b3a22" kind="function"><name>TMP102_setMode_TM_ComparatorMode_default</name></member>
+    <member refid="tmp102__sensor_8h_1a4386703b35277dc71be5cd9b57d0f3ce" kind="function"><name>TMP102_setMode_TM_InterruptMode</name></member>
+    <member refid="tmp102__sensor_8h_1a899854f020db34f588f89adffcdc8433" kind="function"><name>TMP102_setMode_ALERT_ActiveLow_default</name></member>
+    <member refid="tmp102__sensor_8h_1aa7438de8c6766d48b649e132cabf88e9" kind="function"><name>TMP102_setMode_ALERT_ActiveHigh</name></member>
+    <member refid="tmp102__sensor_8h_1aa96f470639b851a96f524ae6524dd266" kind="function"><name>TMP102_setMode_EM_NormalMode_default</name></member>
+    <member refid="tmp102__sensor_8h_1a2df18183afad1339903fe59997aaf9a2" kind="function"><name>TMP102_setMode_EM_ExtendedMode</name></member>
+    <member refid="tmp102__sensor_8h_1a3f6277d742af4a10dcec568e84ad1d5d" kind="function"><name>TMP102_setMode_CR_250mHZ</name></member>
+    <member refid="tmp102__sensor_8h_1a110d2f8672865d85670f2681e5dc9aed" kind="function"><name>TMP102_setMode_CR_1HZ</name></member>
+    <member refid="tmp102__sensor_8h_1a6d24a33a5e009441edb99bd1a727afec" kind="function"><name>TMP102_setMode_CR_4HZ_default</name></member>
+    <member refid="tmp102__sensor_8h_1a031c7291b177515876ebb29d24dc97b4" kind="function"><name>TMP102_setMode_CR_8HZ</name></member>
+    <member refid="tmp102__sensor_8h_1a98961eafa743b9a651a3cd2f3787f858" kind="function"><name>TMP102_readMode_ALERT</name></member>
+    <member refid="tmp102__sensor_8h_1a6296f70167b1f662c7f9b56b15fe037c" kind="function"><name>TMP102_write_Tlow</name></member>
+    <member refid="tmp102__sensor_8h_1a32a4b8bbc5611a7ca967cdaaeb732ae1" kind="function"><name>TMP102_write_Thigh</name></member>
+    <member refid="tmp102__sensor_8h_1aa8531a04dcf776f0d81d190b384bfab5" kind="function"><name>TMP102_read_Tlow</name></member>
+    <member refid="tmp102__sensor_8h_1a63bbac70f6558fd10f034a45d1fa140c" kind="function"><name>TMP102_read_Thigh</name></member>
+  </compound>
+  <compound refid="common__helper_8h" kind="file"><name>common_helper.h</name>
+    <member refid="common__helper_8h_1aeb3dea598800d76fb6df4e66eb87eaf2" kind="define"><name>NUM_CHILD_THREADS</name></member>
+    <member refid="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2ae" kind="enum"><name>TASK_IDENTIFIER_T</name></member>
+    <member refid="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea8dcdf4a757edf580f7e024e5b07403aa" kind="enumvalue"><name>LOGGER_TASK_ID</name></member>
+    <member refid="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea3ffb7da9d913ce4db18d78a54f2ce8dc" kind="enumvalue"><name>TEMPERATURE_TASK_ID</name></member>
+    <member refid="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea37406af8a937b5bb044e718ea96aaee6" kind="enumvalue"><name>SOCKET_TASK_ID</name></member>
+    <member refid="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aeabefc95cf05a60825f90d64c2f7799451" kind="enumvalue"><name>LIGHT_TASK_ID</name></member>
+    <member refid="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea5354d07740e5fc21b1ec71ff6498eaac" kind="enumvalue"><name>MAIN_TASK_ID</name></member>
+    <member refid="common__helper_8h_1af5d4df1bffe487c45323aa4f523d8f31" kind="variable"><name>aliveStatus</name></member>
+    <member refid="common__helper_8h_1a39d6b183fe81ea1b36bb46c0344c036b" kind="variable"><name>aliveState_lock</name></member>
+    <member refid="common__helper_8h_1a6e37d77f5e9dbfd89885b25b3d82e5b3" kind="variable"><name>pthread_id</name></member>
+    <member refid="common__helper_8h_1a69daefcb62e8c68de7d59303754d7a21" kind="variable"><name>tasks_barrier</name></member>
+    <member refid="common__helper_8h_1a7dde81770e24b729260585d7724ff62b" kind="variable"><name>task_identifier_string</name></member>
+    <member refid="common__helper_8h_1ae2992ef59a491948e3b031929e7b130e" kind="function"><name>get_queue_handle</name></member>
+    <member refid="common__helper_8h_1a9590097a1f30d9f6fdf28e4cc5dd3c48" kind="function"><name>getTaskIdentfierString</name></member>
+    <member refid="common__helper_8h_1a23124253b968391b9777fc3b8a0cc5ec" kind="function"><name>register_and_start_timer</name></member>
+  </compound>
+  <compound refid="error__data_8h" kind="file"><name>error_data.h</name>
+    <member refid="error__data_8h_1a8d9af07d8271feb5b31dee7ca2efc611" kind="define"><name>LOG_STDOUT</name></member>
+    <member refid="error__data_8h_1a8fe83ac76edc595f6b98cd4a4127aed5" kind="define"><name>ERROR</name></member>
+    <member refid="error__data_8h_1ae1103fea1e1b3c41ca3322d5389f7162" kind="define"><name>INFO</name></member>
+    <member refid="error__data_8h_1a4688695205ef66fbf096f1b95a0d7fe9" kind="define"><name>SIGNAL</name></member>
+    <member refid="error__data_8h_1a5cb439d9f933fde4cf23caa370c030e7" kind="define"><name>WARNING</name></member>
+    <member refid="error__data_8h_1a6cbfd0e610bf4b9c5369a3266cb50302" kind="enum"><name>RETURN_T</name></member>
+    <member refid="error__data_8h_1a6cbfd0e610bf4b9c5369a3266cb50302a0f886785b600b91048fcdc434c6b4a8e" kind="enumvalue"><name>ERR</name></member>
+    <member refid="error__data_8h_1a6cbfd0e610bf4b9c5369a3266cb50302ac7f69f7c9e5aea9b8f54cf02870e2bf8" kind="enumvalue"><name>SUCCESS</name></member>
+  </compound>
+  <compound refid="light__sensor__task_8h" kind="file"><name>light_sensor_task.h</name>
+    <member refid="light__sensor__task_8h_1ad3c64139927109ac2021342f1912828b" kind="define"><name>DEFINE_LIGHT_STRUCT</name></member>
+    <member refid="light__sensor__task_8h_1ae936fca69f20a6a81f530eb38806bd3c" kind="define"><name>POST_MESSAGE_LIGHTTASK</name></member>
+    <member refid="light__sensor__task_8h_1abafa6c4697460e4887f6d6e9c1f15749" kind="define"><name>POST_MESSAGE_LIGHTTASK_EXIT</name></member>
+    <member refid="light__sensor__task_8h_1a7d714c313df3e00dc24e02490e1c4c08" kind="enum"><name>DAY_STATE_T</name></member>
+    <member refid="light__sensor__task_8h_1a7d714c313df3e00dc24e02490e1c4c08a8e85ce474d6e6c5ef5b03a415dee454a" kind="enumvalue"><name>DAY</name></member>
+    <member refid="light__sensor__task_8h_1a7d714c313df3e00dc24e02490e1c4c08a285422c5a00f46be59fd905a9e255139" kind="enumvalue"><name>NIGHT</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1" kind="enum"><name>LIGHTTASKQ_MSGID_T</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a7538edaf9e49997c43f4f765b3ba6896" kind="enumvalue"><name>LIGHT_MSG_TASK_STATUS</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1aa06268a027a0ced927bce0fdd097adfa" kind="enumvalue"><name>LIGHT_MSG_TASK_GET_STATE</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a59644ebd057fe3a6e2b1ee23679d3a3c" kind="enumvalue"><name>LIGHT_MSG_TASK_READ_DATA</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1ac266d856b474c5bec5d1cf7f8e64613c" kind="enumvalue"><name>LIGHT_MSG_TASK_WRITE_CMD</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1ab777533038759c2f2b60cf001dbafd1d" kind="enumvalue"><name>LIGHT_MSG_TASK_POWERDOWN</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a642c56b0d2b981bb810c90a92280b3eb" kind="enumvalue"><name>LIGHT_MSG_TASK_POWERUP</name></member>
+    <member refid="light__sensor__task_8h_1ab864429fd48fdeac96f07665a36779f1a2e5b2bbe11fa95ad4d354f372e1363ba" kind="enumvalue"><name>LIGHT_MSG_TASK_EXIT</name></member>
+    <member refid="light__sensor__task_8h_1ace4b0c78a43f482e74bc1d7a717c753c" kind="function"><name>getHandle_LightTaskQueue</name></member>
+    <member refid="light__sensor__task_8h_1a1e4979afaab83ae0ed818bf038c3dbf7" kind="function"><name>__POST_MESSAGE_LIGHTTASK</name></member>
+    <member refid="light__sensor__task_8h_1a2fb8d8bd6f3ac82658743d379b205a51" kind="function"><name>getLightTask_state</name></member>
+    <member refid="light__sensor__task_8h_1ac88a5567bdeac532053519330e94c6ab" kind="function"><name>getLightTask_lux</name></member>
+    <member refid="light__sensor__task_8h_1a638f4ba787ad818d90477af9e572771c" kind="function"><name>light_task_callback</name></member>
+  </compound>
+  <compound refid="logger__task_8h" kind="file"><name>logger_task.h</name>
+    <member refid="logger__task_8h_1a3e0953f6f3a48d888c4966ec9d77eb47" kind="define"><name>LT_MSG_SIZE</name></member>
+    <member refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" kind="define"><name>DEFINE_LOG_STRUCT</name></member>
+    <member refid="logger__task_8h_1a6ba2462c06e19df9d50d34bfd6ce91ee" kind="define"><name>POST_MESSAGE_LOGTASK</name></member>
+    <member refid="logger__task_8h_1a592a2c8319536ad2125b35bbf0d6a6f1" kind="define"><name>POST_MESSAGE_LOGTASK_EXIT</name></member>
+    <member refid="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ad" kind="enum"><name>LOGGERTASKQ_MSGID_T</name></member>
+    <member refid="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ada3475bc9fca40cad91fc2741924e77c14" kind="enumvalue"><name>LT_MSG_TASK_STATUS</name></member>
+    <member refid="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ada13276ad77c1e8e009ac94da32d0f3ac9" kind="enumvalue"><name>LT_MSG_LOG</name></member>
+    <member refid="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ada00fe122ef55c8df06eb58c04ab147b9a" kind="enumvalue"><name>LT_MSG_TASK_EXIT</name></member>
+    <member refid="logger__task_8h_1aecf2a701f46029451c8733fde5134a89" kind="enum"><name>LOG_LEVEL_T</name></member>
+    <member refid="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a230506cce5c68c3bac5a821c42ed3473" kind="enumvalue"><name>LOG_ERROR</name></member>
+    <member refid="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a8f6fe15bfe15104da6d1b360194a5400" kind="enumvalue"><name>LOG_WARNING</name></member>
+    <member refid="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a6e98ff471e3ce6c4ef2d75c37ee51837" kind="enumvalue"><name>LOG_INFO</name></member>
+    <member refid="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a87cff070224b283d7aace436723245fc" kind="enumvalue"><name>LOG_ALL</name></member>
+    <member refid="logger__task_8h_1a2d188b418a97bc2072c76cebf414a3a6" kind="typedef"><name>LOGGER_TASK_MSGDATA_T</name></member>
+    <member refid="logger__task_8h_1a422999d7aada2b273042c05681cdae20" kind="function"><name>set_Log_loglevel</name></member>
+    <member refid="logger__task_8h_1a1a9807387bba629533ec0e57150b6eb3" kind="function"><name>set_Log_currentTimestamp</name></member>
+    <member refid="logger__task_8h_1ac3b7cda92012133de3b948c721737097" kind="function"><name>getHandle_LoggerTaskQueue</name></member>
+    <member refid="logger__task_8h_1aafe6fc71bc231530ba6d66be95d6e2ea" kind="function"><name>__POST_MESSAGE_LOGTASK</name></member>
+    <member refid="logger__task_8h_1a7322e57eb5c8763112ad4d4a946601bf" kind="function"><name>logger_task_callback</name></member>
+  </compound>
+  <compound refid="main__task_8h" kind="file"><name>main_task.h</name>
+    <member refid="main__task_8h_1a2d4ecced2466e472574d62f82cc7da19" kind="define"><name>MT_MSG_SIZE</name></member>
+    <member refid="main__task_8h_1a457d4759d056b6c98f3966506d480eae" kind="define"><name>DEFINE_MAINTASK_STRUCT</name></member>
+    <member refid="main__task_8h_1ae94e2361e513b95ba8aae96361661425" kind="define"><name>POST_MESSAGE_MAINTASK</name></member>
+    <member refid="main__task_8h_1ad5eb80ad0711fe40ab2f80bd98b11c20" kind="enum"><name>MAINTASKQ_MSGID_T</name></member>
+    <member refid="main__task_8h_1ad5eb80ad0711fe40ab2f80bd98b11c20a579e5821152f8c58bc3f0d75a961141e" kind="enumvalue"><name>MT_MSG_STATUS_RSP</name></member>
+    <member refid="main__task_8h_1ad5eb80ad0711fe40ab2f80bd98b11c20a3d4da944995c3d7dcade243039a65a43" kind="enumvalue"><name>MT_MSG_INIT_SUCCESS_RSP</name></member>
+    <member refid="main__task_8h_1af70ff19e945c4a17b622920b428f3132" kind="typedef"><name>MAINT_TASK_MSGDATA_T</name></member>
+    <member refid="main__task_8h_1ad98881d12ad2819859324e8a38e4c7fa" kind="function"><name>__POST_MESSAGE_MAINTASK</name></member>
+    <member refid="main__task_8h_1ad539583e28fb9162099dfd54fc34afc8" kind="function"><name>getHandle_MainTaskQueue</name></member>
+    <member refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" kind="function"><name>main_task_entry</name></member>
+  </compound>
+  <compound refid="my__signals_8h" kind="file"><name>my_signals.h</name>
+    <member refid="my__signals_8h_1a0e45ab7106dfdfab1129adbac64da0e6" kind="define"><name>REG_SIG_USR1</name></member>
+    <member refid="my__signals_8h_1a914eca0d337b1124ddb62fbafefac12b" kind="define"><name>REG_SIG_USR2</name></member>
+    <member refid="my__signals_8h_1a2fca85c0a15f6e61404ace932ceca979" kind="define"><name>REG_SIG_INT</name></member>
+    <member refid="my__signals_8h_1a7ed483de9d9805089ceb60d9d4c8bb2a" kind="define"><name>REG_SIG_TERM</name></member>
+    <member refid="my__signals_8h_1a1348f26f1d0b7c05aa713f8a13411ea9" kind="define"><name>REG_SIG_TSTP</name></member>
+    <member refid="my__signals_8h_1a33370f69916d47556a24af7835b0bdad" kind="define"><name>REG_SIG_ALL</name></member>
+    <member refid="my__signals_8h_1a5b58cc6fd2b95b7ca20155ad5936e1f0" kind="typedef"><name>REG_SIGNAL_FLAG_t</name></member>
+    <member refid="my__signals_8h_1ab23ded226351ef07fcd948a6d04a06e7" kind="function"><name>register_signalHandler</name></member>
+  </compound>
+  <compound refid="my__time_8h" kind="file"><name>my_time.h</name>
+    <member refid="my__time_8h_1a3385e59201decd0fae390437721a7d7e" kind="function"><name>get_time_string</name></member>
+  </compound>
+  <compound refid="posixTimer_8h" kind="file"><name>posixTimer.h</name>
+    <member refid="posixTimer_8h_1a3401c320bd609c5464b2eecb205321f9" kind="define"><name>MICROSEC</name></member>
+    <member refid="posixTimer_8h_1a731c8c8f52f8feb4c14fb91b0274d94f" kind="function"><name>register_timer</name></member>
+    <member refid="posixTimer_8h_1a659e3544e54a6fb4aeed6c38f4a91ad2" kind="function"><name>start_timer</name></member>
+    <member refid="posixTimer_8h_1a33e0f810c8ecdcde8340650106da0958" kind="function"><name>stop_timer</name></member>
+    <member refid="posixTimer_8h_1a91f15230e46caba2a2132b04e9c73e47" kind="function"><name>delete_timer</name></member>
+  </compound>
+  <compound refid="readConfiguration_8h" kind="file"><name>readConfiguration.h</name>
+    <member refid="readConfiguration_8h_1a6ec4251859d1107c4a9f457ff5ead99c" kind="function"><name>configdata_getLogpath</name></member>
+    <member refid="readConfiguration_8h_1a622fe97941be32a0343567a4cfbd24e7" kind="function"><name>configdata_getSetupTime</name></member>
+    <member refid="readConfiguration_8h_1a3936001fcb10cb50f534070c1e0d3058" kind="function"><name>configdata_getAliveTimeout</name></member>
+    <member refid="readConfiguration_8h_1af04c65a7de574da1abe2b9bd0f403c64" kind="function"><name>configdata_setup</name></member>
+    <member refid="readConfiguration_8h_1a93341cc941d5255d844aea3b49cdfc9e" kind="function"><name>configdata_flush</name></member>
+  </compound>
+  <compound refid="sensor__common__object_8h" kind="file"><name>sensor_common_object.h</name>
+    <member refid="sensor__common__object_8h_1aeb154e5d881c17aa08840aa0c0970e08" kind="define"><name>SENSOR_MAKE_PACKET_SYNCTYPE</name></member>
+    <member refid="sensor__common__object_8h_1a0e5ecbc8009d353b51513dcdd4baaac7" kind="define"><name>SENSOR_MAKE_PACKET_ASYNCTYPE</name></member>
+    <member refid="sensor__common__object_8h_1afb65c7303d7a4e2807ec1d27f3999007" kind="define"><name>SENSOR_MAKE_PACKET_RW_1DATA</name></member>
+    <member refid="sensor__common__object_8h_1a1af2cf70b7bf90d76723e6f7d00fb3aa" kind="define"><name>SENSOR_MAKE_PACKET_RW_2DATA</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21c" kind="enum"><name>REMOTE_REQRSP_ID</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21caaa9b1f2666155b0d8aabd2386e3b78b1" kind="enumvalue"><name>GET_TEMP_C</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca89b33ae0fea83e87dbd44e8ec81d25a0" kind="enumvalue"><name>GET_TEMP_F</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cad2024a72ea21e16162456a65e65dc1cb" kind="enumvalue"><name>GET_TEMP_K</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca6889ff35e222cd8fd6955c3a8967947f" kind="enumvalue"><name>GET_LUX</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cab8efb037bc764a625a7ac9cacfd3dc77" kind="enumvalue"><name>GET_DAY_NIGHT</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca3abae1e6b414b510ba7b2bef11994851" kind="enumvalue"><name>GET_FUNC</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cabf60c8070a6dfb39bccd3a784d949b49" kind="enumvalue"><name>CONN_CLOSE_REQ</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca64091ba3696f56a13db0e9ca827c6df0" kind="enumvalue"><name>CONN_CLOSE_RSP</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21caacd004f4645e2ec65c0bd763908c712e" kind="enumvalue"><name>CONN_KILL_APP_REQ</name></member>
+    <member refid="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cac718062c596a55ccee5b8a2a9bd2023a" kind="enumvalue"><name>CONN_KILL_APP_RSP</name></member>
+    <member refid="sensor__common__object_8h_1a49fa9bb88962f80a0a63af55bbe51f81" kind="enum"><name>SYNC_TYPE_T</name></member>
+    <member refid="sensor__common__object_8h_1a49fa9bb88962f80a0a63af55bbe51f81ab5468e005ffe03733c26f12419ff0a94" kind="enumvalue"><name>ASYNC</name></member>
+    <member refid="sensor__common__object_8h_1a49fa9bb88962f80a0a63af55bbe51f81a447bfe7992c2fe70bfe561225f74d379" kind="enumvalue"><name>SYNC</name></member>
+    <member refid="sensor__common__object_8h_1aad357c71e0a9fbea0c6f670e8d0df991" kind="typedef"><name>P_BUFF_T</name></member>
+    <member refid="sensor__common__object_8h_1ae607b6caa19309cec2f0e4eddac32e64" kind="typedef"><name>DEV_REG_T</name></member>
+    <member refid="sensor__common__object_8h_1a3057f0f575cd4504b8a355816e1ea3c2" kind="typedef"><name>BUFF_LEN_T</name></member>
+    <member refid="sensor__common__object_8h_1a8a69c102915589a7869887f2f9a96156" kind="function"><name>SENSOR_FILL_OBJECT_DATA</name></member>
+  </compound>
+  <compound refid="socket__task_8h" kind="file"><name>socket_task.h</name>
+    <member refid="socket__task_8h_1aa89fd33489e6b5755ebe654eb5ca5151" kind="variable"><name>socketTask_continue</name></member>
+    <member refid="socket__task_8h_1a11efeb37f1a462e32c153a30ba11f53a" kind="function"><name>socket_task_callback</name></member>
+  </compound>
+  <compound refid="temperature__sensor__task_8h" kind="file"><name>temperature_sensor_task.h</name>
+    <member refid="temperature__sensor__task_8h_1a9b5251efca0e6cd5011d8f5c2120663c" kind="define"><name>DEFINE_TEMP_STRUCT</name></member>
+    <member refid="temperature__sensor__task_8h_1a61149876799f1d6645ef6a48ee0f73b8" kind="define"><name>POST_MESSAGE_TEMPERATURETASK</name></member>
+    <member refid="temperature__sensor__task_8h_1a6c732386ebba2631f3b28e7a39ec648c" kind="define"><name>POST_MESSAGE_TEMPERATURETASK_EXIT</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8d" kind="enum"><name>TEMPERATURETASKQ_MSGID_T</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8da54abc736de63550efe2609bf1fd78129" kind="enumvalue"><name>TEMP_MSG_TASK_STATUS</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8dabb6336781c41a38dca516306c753953a" kind="enumvalue"><name>TEMP_MSG_TASK_GET_TEMP</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8da4f2e365deb69ddef7a5c4e1b915a9e8a" kind="enumvalue"><name>TEMP_MSG_TASK_READ_DATA</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8dafd25e9ccacfd90bfcf879969325b2e4e" kind="enumvalue"><name>TEMP_MSG_TASK_WRITE_CMD</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8daf70ea81d3542ccfcbcc8bba01aa86986" kind="enumvalue"><name>TEMP_MSG_TASK_POWERDOWN</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8da6d2d5749b0f0c9305fd80785bf7c1c2f" kind="enumvalue"><name>TEMP_MSG_TASK_POWERUP</name></member>
+    <member refid="temperature__sensor__task_8h_1afc6d558316668e60c0e01703a586ff8dae3682e731985fd3df35dba694d25972f" kind="enumvalue"><name>TEMP_MSG_TASK_EXIT</name></member>
+    <member refid="temperature__sensor__task_8h_1afebaba221409b026d6f4648ac50b0c4e" kind="function"><name>getHandle_TemperatureTaskQueue</name></member>
+    <member refid="temperature__sensor__task_8h_1a4d02bf806d75bfa3fbc1cc224472eedb" kind="function"><name>__POST_MESSAGE_TEMPERATURETASK</name></member>
+    <member refid="temperature__sensor__task_8h_1a4bea76689b1b882f95e488a1bb41f5f8" kind="function"><name>getTempTask_temperature</name></member>
+    <member refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" kind="function"><name>temperature_task_callback</name></member>
+  </compound>
+  <compound refid="README_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="apds9301__sensor_8c" kind="file"><name>apds9301_sensor.c</name>
+    <member refid="apds9301__sensor_8c_1a588284295cb1c59efff07ad53af80aaf" kind="define"><name>APDS9301_SENSOR_ID</name></member>
+    <member refid="apds9301__sensor_8c_1a29ea2301a68de775fc0281dd1b4b03aa" kind="function"><name>APDS9301_test</name></member>
+    <member refid="apds9301__sensor_8c_1a27508ac9add1cd27cb2c143631f3a55f" kind="function"><name>APDS9301_write_ThLow</name></member>
+    <member refid="apds9301__sensor_8c_1ad75b8b8d703f549994213adeaea90c64" kind="function"><name>APDS9301_write_ThHigh</name></member>
+    <member refid="apds9301__sensor_8c_1ad0dcd5037cad9e4ed654da7d9d548010" kind="function"><name>APDS9301_read_ThLow</name></member>
+    <member refid="apds9301__sensor_8c_1ab7d8d5ac5b780bcdb0a399f286b7f224" kind="function"><name>APDS9301_read_ThHigh</name></member>
+    <member refid="apds9301__sensor_8c_1a2aa3244d3848324ba9f4afc7b1990ce1" kind="function"><name>APDS9301_readControlReg</name></member>
+    <member refid="apds9301__sensor_8c_1a5e527c870fed599e87d712a151e47172" kind="function"><name>APDS9301_mode_highGain</name></member>
+    <member refid="apds9301__sensor_8c_1aa8c71ee19fe0ef5ff8880f87daa2757a" kind="function"><name>APDS9301_mode_lowGain_default</name></member>
+    <member refid="apds9301__sensor_8c_1a69d91df573c8c448a30715ae605262d7" kind="function"><name>APDS9301_mode_interrupt</name></member>
+    <member refid="apds9301__sensor_8c_1aedfa265fc5f3043cea294a0a5d30da04" kind="function"><name>APDS9301_clearPendingInterrupt</name></member>
+    <member refid="apds9301__sensor_8c_1ad22326035668d08e6d7cade8cde126e4" kind="function"><name>APDS9301_mode_manualcontrol</name></member>
+    <member refid="apds9301__sensor_8c_1ac14a5a102513243824d12e6028abbeb8" kind="function"><name>APDS9301_mode_integrationTime</name></member>
+    <member refid="apds9301__sensor_8c_1a5f0928561f20743cccb1a4f6336ddff4" kind="function"><name>APDS9301_poweron</name></member>
+    <member refid="apds9301__sensor_8c_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" kind="function"><name>APDS9301_powerdown</name></member>
+    <member refid="apds9301__sensor_8c_1a82dac2bc9fc0e11fc4589f3492bec13e" kind="function"><name>APDS9301_readID</name></member>
+    <member refid="apds9301__sensor_8c_1ae41babc910792ba1bbb19e837fd45d4c" kind="function"><name>APDS9301_readCh0</name></member>
+    <member refid="apds9301__sensor_8c_1a34c034b815ceb2e30b0161d7461f0a8e" kind="function"><name>APDS9301_readCh1</name></member>
+    <member refid="apds9301__sensor_8c_1a55e164e7dd0586de71a8dd5b25ae9ef3" kind="function"><name>APDS9301_getLux</name></member>
+    <member refid="apds9301__sensor_8c_1acae5d5b1cfb4008743589e5482d7578b" kind="function"><name>APDS9301_memDump</name></member>
+    <member refid="apds9301__sensor_8c_1a47621b827697481f12f3bf6257118f70" kind="function"><name>APDS9301__setmode_allDefault</name></member>
+  </compound>
+  <compound refid="BB__Led_8c" kind="file"><name>BB_Led.c</name>
+    <member refid="BB__Led_8c_1ad76d1750a6cdeebd506bfcd6752554d2" kind="define"><name>ON</name></member>
+    <member refid="BB__Led_8c_1a29e413f6725b2ba32d165ffaa35b01e5" kind="define"><name>OFF</name></member>
+    <member refid="BB__Led_8c_1ad698e2cb680601529f08c3e5f2b0cebb" kind="define"><name>LED_COUNT</name></member>
+    <member refid="BB__Led_8c_1ab3370ee5a3985cd9ca2f38fab2f27114" kind="variable"><name>LEDPATH</name></member>
+    <member refid="BB__Led_8c_1a86628a099822bb243b1c7d57133e627b" kind="function"><name>BB_LedON</name></member>
+    <member refid="BB__Led_8c_1a84494234e8807c093bee8d16d7b2008b" kind="function"><name>BB_LedOFF</name></member>
+    <member refid="BB__Led_8c_1a36a765a1771de0098fe83028d53827e1" kind="function"><name>BB_LedDefault</name></member>
+  </compound>
+  <compound refid="common__helper_8c" kind="file"><name>common_helper.c</name>
+    <member refid="common__helper_8c_1a7dde81770e24b729260585d7724ff62b" kind="variable"><name>task_identifier_string</name></member>
+    <member refid="common__helper_8c_1ae2992ef59a491948e3b031929e7b130e" kind="function"><name>get_queue_handle</name></member>
+    <member refid="common__helper_8c_1a23124253b968391b9777fc3b8a0cc5ec" kind="function"><name>register_and_start_timer</name></member>
+  </compound>
+  <compound refid="light__sensor__task_8c" kind="file"><name>light_sensor_task.c</name>
+    <member refid="light__sensor__task_8c_1ae2249f66e4862406c8764ed4cd9363bc" kind="define"><name>MQ_LIGHTTASK_NAME</name></member>
+    <member refid="light__sensor__task_8c_1aa9e233b2be76e595f18840667556a4e4" kind="define"><name>LUX_THRESHOLD</name></member>
+    <member refid="light__sensor__task_8c_1a88511a669aac60f6b34b0953f8a2a5a7" kind="variable"><name>lighttask_q</name></member>
+    <member refid="light__sensor__task_8c_1a6339de82665875d7612427ea12f68733" kind="variable"><name>stateChangeLock</name></member>
+    <member refid="light__sensor__task_8c_1afd30fa7203210f19466697b2e7fb8def" kind="variable"><name>isDay</name></member>
+    <member refid="light__sensor__task_8c_1a2fb8d8bd6f3ac82658743d379b205a51" kind="function"><name>getLightTask_state</name></member>
+    <member refid="light__sensor__task_8c_1ac88a5567bdeac532053519330e94c6ab" kind="function"><name>getLightTask_lux</name></member>
+    <member refid="light__sensor__task_8c_1a8b5b639e928a00849c3e3ee9df62d611" kind="function"><name>timer_handler_getAndUpdateState</name></member>
+    <member refid="light__sensor__task_8c_1ace4b0c78a43f482e74bc1d7a717c753c" kind="function"><name>getHandle_LightTaskQueue</name></member>
+    <member refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" kind="function"><name>light_task_queue_init</name></member>
+    <member refid="light__sensor__task_8c_1ae16f9a1e9ceb36148bf684f96084c443" kind="function"><name>light_task_processMsg</name></member>
+    <member refid="light__sensor__task_8c_1aba967e916dcf121140bbd500e16d008e" kind="function"><name>light_task_sensorUP</name></member>
+    <member refid="light__sensor__task_8c_1acaf5a7caea21e526ecb6f3d9eaae9caa" kind="function"><name>light_task_sensorDOWN</name></member>
+    <member refid="light__sensor__task_8c_1a638f4ba787ad818d90477af9e572771c" kind="function"><name>light_task_callback</name></member>
+  </compound>
+  <compound refid="logger__task_8c" kind="file"><name>logger_task.c</name>
+    <member refid="logger__task_8c_1acd4d3023d24d5314b895981b17825666" kind="define"><name>LOG_DIR</name></member>
+    <member refid="logger__task_8c_1a4da5b65210189fc3d0e4181c1360c910" kind="define"><name>__LOG_PATH</name></member>
+    <member refid="logger__task_8c_1a3f5d06ef4f4d41e380bd95c43f587a82" kind="define"><name>LOG_PATH</name></member>
+    <member refid="logger__task_8c_1a14ba9f9069b18507694dc8f984a5a5b2" kind="define"><name>MQ_LOGGERTASK_NAME</name></member>
+    <member refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" kind="define"><name>LT_LOG</name></member>
+    <member refid="logger__task_8c_1a976483fd8cf3a26a05506f119b7506d2" kind="variable"><name>g_loglevel</name></member>
+    <member refid="logger__task_8c_1a12798e5e4f505079b32a78c455859d17" kind="variable"><name>loggertask_q</name></member>
+    <member refid="logger__task_8c_1ac3b7cda92012133de3b948c721737097" kind="function"><name>getHandle_LoggerTaskQueue</name></member>
+    <member refid="logger__task_8c_1af939b897bf5c8c9b1a95fee832b617af" kind="function"><name>logger_task_file_init</name></member>
+    <member refid="logger__task_8c_1a7332b548e067e6e73cf230f5955b4e79" kind="function"><name>logger_task_queue_init</name></member>
+    <member refid="logger__task_8c_1aafed61a6fe21dcc363b6a05bc01839da" kind="function"><name>logger_task_processMsg</name></member>
+    <member refid="logger__task_8c_1a7322e57eb5c8763112ad4d4a946601bf" kind="function"><name>logger_task_callback</name></member>
+  </compound>
+  <compound refid="main_8c" kind="file"><name>main.c</name>
+    <member refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="main__task_8c" kind="file"><name>main_task.c</name>
+    <member refid="main__task_8c_1a1a9425a70b0e461731a6efec6743ef38" kind="define"><name>MQ_MAINTASK_NAME</name></member>
+    <member refid="main__task_8c_1a395963a0c067171917cf7c8761ee2441" kind="variable"><name>timeoutflag</name></member>
+    <member refid="main__task_8c_1adc2fe82289a6853a03c1f0629086f996" kind="variable"><name>signal_exit</name></member>
+    <member refid="main__task_8c_1af5d4df1bffe487c45323aa4f523d8f31" kind="variable"><name>aliveStatus</name></member>
+    <member refid="main__task_8c_1ad7ff46799bfd789e2ac6fd5d6cb83ab1" kind="variable"><name>thread_callbacks</name></member>
+    <member refid="main__task_8c_1afe1c004fcb8099601f20c376c229b787" kind="variable"><name>maintask_q</name></member>
+    <member refid="main__task_8c_1a5a2cb997ac731840ca1dbea80f7ba042" kind="function"><name>signal_handler</name></member>
+    <member refid="main__task_8c_1a93c07eea63d11538e1e80879e6c8434a" kind="function"><name>timer_handler_setup</name></member>
+    <member refid="main__task_8c_1a3577bae6a6888a65953912af0fbbcaa0" kind="function"><name>timer_handler_aliveStatusCheck</name></member>
+    <member refid="main__task_8c_1ad539583e28fb9162099dfd54fc34afc8" kind="function"><name>getHandle_MainTaskQueue</name></member>
+    <member refid="main__task_8c_1a697f1beded418be5281745091d785ac2" kind="function"><name>main_task_init</name></member>
+    <member refid="main__task_8c_1ad7696571b325eb7098a8d31ce3421ef5" kind="function"><name>main_task_processMsg</name></member>
+    <member refid="main__task_8c_1a27a16a28c2a8f0448f7cbdb28adf50d4" kind="function"><name>POST_EXIT_MESSAGE_ALL</name></member>
+    <member refid="main__task_8c_1a52c4c165f42a1ca113ba4bd55b00a293" kind="function"><name>main_task_entry</name></member>
+  </compound>
+  <compound refid="my__i2c_8c" kind="file"><name>my_i2c.c</name>
+    <member refid="my__i2c_8c_1a2825cebc22aeea429e4e35e9270cf564" kind="variable"><name>internal_master_handle</name></member>
+    <member refid="my__i2c_8c_1ac8f0dc247d2b089ef9db550be90939a5" kind="variable"><name>init_destroy_lock</name></member>
+    <member refid="my__i2c_8c_1a24206855ca77b181de1cfbe8e9e5051a" kind="function"><name>printErrorCode</name></member>
+    <member refid="my__i2c_8c_1acea2b6a0875bf63a179959a46b3cdf7d" kind="function"><name>I2Cmaster_Init</name></member>
+    <member refid="my__i2c_8c_1a15136dcc397f046d0a000a781d060139" kind="function"><name>I2Cmaster_Destroy</name></member>
+    <member refid="my__i2c_8c_1a896771a0a066b06b606d35bb81809fa0" kind="function"><name>getMasterI2C_handle</name></member>
+    <member refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kind="function"><name>I2Cmaster_write_byte</name></member>
+    <member refid="my__i2c_8c_1af92cf5a5d893ef9bbf6b4ee6de0b0ef8" kind="function"><name>I2Cmaster_write</name></member>
+    <member refid="my__i2c_8c_1a19c6244da5ea2d4e65a25001582498c8" kind="function"><name>I2Cmaster_write_word</name></member>
+    <member refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kind="function"><name>I2Cmaster_read_byte</name></member>
+    <member refid="my__i2c_8c_1ab25650a9cf74e65561b1fced3555f36c" kind="function"><name>I2Cmaster_read_bytes</name></member>
+  </compound>
+  <compound refid="my__signals_8c" kind="file"><name>my_signals.c</name>
+    <member refid="my__signals_8c_1ab23ded226351ef07fcd948a6d04a06e7" kind="function"><name>register_signalHandler</name></member>
+  </compound>
+  <compound refid="my__time_8c" kind="file"><name>my_time.c</name>
+    <member refid="my__time_8c_1a4dd33dd8ed887d4d12456419388e9393" kind="define"><name>GET_TIMEOFDAY</name></member>
+    <member refid="my__time_8c_1acd4a0d89baad5fa6b1e4e6c85b082226" kind="function"><name>get_time_string</name></member>
+  </compound>
+  <compound refid="posixTimer_8c" kind="file"><name>posixTimer.c</name>
+    <member refid="posixTimer_8c_1a731c8c8f52f8feb4c14fb91b0274d94f" kind="function"><name>register_timer</name></member>
+    <member refid="posixTimer_8c_1a659e3544e54a6fb4aeed6c38f4a91ad2" kind="function"><name>start_timer</name></member>
+    <member refid="posixTimer_8c_1a33e0f810c8ecdcde8340650106da0958" kind="function"><name>stop_timer</name></member>
+    <member refid="posixTimer_8c_1a91f15230e46caba2a2132b04e9c73e47" kind="function"><name>delete_timer</name></member>
+  </compound>
+  <compound refid="readConfiguration_8c" kind="file"><name>readConfiguration.c</name>
+    <member refid="readConfiguration_8c_1a3f80a7daa371c71a6f33711232b81c2f" kind="define"><name>CONFIG_DATA_NUM</name></member>
+    <member refid="readConfiguration_8c_1a42bf63540ee0039a3a23db1b5ec3202b" kind="define"><name>CONFIG_FILE</name></member>
+    <member refid="readConfiguration_8c_1a06f7ce9926ad9d6882a0bafa594045dd" kind="enum"><name>CONFIG_DATA_INDEX</name></member>
+    <member refid="readConfiguration_8c_1a06f7ce9926ad9d6882a0bafa594045ddab71933ce85bfb37e043c05f11b2b3fa2" kind="enumvalue"><name>LOG_PATH_STRING</name></member>
+    <member refid="readConfiguration_8c_1a06f7ce9926ad9d6882a0bafa594045dda77c3d85f6de8ca914d2a54e7d7d7616f" kind="enumvalue"><name>TASK_SETUP_TIME_SEC_UINT8</name></member>
+    <member refid="readConfiguration_8c_1a06f7ce9926ad9d6882a0bafa594045dda1f1c38230f57131960b3f87c749cf67c" kind="enumvalue"><name>TASK_ALIVE_TIMEOUT_SEC_UINT8</name></member>
+    <member refid="readConfiguration_8c_1ad703769c8b2995d60a41aa6cc99d7c2e" kind="variable"><name>configurationData</name></member>
+    <member refid="readConfiguration_8c_1a6ec4251859d1107c4a9f457ff5ead99c" kind="function"><name>configdata_getLogpath</name></member>
+    <member refid="readConfiguration_8c_1a622fe97941be32a0343567a4cfbd24e7" kind="function"><name>configdata_getSetupTime</name></member>
+    <member refid="readConfiguration_8c_1a3936001fcb10cb50f534070c1e0d3058" kind="function"><name>configdata_getAliveTimeout</name></member>
+    <member refid="readConfiguration_8c_1af04c65a7de574da1abe2b9bd0f403c64" kind="function"><name>configdata_setup</name></member>
+    <member refid="readConfiguration_8c_1a93341cc941d5255d844aea3b49cdfc9e" kind="function"><name>configdata_flush</name></member>
+  </compound>
+  <compound refid="socket__task_8c" kind="file"><name>socket_task.c</name>
+    <member refid="socket__task_8c_1ac42367fe5c999ec6650de83e9d72fe8c" kind="define"><name>SERVER_PORT</name></member>
+    <member refid="socket__task_8c_1a28d06fc286f28044ed3380969700ff3f" kind="define"><name>SERVER_IP</name></member>
+    <member refid="socket__task_8c_1a053b7859476cc9867ec62c49e68d3fa1" kind="define"><name>MAX_CONNECTIONS</name></member>
+    <member refid="socket__task_8c_1aa89fd33489e6b5755ebe654eb5ca5151" kind="variable"><name>socketTask_continue</name></member>
+    <member refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" kind="function"><name>processRemoteRequest</name></member>
+    <member refid="socket__task_8c_1a662e3875dac70dfb9e54f4e37768f1d4" kind="function"><name>timer_handler_sendSTAliveMSG</name></member>
+    <member refid="socket__task_8c_1ace71e6ac2b8b6275085bc2dfda91e29c" kind="function"><name>socket_task_init</name></member>
+    <member refid="socket__task_8c_1a11efeb37f1a462e32c153a30ba11f53a" kind="function"><name>socket_task_callback</name></member>
+  </compound>
+  <compound refid="temperature__sensor__task_8c" kind="file"><name>temperature_sensor_task.c</name>
+    <member refid="temperature__sensor__task_8c_1a6550cb368d8a0ec6958a62cfb51fcb00" kind="define"><name>MQ_TEMPERATURETASK_NAME</name></member>
+    <member refid="temperature__sensor__task_8c_1af6c10feb32d718f7e369d3d947955dc5" kind="variable"><name>temperaturetask_q</name></member>
+    <member refid="temperature__sensor__task_8c_1aef8b0b007a8236bcfd1fd7fbad0e4b13" kind="variable"><name>tempChangeLock</name></member>
+    <member refid="temperature__sensor__task_8c_1a391f3b829e5c835df4e11665c91826aa" kind="variable"><name>latest_temperature</name></member>
+    <member refid="temperature__sensor__task_8c_1a4bea76689b1b882f95e488a1bb41f5f8" kind="function"><name>getTempTask_temperature</name></member>
+    <member refid="temperature__sensor__task_8c_1ad5831217a5c4e4674cfc902134a5aa71" kind="function"><name>timer_handler_getAndUpdateTemperature</name></member>
+    <member refid="temperature__sensor__task_8c_1afebaba221409b026d6f4648ac50b0c4e" kind="function"><name>getHandle_TemperatureTaskQueue</name></member>
+    <member refid="temperature__sensor__task_8c_1ad54a52f7c1962f12523c89f17484f5d9" kind="function"><name>temperature_task_queue_init</name></member>
+    <member refid="temperature__sensor__task_8c_1adf36688df6c9b7833fff8c6d84febc3a" kind="function"><name>temperature_task_processMsg</name></member>
+    <member refid="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" kind="function"><name>temperature_task_I2Cinit</name></member>
+    <member refid="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" kind="function"><name>temperature_task_I2Cdeinit</name></member>
+    <member refid="temperature__sensor__task_8c_1abc96664d611b8a19036cf6fcaaf92ac8" kind="function"><name>temperature_task_callback</name></member>
+  </compound>
+  <compound refid="tmp102__sensor_8c" kind="file"><name>tmp102_sensor.c</name>
+    <member refid="tmp102__sensor_8c_1ae8c25eda33c17bf746db7b91fe54c85c" kind="variable"><name>TMP102_CONFIG_DEFAULT</name></member>
+    <member refid="tmp102__sensor_8c_1a4725fb3e4cf18de4220d6067a7dc5dd4" kind="function"><name>TMP102_setmode_allDefault</name></member>
+    <member refid="tmp102__sensor_8c_1afeb776e895762c8f18a6289c1bf7daf4" kind="function"><name>TMP102_setMode</name></member>
+    <member refid="tmp102__sensor_8c_1a7d4d57387ef6a5db5bfc8d14a94d9ee4" kind="function"><name>TMP102_setMode_SD_PowerSaving</name></member>
+    <member refid="tmp102__sensor_8c_1a4309a30e9d006753c2cdd6f6c9af2650" kind="function"><name>TMP102_setMode_SD_Continuous_default</name></member>
+    <member refid="tmp102__sensor_8c_1a81c75dba63b6c0727ab602ea631b3a22" kind="function"><name>TMP102_setMode_TM_ComparatorMode_default</name></member>
+    <member refid="tmp102__sensor_8c_1a4386703b35277dc71be5cd9b57d0f3ce" kind="function"><name>TMP102_setMode_TM_InterruptMode</name></member>
+    <member refid="tmp102__sensor_8c_1a899854f020db34f588f89adffcdc8433" kind="function"><name>TMP102_setMode_ALERT_ActiveLow_default</name></member>
+    <member refid="tmp102__sensor_8c_1aa7438de8c6766d48b649e132cabf88e9" kind="function"><name>TMP102_setMode_ALERT_ActiveHigh</name></member>
+    <member refid="tmp102__sensor_8c_1aa96f470639b851a96f524ae6524dd266" kind="function"><name>TMP102_setMode_EM_NormalMode_default</name></member>
+    <member refid="tmp102__sensor_8c_1a2df18183afad1339903fe59997aaf9a2" kind="function"><name>TMP102_setMode_EM_ExtendedMode</name></member>
+    <member refid="tmp102__sensor_8c_1a3f6277d742af4a10dcec568e84ad1d5d" kind="function"><name>TMP102_setMode_CR_250mHZ</name></member>
+    <member refid="tmp102__sensor_8c_1a110d2f8672865d85670f2681e5dc9aed" kind="function"><name>TMP102_setMode_CR_1HZ</name></member>
+    <member refid="tmp102__sensor_8c_1a6d24a33a5e009441edb99bd1a727afec" kind="function"><name>TMP102_setMode_CR_4HZ_default</name></member>
+    <member refid="tmp102__sensor_8c_1a031c7291b177515876ebb29d24dc97b4" kind="function"><name>TMP102_setMode_CR_8HZ</name></member>
+    <member refid="tmp102__sensor_8c_1a98961eafa743b9a651a3cd2f3787f858" kind="function"><name>TMP102_readMode_ALERT</name></member>
+    <member refid="tmp102__sensor_8c_1a6296f70167b1f662c7f9b56b15fe037c" kind="function"><name>TMP102_write_Tlow</name></member>
+    <member refid="tmp102__sensor_8c_1a32a4b8bbc5611a7ca967cdaaeb732ae1" kind="function"><name>TMP102_write_Thigh</name></member>
+    <member refid="tmp102__sensor_8c_1aa8531a04dcf776f0d81d190b384bfab5" kind="function"><name>TMP102_read_Tlow</name></member>
+    <member refid="tmp102__sensor_8c_1a63bbac70f6558fd10f034a45d1fa140c" kind="function"><name>TMP102_read_Thigh</name></member>
+    <member refid="tmp102__sensor_8c_1a847d6333b56e33f815bb5e1101056e42" kind="function"><name>TMP102_getTemp</name></member>
+    <member refid="tmp102__sensor_8c_1a1ea9cb5a6a2e798b33564f9142d7afa1" kind="function"><name>TMP102_memDump</name></member>
+  </compound>
+  <compound refid="LED__test_8c" kind="file"><name>LED_test.c</name>
+    <member refid="LED__test_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="apds9301__myTest_8c" kind="file"><name>apds9301_myTest.c</name>
+    <member refid="apds9301__myTest_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="apds9301__testmain_8c" kind="file"><name>apds9301_testmain.c</name>
+    <member refid="apds9301__testmain_8c_1a650255c97da0e722bc7439920a22c863" kind="function"><name>testAPDS9301</name></member>
+    <member refid="apds9301__testmain_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="client_8c" kind="file"><name>client.c</name>
+    <member refid="client_8c_1a018a1fe4b078f1a684610657a5848860" kind="define"><name>LOG</name></member>
+    <member refid="client_8c_1ac39e4109a2d3756e78154014723e57c8" kind="function"><name>printResponse</name></member>
+    <member refid="client_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="tmp102__testmain_8c" kind="file"><name>tmp102_testmain.c</name>
+    <member refid="tmp102__testmain_8c_1ae60bf09a3a8c7052e62bad1578ce1f92" kind="variable"><name>i2c</name></member>
+    <member refid="tmp102__testmain_8c_1af289806e24973d4a477825d3cfec7cfe" kind="function"><name>testTMP102</name></member>
+    <member refid="tmp102__testmain_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="dir_25a77f9fd5cc6683b73ea75b77ab71ac" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/tests/BBB_UserLED_Test</name>
+  </compound>
+  <compound refid="dir_6fe83d91399f49b132dea4640b9b1ea0" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone</name>
+  </compound>
+  <compound refid="dir_0966d06610f72609fd9aa4979c2b5a92" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/include/common</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/include</name>
+  </compound>
+  <compound refid="dir_77984282896fb3d6e4c0af9c2fb020f6" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/tests/LightLIB_Test</name>
+  </compound>
+  <compound refid="dir_9c147b667cff3d5bf9c4d0ec07424dff" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/tests/SocketTask_Test</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/src</name>
+  </compound>
+  <compound refid="dir_8bbc10afe572a943de06447cfeb3442c" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/tests/TemperatureLIB_Test</name>
+  </compound>
+  <compound refid="dir_59425e443f801f1f2fd8bbe4959a3ccf" kind="dir"><name>/home/gunj/repos/ECEN-5013/Project1/tests</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

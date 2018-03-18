@@ -1,0 +1,6 @@
+<map id="start_timer" name="start_timer">
+<area shape="rect" id="node2" href="$common__helper_8h.html#a23124253b968391b9777fc3b8a0cc5ec" title="Registers a timer, addigns the handler and starts it. " alt="" coords="137,49,264,90"/>
+<area shape="rect" id="node3" href="$light__sensor__task_8h.html#a638f4ba787ad818d90477af9e572771c" title="Entry point of the light task thread. " alt="" coords="335,5,468,32"/>
+<area shape="rect" id="node4" href="$main__task_8h.html#a52c4c165f42a1ca113ba4bd55b00a293" title="entry point for the main task " alt="" coords="342,56,461,83"/>
+<area shape="rect" id="node5" href="$temperature__sensor__task_8h.html#abc96664d611b8a19036cf6fcaaf92ac8" title="Entry point of the temp task thread. " alt="" coords="312,107,491,133"/>
+</map>

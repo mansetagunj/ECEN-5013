@@ -1,0 +1,778 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="apds9301__sensor_8c" kind="file" language="C++">
+    <compoundname>apds9301_sensor.c</compoundname>
+    <includes local="no">math.h</includes>
+    <includes refid="apds9301__sensor_8h" local="yes">apds9301_sensor.h</includes>
+    <includes refid="my__i2c_8h" local="yes">my_i2c.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="685">
+        <label>my_i2c.h</label>
+        <link refid="my__i2c_8h"/>
+        <childnode refid="686" relation="include">
+        </childnode>
+        <childnode refid="687" relation="include">
+        </childnode>
+      </node>
+      <node id="684">
+        <label>stdint.h</label>
+      </node>
+      <node id="687">
+        <label>mraa/i2c.h</label>
+      </node>
+      <node id="681">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c</label>
+        <link refid="apds9301_sensor.c"/>
+        <childnode refid="682" relation="include">
+        </childnode>
+        <childnode refid="683" relation="include">
+        </childnode>
+        <childnode refid="685" relation="include">
+        </childnode>
+        <childnode refid="688" relation="include">
+        </childnode>
+        <childnode refid="693" relation="include">
+        </childnode>
+      </node>
+      <node id="688">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="689" relation="include">
+        </childnode>
+        <childnode refid="690" relation="include">
+        </childnode>
+        <childnode refid="691" relation="include">
+        </childnode>
+        <childnode refid="692" relation="include">
+        </childnode>
+      </node>
+      <node id="686">
+        <label>pthread.h</label>
+      </node>
+      <node id="691">
+        <label>sys/types.h</label>
+      </node>
+      <node id="693">
+        <label>string.h</label>
+      </node>
+      <node id="689">
+        <label>unistd.h</label>
+      </node>
+      <node id="683">
+        <label>apds9301_sensor.h</label>
+        <link refid="apds9301__sensor_8h"/>
+        <childnode refid="684" relation="include">
+        </childnode>
+      </node>
+      <node id="682">
+        <label>math.h</label>
+      </node>
+      <node id="690">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="692">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="apds9301__sensor_8c_1a588284295cb1c59efff07ad53af80aaf" prot="public" static="no">
+        <name>APDS9301_SENSOR_ID</name>
+        <initializer>(0x50)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="15" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="apds9301__sensor_8c_1a29ea2301a68de775fc0281dd1b4b03aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_test</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_test</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="17" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="17" bodyend="28"/>
+        <referencedby refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" compoundref="light__sensor__task_8c" startline="95" endline="108">light_task_queue_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a27508ac9add1cd27cb2c143631f3a55f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_write_ThLow</definition>
+        <argsstring>(uint16_t thlow)</argsstring>
+        <name>APDS9301_write_ThLow</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>thlow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thlow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="30" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="30" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1ad75b8b8d703f549994213adeaea90c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_write_ThHigh</definition>
+        <argsstring>(uint16_t thhigh)</argsstring>
+        <name>APDS9301_write_ThHigh</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>thhigh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thhigh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="36" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="36" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1ad0dcd5037cad9e4ed654da7d9d548010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_read_ThLow</definition>
+        <argsstring>(uint16_t *thlow)</argsstring>
+        <name>APDS9301_read_ThLow</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>thlow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thlow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="42" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1ab7d8d5ac5b780bcdb0a399f286b7f224" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_read_ThHigh</definition>
+        <argsstring>(uint16_t *thhigh)</argsstring>
+        <name>APDS9301_read_ThHigh</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>thhigh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thhigh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="48" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a2aa3244d3848324ba9f4afc7b1990ce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_readControlReg</definition>
+        <argsstring>(uint8_t *ctrl_reg)</argsstring>
+        <name>APDS9301_readControlReg</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>ctrl_reg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctrl_reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="54" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a5e527c870fed599e87d712a151e47172" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_mode_highGain</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_mode_highGain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="60" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="60" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1aa8c71ee19fe0ef5ff8880f87daa2757a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_mode_lowGain_default</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_mode_lowGain_default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="73" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="73" bodyend="86"/>
+        <referencedby refid="apds9301__sensor_8h_1a47621b827697481f12f3bf6257118f70" compoundref="apds9301__sensor_8c" startline="251" endline="261">APDS9301__setmode_allDefault</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a69d91df573c8c448a30715ae605262d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_mode_interrupt</definition>
+        <argsstring>(uint8_t enable)</argsstring>
+        <name>APDS9301_mode_interrupt</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="88" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="88" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1aedfa265fc5f3043cea294a0a5d30da04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_clearPendingInterrupt</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_clearPendingInterrupt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="104" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="104" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1ad22326035668d08e6d7cade8cde126e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_mode_manualcontrol</definition>
+        <argsstring>(uint8_t on)</argsstring>
+        <name>APDS9301_mode_manualcontrol</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>on</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>on</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="110" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="110" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1ac14a5a102513243824d12e6028abbeb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_mode_integrationTime</definition>
+        <argsstring>(uint8_t x)</argsstring>
+        <name>APDS9301_mode_integrationTime</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="125" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="125" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a5f0928561f20743cccb1a4f6336ddff4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_poweron</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_poweron</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="141" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="141" bodyend="145"/>
+        <referencedby refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" compoundref="light__sensor__task_8c" startline="95" endline="108">light_task_queue_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_powerdown</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_powerdown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="146" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="146" bodyend="150"/>
+        <referencedby refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" compoundref="light__sensor__task_8c" startline="95" endline="108">light_task_queue_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a82dac2bc9fc0e11fc4589f3492bec13e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_readID</definition>
+        <argsstring>(uint8_t *id)</argsstring>
+        <name>APDS9301_readID</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="151" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="151" bodyend="155"/>
+        <referencedby refid="apds9301__sensor_8h_1a29ea2301a68de775fc0281dd1b4b03aa" compoundref="apds9301__sensor_8c" startline="17" endline="28">APDS9301_test</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1ae41babc910792ba1bbb19e837fd45d4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_readCh0</definition>
+        <argsstring>(uint16_t *ch0_data)</argsstring>
+        <name>APDS9301_readCh0</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>ch0_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ch0_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="157" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="157" bodyend="171"/>
+        <referencedby refid="apds9301__sensor_8h_1a55e164e7dd0586de71a8dd5b25ae9ef3" compoundref="apds9301__sensor_8c" startline="190" endline="231">APDS9301_getLux</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a34c034b815ceb2e30b0161d7461f0a8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301_readCh1</definition>
+        <argsstring>(uint16_t *ch1_data)</argsstring>
+        <name>APDS9301_readCh1</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>ch1_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ch1_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="173" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="173" bodyend="188"/>
+        <referencedby refid="apds9301__sensor_8h_1a55e164e7dd0586de71a8dd5b25ae9ef3" compoundref="apds9301__sensor_8c" startline="190" endline="231">APDS9301_getLux</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a55e164e7dd0586de71a8dd5b25ae9ef3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float APDS9301_getLux</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_getLux</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="190" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="190" bodyend="231"/>
+        <referencedby refid="light__sensor__task_8h_1ac88a5567bdeac532053519330e94c6ab" compoundref="light__sensor__task_8c" startline="45" endline="49">getLightTask_lux</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1acae5d5b1cfb4008743589e5482d7578b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t *</type>
+        <definition>uint8_t* APDS9301_memDump</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301_memDump</name>
+        <briefdescription>
+<para>Gives a memdump of 15 len. <bold>IMP</bold> must free the address using return pointer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint8_t* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="234" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="234" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="apds9301__sensor_8c_1a47621b827697481f12f3bf6257118f70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int APDS9301__setmode_allDefault</definition>
+        <argsstring>()</argsstring>
+        <name>APDS9301__setmode_allDefault</name>
+        <briefdescription>
+<para>Sets back the default configration of the sensor. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" line="251" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c" bodystart="251" bodyend="261"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-14 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="apds9301__sensor_8h" kindref="compound">apds9301_sensor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include&quot;<ref refid="my__i2c_8h" kindref="compound">my_i2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>APDS9301_SENSOR_ID<sp/>(0x50)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="apds9301__sensor_8h_1a29ea2301a68de775fc0281dd1b4b03aa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a29ea2301a68de775fc0281dd1b4b03aa" kindref="member">APDS9301_test</ref>()</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="apds9301__sensor_8c_1a82dac2bc9fc0e11fc4589f3492bec13e" kindref="member">APDS9301_readID</ref>(&amp;data);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>==<sp/>0)<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(APDS9301_SENSOR_ID<sp/>==<sp/>(data<sp/>&amp;<sp/>0xF0))<sp/>?<sp/>0<sp/>:<sp/>(ret<sp/>=<sp/>-1);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="apds9301__sensor_8h_1a27508ac9add1cd27cb2c143631f3a55f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a27508ac9add1cd27cb2c143631f3a55f" kindref="member">APDS9301_write_ThLow</ref>(uint16_t<sp/>thlow)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a19c6244da5ea2d4e65a25001582498c8" kindref="member">I2Cmaster_write_word</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_INT_TH_LL_REG<sp/>|<sp/>APDS9301_CMD_WORD_EN,<sp/>thlow,<sp/>0);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="apds9301__sensor_8h_1ad75b8b8d703f549994213adeaea90c64" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1ad75b8b8d703f549994213adeaea90c64" kindref="member">APDS9301_write_ThHigh</ref>(uint16_t<sp/>thhigh)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a19c6244da5ea2d4e65a25001582498c8" kindref="member">I2Cmaster_write_word</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_INT_TH_HL_REG<sp/>|<sp/>APDS9301_CMD_WORD_EN<sp/>,<sp/>thhigh,<sp/>0);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="apds9301__sensor_8h_1ad0dcd5037cad9e4ed654da7d9d548010" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1ad0dcd5037cad9e4ed654da7d9d548010" kindref="member">APDS9301_read_ThLow</ref>(uint16_t<sp/>*thlow)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1ab25650a9cf74e65561b1fced3555f36c" kindref="member">I2Cmaster_read_bytes</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_INT_TH_LL_REG,<sp/>(uint8_t*)thlow,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(thlow));</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="apds9301__sensor_8h_1ab7d8d5ac5b780bcdb0a399f286b7f224" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1ab7d8d5ac5b780bcdb0a399f286b7f224" kindref="member">APDS9301_read_ThHigh</ref>(uint16_t<sp/>*thhigh)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1ab25650a9cf74e65561b1fced3555f36c" kindref="member">I2Cmaster_read_bytes</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_INT_TH_HL_REG,<sp/>(uint8_t*)thhigh,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(thhigh));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="apds9301__sensor_8h_1a2aa3244d3848324ba9f4afc7b1990ce1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a2aa3244d3848324ba9f4afc7b1990ce1" kindref="member">APDS9301_readControlReg</ref>(uint8_t<sp/>*ctrl_reg)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CTRL_REG,<sp/>ctrl_reg);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="apds9301__sensor_8h_1a5e527c870fed599e87d712a151e47172" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a5e527c870fed599e87d712a151e47172" kindref="member">APDS9301_mode_highGain</ref>()</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>&amp;data);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>|=<sp/>(uint8_t)APDS9301_TIMING_GAIN;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>data);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73" refid="apds9301__sensor_8h_1aa8c71ee19fe0ef5ff8880f87daa2757a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1aa8c71ee19fe0ef5ff8880f87daa2757a" kindref="member">APDS9301_mode_lowGain_default</ref>()</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>&amp;data);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>&amp;=<sp/>~(uint8_t)APDS9301_TIMING_GAIN;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>data);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="apds9301__sensor_8h_1a69d91df573c8c448a30715ae605262d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a69d91df573c8c448a30715ae605262d7" kindref="member">APDS9301_mode_interrupt</ref>(uint8_t<sp/>enable)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_INT_CTRL_REG,<sp/>&amp;data);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(enable)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data<sp/>|=<sp/>(uint8_t)APDS9301_INTCTRL_IEN;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data<sp/>&amp;=<sp/>~(uint8_t)APDS9301_INTCTRL_IEN;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_INT_CTRL_REG,<sp/>data);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104" refid="apds9301__sensor_8h_1aedfa265fc5f3043cea294a0a5d30da04" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1aedfa265fc5f3043cea294a0a5d30da04" kindref="member">APDS9301_clearPendingInterrupt</ref>()</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1af92cf5a5d893ef9bbf6b4ee6de0b0ef8" kindref="member">I2Cmaster_write</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CMD_REG<sp/>|<sp/>APDS9301_CMD_INT_CLEAR);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="apds9301__sensor_8h_1ad22326035668d08e6d7cade8cde126e4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1ad22326035668d08e6d7cade8cde126e4" kindref="member">APDS9301_mode_manualcontrol</ref>(uint8_t<sp/>on)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>&amp;data);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>&amp;=<sp/>~(uint8_t)APDS9301_TIMING_MANUAL(1);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>|=<sp/>(uint8_t)APDS9301_TIMING_MANUAL(on);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>data);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="apds9301__sensor_8h_1ac14a5a102513243824d12e6028abbeb8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1ac14a5a102513243824d12e6028abbeb8" kindref="member">APDS9301_mode_integrationTime</ref>(uint8_t<sp/>x)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>data;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>&amp;data);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>&amp;=<sp/>~(uint8_t)APDS9301_TIMING_INTEG(3);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>data<sp/>|=<sp/>(uint8_t)APDS9301_TIMING_INTEG(x);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_TIMING_REG,<sp/>data);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="apds9301__sensor_8h_1a5f0928561f20743cccb1a4f6336ddff4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a5f0928561f20743cccb1a4f6336ddff4" kindref="member">APDS9301_poweron</ref>()</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CTRL_REG,<sp/>APDS9301_CTRL_POWERON);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146" refid="apds9301__sensor_8h_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" kindref="member">APDS9301_powerdown</ref>()</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a202be1d68320e3ba93c759821ba2f695" kindref="member">I2Cmaster_write_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CTRL_REG,<sp/>APDS9301_CTRL_POWEROFF);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151" refid="apds9301__sensor_8h_1a82dac2bc9fc0e11fc4589f3492bec13e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a82dac2bc9fc0e11fc4589f3492bec13e" kindref="member">APDS9301_readID</ref>(uint8_t<sp/>*</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_ID_REG,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="apds9301__sensor_8h_1ae41babc910792ba1bbb19e837fd45d4c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1ae41babc910792ba1bbb19e837fd45d4c" kindref="member">APDS9301_readCh0</ref>(uint16_t<sp/>*ch0_data)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ch0_data_L,<sp/>ch0_data_H;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CH0_DATALOW,<sp/>&amp;ch0_data_L);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CH0_DATAHIGH,<sp/>&amp;ch0_data_H);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!ret)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*ch0_data<sp/>=<sp/>(ch0_data_H<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>ch0_data_L<sp/>;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="apds9301__sensor_8h_1a34c034b815ceb2e30b0161d7461f0a8e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a34c034b815ceb2e30b0161d7461f0a8e" kindref="member">APDS9301_readCh1</ref>(uint16_t<sp/>*ch1_data)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>ch1_data_L,<sp/>ch1_data_H;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CH1_DATALOW,<sp/>&amp;ch1_data_L);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>APDS9301_CH1_DATAHIGH,<sp/>&amp;ch1_data_H);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!ret)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*ch1_data<sp/>=<sp/>(ch1_data_H<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>ch1_data_L;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="apds9301__sensor_8h_1a55e164e7dd0586de71a8dd5b25ae9ef3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a55e164e7dd0586de71a8dd5b25ae9ef3" kindref="member">APDS9301_getLux</ref>()</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ratio,<sp/>lux<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>Ch0,<sp/>Ch1;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/><sp/>=<sp/><ref refid="apds9301__sensor_8c_1ae41babc910792ba1bbb19e837fd45d4c" kindref="member">APDS9301_readCh0</ref>(&amp;Ch0);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lux;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/><sp/>=<sp/><ref refid="apds9301__sensor_8c_1a34c034b815ceb2e30b0161d7461f0a8e" kindref="member">APDS9301_readCh1</ref>(&amp;Ch1);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lux;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(Ch0<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ratio<sp/>=<sp/>(float)Ch1/(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)Ch0;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ratio<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Calculate<sp/>LUX<sp/>-<sp/>calculations<sp/>are<sp/>referred<sp/>from<sp/>the<sp/>Sensor<sp/>datasheet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ratio<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>ratio<sp/>&lt;=<sp/>0.50)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lux<sp/>=<sp/>0.0304*Ch0<sp/>-<sp/>0.062*Ch0*(pow(ratio,<sp/>1.4));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ratio<sp/>&gt;<sp/>0.50<sp/>&amp;&amp;<sp/>ratio<sp/>&lt;=<sp/>0.61)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lux<sp/>=<sp/>0.0224*Ch0<sp/>-<sp/>0.031*Ch1;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ratio<sp/>&gt;<sp/>0.61<sp/>&amp;&amp;<sp/>ratio<sp/>&lt;=<sp/>0.80)</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lux<sp/>=<sp/>0.0128*Ch0<sp/>-<sp/>0.0153*Ch1;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ratio<sp/>&gt;<sp/>0.80<sp/>&amp;&amp;<sp/>ratio<sp/>&lt;=<sp/>1.30)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lux<sp/>=<sp/>0.00146*Ch0<sp/>-<sp/>0.00112*Ch1;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ratio<sp/>&gt;<sp/>1.30)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lux<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lux;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="apds9301__sensor_8h_1acae5d5b1cfb4008743589e5482d7578b" refkind="member"><highlight class="normal">uint8_t*<sp/><ref refid="apds9301__sensor_8c_1acae5d5b1cfb4008743589e5482d7578b" kindref="member">APDS9301_memDump</ref>()</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*memdump<sp/>=<sp/>(uint8_t*)malloc(15*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(uint8_t));</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(memdump,<sp/>0<sp/>,<sp/>15);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(uint8_t<sp/>i<sp/>=<sp/>0<sp/>;<sp/>i<sp/>&lt;<sp/>0x10;<sp/>i++)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i<sp/>==<sp/>0x7<sp/>||<sp/><sp/>i<sp/>==<sp/>0x9<sp/>||<sp/>i<sp/>==<sp/>0xB)</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a8024ad1f3558034ee998758f45d456d9" kindref="member">I2Cmaster_read_byte</ref>(APDS9301_SLAVE_ADDR,<sp/>i<sp/>|<sp/>APDS9301_CMD_REG,<sp/>memdump+i);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0<sp/>)<sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>memdump;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="apds9301__sensor_8h_1a47621b827697481f12f3bf6257118f70" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="apds9301__sensor_8c_1a47621b827697481f12f3bf6257118f70" kindref="member">APDS9301__setmode_allDefault</ref>()</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="apds9301__sensor_8c_1aa8c71ee19fe0ef5ff8880f87daa2757a" kindref="member">APDS9301_mode_lowGain_default</ref>();</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>APDS9301_mode_integrationTime2_default();</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>APDS9301_mode_interruptDisable_default();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>APDS9301_mode_manualcontrolOFF_default();</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c"/>
+  </compounddef>
+</doxygen>

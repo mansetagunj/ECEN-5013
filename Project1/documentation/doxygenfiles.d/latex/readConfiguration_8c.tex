@@ -1,0 +1,193 @@
+\hypertarget{readConfiguration_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/read\+Configuration.c File Reference}
+\label{readConfiguration_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/read\+Configuration.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/read\+Configuration.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}read\+Configuration.\+h\char`\"{}}\\*
+Include dependency graph for read\+Configuration.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readConfiguration_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries C\+O\+N\+F\+I\+G\+\_\+\+D\+A\+T\+A\+\_\+\+N\+UM}~3\hypertarget{readConfiguration_8c_a3f80a7daa371c71a6f33711232b81c2f}{}\label{readConfiguration_8c_a3f80a7daa371c71a6f33711232b81c2f}
+
+\item 
+\#define {\bfseries C\+O\+N\+F\+I\+G\+\_\+\+F\+I\+LE}~\char`\"{}configuration.\+dat\char`\"{}\hypertarget{readConfiguration_8c_a42bf63540ee0039a3a23db1b5ec3202b}{}\label{readConfiguration_8c_a42bf63540ee0039a3a23db1b5ec3202b}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries C\+O\+N\+F\+I\+G\+\_\+\+D\+A\+T\+A\+\_\+\+I\+N\+D\+EX} \{ {\bfseries L\+O\+G\+\_\+\+P\+A\+T\+H\+\_\+\+S\+T\+R\+I\+NG}, 
+{\bfseries T\+A\+S\+K\+\_\+\+S\+E\+T\+U\+P\+\_\+\+T\+I\+M\+E\+\_\+\+S\+E\+C\+\_\+\+U\+I\+N\+T8}, 
+{\bfseries T\+A\+S\+K\+\_\+\+A\+L\+I\+V\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T\+\_\+\+S\+E\+C\+\_\+\+U\+I\+N\+T8}
+ \}\hypertarget{readConfiguration_8c_a06f7ce9926ad9d6882a0bafa594045dd}{}\label{readConfiguration_8c_a06f7ce9926ad9d6882a0bafa594045dd}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{readConfiguration_8c_a6ec4251859d1107c4a9f457ff5ead99c}{configdata\+\_\+get\+Logpath} ()
+\item 
+uint32\+\_\+t \hyperlink{readConfiguration_8c_a622fe97941be32a0343567a4cfbd24e7}{configdata\+\_\+get\+Setup\+Time} ()
+\item 
+uint32\+\_\+t \hyperlink{readConfiguration_8c_a3936001fcb10cb50f534070c1e0d3058}{configdata\+\_\+get\+Alive\+Timeout} ()
+\item 
+int \hyperlink{readConfiguration_8c_af04c65a7de574da1abe2b9bd0f403c64}{configdata\+\_\+setup} ()
+\begin{DoxyCompactList}\small\item\em Should be called in the main task at the beginning. \end{DoxyCompactList}\item 
+void \hyperlink{readConfiguration_8c_a93341cc941d5255d844aea3b49cdfc9e}{configdata\+\_\+flush} ()\hypertarget{readConfiguration_8c_a93341cc941d5255d844aea3b49cdfc9e}{}\label{readConfiguration_8c_a93341cc941d5255d844aea3b49cdfc9e}
+
+\begin{DoxyCompactList}\small\item\em Should be called at teh end of main task. If not called, memory leak will occur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/17 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{read\+Configuration.\+c@{read\+Configuration.\+c}!configdata\+\_\+get\+Alive\+Timeout@{configdata\+\_\+get\+Alive\+Timeout}}
+\index{configdata\+\_\+get\+Alive\+Timeout@{configdata\+\_\+get\+Alive\+Timeout}!read\+Configuration.\+c@{read\+Configuration.\+c}}
+\subsubsection[{\texorpdfstring{configdata\+\_\+get\+Alive\+Timeout()}{configdata_getAliveTimeout()}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t configdata\+\_\+get\+Alive\+Timeout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{readConfiguration_8c_a3936001fcb10cb50f534070c1e0d3058}{}\label{readConfiguration_8c_a3936001fcb10cb50f534070c1e0d3058}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+40 \{
+41     \textcolor{keywordflow}{return} (*((uint32\_t*)configurationData[TASK\_ALIVE\_TIMEOUT\_SEC\_UINT8]));
+42 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readConfiguration_8c_a3936001fcb10cb50f534070c1e0d3058_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{read\+Configuration.\+c@{read\+Configuration.\+c}!configdata\+\_\+get\+Logpath@{configdata\+\_\+get\+Logpath}}
+\index{configdata\+\_\+get\+Logpath@{configdata\+\_\+get\+Logpath}!read\+Configuration.\+c@{read\+Configuration.\+c}}
+\subsubsection[{\texorpdfstring{configdata\+\_\+get\+Logpath()}{configdata_getLogpath()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ configdata\+\_\+get\+Logpath (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{readConfiguration_8c_a6ec4251859d1107c4a9f457ff5ead99c}{}\label{readConfiguration_8c_a6ec4251859d1107c4a9f457ff5ead99c}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+31 \{
+32     \textcolor{keywordflow}{return} ((\textcolor{keywordtype}{char}*)configurationData[LOG\_PATH\_STRING]);
+33 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readConfiguration_8c_a6ec4251859d1107c4a9f457ff5ead99c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{read\+Configuration.\+c@{read\+Configuration.\+c}!configdata\+\_\+get\+Setup\+Time@{configdata\+\_\+get\+Setup\+Time}}
+\index{configdata\+\_\+get\+Setup\+Time@{configdata\+\_\+get\+Setup\+Time}!read\+Configuration.\+c@{read\+Configuration.\+c}}
+\subsubsection[{\texorpdfstring{configdata\+\_\+get\+Setup\+Time()}{configdata_getSetupTime()}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t configdata\+\_\+get\+Setup\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{readConfiguration_8c_a622fe97941be32a0343567a4cfbd24e7}{}\label{readConfiguration_8c_a622fe97941be32a0343567a4cfbd24e7}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+36 \{
+37     \textcolor{keywordflow}{return} (*((uint32\_t*)configurationData[TASK\_SETUP\_TIME\_SEC\_UINT8]));
+38 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readConfiguration_8c_a622fe97941be32a0343567a4cfbd24e7_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{read\+Configuration.\+c@{read\+Configuration.\+c}!configdata\+\_\+setup@{configdata\+\_\+setup}}
+\index{configdata\+\_\+setup@{configdata\+\_\+setup}!read\+Configuration.\+c@{read\+Configuration.\+c}}
+\subsubsection[{\texorpdfstring{configdata\+\_\+setup()}{configdata_setup()}}]{\setlength{\rightskip}{0pt plus 5cm}int configdata\+\_\+setup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{readConfiguration_8c_af04c65a7de574da1abe2b9bd0f403c64}{}\label{readConfiguration_8c_af04c65a7de574da1abe2b9bd0f403c64}
+
+
+Should be called in the main task at the beginning. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+45 \{
+46     FILE *fp;
+47     fp = fopen(CONFIG\_FILE, \textcolor{stringliteral}{"r"});
+48     \textcolor{keywordflow}{if}(NULL ==fp)
+49         \textcolor{keywordflow}{return} -1;
+50     
+51     configurationData[LOG\_PATH\_STRING] = (\textcolor{keywordtype}{char}*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*20);
+52     configurationData[TASK\_SETUP\_TIME\_SEC\_UINT8] = (uint32\_t*)malloc(\textcolor{keyword}{sizeof}(uint32\_t));
+53     configurationData[TASK\_ALIVE\_TIMEOUT\_SEC\_UINT8] = (uint32\_t*)malloc(\textcolor{keyword}{sizeof}(uint32\_t));
+54 
+55     \textcolor{keywordtype}{size\_t} readBytes = fscanf(fp,\textcolor{stringliteral}{"%s %u %u"},(\textcolor{keywordtype}{char}*)configurationData[LOG\_PATH\_STRING],(uint32\_t*)
+      configurationData[TASK\_SETUP\_TIME\_SEC\_UINT8], (uint32\_t*)configurationData[TASK\_ALIVE\_TIMEOUT\_SEC\_UINT8]);
+56     
+57 \textcolor{preprocessor}{    #ifdef SELF\_TEST}
+58     printf(\textcolor{stringliteral}{"PATH: %s\(\backslash\)n"},(\textcolor{keywordtype}{char}*)configurationData[LOG\_PATH\_STRING]);
+59     printf(\textcolor{stringliteral}{"SETUP: %u\(\backslash\)n"},*(uint32\_t*)configurationData[TASK\_SETUP\_TIME\_SEC\_UINT8]);
+60     printf(\textcolor{stringliteral}{"TO: %u\(\backslash\)n"},*(uint32\_t*)configurationData[TASK\_ALIVE\_TIMEOUT\_SEC\_UINT8]);
+61 \textcolor{preprocessor}{    #endif}
+62 
+63     \textcolor{keywordflow}{return} 0;
+64 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readConfiguration_8c_af04c65a7de574da1abe2b9bd0f403c64_icgraph}
+\end{center}
+\end{figure}
+
+

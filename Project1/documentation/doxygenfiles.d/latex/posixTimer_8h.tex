@@ -1,0 +1,267 @@
+\hypertarget{posixTimer_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/posix\+Timer.h File Reference}
+\label{posixTimer_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/posix\+Timer.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/posix\+Timer.\+h}}
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$linux/types.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+Include dependency graph for posix\+Timer.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{posixTimer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{posixTimer_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries M\+I\+C\+R\+O\+S\+EC}~(1000000)\hypertarget{posixTimer_8h_a3401c320bd609c5464b2eecb205321f9}{}\label{posixTimer_8h_a3401c320bd609c5464b2eecb205321f9}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{posixTimer_8h_a731c8c8f52f8feb4c14fb91b0274d94f}{register\+\_\+timer} (timer\+\_\+t $\ast$timer\+\_\+id, void($\ast$timer\+\_\+handler)(union sigval), void $\ast$handler\+Args)
+\begin{DoxyCompactList}\small\item\em R\+Egsiter the timer handler. \end{DoxyCompactList}\item 
+int \hyperlink{posixTimer_8h_a659e3544e54a6fb4aeed6c38f4a91ad2}{start\+\_\+timer} (timer\+\_\+t timer\+\_\+id, uint64\+\_\+t time\+\_\+usec, uint8\+\_\+t oneshot)
+\begin{DoxyCompactList}\small\item\em Starts the timer. \end{DoxyCompactList}\item 
+int \hyperlink{posixTimer_8h_a33e0f810c8ecdcde8340650106da0958}{stop\+\_\+timer} (timer\+\_\+t timer\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Stops the timer. \end{DoxyCompactList}\item 
+int \hyperlink{posixTimer_8h_a91f15230e46caba2a2132b04e9c73e47}{delete\+\_\+timer} (timer\+\_\+t timer\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Destroys the timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/18 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{posix\+Timer.\+h@{posix\+Timer.\+h}!delete\+\_\+timer@{delete\+\_\+timer}}
+\index{delete\+\_\+timer@{delete\+\_\+timer}!posix\+Timer.\+h@{posix\+Timer.\+h}}
+\subsubsection[{\texorpdfstring{delete\+\_\+timer(timer\+\_\+t timer\+\_\+id)}{delete_timer(timer_t timer_id)}}]{\setlength{\rightskip}{0pt plus 5cm}int delete\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{timer\+\_\+t}]{timer\+\_\+id}
+\end{DoxyParamCaption}
+)}\hypertarget{posixTimer_8h_a91f15230e46caba2a2132b04e9c73e47}{}\label{posixTimer_8h_a91f15230e46caba2a2132b04e9c73e47}
+
+
+Destroys the timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+83 \{
+84     \textcolor{comment}{// if(NULL == timer\_id)}
+85     \textcolor{comment}{//  return -1;}
+86     
+87     \textcolor{keywordtype}{int} ret = timer\_delete(timer\_id);
+88 
+89     \textcolor{keywordflow}{return} ret;
+90 
+91 
+92 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{posixTimer_8h_a91f15230e46caba2a2132b04e9c73e47_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{posix\+Timer.\+h@{posix\+Timer.\+h}!register\+\_\+timer@{register\+\_\+timer}}
+\index{register\+\_\+timer@{register\+\_\+timer}!posix\+Timer.\+h@{posix\+Timer.\+h}}
+\subsubsection[{\texorpdfstring{register\+\_\+timer(timer\+\_\+t $\ast$timer\+\_\+id, void($\ast$timer\+\_\+handler)(union sigval), void $\ast$handler\+Args)}{register_timer(timer_t *timer_id, void(*timer_handler)(union sigval), void *handlerArgs)}}]{\setlength{\rightskip}{0pt plus 5cm}int register\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{timer\+\_\+t $\ast$}]{timer\+\_\+id, }
+\item[{void($\ast$)(union sigval)}]{timer\+\_\+handler, }
+\item[{void $\ast$}]{handler\+Args}
+\end{DoxyParamCaption}
+)}\hypertarget{posixTimer_8h_a731c8c8f52f8feb4c14fb91b0274d94f}{}\label{posixTimer_8h_a731c8c8f52f8feb4c14fb91b0274d94f}
+
+
+R\+Egsiter the timer handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & \\
+\hline
+{\em timer\+\_\+handler} & \\
+\hline
+{\em handler\+Args} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+20 \{
+21 
+22     \textcolor{keywordflow}{if}(NULL == timer\_id)
+23         \textcolor{keywordflow}{return} -1;
+24         
+25     \textcolor{keyword}{struct }sigevent sige;
+26 
+27     \textcolor{comment}{/*SIGEV\_THREAD will call the handler as if it was a new thread */}
+28     sige.sigev\_notify = SIGEV\_THREAD;
+29     sige.sigev\_notify\_function = timer\_handler;
+30 \textcolor{comment}{//  sige.sigev\_value.sival\_ptr = timer\_id;}
+31     sige.sigev\_value.sival\_ptr = handlerArgs;
+32     sige.sigev\_notify\_attributes = NULL;
+33 
+34     \textcolor{keywordtype}{int} ret = timer\_create(CLOCK\_REALTIME, &sige, timer\_id);
+35     
+36     \textcolor{keywordflow}{return} ret;
+37 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{posixTimer_8h_a731c8c8f52f8feb4c14fb91b0274d94f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{posix\+Timer.\+h@{posix\+Timer.\+h}!start\+\_\+timer@{start\+\_\+timer}}
+\index{start\+\_\+timer@{start\+\_\+timer}!posix\+Timer.\+h@{posix\+Timer.\+h}}
+\subsubsection[{\texorpdfstring{start\+\_\+timer(timer\+\_\+t timer\+\_\+id, uint64\+\_\+t time\+\_\+usec, uint8\+\_\+t oneshot)}{start_timer(timer_t timer_id, uint64_t time_usec, uint8_t oneshot)}}]{\setlength{\rightskip}{0pt plus 5cm}int start\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{timer\+\_\+t}]{timer\+\_\+id, }
+\item[{uint64\+\_\+t}]{time\+\_\+usec, }
+\item[{uint8\+\_\+t}]{oneshot}
+\end{DoxyParamCaption}
+)}\hypertarget{posixTimer_8h_a659e3544e54a6fb4aeed6c38f4a91ad2}{}\label{posixTimer_8h_a659e3544e54a6fb4aeed6c38f4a91ad2}
+
+
+Starts the timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & \\
+\hline
+{\em time\+\_\+usec} & \\
+\hline
+{\em oneshot} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+40 \{
+41     \textcolor{comment}{// if(NULL == timer\_id)}
+42     \textcolor{comment}{//  return -1;}
+43         
+44     \textcolor{keyword}{struct }itimerspec ts;
+45     
+46     ts.it\_value.tv\_sec = time\_usec / MICROSEC;
+47     ts.it\_value.tv\_nsec = (time\_usec % MICROSEC) * 1000;
+48     \textcolor{keywordflow}{if}(1 == oneshot)
+49     \{
+50         ts.it\_interval.tv\_sec = 0;
+51         ts.it\_interval.tv\_nsec = 0;
+52     \}
+53     \textcolor{keywordflow}{else}
+54     \{
+55         ts.it\_interval.tv\_sec = ts.it\_value.tv\_sec;
+56         ts.it\_interval.tv\_nsec = ts.it\_value.tv\_nsec;
+57     \}
+58 
+59     \textcolor{keywordtype}{int} ret = timer\_settime(timer\_id, 0, &ts, 0);
+60     
+61     \textcolor{keywordflow}{return} ret;
+62 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{posixTimer_8h_a659e3544e54a6fb4aeed6c38f4a91ad2_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{posix\+Timer.\+h@{posix\+Timer.\+h}!stop\+\_\+timer@{stop\+\_\+timer}}
+\index{stop\+\_\+timer@{stop\+\_\+timer}!posix\+Timer.\+h@{posix\+Timer.\+h}}
+\subsubsection[{\texorpdfstring{stop\+\_\+timer(timer\+\_\+t timer\+\_\+id)}{stop_timer(timer_t timer_id)}}]{\setlength{\rightskip}{0pt plus 5cm}int stop\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{timer\+\_\+t}]{timer\+\_\+id}
+\end{DoxyParamCaption}
+)}\hypertarget{posixTimer_8h_a33e0f810c8ecdcde8340650106da0958}{}\label{posixTimer_8h_a33e0f810c8ecdcde8340650106da0958}
+
+
+Stops the timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+65 \{
+66     \textcolor{comment}{// if(NULL == timer\_id)}
+67     \textcolor{comment}{//  return -1;}
+68         
+69     \textcolor{keyword}{struct }itimerspec ts;
+70     
+71     ts.it\_value.tv\_sec = 0;
+72     ts.it\_value.tv\_nsec = 0;
+73     ts.it\_interval.tv\_sec = 0;
+74     ts.it\_interval.tv\_nsec = 0;
+75 
+76     \textcolor{keywordtype}{int} ret = timer\_settime(timer\_id, 0, &ts, 0);
+77     
+78     \textcolor{keywordflow}{return} ret;
+79 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{posixTimer_8h_a33e0f810c8ecdcde8340650106da0958_icgraph}
+\end{center}
+\end{figure}
+
+

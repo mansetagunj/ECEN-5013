@@ -1,0 +1,19 @@
+<map id="I2Cmaster_write_word" name="I2Cmaster_write_word">
+<area shape="rect" id="node2" href="$apds9301__sensor_8h.html#a27508ac9add1cd27cb2c143631f3a55f" title="APDS9301_write_ThLow" alt="" coords="247,5,415,32"/>
+<area shape="rect" id="node3" href="$apds9301__sensor_8h.html#ad75b8b8d703f549994213adeaea90c64" title="APDS9301_write_ThHigh" alt="" coords="246,56,417,83"/>
+<area shape="rect" id="node4" href="$tmp102__sensor_8h.html#a4725fb3e4cf18de4220d6067a7dc5dd4" title="Brings back to default. " alt="" coords="504,340,695,367"/>
+<area shape="rect" id="node5" href="$tmp102__sensor_8h.html#a7d4d57387ef6a5db5bfc8d14a94d9ee4" title="TMP102_setMode_SD_PowerSaving" alt="" coords="212,157,451,184"/>
+<area shape="rect" id="node6" href="$tmp102__sensor_8h.html#a4309a30e9d006753c2cdd6f6c9af2650" title="TMP102_setMode_SD_Continuous\l_default" alt="" coords="218,209,445,250"/>
+<area shape="rect" id="node7" href="$tmp102__sensor_8h.html#a81c75dba63b6c0727ab602ea631b3a22" title="TMP102_setMode_TM_Comparator\lMode_default" alt="" coords="217,274,446,315"/>
+<area shape="rect" id="node8" href="$tmp102__sensor_8h.html#a4386703b35277dc71be5cd9b57d0f3ce" title="TMP102_setMode_TM_InterruptMode" alt="" coords="211,340,452,367"/>
+<area shape="rect" id="node9" href="$tmp102__sensor_8h.html#a899854f020db34f588f89adffcdc8433" title="TMP102_setMode_ALERT\l_ActiveLow_default" alt="" coords="242,391,421,433"/>
+<area shape="rect" id="node10" href="$tmp102__sensor_8h.html#aa7438de8c6766d48b649e132cabf88e9" title="TMP102_setMode_ALERT\l_ActiveHigh" alt="" coords="242,457,421,498"/>
+<area shape="rect" id="node11" href="$tmp102__sensor_8h.html#aa96f470639b851a96f524ae6524dd266" title="TMP102_setMode_EM_Normal\lMode_default" alt="" coords="229,522,433,563"/>
+<area shape="rect" id="node12" href="$tmp102__sensor_8h.html#a2df18183afad1339903fe59997aaf9a2" title="TMP102_setMode_EM_ExtendedMode" alt="" coords="207,588,456,615"/>
+<area shape="rect" id="node13" href="$tmp102__sensor_8h.html#a3f6277d742af4a10dcec568e84ad1d5d" title="TMP102_setMode_CR_250mHZ" alt="" coords="225,639,437,665"/>
+<area shape="rect" id="node14" href="$tmp102__sensor_8h.html#a110d2f8672865d85670f2681e5dc9aed" title="TMP102_setMode_CR_1HZ" alt="" coords="238,689,425,716"/>
+<area shape="rect" id="node15" href="$tmp102__sensor_8h.html#a6d24a33a5e009441edb99bd1a727afec" title="TMP102_setMode_CR_4HZ\l_default" alt="" coords="238,741,425,782"/>
+<area shape="rect" id="node16" href="$tmp102__sensor_8h.html#a031c7291b177515876ebb29d24dc97b4" title="TMP102_setMode_CR_8HZ" alt="" coords="238,807,425,833"/>
+<area shape="rect" id="node17" href="$tmp102__sensor_8h.html#a6296f70167b1f662c7f9b56b15fe037c" title="TMP102_write_Tlow" alt="" coords="261,857,402,884"/>
+<area shape="rect" id="node18" href="$tmp102__sensor_8h.html#a32a4b8bbc5611a7ca967cdaaeb732ae1" title="TMP102_write_Thigh" alt="" coords="259,908,404,935"/>
+</map>

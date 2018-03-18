@@ -1,0 +1,169 @@
+\hypertarget{BB__Led_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/\+B\+B\+\_\+\+Led.c File Reference}
+\label{BB__Led_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/\+B\+B\+\_\+\+Led.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/\+B\+B\+\_\+\+Led.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}B\+B\+\_\+\+Led.\+h\char`\"{}}\\*
+Include dependency graph for B\+B\+\_\+\+Led.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{BB__Led_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries ON}~\char`\"{}1\char`\"{}\hypertarget{BB__Led_8c_ad76d1750a6cdeebd506bfcd6752554d2}{}\label{BB__Led_8c_ad76d1750a6cdeebd506bfcd6752554d2}
+
+\item 
+\#define {\bfseries O\+FF}~\char`\"{}0\char`\"{}\hypertarget{BB__Led_8c_a29e413f6725b2ba32d165ffaa35b01e5}{}\label{BB__Led_8c_a29e413f6725b2ba32d165ffaa35b01e5}
+
+\item 
+\#define {\bfseries L\+E\+D\+\_\+\+C\+O\+U\+NT}~4\hypertarget{BB__Led_8c_ad698e2cb680601529f08c3e5f2b0cebb}{}\label{BB__Led_8c_ad698e2cb680601529f08c3e5f2b0cebb}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{BB__Led_8c_a86628a099822bb243b1c7d57133e627b}{B\+B\+\_\+\+Led\+ON} (U\+S\+E\+R\+\_\+\+L\+E\+D\+\_\+T lednum)
+\item 
+int \hyperlink{BB__Led_8c_a84494234e8807c093bee8d16d7b2008b}{B\+B\+\_\+\+Led\+O\+FF} (U\+S\+E\+R\+\_\+\+L\+E\+D\+\_\+T lednum)
+\item 
+int \hyperlink{BB__Led_8c_a36a765a1771de0098fe83028d53827e1}{B\+B\+\_\+\+Led\+Default} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$const {\bfseries L\+E\+D\+P\+A\+TH} \mbox{[}L\+E\+D\+\_\+\+C\+O\+U\+NT\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/10 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}!B\+B\+\_\+\+Led\+Default@{B\+B\+\_\+\+Led\+Default}}
+\index{B\+B\+\_\+\+Led\+Default@{B\+B\+\_\+\+Led\+Default}!B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}}
+\subsubsection[{\texorpdfstring{B\+B\+\_\+\+Led\+Default()}{BB_LedDefault()}}]{\setlength{\rightskip}{0pt plus 5cm}int B\+B\+\_\+\+Led\+Default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{BB__Led_8c_a36a765a1771de0098fe83028d53827e1}{}\label{BB__Led_8c_a36a765a1771de0098fe83028d53827e1}
+
+\begin{DoxyParams}{Parameters}
+{\em lednum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+70 \{
+71     FILE *led\_fd = fopen(\textcolor{stringliteral}{"/sys/class/leds/beaglebone:green:usr0/trigger"}, \textcolor{stringliteral}{"r+"});
+72     \textcolor{keywordflow}{if}(led\_fd)
+73     \{
+74         fwrite(\textcolor{stringliteral}{"heartbeat"},1,\textcolor{keyword}{sizeof}(\textcolor{stringliteral}{"heartbeat"}),led\_fd);
+75         fclose(led\_fd);
+76         \textcolor{keywordflow}{return} 0; 
+77     \}   
+78     \textcolor{keywordflow}{else}
+79         \textcolor{keywordflow}{return} -1;
+80 \}\end{DoxyCode}
+\index{B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}!B\+B\+\_\+\+Led\+O\+FF@{B\+B\+\_\+\+Led\+O\+FF}}
+\index{B\+B\+\_\+\+Led\+O\+FF@{B\+B\+\_\+\+Led\+O\+FF}!B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}}
+\subsubsection[{\texorpdfstring{B\+B\+\_\+\+Led\+O\+F\+F(\+U\+S\+E\+R\+\_\+\+L\+E\+D\+\_\+\+T lednum)}{BB_LedOFF(USER_LED_T lednum)}}]{\setlength{\rightskip}{0pt plus 5cm}int B\+B\+\_\+\+Led\+O\+FF (
+\begin{DoxyParamCaption}
+\item[{U\+S\+E\+R\+\_\+\+L\+E\+D\+\_\+T}]{lednum}
+\end{DoxyParamCaption}
+)}\hypertarget{BB__Led_8c_a84494234e8807c093bee8d16d7b2008b}{}\label{BB__Led_8c_a84494234e8807c093bee8d16d7b2008b}
+
+\begin{DoxyParams}{Parameters}
+{\em lednum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+49 \{
+50     \textcolor{comment}{/* Forcefully using USR LED 1 */}
+51     lednum = 1;
+52     \textcolor{keywordflow}{if}(lednum < 4)
+53     \{
+54         FILE *led\_fd = fopen(LEDPATH[lednum], \textcolor{stringliteral}{"r+"});
+55         \textcolor{keywordflow}{if}(led\_fd)
+56         \{
+57             fwrite(OFF,1,1,led\_fd);
+58             fclose(led\_fd);
+59             \textcolor{keywordflow}{return} 0; 
+60         \}   
+61         \textcolor{keywordflow}{else}
+62             \textcolor{keywordflow}{return} -1;
+63     \}
+64     \textcolor{keywordflow}{else}
+65         \textcolor{keywordflow}{return} -1;
+66 
+67 \}
+\end{DoxyCode}
+\index{B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}!B\+B\+\_\+\+Led\+ON@{B\+B\+\_\+\+Led\+ON}}
+\index{B\+B\+\_\+\+Led\+ON@{B\+B\+\_\+\+Led\+ON}!B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}}
+\subsubsection[{\texorpdfstring{B\+B\+\_\+\+Led\+O\+N(\+U\+S\+E\+R\+\_\+\+L\+E\+D\+\_\+\+T lednum)}{BB_LedON(USER_LED_T lednum)}}]{\setlength{\rightskip}{0pt plus 5cm}int B\+B\+\_\+\+Led\+ON (
+\begin{DoxyParamCaption}
+\item[{U\+S\+E\+R\+\_\+\+L\+E\+D\+\_\+T}]{lednum}
+\end{DoxyParamCaption}
+)}\hypertarget{BB__Led_8c_a86628a099822bb243b1c7d57133e627b}{}\label{BB__Led_8c_a86628a099822bb243b1c7d57133e627b}
+
+\begin{DoxyParams}{Parameters}
+{\em lednum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+28 \{
+29     \textcolor{comment}{/* Forcefully using USR LED 1 */}
+30     lednum = 1;
+31     \textcolor{keywordflow}{if}(lednum < 4)
+32     \{
+33         FILE *led\_fd = fopen(LEDPATH[lednum], \textcolor{stringliteral}{"r+"});
+34         \textcolor{keywordflow}{if}(led\_fd)
+35         \{
+36             fwrite(ON,1,1,led\_fd);
+37             fclose(led\_fd);
+38             \textcolor{keywordflow}{return} 0; 
+39         \}   
+40         \textcolor{keywordflow}{else}
+41             \textcolor{keywordflow}{return} -1;
+42     \}
+43     \textcolor{keywordflow}{else}
+44         \textcolor{keywordflow}{return} -1;
+45 
+46 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\index{B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}!L\+E\+D\+P\+A\+TH@{L\+E\+D\+P\+A\+TH}}
+\index{L\+E\+D\+P\+A\+TH@{L\+E\+D\+P\+A\+TH}!B\+B\+\_\+\+Led.\+c@{B\+B\+\_\+\+Led.\+c}}
+\subsubsection[{\texorpdfstring{L\+E\+D\+P\+A\+TH}{LEDPATH}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const L\+E\+D\+P\+A\+TH\mbox{[}L\+E\+D\+\_\+\+C\+O\+U\+NT\mbox{]}}\hypertarget{BB__Led_8c_ab3370ee5a3985cd9ca2f38fab2f27114}{}\label{BB__Led_8c_ab3370ee5a3985cd9ca2f38fab2f27114}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+    \textcolor{stringliteral}{"/sys/class/leds/beaglebone:green:usr0/brightness"},
+    \textcolor{stringliteral}{"/sys/class/leds/beaglebone:green:usr1/brightness"},
+    \textcolor{stringliteral}{"/sys/class/leds/beaglebone:green:usr2/brightness"},
+    \textcolor{stringliteral}{"/sys/class/leds/beaglebone:green:usr3/brightness"}
+\}
+\end{DoxyCode}

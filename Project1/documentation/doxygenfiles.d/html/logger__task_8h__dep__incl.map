@@ -1,0 +1,8 @@
+<map id="/home/gunj/repos/ECEN&#45;5013/Project1/include/common/logger_task.h" name="/home/gunj/repos/ECEN&#45;5013/Project1/include/common/logger_task.h">
+<area shape="rect" id="node2" href="$common__helper_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/common\l_helper.c" alt="" coords="5,109,188,165"/>
+<area shape="rect" id="node3" href="$light__sensor__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/light\l_sensor_task.c" alt="" coords="212,109,376,165"/>
+<area shape="rect" id="node4" href="$logger__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/logger\l_task.c" alt="" coords="400,109,567,165"/>
+<area shape="rect" id="node5" href="$main__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/main\l_task.c" alt="" coords="591,109,755,165"/>
+<area shape="rect" id="node6" href="$socket__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/socket\l_task.c" alt="" coords="779,109,950,165"/>
+<area shape="rect" id="node7" href="$temperature__sensor__task_8c.html" title="/home/gunj/repos/ECEN\l&#45;5013/Project1/src/temperature\l_sensor_task.c" alt="" coords="975,109,1176,165"/>
+</map>

@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="error__data_8h" kind="file" language="C++">
+    <compoundname>error_data.h</compoundname>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">sys/syscall.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includedby refid="apds9301__sensor_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c</includedby>
+    <includedby refid="main__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h</includedby>
+    <includedby refid="logger__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</includedby>
+    <includedby refid="light__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</includedby>
+    <includedby refid="temperature__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</includedby>
+    <includedby refid="light__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</includedby>
+    <includedby refid="logger__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="my__signals_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c</includedby>
+    <includedby refid="my__time_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/my_time.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <incdepgraph>
+      <node id="503">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h</label>
+        <link refid="error_data.h"/>
+        <childnode refid="504" relation="include">
+        </childnode>
+        <childnode refid="505" relation="include">
+        </childnode>
+        <childnode refid="506" relation="include">
+        </childnode>
+        <childnode refid="507" relation="include">
+        </childnode>
+      </node>
+      <node id="506">
+        <label>sys/types.h</label>
+      </node>
+      <node id="504">
+        <label>unistd.h</label>
+      </node>
+      <node id="505">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="507">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="516">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="515">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="510">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h</label>
+        <link refid="main__task_8h"/>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+        <childnode refid="516" relation="include">
+        </childnode>
+      </node>
+      <node id="519">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</label>
+        <link refid="temperature__sensor__task_8h"/>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+        <childnode refid="516" relation="include">
+        </childnode>
+      </node>
+      <node id="517">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+        <childnode refid="516" relation="include">
+        </childnode>
+      </node>
+      <node id="514">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="509">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/apds9301_sensor.c</label>
+        <link refid="apds9301__sensor_8c"/>
+      </node>
+      <node id="508">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h</label>
+        <link refid="error_data.h"/>
+        <childnode refid="509" relation="include">
+        </childnode>
+        <childnode refid="510" relation="include">
+        </childnode>
+        <childnode refid="517" relation="include">
+        </childnode>
+        <childnode refid="518" relation="include">
+        </childnode>
+        <childnode refid="519" relation="include">
+        </childnode>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="520" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+        <childnode refid="516" relation="include">
+        </childnode>
+      </node>
+      <node id="511">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="512">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="520">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/my_time.c</label>
+        <link refid="my__time_8c"/>
+      </node>
+      <node id="518">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</label>
+        <link refid="light__sensor__task_8h"/>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+      </node>
+      <node id="513">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger__task_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="error__data_8h_1a8d9af07d8271feb5b31dee7ca2efc611" prot="public" static="no">
+        <name>LOG_STDOUT</name>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>do{printf(&quot;[PID:%d][TID:%ld]&quot;,getpid(),syscall(SYS_gettid)); printf(format, ##__VA_ARGS__); fflush(stdout);}while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" line="27" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="error__data_8h_1a8fe83ac76edc595f6b98cd4a4127aed5" prot="public" static="no">
+        <name>ERROR</name>
+        <initializer>&quot;[ERROR] &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" line="29" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="error__data_8h_1ae1103fea1e1b3c41ca3322d5389f7162" prot="public" static="no">
+        <name>INFO</name>
+        <initializer>&quot;[INFO] &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" line="30" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="error__data_8h_1a4688695205ef66fbf096f1b95a0d7fe9" prot="public" static="no">
+        <name>SIGNAL</name>
+        <initializer>&quot;[SIGNAL] &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" line="31" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="error__data_8h_1a5cb439d9f933fde4cf23caa370c030e7" prot="public" static="no">
+        <name>WARNING</name>
+        <initializer>&quot;[WARNING] &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" line="32" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="error__data_8h_1a6cbfd0e610bf4b9c5369a3266cb50302" prot="public" static="no">
+        <name>RETURN_T</name>
+        <enumvalue id="error__data_8h_1a6cbfd0e610bf4b9c5369a3266cb50302a0f886785b600b91048fcdc434c6b4a8e" prot="public">
+          <name>ERR</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="error__data_8h_1a6cbfd0e610bf4b9c5369a3266cb50302ac7f69f7c9e5aea9b8f54cf02870e2bf8" prot="public">
+          <name>SUCCESS</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" line="18" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h" bodystart="18" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>ERROR_DATA_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ERROR_DATA_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/syscall.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>ERR<sp/><sp/><sp/><sp/><sp/>=<sp/>-1,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>SUCCESS<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}RETURN_T;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//syscall(SYS_gettid)<sp/>[TID:%ld]<sp/>&quot;,getpid()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>LOG_STDOUT(format,<sp/>...)<sp/>printf(&quot;[PID:%d]&quot;,getpid());<sp/>printf(format,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_STDOUT(format,<sp/>...)<sp/><sp/><sp/><sp/><sp/>do{printf(&quot;[PID:%d][TID:%ld]&quot;,getpid(),syscall(SYS_gettid));<sp/>printf(format,<sp/>##__VA_ARGS__);<sp/>fflush(stdout);}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ERROR<sp/><sp/><sp/>&quot;[ERROR]<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INFO<sp/><sp/><sp/><sp/>&quot;[INFO]<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SIGNAL<sp/><sp/>&quot;[SIGNAL]<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WARNING<sp/>&quot;[WARNING]<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/error_data.h"/>
+  </compounddef>
+</doxygen>

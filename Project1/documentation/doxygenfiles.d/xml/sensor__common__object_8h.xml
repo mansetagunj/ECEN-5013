@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="sensor__common__object_8h" kind="file" language="C++">
+    <compoundname>sensor_common_object.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">semaphore.h</includes>
+    <includedby refid="light__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</includedby>
+    <includedby refid="temperature__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <includedby refid="client_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/tests/SocketTask_Test/client.c</includedby>
+    <incdepgraph>
+      <node id="639">
+        <label>stdint.h</label>
+      </node>
+      <node id="640">
+        <label>semaphore.h</label>
+      </node>
+      <node id="638">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h</label>
+        <link refid="sensor_common_object.h"/>
+        <childnode refid="639" relation="include">
+        </childnode>
+        <childnode refid="640" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="648">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="646">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="647">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</label>
+        <link refid="temperature__sensor__task_8h"/>
+        <childnode refid="643" relation="include">
+        </childnode>
+        <childnode refid="645" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+        <childnode refid="648" relation="include">
+        </childnode>
+      </node>
+      <node id="645">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="643">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="644">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="642">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</label>
+        <link refid="light__sensor__task_8h"/>
+        <childnode refid="643" relation="include">
+        </childnode>
+        <childnode refid="644" relation="include">
+        </childnode>
+        <childnode refid="645" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+      </node>
+      <node id="641">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h</label>
+        <link refid="sensor_common_object.h"/>
+        <childnode refid="642" relation="include">
+        </childnode>
+        <childnode refid="647" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structREMOTE__REQUEST__T" prot="public">REMOTE_REQUEST_T</innerclass>
+    <innerclass refid="structREMOTE__RESPONSE__T" prot="public">REMOTE_RESPONSE_T</innerclass>
+    <innerclass refid="unionREMOTE__RESPONSE__T_1_1data" prot="public">REMOTE_RESPONSE_T::data</innerclass>
+    <innerclass refid="structOBJECT__PACKET__T" prot="public">OBJECT_PACKET_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="sensor__common__object_8h_1aeb154e5d881c17aa08840aa0c0970e08" prot="public" static="no">
+        <name>SENSOR_MAKE_PACKET_SYNCTYPE</name>
+        <param><defname>p_packet</defname></param>
+        <param><defname>p_sem</defname></param>
+        <initializer>{ p_packet-&gt;is_sync = SYNC; if(NULL != p_sem){p_packet-&gt;sync_semaphore = p_sem;} }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="72" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="sensor__common__object_8h_1a0e5ecbc8009d353b51513dcdd4baaac7" prot="public" static="no">
+        <name>SENSOR_MAKE_PACKET_ASYNCTYPE</name>
+        <param><defname>p_packet</defname></param>
+        <initializer>{p_packet-&gt;is_sync = ASYNC; p_packet-&gt;sync_semaphore = NULL;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="74" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="sensor__common__object_8h_1afb65c7303d7a4e2807ec1d27f3999007" prot="public" static="no">
+        <name>SENSOR_MAKE_PACKET_RW_1DATA</name>
+        <param><defname>p_packet</defname></param>
+        <initializer>(p_packet-&gt;buffLen = 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="76" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="sensor__common__object_8h_1a1af2cf70b7bf90d76723e6f7d00fb3aa" prot="public" static="no">
+        <name>SENSOR_MAKE_PACKET_RW_2DATA</name>
+        <param><defname>p_packet</defname></param>
+        <initializer>(p_packet-&gt;buffLen = 2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="77" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21c" prot="public" static="no">
+        <name>REMOTE_REQRSP_ID</name>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21caaa9b1f2666155b0d8aabd2386e3b78b1" prot="public">
+          <name>GET_TEMP_C</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca89b33ae0fea83e87dbd44e8ec81d25a0" prot="public">
+          <name>GET_TEMP_F</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cad2024a72ea21e16162456a65e65dc1cb" prot="public">
+          <name>GET_TEMP_K</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca6889ff35e222cd8fd6955c3a8967947f" prot="public">
+          <name>GET_LUX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cab8efb037bc764a625a7ac9cacfd3dc77" prot="public">
+          <name>GET_DAY_NIGHT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca3abae1e6b414b510ba7b2bef11994851" prot="public">
+          <name>GET_FUNC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cabf60c8070a6dfb39bccd3a784d949b49" prot="public">
+          <name>CONN_CLOSE_REQ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21ca64091ba3696f56a13db0e9ca827c6df0" prot="public">
+          <name>CONN_CLOSE_RSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21caacd004f4645e2ec65c0bd763908c712e" prot="public">
+          <name>CONN_KILL_APP_REQ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a8665b0dc4fba9a7a5351f60f774fa21cac718062c596a55ccee5b8a2a9bd2023a" prot="public">
+          <name>CONN_KILL_APP_RSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="19" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="18" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="enum" id="sensor__common__object_8h_1a49fa9bb88962f80a0a63af55bbe51f81" prot="public" static="no">
+        <name>SYNC_TYPE_T</name>
+        <enumvalue id="sensor__common__object_8h_1a49fa9bb88962f80a0a63af55bbe51f81ab5468e005ffe03733c26f12419ff0a94" prot="public">
+          <name>ASYNC</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="sensor__common__object_8h_1a49fa9bb88962f80a0a63af55bbe51f81a447bfe7992c2fe70bfe561225f74d379" prot="public">
+          <name>SYNC</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="57" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="56" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="sensor__common__object_8h_1aad357c71e0a9fbea0c6f670e8d0df991" prot="public" static="no">
+        <type>uint8_t *</type>
+        <definition>typedef uint8_t* P_BUFF_T</definition>
+        <argsstring></argsstring>
+        <name>P_BUFF_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="52" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="sensor__common__object_8h_1ae607b6caa19309cec2f0e4eddac32e64" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t DEV_REG_T</definition>
+        <argsstring></argsstring>
+        <name>DEV_REG_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="53" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="sensor__common__object_8h_1a3057f0f575cd4504b8a355816e1ea3c2" prot="public" static="no">
+        <type>size_t</type>
+        <definition>typedef size_t BUFF_LEN_T</definition>
+        <argsstring></argsstring>
+        <name>BUFF_LEN_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="54" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="sensor__common__object_8h_1a8a69c102915589a7869887f2f9a96156" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int SENSOR_FILL_OBJECT_DATA</definition>
+        <argsstring>(OBJECT_PACKET_T *packet, DEV_REG_T devaddr, P_BUFF_T *val, BUFF_LEN_T len)</argsstring>
+        <name>SENSOR_FILL_OBJECT_DATA</name>
+        <param>
+          <type><ref refid="structOBJECT__PACKET__T" kindref="compound">OBJECT_PACKET_T</ref> *</type>
+          <declname>packet</declname>
+        </param>
+        <param>
+          <type>DEV_REG_T</type>
+          <declname>devaddr</declname>
+        </param>
+        <param>
+          <type>P_BUFF_T *</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>BUFF_LEN_T</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="79" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="79" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-11 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>SENS_COMM_OBJ_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SENS_COMM_OBJ_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;semaphore.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/***</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>Required<sp/>for<sp/>remote<sp/>client<sp/>server<sp/>communication<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>**/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>GET_TEMP_C,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>GET_TEMP_F,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>GET_TEMP_K,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>GET_LUX,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>GET_DAY_NIGHT,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>GET_FUNC,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>CONN_CLOSE_REQ,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>CONN_CLOSE_RSP,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>CONN_KILL_APP_REQ,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>CONN_KILL_APP_RSP</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}REMOTE_REQRSP_ID;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="structREMOTE__REQUEST__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>REMOTE_REQRSP_ID<sp/>request_id;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}<ref refid="structREMOTE__REQUEST__T" kindref="compound">REMOTE_REQUEST_T</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structREMOTE__RESPONSE__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>REMOTE_REQRSP_ID<sp/>rsp_id;</highlight></codeline>
+<codeline lineno="42" refid="unionREMOTE__RESPONSE__T_1_1data" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal"><ref refid="unionREMOTE__RESPONSE__T_1_1data" kindref="compound">data</ref>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>floatingData;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>isNight;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}<ref refid="unionREMOTE__RESPONSE__T_1_1data" kindref="compound">data</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>metadata[20];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}<ref refid="structREMOTE__RESPONSE__T" kindref="compound">REMOTE_RESPONSE_T</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint8_t*<sp/><sp/><sp/><sp/>P_BUFF_T;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/>DEV_REG_T;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>BUFF_LEN_T;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>ASYNC<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>SYNC<sp/><sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}SYNC_TYPE_T;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="structOBJECT__PACKET__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>SYNC_TYPE_T<sp/>is_sync;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>sem_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*sync_semaphore;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>DEV_REG_T<sp/><sp/><sp/>dev_addr;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>P_BUFF_T<sp/><sp/><sp/><sp/>*reg_value;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>BUFF_LEN_T<sp/><sp/>buffLen;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}<ref refid="structOBJECT__PACKET__T" kindref="compound">OBJECT_PACKET_T</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SENSOR_MAKE_PACKET_SYNCTYPE(p_packet,<sp/>p_sem)<sp/>{<sp/>p_packet-&gt;is_sync<sp/>=<sp/>SYNC;<sp/>if(NULL<sp/>!=<sp/>p_sem){p_packet-&gt;sync_semaphore<sp/>=<sp/>p_sem;}<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SENSOR_MAKE_PACKET_ASYNCTYPE(p_packet)<sp/><sp/><sp/>{p_packet-&gt;is_sync<sp/>=<sp/>ASYNC;<sp/>p_packet-&gt;sync_semaphore<sp/>=<sp/>NULL;}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SENSOR_MAKE_PACKET_RW_1DATA(p_packet)<sp/><sp/><sp/>(p_packet-&gt;buffLen<sp/>=<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SENSOR_MAKE_PACKET_RW_2DATA(p_packet)<sp/><sp/><sp/>(p_packet-&gt;buffLen<sp/>=<sp/>2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/>SENSOR_FILL_OBJECT_DATA(<ref refid="structOBJECT__PACKET__T" kindref="compound">OBJECT_PACKET_T</ref><sp/>*packet,<sp/>DEV_REG_T<sp/>devaddr,<sp/>P_BUFF_T<sp/>*val,<sp/>BUFF_LEN_T<sp/>len)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;dev_addr<sp/>=<sp/>devaddr;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;reg_value<sp/>=<sp/>val;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>packet-&gt;buffLen<sp/>=<sp/>len;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,5 @@
+<map id="APDS9301_readID" name="APDS9301_readID">
+<area shape="rect" id="node2" href="$apds9301__sensor_8h.html#a29ea2301a68de775fc0281dd1b4b03aa" title="APDS9301_test" alt="" coords="187,5,303,32"/>
+<area shape="rect" id="node3" href="$light__sensor__task_8c.html#abb5f74ca3376b1b610b7dac47ecae8d8" title="light_task_queue_init" alt="" coords="351,5,495,32"/>
+<area shape="rect" id="node4" href="$light__sensor__task_8h.html#a638f4ba787ad818d90477af9e572771c" title="Entry point of the light task thread. " alt="" coords="543,5,676,32"/>
+</map>

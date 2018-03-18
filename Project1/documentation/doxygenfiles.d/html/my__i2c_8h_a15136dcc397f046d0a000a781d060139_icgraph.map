@@ -1,0 +1,6 @@
+<map id="I2Cmaster_Destroy" name="I2Cmaster_Destroy">
+<area shape="rect" id="node2" href="$light__sensor__task_8c.html#abb5f74ca3376b1b610b7dac47ecae8d8" title="light_task_queue_init" alt="" coords="209,5,353,32"/>
+<area shape="rect" id="node4" href="$temperature__sensor__task_8c.html#a7b3917c753224bc64f378ca8e61cc941" title="temperature_task_I2Cdeinit" alt="" coords="189,56,372,83"/>
+<area shape="rect" id="node3" href="$light__sensor__task_8h.html#a638f4ba787ad818d90477af9e572771c" title="Entry point of the light task thread. " alt="" coords="443,5,576,32"/>
+<area shape="rect" id="node5" href="$temperature__sensor__task_8h.html#abc96664d611b8a19036cf6fcaaf92ac8" title="Entry point of the temp task thread. " alt="" coords="420,56,599,83"/>
+</map>

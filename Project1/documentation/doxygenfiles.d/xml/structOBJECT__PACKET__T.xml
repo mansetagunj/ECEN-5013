@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structOBJECT__PACKET__T" kind="struct" language="C++" prot="public">
+    <compoundname>OBJECT_PACKET_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structOBJECT__PACKET__T_1a1648380d5d2dd74ec2e13957949e505e" prot="public" static="no" mutable="no">
+        <type>SYNC_TYPE_T</type>
+        <definition>SYNC_TYPE_T OBJECT_PACKET_T::is_sync</definition>
+        <argsstring></argsstring>
+        <name>is_sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="64" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOBJECT__PACKET__T_1a13b703828ad6478fbffdb99e3c24941c" prot="public" static="no" mutable="no">
+        <type>sem_t *</type>
+        <definition>sem_t* OBJECT_PACKET_T::sync_semaphore</definition>
+        <argsstring></argsstring>
+        <name>sync_semaphore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="65" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOBJECT__PACKET__T_1a7b42c85d01c47b432bbd8a86d80b1881" prot="public" static="no" mutable="no">
+        <type>DEV_REG_T</type>
+        <definition>DEV_REG_T OBJECT_PACKET_T::dev_addr</definition>
+        <argsstring></argsstring>
+        <name>dev_addr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="66" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOBJECT__PACKET__T_1a927d74894329c73aa0a192f110d47671" prot="public" static="no" mutable="no">
+        <type>P_BUFF_T *</type>
+        <definition>P_BUFF_T* OBJECT_PACKET_T::reg_value</definition>
+        <argsstring></argsstring>
+        <name>reg_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="67" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structOBJECT__PACKET__T_1a1f397ae898402a439fc093c5347459ae" prot="public" static="no" mutable="no">
+        <type>BUFF_LEN_T</type>
+        <definition>BUFF_LEN_T OBJECT_PACKET_T::buffLen</definition>
+        <argsstring></argsstring>
+        <name>buffLen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="68" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="63" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="62" bodyend="70"/>
+    <listofallmembers>
+      <member refid="structOBJECT__PACKET__T_1a1f397ae898402a439fc093c5347459ae" prot="public" virt="non-virtual"><scope>OBJECT_PACKET_T</scope><name>buffLen</name></member>
+      <member refid="structOBJECT__PACKET__T_1a7b42c85d01c47b432bbd8a86d80b1881" prot="public" virt="non-virtual"><scope>OBJECT_PACKET_T</scope><name>dev_addr</name></member>
+      <member refid="structOBJECT__PACKET__T_1a1648380d5d2dd74ec2e13957949e505e" prot="public" virt="non-virtual"><scope>OBJECT_PACKET_T</scope><name>is_sync</name></member>
+      <member refid="structOBJECT__PACKET__T_1a927d74894329c73aa0a192f110d47671" prot="public" virt="non-virtual"><scope>OBJECT_PACKET_T</scope><name>reg_value</name></member>
+      <member refid="structOBJECT__PACKET__T_1a13b703828ad6478fbffdb99e3c24941c" prot="public" virt="non-virtual"><scope>OBJECT_PACKET_T</scope><name>sync_semaphore</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

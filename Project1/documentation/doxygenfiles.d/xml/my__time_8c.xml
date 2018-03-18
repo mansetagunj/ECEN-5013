@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="my__time_8c" kind="file" language="C++">
+    <compoundname>my_time.c</compoundname>
+    <includes local="no">sys/time.h</includes>
+    <includes local="no">time.h</includes>
+    <includes local="no">string.h</includes>
+    <includes refid="my__time_8h" local="yes">my_time.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <incdepgraph>
+      <node id="847">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="848">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="849" relation="include">
+        </childnode>
+        <childnode refid="850" relation="include">
+        </childnode>
+        <childnode refid="851" relation="include">
+        </childnode>
+        <childnode refid="852" relation="include">
+        </childnode>
+      </node>
+      <node id="851">
+        <label>sys/types.h</label>
+      </node>
+      <node id="846">
+        <label>string.h</label>
+      </node>
+      <node id="849">
+        <label>unistd.h</label>
+      </node>
+      <node id="845">
+        <label>time.h</label>
+      </node>
+      <node id="844">
+        <label>sys/time.h</label>
+      </node>
+      <node id="843">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/my_time.c</label>
+        <link refid="my_time.c"/>
+        <childnode refid="844" relation="include">
+        </childnode>
+        <childnode refid="845" relation="include">
+        </childnode>
+        <childnode refid="846" relation="include">
+        </childnode>
+        <childnode refid="847" relation="include">
+        </childnode>
+        <childnode refid="848" relation="include">
+        </childnode>
+      </node>
+      <node id="850">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="852">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="my__time_8c_1a4dd33dd8ed887d4d12456419388e9393" prot="public" static="no">
+        <name>GET_TIMEOFDAY</name>
+        <param><defname>x</defname></param>
+        <param><defname>y</defname></param>
+        <initializer>gettimeofday(x,y)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/my_time.c" line="15" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_time.c" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="my__time_8c_1acd4a0d89baad5fa6b1e4e6c85b082226" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int get_time_string</definition>
+        <argsstring>(char *timeString, const int len)</argsstring>
+        <name>get_time_string</name>
+        <param>
+          <type>char *</type>
+          <declname>timeString</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Get the time string object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/my_time.c" line="17" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_time.c" bodystart="17" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-18 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#include<sp/>&lt;sys/time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__time_8h" kindref="compound">my_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GET_TIMEOFDAY(x,y)<sp/><sp/>gettimeofday(x,y)<sp/><sp/><sp/>//syscall(__sys_gettimeofday,x,y)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="my__time_8h_1a3385e59201decd0fae390437721a7d7e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__time_8c_1acd4a0d89baad5fa6b1e4e6c85b082226" kindref="member">get_time_string</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*timeString,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">timeval<sp/>tv;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//struct<sp/>tm*<sp/>ptm;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>time_string[20]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Obtain<sp/>the<sp/>time<sp/>of<sp/>day<sp/>using<sp/>the<sp/>system<sp/>call<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>GET_TIMEOFDAY(&amp;tv,NULL);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(timeString,0,len);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ERR;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(time_string,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(time_string),</highlight><highlight class="stringliteral">&quot;%ld.%ld&quot;</highlight><highlight class="normal">,tv.tv_sec,tv.tv_usec);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ptm<sp/>=<sp/>localtime<sp/>(&amp;tv.tv_sec);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Format<sp/>the<sp/>date<sp/>and<sp/>time.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//strftime<sp/>(time_string,<sp/>sizeof<sp/>(time_string),<sp/>&quot;%Y-%m-%d<sp/>%H:%M:%S&quot;,<sp/>ptm);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//strftime<sp/>(time_string,<sp/>sizeof<sp/>(time_string),<sp/>&quot;%X&quot;,<sp/>ptm);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(timeString,time_string,<sp/>len);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SUCCESS;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/my_time.c"/>
+  </compounddef>
+</doxygen>

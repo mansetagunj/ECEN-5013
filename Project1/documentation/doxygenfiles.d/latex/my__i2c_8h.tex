@@ -1,0 +1,582 @@
+\hypertarget{my__i2c_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/\+Beagle\+Bone/my\+\_\+i2c.h File Reference}
+\label{my__i2c_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/\+Beagle\+Bone/my\+\_\+i2c.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/\+Beagle\+Bone/my\+\_\+i2c.\+h}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}mraa/i2c.\+h\char`\"{}}\\*
+Include dependency graph for my\+\_\+i2c.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{my__i2c_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structi2c__handle}{i2c\+\_\+handle}
+\begin{DoxyCompactList}\small\item\em This is the handle for I2C mster and each master should have only one handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries B\+B\+\_\+\+I2\+C\+\_\+\+B\+U\+S\+\_\+2}~(2)\hypertarget{my__i2c_8h_aa74d389e1b1373ac3449ed510de40cc7}{}\label{my__i2c_8h_aa74d389e1b1373ac3449ed510de40cc7}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structi2c__handle}{i2c\+\_\+handle} \hyperlink{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T}\hypertarget{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{}\label{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}
+
+\begin{DoxyCompactList}\small\item\em This is the handle for I2C mster and each master should have only one handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$ \hyperlink{my__i2c_8h_a896771a0a066b06b606d35bb81809fa0}{get\+Master\+I2\+C\+\_\+handle} ()
+\begin{DoxyCompactList}\small\item\em Get the Master\+I2C handle object. \end{DoxyCompactList}\item 
+void \hyperlink{my__i2c_8h_a24206855ca77b181de1cfbe8e9e5051a}{print\+Error\+Code} (int error\+Code)
+\begin{DoxyCompactList}\small\item\em Prints the error code string to stdout. \end{DoxyCompactList}\item 
+int \hyperlink{my__i2c_8h_acea2b6a0875bf63a179959a46b3cdf7d}{I2\+Cmaster\+\_\+\+Init} (\hyperlink{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$handle)
+\begin{DoxyCompactList}\small\item\em Inits the I2C master handle There is an internal state of the context which is maintained which gets updated with every init call Internal context goes to N\+U\+LL is error in init This context points to the new handle that is passed as the parameter. \end{DoxyCompactList}\item 
+int \hyperlink{my__i2c_8h_a15136dcc397f046d0a000a781d060139}{I2\+Cmaster\+\_\+\+Destroy} (\hyperlink{my__i2c_8h_ab57e25e9caf06380c1d3587fa9866c1e}{I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$handle)
+\item 
+int \hyperlink{my__i2c_8h_a8024ad1f3558034ee998758f45d456d9}{I2\+Cmaster\+\_\+read\+\_\+byte} (uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t $\ast$data)
+\item 
+int \hyperlink{my__i2c_8h_ab25650a9cf74e65561b1fced3555f36c}{I2\+Cmaster\+\_\+read\+\_\+bytes} (uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t $\ast$data, size\+\_\+t len)
+\item 
+int \hyperlink{my__i2c_8h_af92cf5a5d893ef9bbf6b4ee6de0b0ef8}{I2\+Cmaster\+\_\+write} (uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Writes a byte/pointer register to the slave. \end{DoxyCompactList}\item 
+int \hyperlink{my__i2c_8h_a202be1d68320e3ba93c759821ba2f695}{I2\+Cmaster\+\_\+write\+\_\+byte} (uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t data)
+\item 
+int \hyperlink{my__i2c_8h_a3a48cfc824f745c311bc081479ee6b9b}{I2\+Cmaster\+\_\+write\+\_\+bytes} (uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t $\ast$data, size\+\_\+t len)
+\item 
+int \hyperlink{my__i2c_8h_a19c6244da5ea2d4e65a25001582498c8}{I2\+Cmaster\+\_\+write\+\_\+word} (uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint16\+\_\+t data, uint8\+\_\+t lsb\+\_\+first)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/13 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!get\+Master\+I2\+C\+\_\+handle@{get\+Master\+I2\+C\+\_\+handle}}
+\index{get\+Master\+I2\+C\+\_\+handle@{get\+Master\+I2\+C\+\_\+handle}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{get\+Master\+I2\+C\+\_\+handle()}{getMasterI2C_handle()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T}$\ast$ get\+Master\+I2\+C\+\_\+handle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a896771a0a066b06b606d35bb81809fa0}{}\label{my__i2c_8h_a896771a0a066b06b606d35bb81809fa0}
+
+
+Get the Master\+I2C handle object. 
+
+\begin{DoxyReturn}{Returns}
+I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T $\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+108 \{
+109     \textcolor{keywordflow}{return} internal\_master\_handle;
+110 \}
+\end{DoxyCode}
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+\+Destroy@{I2\+Cmaster\+\_\+\+Destroy}}
+\index{I2\+Cmaster\+\_\+\+Destroy@{I2\+Cmaster\+\_\+\+Destroy}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+\+Destroy(\+I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+\+T $\ast$handle)}{I2Cmaster_Destroy(I2C_MASTER_HANDLE_T *handle)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+\+Destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$}]{handle}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a15136dcc397f046d0a000a781d060139}{}\label{my__i2c_8h_a15136dcc397f046d0a000a781d060139}
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+69 \{
+70     \textcolor{keywordtype}{int} ret;
+71     \textcolor{keywordflow}{if}(pthread\_mutex\_lock(&init\_destroy\_lock))
+72         \textcolor{keywordflow}{return} -1;
+73 
+74     \textcolor{comment}{/* If the input handle is not null and the input initialized handle should match the internal handle */}
+          
+75     \textcolor{keywordflow}{if}(NULL != handle && internal\_master\_handle == handle && NULL != internal\_master\_handle)
+76     \{
+77         ret = mraa\_i2c\_stop(handle->i2c\_context);
+78         \textcolor{keywordflow}{if}(ret == 0)
+79         \{
+80             \textcolor{keyword}{static} \textcolor{keywordtype}{int} timeout = 5000;
+81             \textcolor{keywordflow}{do}\{
+82                 ret = pthread\_spin\_destroy(&handle->handle\_lock);
+83                 timeout--;
+84             \}\textcolor{keywordflow}{while}(EBUSY == ret && timeout > 0);
+85 
+86             \textcolor{keywordflow}{if}(ret == 0)
+87             \{
+88                 internal\_master\_handle = NULL;
+89             \}
+90         \}
+91     \}
+92     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(NULL == internal\_master\_handle)
+93     \{
+94         ret = 0;
+95     \}
+96     \textcolor{keywordflow}{else} 
+97     \{
+98         ret = -1;
+99     \}
+100 
+101     \textcolor{keywordflow}{if}(pthread\_mutex\_unlock(&init\_destroy\_lock))
+102         \textcolor{keywordflow}{return} -1;
+103 
+104     \textcolor{keywordflow}{return} ret;
+105 \} 
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_a15136dcc397f046d0a000a781d060139_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+\+Init@{I2\+Cmaster\+\_\+\+Init}}
+\index{I2\+Cmaster\+\_\+\+Init@{I2\+Cmaster\+\_\+\+Init}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+\+Init(\+I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+\+T $\ast$handle)}{I2Cmaster_Init(I2C_MASTER_HANDLE_T *handle)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{{\bf I2\+C\+\_\+\+M\+A\+S\+T\+E\+R\+\_\+\+H\+A\+N\+D\+L\+E\+\_\+T} $\ast$}]{handle}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_acea2b6a0875bf63a179959a46b3cdf7d}{}\label{my__i2c_8h_acea2b6a0875bf63a179959a46b3cdf7d}
+
+
+Inits the I2C master handle There is an internal state of the context which is maintained which gets updated with every init call Internal context goes to N\+U\+LL is error in init This context points to the new handle that is passed as the parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int S\+U\+C\+C\+E\+SS=0 and E\+R\+R\+OR =-\/1 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+26 \{
+27     \textcolor{keywordtype}{int} ret = 0;
+28     \textcolor{keywordflow}{if}(pthread\_mutex\_lock(&init\_destroy\_lock))
+29         \textcolor{keywordflow}{return} -1;
+30     \textcolor{keywordflow}{if}(NULL != internal\_master\_handle)
+31     \{
+32         handle = internal\_master\_handle;
+33         ret =  0;
+34     \}
+35     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(handle)
+36     \{
+37         handle->i2c\_context = mraa\_i2c\_init\_raw(BB\_I2C\_BUS\_2);
+38         \textcolor{comment}{/* internal i2c context failed to init */}
+39         \textcolor{keywordflow}{if}(NULL == handle->i2c\_context)
+40         \{
+41             internal\_master\_handle = NULL;
+42             ret = -1;
+43         \}
+44         \textcolor{comment}{/* If spinlock init fails */}
+45         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( -1 == pthread\_spin\_init(&handle->handle\_lock, PTHREAD\_PROCESS\_PRIVATE))
+46         \{
+47             internal\_master\_handle = NULL;
+48             mraa\_i2c\_stop(handle->i2c\_context);
+49             ret = -1;
+50         \}
+51         \textcolor{comment}{/* Everyting goes as expected */}
+52         \textcolor{keywordflow}{else}
+53         \{
+54             internal\_master\_handle = handle;
+55             ret = 0;
+56         \}
+57     \}
+58     \textcolor{comment}{/* If handle is null */}
+59     \textcolor{keywordflow}{else}
+60         ret = -1;
+61 
+62     \textcolor{keywordflow}{if}(pthread\_mutex\_unlock(&init\_destroy\_lock))
+63         \textcolor{keywordflow}{return} -1;
+64 
+65     \textcolor{keywordflow}{return} ret;
+66 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_acea2b6a0875bf63a179959a46b3cdf7d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+read\+\_\+byte@{I2\+Cmaster\+\_\+read\+\_\+byte}}
+\index{I2\+Cmaster\+\_\+read\+\_\+byte@{I2\+Cmaster\+\_\+read\+\_\+byte}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+read\+\_\+byte(uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t $\ast$data)}{I2Cmaster_read_byte(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+read\+\_\+byte (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{slave\+\_\+addr, }
+\item[{uint8\+\_\+t}]{reg\+\_\+addr, }
+\item[{uint8\+\_\+t $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a8024ad1f3558034ee998758f45d456d9}{}\label{my__i2c_8h_a8024ad1f3558034ee998758f45d456d9}
+
+\begin{DoxyParams}{Parameters}
+{\em slave\+\_\+addr} & \\
+\hline
+{\em reg\+\_\+addr} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+181 \{
+182     \textcolor{keywordflow}{if}(NULL == internal\_master\_handle)
+183     \{
+184         \textcolor{keywordflow}{return} -1;
+185     \}
+186 
+187     pthread\_spin\_lock(&internal\_master\_handle->handle\_lock);
+188 
+189     mraa\_result\_t ret =  mraa\_i2c\_address(internal\_master\_handle->i2c\_context, slave\_addr);
+190     \textcolor{keywordflow}{if}(0 == ret)
+191     \{   
+192         ret = mraa\_i2c\_read\_byte\_data(internal\_master\_handle->i2c\_context, reg\_addr);
+193         (ret != -1) ? *data  = ret, ret = 0 : 0; 
+194     \}
+195 
+196     pthread\_spin\_unlock(&internal\_master\_handle->handle\_lock);
+197 
+198     \textcolor{keywordflow}{return} ret;
+199 
+200 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_a8024ad1f3558034ee998758f45d456d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+read\+\_\+bytes@{I2\+Cmaster\+\_\+read\+\_\+bytes}}
+\index{I2\+Cmaster\+\_\+read\+\_\+bytes@{I2\+Cmaster\+\_\+read\+\_\+bytes}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+read\+\_\+bytes(uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t $\ast$data, size\+\_\+t len)}{I2Cmaster_read_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+read\+\_\+bytes (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{slave\+\_\+addr, }
+\item[{uint8\+\_\+t}]{reg\+\_\+addr, }
+\item[{uint8\+\_\+t $\ast$}]{data, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_ab25650a9cf74e65561b1fced3555f36c}{}\label{my__i2c_8h_ab25650a9cf74e65561b1fced3555f36c}
+
+\begin{DoxyParams}{Parameters}
+{\em slave\+\_\+addr} & \\
+\hline
+{\em reg\+\_\+addr} & \\
+\hline
+{\em data} & \\
+\hline
+{\em len} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+203 \{
+204     \textcolor{keywordflow}{if}(NULL == internal\_master\_handle)
+205     \{
+206         \textcolor{keywordflow}{return} -1;
+207     \}
+208 
+209     pthread\_spin\_lock(&internal\_master\_handle->handle\_lock);
+210 
+211     mraa\_result\_t ret =  mraa\_i2c\_address(internal\_master\_handle->i2c\_context, slave\_addr);
+212     \textcolor{keywordflow}{if}(0 == ret)
+213     \{   
+214         ret = mraa\_i2c\_read\_bytes\_data(internal\_master\_handle->i2c\_context, reg\_addr, data , len);
+215         (ret == len) ? ret = 0 : 0; 
+216     \}
+217 
+218     pthread\_spin\_unlock(&internal\_master\_handle->handle\_lock);
+219 
+220     \textcolor{keywordflow}{return} ret;
+221 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_ab25650a9cf74e65561b1fced3555f36c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+write@{I2\+Cmaster\+\_\+write}}
+\index{I2\+Cmaster\+\_\+write@{I2\+Cmaster\+\_\+write}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+write(uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr)}{I2Cmaster_write(uint8_t slave_addr, uint8_t reg_addr)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{slave\+\_\+addr, }
+\item[{uint8\+\_\+t}]{reg\+\_\+addr}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_af92cf5a5d893ef9bbf6b4ee6de0b0ef8}{}\label{my__i2c_8h_af92cf5a5d893ef9bbf6b4ee6de0b0ef8}
+
+
+Writes a byte/pointer register to the slave. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slave\+\_\+addr} & \\
+\hline
+{\em reg\+\_\+addr} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+133 \{
+134     \textcolor{keywordflow}{if}(NULL == internal\_master\_handle)
+135     \{
+136         \textcolor{keywordflow}{return} -1;
+137     \}
+138 
+139     pthread\_spin\_lock(&internal\_master\_handle->handle\_lock);
+140 
+141     mraa\_result\_t ret =  mraa\_i2c\_address(internal\_master\_handle->i2c\_context, slave\_addr);
+142     \textcolor{keywordflow}{if}(0 == ret)
+143     \{   
+144         ret = mraa\_i2c\_write\_byte(internal\_master\_handle->i2c\_context, reg\_addr);
+145     \}
+146 
+147     pthread\_spin\_unlock(&internal\_master\_handle->handle\_lock);
+148 
+149     \textcolor{keywordflow}{return} ret;
+150 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_af92cf5a5d893ef9bbf6b4ee6de0b0ef8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+write\+\_\+byte@{I2\+Cmaster\+\_\+write\+\_\+byte}}
+\index{I2\+Cmaster\+\_\+write\+\_\+byte@{I2\+Cmaster\+\_\+write\+\_\+byte}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+write\+\_\+byte(uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t data)}{I2Cmaster_write_byte(uint8_t slave_addr, uint8_t reg_addr, uint8_t data)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+write\+\_\+byte (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{slave\+\_\+addr, }
+\item[{uint8\+\_\+t}]{reg\+\_\+addr, }
+\item[{uint8\+\_\+t}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a202be1d68320e3ba93c759821ba2f695}{}\label{my__i2c_8h_a202be1d68320e3ba93c759821ba2f695}
+
+\begin{DoxyParams}{Parameters}
+{\em slave\+\_\+addr} & \\
+\hline
+{\em reg\+\_\+addr} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+113 \{
+114     \textcolor{keywordflow}{if}(NULL == internal\_master\_handle)
+115     \{
+116         \textcolor{keywordflow}{return} -1;
+117     \}
+118 
+119     pthread\_spin\_lock(&internal\_master\_handle->handle\_lock);
+120 
+121     mraa\_result\_t ret =  mraa\_i2c\_address(internal\_master\_handle->i2c\_context, slave\_addr);
+122     \textcolor{keywordflow}{if}(0 == ret)
+123     \{   
+124         ret = mraa\_i2c\_write\_byte\_data(internal\_master\_handle->i2c\_context, data, reg\_addr);
+125     \}
+126 
+127     pthread\_spin\_unlock(&internal\_master\_handle->handle\_lock);
+128 
+129     \textcolor{keywordflow}{return} ret;
+130 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_a202be1d68320e3ba93c759821ba2f695_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+write\+\_\+bytes@{I2\+Cmaster\+\_\+write\+\_\+bytes}}
+\index{I2\+Cmaster\+\_\+write\+\_\+bytes@{I2\+Cmaster\+\_\+write\+\_\+bytes}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+write\+\_\+bytes(uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t $\ast$data, size\+\_\+t len)}{I2Cmaster_write_bytes(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, size_t len)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+write\+\_\+bytes (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{slave\+\_\+addr, }
+\item[{uint8\+\_\+t}]{reg\+\_\+addr, }
+\item[{uint8\+\_\+t $\ast$}]{data, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a3a48cfc824f745c311bc081479ee6b9b}{}\label{my__i2c_8h_a3a48cfc824f745c311bc081479ee6b9b}
+
+\begin{DoxyParams}{Parameters}
+{\em slave\+\_\+addr} & \\
+\hline
+{\em reg\+\_\+addr} & \\
+\hline
+{\em data} & \\
+\hline
+{\em len} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!I2\+Cmaster\+\_\+write\+\_\+word@{I2\+Cmaster\+\_\+write\+\_\+word}}
+\index{I2\+Cmaster\+\_\+write\+\_\+word@{I2\+Cmaster\+\_\+write\+\_\+word}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{I2\+Cmaster\+\_\+write\+\_\+word(uint8\+\_\+t slave\+\_\+addr, uint8\+\_\+t reg\+\_\+addr, uint16\+\_\+t data, uint8\+\_\+t lsb\+\_\+first)}{I2Cmaster_write_word(uint8_t slave_addr, uint8_t reg_addr, uint16_t data, uint8_t lsb_first)}}]{\setlength{\rightskip}{0pt plus 5cm}int I2\+Cmaster\+\_\+write\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{slave\+\_\+addr, }
+\item[{uint8\+\_\+t}]{reg\+\_\+addr, }
+\item[{uint16\+\_\+t}]{data, }
+\item[{uint8\+\_\+t}]{lsb\+\_\+first}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a19c6244da5ea2d4e65a25001582498c8}{}\label{my__i2c_8h_a19c6244da5ea2d4e65a25001582498c8}
+
+\begin{DoxyParams}{Parameters}
+{\em slave\+\_\+addr} & \\
+\hline
+{\em reg\+\_\+addr} & \\
+\hline
+{\em data} & \\
+\hline
+{\em lsb\+\_\+first} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+154 \{
+155     \textcolor{keywordflow}{if}(NULL == internal\_master\_handle)
+156     \{
+157         \textcolor{keywordflow}{return} -1;
+158     \}
+159     
+160     \textcolor{keywordflow}{if}(lsb\_first)
+161     \{
+162         data = ( ((data & 0xF0)>>4)| ((data &0x0F)<<4) ); 
+163     \}
+164 
+165     pthread\_spin\_lock(&internal\_master\_handle->handle\_lock);
+166 
+167     mraa\_result\_t ret =  mraa\_i2c\_address(internal\_master\_handle->i2c\_context, slave\_addr);
+168     \textcolor{keywordflow}{if}(0 == ret)
+169     \{   
+170         ret = mraa\_i2c\_write\_word\_data(internal\_master\_handle->i2c\_context, data, reg\_addr);
+171     \}
+172 
+173     pthread\_spin\_unlock(&internal\_master\_handle->handle\_lock);
+174 
+175     \textcolor{keywordflow}{return} ret;
+176 
+177 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_a19c6244da5ea2d4e65a25001582498c8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}!print\+Error\+Code@{print\+Error\+Code}}
+\index{print\+Error\+Code@{print\+Error\+Code}!my\+\_\+i2c.\+h@{my\+\_\+i2c.\+h}}
+\subsubsection[{\texorpdfstring{print\+Error\+Code(int error\+Code)}{printErrorCode(int errorCode)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Error\+Code (
+\begin{DoxyParamCaption}
+\item[{int}]{error\+Code}
+\end{DoxyParamCaption}
+)}\hypertarget{my__i2c_8h_a24206855ca77b181de1cfbe8e9e5051a}{}\label{my__i2c_8h_a24206855ca77b181de1cfbe8e9e5051a}
+
+
+Prints the error code string to stdout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\+Code} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+18 \{
+19     \textcolor{comment}{//#define VERBOSE}
+20 \textcolor{preprocessor}{    #ifdef VERBOSE}
+21     mraa\_result\_print(errorCode);
+22 \textcolor{preprocessor}{    #endif}
+23 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__i2c_8h_a24206855ca77b181de1cfbe8e9e5051a_icgraph}
+\end{center}
+\end{figure}
+
+

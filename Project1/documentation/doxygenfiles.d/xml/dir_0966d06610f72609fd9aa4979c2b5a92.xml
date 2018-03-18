@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_0966d06610f72609fd9aa4979c2b5a92" kind="dir">
+    <compoundname>/home/gunj/repos/ECEN-5013/Project1/include/common</compoundname>
+    <innerfile refid="common__helper_8h">common_helper.h</innerfile>
+    <innerfile refid="error__data_8h">error_data.h</innerfile>
+    <innerfile refid="light__sensor__task_8h">light_sensor_task.h</innerfile>
+    <innerfile refid="logger__task_8h">logger_task.h</innerfile>
+    <innerfile refid="main__task_8h">main_task.h</innerfile>
+    <innerfile refid="my__signals_8h">my_signals.h</innerfile>
+    <innerfile refid="my__time_8h">my_time.h</innerfile>
+    <innerfile refid="posixTimer_8h">posixTimer.h</innerfile>
+    <innerfile refid="readConfiguration_8h">readConfiguration.h</innerfile>
+    <innerfile refid="sensor__common__object_8h">sensor_common_object.h</innerfile>
+    <innerfile refid="socket__task_8h">socket_task.h</innerfile>
+    <innerfile refid="temperature__sensor__task_8h">temperature_sensor_task.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/"/>
+  </compounddef>
+</doxygen>

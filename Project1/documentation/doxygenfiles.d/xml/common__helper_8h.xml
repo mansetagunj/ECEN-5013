@@ -1,0 +1,473 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="common__helper_8h" kind="file" language="C++">
+    <compoundname>common_helper.h</compoundname>
+    <includes local="no">mqueue.h</includes>
+    <includes local="no">pthread.h</includes>
+    <includes refid="posixTimer_8h" local="yes">posixTimer.h</includes>
+    <includedby refid="common__helper_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</includedby>
+    <includedby refid="main__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h</includedby>
+    <includedby refid="logger__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</includedby>
+    <includedby refid="light__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</includedby>
+    <includedby refid="temperature__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</includedby>
+    <includedby refid="light__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <incdepgraph>
+      <node id="488">
+        <label>stdint.h</label>
+      </node>
+      <node id="483">
+        <label>mqueue.h</label>
+      </node>
+      <node id="485">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="486" relation="include">
+        </childnode>
+        <childnode refid="487" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+        <childnode refid="490" relation="include">
+        </childnode>
+        <childnode refid="491" relation="include">
+        </childnode>
+      </node>
+      <node id="484">
+        <label>pthread.h</label>
+      </node>
+      <node id="489">
+        <label>sys/types.h</label>
+      </node>
+      <node id="482">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h</label>
+        <link refid="common_helper.h"/>
+        <childnode refid="483" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="485" relation="include">
+        </childnode>
+      </node>
+      <node id="490">
+        <label>unistd.h</label>
+      </node>
+      <node id="491">
+        <label>signal.h</label>
+      </node>
+      <node id="486">
+        <label>time.h</label>
+      </node>
+      <node id="487">
+        <label>linux/types.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="499">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="498">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="494">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h</label>
+        <link refid="main__task_8h"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="496" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+      </node>
+      <node id="502">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</label>
+        <link refid="temperature__sensor__task_8h"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+      </node>
+      <node id="500">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="496" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+      </node>
+      <node id="497">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="493">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="492">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h</label>
+        <link refid="common_helper.h"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+      </node>
+      <node id="495">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="501">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</label>
+        <link refid="light__sensor__task_8h"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+      </node>
+      <node id="496">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger__task_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="common__helper_8h_1aeb3dea598800d76fb6df4e66eb87eaf2" prot="public" static="no">
+        <name>NUM_CHILD_THREADS</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="16" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2ae" prot="public" static="no">
+        <name>TASK_IDENTIFIER_T</name>
+        <enumvalue id="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea8dcdf4a757edf580f7e024e5b07403aa" prot="public">
+          <name>LOGGER_TASK_ID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea3ffb7da9d913ce4db18d78a54f2ce8dc" prot="public">
+          <name>TEMPERATURE_TASK_ID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea37406af8a937b5bb044e718ea96aaee6" prot="public">
+          <name>SOCKET_TASK_ID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aeabefc95cf05a60825f90d64c2f7799451" prot="public">
+          <name>LIGHT_TASK_ID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="common__helper_8h_1a8d5b3d16175933541aa53f183b77f2aea5354d07740e5fc21b1ec71ff6498eaac" prot="public">
+          <name>MAIN_TASK_ID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="19" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="18" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="common__helper_8h_1af5d4df1bffe487c45323aa4f523d8f31" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>volatile int aliveStatus[NUM_CHILD_THREADS]</definition>
+        <argsstring>[NUM_CHILD_THREADS]</argsstring>
+        <name>aliveStatus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="28" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="common__helper_8h_1a39d6b183fe81ea1b36bb46c0344c036b" prot="public" static="no" mutable="no">
+        <type>pthread_mutex_t</type>
+        <definition>pthread_mutex_t aliveState_lock</definition>
+        <argsstring></argsstring>
+        <name>aliveState_lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="30" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="common__helper_8h_1a6e37d77f5e9dbfd89885b25b3d82e5b3" prot="public" static="no" mutable="no">
+        <type>pthread_t</type>
+        <definition>pthread_t pthread_id[NUM_CHILD_THREADS]</definition>
+        <argsstring>[NUM_CHILD_THREADS]</argsstring>
+        <name>pthread_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="33" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="common__helper_8h_1a69daefcb62e8c68de7d59303754d7a21" prot="public" static="no" mutable="no">
+        <type>pthread_barrier_t</type>
+        <definition>pthread_barrier_t tasks_barrier</definition>
+        <argsstring></argsstring>
+        <name>tasks_barrier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="37" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="common__helper_8h_1a7dde81770e24b729260585d7724ff62b" prot="public" static="no" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const task_identifier_string[NUM_CHILD_THREADS+1]</definition>
+        <argsstring>[NUM_CHILD_THREADS+1]</argsstring>
+        <name>task_identifier_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="40" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="common__helper_8h_1ae2992ef59a491948e3b031929e7b130e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t get_queue_handle</definition>
+        <argsstring>(TASK_IDENTIFIER_T taskid)</argsstring>
+        <name>get_queue_handle</name>
+        <param>
+          <type>TASK_IDENTIFIER_T</type>
+          <declname>taskid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="35" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c" bodystart="27" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="common__helper_8h_1a9590097a1f30d9f6fdf28e4cc5dd3c48" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* getTaskIdentfierString</definition>
+        <argsstring>(TASK_IDENTIFIER_T taskid)</argsstring>
+        <name>getTaskIdentfierString</name>
+        <param>
+          <type>TASK_IDENTIFIER_T</type>
+          <declname>taskid</declname>
+        </param>
+        <briefdescription>
+<para>Get the Task Identfier String. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>const char* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="48" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="common__helper_8h_1a23124253b968391b9777fc3b8a0cc5ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int register_and_start_timer</definition>
+        <argsstring>(timer_t *timer_id, uint32_t usec, uint8_t oneshot, void(*timer_handler)(union sigval), void *handlerArgs)</argsstring>
+        <name>register_and_start_timer</name>
+        <param>
+          <type>timer_t *</type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>usec</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>oneshot</declname>
+        </param>
+        <param>
+          <type>void(*)(union sigval)</type>
+          <declname>timer_handler</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>handlerArgs</declname>
+        </param>
+        <briefdescription>
+<para>Registers a timer, addigns the handler and starts it. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>usec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oneshot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timer_handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handlerArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h" line="64" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c" bodystart="56" bodyend="74"/>
+        <referencedby refid="light__sensor__task_8h_1a638f4ba787ad818d90477af9e572771c" compoundref="light__sensor__task_8c" startline="203" endline="251">light_task_callback</referencedby>
+        <referencedby refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" compoundref="main__task_8c" startline="210" endline="309">main_task_entry</referencedby>
+        <referencedby refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" compoundref="temperature__sensor__task_8c" startline="184" endline="238">temperature_task_callback</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>COMMON_HELPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COMMON_HELPER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="posixTimer_8h" kindref="compound">posixTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_CHILD_THREADS<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>LOGGER_TASK_ID,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>TEMPERATURE_TASK_ID,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>SOCKET_TASK_ID,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>LIGHT_TASK_ID,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>MAIN_TASK_ID</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}TASK_IDENTIFIER_T;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>aliveStatus[NUM_CHILD_THREADS];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">pthread_mutex_t<sp/>aliveState_lock;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">pthread_t<sp/>pthread_id[NUM_CHILD_THREADS];</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">mqd_t<sp/>get_queue_handle(TASK_IDENTIFIER_T<sp/>taskid);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">pthread_barrier_t<sp/>tasks_barrier;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>task_identifier_string[NUM_CHILD_THREADS+1];</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>getTaskIdentfierString(TASK_IDENTIFIER_T<sp/>taskid)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>task_identifier_string[taskid];</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="common__helper_8h_1a23124253b968391b9777fc3b8a0cc5ec" kindref="member">register_and_start_timer</ref>(timer_t<sp/>*timer_id,<sp/>uint32_t<sp/>usec,<sp/>uint8_t<sp/>oneshot,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*timer_handler)(</highlight><highlight class="keyword">union</highlight><highlight class="normal"><sp/>sigval),<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*handlerArgs);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/common_helper.h"/>
+  </compounddef>
+</doxygen>
