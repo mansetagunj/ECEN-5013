@@ -26,6 +26,8 @@ const char *const LEDPATH[LED_COUNT] =
 
 int BB_LedON(USER_LED_T lednum)
 {
+    /* Forcefully using USR LED 1 */
+    lednum = 1;
     if(lednum < 4)
     {
         FILE *led_fd = fopen(LEDPATH[lednum], "r+");
@@ -45,6 +47,8 @@ int BB_LedON(USER_LED_T lednum)
 
 int BB_LedOFF(USER_LED_T lednum)
 {
+    /* Forcefully using USR LED 1 */
+    lednum = 1;
     if(lednum < 4)
     {
         FILE *led_fd = fopen(LEDPATH[lednum], "r+");
