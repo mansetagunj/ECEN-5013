@@ -4,6 +4,8 @@
 
 ### A multithreaded console application for BeagleBone black/green(Linux) having sensor interface, server, and logger
 
+### Documentation can be found at - [Project Document webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage")
+
 The project includes 1 parent thread which is the main task. The main task spawns 4 child threads
 
 1. Temperature  sensor task which is responsible for talking with the TMP102 sensor.
