@@ -4,7 +4,7 @@
 
 ### A multithreaded console application for BeagleBone black/green(Linux) having sensor interface, server, and logger
 
-#### Documentation can be found at - [Project Document webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
+#### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
 
 The project includes 1 parent thread which is the main task. The main task spawns 4 child threads
 
