@@ -379,10 +379,11 @@ int TMP102_getTemp(float *temp, TEMPERATURE_UNIT_T unit)
         return ret;
 
     /* We get MSB(15:8) in buff[0] and LSB(7:4) in buff[1] */
-    uint16_t temp_raw = (buff[0] << 4) | (buff[1] >> 4);
+    uint16_t temp_raw = 0;
+    temp_raw = (((uint16_t)buff[0]) << 4) | (buff[1] >> 4) & 0xFFF;
     if(temp_raw & 0x800)
     {
-        temp_raw = (~temp_raw) + 1; 
+        temp_raw = ((~temp_raw) + 1) & 0xFFF; 
         *temp = (-1) * (float)temp_raw * 0.0625;
     }
     else
