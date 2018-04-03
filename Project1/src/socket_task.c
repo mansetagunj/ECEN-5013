@@ -217,7 +217,9 @@ REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
 		case(CONN_KILL_APP_REQ):
 			rsp_out.rsp_id=CONN_KILL_APP_RSP;
 			LOG_STDOUT(INFO "REMOTE REQUEST KILL APP\n");
-             break;
+			DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
+			POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
+            break;
         default:
 			LOG_STDOUT(INFO "REMOTE REQUEST INVALID\n");
             break;

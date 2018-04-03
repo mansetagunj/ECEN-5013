@@ -22,6 +22,7 @@
 #include "posixTimer.h"
 #include "common_helper.h"
 #include "readConfiguration.h"
+#include "BB_Led.h"
 
 
 #define MQ_MAINTASK_NAME "/maintask_queue"
@@ -120,7 +121,7 @@ static void timer_handler_aliveStatusCheck(union sigval sig)
         stop_timer(*(timer_t*)sig.sival_ptr);
         delete_timer(*(timer_t*)sig.sival_ptr);
         /* Cancelling all the threads for any signals */
-        for(int i = 0; i < NUM_CHILD_THREADS; i++)
+        for(int i = 0; i < NUM_CHILD_THREADS && !aliveStatus[i]; i++)
         {
             #ifdef VALUES
             LOG_STDOUT(INFO "Child thread cancelled: %d %s\n",i, getTaskIdentfierString(i));
@@ -131,6 +132,7 @@ static void timer_handler_aliveStatusCheck(union sigval sig)
         #ifdef VALUES
         LOG_STDOUT(INFO "All child thread cancelled\n");
         #endif
+        BB_LedON(1);
         /* Signaling main task to quit */
         signal_exit = 1;
     }
@@ -203,8 +205,8 @@ void POST_EXIT_MESSAGE_ALL()
     DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
     POST_MESSAGE_LIGHTTASK_EXIT(&lightstruct);
     POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
-    POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
     pthread_cancel(pthread_id[SOCKET_TASK_ID]);
+    POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
 }
 
 int main_task_entry()
@@ -302,6 +304,8 @@ int main_task_entry()
     pthread_mutex_destroy(&aliveState_lock);
     
     configdata_flush();
+
+    BB_LedOFF(1);
 
     LOG_STDOUT(INFO "GOODBYE CRUEL WORLD!!!\n");
 
