@@ -10,7 +10,10 @@
 3. HW3   
   Contains a multi threaded application using concepts of pthreads, mutexes, semaphores, Doubly linked list, timers, signals and signal handlers
 
-4. Project 1  
+4. HW4  
+  Contains bare metal example and FreeRTOS examples for Tiva C series (EK-TM4C1294XL) Launchpad.  
+  
+5. Project 1  
   A multithreaded console application for BeagleBone black/green(Linux) having sensor interface, server, and logger  
   More detail in the Project1 README.md
   [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
