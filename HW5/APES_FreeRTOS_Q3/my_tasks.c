@@ -19,6 +19,7 @@
 #include "timers.h"
 
 #include "my_tasks.h"
+#include "my_uart.h"
 
 #define MYTASKSTACKSIZE 128
 
@@ -33,22 +34,26 @@ TimerHandle_t timer_handles[NUM_OF_TIMERS];
 
 void vTimerCallback(TimerHandle_t h_timer)
 {
-    //Timer handle for 2hz task
-    if(h_timer == timer_handles[0])
-    {
-        static uint32_t led_val = LED_D1_PIN;
+    static TickType_t tick = 0;
+    tick = xTaskGetTickCount();
 
-        led_val ^= (LED_D1_PIN);
-        GPIOPinWrite(LED_D1_PORT, LED_D1_PIN, led_val);
-
-    }
     //Timer handle for 4hz task
-    else if(h_timer == timer_handles[1])
+    if(h_timer == timer_handles[1])
     {
         static uint32_t led_val = LED_D2_PIN;
 
         led_val ^= (LED_D2_PIN);
         GPIOPinWrite(LED_D2_PORT, LED_D2_PIN, led_val);
+        printf("4Hz Timer Tick: %u\n",tick);
+    }
+    //Timer handle for 2hz task
+    else if(h_timer == timer_handles[0])
+    {
+        static uint32_t led_val = LED_D1_PIN;
+
+        led_val ^= (LED_D1_PIN);
+        GPIOPinWrite(LED_D1_PORT, LED_D1_PIN, led_val);
+        printf("2Hz Timer Tick: %u\n",tick);
 
     }
 }
