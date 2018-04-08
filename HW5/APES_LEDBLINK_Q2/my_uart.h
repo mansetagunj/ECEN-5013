@@ -9,8 +9,6 @@
 #define MY_UART_H_
 
 #include "driverlib/uart.h"
-#include "FreeRTOS.h"
-#include "semphr.h"
 
 /**
 * @brief - Available Baud rates for the UART
@@ -24,11 +22,9 @@ typedef enum BAUD_RATE
 
 }BAUD_RATE_ENUM;
 
-xSemaphoreHandle g_pUARTMutex;
 
-/* MACROS are threadsafe */
-#define printf(fmt, ...)    xSemaphoreTake(g_pUARTMutex, portMAX_DELAY); UART0_printf(fmt, ##__VA_ARGS__); xSemaphoreGive(g_pUARTMutex)
-#define puts(str)           xSemaphoreTake(g_pUARTMutex, portMAX_DELAY); UART0_putstr(str); xSemaphoreGive(g_pUARTMutex)
+#define printf(fmt, ...)    UART0_printf(fmt, ##__VA_ARGS__);
+#define puts(str)           UART0_putstr(str);
 
 #define UART0_putchar(ch)     (ch == '\n') ? UARTCharPut(UART0_BASE, '\r'): 0; UARTCharPut(UART0_BASE, ch)
 

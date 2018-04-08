@@ -41,7 +41,6 @@ void UART0_config(BAUD_RATE_ENUM baudrate)
 
     UARTConfigSetExpClk(UART0_BASE, 120000000, baudrate, UART_CONFIG_NORMAL);
 
-    g_pUARTMutex = xSemaphoreCreateMutex();
     UARTEnable(UART0_BASE);
 }
 

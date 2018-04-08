@@ -48,5 +48,5 @@ int main(void)
         SysCtlDelay((g_sysClock/ (1000 * 3))*500);
     }
 
-	return 0;
+	//return 0;
 }
