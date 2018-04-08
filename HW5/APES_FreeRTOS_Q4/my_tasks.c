@@ -41,7 +41,7 @@ void vTimerCallback(TimerHandle_t h_timer)
     else if(h_timer == timer_handles[1])
     {
         WORKER_NOTIFY_MSG_T notifyingMsg;
-        memcpy(notifyingMsg.msg,"Notification from Timer",sizeof(notifyingMsg.msg));
+        memcpy(notifyingMsg.msg,"LOG_STRING from Timer",sizeof(notifyingMsg.msg));
         notifyingMsg.tickcount = xTaskGetTickCount();
         //Enqueue the worker queue with a new msg
         if(xQueueSend(getWorkerQueueHandle(), &notifyingMsg,xMaxBlockTime) == pdPASS)
