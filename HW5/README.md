@@ -3,7 +3,8 @@
 
 1. APES_LEDBLINK_Q2  
   Bare metal firmware for EK-TM4C1294XL using TI peripheral driverlib.  
-  2 user LED blinks at a rate of 2Hz and the UART(BAUD-115200) prints the number of times LED blinks. 
+  2 user LED blinks at a rate of 2Hz and the UART(BAUD-115200) prints the number of times LED blinks.
+  ![Demo](<iframe src='//gifs.com/embed/led-blink-2hz-mQnvAO' frameborder='0' scrolling='no' width='440' height='400' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>)
 2. APES_FreeRTOS_Q3  
   FreeRTOS example for EK-TM4C1294X along with TI peripheral driverlib. Use of Tasks, UART, Timers, Mutex.  
   2 tasks creates 2 timers for blinking the LED at 2Hz and 4Hz respectively.   
