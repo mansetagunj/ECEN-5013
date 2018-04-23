@@ -12,13 +12,6 @@
 #include <string.h>
 #include "communication_object.h"
 
-//TODO: Move the below constant strings to somewhere suitable
-const char * const BOARD_TYPE = "TM4C1294XL";
-const char * const OS = "FreeRTOS";
-const char * const CODE_VERSION = "v1.0";
-const char * const UID = "guma9188";
-const uint32_t BOARD_UID = (0xA5U<<24);
-
 
 
 #define EVENT_LOG_HEARTBEAT      (0x01)

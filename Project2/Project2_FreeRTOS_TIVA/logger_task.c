@@ -23,6 +23,12 @@
 #define LOGGER_QUEUE_ITEMSIZE   (sizeof(LOG_QUEUE_MSG_T))
 #define LOGGER_QUEUE_LENGTH     20
 
+extern const char * const BOARD_TYPE;
+extern const char * const OS;
+extern const char * const CODE_VERSION;
+extern const char * const UID;
+extern const uint32_t BOARD_UID;
+
 volatile uint8_t loggerTaskInitDone = 0;
 
 static QueueHandle_t h_loggerQueue;

@@ -23,8 +23,8 @@
 
 #include "my_uart.h"
 #include "heartbeat.h"
-#include "worker_task.h"
 #include "application.h"
+#include "logger_task.h"
 
 #define CLOCK_FREQ 120000000
 uint32_t g_sysClock = CLOCK_FREQ;
