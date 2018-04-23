@@ -9,6 +9,6 @@
 #define HEARTBEAT_H_
 
 
-void heartbeat_start(uint8_t log_heartbeat_time_ms, uint8_t led_heartbeat_time_ms);
+void heartbeat_start(uint32_t log_heartbeat_time_ms, uint32_t led_heartbeat_time_ms);
 
 #endif /* HEARTBEAT_H_ */

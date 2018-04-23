@@ -22,6 +22,7 @@
 //#include "semphr.h"
 
 #include "my_uart.h"
+#include "heartbeat.h"
 #include "worker_task.h"
 #include "application.h"
 
@@ -40,6 +41,11 @@ void application_run()
    UART0_config(BAUD_115200);
 
    printf("\n----- GUNJ Project2 --------\n");
+
+   LoggerTask_init();
+
+   heartbeat_start(5000, 500);
+
 
 //   if(WorkerTask_init() != 0)
 //   {

@@ -39,7 +39,7 @@ void vTimerCallback(TimerHandle_t h_timer)
     }
 }
 
-void heartbeat_start(uint8_t log_heartbeat_time_ms, uint8_t led_heartbeat_time_ms)
+void heartbeat_start(uint32_t log_heartbeat_time_ms, uint32_t led_heartbeat_time_ms)
 {
     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
     MAP_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1 | GPIO_PIN_0);
