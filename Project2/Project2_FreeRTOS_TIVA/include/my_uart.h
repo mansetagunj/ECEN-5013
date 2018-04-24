@@ -63,7 +63,10 @@ xSemaphoreHandle g_pUARTMutex[4];
 #define UART0_putstr(str)     UART_putstr(UART_0,str)
 #define UART3_putstr(str)     UART_putstr(UART_3,str)
 
-#define UART3_putRAW(data, len)    UART_putRAW(UART_3, data, len)
+#define UART3_putRAW(p_data, len)    UART_putRAW(UART_3, p_data, len)
+
+#define UART0_getRAW(p_data,len)    UART_getRAW(UART_0, p_data, len)
+#define UART3_getRAW(p_data,len)    UART_getRAW(UART_3, p_data, len)
 
 #define UART0_config(baudrate)  UART_config(UART_0, baudrate)
 #define UART3_config(baudrate)  UART_config(UART_3, baudrate)
@@ -75,5 +78,6 @@ void UART_config(UART_T uart, BAUD_RATE_ENUM baudrate);
 void UART_putstr(UART_T uart, const char *str);
 void UART_printf(UART_T uart, const char *fmt, ...);
 void UART_putRAW(UART_T uart, const uint8_t *data, size_t len);
+size_t UART_getRAW(UART_T uart, uint8_t *data, size_t len);
 
 #endif /* MY_UART_H_ */

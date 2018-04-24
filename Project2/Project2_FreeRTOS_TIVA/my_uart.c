@@ -78,6 +78,25 @@ void UART_putRAW(UART_T uart, const uint8_t *data, size_t len)
     }
 }
 
+size_t UART_getRAW(UART_T uart, uint8_t *data, size_t len)
+{
+    if(!UARTCharsAvail(UART[uart]))
+        return 0;
+    size_t i = 0, retrycount = 0;
+    while(i<len && retrycount < 16)
+    {
+        int32_t c = UARTCharGetNonBlocking(UART[uart]);
+        if(c == -1)
+            retrycount++;
+        else
+        {
+            *(data+i) = c;
+            i++;
+        }
+    }
+    return i;
+}
+
 void UART_putstr(UART_T uart, const char *str)
 {
     while(*str)

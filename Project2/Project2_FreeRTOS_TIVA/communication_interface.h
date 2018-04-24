@@ -15,7 +15,10 @@
 #include "nordic_driver.h"
 #include "communication_object.h"
 
-#define COMM_TYPE_NRF
+#define NRF_USE_INTERRUPT   (1)
+#define NRF_NOTUSE_INTERRUPT   (0)
+
+//#define COMM_TYPE_NRF
 //#define RUN_TIME_SWITCH
 #ifdef RUN_TIME_SWITCH
 volatile uint8_t comm_type_uart = 1;
@@ -37,10 +40,9 @@ void COMM_SEND(COMM_MSG_T comm_object)
 #define COMM_INIT()                 comm_init_NRF()
 #define COMM_SEND(comm_object)      comm_sendNRF(comm_object)
 #define COMM_RECV()
-#define NRF_USE_INTERRUPT   (1)
-#define NRF_NOTUSE_INTERRUPT   (0)
 #else
-#define COMM_INIT()                 comm_init_UART(BAUD_921600)     /*comm_init_UART(BAUD_115200)*/
+#define COMM_INIT()                 comm_init_UART(BAUD_921600)
+//#define COMM_INIT()                 comm_init_UART(BAUD_115200)
 #define COMM_SEND(comm_object)      comm_sendUART(comm_object)
 #define COMM_RECV()                 comm_recvUART(p_comm_object)
 #endif
@@ -61,8 +63,17 @@ static inline void comm_sendUART(COMM_MSG_T comm_object)
 {
     UART3_putRAW((uint8_t*)&comm_object, sizeof(comm_object));
     /* This is needed to mark the end of send as the receiving side needs the line termination as the BeagleBone has opened the UART is canonical mode*/
-    UART3_putchar('\n');
+    //UART3_putchar('\n');
 }
+
+static inline void comm_recvUART(COMM_MSG_T *comm_object)
+{
+//    UART3_putRAW((uint8_t*)&comm_object, sizeof(comm_object));
+    /* This is needed to mark the end of send as the receiving side needs the line termination as the BeagleBone has opened the UART is canonical mode*/
+//    UART3_putchar('\n');
+}
+
+
 
 void comm_init_NRF();
 
