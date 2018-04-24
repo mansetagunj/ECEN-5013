@@ -35,6 +35,13 @@ run: build
 TEST_CONFIG:
 	$(CC) $(CFLAGS) -DSELF_TEST $(INCLUDES) -o test_readconfig readConfiguration.c
 
+.PHONY:TEST_UART
+TEST_UART:
+	$(CC_CROSS) $(CFLAGS) -DSELF_TEST $(INCLUDES) -o test_uart my_uart.c #-DLOOPBACK
+	scp test_uart gunj@192.168.7.2:~/
+
+.PHONY:MAKE_TEST
+MAKE_TEST: TEST_CONFIG
 
 .PHONY:clean
 clean:
