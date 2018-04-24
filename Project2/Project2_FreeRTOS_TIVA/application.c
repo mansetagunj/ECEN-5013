@@ -38,13 +38,14 @@ void application_run()
                                             SYSCTL_USE_PLL |
                                             SYSCTL_CFG_VCO_480), g_sysClock);
 
-   UART0_config(BAUD_115200);
-
+//   UART0_config(BAUD_115200);
+   UART0_config(BAUD_921600);
+   ROM_IntMasterEnable();
    printf("\n----- GUNJ Project2 --------\n");
 
    LoggerTask_init();
 
-   heartbeat_start(5000, 500);
+   heartbeat_start(1000, 500);
 
 
 //   if(WorkerTask_init() != 0)

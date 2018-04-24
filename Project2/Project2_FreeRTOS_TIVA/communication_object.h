@@ -8,9 +8,15 @@
 #ifndef COMMUNICATION_OBJECT_H_
 #define COMMUNICATION_OBJECT_H_
 
+#include <string.h>
 
-#define GET_BOARD_UID_FROM_LOG_ID(id)   ((uint32_t)((id & (0xFFU<<24))>>24))
-#define GET_LOG_ID_FROM_LOG_ID(id)      ((id & (~(0xFFU<<24))))
+#ifndef BOARD_UID_SHIFT
+#define BOARD_UID_SHIFT 24
+#endif
+
+#define GET_BOARD_UID_FROM_LOG_ID(id)   ((uint32_t)((id & (0xFFU<<BOARD_UID_SHIFT))>>BOARD_UID_SHIFT))
+#define GET_LOG_ID_FROM_LOG_ID(id)      ((id & (~(0xFFU<<BOARD_UID_SHIFT))))
+
 
 typedef enum
 {
@@ -22,9 +28,24 @@ typedef enum
     CLIENT_INFO_BOARD_TYPE,
     CLIENT_INFO_UID,
     CLIENT_INFO_CODE_VERSION,
+    LAST_ID //THIS ID IS JUST TO CALCULATE THE NUM OF IDS. THIS IS NOT USED ANYWHERE
+}COMM_ID_T;
 
-}COMM_ID;
+#define NUM_OF_ID   LAST_ID
 
+static char * const COMM_ID_STRING[NUM_OF_ID]  =
+{
+     "HEARTBEAT",
+     "MSG",
+     "STATUS",
+     "ERROR",
+     "INFO",
+     "CLIENT_INFO_BOARD_TYPE",
+     "CLIENT_INFO_UID",
+     "CLIENT_INFO_CODE_VERSION",
+};
+
+typedef uint32_t COMM_ID;
 
 /* 32byte LOG MESSAGE STRUCTURE*/
 typedef struct COMM_MSG
@@ -35,7 +56,7 @@ typedef struct COMM_MSG
 
 }COMM_MSG_T;
 
-
+static size_t COMM_MSG_SIZE = sizeof(COMM_MSG_T);;
 
 static uint16_t getCheckSum(const COMM_MSG_T *comm_msg)
 {

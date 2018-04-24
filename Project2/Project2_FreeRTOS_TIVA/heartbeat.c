@@ -17,6 +17,7 @@
 
 #include "delay.h"
 #include "my_uart.h"
+#include "logger_task.h"
 
 #define NUM_OF_TIMERS   2
 static TimerHandle_t timer_handles[NUM_OF_TIMERS];
@@ -25,11 +26,19 @@ void vTimerCallback(TimerHandle_t h_timer)
 {
     static uint32_t led_val = (GPIO_PIN_1 | GPIO_PIN_0);
     //TIMER_LOG_HEARTBEAT
+    static uint32_t count = 0;
     if(h_timer == timer_handles[0])
     {
-        //TODO: Queue up the log task or notify the log task
-        //xTaskNotify(getLoggerTaskHandle(),LOG_HEARTBEAT,eSetBits);
-
+        if(count%10 == 0)
+        {
+            //TODO: Queue up the log task or notify the log task
+            NOTIFY_LOG_TASK(EVENT_LOG_HEARTBEAT);
+        }
+        if(count%30 == 0)
+        {
+            NOTIFY_LOG_TASK(EVENT_LOG_BOARD_TYPE);
+        }
+        count++;
     }
     //TIMER_LED_HEARTBEAT
     else if(h_timer == timer_handles[1])
@@ -45,7 +54,7 @@ void heartbeat_start(uint32_t log_heartbeat_time_ms, uint32_t led_heartbeat_time
     MAP_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1 | GPIO_PIN_0);
 
     timer_handles[0] = xTimerCreate("TIMER_LOG_HEARTBEAT", pdMS_TO_TICKS(log_heartbeat_time_ms) , pdTRUE,  (void*)0, vTimerCallback);
-    DEBUG_ERROR(timer_handles[1] == NULL);
+    DEBUG_ERROR(timer_handles[0] == NULL);
 
     timer_handles[1] = xTimerCreate("TIMER_LED_HEARTBEAT", pdMS_TO_TICKS(led_heartbeat_time_ms) , pdTRUE,  (void*)0, vTimerCallback);
 

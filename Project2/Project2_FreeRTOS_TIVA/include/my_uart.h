@@ -29,6 +29,9 @@ typedef enum UART_num
 */
 typedef enum BAUD_RATE
 {
+    BAUD_921600 = 921600,
+    BAUD_460800 = 460800,
+    BAUD_230400 = 230400,
     BAUD_115200 = 115200,
     BAUD_38400  = 38400,
     BAUD_57200  = 57200,
@@ -60,6 +63,8 @@ xSemaphoreHandle g_pUARTMutex[4];
 #define UART0_putstr(str)     UART_putstr(UART_0,str)
 #define UART3_putstr(str)     UART_putstr(UART_3,str)
 
+#define UART3_putRAW(data, len)    UART_putRAW(UART_3, data, len)
+
 #define UART0_config(baudrate)  UART_config(UART_0, baudrate)
 #define UART3_config(baudrate)  UART_config(UART_3, baudrate)
 
@@ -69,5 +74,6 @@ xSemaphoreHandle g_pUARTMutex[4];
 void UART_config(UART_T uart, BAUD_RATE_ENUM baudrate);
 void UART_putstr(UART_T uart, const char *str);
 void UART_printf(UART_T uart, const char *fmt, ...);
+void UART_putRAW(UART_T uart, const uint8_t *data, size_t len);
 
 #endif /* MY_UART_H_ */

@@ -29,7 +29,7 @@ typedef struct
 }LOG_QUEUE_MSG_T;
 
 //Handy macros
-#define NOTIFY_LOG_TASK(EVENT_ID)       xTaskNotify(getLoggerTaskHandle(),EVENT_ID,eSetBits);
+#define NOTIFY_LOG_TASK(EVENT_ID)       xTaskNotify(getLoggerTaskHandle(),EVENT_ID,eSetBits)
 
 //TODO: include a mutex lock in here to make the enque and notification atomic
 #define ENQUE_NOTIFY_LOG_TASK(string_msg, EVENT_ID)    \
@@ -52,8 +52,8 @@ typedef struct
 #define getLoggerTaskHandle()           ({TaskHandle_t h = LoggerTaskHandle(NULL,1); h;})
 #define setLoggerTaskHandle(handle)     LoggerTaskHandle(handle,0)
 
-QueueHandle_t loggerQueueHandle(QueueHandle_t handle, bool get);
-TaskHandle_t loggerTaskHandle(TaskHandle_t handle, bool get);
+QueueHandle_t LoggerQueueHandle(QueueHandle_t handle, bool get);
+TaskHandle_t LoggerTaskHandle(TaskHandle_t handle, bool get);
 
 uint8_t LoggerTask_init();
 

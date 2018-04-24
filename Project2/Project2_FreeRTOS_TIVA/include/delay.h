@@ -15,7 +15,7 @@ extern uint32_t g_sysClock;
 
 #ifdef DEBUG
 #ifndef DEBUG_ERROR
-#define DEBUG_ERROR(x) if( ( x ) == 1 ) { taskDISABLE_INTERRUPTS(); while(1); }
+#define DEBUG_ERROR(x) if( ( x ) == pdTRUE ) { taskDISABLE_INTERRUPTS(); while(1); }
 #endif
 #else
 #define configASSERT(x)

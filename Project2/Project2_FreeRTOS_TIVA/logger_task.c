@@ -106,7 +106,9 @@ static void logger_task_entry(void *params)
             if(notifiedValue & EVENT_LOG_HEARTBEAT)
             {
                 COMM_MSG_T comm_msg;
-                comm_msg.ID = HEARTBEAT | BOARD_UID;
+//                static val = 0;
+                comm_msg.ID = (HEARTBEAT | BOARD_UID);// + (val%500);
+//                val++;
                 strncpy(comm_msg.payload, "I AM ALIVE", sizeof(comm_msg.payload));
                 comm_msg.checksum = getCheckSum(&comm_msg);
                 COMM_SEND(comm_msg);
@@ -185,10 +187,10 @@ static void logger_task_entry(void *params)
                 }
             }
         }
-        else
-        {
-            printf("LOGGER NOTIFICATION: TIMEOUT\n");
-        }
+//        else
+//        {
+//            printf("LOGGER NOTIFICATION: TIMEOUT\n");
+//        }
     }
 }
 
@@ -200,6 +202,10 @@ uint8_t LoggerTask_init()
 
     TaskHandle_t h_loggerTask;
 
+    /*Initializing the communication interface*/
+    COMM_INIT();
+//    uint8_t data[32] = {0};
+//    NRF_read_data(data, 32);
     /* Create the task*/
     if(xTaskCreate(logger_task_entry, (const portCHAR *)"Logger Task", 128, NULL,
                        tskIDLE_PRIORITY + PRIO_LOGGERTASK, &h_loggerTask) != pdTRUE)

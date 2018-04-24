@@ -48,6 +48,7 @@
 #define NORDIC_STATUS_TX_DS_MASK			(1<<5)
 #define NORDIC_STATUS_MAX_RT_MASK           (1<<4)
 
+typedef void (*NRF_INT_HANDLER_T)(void);
 
 typedef enum{
 
@@ -116,7 +117,7 @@ static inline void NRF_radio_disable()
 * Initialized the GPIO connections pertaining to the Nordic module
 * @return void
 **/
-void NRF_moduleInit();
+void NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler);
 
 /**
 * @brief - Disable the GPIO connections set up earlier for the Nordic module
@@ -259,7 +260,7 @@ void NRF_openWritePipe(uint8_t tx_addr[5]);
 
 void NRF_closeWritePipe();
 
-void NRF_closeReadPipe();
+void NRF_closeReadPipe(uint8_t rx_pipe_number);
 
 
 

@@ -86,10 +86,15 @@ volatile uint8_t rxconfigured = 0;
 
 volatile uint8_t transmitted = 0;
 volatile uint8_t received = 0;
+volatile uint8_t retry_error = 0;
+
+static uint8_t using_interrupt = 0;
 
 extern uint32_t g_sysClock;
 
-void NRF_IntHandler();
+void NRF_IntHandler(void);
+
+static NRF_INT_HANDLER_T user_handler;
 
 void NRF_gpioInit()
 {
@@ -106,21 +111,35 @@ void NRF_gpioInit()
     //Enabling the GPIO PC6 for Nordic IRQ pin
     MAP_SysCtlPeripheralEnable(NORDIC_IRQ_SYSCTL_PORT);
 
+    GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
     GPIOPinTypeGPIOInput(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
     GPIOIntUnregister(NORDIC_IRQ_PORT);
     GPIOIntClear(NORDIC_IRQ_PORT,0xFFFF);
     GPIOIntTypeSet(NORDIC_IRQ_PORT, NORDIC_IRQ_PIN, GPIO_LOW_LEVEL);
-    GPIOIntRegister(NORDIC_IRQ_PORT, NRF_IntHandler);
-    GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
-    GPIOIntEnable(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
+//    GPIOIntRegister(NORDIC_IRQ_PORT, NRF_IntHandler);
+//    GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
+//    GPIOIntEnable(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
 }
 
-void NRF_moduleInit()
+void NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler)
 {
-    NRF_gpioInit();
     SPI_clock_init(SPI_1, g_sysClock);
     SPI_init(SPI_1);
     DelayMs(1);
+
+    NRF_gpioInit();
+    if(use_interrupt)
+    {
+        using_interrupt = 1;
+        user_handler = handler;
+        GPIOIntRegister(NORDIC_IRQ_PORT, NRF_IntHandler);
+        GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
+        GPIOIntEnable(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
+    }
+    else
+    {
+        using_interrupt = 0;
+    }
 }
 
 void NRF_moduleSetup(NRF_DataRate_t DR, NRF_Power_t power)
@@ -138,6 +157,7 @@ void NRF_moduleSetup(NRF_DataRate_t DR, NRF_Power_t power)
 
 void NRF_moduleDisable()
 {
+    using_interrupt = 0;
     uint8_t config = NRF_read_config();
     NRF_write_config(config & ~NORDIC_CONFIG_PWR_UP(1));
 	SPI_disable(SPI_1);
@@ -337,7 +357,7 @@ void NRF_write_RX_PIPE_ADDR(uint8_t pipe_num, uint8_t *rx_addr)
     SPI_write_byte(SPI_1,(NORDIC_RX_ADDR_P0_REG + pipe_num) | 0x20);
     SPI_read_byte(SPI_1);   //used to clear the previously value in the RX FIFO
     size_t ADDR_LEN = NORDIC_TX_ADDR_LEN;
-    pipe_num > 2 ? ADDR_LEN = 1: 0;
+    pipe_num > 1 ? ADDR_LEN = 1: 0;
     SPI_write_packet(SPI_1,rx_addr,ADDR_LEN);
     SPI_flushRXFIFO(SPI_1);
 
@@ -365,6 +385,22 @@ void NRF_activate_cmd()
 	NRF_write_register(NORDIC_ACTIVATE_CMD, NORDIC_ACTIVATE_DATA);
 }
 
+void NRF_enable_RX_PIPE(uint8_t rx_pipe_number)
+{
+    if(rx_pipe_number > 5)
+        return;
+    uint8_t ret = NRF_read_register(NORDIC_EN_RXADDR_REG);
+    NRF_write_register(NORDIC_EN_RXADDR_REG, ret | (1<<rx_pipe_number));
+
+}
+void NRF_disable_RX_PIPE(uint8_t rx_pipe_number)
+{
+    if(rx_pipe_number > 5)
+        return;
+    uint8_t ret = NRF_read_register(NORDIC_EN_RXADDR_REG);
+    NRF_write_register(NORDIC_EN_RXADDR_REG, ret & (~(1<<rx_pipe_number)));
+}
+
 static void NRF_mode_configure(NRF_Mode_t mode, uint8_t rx_pipe_number, uint8_t addr[5], uint8_t payload_size)
 {
 	if(mode < 2)
@@ -375,16 +411,16 @@ static void NRF_mode_configure(NRF_Mode_t mode, uint8_t rx_pipe_number, uint8_t 
 		if(mode == NRF_Mode_TX)
 		{
 			txconfigured = 1;
-			configureRead &= ~(NORDIC_CONFIG_TX_DS_INT(1) | NORDIC_CONFIG_MAX_RT_INT(1));
+			configureRead &= ~(NORDIC_CONFIG_TX_DS_INT(1));// | NORDIC_CONFIG_MAX_RT_INT(1));
 			NRF_flush_tx_fifo();
 	        NRF_write_En_AA(0);
 	        NRF_write_setup_retry(0);
 	        NRF_write_TX_ADDR(addr);
 	        NRF_write_RX_PIPE_ADDR(rx_pipe_number, addr);
+	        NRF_enable_RX_PIPE(rx_pipe_number);
 	        NRF_write_register((NORDIC_RX_PW_P0_REG), payload_size);
 	        NRF_write_config(configureRead | NORDIC_CONFIG_PWR_UP(1));
-	        //This line should called when transmitting the data
-//	        NRF_write_config(configureRead | NORDIC_CONFIG_PRIM_RX(mode) | NORDIC_CONFIG_PWR_UP(1));
+	        DelayMs(2);
 		}
 		else
 		{
@@ -392,9 +428,10 @@ static void NRF_mode_configure(NRF_Mode_t mode, uint8_t rx_pipe_number, uint8_t 
 			configureRead |= NORDIC_CONFIG_PWR_UP(1) | NORDIC_CONFIG_PRIM_RX(1);
 			configureRead &= ~(NORDIC_CONFIG_RX_DR_INT(1));
 			NRF_flush_rx_fifo();
+			NRF_enable_RX_PIPE(rx_pipe_number);
 			NRF_write_RX_PIPE_ADDR(rx_pipe_number, addr);
-			NRF_write_config(configureRead);
 			NRF_write_register((NORDIC_RX_PW_P0_REG + rx_pipe_number), payload_size);
+			NRF_write_config(configureRead);
 			NRF_radio_enable();
 		}
 
@@ -403,7 +440,9 @@ static void NRF_mode_configure(NRF_Mode_t mode, uint8_t rx_pipe_number, uint8_t 
 
 	}
 	else
+	{
 		printf("INVALID MODE\n");
+	}
 }
 
 void NRF_openReadPipe(uint8_t rx_pipe_number, uint8_t rx_addr[5], uint8_t payload_size)
@@ -414,6 +453,7 @@ void NRF_openReadPipe(uint8_t rx_pipe_number, uint8_t rx_addr[5], uint8_t payloa
 void NRF_openWritePipe(uint8_t tx_addr[5])
 {
     NRF_mode_configure(NRF_Mode_TX, 0, tx_addr, 5);
+//    NRF_mode_configure(NRF_Mode_TX, 0, tx_addr, 32);
 }
 
 void NRF_closeWritePipe()
@@ -422,15 +462,17 @@ void NRF_closeWritePipe()
     uint8_t configureRead = NRF_read_config();
     configureRead |= (NORDIC_CONFIG_TX_DS_INT(1)  | NORDIC_CONFIG_MAX_RT_INT(1));
     NRF_write_config(configureRead);
+    NRF_disable_RX_PIPE(0);
 }
 
-void NRF_closeReadPipe()
+void NRF_closeReadPipe(uint8_t rx_pipe_number)
 {
     NRF_radio_disable();
     rxconfigured = 0;
     uint8_t configureRead = NRF_read_config();
     configureRead |= NORDIC_CONFIG_RX_DR_INT(1);
     NRF_write_config(configureRead);
+    NRF_disable_RX_PIPE(rx_pipe_number);
 }
 
 void NRF_write_TXPayload(uint8_t *data, uint8_t len)
@@ -471,26 +513,42 @@ void NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode)
 
 		printf("Data written");
 
-		while(transmitted == 0);	//wait till TX data is transmitted from FIFO
-		transmitted = 0;
-//		uint8_t status = 0;
-//		do
-//		{
-//		    status = NRF_read_status();
-//		}while(!((NORDIC_STATUS_TX_DS_MASK | NORDIC_STATUS_MAX_RT_MASK) & status));
-
-		printf("Data Transmitted");
+		if(using_interrupt)
+		{
+            while(transmitted == 0 && retry_error == 0);	//wait till TX data is transmitted from FIFO
+            if(retry_error)
+            {
+                retry_error = 0;
+                printf("Data Retry Error\n");
+            }
+            else
+            {
+                transmitted = 0; printf("Data Transmitted\n");
+            }
+		}
+		else
+		{
+            uint8_t status = 0;
+            do
+            {
+                status = NRF_read_status();
+            }while(!((NORDIC_STATUS_TX_DS_MASK | NORDIC_STATUS_MAX_RT_MASK) & status));
+            NRF_write_status(NORDIC_STATUS_TX_DS_MASK | NORDIC_STATUS_MAX_RT_MASK | NORDIC_STATUS_MAX_RT_MASK);
+		}
 
 		if(toRXMode)
 		{
             configureRead &= ~(NORDIC_CONFIG_PRIM_RX(1));
             NRF_write_config(configureRead);
+            NRF_flush_rx_fifo();
             NRF_radio_enable();
 		}
 
 	}
 	else
+	{
 		printf("TX mode not configured");
+	}
 }
 
 NRF_read_RXPayload(uint8_t *data, uint8_t len)
@@ -509,11 +567,28 @@ void NRF_read_data(uint8_t *data, uint8_t len)
 {
 	if(rxconfigured)
 	{
+	    NRF_radio_enable();
+	    uint8_t val = NRF_read_fifo_status();
+	    val = NRF_read_config();
 	    //TODO: Check how to move forward with this? Call this function after we know that the data is avail or check with the
 	    //Status reg if data is available
-		while(received == 0);	//wait till RX data in FIFO
-		received = 0;
-//		while(!(NORDIC_STATUS_RX_DR_MASK & NRF_read_status()));
+	    if(using_interrupt)
+	    {
+	        while(received == 0)	//wait till RX data in FIFO
+	        {
+	            val = NRF_read_fifo_status();
+	        }
+	        received = 0;
+	    }
+	    else
+	    {
+	        uint8_t status = 0;
+	        do
+	        {
+	            status = NRF_read_status();
+	        }while(!(NORDIC_STATUS_RX_DR_MASK & status));
+	    }
+
 		printf("Data received");
 
 		NRF_read_RXPayload(data, len);
@@ -521,10 +596,12 @@ void NRF_read_data(uint8_t *data, uint8_t len)
 		printf("Data read");
 	}
 	else
+	{
 		printf("RX mode not configured");
+	}
 }
 
-#define SELF_TEST
+//#define SELF_TEST
 #ifdef SELF_TEST
 
 void Nordic_Test()
@@ -623,29 +700,40 @@ void Nordic_Test()
 }
 #endif
 
-void NRF_IntHandler()
+void NRF_IntHandler(void)
 {
     MAP_IntMasterDisable();
-    uint32_t int_status = GPIOIntStatus(NORDIC_IRQ_PORT, false);
-    if(int_status & NORDIC_IRQ_PIN)
-    {
-        GPIOIntClear(NORDIC_IRQ_PORT, NORDIC_IRQ_PIN);
-        uint8_t NRF_int_reason = NRF_read_status();
-        if(NRF_int_reason & NORDIC_STATUS_TX_DS_MASK)
+        uint32_t int_status = GPIOIntStatus(NORDIC_IRQ_PORT, false);
+        if(int_status & NORDIC_IRQ_PIN)
         {
-            NRF_write_status(NRF_int_reason | NORDIC_STATUS_TX_DS_MASK);
-            transmitted = 1;
-            printf("NRF TX Complete\n");
+            GPIOIntClear(NORDIC_IRQ_PORT, NORDIC_IRQ_PIN);
+            uint8_t NRF_int_reason = NRF_read_status();
+            if(NRF_int_reason & NORDIC_STATUS_TX_DS_MASK)
+            {
+                NRF_write_status(NRF_int_reason | NORDIC_STATUS_TX_DS_MASK);
+                transmitted = 1;
+//                printf("NRF TX Complete\n");
+            }
+            if(NRF_int_reason & NORDIC_STATUS_RX_DR_MASK)
+            {
+                NRF_write_status(NRF_int_reason | NORDIC_STATUS_RX_DR_MASK);
+                NRF_flush_rx_fifo();
+                //TODO: Notification to the handler for the Nordic Data recv task
+                user_handler();
+                received = 1;
+                printf("NRF RX Complete\n");
+            }
+            if(NRF_int_reason & NORDIC_STATUS_MAX_RT_MASK)
+            {
+                NRF_write_status(NRF_int_reason | NORDIC_STATUS_MAX_RT_MASK);
+                NRF_flush_tx_fifo();
+                //TODO: Notification to the handler for the Nordic Data recv task
+                user_handler();
+                retry_error = 1;
+//                printf("NRF TX RETRY ERROR\n");
+            }
         }
-        if(NRF_int_reason & NORDIC_STATUS_RX_DR_MASK)
-        {
-            NRF_write_status(NRF_int_reason | NORDIC_STATUS_RX_DR_MASK);
-            //TODO: Notification to the handler for the Nordic Data recv task
-            received = 1;
-            printf("NRF TX Complete\n");
-        }
-    }
-    MAP_IntMasterEnable();
+        MAP_IntMasterEnable();
 }
 
 

@@ -70,6 +70,14 @@ void UART_config(UART_T uart, BAUD_RATE_ENUM baudrate)
     UARTEnable(UART[uart]);
 }
 
+void UART_putRAW(UART_T uart, const uint8_t *data, size_t len)
+{
+    while(len--)
+    {
+        UARTCharPut(UART[uart], *data++);
+    }
+}
+
 void UART_putstr(UART_T uart, const char *str)
 {
     while(*str)
