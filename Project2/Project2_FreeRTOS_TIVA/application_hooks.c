@@ -21,7 +21,17 @@ void vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
     // on entry to this function, so no processor interrupts will interrupt
     // this loop.
     //
+    //TODO: notify logging task
     printf("\nSTACK ERROR - TASK: %s\n",pcTaskName);
+    while(1)
+    {
+    }
+}
+
+void vApplicationMallocFailedHook( void )
+{
+    //TODO: notify logging task
+    printf("\nMALLOC ERROR\n");
     while(1)
     {
     }
