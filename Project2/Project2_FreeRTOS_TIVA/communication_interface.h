@@ -36,11 +36,13 @@ void COMM_SEND(COMM_MSG_T comm_object)
 #ifdef COMM_TYPE_NRF
 #define COMM_INIT()                 comm_init_NRF()
 #define COMM_SEND(comm_object)      comm_sendNRF(comm_object)
+#define COMM_RECV()
 #define NRF_USE_INTERRUPT   (1)
 #define NRF_NOTUSE_INTERRUPT   (0)
 #else
 #define COMM_INIT()                 comm_init_UART(BAUD_921600)     /*comm_init_UART(BAUD_115200)*/
 #define COMM_SEND(comm_object)      comm_sendUART(comm_object)
+#define COMM_RECV()                 comm_recvUART(p_comm_object)
 #endif
 #endif
 #define RX_PIPE 1
