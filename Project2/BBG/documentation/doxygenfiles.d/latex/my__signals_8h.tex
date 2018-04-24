@@ -1,0 +1,147 @@
+\hypertarget{my__signals_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/my\+\_\+signals.h File Reference}
+\label{my__signals_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/my\+\_\+signals.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/my\+\_\+signals.\+h}}
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for my\+\_\+signals.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__signals_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{my__signals_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+\_\+\+U\+S\+R1}~(1$<$$<$0)\hypertarget{my__signals_8h_a0e45ab7106dfdfab1129adbac64da0e6}{}\label{my__signals_8h_a0e45ab7106dfdfab1129adbac64da0e6}
+
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+\_\+\+U\+S\+R2}~(1$<$$<$1)\hypertarget{my__signals_8h_a914eca0d337b1124ddb62fbafefac12b}{}\label{my__signals_8h_a914eca0d337b1124ddb62fbafefac12b}
+
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+\_\+\+I\+NT}~(1$<$$<$2)\hypertarget{my__signals_8h_a2fca85c0a15f6e61404ace932ceca979}{}\label{my__signals_8h_a2fca85c0a15f6e61404ace932ceca979}
+
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+\_\+\+T\+E\+RM}~(1$<$$<$3)\hypertarget{my__signals_8h_a7ed483de9d9805089ceb60d9d4c8bb2a}{}\label{my__signals_8h_a7ed483de9d9805089ceb60d9d4c8bb2a}
+
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+\_\+\+T\+S\+TP}~(1$<$$<$4)\hypertarget{my__signals_8h_a1348f26f1d0b7c05aa713f8a13411ea9}{}\label{my__signals_8h_a1348f26f1d0b7c05aa713f8a13411ea9}
+
+\item 
+\#define {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+\_\+\+A\+LL}~(0x1\+F)\hypertarget{my__signals_8h_a33370f69916d47556a24af7835b0bdad}{}\label{my__signals_8h_a33370f69916d47556a24af7835b0bdad}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t {\bfseries R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t}\hypertarget{my__signals_8h_a5b58cc6fd2b95b7ca20155ad5936e1f0}{}\label{my__signals_8h_a5b58cc6fd2b95b7ca20155ad5936e1f0}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{my__signals_8h_ab23ded226351ef07fcd948a6d04a06e7}{register\+\_\+signal\+Handler} (struct sigaction $\ast$sa, void($\ast$handler)(int), R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t signal\+Mask)
+\begin{DoxyCompactList}\small\item\em Register asignal handler for specific signal masks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/18 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{my\+\_\+signals.\+h@{my\+\_\+signals.\+h}!register\+\_\+signal\+Handler@{register\+\_\+signal\+Handler}}
+\index{register\+\_\+signal\+Handler@{register\+\_\+signal\+Handler}!my\+\_\+signals.\+h@{my\+\_\+signals.\+h}}
+\subsubsection[{\texorpdfstring{register\+\_\+signal\+Handler(struct sigaction $\ast$sa, void($\ast$handler)(int), R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t signal\+Mask)}{register_signalHandler(struct sigaction *sa, void(*handler)(int), REG_SIGNAL_FLAG_t signalMask)}}]{\setlength{\rightskip}{0pt plus 5cm}int register\+\_\+signal\+Handler (
+\begin{DoxyParamCaption}
+\item[{struct sigaction $\ast$}]{sa, }
+\item[{void($\ast$)(int)}]{handler, }
+\item[{R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t}]{signal\+Mask}
+\end{DoxyParamCaption}
+)}\hypertarget{my__signals_8h_ab23ded226351ef07fcd948a6d04a06e7}{}\label{my__signals_8h_ab23ded226351ef07fcd948a6d04a06e7}
+
+
+Register asignal handler for specific signal masks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sa} & \\
+\hline
+{\em handler} & \\
+\hline
+{\em signal\+Mask} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+13 \{
+14     sa->sa\_handler = handler;
+15 
+16     sa->sa\_flags = SA\_RESTART;
+17 
+18     sigfillset(&sa->sa\_mask);
+19 
+20     \textcolor{keywordtype}{int} ret\_error = 0;
+21     
+22     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_USR1) && sigaction(SIGUSR1, sa, NULL) == -1) 
+23     \{
+24         ret\_error++;
+25         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGUSR1.\(\backslash\)n"});
+26     \}
+27 
+28     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_USR2) && sigaction(SIGUSR2, sa, NULL) == -1) 
+29     \{
+30         ret\_error++;
+31         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGUSR2.\(\backslash\)n"});
+32     \}
+33     
+34     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_INT) && sigaction(SIGINT, sa, NULL) == -1) 
+35     \{
+36         ret\_error++;
+37         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGINT.\(\backslash\)n"});
+38     \}
+39     
+40     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_TSTP) && sigaction(SIGTERM, sa, NULL) == -1) 
+41     \{
+42         ret\_error++;
+43         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGTERM.\(\backslash\)n"});
+44     \}
+45     
+46     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_TSTP) && sigaction(SIGTSTP, sa, NULL) == -1) 
+47     \{
+48         ret\_error++;
+49         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGTSTOP.\(\backslash\)n"});
+50     \}
+51 
+52     \textcolor{keywordflow}{return} ret\_error;
+53 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{my__signals_8h_ab23ded226351ef07fcd948a6d04a06e7_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,14 @@
+<map id="/home/gunj/repos/ECEN&#45;5013/Project1/src/main_task.c" name="/home/gunj/repos/ECEN&#45;5013/Project1/src/main_task.c">
+<area shape="rect" id="node8" href="$main__task_8h.html" title="main_task.h" alt="" coords="186,117,279,143"/>
+<area shape="rect" id="node9" href="$common__helper_8h.html" title="common_helper.h" alt="" coords="297,199,422,225"/>
+<area shape="rect" id="node10" href="$posixTimer_8h.html" title="posixTimer.h" alt="" coords="648,273,745,300"/>
+<area shape="rect" id="node17" href="$error__data_8h.html" title="error_data.h" alt="" coords="742,199,833,225"/>
+<area shape="rect" id="node20" href="$logger__task_8h.html" title="logger_task.h" alt="" coords="355,117,455,143"/>
+<area shape="rect" id="node23" href="$socket__task_8h.html" title="socket_task.h" alt="" coords="1177,199,1281,225"/>
+<area shape="rect" id="node24" href="$light__sensor__task_8h.html" title="light_sensor_task.h" alt="" coords="640,117,775,143"/>
+<area shape="rect" id="node27" href="$temperature__sensor__task_8h.html" title="temperature_sensor\l_task.h" alt="" coords="479,109,616,151"/>
+<area shape="rect" id="node28" href="$my__signals_8h.html" title="my_signals.h" alt="" coords="1066,273,1165,300"/>
+<area shape="rect" id="node29" href="$readConfiguration_8h.html" title="readConfiguration.h" alt="" coords="1293,117,1428,143"/>
+<area shape="rect" id="node22" href="$my__time_8h.html" title="my_time.h" alt="" coords="446,199,529,225"/>
+<area shape="rect" id="node25" href="$sensor__common__object_8h.html" title="sensor_common_object.h" alt="" coords="907,199,1078,225"/>
+</map>

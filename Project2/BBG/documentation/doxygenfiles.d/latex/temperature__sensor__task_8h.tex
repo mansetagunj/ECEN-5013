@@ -1,0 +1,257 @@
+\hypertarget{temperature__sensor__task_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/temperature\+\_\+sensor\+\_\+task.h File Reference}
+\label{temperature__sensor__task_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/temperature\+\_\+sensor\+\_\+task.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/temperature\+\_\+sensor\+\_\+task.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$mqueue.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}common\+\_\+helper.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}my\+\_\+time.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sensor\+\_\+common\+\_\+object.\+h\char`\"{}}\\*
+Include dependency graph for temperature\+\_\+sensor\+\_\+task.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{temperature__sensor__task_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{temperature__sensor__task_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structTEMPERATURETASKQ__MSG__T}{T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+Q\+\_\+\+M\+S\+G\+\_\+T}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{temperature__sensor__task_8h_a9b5251efca0e6cd5011d8f5c2120663c}{D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT}(name,  msg\+Id,  source\+Id)
+\begin{DoxyCompactList}\small\item\em Defines a temp struct with the name given and params with some default values. \end{DoxyCompactList}\item 
+\#define {\bfseries P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK}(p\+\_\+tempstruct)
+\item 
+\#define {\bfseries P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT}(p\+\_\+tempstruct)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+Q\+\_\+\+M\+S\+G\+I\+D\+\_\+T} \{ \\*
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+US}, 
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+T\+E\+MP}, 
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+R\+E\+A\+D\+\_\+\+D\+A\+TA}, 
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+W\+R\+I\+T\+E\+\_\+\+C\+MD}, 
+\\*
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+P\+O\+W\+E\+R\+D\+O\+WN}, 
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+P\+O\+W\+E\+R\+UP}, 
+{\bfseries T\+E\+M\+P\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+E\+X\+IT}
+ \}\hypertarget{temperature__sensor__task_8h_afc6d558316668e60c0e01703a586ff8d}{}\label{temperature__sensor__task_8h_afc6d558316668e60c0e01703a586ff8d}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+mqd\+\_\+t \hyperlink{temperature__sensor__task_8h_afebaba221409b026d6f4648ac50b0c4e}{get\+Handle\+\_\+\+Temperature\+Task\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Get the Handle Temperature\+Task\+Queue object. \end{DoxyCompactList}\item 
+float \hyperlink{temperature__sensor__task_8h_a4bea76689b1b882f95e488a1bb41f5f8}{get\+Temp\+Task\+\_\+temperature} ()
+\begin{DoxyCompactList}\small\item\em Get the Temp\+Task temperature object M\+T-\/safe. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{temperature__sensor__task_8h_abc96664d611b8a19036cf6fcaaf92ac8}{temperature\+\_\+task\+\_\+callback} (void $\ast$threadparam)
+\begin{DoxyCompactList}\small\item\em Entry point of the temp task thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/11 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\index{temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}!D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT@{D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT@{D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT}!temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT}{DEFINE_TEMP_STRUCT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+I\+N\+E\+\_\+\+T\+E\+M\+P\+\_\+\+S\+T\+R\+U\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{msg\+Id, }
+\item[{}]{source\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{temperature__sensor__task_8h_a9b5251efca0e6cd5011d8f5c2120663c}{}\label{temperature__sensor__task_8h_a9b5251efca0e6cd5011d8f5c2120663c}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{structTEMPERATURETASKQ__MSG__T}{TEMPERATURETASKQ\_MSG\_T} name = \{      \(\backslash\)
+        .msgID      = msgId,        \(\backslash\)
+        .sourceID   = sourceId,     \(\backslash\)
+        .packet     = \{0\}           \(\backslash\)
+    \};
+\end{DoxyCode}
+
+
+Defines a temp struct with the name given and params with some default values. 
+
+\index{temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}!P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK}}
+\index{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK}!temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK}{POST_MESSAGE_TEMPERATURETASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+SK(
+\begin{DoxyParamCaption}
+\item[{}]{p\+\_\+tempstruct}
+\end{DoxyParamCaption}
+)}\hypertarget{temperature__sensor__task_8h_a61149876799f1d6645ef6a48ee0f73b8}{}\label{temperature__sensor__task_8h_a61149876799f1d6645ef6a48ee0f73b8}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{  \(\backslash\)
+        \_\_POST\_MESSAGE\_TEMPERATURETASK(\hyperlink{temperature__sensor__task_8h_afebaba221409b026d6f4648ac50b0c4e}{getHandle\_TemperatureTaskQueue}(), 
+      p\_tempstruct, \textcolor{keyword}{sizeof}(*p\_tempstruct),20); \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\index{temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}!P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT}}
+\index{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT}!temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT}{POST_MESSAGE_TEMPERATURETASK_EXIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+T\+A\+S\+K\+\_\+\+E\+X\+IT(
+\begin{DoxyParamCaption}
+\item[{}]{p\+\_\+tempstruct}
+\end{DoxyParamCaption}
+)}\hypertarget{temperature__sensor__task_8h_a6c732386ebba2631f3b28e7a39ec648c}{}\label{temperature__sensor__task_8h_a6c732386ebba2631f3b28e7a39ec648c}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{  \(\backslash\)
+        \_\_POST\_MESSAGE\_TEMPERATURETASK(\hyperlink{temperature__sensor__task_8h_afebaba221409b026d6f4648ac50b0c4e}{getHandle\_TemperatureTaskQueue}(), 
+      p\_tempstruct, \textcolor{keyword}{sizeof}(*p\_tempstruct),50); \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\index{temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}!get\+Handle\+\_\+\+Temperature\+Task\+Queue@{get\+Handle\+\_\+\+Temperature\+Task\+Queue}}
+\index{get\+Handle\+\_\+\+Temperature\+Task\+Queue@{get\+Handle\+\_\+\+Temperature\+Task\+Queue}!temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{get\+Handle\+\_\+\+Temperature\+Task\+Queue()}{getHandle_TemperatureTaskQueue()}}]{\setlength{\rightskip}{0pt plus 5cm}mqd\+\_\+t get\+Handle\+\_\+\+Temperature\+Task\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{temperature__sensor__task_8h_afebaba221409b026d6f4648ac50b0c4e}{}\label{temperature__sensor__task_8h_afebaba221409b026d6f4648ac50b0c4e}
+
+
+Get the Handle Temperature\+Task\+Queue object. 
+
+\begin{DoxyReturn}{Returns}
+mqd\+\_\+t 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+73 \{
+74     \textcolor{keywordflow}{return} temperaturetask\_q;
+75 \}
+\end{DoxyCode}
+\index{temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}!get\+Temp\+Task\+\_\+temperature@{get\+Temp\+Task\+\_\+temperature}}
+\index{get\+Temp\+Task\+\_\+temperature@{get\+Temp\+Task\+\_\+temperature}!temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{get\+Temp\+Task\+\_\+temperature()}{getTempTask_temperature()}}]{\setlength{\rightskip}{0pt plus 5cm}float get\+Temp\+Task\+\_\+temperature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{temperature__sensor__task_8h_a4bea76689b1b882f95e488a1bb41f5f8}{}\label{temperature__sensor__task_8h_a4bea76689b1b882f95e488a1bb41f5f8}
+
+
+Get the Temp\+Task temperature object M\+T-\/safe. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+35 \{
+36     \textcolor{keywordtype}{float} temp;
+37     pthread\_mutex\_lock(&tempChangeLock);
+38     temp = latest\_temperature;
+39     pthread\_mutex\_unlock(&tempChangeLock);
+40     \textcolor{keywordflow}{return} temp;
+41 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{temperature__sensor__task_8h_a4bea76689b1b882f95e488a1bb41f5f8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}!temperature\+\_\+task\+\_\+callback@{temperature\+\_\+task\+\_\+callback}}
+\index{temperature\+\_\+task\+\_\+callback@{temperature\+\_\+task\+\_\+callback}!temperature\+\_\+sensor\+\_\+task.\+h@{temperature\+\_\+sensor\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{temperature\+\_\+task\+\_\+callback(void $\ast$threadparam)}{temperature_task_callback(void *threadparam)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ temperature\+\_\+task\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{threadparam}
+\end{DoxyParamCaption}
+)}\hypertarget{temperature__sensor__task_8h_abc96664d611b8a19036cf6fcaaf92ac8}{}\label{temperature__sensor__task_8h_abc96664d611b8a19036cf6fcaaf92ac8}
+
+
+Entry point of the temp task thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em threadparam} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+185 \{
+186     LOG\_STDOUT(INFO \textcolor{stringliteral}{"TEMPERATURE TASK STARTED\(\backslash\)n"});
+187 
+188     \textcolor{keywordtype}{int} ret = \hyperlink{temperature__sensor__task_8c_ad54a52f7c1962f12523c89f17484f5d9}{temperature\_task\_queue\_init}();
+189     \textcolor{keywordflow}{if}(ERR == ret)
+190     \{
+191         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"TEMPERATURE TASK INIT%s\(\backslash\)n"},strerror(errno));
+192         exit(ERR);
+193     \}
+194 
+195     \hyperlink{structi2c__handle}{I2C\_MASTER\_HANDLE\_T} i2c;
+196     ret = \hyperlink{temperature__sensor__task_8c_ad16d2f35c6d97e33cfe57e3ab2497064}{temperature\_task\_I2Cinit}(&i2c);
+197     \textcolor{keywordflow}{if}(ret)
+198     \{
+199         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"[FAIL] TEMPERATURE TASK SENSOR INIT:%s\(\backslash\)n"},strerror(errno));
+200         \textcolor{keywordflow}{goto} FAIL\_EXIT\_SENSOR;
+201         \textcolor{comment}{//exit(ERR);}
+202     \}
+203 
+204     \textcolor{keywordflow}{if}(ret == 0) \{LOG\_STDOUT(INFO \textcolor{stringliteral}{"[OK] Sensor Test\(\backslash\)n"});\}
+205     \textcolor{keywordflow}{else} \{LOG\_STDOUT(INFO \textcolor{stringliteral}{"[FAIL] Sensor Test\(\backslash\)n"});\}
+206 
+207 
+208     LOG\_STDOUT(INFO \textcolor{stringliteral}{"TEMPERATURE TASK INIT COMPLETED\(\backslash\)n"});
+209     pthread\_barrier\_wait(&tasks\_barrier);
+210 
+211     \textcolor{comment}{/* Registering a timer for 2 sec to update the task temp copy by getting the temperature value from the
+       sensor*/}
+212     timer\_t timer\_id;
+213     \textcolor{keywordflow}{if}(ERR == \hyperlink{common__helper_8c_a23124253b968391b9777fc3b8a0cc5ec}{register\_and\_start\_timer}(&timer\_id, 2*MICROSEC, 0, 
+      timer\_handler\_getAndUpdateTemperature, &timer\_id))
+214     \{
+215         \textcolor{comment}{// LOG\_STDOUT(ERROR "Timer Error\(\backslash\)n");}
+216         \textcolor{keywordflow}{goto} FAIL\_EXIT;
+217     \}
+218 
+219     \textcolor{comment}{/* Process Log queue msg which executes untill the log\_task\_end flag is set to true*/}
+220     temperature\_task\_processMsg();
+221 
+222 
+223     ret = \hyperlink{posixTimer_8c_a91f15230e46caba2a2132b04e9c73e47}{delete\_timer}(timer\_id);
+224     \textcolor{keywordflow}{if}(ERR == ret)
+225     \{
+226         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"TEMPERATURE TASK DELETE TIMER:%s\(\backslash\)n"},strerror(errno));
+227         exit(1);
+228     \}
+229 
+230 FAIL\_EXIT:
+232     \hyperlink{temperature__sensor__task_8c_a7b3917c753224bc64f378ca8e61cc941}{temperature\_task\_I2Cdeinit}(&i2c);
+233 
+234 FAIL\_EXIT\_SENSOR:
+235     mq\_close(temperaturetask\_q);
+236     LOG\_STDOUT(INFO \textcolor{stringliteral}{"Temperature task exit.\(\backslash\)n"});
+237     \textcolor{keywordflow}{return} SUCCESS;
+238 \}\end{DoxyCode}

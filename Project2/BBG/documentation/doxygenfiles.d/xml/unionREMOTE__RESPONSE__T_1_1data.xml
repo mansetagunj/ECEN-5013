@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="unionREMOTE__RESPONSE__T_1_1data" kind="union" language="C++" prot="public">
+    <compoundname>REMOTE_RESPONSE_T::data</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionREMOTE__RESPONSE__T_1_1data_1ae2e376d49080e8828ed00fb9ff1b5f63" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float REMOTE_RESPONSE_T::data::floatingData</definition>
+        <argsstring></argsstring>
+        <name>floatingData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="43" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionREMOTE__RESPONSE__T_1_1data_1a9cb654e8e2aa8cbcc234170ba4913e62" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t REMOTE_RESPONSE_T::data::isNight</definition>
+        <argsstring></argsstring>
+        <name>isNight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="44" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="42" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="42" bodyend="45"/>
+    <listofallmembers>
+      <member refid="unionREMOTE__RESPONSE__T_1_1data_1ae2e376d49080e8828ed00fb9ff1b5f63" prot="public" virt="non-virtual"><scope>REMOTE_RESPONSE_T::data</scope><name>floatingData</name></member>
+      <member refid="unionREMOTE__RESPONSE__T_1_1data_1a9cb654e8e2aa8cbcc234170ba4913e62" prot="public" virt="non-virtual"><scope>REMOTE_RESPONSE_T::data</scope><name>isNight</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

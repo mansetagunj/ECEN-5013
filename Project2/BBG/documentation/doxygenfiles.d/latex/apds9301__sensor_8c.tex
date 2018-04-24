@@ -1,0 +1,701 @@
+\hypertarget{apds9301__sensor_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/apds9301\+\_\+sensor.c File Reference}
+\label{apds9301__sensor_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/apds9301\+\_\+sensor.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/apds9301\+\_\+sensor.\+c}}
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}apds9301\+\_\+sensor.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}my\+\_\+i2c.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+Include dependency graph for apds9301\+\_\+sensor.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries A\+P\+D\+S9301\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+ID}~(0x50)\hypertarget{apds9301__sensor_8c_a588284295cb1c59efff07ad53af80aaf}{}\label{apds9301__sensor_8c_a588284295cb1c59efff07ad53af80aaf}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{apds9301__sensor_8c_a29ea2301a68de775fc0281dd1b4b03aa}{A\+P\+D\+S9301\+\_\+test} ()
+\item 
+int \hyperlink{apds9301__sensor_8c_a27508ac9add1cd27cb2c143631f3a55f}{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low} (uint16\+\_\+t thlow)
+\item 
+int \hyperlink{apds9301__sensor_8c_ad75b8b8d703f549994213adeaea90c64}{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High} (uint16\+\_\+t thhigh)
+\item 
+int \hyperlink{apds9301__sensor_8c_ad0dcd5037cad9e4ed654da7d9d548010}{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low} (uint16\+\_\+t $\ast$thlow)
+\item 
+int \hyperlink{apds9301__sensor_8c_ab7d8d5ac5b780bcdb0a399f286b7f224}{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High} (uint16\+\_\+t $\ast$thhigh)
+\item 
+int \hyperlink{apds9301__sensor_8c_a2aa3244d3848324ba9f4afc7b1990ce1}{A\+P\+D\+S9301\+\_\+read\+Control\+Reg} (uint8\+\_\+t $\ast$ctrl\+\_\+reg)
+\item 
+int \hyperlink{apds9301__sensor_8c_a5e527c870fed599e87d712a151e47172}{A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain} ()
+\item 
+int \hyperlink{apds9301__sensor_8c_aa8c71ee19fe0ef5ff8880f87daa2757a}{A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default} ()
+\item 
+int \hyperlink{apds9301__sensor_8c_a69d91df573c8c448a30715ae605262d7}{A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt} (uint8\+\_\+t enable)
+\item 
+int \hyperlink{apds9301__sensor_8c_aedfa265fc5f3043cea294a0a5d30da04}{A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt} ()
+\item 
+int \hyperlink{apds9301__sensor_8c_ad22326035668d08e6d7cade8cde126e4}{A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol} (uint8\+\_\+t on)
+\item 
+int \hyperlink{apds9301__sensor_8c_ac14a5a102513243824d12e6028abbeb8}{A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time} (uint8\+\_\+t x)
+\item 
+int \hyperlink{apds9301__sensor_8c_a5f0928561f20743cccb1a4f6336ddff4}{A\+P\+D\+S9301\+\_\+poweron} ()
+\item 
+int \hyperlink{apds9301__sensor_8c_a2ddb9f93c9fac9cb3fbe152bda7bc43b}{A\+P\+D\+S9301\+\_\+powerdown} ()
+\item 
+int \hyperlink{apds9301__sensor_8c_a82dac2bc9fc0e11fc4589f3492bec13e}{A\+P\+D\+S9301\+\_\+read\+ID} (uint8\+\_\+t $\ast$id)
+\item 
+int \hyperlink{apds9301__sensor_8c_ae41babc910792ba1bbb19e837fd45d4c}{A\+P\+D\+S9301\+\_\+read\+Ch0} (uint16\+\_\+t $\ast$ch0\+\_\+data)
+\item 
+int \hyperlink{apds9301__sensor_8c_a34c034b815ceb2e30b0161d7461f0a8e}{A\+P\+D\+S9301\+\_\+read\+Ch1} (uint16\+\_\+t $\ast$ch1\+\_\+data)
+\item 
+float \hyperlink{apds9301__sensor_8c_a55e164e7dd0586de71a8dd5b25ae9ef3}{A\+P\+D\+S9301\+\_\+get\+Lux} ()
+\item 
+uint8\+\_\+t $\ast$ \hyperlink{apds9301__sensor_8c_acae5d5b1cfb4008743589e5482d7578b}{A\+P\+D\+S9301\+\_\+mem\+Dump} ()
+\begin{DoxyCompactList}\small\item\em Gives a memdump of 15 len. {\bfseries I\+MP} must free the address using return pointer. \end{DoxyCompactList}\item 
+int \hyperlink{apds9301__sensor_8c_a47621b827697481f12f3bf6257118f70}{A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default} ()
+\begin{DoxyCompactList}\small\item\em Sets back the default configration of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/14 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default@{A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default}}
+\index{A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default@{A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default()}{APDS9301__setmode_allDefault()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+\+\_\+setmode\+\_\+all\+Default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a47621b827697481f12f3bf6257118f70}{}\label{apds9301__sensor_8c_a47621b827697481f12f3bf6257118f70}
+
+
+Sets back the default configration of the sensor. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+252 \{
+253     \textcolor{keywordtype}{int} ret = \hyperlink{apds9301__sensor_8c_aa8c71ee19fe0ef5ff8880f87daa2757a}{APDS9301\_mode\_lowGain\_default}();
+254     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+255     ret = APDS9301\_mode\_integrationTime2\_default();
+256     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+257     ret = APDS9301\_mode\_interruptDisable\_default();
+258     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+259     ret = APDS9301\_mode\_manualcontrolOFF\_default();
+260     \textcolor{keywordflow}{return} ret;
+261 \}\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt@{A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt}}
+\index{A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt@{A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt()}{APDS9301_clearPendingInterrupt()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+clear\+Pending\+Interrupt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_aedfa265fc5f3043cea294a0a5d30da04}{}\label{apds9301__sensor_8c_aedfa265fc5f3043cea294a0a5d30da04}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+105 \{
+106     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_af92cf5a5d893ef9bbf6b4ee6de0b0ef8}{I2Cmaster\_write}(APDS9301\_SLAVE\_ADDR, APDS9301\_CMD\_REG | APDS9301\_CMD\_INT\_CLEAR
+      );
+107     \textcolor{keywordflow}{return} ret;    
+108 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+get\+Lux@{A\+P\+D\+S9301\+\_\+get\+Lux}}
+\index{A\+P\+D\+S9301\+\_\+get\+Lux@{A\+P\+D\+S9301\+\_\+get\+Lux}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+get\+Lux()}{APDS9301_getLux()}}]{\setlength{\rightskip}{0pt plus 5cm}float A\+P\+D\+S9301\+\_\+get\+Lux (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a55e164e7dd0586de71a8dd5b25ae9ef3}{}\label{apds9301__sensor_8c_a55e164e7dd0586de71a8dd5b25ae9ef3}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+191 \{
+192     \textcolor{keywordtype}{float} ratio, lux = -1;
+193     uint16\_t Ch0, Ch1;
+194 
+195     \textcolor{keywordtype}{int} ret  = \hyperlink{apds9301__sensor_8c_ae41babc910792ba1bbb19e837fd45d4c}{APDS9301\_readCh0}(&Ch0);
+196     \textcolor{keywordflow}{if}(ret)
+197         \textcolor{keywordflow}{return} lux;
+198 
+199     ret  = \hyperlink{apds9301__sensor_8c_a34c034b815ceb2e30b0161d7461f0a8e}{APDS9301\_readCh1}(&Ch1);
+200     \textcolor{keywordflow}{if}(ret)
+201         \textcolor{keywordflow}{return} lux;
+202 
+203     \textcolor{keywordflow}{if}(Ch0 != 0)
+204         ratio = (float)Ch1/(\textcolor{keywordtype}{float})Ch0;
+205     \textcolor{keywordflow}{else}
+206         ratio = 0;
+207 
+208     \textcolor{comment}{//Calculate LUX - calculations are referred from the Sensor datasheet}
+209     \textcolor{keywordflow}{if} (ratio > 0 && ratio <= 0.50)
+210     \{
+211         lux = 0.0304*Ch0 - 0.062*Ch0*(pow(ratio, 1.4));
+212     \}
+213     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ratio > 0.50 && ratio <= 0.61)
+214     \{
+215         lux = 0.0224*Ch0 - 0.031*Ch1;
+216     \}
+217     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ratio > 0.61 && ratio <= 0.80)
+218     \{
+219         lux = 0.0128*Ch0 - 0.0153*Ch1;
+220     \}
+221     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ratio > 0.80 && ratio <= 1.30)
+222     \{
+223         lux = 0.00146*Ch0 - 0.00112*Ch1;
+224     \}
+225     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ratio > 1.30)
+226     \{
+227         lux = 0;
+228     \}
+229 
+230     \textcolor{keywordflow}{return} lux;
+231 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_a55e164e7dd0586de71a8dd5b25ae9ef3_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+mem\+Dump@{A\+P\+D\+S9301\+\_\+mem\+Dump}}
+\index{A\+P\+D\+S9301\+\_\+mem\+Dump@{A\+P\+D\+S9301\+\_\+mem\+Dump}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+mem\+Dump()}{APDS9301_memDump()}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t$\ast$ A\+P\+D\+S9301\+\_\+mem\+Dump (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_acae5d5b1cfb4008743589e5482d7578b}{}\label{apds9301__sensor_8c_acae5d5b1cfb4008743589e5482d7578b}
+
+
+Gives a memdump of 15 len. {\bfseries I\+MP} must free the address using return pointer. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+235 \{
+236     uint8\_t *memdump = (uint8\_t*)malloc(15*\textcolor{keyword}{sizeof}(uint8\_t));
+237     memset(memdump, 0 , 15);
+238 
+239     \textcolor{keywordflow}{for}(uint8\_t i = 0 ; i < 0x10; i++)
+240     \{
+241         \textcolor{keywordflow}{if}(i == 0x7 ||  i == 0x9 || i == 0xB)
+242             \textcolor{keywordflow}{continue};
+243         
+244         \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, i | APDS9301\_CMD\_REG, memdump
+      +i);
+245         \textcolor{keywordflow}{if}(ret != 0 ) \textcolor{keywordflow}{continue};
+246     \}
+247 
+248     \textcolor{keywordflow}{return} memdump;
+249 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain@{A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain}}
+\index{A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain@{A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain()}{APDS9301_mode_highGain()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+mode\+\_\+high\+Gain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a5e527c870fed599e87d712a151e47172}{}\label{apds9301__sensor_8c_a5e527c870fed599e87d712a151e47172}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+61 \{
+62     uint8\_t data;
+63     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, &data);
+64     \textcolor{keywordflow}{if}(ret != 0)
+65         \textcolor{keywordflow}{return} ret;
+66 
+67     data |= (uint8\_t)APDS9301\_TIMING\_GAIN;
+68 
+69     ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, data);
+70 
+71     \textcolor{keywordflow}{return} ret;
+72 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time@{A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time}}
+\index{A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time@{A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time(uint8\+\_\+t x)}{APDS9301_mode_integrationTime(uint8_t x)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+mode\+\_\+integration\+Time (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{x}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_ac14a5a102513243824d12e6028abbeb8}{}\label{apds9301__sensor_8c_ac14a5a102513243824d12e6028abbeb8}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+126 \{
+127     uint8\_t data;
+128     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, &data);
+129     \textcolor{keywordflow}{if}(ret != 0)
+130         \textcolor{keywordflow}{return} ret;
+131     
+132     data &= ~(uint8\_t)APDS9301\_TIMING\_INTEG(3);
+133     data |= (uint8\_t)APDS9301\_TIMING\_INTEG(x);
+134 
+135     ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, data);
+136 
+137     \textcolor{keywordflow}{return} ret;
+138 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt@{A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt}}
+\index{A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt@{A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt(uint8\+\_\+t enable)}{APDS9301_mode_interrupt(uint8_t enable)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+mode\+\_\+interrupt (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{enable}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a69d91df573c8c448a30715ae605262d7}{}\label{apds9301__sensor_8c_a69d91df573c8c448a30715ae605262d7}
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+89 \{
+90     uint8\_t data;
+91     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_INT\_CTRL\_REG, &data);
+92     \textcolor{keywordflow}{if}(ret != 0)
+93         \textcolor{keywordflow}{return} ret;
+94 
+95     \textcolor{keywordflow}{if}(enable)
+96         data |= (uint8\_t)APDS9301\_INTCTRL\_IEN;
+97     \textcolor{keywordflow}{else}
+98         data &= ~(uint8\_t)APDS9301\_INTCTRL\_IEN;
+99 
+100     ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_INT\_CTRL\_REG, data);
+101 
+102     \textcolor{keywordflow}{return} ret;
+103 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default@{A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default}}
+\index{A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default@{A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default()}{APDS9301_mode_lowGain_default()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+mode\+\_\+low\+Gain\+\_\+default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_aa8c71ee19fe0ef5ff8880f87daa2757a}{}\label{apds9301__sensor_8c_aa8c71ee19fe0ef5ff8880f87daa2757a}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+74 \{
+75     uint8\_t data;
+76     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, &data);
+77     \textcolor{keywordflow}{if}(ret != 0)
+78         \textcolor{keywordflow}{return} ret;
+79 
+80     data &= ~(uint8\_t)APDS9301\_TIMING\_GAIN;
+81 
+82     ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, data);
+83 
+84     \textcolor{keywordflow}{return} ret;
+85 
+86 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_aa8c71ee19fe0ef5ff8880f87daa2757a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol@{A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol}}
+\index{A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol@{A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol(uint8\+\_\+t on)}{APDS9301_mode_manualcontrol(uint8_t on)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+mode\+\_\+manualcontrol (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{on}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_ad22326035668d08e6d7cade8cde126e4}{}\label{apds9301__sensor_8c_ad22326035668d08e6d7cade8cde126e4}
+
+\begin{DoxyParams}{Parameters}
+{\em on} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+111 \{
+112     uint8\_t data;
+113     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, &data);
+114     \textcolor{keywordflow}{if}(ret != 0)
+115         \textcolor{keywordflow}{return} ret;
+116 
+117     data &= ~(uint8\_t)APDS9301\_TIMING\_MANUAL(1);
+118     data |= (uint8\_t)APDS9301\_TIMING\_MANUAL(on);
+119 
+120     ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_TIMING\_REG, data);
+121 
+122     \textcolor{keywordflow}{return} ret;
+123 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+powerdown@{A\+P\+D\+S9301\+\_\+powerdown}}
+\index{A\+P\+D\+S9301\+\_\+powerdown@{A\+P\+D\+S9301\+\_\+powerdown}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+powerdown()}{APDS9301_powerdown()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+powerdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a2ddb9f93c9fac9cb3fbe152bda7bc43b}{}\label{apds9301__sensor_8c_a2ddb9f93c9fac9cb3fbe152bda7bc43b}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+147 \{
+148     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CTRL\_REG, 
+      APDS9301\_CTRL\_POWEROFF);
+149     \textcolor{keywordflow}{return} ret;
+150 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_a2ddb9f93c9fac9cb3fbe152bda7bc43b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+poweron@{A\+P\+D\+S9301\+\_\+poweron}}
+\index{A\+P\+D\+S9301\+\_\+poweron@{A\+P\+D\+S9301\+\_\+poweron}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+poweron()}{APDS9301_poweron()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+poweron (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a5f0928561f20743cccb1a4f6336ddff4}{}\label{apds9301__sensor_8c_a5f0928561f20743cccb1a4f6336ddff4}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+142 \{
+143     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a202be1d68320e3ba93c759821ba2f695}{I2Cmaster\_write\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CTRL\_REG, 
+      APDS9301\_CTRL\_POWERON);
+144     \textcolor{keywordflow}{return} ret;
+145 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_a5f0928561f20743cccb1a4f6336ddff4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High@{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High}}
+\index{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High@{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High(uint16\+\_\+t $\ast$thhigh)}{APDS9301_read_ThHigh(uint16_t *thhigh)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+High (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t $\ast$}]{thhigh}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_ab7d8d5ac5b780bcdb0a399f286b7f224}{}\label{apds9301__sensor_8c_ab7d8d5ac5b780bcdb0a399f286b7f224}
+
+\begin{DoxyParams}{Parameters}
+{\em thhigh} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+49 \{
+50     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(APDS9301\_SLAVE\_ADDR, APDS9301\_INT\_TH\_HL\_REG, (
+      uint8\_t*)thhigh, \textcolor{keyword}{sizeof}(thhigh));
+51     \textcolor{keywordflow}{return} ret;
+52 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low@{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low}}
+\index{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low@{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low(uint16\+\_\+t $\ast$thlow)}{APDS9301_read_ThLow(uint16_t *thlow)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+read\+\_\+\+Th\+Low (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t $\ast$}]{thlow}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_ad0dcd5037cad9e4ed654da7d9d548010}{}\label{apds9301__sensor_8c_ad0dcd5037cad9e4ed654da7d9d548010}
+
+\begin{DoxyParams}{Parameters}
+{\em thlow} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+43 \{
+44     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(APDS9301\_SLAVE\_ADDR, APDS9301\_INT\_TH\_LL\_REG, (
+      uint8\_t*)thlow, \textcolor{keyword}{sizeof}(thlow));
+45     \textcolor{keywordflow}{return} ret;
+46 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+read\+Ch0@{A\+P\+D\+S9301\+\_\+read\+Ch0}}
+\index{A\+P\+D\+S9301\+\_\+read\+Ch0@{A\+P\+D\+S9301\+\_\+read\+Ch0}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+read\+Ch0(uint16\+\_\+t $\ast$ch0\+\_\+data)}{APDS9301_readCh0(uint16_t *ch0_data)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+read\+Ch0 (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t $\ast$}]{ch0\+\_\+data}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_ae41babc910792ba1bbb19e837fd45d4c}{}\label{apds9301__sensor_8c_ae41babc910792ba1bbb19e837fd45d4c}
+
+\begin{DoxyParams}{Parameters}
+{\em ch0\+\_\+data} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+158 \{
+159     \textcolor{keywordtype}{int} ret;
+160     uint8\_t ch0\_data\_L, ch0\_data\_H;
+161     ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CH0\_DATALOW, &ch0\_data\_L);
+162     \textcolor{keywordflow}{if}(ret)
+163         \textcolor{keywordflow}{return} ret;
+164 
+165     ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CH0\_DATAHIGH, &ch0\_data\_H);
+166 
+167     \textcolor{keywordflow}{if}(!ret)
+168         *ch0\_data = (ch0\_data\_H << 8) | ch0\_data\_L ;
+169     
+170     \textcolor{keywordflow}{return} ret;
+171 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_ae41babc910792ba1bbb19e837fd45d4c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+read\+Ch1@{A\+P\+D\+S9301\+\_\+read\+Ch1}}
+\index{A\+P\+D\+S9301\+\_\+read\+Ch1@{A\+P\+D\+S9301\+\_\+read\+Ch1}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+read\+Ch1(uint16\+\_\+t $\ast$ch1\+\_\+data)}{APDS9301_readCh1(uint16_t *ch1_data)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+read\+Ch1 (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t $\ast$}]{ch1\+\_\+data}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a34c034b815ceb2e30b0161d7461f0a8e}{}\label{apds9301__sensor_8c_a34c034b815ceb2e30b0161d7461f0a8e}
+
+\begin{DoxyParams}{Parameters}
+{\em ch1\+\_\+data} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+174 \{
+175     \textcolor{keywordtype}{int} ret;
+176     uint8\_t ch1\_data\_L, ch1\_data\_H;
+177     ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CH1\_DATALOW, &ch1\_data\_L);
+178     \textcolor{keywordflow}{if}(ret)
+179         \textcolor{keywordflow}{return} ret;
+180 
+181     ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CH1\_DATAHIGH, &ch1\_data\_H);
+182     
+183     \textcolor{keywordflow}{if}(!ret)
+184         *ch1\_data = (ch1\_data\_H << 8) | ch1\_data\_L;
+185     
+186     \textcolor{keywordflow}{return} ret;
+187 
+188 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_a34c034b815ceb2e30b0161d7461f0a8e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+read\+Control\+Reg@{A\+P\+D\+S9301\+\_\+read\+Control\+Reg}}
+\index{A\+P\+D\+S9301\+\_\+read\+Control\+Reg@{A\+P\+D\+S9301\+\_\+read\+Control\+Reg}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+read\+Control\+Reg(uint8\+\_\+t $\ast$ctrl\+\_\+reg)}{APDS9301_readControlReg(uint8_t *ctrl_reg)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+read\+Control\+Reg (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{ctrl\+\_\+reg}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a2aa3244d3848324ba9f4afc7b1990ce1}{}\label{apds9301__sensor_8c_a2aa3244d3848324ba9f4afc7b1990ce1}
+
+\begin{DoxyParams}{Parameters}
+{\em ctrl\+\_\+reg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+55 \{
+56     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_CTRL\_REG, ctrl\_reg);
+57     \textcolor{keywordflow}{return} ret;
+58 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+read\+ID@{A\+P\+D\+S9301\+\_\+read\+ID}}
+\index{A\+P\+D\+S9301\+\_\+read\+ID@{A\+P\+D\+S9301\+\_\+read\+ID}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+read\+I\+D(uint8\+\_\+t $\ast$id)}{APDS9301_readID(uint8_t *id)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+read\+ID (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a82dac2bc9fc0e11fc4589f3492bec13e}{}\label{apds9301__sensor_8c_a82dac2bc9fc0e11fc4589f3492bec13e}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+152 \{
+153     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a8024ad1f3558034ee998758f45d456d9}{I2Cmaster\_read\_byte}(APDS9301\_SLAVE\_ADDR, APDS9301\_ID\_REG, \textcolor{keywordtype}{id});
+154     \textcolor{keywordflow}{return} ret;
+155 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_a82dac2bc9fc0e11fc4589f3492bec13e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+test@{A\+P\+D\+S9301\+\_\+test}}
+\index{A\+P\+D\+S9301\+\_\+test@{A\+P\+D\+S9301\+\_\+test}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+test()}{APDS9301_test()}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+test (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a29ea2301a68de775fc0281dd1b4b03aa}{}\label{apds9301__sensor_8c_a29ea2301a68de775fc0281dd1b4b03aa}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+18 \{
+19     uint8\_t data;
+20     \textcolor{keywordtype}{int} ret = \hyperlink{apds9301__sensor_8c_a82dac2bc9fc0e11fc4589f3492bec13e}{APDS9301\_readID}(&data);
+21     \textcolor{keywordflow}{if}(ret == 0) 
+22     \{
+23         (APDS9301\_SENSOR\_ID == (data & 0xF0)) ? 0 : (ret = -1);
+24     \}
+25 
+26     \textcolor{keywordflow}{return} ret; 
+27     
+28 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{apds9301__sensor_8c_a29ea2301a68de775fc0281dd1b4b03aa_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High@{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High}}
+\index{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High@{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High(uint16\+\_\+t thhigh)}{APDS9301_write_ThHigh(uint16_t thhigh)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+High (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{thhigh}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_ad75b8b8d703f549994213adeaea90c64}{}\label{apds9301__sensor_8c_ad75b8b8d703f549994213adeaea90c64}
+
+\begin{DoxyParams}{Parameters}
+{\em thhigh} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+37 \{
+38     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(APDS9301\_SLAVE\_ADDR, APDS9301\_INT\_TH\_HL\_REG | 
+      APDS9301\_CMD\_WORD\_EN , thhigh, 0);
+39     \textcolor{keywordflow}{return} ret;
+40 \}
+\end{DoxyCode}
+\index{apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}!A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low@{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low}}
+\index{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low@{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low}!apds9301\+\_\+sensor.\+c@{apds9301\+\_\+sensor.\+c}}
+\subsubsection[{\texorpdfstring{A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low(uint16\+\_\+t thlow)}{APDS9301_write_ThLow(uint16_t thlow)}}]{\setlength{\rightskip}{0pt plus 5cm}int A\+P\+D\+S9301\+\_\+write\+\_\+\+Th\+Low (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{thlow}
+\end{DoxyParamCaption}
+)}\hypertarget{apds9301__sensor_8c_a27508ac9add1cd27cb2c143631f3a55f}{}\label{apds9301__sensor_8c_a27508ac9add1cd27cb2c143631f3a55f}
+
+\begin{DoxyParams}{Parameters}
+{\em thlow} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+31 \{
+32     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(APDS9301\_SLAVE\_ADDR, APDS9301\_INT\_TH\_LL\_REG | 
+      APDS9301\_CMD\_WORD\_EN, thlow, 0);
+33     \textcolor{keywordflow}{return} ret;
+34 \}
+\end{DoxyCode}

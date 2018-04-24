@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structREMOTE__RESPONSE__T" kind="struct" language="C++" prot="public">
+    <compoundname>REMOTE_RESPONSE_T</compoundname>
+    <innerclass refid="unionREMOTE__RESPONSE__T_1_1data" prot="public">REMOTE_RESPONSE_T::data</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structREMOTE__RESPONSE__T_1aeffb937926ea1d5ae378d59eec691357" prot="public" static="no" mutable="no">
+        <type>REMOTE_REQRSP_ID</type>
+        <definition>REMOTE_REQRSP_ID REMOTE_RESPONSE_T::rsp_id</definition>
+        <argsstring></argsstring>
+        <name>rsp_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="41" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREMOTE__RESPONSE__T_1a7cf162cedf8f984c2f287815632fdfd0" prot="public" static="no" mutable="no">
+        <type>union <ref refid="unionREMOTE__RESPONSE__T_1_1data" kindref="compound">REMOTE_RESPONSE_T::data</ref></type>
+        <definition>union REMOTE_RESPONSE_T::data REMOTE_RESPONSE_T::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structREMOTE__RESPONSE__T_1a3382443efefd8a97a65e01578dfa9246" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char REMOTE_RESPONSE_T::metadata[20]</definition>
+        <argsstring>[20]</argsstring>
+        <name>metadata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="46" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="40">
+        <label>REMOTE_RESPONSE_T::data</label>
+        <link refid="unionREMOTE__RESPONSE__T_1_1data"/>
+      </node>
+      <node id="39">
+        <label>REMOTE_RESPONSE_T</label>
+        <link refid="structREMOTE__RESPONSE__T"/>
+        <childnode refid="40" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" line="40" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/sensor_common_object.h" bodystart="39" bodyend="48"/>
+    <listofallmembers>
+      <member refid="structREMOTE__RESPONSE__T_1a7cf162cedf8f984c2f287815632fdfd0" prot="public" virt="non-virtual"><scope>REMOTE_RESPONSE_T</scope><name>data</name></member>
+      <member refid="structREMOTE__RESPONSE__T_1a3382443efefd8a97a65e01578dfa9246" prot="public" virt="non-virtual"><scope>REMOTE_RESPONSE_T</scope><name>metadata</name></member>
+      <member refid="structREMOTE__RESPONSE__T_1aeffb937926ea1d5ae378d59eec691357" prot="public" virt="non-virtual"><scope>REMOTE_RESPONSE_T</scope><name>rsp_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="my__time_8h" kind="file" language="C++">
+    <compoundname>my_time.h</compoundname>
+    <includedby refid="logger__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</includedby>
+    <includedby refid="light__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</includedby>
+    <includedby refid="temperature__sensor__task_8h" local="yes">/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</includedby>
+    <includedby refid="my__time_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/my_time.c</includedby>
+    <invincdepgraph>
+      <node id="630">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="629">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="632">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/temperature_sensor_task.h</label>
+        <link refid="temperature__sensor__task_8h"/>
+        <childnode refid="625" relation="include">
+        </childnode>
+        <childnode refid="628" relation="include">
+        </childnode>
+        <childnode refid="629" relation="include">
+        </childnode>
+        <childnode refid="630" relation="include">
+        </childnode>
+      </node>
+      <node id="623">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/my_time.h</label>
+        <link refid="my_time.h"/>
+        <childnode refid="624" relation="include">
+        </childnode>
+        <childnode refid="631" relation="include">
+        </childnode>
+        <childnode refid="632" relation="include">
+        </childnode>
+        <childnode refid="633" relation="include">
+        </childnode>
+      </node>
+      <node id="624">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="625" relation="include">
+        </childnode>
+        <childnode refid="626" relation="include">
+        </childnode>
+        <childnode refid="627" relation="include">
+        </childnode>
+        <childnode refid="628" relation="include">
+        </childnode>
+        <childnode refid="629" relation="include">
+        </childnode>
+        <childnode refid="630" relation="include">
+        </childnode>
+      </node>
+      <node id="628">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="625">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="626">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="633">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/my_time.c</label>
+        <link refid="my__time_8c"/>
+      </node>
+      <node id="631">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h</label>
+        <link refid="light__sensor__task_8h"/>
+        <childnode refid="625" relation="include">
+        </childnode>
+        <childnode refid="626" relation="include">
+        </childnode>
+        <childnode refid="628" relation="include">
+        </childnode>
+        <childnode refid="629" relation="include">
+        </childnode>
+      </node>
+      <node id="627">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger__task_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="my__time_8h_1a3385e59201decd0fae390437721a7d7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int get_time_string</definition>
+        <argsstring>(char *timeString, int len)</argsstring>
+        <name>get_time_string</name>
+        <param>
+          <type>char *</type>
+          <declname>timeString</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Get the time string object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_time.h" line="18" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_time.c" bodystart="17" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-18 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>TIME_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIME_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__time_8h_1a3385e59201decd0fae390437721a7d7e" kindref="member">get_time_string</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*timeString,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_time.h"/>
+  </compounddef>
+</doxygen>

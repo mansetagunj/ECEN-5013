@@ -1,0 +1,4 @@
+<map id="configdata_getSetupTime" name="configdata_getSetupTime">
+<area shape="rect" id="node2" href="$readConfiguration_8h.html#a93341cc941d5255d844aea3b49cdfc9e" title="Should be called at teh end of main task. If not called, memory leak will occur. " alt="" coords="224,29,341,56"/>
+<area shape="rect" id="node3" href="$main__task_8h.html#a52c4c165f42a1ca113ba4bd55b00a293" title="entry point for the main task " alt="" coords="389,29,508,56"/>
+</map>

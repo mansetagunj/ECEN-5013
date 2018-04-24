@@ -1,0 +1,110 @@
+\hypertarget{my__signals_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/my\+\_\+signals.c File Reference}
+\label{my__signals_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/my\+\_\+signals.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/my\+\_\+signals.\+c}}
+{\ttfamily \#include \char`\"{}my\+\_\+signals.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+Include dependency graph for my\+\_\+signals.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__signals_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{my__signals_8c_ab23ded226351ef07fcd948a6d04a06e7}{register\+\_\+signal\+Handler} (struct sigaction $\ast$sa, void($\ast$handler)(int), R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t signal\+Mask)
+\begin{DoxyCompactList}\small\item\em Register asignal handler for specific signal masks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/18 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{my\+\_\+signals.\+c@{my\+\_\+signals.\+c}!register\+\_\+signal\+Handler@{register\+\_\+signal\+Handler}}
+\index{register\+\_\+signal\+Handler@{register\+\_\+signal\+Handler}!my\+\_\+signals.\+c@{my\+\_\+signals.\+c}}
+\subsubsection[{\texorpdfstring{register\+\_\+signal\+Handler(struct sigaction $\ast$sa, void($\ast$handler)(int), R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t signal\+Mask)}{register_signalHandler(struct sigaction *sa, void(*handler)(int), REG_SIGNAL_FLAG_t signalMask)}}]{\setlength{\rightskip}{0pt plus 5cm}int register\+\_\+signal\+Handler (
+\begin{DoxyParamCaption}
+\item[{struct sigaction $\ast$}]{sa, }
+\item[{void($\ast$)(int)}]{handler, }
+\item[{R\+E\+G\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+F\+L\+A\+G\+\_\+t}]{signal\+Mask}
+\end{DoxyParamCaption}
+)}\hypertarget{my__signals_8c_ab23ded226351ef07fcd948a6d04a06e7}{}\label{my__signals_8c_ab23ded226351ef07fcd948a6d04a06e7}
+
+
+Register asignal handler for specific signal masks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sa} & \\
+\hline
+{\em handler} & \\
+\hline
+{\em signal\+Mask} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+13 \{
+14     sa->sa\_handler = handler;
+15 
+16     sa->sa\_flags = SA\_RESTART;
+17 
+18     sigfillset(&sa->sa\_mask);
+19 
+20     \textcolor{keywordtype}{int} ret\_error = 0;
+21     
+22     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_USR1) && sigaction(SIGUSR1, sa, NULL) == -1) 
+23     \{
+24         ret\_error++;
+25         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGUSR1.\(\backslash\)n"});
+26     \}
+27 
+28     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_USR2) && sigaction(SIGUSR2, sa, NULL) == -1) 
+29     \{
+30         ret\_error++;
+31         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGUSR2.\(\backslash\)n"});
+32     \}
+33     
+34     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_INT) && sigaction(SIGINT, sa, NULL) == -1) 
+35     \{
+36         ret\_error++;
+37         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGINT.\(\backslash\)n"});
+38     \}
+39     
+40     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_TSTP) && sigaction(SIGTERM, sa, NULL) == -1) 
+41     \{
+42         ret\_error++;
+43         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGTERM.\(\backslash\)n"});
+44     \}
+45     
+46     \textcolor{keywordflow}{if} ((signalMask & REG\_SIG\_TSTP) && sigaction(SIGTSTP, sa, NULL) == -1) 
+47     \{
+48         ret\_error++;
+49         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot handle SIGTSTOP.\(\backslash\)n"});
+50     \}
+51 
+52     \textcolor{keywordflow}{return} ret\_error;
+53 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{my__signals_8c_ab23ded226351ef07fcd948a6d04a06e7_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,5 @@
+<map id="configdata_getLogpath" name="configdata_getLogpath">
+<area shape="rect" id="node2" href="$logger__task_8h.html#a7322e57eb5c8763112ad4d4a946601bf" title="Entry point of the logger task thread. " alt="" coords="207,5,351,32"/>
+<area shape="rect" id="node3" href="$readConfiguration_8h.html#a93341cc941d5255d844aea3b49cdfc9e" title="Should be called at teh end of main task. If not called, memory leak will occur. " alt="" coords="220,80,337,107"/>
+<area shape="rect" id="node4" href="$main__task_8h.html#a52c4c165f42a1ca113ba4bd55b00a293" title="entry point for the main task " alt="" coords="399,80,517,107"/>
+</map>

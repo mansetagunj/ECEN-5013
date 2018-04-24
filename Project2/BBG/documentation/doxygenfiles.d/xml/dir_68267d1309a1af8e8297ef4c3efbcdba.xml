@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>/home/gunj/repos/ECEN-5013/Project1/src</compoundname>
+    <innerfile refid="apds9301__sensor_8c">apds9301_sensor.c</innerfile>
+    <innerfile refid="BB__Led_8c">BB_Led.c</innerfile>
+    <innerfile refid="common__helper_8c">common_helper.c</innerfile>
+    <innerfile refid="light__sensor__task_8c">light_sensor_task.c</innerfile>
+    <innerfile refid="logger__task_8c">logger_task.c</innerfile>
+    <innerfile refid="main_8c">main.c</innerfile>
+    <innerfile refid="main__task_8c">main_task.c</innerfile>
+    <innerfile refid="my__i2c_8c">my_i2c.c</innerfile>
+    <innerfile refid="my__signals_8c">my_signals.c</innerfile>
+    <innerfile refid="my__time_8c">my_time.c</innerfile>
+    <innerfile refid="posixTimer_8c">posixTimer.c</innerfile>
+    <innerfile refid="readConfiguration_8c">readConfiguration.c</innerfile>
+    <innerfile refid="socket__task_8c">socket_task.c</innerfile>
+    <innerfile refid="temperature__sensor__task_8c">temperature_sensor_task.c</innerfile>
+    <innerfile refid="tmp102__sensor_8c">tmp102_sensor.c</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/"/>
+  </compounddef>
+</doxygen>

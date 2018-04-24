@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_6fe83d91399f49b132dea4640b9b1ea0" kind="dir">
+    <compoundname>/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone</compoundname>
+    <innerfile refid="apds9301__sensor_8h">apds9301_sensor.h</innerfile>
+    <innerfile refid="BB__Led_8h">BB_Led.h</innerfile>
+    <innerfile refid="my__i2c_8h">my_i2c.h</innerfile>
+    <innerfile refid="tmp102__sensor_8h">tmp102_sensor.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/"/>
+  </compounddef>
+</doxygen>

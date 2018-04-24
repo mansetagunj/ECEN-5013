@@ -1,0 +1,533 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="logger__task_8c" kind="file" language="C++">
+    <compoundname>logger_task.c</compoundname>
+    <includes local="no">pthread.h</includes>
+    <includes local="no">fcntl.h</includes>
+    <includes local="no">sys/stat.h</includes>
+    <includes local="no">mqueue.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes refid="main__task_8h" local="yes">main_task.h</includes>
+    <includes refid="logger__task_8h" local="yes">logger_task.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes refid="readConfiguration_8h" local="yes">readConfiguration.h</includes>
+    <incdepgraph>
+      <node id="778">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="782">
+        <label>main_task.h</label>
+        <link refid="main__task_8h"/>
+        <childnode refid="779" relation="include">
+        </childnode>
+        <childnode refid="781" relation="include">
+        </childnode>
+        <childnode refid="780" relation="include">
+        </childnode>
+        <childnode refid="783" relation="include">
+        </childnode>
+        <childnode refid="791" relation="include">
+        </childnode>
+      </node>
+      <node id="787">
+        <label>stdint.h</label>
+      </node>
+      <node id="795">
+        <label>stdlib.h</label>
+      </node>
+      <node id="796">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="794">
+        <label>logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="795" relation="include">
+        </childnode>
+        <childnode refid="781" relation="include">
+        </childnode>
+        <childnode refid="780" relation="include">
+        </childnode>
+        <childnode refid="779" relation="include">
+        </childnode>
+        <childnode refid="783" relation="include">
+        </childnode>
+        <childnode refid="796" relation="include">
+        </childnode>
+        <childnode refid="791" relation="include">
+        </childnode>
+      </node>
+      <node id="781">
+        <label>errno.h</label>
+      </node>
+      <node id="777">
+        <label>fcntl.h</label>
+      </node>
+      <node id="779">
+        <label>mqueue.h</label>
+      </node>
+      <node id="791">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="789" relation="include">
+        </childnode>
+        <childnode refid="792" relation="include">
+        </childnode>
+        <childnode refid="788" relation="include">
+        </childnode>
+        <childnode refid="793" relation="include">
+        </childnode>
+      </node>
+      <node id="784">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="785" relation="include">
+        </childnode>
+        <childnode refid="786" relation="include">
+        </childnode>
+        <childnode refid="787" relation="include">
+        </childnode>
+        <childnode refid="788" relation="include">
+        </childnode>
+        <childnode refid="789" relation="include">
+        </childnode>
+        <childnode refid="790" relation="include">
+        </childnode>
+      </node>
+      <node id="776">
+        <label>pthread.h</label>
+      </node>
+      <node id="788">
+        <label>sys/types.h</label>
+      </node>
+      <node id="780">
+        <label>string.h</label>
+      </node>
+      <node id="783">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="779" relation="include">
+        </childnode>
+        <childnode refid="776" relation="include">
+        </childnode>
+        <childnode refid="784" relation="include">
+        </childnode>
+      </node>
+      <node id="789">
+        <label>unistd.h</label>
+      </node>
+      <node id="790">
+        <label>signal.h</label>
+      </node>
+      <node id="797">
+        <label>readConfiguration.h</label>
+        <link refid="readConfiguration_8h"/>
+      </node>
+      <node id="785">
+        <label>time.h</label>
+      </node>
+      <node id="786">
+        <label>linux/types.h</label>
+      </node>
+      <node id="792">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="775">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger_task.c"/>
+        <childnode refid="776" relation="include">
+        </childnode>
+        <childnode refid="777" relation="include">
+        </childnode>
+        <childnode refid="778" relation="include">
+        </childnode>
+        <childnode refid="779" relation="include">
+        </childnode>
+        <childnode refid="780" relation="include">
+        </childnode>
+        <childnode refid="781" relation="include">
+        </childnode>
+        <childnode refid="782" relation="include">
+        </childnode>
+        <childnode refid="794" relation="include">
+        </childnode>
+        <childnode refid="791" relation="include">
+        </childnode>
+        <childnode refid="797" relation="include">
+        </childnode>
+      </node>
+      <node id="793">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="logger__task_8c_1acd4d3023d24d5314b895981b17825666" prot="public" static="no">
+        <name>LOG_DIR</name>
+        <initializer>&quot;./log/&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="21" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8c_1a4da5b65210189fc3d0e4181c1360c910" prot="public" static="no">
+        <name>__LOG_PATH</name>
+        <param><defname>x</defname></param>
+        <initializer>LOG_DIR ## x</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="22" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8c_1a3f5d06ef4f4d41e380bd95c43f587a82" prot="public" static="no">
+        <name>LOG_PATH</name>
+        <param><defname>x</defname></param>
+        <initializer>__LOG_PATH(x)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="23" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8c_1a14ba9f9069b18507694dc8f984a5a5b2" prot="public" static="no">
+        <name>MQ_LOGGERTASK_NAME</name>
+        <initializer>&quot;/loggertask_queue&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="25" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" prot="public" static="no">
+        <name>LT_LOG</name>
+        <param><defname>fp</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>do{fprintf(fp,&quot;[PID:%d][TID:%ld]&quot;,getpid(),syscall(SYS_gettid)); fprintf(fp,format, ##__VA_ARGS__); fflush(fp);}while(0)</initializer>
+        <briefdescription>
+<para>USe it carefully as there is not NULL checking of the file stream provided. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="32" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="logger__task_8c_1a976483fd8cf3a26a05506f119b7506d2" prot="public" static="no" mutable="no">
+        <type>LOG_LEVEL_T</type>
+        <definition>LOG_LEVEL_T g_loglevel</definition>
+        <argsstring></argsstring>
+        <name>g_loglevel</name>
+        <initializer>= LOG_ALL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="37" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="logger__task_8c_1a12798e5e4f505079b32a78c455859d17" prot="public" static="yes" mutable="no">
+        <type>mqd_t</type>
+        <definition>mqd_t loggertask_q</definition>
+        <argsstring></argsstring>
+        <name>loggertask_q</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="39" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="logger__task_8c_1ac3b7cda92012133de3b948c721737097" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_LoggerTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_LoggerTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle LoggerTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="41" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8c_1af939b897bf5c8c9b1a95fee832b617af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FILE *</type>
+        <definition>FILE* logger_task_file_init</definition>
+        <argsstring>(const char *logFileName)</argsstring>
+        <name>logger_task_file_init</name>
+        <param>
+          <type>const char *</type>
+          <declname>logFileName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="46" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="46" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8c_1a7332b548e067e6e73cf230f5955b4e79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int logger_task_queue_init</definition>
+        <argsstring>()</argsstring>
+        <name>logger_task_queue_init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="71" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="71" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8c_1aafed61a6fe21dcc363b6a05bc01839da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logger_task_processMsg</definition>
+        <argsstring>(FILE *fp)</argsstring>
+        <name>logger_task_processMsg</name>
+        <param>
+          <type>FILE *</type>
+          <declname>fp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="86" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="86" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8c_1a7322e57eb5c8763112ad4d4a946601bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* logger_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>logger_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+<para>Entry point of the logger task thread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" line="143" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="143" bodyend="190"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fcntl.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>O_*<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>mode<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="main__task_8h" kindref="compound">main_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger__task_8h" kindref="compound">logger_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="readConfiguration_8h" kindref="compound">readConfiguration.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_DIR<sp/><sp/><sp/><sp/><sp/>&quot;./log/&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__LOG_PATH(x)<sp/>LOG_DIR<sp/>##<sp/>x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_PATH(x)<sp/>__LOG_PATH(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MQ_LOGGERTASK_NAME<sp/>&quot;/loggertask_queue&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" refkind="member"><highlight class="preprocessor">#define<sp/>LT_LOG(fp,format,<sp/>...)<sp/>do{fprintf(fp,&quot;[PID:%d][TID:%ld]&quot;,getpid(),syscall(SYS_gettid));<sp/>fprintf(fp,format,<sp/>##__VA_ARGS__);<sp/>fflush(fp);}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Keeping<sp/>the<sp/>log<sp/>level<sp/>to<sp/>the<sp/>higest<sp/>level<sp/>to<sp/>log<sp/>everything.<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/>Should<sp/>be<sp/>configure<sp/>at<sp/>compile<sp/>time<sp/>using<sp/>compile<sp/>time<sp/>switch</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">LOG_LEVEL_T<sp/>g_loglevel<sp/>=<sp/>LOG_ALL;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mqd_t<sp/>loggertask_q;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="logger__task_8h_1ac3b7cda92012133de3b948c721737097" refkind="member"><highlight class="normal">mqd_t<sp/><ref refid="logger__task_8c_1ac3b7cda92012133de3b948c721737097" kindref="member">getHandle_LoggerTaskQueue</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>loggertask_q;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">FILE*<sp/>logger_task_file_init(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*logFileName)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(NULL<sp/>==<sp/>logFileName)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*fp<sp/>=<sp/>fopen(logFileName,</highlight><highlight class="stringliteral">&quot;r+&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>check<sp/>if<sp/>the<sp/>file<sp/>already<sp/>exists<sp/>then<sp/>close<sp/>it<sp/>and<sp/>save<sp/>it<sp/>as<sp/>old_log<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(fp)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(fp);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>newFilename[40]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf(newFilename,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(newFilename),</highlight><highlight class="stringliteral">&quot;%u_%s&quot;</highlight><highlight class="normal">,(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">)time(NULL),logFileName);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>rename(logFileName,<sp/>newFilename);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>backup<sp/>old<sp/>log<sp/>file\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>fp<sp/>=<sp/>fopen(logFileName,</highlight><highlight class="stringliteral">&quot;w+&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(NULL<sp/>==<sp/>fp)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>file<sp/>created\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fp;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>logger_task_queue_init()</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">mq_attr<sp/>loggertaskQ_attr<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_msgsize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref>),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_maxmsg<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_flags<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_curmsgs<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>mq_unlink(MQ_LOGGERTASK_NAME);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>loggertask_q<sp/>=<sp/>mq_open(MQ_LOGGERTASK_NAME,<sp/>O_CREAT<sp/>|<sp/>O_RDWR,<sp/>0666,<sp/>&amp;loggertaskQ_attr);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>loggertask_q;;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>logger_task_processMsg(FILE<sp/>*fp)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret,prio;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref><sp/>queueData<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main__task_8h_1a457d4759d056b6c98f3966506d480eae" kindref="member">DEFINE_MAINTASK_STRUCT</ref>(maintaskRsp,MT_MSG_STATUS_RSP,LOGGER_TASK_ID);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//struct<sp/>timespec<sp/>recv_timeout<sp/>=<sp/>{0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>continue_flag=<sp/>1;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(continue_flag)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(&amp;queueData,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(queueData));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clock_gettime(CLOCK_REALTIME,<sp/>&amp;recv_timeout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recv_timeout.tv_sec<sp/>+=<sp/>3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ret<sp/>=<sp/>mq_timedreceive(loggertask_q,(char*)&amp;(queueData),sizeof(queueData),&amp;prio,<sp/>&amp;recv_timeout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>mq_receive(loggertask_q,(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;(queueData),</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(queueData),&amp;prio);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if(ERR<sp/>==<sp/>ret<sp/>&amp;&amp;<sp/>ETIMEDOUT<sp/>==<sp/>errno)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>//LOG_STDOUT(ERROR<sp/>&quot;MQ_RECV<sp/>TIMEOUT:%s\n&quot;,strerror(errno));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>continue;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret<sp/>)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;MQ_RECV:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(queueData.msgID)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LT_MSG_TASK_EXIT):</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>continue_flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" kindref="member">LT_LOG</ref>(fp,INFO<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>Task<sp/>Exit<sp/>request<sp/>from:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>Task<sp/>Exit<sp/>request<sp/>from:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LT_MSG_LOG):</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(g_loglevel<sp/>&gt;=<sp/>queueData.loglevel)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>STDOUT_LOG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[%s]<sp/>Sender:%s\tMsg:%s&quot;</highlight><highlight class="normal">,queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" kindref="member">LT_LOG</ref>(fp,INFO<sp/></highlight><highlight class="stringliteral">&quot;[%s]<sp/>Sender:%s\tMsg:%s&quot;</highlight><highlight class="normal">,queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LT_MSG_TASK_STATUS):</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(MAIN_TASK_ID<sp/>==<sp/>queueData.sourceID)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Send<sp/>back<sp/>task<sp/>alive<sp/>response<sp/>to<sp/>main<sp/>task<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" kindref="member">LT_LOG</ref>(fp,INFO<sp/></highlight><highlight class="stringliteral">&quot;[%s]<sp/>Sender:%s\tMsg:%s&quot;</highlight><highlight class="normal">,queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_MAINTASK(&amp;maintaskRsp,<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>Alive&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;INVALID<sp/>QUEUE<sp/>LOG<sp/>ID\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="logger__task_8h_1a7322e57eb5c8763112ad4d4a946601bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="logger__task_8c_1a7322e57eb5c8763112ad4d4a946601bf" kindref="member">logger_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*threadparam)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>STARTED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename<sp/>=<sp/><ref refid="readConfiguration_8c_1a6ec4251859d1107c4a9f457ff5ead99c" kindref="member">configdata_getLogpath</ref>();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*fp;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(filename)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fp<sp/>=<sp/>logger_task_file_init(filename);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(WARNING<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>filename<sp/>found<sp/>from<sp/>config<sp/>file\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fp<sp/>=<sp/>logger_task_file_init(</highlight><highlight class="stringliteral">&quot;project1.log&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(NULL<sp/>==<sp/>fp)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>LOG<sp/>FILE<sp/>INIT<sp/>FAIL\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(ERR);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>logger_task_queue_init();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>INIT%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(ERR);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>INIT<sp/>COMPLETED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" kindref="member">LT_LOG</ref>(fp,INFO<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>INIT<sp/>COMPLETED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_barrier_wait(&amp;tasks_barrier);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#ifdef<sp/>VALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>UP<sp/>and<sp/>RUNNING\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#ifdef<sp/>LOGVALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8c_1af208b116436178ee34bd80503c1bbe3e" kindref="member">LT_LOG</ref>(fp,INFO<sp/></highlight><highlight class="stringliteral">&quot;LOGGER<sp/>TASK<sp/>UP<sp/>and<sp/>RUNNING\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Log<sp/>queue<sp/>msg<sp/>which<sp/>executes<sp/>untill<sp/>the<sp/>log_task_end<sp/>flag<sp/>is<sp/>set<sp/>to<sp/>true*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>logger_task_processMsg(fp);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>mq_close(loggertask_q);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>fflush(fp);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>fclose(fp);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>Task<sp/>Exit.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)SUCCESS;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c"/>
+  </compounddef>
+</doxygen>

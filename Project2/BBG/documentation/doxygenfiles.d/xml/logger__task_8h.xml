@@ -1,0 +1,572 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="logger__task_8h" kind="file" language="C++">
+    <compoundname>logger_task.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">mqueue.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <includes refid="my__time_8h" local="yes">my_time.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includedby refid="common__helper_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</includedby>
+    <includedby refid="light__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</includedby>
+    <includedby refid="logger__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <incdepgraph>
+      <node id="576">
+        <label>stdint.h</label>
+      </node>
+      <node id="567">
+        <label>stdlib.h</label>
+      </node>
+      <node id="580">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="566">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</label>
+        <link refid="logger_task.h"/>
+        <childnode refid="567" relation="include">
+        </childnode>
+        <childnode refid="568" relation="include">
+        </childnode>
+        <childnode refid="569" relation="include">
+        </childnode>
+        <childnode refid="570" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+        <childnode refid="580" relation="include">
+        </childnode>
+        <childnode refid="581" relation="include">
+        </childnode>
+      </node>
+      <node id="568">
+        <label>errno.h</label>
+      </node>
+      <node id="570">
+        <label>mqueue.h</label>
+      </node>
+      <node id="581">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="578" relation="include">
+        </childnode>
+        <childnode refid="582" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
+        </childnode>
+        <childnode refid="583" relation="include">
+        </childnode>
+      </node>
+      <node id="573">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="574" relation="include">
+        </childnode>
+        <childnode refid="575" relation="include">
+        </childnode>
+        <childnode refid="576" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
+        </childnode>
+        <childnode refid="578" relation="include">
+        </childnode>
+        <childnode refid="579" relation="include">
+        </childnode>
+      </node>
+      <node id="572">
+        <label>pthread.h</label>
+      </node>
+      <node id="577">
+        <label>sys/types.h</label>
+      </node>
+      <node id="569">
+        <label>string.h</label>
+      </node>
+      <node id="571">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="570" relation="include">
+        </childnode>
+        <childnode refid="572" relation="include">
+        </childnode>
+        <childnode refid="573" relation="include">
+        </childnode>
+      </node>
+      <node id="578">
+        <label>unistd.h</label>
+      </node>
+      <node id="579">
+        <label>signal.h</label>
+      </node>
+      <node id="574">
+        <label>time.h</label>
+      </node>
+      <node id="575">
+        <label>linux/types.h</label>
+      </node>
+      <node id="582">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="583">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="590">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="589">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="584">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h</label>
+        <link refid="logger_task.h"/>
+        <childnode refid="585" relation="include">
+        </childnode>
+        <childnode refid="586" relation="include">
+        </childnode>
+        <childnode refid="587" relation="include">
+        </childnode>
+        <childnode refid="588" relation="include">
+        </childnode>
+        <childnode refid="589" relation="include">
+        </childnode>
+        <childnode refid="590" relation="include">
+        </childnode>
+      </node>
+      <node id="588">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="585">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="586">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="587">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger__task_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structLOGGERTASKQ__MSG__T" prot="public">LOGGERTASKQ_MSG_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="logger__task_8h_1a3e0953f6f3a48d888c4966ec9d77eb47" prot="public" static="no">
+        <name>LT_MSG_SIZE</name>
+        <initializer>40</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="22" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" prot="public" static="no">
+        <name>DEFINE_LOG_STRUCT</name>
+        <param><defname>name</defname></param>
+        <param><defname>msgId</defname></param>
+        <param><defname>sourceId</defname></param>
+        <initializer><ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref> name = {      \
+        .msgID      = msgId,        \
+        .loglevel   = LOG_ALL,      \
+        .sourceID   = sourceId,     \
+        .timestamp  = {0},          \
+        .msgData    = {0}           \
+    };</initializer>
+        <briefdescription>
+<para>Defines a Log struct with the name given and params with some default values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="57" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8h_1a6ba2462c06e19df9d50d34bfd6ce91ee" prot="public" static="no">
+        <name>POST_MESSAGE_LOGTASK</name>
+        <param><defname>p_logstruct</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>do{ \
+        snprintf((p_logstruct)-&gt;msgData,sizeof((p_logstruct)-&gt;msgData),format, ##__VA_ARGS__);   \
+        set_Log_currentTimestamp(p_logstruct); \
+        __POST_MESSAGE_LOGTASK(<ref refid="logger__task_8h_1ac3b7cda92012133de3b948c721737097" kindref="member">getHandle_LoggerTaskQueue</ref>(), p_logstruct, sizeof(*p_logstruct), 20); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="98" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="logger__task_8h_1a592a2c8319536ad2125b35bbf0d6a6f1" prot="public" static="no">
+        <name>POST_MESSAGE_LOGTASK_EXIT</name>
+        <param><defname>p_logstruct</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>do{ \
+        snprintf((p_logstruct)-&gt;msgData,sizeof((p_logstruct)-&gt;msgData),format, ##__VA_ARGS__);   \
+        set_Log_currentTimestamp(p_logstruct); \
+        __POST_MESSAGE_LOGTASK(<ref refid="logger__task_8h_1ac3b7cda92012133de3b948c721737097" kindref="member">getHandle_LoggerTaskQueue</ref>(), p_logstruct, sizeof(*p_logstruct), 50); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="105" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ad" prot="public" static="no">
+        <name>LOGGERTASKQ_MSGID_T</name>
+        <enumvalue id="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ada3475bc9fca40cad91fc2741924e77c14" prot="public">
+          <name>LT_MSG_TASK_STATUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ada13276ad77c1e8e009ac94da32d0f3ac9" prot="public">
+          <name>LT_MSG_LOG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="logger__task_8h_1a94334c0c387ff34c6a268ee8ee6028ada00fe122ef55c8df06eb58c04ab147b9a" prot="public">
+          <name>LT_MSG_TASK_EXIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="27" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="enum" id="logger__task_8h_1aecf2a701f46029451c8733fde5134a89" prot="public" static="no">
+        <name>LOG_LEVEL_T</name>
+        <enumvalue id="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a230506cce5c68c3bac5a821c42ed3473" prot="public">
+          <name>LOG_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a8f6fe15bfe15104da6d1b360194a5400" prot="public">
+          <name>LOG_WARNING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a6e98ff471e3ce6c4ef2d75c37ee51837" prot="public">
+          <name>LOG_INFO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="logger__task_8h_1aecf2a701f46029451c8733fde5134a89a87cff070224b283d7aace436723245fc" prot="public">
+          <name>LOG_ALL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="35" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="34" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="logger__task_8h_1a2d188b418a97bc2072c76cebf414a3a6" prot="public" static="no">
+        <type>char</type>
+        <definition>typedef char LOGGER_TASK_MSGDATA_T</definition>
+        <argsstring></argsstring>
+        <name>LOGGER_TASK_MSGDATA_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="24" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="logger__task_8h_1a422999d7aada2b273042c05681cdae20" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void set_Log_loglevel</definition>
+        <argsstring>(LOGGERTASKQ_MSG_T *log_msg, LOG_LEVEL_T loglevel)</argsstring>
+        <name>set_Log_loglevel</name>
+        <param>
+          <type><ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref> *</type>
+          <declname>log_msg</declname>
+        </param>
+        <param>
+          <type>LOG_LEVEL_T</type>
+          <declname>loglevel</declname>
+        </param>
+        <briefdescription>
+<para>Set the Log loglevel. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>log_msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>loglevel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="72" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8h_1a1a9807387bba629533ec0e57150b6eb3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void set_Log_currentTimestamp</definition>
+        <argsstring>(LOGGERTASKQ_MSG_T *log_msg)</argsstring>
+        <name>set_Log_currentTimestamp</name>
+        <param>
+          <type><ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref> *</type>
+          <declname>log_msg</declname>
+        </param>
+        <briefdescription>
+<para>Set the Log currentTimestamp to the currentTime as &quot;sec.nsec&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>log_msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="82" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8h_1ac3b7cda92012133de3b948c721737097" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_LoggerTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_LoggerTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle LoggerTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="92" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8h_1aafe6fc71bc231530ba6d66be95d6e2ea" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void __POST_MESSAGE_LOGTASK</definition>
+        <argsstring>(mqd_t queue, const LOGGERTASKQ_MSG_T *logstruct, size_t log_struct_size, int prio)</argsstring>
+        <name>__POST_MESSAGE_LOGTASK</name>
+        <param>
+          <type>mqd_t</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref> *</type>
+          <declname>logstruct</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>log_struct_size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>prio</declname>
+        </param>
+        <briefdescription>
+<para>Post message to the log using the log queue handle and giving log struct. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>logstruct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>log_struct_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="119" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="119" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="logger__task_8h_1a7322e57eb5c8763112ad4d4a946601bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* logger_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>logger_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+<para>Entry point of the logger task thread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="133" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c" bodystart="143" bodyend="190"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>LOGGER_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__time_8h" kindref="compound">my_time.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LT_MSG_SIZE<sp/>40</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>LOGGER_TASK_MSGDATA_T;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>LT_MSG_TASK_STATUS,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>LT_MSG_LOG,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>LT_MSG_TASK_EXIT</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}LOGGERTASKQ_MSGID_T;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_ERROR,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_WARNING,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_INFO,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_ALL</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}LOG_LEVEL_T;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="structLOGGERTASKQ__MSG__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>LOGGERTASKQ_MSGID_T<sp/>msgID;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>timestamp[20];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_LEVEL_T<sp/>loglevel;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_IDENTIFIER_T<sp/>sourceID;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>LOGGER_TASK_MSGDATA_T<sp/>msgData[LT_MSG_SIZE];</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" refkind="member"><highlight class="preprocessor">#define<sp/>DEFINE_LOG_STRUCT(name,msgId,sourceId)<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>LOGGERTASKQ_MSG_T<sp/>name<sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.msgID<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>msgId,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.loglevel<sp/><sp/><sp/>=<sp/>LOG_ALL,<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.sourceID<sp/><sp/><sp/>=<sp/>sourceId,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.timestamp<sp/><sp/>=<sp/>{0},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.msgData<sp/><sp/><sp/><sp/>=<sp/>{0}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_Log_loglevel(<ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref><sp/>*log_msg,<sp/>LOG_LEVEL_T<sp/>loglevel)<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>log_msg-&gt;loglevel<sp/>=<sp/>loglevel;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>set_Log_currentTimestamp(<ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref><sp/>*log_msg)<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="my__time_8c_1acd4a0d89baad5fa6b1e4e6c85b082226" kindref="member">get_time_string</ref>(log_msg-&gt;timestamp,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(log_msg-&gt;timestamp));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">mqd_t<sp/><ref refid="logger__task_8h_1ac3b7cda92012133de3b948c721737097" kindref="member">getHandle_LoggerTaskQueue</ref>();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor">#define<sp/>POST_MESSAGE_LOGTASK(p_logstruct,<sp/>format,<sp/>...)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf((p_logstruct)-&gt;msgData,sizeof((p_logstruct)-&gt;msgData),format,<sp/>##__VA_ARGS__);<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_Log_currentTimestamp(p_logstruct);<sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(),<sp/>p_logstruct,<sp/>sizeof(*p_logstruct),<sp/>20);<sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POST_MESSAGE_LOGTASK_EXIT(p_logstruct,<sp/>format,<sp/>...)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf((p_logstruct)-&gt;msgData,sizeof((p_logstruct)-&gt;msgData),format,<sp/>##__VA_ARGS__);<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_Log_currentTimestamp(p_logstruct);<sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(),<sp/>p_logstruct,<sp/>sizeof(*p_logstruct),<sp/>50);<sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__POST_MESSAGE_LOGTASK(mqd_t<sp/>queue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structLOGGERTASKQ__MSG__T" kindref="compound">LOGGERTASKQ_MSG_T</ref><sp/>*logstruct,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>log_struct_size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>prio)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(-1<sp/>==<sp/>mq_send(queue,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)logstruct,<sp/>log_struct_size,<sp/>prio))</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LOGGER:MQ_SEND:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="logger__task_8h_1a7322e57eb5c8763112ad4d4a946601bf" kindref="member">logger_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*threadparam);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h"/>
+  </compounddef>
+</doxygen>

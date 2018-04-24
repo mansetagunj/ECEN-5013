@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="main__task_8h" kind="file" language="C++">
+    <compoundname>main_task.h</compoundname>
+    <includes local="no">mqueue.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">string.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includedby refid="common__helper_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</includedby>
+    <includedby refid="light__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</includedby>
+    <includedby refid="logger__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</includedby>
+    <includedby refid="main_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main.c</includedby>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <includedby refid="temperature__sensor__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</includedby>
+    <incdepgraph>
+      <node id="591">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h</label>
+        <link refid="main_task.h"/>
+        <childnode refid="592" relation="include">
+        </childnode>
+        <childnode refid="593" relation="include">
+        </childnode>
+        <childnode refid="594" relation="include">
+        </childnode>
+        <childnode refid="595" relation="include">
+        </childnode>
+        <childnode refid="604" relation="include">
+        </childnode>
+      </node>
+      <node id="600">
+        <label>stdint.h</label>
+      </node>
+      <node id="593">
+        <label>errno.h</label>
+      </node>
+      <node id="592">
+        <label>mqueue.h</label>
+      </node>
+      <node id="604">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="602" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="606" relation="include">
+        </childnode>
+      </node>
+      <node id="597">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="599" relation="include">
+        </childnode>
+        <childnode refid="600" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="602" relation="include">
+        </childnode>
+        <childnode refid="603" relation="include">
+        </childnode>
+      </node>
+      <node id="596">
+        <label>pthread.h</label>
+      </node>
+      <node id="601">
+        <label>sys/types.h</label>
+      </node>
+      <node id="594">
+        <label>string.h</label>
+      </node>
+      <node id="595">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="592" relation="include">
+        </childnode>
+        <childnode refid="596" relation="include">
+        </childnode>
+        <childnode refid="597" relation="include">
+        </childnode>
+      </node>
+      <node id="602">
+        <label>unistd.h</label>
+      </node>
+      <node id="603">
+        <label>signal.h</label>
+      </node>
+      <node id="598">
+        <label>time.h</label>
+      </node>
+      <node id="599">
+        <label>linux/types.h</label>
+      </node>
+      <node id="605">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="606">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="613">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature__sensor__task_8c"/>
+      </node>
+      <node id="612">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="607">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h</label>
+        <link refid="main_task.h"/>
+        <childnode refid="608" relation="include">
+        </childnode>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="610" relation="include">
+        </childnode>
+        <childnode refid="611" relation="include">
+        </childnode>
+        <childnode refid="612" relation="include">
+        </childnode>
+        <childnode refid="613" relation="include">
+        </childnode>
+      </node>
+      <node id="611">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="608">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/common_helper.c</label>
+        <link refid="common__helper_8c"/>
+      </node>
+      <node id="609">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light__sensor__task_8c"/>
+      </node>
+      <node id="610">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/logger_task.c</label>
+        <link refid="logger__task_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structMAINTASKQ__MSG__T" prot="public">MAINTASKQ_MSG_T</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="main__task_8h_1a2d4ecced2466e472574d62f82cc7da19" prot="public" static="no">
+        <name>MT_MSG_SIZE</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="19" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="main__task_8h_1a457d4759d056b6c98f3966506d480eae" prot="public" static="no">
+        <name>DEFINE_MAINTASK_STRUCT</name>
+        <param><defname>name</defname></param>
+        <param><defname>msgId</defname></param>
+        <param><defname>sourceId</defname></param>
+        <initializer><ref refid="structMAINTASKQ__MSG__T" kindref="compound">MAINTASKQ_MSG_T</ref> name = {      \
+        .msgID      = msgId,        \
+        .sourceID   = sourceId,     \
+        .msgData    = {0}           \
+    };</initializer>
+        <briefdescription>
+<para>Defines a Main task queue struct with the name given and params with some default values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="43" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="main__task_8h_1ae94e2361e513b95ba8aae96361661425" prot="public" static="no">
+        <name>POST_MESSAGE_MAINTASK</name>
+        <param><defname>p_maintaskstruct</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>do{ \
+        snprintf((p_maintaskstruct)-&gt;msgData,sizeof((p_maintaskstruct)-&gt;msgData),format, ##__VA_ARGS__);   \
+        __POST_MESSAGE_MAINTASK(<ref refid="main__task_8h_1ad539583e28fb9162099dfd54fc34afc8" kindref="member">getHandle_MainTaskQueue</ref>(), p_maintaskstruct, sizeof(*p_maintaskstruct)); \
+    }while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="54" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="main__task_8h_1ad5eb80ad0711fe40ab2f80bd98b11c20" prot="public" static="no">
+        <name>MAINTASKQ_MSGID_T</name>
+        <enumvalue id="main__task_8h_1ad5eb80ad0711fe40ab2f80bd98b11c20a579e5821152f8c58bc3f0d75a961141e" prot="public">
+          <name>MT_MSG_STATUS_RSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="main__task_8h_1ad5eb80ad0711fe40ab2f80bd98b11c20a3d4da944995c3d7dcade243039a65a43" prot="public">
+          <name>MT_MSG_INIT_SUCCESS_RSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="24" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" bodystart="23" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="main__task_8h_1af70ff19e945c4a17b622920b428f3132" prot="public" static="no">
+        <type>char</type>
+        <definition>typedef char MAINT_TASK_MSGDATA_T</definition>
+        <argsstring></argsstring>
+        <name>MAINT_TASK_MSGDATA_T</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="21" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="main__task_8h_1ad98881d12ad2819859324e8a38e4c7fa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void __POST_MESSAGE_MAINTASK</definition>
+        <argsstring>(mqd_t queue, const MAINTASKQ_MSG_T *main_task_struct, size_t maintask_struct_size)</argsstring>
+        <name>__POST_MESSAGE_MAINTASK</name>
+        <param>
+          <type>mqd_t</type>
+          <declname>queue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structMAINTASKQ__MSG__T" kindref="compound">MAINTASKQ_MSG_T</ref> *</type>
+          <declname>main_task_struct</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>maintask_struct_size</declname>
+        </param>
+        <briefdescription>
+<para>Post message to the main task using the main task queue handle and giving struct. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>main_task_struct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maintask_struct_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="67" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="main__task_8h_1ad539583e28fb9162099dfd54fc34afc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_MainTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_MainTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle MainTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="80" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/main_task.c" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main_task_entry</definition>
+        <argsstring>()</argsstring>
+        <name>main_task_entry</name>
+        <briefdescription>
+<para>entry point for the main task </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h" line="87" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/main_task.c" bodystart="210" bodyend="309"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>MAIN_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAIN_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MT_MSG_SIZE<sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>MAINT_TASK_MSGDATA_T;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>MT_MSG_STATUS_RSP,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>MT_MSG_INIT_SUCCESS_RSP,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}MAINTASKQ_MSGID_T;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="structMAINTASKQ__MSG__T" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>MAINTASKQ_MSGID_T<sp/>msgID;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_IDENTIFIER_T<sp/>sourceID;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>MAINT_TASK_MSGDATA_T<sp/>msgData[MT_MSG_SIZE];</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}<ref refid="structMAINTASKQ__MSG__T" kindref="compound">MAINTASKQ_MSG_T</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="main__task_8h_1a457d4759d056b6c98f3966506d480eae" refkind="member"><highlight class="preprocessor">#define<sp/>DEFINE_MAINTASK_STRUCT(name,msgId,sourceId)<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MAINTASKQ_MSG_T<sp/>name<sp/>=<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.msgID<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>msgId,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.sourceID<sp/><sp/><sp/>=<sp/>sourceId,<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.msgData<sp/><sp/><sp/><sp/>=<sp/>{0}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor">#define<sp/>POST_MESSAGE_MAINTASK(p_maintaskstruct,<sp/>format,<sp/>...)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do{<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf((p_maintaskstruct)-&gt;msgData,sizeof((p_maintaskstruct)-&gt;msgData),format,<sp/>##__VA_ARGS__);<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__POST_MESSAGE_MAINTASK(getHandle_MainTaskQueue(),<sp/>p_maintaskstruct,<sp/>sizeof(*p_maintaskstruct));<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>__POST_MESSAGE_MAINTASK(mqd_t<sp/>queue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structMAINTASKQ__MSG__T" kindref="compound">MAINTASKQ_MSG_T</ref><sp/>*main_task_struct,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>maintask_struct_size)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(-1<sp/>==<sp/>mq_send(queue,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)main_task_struct,<sp/>maintask_struct_size,<sp/>20))</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;MAIN:MQ_SEND:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">mqd_t<sp/><ref refid="main__task_8h_1ad539583e28fb9162099dfd54fc34afc8" kindref="member">getHandle_MainTaskQueue</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" kindref="member">main_task_entry</ref>();<sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/main_task.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,933 @@
+\hypertarget{tmp102__sensor_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/\+Beagle\+Bone/tmp102\+\_\+sensor.h File Reference}
+\label{tmp102__sensor_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/\+Beagle\+Bone/tmp102\+\_\+sensor.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/\+Beagle\+Bone/tmp102\+\_\+sensor.\+h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmp102__sensor_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structTMP102__CONFIG__REG__SETTINGS__T}{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+E\+G\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+T}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+S\+L\+A\+V\+E\+\_\+\+A\+D\+DR}~(0x48)\hypertarget{tmp102__sensor_8h_a5092a6804ba3b3746307a370defbd886}{}\label{tmp102__sensor_8h_a5092a6804ba3b3746307a370defbd886}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+R\+E\+G\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+RE}~(0x00)\hypertarget{tmp102__sensor_8h_aea6533288f31ec0c0315dd54f929fee5}{}\label{tmp102__sensor_8h_aea6533288f31ec0c0315dd54f929fee5}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+R\+E\+G\+\_\+\+C\+O\+N\+F\+I\+G\+U\+R\+A\+T\+I\+ON}~(0x01)\hypertarget{tmp102__sensor_8h_ad0625a9e3e89c267c5060a3c01f34011}{}\label{tmp102__sensor_8h_ad0625a9e3e89c267c5060a3c01f34011}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+R\+E\+G\+\_\+\+T\+L\+OW}~(0x02)\hypertarget{tmp102__sensor_8h_a26f5d3c790581774f55998360b248769}{}\label{tmp102__sensor_8h_a26f5d3c790581774f55998360b248769}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+R\+E\+G\+\_\+\+T\+H\+I\+GH}~(0x03)\hypertarget{tmp102__sensor_8h_a2705c0ccf3404fffcf0f3566914f98ba}{}\label{tmp102__sensor_8h_a2705c0ccf3404fffcf0f3566914f98ba}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+SD}~(1)\hypertarget{tmp102__sensor_8h_a88a716e4fccaa747f3ff9c2ff98b3eec}{}\label{tmp102__sensor_8h_a88a716e4fccaa747f3ff9c2ff98b3eec}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+TM}~(1$<$$<$1)\hypertarget{tmp102__sensor_8h_abf3813bf9769e2d22bdc37e5e0e7b2f9}{}\label{tmp102__sensor_8h_abf3813bf9769e2d22bdc37e5e0e7b2f9}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+P\+OL}~(1$<$$<$2)\hypertarget{tmp102__sensor_8h_a008cb8f9704db90f09d4e4b2dd8c040b}{}\label{tmp102__sensor_8h_a008cb8f9704db90f09d4e4b2dd8c040b}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+EM}~(1$<$$<$12)\hypertarget{tmp102__sensor_8h_a5bba383a7572ce8264417e7f6426ce88}{}\label{tmp102__sensor_8h_a5bba383a7572ce8264417e7f6426ce88}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+AL}~(1$<$$<$13)\hypertarget{tmp102__sensor_8h_a6daed77089fc130171b75fb77dfb3661}{}\label{tmp102__sensor_8h_a6daed77089fc130171b75fb77dfb3661}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+CR}(x)~(x$<$$<$14)\hypertarget{tmp102__sensor_8h_a54602466d5eaacf584b283c626c06eb9}{}\label{tmp102__sensor_8h_a54602466d5eaacf584b283c626c06eb9}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+A\+U\+L\+T\+B\+I\+TS}~(3$<$$<$3)              /$\ast$generates alert after 4 consecutive faults$\ast$/\hypertarget{tmp102__sensor_8h_a87bc9726a0037e6f8a3baf036a50cc34}{}\label{tmp102__sensor_8h_a87bc9726a0037e6f8a3baf036a50cc34}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+O\+N\+E\+S\+H\+O\+T\+\_\+\+CR}~(1$<$7)              /$\ast$saves power between conversions when 1$\ast$/\hypertarget{tmp102__sensor_8h_aff0b28b78374e0658675e4d38ef62d2e}{}\label{tmp102__sensor_8h_aff0b28b78374e0658675e4d38ef62d2e}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN}
+\item 
+\#define \hyperlink{tmp102__sensor_8h_ab79ca2cd8f6ac2c6edb369185a4ec9e2}{T\+M\+P102\+\_\+get\+Temp\+\_\+\+Celcius}(p\+\_\+temp)~\hyperlink{tmp102__sensor_8h_a847d6333b56e33f815bb5e1101056e42}{T\+M\+P102\+\_\+get\+Temp}(p\+\_\+temp, C\+E\+L\+C\+I\+US)\hypertarget{tmp102__sensor_8h_ab79ca2cd8f6ac2c6edb369185a4ec9e2}{}\label{tmp102__sensor_8h_ab79ca2cd8f6ac2c6edb369185a4ec9e2}
+
+\begin{DoxyCompactList}\small\item\em Abstracted macros for different units. \end{DoxyCompactList}\item 
+\#define {\bfseries T\+M\+P102\+\_\+get\+Temp\+\_\+\+Kelvin}(p\+\_\+temp)~\hyperlink{tmp102__sensor_8h_a847d6333b56e33f815bb5e1101056e42}{T\+M\+P102\+\_\+get\+Temp}(p\+\_\+temp, K\+E\+L\+V\+IN)\hypertarget{tmp102__sensor_8h_a164eefae884728c9725a07253de91b34}{}\label{tmp102__sensor_8h_a164eefae884728c9725a07253de91b34}
+
+\item 
+\#define {\bfseries T\+M\+P102\+\_\+get\+Temp\+\_\+\+Fahren}(p\+\_\+temp)~\hyperlink{tmp102__sensor_8h_a847d6333b56e33f815bb5e1101056e42}{T\+M\+P102\+\_\+get\+Temp}(p\+\_\+temp, F\+A\+H\+R\+EN)\hypertarget{tmp102__sensor_8h_a614c139921346bfb450e1e51c5239e75}{}\label{tmp102__sensor_8h_a614c139921346bfb450e1e51c5239e75}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum temperature\+\_\+unit {\bfseries T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+\_\+\+U\+N\+I\+T\+\_\+T}\hypertarget{tmp102__sensor_8h_a2ffc14fbf10761dbe31056dc66d1986e}{}\label{tmp102__sensor_8h_a2ffc14fbf10761dbe31056dc66d1986e}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries temperature\+\_\+unit} \{ {\bfseries C\+E\+L\+C\+I\+US} = 0, 
+{\bfseries F\+A\+H\+R\+EN}, 
+{\bfseries K\+E\+L\+V\+IN}
+ \}\hypertarget{tmp102__sensor_8h_a97e99b5bf85609e1aa08fadbc777f26a}{}\label{tmp102__sensor_8h_a97e99b5bf85609e1aa08fadbc777f26a}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries T\+M\+P102\+\_\+set\+Mode} (\hyperlink{structTMP102__CONFIG__REG__SETTINGS__T}{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+E\+G\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+T} mode)\hypertarget{tmp102__sensor_8h_ae5d236342ee1df3c285e70ec22d9a48e}{}\label{tmp102__sensor_8h_ae5d236342ee1df3c285e70ec22d9a48e}
+
+\item 
+int \hyperlink{tmp102__sensor_8h_a4725fb3e4cf18de4220d6067a7dc5dd4}{T\+M\+P102\+\_\+setmode\+\_\+all\+Default} ()
+\begin{DoxyCompactList}\small\item\em Brings back to default. \end{DoxyCompactList}\item 
+uint16\+\_\+t $\ast$ \hyperlink{tmp102__sensor_8h_a1ea9cb5a6a2e798b33564f9142d7afa1}{T\+M\+P102\+\_\+mem\+Dump} ()
+\begin{DoxyCompactList}\small\item\em Gives a memdump of 4 len. {\bfseries I\+MP} must free the address using return pointer. \end{DoxyCompactList}\item 
+int \hyperlink{tmp102__sensor_8h_a847d6333b56e33f815bb5e1101056e42}{T\+M\+P102\+\_\+get\+Temp} (float $\ast$temp, T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+\_\+\+U\+N\+I\+T\+\_\+T unit)
+\begin{DoxyCompactList}\small\item\em Gets the temperature value. \end{DoxyCompactList}\item 
+int \hyperlink{tmp102__sensor_8h_a7d4d57387ef6a5db5bfc8d14a94d9ee4}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a4309a30e9d006753c2cdd6f6c9af2650}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a81c75dba63b6c0727ab602ea631b3a22}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a4386703b35277dc71be5cd9b57d0f3ce}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a899854f020db34f588f89adffcdc8433}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_aa7438de8c6766d48b649e132cabf88e9}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_aa96f470639b851a96f524ae6524dd266}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a2df18183afad1339903fe59997aaf9a2}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a3f6277d742af4a10dcec568e84ad1d5d}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+HZ} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a110d2f8672865d85670f2681e5dc9aed}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+HZ} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a6d24a33a5e009441edb99bd1a727afec}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a031c7291b177515876ebb29d24dc97b4}{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+HZ} ()
+\item 
+int \hyperlink{tmp102__sensor_8h_a98961eafa743b9a651a3cd2f3787f858}{T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+RT} (uint8\+\_\+t $\ast$al\+\_\+bit)
+\item 
+int \hyperlink{tmp102__sensor_8h_a6296f70167b1f662c7f9b56b15fe037c}{T\+M\+P102\+\_\+write\+\_\+\+Tlow} (float tlow\+\_\+C)
+\item 
+int \hyperlink{tmp102__sensor_8h_a32a4b8bbc5611a7ca967cdaaeb732ae1}{T\+M\+P102\+\_\+write\+\_\+\+Thigh} (float thigh\+\_\+C)
+\item 
+int \hyperlink{tmp102__sensor_8h_aa8531a04dcf776f0d81d190b384bfab5}{T\+M\+P102\+\_\+read\+\_\+\+Tlow} (float $\ast$tlow\+\_\+C)
+\item 
+int \hyperlink{tmp102__sensor_8h_a63bbac70f6558fd10f034a45d1fa140c}{T\+M\+P102\+\_\+read\+\_\+\+Thigh} (float $\ast$thigh\+\_\+C)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{structTMP102__CONFIG__REG__SETTINGS__T}{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+E\+G\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+T} \hyperlink{tmp102__sensor_8h_ae8c25eda33c17bf746db7b91fe54c85c}{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/13 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN@{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN}}
+\index{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN@{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN}{TMP102_CONFIG_DEFAULT_ASSIGN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+S\+S\+I\+GN}\hypertarget{tmp102__sensor_8h_ae9063947dd29fb325ca720853d6a7265}{}\label{tmp102__sensor_8h_ae9063947dd29fb325ca720853d6a7265}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{\(\backslash\)
+    .SD\_MODE = 0,\(\backslash\)
+    .TM\_MODE = 0,\(\backslash\)
+    .POL     = 0,\(\backslash\)
+    .OS      = 0,\(\backslash\)
+    .EM\_MODE = 0,\(\backslash\)
+    .CR      = 2\(\backslash\)
+\}
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+get\+Temp@{T\+M\+P102\+\_\+get\+Temp}}
+\index{T\+M\+P102\+\_\+get\+Temp@{T\+M\+P102\+\_\+get\+Temp}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+get\+Temp(float $\ast$temp, T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+\_\+\+U\+N\+I\+T\+\_\+\+T unit)}{TMP102_getTemp(float *temp, TEMPERATURE_UNIT_T unit)}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+get\+Temp (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{temp, }
+\item[{T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+\_\+\+U\+N\+I\+T\+\_\+T}]{unit}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a847d6333b56e33f815bb5e1101056e42}{}\label{tmp102__sensor_8h_a847d6333b56e33f815bb5e1101056e42}
+
+
+Gets the temperature value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & \\
+\hline
+{\em unit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+375 \{
+376     uint8\_t buff[2] = \{0\};
+377     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TEMPERATURE, buff, \textcolor{keyword}{
+      sizeof}(buff));
+378     \textcolor{keywordflow}{if}(ret == -1)
+379         \textcolor{keywordflow}{return} ret;
+380 
+381     \textcolor{comment}{/* We get MSB(15:8) in buff[0] and LSB(7:4) in buff[1] */}
+382     uint16\_t temp\_raw = (buff[0] << 4) | (buff[1] >> 4);
+383     \textcolor{keywordflow}{if}(temp\_raw & 0x800)
+384     \{
+385         temp\_raw = (~temp\_raw) + 1; 
+386         *temp = (-1) * (\textcolor{keywordtype}{float})temp\_raw * 0.0625;
+387     \}
+388     \textcolor{keywordflow}{else}
+389     \{
+390         *temp = ((float)temp\_raw)*0.0625;
+391     \}
+392 
+393     \textcolor{keywordflow}{if}(unit == FAHREN)
+394     \{
+395         *temp = (*temp * 1.8) + 32;
+396     \}
+397     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(unit == KELVIN)
+398     \{
+399         *temp += 273.15;
+400     \}
+401 
+402     \textcolor{keywordflow}{return} ret;
+403 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+mem\+Dump@{T\+M\+P102\+\_\+mem\+Dump}}
+\index{T\+M\+P102\+\_\+mem\+Dump@{T\+M\+P102\+\_\+mem\+Dump}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+mem\+Dump()}{TMP102_memDump()}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t$\ast$ T\+M\+P102\+\_\+mem\+Dump (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a1ea9cb5a6a2e798b33564f9142d7afa1}{}\label{tmp102__sensor_8h_a1ea9cb5a6a2e798b33564f9142d7afa1}
+
+
+Gives a memdump of 4 len. {\bfseries I\+MP} must free the address using return pointer. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+406 \{
+407     uint16\_t *memdump = (uint16\_t*)malloc(4*\textcolor{keyword}{sizeof}(uint16\_t));
+408     \textcolor{keywordflow}{if}(NULL == memdump)
+409         \textcolor{keywordflow}{return} NULL;
+410         
+411     memset(memdump, 0 , 4);
+412 
+413     \textcolor{keywordflow}{for}(uint8\_t i = 0 ; i < 0x4; i++)
+414     \{      
+415         \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, i , (uint8\_t*)(memdump+i), \textcolor{keyword}{
+      sizeof}(uint16\_t));
+416         memdump[i] = (memdump[i]<<8) | (memdump[i]>>8);
+417         
+418         \textcolor{comment}{//float temp = (float)(memdump[i]>>4) * 0.0625;}
+419         \textcolor{comment}{//printf(" - F:%.02f - ",temp);}
+420     \}
+421 
+422     \textcolor{keywordflow}{return} memdump;
+423 \}\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+read\+\_\+\+Thigh@{T\+M\+P102\+\_\+read\+\_\+\+Thigh}}
+\index{T\+M\+P102\+\_\+read\+\_\+\+Thigh@{T\+M\+P102\+\_\+read\+\_\+\+Thigh}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+read\+\_\+\+Thigh(float $\ast$thigh\+\_\+\+C)}{TMP102_read_Thigh(float *thigh_C)}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+read\+\_\+\+Thigh (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{thigh\+\_\+C}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a63bbac70f6558fd10f034a45d1fa140c}{}\label{tmp102__sensor_8h_a63bbac70f6558fd10f034a45d1fa140c}
+
+\begin{DoxyParams}{Parameters}
+{\em thigh\+\_\+C} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+352 \{
+353     uint16\_t thigh =0;
+354 
+355     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TLOW,(uint8\_t*)&thigh,
+       \textcolor{keyword}{sizeof}(ret));
+356     \textcolor{keywordflow}{if}(ret == -1)
+357         \textcolor{keywordflow}{return} ret;
+358 
+359     \textcolor{keywordflow}{if}(thigh & 0x800)
+360     \{
+361         thigh = (~thigh) + 1; 
+362         *thigh\_C = (-1) * (\textcolor{keywordtype}{float})thigh * 0.0625;
+363     \}
+364     \textcolor{keywordflow}{else}
+365     \{
+366         *thigh\_C = ((float)thigh)*0.0625;
+367     \}
+368 
+369     \textcolor{keywordflow}{return} ret;
+370 
+371 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+read\+\_\+\+Tlow@{T\+M\+P102\+\_\+read\+\_\+\+Tlow}}
+\index{T\+M\+P102\+\_\+read\+\_\+\+Tlow@{T\+M\+P102\+\_\+read\+\_\+\+Tlow}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+read\+\_\+\+Tlow(float $\ast$tlow\+\_\+\+C)}{TMP102_read_Tlow(float *tlow_C)}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+read\+\_\+\+Tlow (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{tlow\+\_\+C}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_aa8531a04dcf776f0d81d190b384bfab5}{}\label{tmp102__sensor_8h_aa8531a04dcf776f0d81d190b384bfab5}
+
+\begin{DoxyParams}{Parameters}
+{\em tlow\+\_\+C} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+330 \{
+331     uint16\_t tlow =0;
+332 
+333     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TLOW,(uint8\_t*)&tlow, \textcolor{keyword}{
+      sizeof}(ret));
+334     \textcolor{keywordflow}{if}(ret == -1)
+335         \textcolor{keywordflow}{return} ret;
+336 
+337     \textcolor{keywordflow}{if}(tlow & 0x800)
+338     \{
+339         tlow = (~tlow) + 1; 
+340         *tlow\_C = (-1) * (\textcolor{keywordtype}{float})tlow * 0.0625;
+341     \}
+342     \textcolor{keywordflow}{else}
+343     \{
+344         *tlow\_C = ((float)tlow)*0.0625;
+345     \}
+346 
+347     \textcolor{keywordflow}{return} ret;
+348 
+349 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+RT@{T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+RT}}
+\index{T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+RT@{T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+RT}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+R\+T(uint8\+\_\+t $\ast$al\+\_\+bit)}{TMP102_readMode_ALERT(uint8_t *al_bit)}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+read\+Mode\+\_\+\+A\+L\+E\+RT (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{al\+\_\+bit}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a98961eafa743b9a651a3cd2f3787f858}{}\label{tmp102__sensor_8h_a98961eafa743b9a651a3cd2f3787f858}
+
+\begin{DoxyParams}{Parameters}
+{\em al\+\_\+bit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+240 \{
+241     uint16\_t config\_data = 0;
+242 
+243      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+244     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+245     \textcolor{keywordflow}{if}(ret == -1)
+246         \textcolor{keywordflow}{return} ret;
+247 
+248     *al\_bit = (config\_data & ((uint16\_t)TMP102\_CONFIG\_AL))>>13; 
+249 
+250     \textcolor{keywordflow}{return} ret;
+251 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High()}{TMP102_setMode_ALERT_ActiveHigh()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+High (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_aa7438de8c6766d48b649e132cabf88e9}{}\label{tmp102__sensor_8h_aa7438de8c6766d48b649e132cabf88e9}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+124 \{
+125     uint16\_t config\_data = 1;
+126 
+127      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+128     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+129     \textcolor{keywordflow}{if}(ret == -1)
+130         \textcolor{keywordflow}{return} ret;
+131 
+132     config\_data |= (uint16\_t)TMP102\_CONFIG\_POL; 
+133 
+134     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+135 
+136     \textcolor{keywordflow}{return} ret;
+137 
+138 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default()}{TMP102_setMode_ALERT_ActiveLow_default()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+A\+L\+E\+R\+T\+\_\+\+Active\+Low\+\_\+default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a899854f020db34f588f89adffcdc8433}{}\label{tmp102__sensor_8h_a899854f020db34f588f89adffcdc8433}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+108 \{
+109     uint16\_t config\_data = 0;
+110 
+111      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+112     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+113     \textcolor{keywordflow}{if}(ret == -1)
+114         \textcolor{keywordflow}{return} ret;
+115 
+116     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_POL); 
+117 
+118     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+119 
+120     \textcolor{keywordflow}{return} ret;
+121 
+122 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmp102__sensor_8h_a899854f020db34f588f89adffcdc8433_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+setmode\+\_\+all\+Default@{T\+M\+P102\+\_\+setmode\+\_\+all\+Default}}
+\index{T\+M\+P102\+\_\+setmode\+\_\+all\+Default@{T\+M\+P102\+\_\+setmode\+\_\+all\+Default}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+setmode\+\_\+all\+Default()}{TMP102_setmode_allDefault()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+setmode\+\_\+all\+Default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a4725fb3e4cf18de4220d6067a7dc5dd4}{}\label{tmp102__sensor_8h_a4725fb3e4cf18de4220d6067a7dc5dd4}
+
+
+Brings back to default. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+24 \{
+25     \textcolor{keywordtype}{int} ret = \hyperlink{tmp102__sensor_8h_a6d24a33a5e009441edb99bd1a727afec}{TMP102\_setMode\_CR\_4HZ\_default}();
+26     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+27     ret = \hyperlink{tmp102__sensor_8h_a4309a30e9d006753c2cdd6f6c9af2650}{TMP102\_setMode\_SD\_Continuous\_default}();
+28     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+29     ret = \hyperlink{tmp102__sensor_8h_a899854f020db34f588f89adffcdc8433}{TMP102\_setMode\_ALERT\_ActiveLow\_default}();
+30     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+31     ret = \hyperlink{tmp102__sensor_8h_a81c75dba63b6c0727ab602ea631b3a22}{TMP102\_setMode\_TM\_ComparatorMode\_default}();
+32     \textcolor{keywordflow}{if}(ret) \textcolor{keywordflow}{return} ret;
+33     ret = \hyperlink{tmp102__sensor_8h_aa96f470639b851a96f524ae6524dd266}{TMP102\_setMode\_EM\_NormalMode\_default}();
+34     \textcolor{keywordflow}{return} ret;
+35 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+HZ@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+HZ}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+HZ@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+HZ}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+H\+Z()}{TMP102_setMode_CR_1HZ()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+1\+HZ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a110d2f8672865d85670f2681e5dc9aed}{}\label{tmp102__sensor_8h_a110d2f8672865d85670f2681e5dc9aed}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+189 \{
+190     uint16\_t config\_data = 0;
+191 
+192      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+193     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+194     \textcolor{keywordflow}{if}(ret == -1)
+195         \textcolor{keywordflow}{return} ret;
+196 
+197     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_CR(3));
+198     config\_data |= ((uint16\_t)TMP102\_CONFIG\_CR(1)); 
+199 
+200     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+201 
+202     \textcolor{keywordflow}{return} ret;
+203 
+204 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+HZ@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+HZ}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+HZ@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+HZ}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+H\+Z()}{TMP102_setMode_CR_250mHZ()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+250m\+HZ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a3f6277d742af4a10dcec568e84ad1d5d}{}\label{tmp102__sensor_8h_a3f6277d742af4a10dcec568e84ad1d5d}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+173 \{
+174     uint16\_t config\_data = 0;
+175 
+176      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+177     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+178     \textcolor{keywordflow}{if}(ret == -1)
+179         \textcolor{keywordflow}{return} ret;
+180 
+181     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_CR(3)); 
+182 
+183     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+184 
+185     \textcolor{keywordflow}{return} ret;
+186 
+187 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default()}{TMP102_setMode_CR_4HZ_default()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+4\+H\+Z\+\_\+default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a6d24a33a5e009441edb99bd1a727afec}{}\label{tmp102__sensor_8h_a6d24a33a5e009441edb99bd1a727afec}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+206 \{
+207     uint16\_t config\_data = 0;
+208 
+209      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+210     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+211     \textcolor{keywordflow}{if}(ret == -1)
+212         \textcolor{keywordflow}{return} ret;
+213 
+214     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_CR(3));
+215     config\_data |= ((uint16\_t)TMP102\_CONFIG\_CR(2)); 
+216 
+217     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+218 
+219     \textcolor{keywordflow}{return} ret;
+220 
+221 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmp102__sensor_8h_a6d24a33a5e009441edb99bd1a727afec_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+HZ@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+HZ}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+HZ@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+HZ}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+H\+Z()}{TMP102_setMode_CR_8HZ()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+C\+R\+\_\+8\+HZ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a031c7291b177515876ebb29d24dc97b4}{}\label{tmp102__sensor_8h_a031c7291b177515876ebb29d24dc97b4}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+224 \{
+225     uint16\_t config\_data = 0;
+226 
+227      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+228     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+229     \textcolor{keywordflow}{if}(ret == -1)
+230         \textcolor{keywordflow}{return} ret;
+231 
+232     config\_data |= ((uint16\_t)TMP102\_CONFIG\_CR(3)); 
+233 
+234     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+235 
+236     \textcolor{keywordflow}{return} ret;
+237 
+238 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode()}{TMP102_setMode_EM_ExtendedMode()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Extended\+Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a2df18183afad1339903fe59997aaf9a2}{}\label{tmp102__sensor_8h_a2df18183afad1339903fe59997aaf9a2}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+157 \{
+158     uint16\_t config\_data = 0;
+159 
+160      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+161     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+162     \textcolor{keywordflow}{if}(ret == -1)
+163         \textcolor{keywordflow}{return} ret;
+164 
+165     config\_data |= (uint16\_t)TMP102\_CONFIG\_EM; 
+166 
+167     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+168 
+169     \textcolor{keywordflow}{return} ret;
+170 
+171 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default()}{TMP102_setMode_EM_NormalMode_default()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+E\+M\+\_\+\+Normal\+Mode\+\_\+default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_aa96f470639b851a96f524ae6524dd266}{}\label{tmp102__sensor_8h_aa96f470639b851a96f524ae6524dd266}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+140 \{
+141     uint16\_t config\_data = 0;
+142 
+143      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+144     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+145     \textcolor{keywordflow}{if}(ret == -1)
+146         \textcolor{keywordflow}{return} ret;
+147 
+148     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_EM); 
+149 
+150     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+151 
+152     \textcolor{keywordflow}{return} ret;
+153 
+154 
+155 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmp102__sensor_8h_aa96f470639b851a96f524ae6524dd266_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default()}{TMP102_setMode_SD_Continuous_default()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Continuous\+\_\+default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a4309a30e9d006753c2cdd6f6c9af2650}{}\label{tmp102__sensor_8h_a4309a30e9d006753c2cdd6f6c9af2650}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+60 \{
+61     uint16\_t config\_data = 0;
+62 
+63      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+64     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+65     \textcolor{keywordflow}{if}(ret == -1)
+66         \textcolor{keywordflow}{return} ret;
+67 
+68     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_SD); 
+69 
+70     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+71 
+72     \textcolor{keywordflow}{return} ret;
+73 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmp102__sensor_8h_a4309a30e9d006753c2cdd6f6c9af2650_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving()}{TMP102_setMode_SD_PowerSaving()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+S\+D\+\_\+\+Power\+Saving (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a7d4d57387ef6a5db5bfc8d14a94d9ee4}{}\label{tmp102__sensor_8h_a7d4d57387ef6a5db5bfc8d14a94d9ee4}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+44 \{
+45     uint16\_t config\_data = 0;
+46 
+47      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+48     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+49     \textcolor{keywordflow}{if}(ret == -1)
+50         \textcolor{keywordflow}{return} ret;
+51 
+52     config\_data |= (uint16\_t)TMP102\_CONFIG\_SD; 
+53 
+54     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+55 
+56     \textcolor{keywordflow}{return} ret;
+57 
+58 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default()}{TMP102_setMode_TM_ComparatorMode_default()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Comparator\+Mode\+\_\+default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a81c75dba63b6c0727ab602ea631b3a22}{}\label{tmp102__sensor_8h_a81c75dba63b6c0727ab602ea631b3a22}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+76 \{
+77     uint16\_t config\_data = 0;
+78 
+79      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+80     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+81     \textcolor{keywordflow}{if}(ret == -1)
+82         \textcolor{keywordflow}{return} ret;
+83 
+84     config\_data &= ~((uint16\_t)TMP102\_CONFIG\_TM); 
+85 
+86     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+87 
+88     \textcolor{keywordflow}{return} ret;
+89 
+90 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tmp102__sensor_8h_a81c75dba63b6c0727ab602ea631b3a22_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode}}
+\index{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode@{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode()}{TMP102_setMode_TM_InterruptMode()}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+set\+Mode\+\_\+\+T\+M\+\_\+\+Interrupt\+Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a4386703b35277dc71be5cd9b57d0f3ce}{}\label{tmp102__sensor_8h_a4386703b35277dc71be5cd9b57d0f3ce}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+92 \{
+93     uint16\_t config\_data = 0;
+94 
+95      \textcolor{comment}{/* Reading the already configured values in the sensor */}
+96     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION,(uint8\_t
+      *)&config\_data, \textcolor{keyword}{sizeof}(config\_data));
+97     \textcolor{keywordflow}{if}(ret == -1)
+98         \textcolor{keywordflow}{return} ret;
+99 
+100     config\_data |= (uint16\_t)TMP102\_CONFIG\_TM; 
+101 
+102     ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_CONFIGURATION, config\_data
+      , 0);
+103 
+104     \textcolor{keywordflow}{return} ret;
+105 
+106 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+write\+\_\+\+Thigh@{T\+M\+P102\+\_\+write\+\_\+\+Thigh}}
+\index{T\+M\+P102\+\_\+write\+\_\+\+Thigh@{T\+M\+P102\+\_\+write\+\_\+\+Thigh}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+write\+\_\+\+Thigh(float thigh\+\_\+\+C)}{TMP102_write_Thigh(float thigh_C)}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+write\+\_\+\+Thigh (
+\begin{DoxyParamCaption}
+\item[{float}]{thigh\+\_\+C}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a32a4b8bbc5611a7ca967cdaaeb732ae1}{}\label{tmp102__sensor_8h_a32a4b8bbc5611a7ca967cdaaeb732ae1}
+
+\begin{DoxyParams}{Parameters}
+{\em thigh\+\_\+C} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+291 \{
+292 
+293     \textcolor{keywordflow}{if}(thigh\_C < -56.0f || thigh\_C > 151.0f)
+294         thigh\_C = 80.0f;
+295     
+296     thigh\_C /= 0.0625;
+297     uint16\_t th;
+298 
+299     \textcolor{keywordflow}{if}(thigh\_C > 0)
+300     \{
+301         th = ((uint16\_t)thigh\_C << 4);
+302         th &= 0x7FFF;
+303     \}
+304     \textcolor{keywordflow}{else}
+305     \{
+306         thigh\_C = -1 * thigh\_C;
+307         th = (uint16\_t)thigh\_C;
+308         th = ~(th) + 1;
+309         th = th << 4; 
+310     \}  
+311     
+312     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TLOW, th, 0);
+313     \textcolor{keywordflow}{if}(ret == -1)
+314         \textcolor{keywordflow}{return} ret;
+315 
+316 \textcolor{preprocessor}{    #ifdef TEST\_I2C}
+317     uint16\_t ret =0;
+318     ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TLOW,(uint8\_t*)&ret, \textcolor{keyword}{
+      sizeof}(ret));
+319     \textcolor{keywordflow}{if}(ret == -1)
+320         \textcolor{keywordflow}{return} ret;
+321     
+322     assert(ret == th);
+323     assert\_true(ret == th);
+324 \textcolor{preprocessor}{    #endif}
+325 
+326 
+327 \}
+\end{DoxyCode}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+write\+\_\+\+Tlow@{T\+M\+P102\+\_\+write\+\_\+\+Tlow}}
+\index{T\+M\+P102\+\_\+write\+\_\+\+Tlow@{T\+M\+P102\+\_\+write\+\_\+\+Tlow}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+write\+\_\+\+Tlow(float tlow\+\_\+\+C)}{TMP102_write_Tlow(float tlow_C)}}]{\setlength{\rightskip}{0pt plus 5cm}int T\+M\+P102\+\_\+write\+\_\+\+Tlow (
+\begin{DoxyParamCaption}
+\item[{float}]{tlow\+\_\+C}
+\end{DoxyParamCaption}
+)}\hypertarget{tmp102__sensor_8h_a6296f70167b1f662c7f9b56b15fe037c}{}\label{tmp102__sensor_8h_a6296f70167b1f662c7f9b56b15fe037c}
+
+\begin{DoxyParams}{Parameters}
+{\em tlow\+\_\+C} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+254 \{
+255     \textcolor{keywordflow}{if}(tlow\_C < -56.0f || tlow\_C > 151.0f)
+256         tlow\_C = 75.0f;
+257     
+258     tlow\_C /= 0.0625;
+259     uint16\_t tl;
+260 
+261     \textcolor{keywordflow}{if}(tlow\_C > 0)
+262     \{
+263         tl = ((uint16\_t)tlow\_C << 4);
+264         tl &= 0x7FFF;
+265     \}
+266     \textcolor{keywordflow}{else}
+267     \{
+268         tlow\_C = -1 * tlow\_C;
+269         tl = (uint16\_t)tlow\_C;
+270         tl = ~(tl) + 1;
+271         tl = tl << 4; 
+272     \}  
+273     
+274     \textcolor{keywordtype}{int} ret = \hyperlink{my__i2c_8c_a19c6244da5ea2d4e65a25001582498c8}{I2Cmaster\_write\_word}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TLOW, tl, 0);
+275     \textcolor{keywordflow}{if}(ret == -1)
+276         \textcolor{keywordflow}{return} ret;
+277 
+278 \textcolor{preprocessor}{    #ifdef TEST\_I2C}
+279     uint16\_t retTlow =0;
+280     ret = \hyperlink{my__i2c_8c_ab25650a9cf74e65561b1fced3555f36c}{I2Cmaster\_read\_bytes}(TMP102\_SLAVE\_ADDR, TMP102\_REG\_TLOW,(uint8\_t*)&retTlow, \textcolor{keyword}{
+      sizeof}(retTlow));
+281     \textcolor{keywordflow}{if}(ret == -1)
+282         \textcolor{keywordflow}{return} ret;
+283     
+284     assert(retTlow == tl);
+285     assert\_int\_equal(retTlow,tl);
+286 \textcolor{preprocessor}{    #endif}
+287          
+288 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\index{tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}!T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT@{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT}}
+\index{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT@{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT}!tmp102\+\_\+sensor.\+h@{tmp102\+\_\+sensor.\+h}}
+\subsubsection[{\texorpdfstring{T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT}{TMP102_CONFIG_DEFAULT}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+R\+E\+G\+\_\+\+S\+E\+T\+T\+I\+N\+G\+S\+\_\+T} T\+M\+P102\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+LT}\hypertarget{tmp102__sensor_8h_ae8c25eda33c17bf746db7b91fe54c85c}{}\label{tmp102__sensor_8h_ae8c25eda33c17bf746db7b91fe54c85c}
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & \\
+\hline
+{\em unit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}

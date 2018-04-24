@@ -1,0 +1,20 @@
+<map id="I2Cmaster_read_byte" name="I2Cmaster_read_byte">
+<area shape="rect" id="node2" href="$apds9301__sensor_8h.html#a2aa3244d3848324ba9f4afc7b1990ce1" title="APDS9301_readControlReg" alt="" coords="219,5,404,32"/>
+<area shape="rect" id="node3" href="$apds9301__sensor_8h.html#a5e527c870fed599e87d712a151e47172" title="APDS9301_mode_highGain" alt="" coords="219,56,403,83"/>
+<area shape="rect" id="node4" href="$apds9301__sensor_8h.html#aa8c71ee19fe0ef5ff8880f87daa2757a" title="APDS9301_mode_lowGain\l_default" alt="" coords="221,107,401,149"/>
+<area shape="rect" id="node6" href="$apds9301__sensor_8h.html#a69d91df573c8c448a30715ae605262d7" title="APDS9301_mode_interrupt" alt="" coords="221,173,401,200"/>
+<area shape="rect" id="node7" href="$apds9301__sensor_8h.html#ad22326035668d08e6d7cade8cde126e4" title="APDS9301_mode_manualcontrol" alt="" coords="204,224,419,251"/>
+<area shape="rect" id="node8" href="$apds9301__sensor_8h.html#ac14a5a102513243824d12e6028abbeb8" title="APDS9301_mode_integrationTime" alt="" coords="200,275,423,301"/>
+<area shape="rect" id="node9" href="$apds9301__sensor_8h.html#a82dac2bc9fc0e11fc4589f3492bec13e" title="APDS9301_readID" alt="" coords="245,325,378,352"/>
+<area shape="rect" id="node13" href="$apds9301__sensor_8h.html#ae41babc910792ba1bbb19e837fd45d4c" title="APDS9301_readCh0" alt="" coords="240,376,383,403"/>
+<area shape="rect" id="node18" href="$apds9301__sensor_8h.html#a34c034b815ceb2e30b0161d7461f0a8e" title="APDS9301_readCh1" alt="" coords="240,427,383,453"/>
+<area shape="rect" id="node19" href="$apds9301__sensor_8h.html#acae5d5b1cfb4008743589e5482d7578b" title="Gives a memdump of 15 len. IMP must free the address using return pointer. " alt="" coords="232,477,391,504"/>
+<area shape="rect" id="node5" href="$apds9301__sensor_8h.html#a47621b827697481f12f3bf6257118f70" title="Sets back the default configration of the sensor. " alt="" coords="471,115,684,141"/>
+<area shape="rect" id="node10" href="$apds9301__sensor_8h.html#a29ea2301a68de775fc0281dd1b4b03aa" title="APDS9301_test" alt="" coords="519,325,635,352"/>
+<area shape="rect" id="node11" href="$light__sensor__task_8c.html#abb5f74ca3376b1b610b7dac47ecae8d8" title="light_task_queue_init" alt="" coords="732,325,876,352"/>
+<area shape="rect" id="node12" href="$light__sensor__task_8h.html#a638f4ba787ad818d90477af9e572771c" title="Entry point of the light task thread. " alt="" coords="939,325,1072,352"/>
+<area shape="rect" id="node14" href="$apds9301__sensor_8h.html#a55e164e7dd0586de71a8dd5b25ae9ef3" title="APDS9301_getLux" alt="" coords="511,401,644,428"/>
+<area shape="rect" id="node15" href="$light__sensor__task_8h.html#ac88a5567bdeac532053519330e94c6ab" title="Get the LightTask lux object. MT&#45;safe as it calls a MT&#45;safe function within. " alt="" coords="743,401,865,428"/>
+<area shape="rect" id="node16" href="$socket__task_8c.html#adb9b673e72054ada7a350a7bb51dff05" title="processRemoteRequest" alt="" coords="924,401,1087,428"/>
+<area shape="rect" id="node17" href="$socket__task_8h.html#a11efeb37f1a462e32c153a30ba11f53a" title="socket_task_callback" alt="" coords="1135,401,1283,428"/>
+</map>

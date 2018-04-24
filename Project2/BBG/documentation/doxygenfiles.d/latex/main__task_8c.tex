@@ -1,0 +1,230 @@
+\hypertarget{main__task_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/main\+\_\+task.c File Reference}
+\label{main__task_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/main\+\_\+task.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/main\+\_\+task.\+c}}
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\+h$>$}\\*
+{\ttfamily \#include $<$mqueue.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}main\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}logger\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}socket\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}light\+\_\+sensor\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}temperature\+\_\+sensor\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}my\+\_\+signals.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posix\+Timer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}common\+\_\+helper.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}read\+Configuration.\+h\char`\"{}}\\*
+Include dependency graph for main\+\_\+task.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main__task_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries M\+Q\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+N\+A\+ME}~\char`\"{}/maintask\+\_\+queue\char`\"{}\hypertarget{main__task_8c_a1a9425a70b0e461731a6efec6743ef38}{}\label{main__task_8c_a1a9425a70b0e461731a6efec6743ef38}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+mqd\+\_\+t \hyperlink{main__task_8c_ad539583e28fb9162099dfd54fc34afc8}{get\+Handle\+\_\+\+Main\+Task\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Get the Handle Main\+Task\+Queue object. \end{DoxyCompactList}\item 
+int {\bfseries main\+\_\+task\+\_\+init} ()\hypertarget{main__task_8c_a697f1beded418be5281745091d785ac2}{}\label{main__task_8c_a697f1beded418be5281745091d785ac2}
+
+\item 
+void {\bfseries main\+\_\+task\+\_\+process\+Msg} ()\hypertarget{main__task_8c_ad7696571b325eb7098a8d31ce3421ef5}{}\label{main__task_8c_ad7696571b325eb7098a8d31ce3421ef5}
+
+\item 
+void {\bfseries P\+O\+S\+T\+\_\+\+E\+X\+I\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+A\+LL} ()\hypertarget{main__task_8c_a27a16a28c2a8f0448f7cbdb28adf50d4}{}\label{main__task_8c_a27a16a28c2a8f0448f7cbdb28adf50d4}
+
+\item 
+int \hyperlink{main__task_8c_a52c4c165f42a1ca113ba4bd55b00a293}{main\+\_\+task\+\_\+entry} ()
+\begin{DoxyCompactList}\small\item\em entry point for the main task \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile int {\bfseries timeoutflag}\hypertarget{main__task_8c_a395963a0c067171917cf7c8761ee2441}{}\label{main__task_8c_a395963a0c067171917cf7c8761ee2441}
+
+\item 
+volatile sig\+\_\+atomic\+\_\+t {\bfseries signal\+\_\+exit}\hypertarget{main__task_8c_adc2fe82289a6853a03c1f0629086f996}{}\label{main__task_8c_adc2fe82289a6853a03c1f0629086f996}
+
+\item 
+volatile int {\bfseries alive\+Status} \mbox{[}N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS\mbox{]} = \{0\}\hypertarget{main__task_8c_af5d4df1bffe487c45323aa4f523d8f31}{}\label{main__task_8c_af5d4df1bffe487c45323aa4f523d8f31}
+
+\item 
+void $\ast$($\ast$ {\bfseries thread\+\_\+callbacks} \mbox{[}N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS\mbox{]})(void $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/09 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{main\+\_\+task.\+c@{main\+\_\+task.\+c}!get\+Handle\+\_\+\+Main\+Task\+Queue@{get\+Handle\+\_\+\+Main\+Task\+Queue}}
+\index{get\+Handle\+\_\+\+Main\+Task\+Queue@{get\+Handle\+\_\+\+Main\+Task\+Queue}!main\+\_\+task.\+c@{main\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{get\+Handle\+\_\+\+Main\+Task\+Queue()}{getHandle_MainTaskQueue()}}]{\setlength{\rightskip}{0pt plus 5cm}mqd\+\_\+t get\+Handle\+\_\+\+Main\+Task\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main__task_8c_ad539583e28fb9162099dfd54fc34afc8}{}\label{main__task_8c_ad539583e28fb9162099dfd54fc34afc8}
+
+
+Get the Handle Main\+Task\+Queue object. 
+
+\begin{DoxyReturn}{Returns}
+mqd\+\_\+t 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+140 \{
+141     \textcolor{keywordflow}{return} maintask\_q;
+142 \}
+\end{DoxyCode}
+\index{main\+\_\+task.\+c@{main\+\_\+task.\+c}!main\+\_\+task\+\_\+entry@{main\+\_\+task\+\_\+entry}}
+\index{main\+\_\+task\+\_\+entry@{main\+\_\+task\+\_\+entry}!main\+\_\+task.\+c@{main\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{main\+\_\+task\+\_\+entry()}{main_task_entry()}}]{\setlength{\rightskip}{0pt plus 5cm}int main\+\_\+task\+\_\+entry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main__task_8c_a52c4c165f42a1ca113ba4bd55b00a293}{}\label{main__task_8c_a52c4c165f42a1ca113ba4bd55b00a293}
+
+
+entry point for the main task 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+211 \{
+212     \textcolor{comment}{/* Making the timeout flag true, this should be unset=false within 5 sec else the timer checking the
+       operation }
+213 \textcolor{comment}{    will send a kill signal and the app will close}
+214 \textcolor{comment}{    This is to make sure that the barrier is passed within 5 secs. Extra safety feature which might not be
+       neccessary at all.}
+215 \textcolor{comment}{    */}
+216     timeoutflag = 1;
+217     signal\_exit = 0;
+218     \textcolor{keywordtype}{int} ret = main\_task\_init();    
+219     \textcolor{keywordflow}{if}(-1 == ret)
+220     \{
+221         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"MAIN TASK INIT:%s\(\backslash\)n"},strerror(errno));
+222         \textcolor{keywordflow}{return} ret;
+223     \}
+224 
+225     ret = \hyperlink{readConfiguration_8c_af04c65a7de574da1abe2b9bd0f403c64}{configdata\_setup}();
+226     \textcolor{keywordflow}{if}(ret)
+227         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Could not setup data from config file\(\backslash\)n"});
+228 
+229     \textcolor{comment}{/* Mutex init */}
+230     pthread\_mutex\_init(&aliveState\_lock, NULL);
+231 
+232     \textcolor{comment}{/* Registering a timer for 5 sec to check that the barrier is passed */}
+233     timer\_t timer\_id;
+234     \textcolor{keywordflow}{if}(ERR == \hyperlink{common__helper_8c_a23124253b968391b9777fc3b8a0cc5ec}{register\_and\_start\_timer}(&timer\_id, 2*MICROSEC, 1, 
+      timer\_handler\_setup, &timer\_id))
+235     \{
+236         \textcolor{comment}{// LOG\_STDOUT(ERROR "Timer Error\(\backslash\)n");}
+237         \textcolor{keywordflow}{return} ERR;
+238     \}
+239 
+240     \textcolor{comment}{/* Create a barrier for all the threads + the main task*/}
+241     pthread\_barrier\_init(&tasks\_barrier,NULL,NUM\_CHILD\_THREADS+1);
+242 
+243     \textcolor{keyword}{struct }sigaction sa;
+244     \textcolor{comment}{/*Registering the signal callback handler*/}
+245     \hyperlink{my__signals_8c_ab23ded226351ef07fcd948a6d04a06e7}{register\_signalHandler}(&sa,signal\_handler, REG\_SIG\_ALL);
+246 
+247     \textcolor{comment}{/* Create all the child threads */}
+248     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < NUM\_CHILD\_THREADS; i++)
+249     \{
+250         ret = pthread\_create(&pthread\_id[i],NULL,thread\_callbacks[i],NULL);
+251         \textcolor{keywordflow}{if}(ret != 0)
+252         \{
+253             LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Pthread create:%d:%s\(\backslash\)n"},i,strerror(errno));
+254             \textcolor{keywordflow}{return} ret;
+255         \}
+256     \}
+257 
+258     LOG\_STDOUT(INFO \textcolor{stringliteral}{"MAIN TASK INIT COMPLETED\(\backslash\)n"});
+259     pthread\_barrier\_wait(&tasks\_barrier);
+260 
+261     \textcolor{comment}{/* Resetting the timeoutflag as we are pass the barrier */}
+262     timeoutflag = 0;
+263 
+264     ret= \hyperlink{posixTimer_8c_a33e0f810c8ecdcde8340650106da0958}{stop\_timer}(timer\_id);
+265     \textcolor{keywordflow}{if}(ERR == ret)
+266     \{
+267         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"MAIN TASK CANNOT STOP TIMER:%s\(\backslash\)n"},strerror(errno));
+268         \textcolor{keywordflow}{return} ERR;
+269     \}
+270 
+271     ret == \hyperlink{posixTimer_8c_a91f15230e46caba2a2132b04e9c73e47}{delete\_timer}(timer\_id);
+272     \textcolor{keywordflow}{if}(ERR == ret)
+273     \{
+274         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"MAIN TASK CANNOT DELETE TIMER:%s\(\backslash\)n"},strerror(errno));
+275     \}
+276 
+277     \textcolor{keywordflow}{if}(ERR == \hyperlink{common__helper_8c_a23124253b968391b9777fc3b8a0cc5ec}{register\_and\_start\_timer}(&timer\_id, 5*MICROSEC, 0 ,
+      timer\_handler\_aliveStatusCheck, &timer\_id))
+278     \{
+279         \textcolor{comment}{// LOG\_STDOUT(ERROR "Timer Start Error\(\backslash\)n");}
+280         \textcolor{keywordflow}{return} ERR;
+281     \}
+282     \textcolor{comment}{/* Start message processing which is a blocking call */}
+283     main\_task\_processMsg();
+284 
+285     \hyperlink{posixTimer_8c_a91f15230e46caba2a2132b04e9c73e47}{delete\_timer}(timer\_id);
+286 
+287     POST\_EXIT\_MESSAGE\_ALL();
+288     
+289     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < NUM\_CHILD\_THREADS; i++)
+290     \{
+291         \textcolor{keywordtype}{int} retThread = 0;
+292         \textcolor{comment}{//  LOG\_STDOUT(INFO "Pthread JOIN:%d\(\backslash\)n",i);}
+293         ret = pthread\_join(pthread\_id[i],(\textcolor{keywordtype}{void}*)&retThread);
+294         \textcolor{comment}{//  LOG\_STDOUT(INFO "ThreadID %d: Ret:%d\(\backslash\)n",i,retThread);}
+295         \textcolor{keywordflow}{if}(ret  != 0)
+296         \{
+297             LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Pthread join:%d:%s\(\backslash\)n"},i,strerror(errno));
+298             \textcolor{keywordflow}{return} ret;
+299         \}
+300     \}
+301 
+302     pthread\_mutex\_destroy(&aliveState\_lock);
+303     
+304     \hyperlink{readConfiguration_8c_a93341cc941d5255d844aea3b49cdfc9e}{configdata\_flush}();
+305 
+306     LOG\_STDOUT(INFO \textcolor{stringliteral}{"GOODBYE CRUEL WORLD!!!\(\backslash\)n"});
+307 
+308     \textcolor{keywordflow}{return} SUCCESS;
+309 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\index{main\+\_\+task.\+c@{main\+\_\+task.\+c}!thread\+\_\+callbacks@{thread\+\_\+callbacks}}
+\index{thread\+\_\+callbacks@{thread\+\_\+callbacks}!main\+\_\+task.\+c@{main\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{thread\+\_\+callbacks}{thread_callbacks}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ thread\+\_\+callbacks\mbox{[}N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS\mbox{]})(void $\ast$)}\hypertarget{main__task_8c_ad7ff46799bfd789e2ac6fd5d6cb83ab1}{}\label{main__task_8c_ad7ff46799bfd789e2ac6fd5d6cb83ab1}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+    \hyperlink{logger__task_8c_a7322e57eb5c8763112ad4d4a946601bf}{logger\_task\_callback},
+    \hyperlink{temperature__sensor__task_8c_abc96664d611b8a19036cf6fcaaf92ac8}{temperature\_task\_callback},
+    \hyperlink{socket__task_8c_a11efeb37f1a462e32c153a30ba11f53a}{socket\_task\_callback},
+    \hyperlink{light__sensor__task_8c_a638f4ba787ad818d90477af9e572771c}{light\_task\_callback},
+\}
+\end{DoxyCode}

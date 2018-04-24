@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structLOGGERTASKQ__MSG__T" kind="struct" language="C++" prot="public">
+    <compoundname>LOGGERTASKQ_MSG_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structLOGGERTASKQ__MSG__T_1a6f3f926915ee4fed9eefaa2ae02565a0" prot="public" static="no" mutable="no">
+        <type>LOGGERTASKQ_MSGID_T</type>
+        <definition>LOGGERTASKQ_MSGID_T LOGGERTASKQ_MSG_T::msgID</definition>
+        <argsstring></argsstring>
+        <name>msgID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="45" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLOGGERTASKQ__MSG__T_1ad92d934c36ea8b693e20bd585b12dd36" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char LOGGERTASKQ_MSG_T::timestamp[20]</definition>
+        <argsstring>[20]</argsstring>
+        <name>timestamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="46" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLOGGERTASKQ__MSG__T_1abe7f4a15b1008087838d78abe25fd9d1" prot="public" static="no" mutable="no">
+        <type>LOG_LEVEL_T</type>
+        <definition>LOG_LEVEL_T LOGGERTASKQ_MSG_T::loglevel</definition>
+        <argsstring></argsstring>
+        <name>loglevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="47" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLOGGERTASKQ__MSG__T_1a4bbfcb4a9e1a7846b56410dc69926b92" prot="public" static="no" mutable="no">
+        <type>TASK_IDENTIFIER_T</type>
+        <definition>TASK_IDENTIFIER_T LOGGERTASKQ_MSG_T::sourceID</definition>
+        <argsstring></argsstring>
+        <name>sourceID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="48" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLOGGERTASKQ__MSG__T_1a3105fa742571aeee5d90f15925eded89" prot="public" static="no" mutable="no">
+        <type>LOGGER_TASK_MSGDATA_T</type>
+        <definition>LOGGER_TASK_MSGDATA_T LOGGERTASKQ_MSG_T::msgData[LT_MSG_SIZE]</definition>
+        <argsstring>[LT_MSG_SIZE]</argsstring>
+        <name>msgData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="49" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" line="44" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/logger_task.h" bodystart="43" bodyend="51"/>
+    <listofallmembers>
+      <member refid="structLOGGERTASKQ__MSG__T_1abe7f4a15b1008087838d78abe25fd9d1" prot="public" virt="non-virtual"><scope>LOGGERTASKQ_MSG_T</scope><name>loglevel</name></member>
+      <member refid="structLOGGERTASKQ__MSG__T_1a3105fa742571aeee5d90f15925eded89" prot="public" virt="non-virtual"><scope>LOGGERTASKQ_MSG_T</scope><name>msgData</name></member>
+      <member refid="structLOGGERTASKQ__MSG__T_1a6f3f926915ee4fed9eefaa2ae02565a0" prot="public" virt="non-virtual"><scope>LOGGERTASKQ_MSG_T</scope><name>msgID</name></member>
+      <member refid="structLOGGERTASKQ__MSG__T_1a4bbfcb4a9e1a7846b56410dc69926b92" prot="public" virt="non-virtual"><scope>LOGGERTASKQ_MSG_T</scope><name>sourceID</name></member>
+      <member refid="structLOGGERTASKQ__MSG__T_1ad92d934c36ea8b693e20bd585b12dd36" prot="public" virt="non-virtual"><scope>LOGGERTASKQ_MSG_T</scope><name>timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

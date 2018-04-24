@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structLIGHTTASKQ__MSG__T" kind="struct" language="C++" prot="public">
+    <compoundname>LIGHTTASKQ_MSG_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structLIGHTTASKQ__MSG__T_1a6d0d6fad55adda1f3922616bc34a7902" prot="public" static="no" mutable="no">
+        <type>LIGHTTASKQ_MSGID_T</type>
+        <definition>LIGHTTASKQ_MSGID_T LIGHTTASKQ_MSG_T::msgID</definition>
+        <argsstring></argsstring>
+        <name>msgID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="47" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLIGHTTASKQ__MSG__T_1a73522367ea6c6c3c9a3e98a817d4c50f" prot="public" static="no" mutable="no">
+        <type>TASK_IDENTIFIER_T</type>
+        <definition>TASK_IDENTIFIER_T LIGHTTASKQ_MSG_T::sourceID</definition>
+        <argsstring></argsstring>
+        <name>sourceID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="48" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structLIGHTTASKQ__MSG__T_1a9ab5b74f39c56fe79cabf08e00bcd339" prot="public" static="no" mutable="no">
+        <type><ref refid="structOBJECT__PACKET__T" kindref="compound">OBJECT_PACKET_T</ref></type>
+        <definition>OBJECT_PACKET_T LIGHTTASKQ_MSG_T::packet</definition>
+        <argsstring></argsstring>
+        <name>packet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="49" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="29">
+        <label>OBJECT_PACKET_T</label>
+        <link refid="structOBJECT__PACKET__T"/>
+      </node>
+      <node id="28">
+        <label>LIGHTTASKQ_MSG_T</label>
+        <link refid="structLIGHTTASKQ__MSG__T"/>
+        <childnode refid="29" relation="usage">
+          <edgelabel>packet</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" line="46" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/light_sensor_task.h" bodystart="45" bodyend="52"/>
+    <listofallmembers>
+      <member refid="structLIGHTTASKQ__MSG__T_1a6d0d6fad55adda1f3922616bc34a7902" prot="public" virt="non-virtual"><scope>LIGHTTASKQ_MSG_T</scope><name>msgID</name></member>
+      <member refid="structLIGHTTASKQ__MSG__T_1a9ab5b74f39c56fe79cabf08e00bcd339" prot="public" virt="non-virtual"><scope>LIGHTTASKQ_MSG_T</scope><name>packet</name></member>
+      <member refid="structLIGHTTASKQ__MSG__T_1a73522367ea6c6c3c9a3e98a817d4c50f" prot="public" virt="non-virtual"><scope>LIGHTTASKQ_MSG_T</scope><name>sourceID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

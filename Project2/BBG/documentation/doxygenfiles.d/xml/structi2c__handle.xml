@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="structi2c__handle" kind="struct" language="C++" prot="public">
+    <compoundname>i2c_handle</compoundname>
+    <includes refid="my__i2c_8h" local="no">my_i2c.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structi2c__handle_1aa381f1dd467b2f93f7283854e8f3ebca" prot="public" static="no" mutable="no">
+        <type>mraa_i2c_context</type>
+        <definition>mraa_i2c_context i2c_handle::i2c_context</definition>
+        <argsstring></argsstring>
+        <name>i2c_context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="23" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structi2c__handle_1aaf1918ec0bdd529f793b5d3850280229" prot="public" static="no" mutable="no">
+        <type>pthread_spinlock_t</type>
+        <definition>pthread_spinlock_t i2c_handle::handle_lock</definition>
+        <argsstring></argsstring>
+        <name>handle_lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="24" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is the handle for I2C mster and each master should have only one handle. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" line="21" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/BeagleBone/my_i2c.h" bodystart="20" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structi2c__handle_1aaf1918ec0bdd529f793b5d3850280229" prot="public" virt="non-virtual"><scope>i2c_handle</scope><name>handle_lock</name></member>
+      <member refid="structi2c__handle_1aa381f1dd467b2f93f7283854e8f3ebca" prot="public" virt="non-virtual"><scope>i2c_handle</scope><name>i2c_context</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

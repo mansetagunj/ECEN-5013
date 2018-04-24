@@ -1,0 +1,682 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="light__sensor__task_8c" kind="file" language="C++">
+    <compoundname>light_sensor_task.c</compoundname>
+    <includes local="no">pthread.h</includes>
+    <includes local="no">fcntl.h</includes>
+    <includes local="no">sys/stat.h</includes>
+    <includes local="no">mqueue.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes refid="main__task_8h" local="yes">main_task.h</includes>
+    <includes refid="logger__task_8h" local="yes">logger_task.h</includes>
+    <includes refid="light__sensor__task_8h" local="yes">light_sensor_task.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes refid="apds9301__sensor_8h" local="yes">apds9301_sensor.h</includes>
+    <includes refid="my__i2c_8h" local="yes">my_i2c.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <incdepgraph>
+      <node id="749">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="772">
+        <label>my_i2c.h</label>
+        <link refid="my__i2c_8h"/>
+        <childnode refid="747" relation="include">
+        </childnode>
+        <childnode refid="773" relation="include">
+        </childnode>
+      </node>
+      <node id="753">
+        <label>main_task.h</label>
+        <link refid="main__task_8h"/>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+      </node>
+      <node id="758">
+        <label>stdint.h</label>
+      </node>
+      <node id="766">
+        <label>stdlib.h</label>
+      </node>
+      <node id="773">
+        <label>mraa/i2c.h</label>
+      </node>
+      <node id="767">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="765">
+        <label>logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="766" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="767" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+      </node>
+      <node id="752">
+        <label>errno.h</label>
+      </node>
+      <node id="748">
+        <label>fcntl.h</label>
+      </node>
+      <node id="750">
+        <label>mqueue.h</label>
+      </node>
+      <node id="762">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="760" relation="include">
+        </childnode>
+        <childnode refid="763" relation="include">
+        </childnode>
+        <childnode refid="759" relation="include">
+        </childnode>
+        <childnode refid="764" relation="include">
+        </childnode>
+      </node>
+      <node id="755">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="756" relation="include">
+        </childnode>
+        <childnode refid="757" relation="include">
+        </childnode>
+        <childnode refid="758" relation="include">
+        </childnode>
+        <childnode refid="759" relation="include">
+        </childnode>
+        <childnode refid="760" relation="include">
+        </childnode>
+        <childnode refid="761" relation="include">
+        </childnode>
+      </node>
+      <node id="747">
+        <label>pthread.h</label>
+      </node>
+      <node id="759">
+        <label>sys/types.h</label>
+      </node>
+      <node id="751">
+        <label>string.h</label>
+      </node>
+      <node id="754">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="747" relation="include">
+        </childnode>
+        <childnode refid="755" relation="include">
+        </childnode>
+      </node>
+      <node id="760">
+        <label>unistd.h</label>
+      </node>
+      <node id="770">
+        <label>semaphore.h</label>
+      </node>
+      <node id="761">
+        <label>signal.h</label>
+      </node>
+      <node id="771">
+        <label>apds9301_sensor.h</label>
+        <link refid="apds9301__sensor_8h"/>
+        <childnode refid="758" relation="include">
+        </childnode>
+      </node>
+      <node id="746">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c</label>
+        <link refid="light_sensor_task.c"/>
+        <childnode refid="747" relation="include">
+        </childnode>
+        <childnode refid="748" relation="include">
+        </childnode>
+        <childnode refid="749" relation="include">
+        </childnode>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="753" relation="include">
+        </childnode>
+        <childnode refid="765" relation="include">
+        </childnode>
+        <childnode refid="768" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+        <childnode refid="771" relation="include">
+        </childnode>
+        <childnode refid="772" relation="include">
+        </childnode>
+        <childnode refid="754" relation="include">
+        </childnode>
+      </node>
+      <node id="756">
+        <label>time.h</label>
+      </node>
+      <node id="768">
+        <label>light_sensor_task.h</label>
+        <link refid="light__sensor__task_8h"/>
+        <childnode refid="766" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="767" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+        <childnode refid="769" relation="include">
+        </childnode>
+      </node>
+      <node id="757">
+        <label>linux/types.h</label>
+      </node>
+      <node id="763">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="764">
+        <label>stdio.h</label>
+      </node>
+      <node id="769">
+        <label>sensor_common_object.h</label>
+        <link refid="sensor__common__object_8h"/>
+        <childnode refid="758" relation="include">
+        </childnode>
+        <childnode refid="770" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="light__sensor__task_8c_1ae2249f66e4862406c8764ed4cd9363bc" prot="public" static="no">
+        <name>MQ_LIGHTTASK_NAME</name>
+        <initializer>&quot;/lighttask_queue&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="25" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="light__sensor__task_8c_1aa9e233b2be76e595f18840667556a4e4" prot="public" static="no">
+        <name>LUX_THRESHOLD</name>
+        <initializer>(50)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="27" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="light__sensor__task_8c_1a88511a669aac60f6b34b0953f8a2a5a7" prot="public" static="yes" mutable="no">
+        <type>mqd_t</type>
+        <definition>mqd_t lighttask_q</definition>
+        <argsstring></argsstring>
+        <name>lighttask_q</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="29" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="light__sensor__task_8c_1a6339de82665875d7612427ea12f68733" prot="public" static="no" mutable="no">
+        <type>pthread_mutex_t</type>
+        <definition>pthread_mutex_t stateChangeLock</definition>
+        <argsstring></argsstring>
+        <name>stateChangeLock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="31" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="light__sensor__task_8c_1afd30fa7203210f19466697b2e7fb8def" prot="public" static="yes" mutable="no">
+        <type>DAY_STATE_T</type>
+        <definition>volatile DAY_STATE_T isDay</definition>
+        <argsstring></argsstring>
+        <name>isDay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="33" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="light__sensor__task_8c_1a2fb8d8bd6f3ac82658743d379b205a51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DAY_STATE_T</type>
+        <definition>DAY_STATE_T getLightTask_state</definition>
+        <argsstring>()</argsstring>
+        <name>getLightTask_state</name>
+        <briefdescription>
+<para>Get the LightTask state object MT-safe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>DAY_STATE_T </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="36" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="36" bodyend="43"/>
+        <referencedby refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" compoundref="socket__task_8c" startline="178" endline="227">processRemoteRequest</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1ac88a5567bdeac532053519330e94c6ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float getLightTask_lux</definition>
+        <argsstring>()</argsstring>
+        <name>getLightTask_lux</name>
+        <briefdescription>
+<para>Get the LightTask lux object. MT-safe as it calls a MT-safe function within. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="45" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="45" bodyend="49"/>
+        <referencedby refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" compoundref="socket__task_8c" startline="178" endline="227">processRemoteRequest</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1a8b5b639e928a00849c3e3ee9df62d611" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void timer_handler_getAndUpdateState</definition>
+        <argsstring>(union sigval sig)</argsstring>
+        <name>timer_handler_getAndUpdateState</name>
+        <param>
+          <type>union sigval</type>
+          <declname>sig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="51" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="51" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1ace4b0c78a43f482e74bc1d7a717c753c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_LightTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_LightTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle LightTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="85" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int light_task_queue_init</definition>
+        <argsstring>()</argsstring>
+        <name>light_task_queue_init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="95" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="95" bodyend="108"/>
+        <referencedby refid="light__sensor__task_8h_1a638f4ba787ad818d90477af9e572771c" compoundref="light__sensor__task_8c" startline="203" endline="251">light_task_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1ae16f9a1e9ceb36148bf684f96084c443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void light_task_processMsg</definition>
+        <argsstring>()</argsstring>
+        <name>light_task_processMsg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="110" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="110" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1aba967e916dcf121140bbd500e16d008e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int light_task_sensorUP</definition>
+        <argsstring>(I2C_MASTER_HANDLE_T *i2c)</argsstring>
+        <name>light_task_sensorUP</name>
+        <param>
+          <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+          <declname>i2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="168" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="168" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1acaf5a7caea21e526ecb6f3d9eaae9caa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int light_task_sensorDOWN</definition>
+        <argsstring>(I2C_MASTER_HANDLE_T *i2c)</argsstring>
+        <name>light_task_sensorDOWN</name>
+        <param>
+          <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+          <declname>i2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="188" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="188" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="light__sensor__task_8c_1a638f4ba787ad818d90477af9e572771c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* light_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>light_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+<para>Entry point of the light task thread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" line="203" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c" bodystart="203" bodyend="251"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-11 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fcntl.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>O_*<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>mode<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="main__task_8h" kindref="compound">main_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger__task_8h" kindref="compound">logger_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="light__sensor__task_8h" kindref="compound">light_sensor_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="apds9301__sensor_8h" kindref="compound">apds9301_sensor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__i2c_8h" kindref="compound">my_i2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MQ_LIGHTTASK_NAME<sp/>&quot;/lighttask_queue&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LUX_THRESHOLD<sp/>(50)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mqd_t<sp/>lighttask_q;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">pthread_mutex_t<sp/>stateChangeLock;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>DAY_STATE_T<sp/>isDay;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="light__sensor__task_8h_1a2fb8d8bd6f3ac82658743d379b205a51" refkind="member"><highlight class="normal">DAY_STATE_T<sp/><ref refid="light__sensor__task_8c_1a2fb8d8bd6f3ac82658743d379b205a51" kindref="member">getLightTask_state</ref>()</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>DAY_STATE_T<sp/>state;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_lock(&amp;stateChangeLock);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>=<sp/>isDay;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_unlock(&amp;stateChangeLock);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="light__sensor__task_8h_1ac88a5567bdeac532053519330e94c6ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="light__sensor__task_8c_1ac88a5567bdeac532053519330e94c6ab" kindref="member">getLightTask_lux</ref>()</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lux<sp/>=<sp/><ref refid="apds9301__sensor_8c_1a55e164e7dd0586de71a8dd5b25ae9ef3" kindref="member">APDS9301_getLux</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lux;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>timer_handler_getAndUpdateState(</highlight><highlight class="keyword">union</highlight><highlight class="normal"><sp/>sigval<sp/>sig)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>DAY_STATE_T<sp/>state;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" kindref="member">DEFINE_LOG_STRUCT</ref>(logtaskstruct,LT_MSG_LOG,LIGHT_TASK_ID);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lux<sp/>=<sp/><ref refid="apds9301__sensor_8c_1a55e164e7dd0586de71a8dd5b25ae9ef3" kindref="member">APDS9301_getLux</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(lux<sp/>&lt;<sp/>0)<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Light<sp/>sensor<sp/>inactive\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,ERROR<sp/></highlight><highlight class="stringliteral">&quot;Light<sp/>sensor<sp/>inactive\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>VALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Lux:<sp/>%.03f\n&quot;</highlight><highlight class="normal">,lux);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>LOGVALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,INFO<sp/></highlight><highlight class="stringliteral">&quot;Lux:<sp/>%.03f\n&quot;</highlight><highlight class="normal">,lux);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>(lux<sp/>&lt;<sp/>LUX_THRESHOLD)<sp/>?<sp/>(state<sp/>=<sp/>NIGHT)<sp/>:<sp/>(state<sp/>=<sp/>DAY);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#ifdef<sp/>VALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;State:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>((state<sp/>==<sp/>DAY)?</highlight><highlight class="stringliteral">&quot;DAY&quot;</highlight><highlight class="normal">:</highlight><highlight class="stringliteral">&quot;NIGHT&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_lock(&amp;stateChangeLock);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>isDay<sp/>=<sp/>state;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_unlock(&amp;stateChangeLock);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="light__sensor__task_8h_1ace4b0c78a43f482e74bc1d7a717c753c" refkind="member"><highlight class="normal">mqd_t<sp/><ref refid="light__sensor__task_8c_1ace4b0c78a43f482e74bc1d7a717c753c" kindref="member">getHandle_LightTaskQueue</ref>()</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lighttask_q;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" kindref="member">light_task_queue_init</ref>()</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">mq_attr<sp/>lighttaskQ_attr<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_msgsize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structLIGHTTASKQ__MSG__T" kindref="compound">LIGHTTASKQ_MSG_T</ref>),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_maxmsg<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_flags<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_curmsgs<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>mq_unlink(MQ_LIGHTTASK_NAME);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>lighttask_q<sp/>=<sp/>mq_open(MQ_LIGHTTASK_NAME,<sp/>O_CREAT<sp/>|<sp/>O_RDWR,<sp/>0666,<sp/>&amp;lighttaskQ_attr);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lighttask_q;;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>light_task_processMsg()</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret,prio;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structLIGHTTASKQ__MSG__T" kindref="compound">LIGHTTASKQ_MSG_T</ref><sp/>queueData<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main__task_8h_1a457d4759d056b6c98f3966506d480eae" kindref="member">DEFINE_MAINTASK_STRUCT</ref>(maintaskRsp,MT_MSG_STATUS_RSP,LIGHT_TASK_ID);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" kindref="member">DEFINE_LOG_STRUCT</ref>(logtaskstruct,LT_MSG_LOG,LIGHT_TASK_ID);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//struct<sp/>timespec<sp/>recv_timeout<sp/>=<sp/>{0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>continue_flag<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Uncomment<sp/>to<sp/>check<sp/>the<sp/>keep<sp/>alive<sp/>feature.<sp/>Only<sp/>a<sp/>cancellable<sp/>function<sp/>defined<sp/>by<sp/>POSIX<sp/>can<sp/>be<sp/>used<sp/>below<sp/>as<sp/>the<sp/>we<sp/>are<sp/>using<sp/>pthread_cancel<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//sleep(10);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(continue_flag)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(&amp;queueData,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(queueData));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//clock_gettime(CLOCK_REALTIME,<sp/>&amp;recv_timeout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//recv_timeout.tv_sec<sp/>+=<sp/>3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ret<sp/>=<sp/>mq_timedreceive(lighttask_q,(char*)&amp;(queueData),sizeof(queueData),&amp;prio,<sp/>&amp;recv_timeout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>mq_receive(lighttask_q,(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;(queueData),</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(queueData),&amp;prio);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;MQ_RECV:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(queueData.msgID)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_STATUS):</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Send<sp/>back<sp/>task<sp/>alive<sp/>response<sp/>to<sp/>main<sp/>task<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,INFO<sp/></highlight><highlight class="stringliteral">&quot;ALIVE<sp/>STATUS<sp/>by:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_MAINTASK(&amp;maintaskRsp,<sp/></highlight><highlight class="stringliteral">&quot;Light<sp/>sensor<sp/>task<sp/>Alive&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_GET_STATE):</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(queueData.packet.reg_value<sp/>!=<sp/>NULL)?<sp/>(*queueData.packet.reg_value<sp/>=<sp/>getLightTask_state())<sp/>:<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>queueData.packet.buffLen<sp/>=<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(queueData.packet.is_sync)<sp/>?<sp/>(sem_post(queueData.packet.sync_semaphore)):<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_READ_DATA):</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_WRITE_CMD):</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_POWERDOWN):</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="apds9301__sensor_8c_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" kindref="member">APDS9301_powerdown</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_POWERUP):</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="apds9301__sensor_8c_1a5f0928561f20743cccb1a4f6336ddff4" kindref="member">APDS9301_poweron</ref>();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(LIGHT_MSG_TASK_EXIT):</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>continue_flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Light<sp/>Task<sp/>Exit<sp/>request<sp/>from:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,INFO<sp/></highlight><highlight class="stringliteral">&quot;Light<sp/>Task<sp/>Exit<sp/>request<sp/>from:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>light_task_sensorUP(<ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>*i2c)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1acea2b6a0875bf63a179959a46b3cdf7d" kindref="member">I2Cmaster_Init</ref>(i2c);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=0)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="my__i2c_8c_1a24206855ca77b181de1cfbe8e9e5051a" kindref="member">printErrorCode</ref>(ret);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>Master<sp/>init<sp/>failed\n&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="apds9301__sensor_8c_1a5f0928561f20743cccb1a4f6336ddff4" kindref="member">APDS9301_poweron</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>==<sp/>0)<sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[OK]<sp/>Sensor<sp/>powered<sp/>ON\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="apds9301__sensor_8c_1a29ea2301a68de775fc0281dd1b4b03aa" kindref="member">APDS9301_test</ref>();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>==<sp/>0)<sp/>{LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[OK]<sp/>Sensor<sp/>Test\n&quot;</highlight><highlight class="normal">);}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[FAIL]<sp/>Sensor<sp/>Test\n&quot;</highlight><highlight class="normal">);}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>light_task_sensorDOWN(<ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>*i2c)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="apds9301__sensor_8c_1a2ddb9f93c9fac9cb3fbe152bda7bc43b" kindref="member">APDS9301_powerdown</ref>();</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>==<sp/>0)<sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Sensor<sp/>powered<sp/>DOWN\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a15136dcc397f046d0a000a781d060139" kindref="member">I2Cmaster_Destroy</ref>(i2c);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="my__i2c_8c_1a24206855ca77b181de1cfbe8e9e5051a" kindref="member">printErrorCode</ref>(ret);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(WARNING<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>Master<sp/>destroy<sp/>failed\n&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="light__sensor__task_8h_1a638f4ba787ad818d90477af9e572771c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="light__sensor__task_8c_1a638f4ba787ad818d90477af9e572771c" kindref="member">light_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*threadparam)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;LIGHT<sp/>TASK<sp/>STARTED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="light__sensor__task_8c_1abb5f74ca3376b1b610b7dac47ecae8d8" kindref="member">light_task_queue_init</ref>();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LIGHT<sp/>TASK<sp/>QUEUE<sp/>INIT:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(ERR);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>i2c;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>light_task_sensorUP(&amp;i2c);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LIGHT<sp/>TASK<sp/>SENSOR<sp/>INIT:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>FAIL_EXIT_SENSOR;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[OK]<sp/>LIGHT<sp/>TASK<sp/>INIT<sp/>COMPLETED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_barrier_wait(&amp;tasks_barrier);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Registering<sp/>a<sp/>timer<sp/>for<sp/>2<sp/>sec<sp/>to<sp/>update<sp/>the<sp/>state<sp/>of<sp/>the<sp/>snesor<sp/>value<sp/>by<sp/>getting<sp/>the<sp/>lux<sp/>value<sp/>from<sp/>the<sp/>sensor*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>timer_t<sp/>timer_id;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/><ref refid="common__helper_8c_1a23124253b968391b9777fc3b8a0cc5ec" kindref="member">register_and_start_timer</ref>(&amp;timer_id,<sp/>2*MICROSEC,<sp/>0,<sp/>timer_handler_getAndUpdateState,<sp/>&amp;timer_id))</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOG_STDOUT(ERROR<sp/>&quot;Timer<sp/>Error\n&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>FAIL_EXIT;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Log<sp/>queue<sp/>msg<sp/>which<sp/>executes<sp/>untill<sp/>the<sp/>log_task_end<sp/>flag<sp/>is<sp/>set<sp/>to<sp/>true*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>light_task_processMsg();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="posixTimer_8c_1a91f15230e46caba2a2132b04e9c73e47" kindref="member">delete_timer</ref>(timer_id);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;LIGHT<sp/>TASK<sp/>DELETE<sp/>TIMER:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal">FAIL_EXIT:</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>light_task_sensorDOWN(&amp;i2c);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal">FAIL_EXIT_SENSOR:</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>mq_close(lighttask_q);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Light<sp/>task<sp/>exit.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SUCCESS;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/light_sensor_task.c"/>
+  </compounddef>
+</doxygen>

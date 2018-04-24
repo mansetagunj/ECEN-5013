@@ -1,0 +1,89 @@
+\hypertarget{sensor__common__object_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/sensor\+\_\+common\+\_\+object.h File Reference}
+\label{sensor__common__object_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/sensor\+\_\+common\+\_\+object.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/sensor\+\_\+common\+\_\+object.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$semaphore.\+h$>$}\\*
+Include dependency graph for sensor\+\_\+common\+\_\+object.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{sensor__common__object_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sensor__common__object_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structREMOTE__REQUEST__T}{R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+T}
+\item 
+struct \hyperlink{structREMOTE__RESPONSE__T}{R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+T}
+\item 
+union \hyperlink{unionREMOTE__RESPONSE__T_1_1data}{R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+\+T\+::data}
+\item 
+struct \hyperlink{structOBJECT__PACKET__T}{O\+B\+J\+E\+C\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+T}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries S\+E\+N\+S\+O\+R\+\_\+\+M\+A\+K\+E\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+Y\+N\+C\+T\+Y\+PE}(p\+\_\+packet,  p\+\_\+sem)~\{ p\+\_\+packet-\/$>$is\+\_\+sync = S\+Y\+NC; if(N\+U\+LL != p\+\_\+sem)\{p\+\_\+packet-\/$>$sync\+\_\+semaphore = p\+\_\+sem;\} \}\hypertarget{sensor__common__object_8h_aeb154e5d881c17aa08840aa0c0970e08}{}\label{sensor__common__object_8h_aeb154e5d881c17aa08840aa0c0970e08}
+
+\item 
+\#define {\bfseries S\+E\+N\+S\+O\+R\+\_\+\+M\+A\+K\+E\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+A\+S\+Y\+N\+C\+T\+Y\+PE}(p\+\_\+packet)~\{p\+\_\+packet-\/$>$is\+\_\+sync = A\+S\+Y\+NC; p\+\_\+packet-\/$>$sync\+\_\+semaphore = N\+U\+LL;\}\hypertarget{sensor__common__object_8h_a0e5ecbc8009d353b51513dcdd4baaac7}{}\label{sensor__common__object_8h_a0e5ecbc8009d353b51513dcdd4baaac7}
+
+\item 
+\#define {\bfseries S\+E\+N\+S\+O\+R\+\_\+\+M\+A\+K\+E\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+R\+W\+\_\+1\+D\+A\+TA}(p\+\_\+packet)~(p\+\_\+packet-\/$>$buff\+Len = 1)\hypertarget{sensor__common__object_8h_afb65c7303d7a4e2807ec1d27f3999007}{}\label{sensor__common__object_8h_afb65c7303d7a4e2807ec1d27f3999007}
+
+\item 
+\#define {\bfseries S\+E\+N\+S\+O\+R\+\_\+\+M\+A\+K\+E\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+R\+W\+\_\+2\+D\+A\+TA}(p\+\_\+packet)~(p\+\_\+packet-\/$>$buff\+Len = 2)\hypertarget{sensor__common__object_8h_a1af2cf70b7bf90d76723e6f7d00fb3aa}{}\label{sensor__common__object_8h_a1af2cf70b7bf90d76723e6f7d00fb3aa}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t $\ast$ {\bfseries P\+\_\+\+B\+U\+F\+F\+\_\+T}\hypertarget{sensor__common__object_8h_aad357c71e0a9fbea0c6f670e8d0df991}{}\label{sensor__common__object_8h_aad357c71e0a9fbea0c6f670e8d0df991}
+
+\item 
+typedef uint8\+\_\+t {\bfseries D\+E\+V\+\_\+\+R\+E\+G\+\_\+T}\hypertarget{sensor__common__object_8h_ae607b6caa19309cec2f0e4eddac32e64}{}\label{sensor__common__object_8h_ae607b6caa19309cec2f0e4eddac32e64}
+
+\item 
+typedef size\+\_\+t {\bfseries B\+U\+F\+F\+\_\+\+L\+E\+N\+\_\+T}\hypertarget{sensor__common__object_8h_a3057f0f575cd4504b8a355816e1ea3c2}{}\label{sensor__common__object_8h_a3057f0f575cd4504b8a355816e1ea3c2}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+Q\+R\+S\+P\+\_\+\+ID} \{ \\*
+{\bfseries G\+E\+T\+\_\+\+T\+E\+M\+P\+\_\+C}, 
+{\bfseries G\+E\+T\+\_\+\+T\+E\+M\+P\+\_\+F}, 
+{\bfseries G\+E\+T\+\_\+\+T\+E\+M\+P\+\_\+K}, 
+{\bfseries G\+E\+T\+\_\+\+L\+UX}, 
+\\*
+{\bfseries G\+E\+T\+\_\+\+D\+A\+Y\+\_\+\+N\+I\+G\+HT}, 
+{\bfseries G\+E\+T\+\_\+\+F\+U\+NC}, 
+{\bfseries C\+O\+N\+N\+\_\+\+C\+L\+O\+S\+E\+\_\+\+R\+EQ}, 
+{\bfseries C\+O\+N\+N\+\_\+\+C\+L\+O\+S\+E\+\_\+\+R\+SP}, 
+\\*
+{\bfseries C\+O\+N\+N\+\_\+\+K\+I\+L\+L\+\_\+\+A\+P\+P\+\_\+\+R\+EQ}, 
+{\bfseries C\+O\+N\+N\+\_\+\+K\+I\+L\+L\+\_\+\+A\+P\+P\+\_\+\+R\+SP}
+ \}\hypertarget{sensor__common__object_8h_a8665b0dc4fba9a7a5351f60f774fa21c}{}\label{sensor__common__object_8h_a8665b0dc4fba9a7a5351f60f774fa21c}
+
+\item 
+enum {\bfseries S\+Y\+N\+C\+\_\+\+T\+Y\+P\+E\+\_\+T} \{ {\bfseries A\+S\+Y\+NC} = 0, 
+{\bfseries S\+Y\+NC} = 1
+ \}\hypertarget{sensor__common__object_8h_a49fa9bb88962f80a0a63af55bbe51f81}{}\label{sensor__common__object_8h_a49fa9bb88962f80a0a63af55bbe51f81}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/11 
+\end{DoxyDate}

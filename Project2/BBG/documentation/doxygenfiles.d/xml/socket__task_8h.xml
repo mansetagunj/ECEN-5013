@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="socket__task_8h" kind="file" language="C++">
+    <compoundname>socket_task.h</compoundname>
+    <includes local="no">signal.h</includes>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="socket__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</includedby>
+    <incdepgraph>
+      <node id="670">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/socket_task.h</label>
+        <link refid="socket_task.h"/>
+        <childnode refid="671" relation="include">
+        </childnode>
+      </node>
+      <node id="671">
+        <label>signal.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="674">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c</label>
+        <link refid="socket__task_8c"/>
+      </node>
+      <node id="673">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="672">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/socket_task.h</label>
+        <link refid="socket_task.h"/>
+        <childnode refid="673" relation="include">
+        </childnode>
+        <childnode refid="674" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="socket__task_8h_1aa89fd33489e6b5755ebe654eb5ca5151" prot="public" static="no" mutable="no">
+        <type>sig_atomic_t</type>
+        <definition>sig_atomic_t socketTask_continue</definition>
+        <argsstring></argsstring>
+        <name>socketTask_continue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/socket_task.h" line="14" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/socket_task.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="socket__task_8h_1a11efeb37f1a462e32c153a30ba11f53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* socket_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>socket_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/socket_task.h" line="22" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/socket_task.c" bodystart="101" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-09 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>SOCKET_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SOCKET_TASK_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;signal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">sig_atomic_t<sp/>socketTask_continue;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="socket__task_8h_1a11efeb37f1a462e32c153a30ba11f53a" kindref="member">socket_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>threadparam);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/socket_task.h"/>
+  </compounddef>
+</doxygen>

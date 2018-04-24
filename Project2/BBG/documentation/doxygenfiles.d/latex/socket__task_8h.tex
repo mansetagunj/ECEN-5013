@@ -1,0 +1,136 @@
+\hypertarget{socket__task_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/socket\+\_\+task.h File Reference}
+\label{socket__task_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/socket\+\_\+task.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/socket\+\_\+task.\+h}}
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+Include dependency graph for socket\+\_\+task.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{socket__task_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{socket__task_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{socket__task_8h_a11efeb37f1a462e32c153a30ba11f53a}{socket\+\_\+task\+\_\+callback} (void $\ast$threadparam)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sig\+\_\+atomic\+\_\+t {\bfseries socket\+Task\+\_\+continue}\hypertarget{socket__task_8h_aa89fd33489e6b5755ebe654eb5ca5151}{}\label{socket__task_8h_aa89fd33489e6b5755ebe654eb5ca5151}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/09 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{socket\+\_\+task.\+h@{socket\+\_\+task.\+h}!socket\+\_\+task\+\_\+callback@{socket\+\_\+task\+\_\+callback}}
+\index{socket\+\_\+task\+\_\+callback@{socket\+\_\+task\+\_\+callback}!socket\+\_\+task.\+h@{socket\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{socket\+\_\+task\+\_\+callback(void $\ast$threadparam)}{socket_task_callback(void *threadparam)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ socket\+\_\+task\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{threadparam}
+\end{DoxyParamCaption}
+)}\hypertarget{socket__task_8h_a11efeb37f1a462e32c153a30ba11f53a}{}\label{socket__task_8h_a11efeb37f1a462e32c153a30ba11f53a}
+
+\begin{DoxyParams}{Parameters}
+{\em threadparam} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+102 \{
+103     \textcolor{keywordtype}{int} server\_socket,accepted\_socket, option = 1;
+104     \textcolor{keyword}{struct }sockaddr\_in peer\_addr;
+105     \textcolor{keywordtype}{int} addrLen = \textcolor{keyword}{sizeof}(peer\_addr);
+106     LOG\_STDOUT(INFO \textcolor{stringliteral}{"SOCKET TASK STARTED\(\backslash\)n"});
+107 
+108     server\_socket  = \hyperlink{socket__task_8c_ace71e6ac2b8b6275085bc2dfda91e29c}{socket\_task\_init}(server\_socket);
+109     \textcolor{keywordflow}{if}(ERR == server\_socket)
+110     \{
+111         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Socket task init failed.\(\backslash\)n"});
+112         exit(ERR);
+113     \}
+114 
+115 
+116     LOG\_STDOUT(INFO \textcolor{stringliteral}{"SOCKET TASK INIT COMPLETED\(\backslash\)n"});
+117     pthread\_barrier\_wait(&tasks\_barrier);
+118 
+119     \hyperlink{logger__task_8h_a006cfbef67bbc2a8a43363fb6aab41e9}{DEFINE\_LOG\_STRUCT}(logData,LT\_MSG\_LOG,SOCKET\_TASK\_ID);
+120 
+121     \textcolor{keywordflow}{while}(socketTask\_continue)
+122     \{
+123         POST\_MESSAGE\_LOGTASK(&logData,\textcolor{stringliteral}{"Accepting connections...\(\backslash\)n"});
+124         accepted\_socket = accept(server\_socket, (\textcolor{keyword}{struct} sockaddr*)&peer\_addr,(socklen\_t*)&addrLen);
+125         \textcolor{keywordflow}{if}(accepted\_socket < 0)
+126         \{
+127             LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot accept:%s\(\backslash\)n"},strerror(errno));
+128             POST\_MESSAGE\_LOGTASK(&logData,ERROR \textcolor{stringliteral}{"Cannot accept:%s\(\backslash\)n"},strerror(errno));
+129             \textcolor{keywordflow}{continue};
+130         \}
+131 
+132         \textcolor{keywordtype}{char} peer\_IP[20] = \{0\};
+133         POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"Conn accepted. Peer Add: %s\(\backslash\)n"},inet\_ntop(AF\_INET, &peer\_addr.
+      sin\_addr, peer\_IP, \textcolor{keyword}{sizeof}(peer\_IP)));
+134         LOG\_STDOUT(INFO \textcolor{stringliteral}{"Connection accepted from peer Addr: %s\(\backslash\)n"},inet\_ntop(AF\_INET, &peer\_addr.sin\_addr, 
+      peer\_IP, \textcolor{keyword}{sizeof}(peer\_IP)));
+135 
+136         \textcolor{keywordflow}{while}(socketTask\_continue)
+137         \{
+138             \hyperlink{structREMOTE__REQUEST__T}{REMOTE\_REQUEST\_T} req\_in = \{0\};
+139             \hyperlink{structREMOTE__RESPONSE__T}{REMOTE\_RESPONSE\_T} rsp\_out = \{0\};
+140             \textcolor{keywordtype}{int} nbytes = 0;
+141             \textcolor{keywordflow}{do}\{
+142                 nbytes = recv(accepted\_socket, (((\textcolor{keywordtype}{char}*)&(req\_in))+nbytes), \textcolor{keyword}{sizeof}(req\_in), 0);
+143             \}\textcolor{keywordflow}{while}(nbytes < \textcolor{keyword}{sizeof}(req\_in) && nbytes != -1);
+144 
+145             LOG\_STDOUT(INFO \textcolor{stringliteral}{"--CLIENT REQUEST: bytes:%d ID:%d\(\backslash\)n"},nbytes,req\_in.request\_id);
+146             POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"--CLIENT REQUEST: bytes:%d ID:%d\(\backslash\)n"},nbytes,req\_in.
+      request\_id);
+147             rsp\_out = \hyperlink{socket__task_8c_adb9b673e72054ada7a350a7bb51dff05}{processRemoteRequest}(req\_in);
+148             
+149             \textcolor{keywordflow}{if}(rsp\_out.rsp\_id == CONN\_CLOSE\_RSP) 
+150                 \{\textcolor{keywordflow}{break};\}
+151             \textcolor{keywordflow}{if}(rsp\_out.rsp\_id == CONN\_KILL\_APP\_RSP) 
+152                 \{\textcolor{comment}{/* socketTask\_continue = 0; */} \textcolor{keywordflow}{break};\}
+153         
+154             nbytes = send(accepted\_socket , (\textcolor{keywordtype}{char}*)&rsp\_out , \textcolor{keyword}{sizeof}(rsp\_out), 0 );
+155             \textcolor{keywordflow}{if}(nbytes < \textcolor{keyword}{sizeof}(rsp\_out))
+156             \{
+157                 LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot send complete data\(\backslash\)n"});
+158                 POST\_MESSAGE\_LOGTASK(&logData,ERROR \textcolor{stringliteral}{"Cannot send complete data\(\backslash\)n"});
+159                 \textcolor{keywordflow}{break};
+160             \}
+161 
+162             LOG\_STDOUT(INFO \textcolor{stringliteral}{"Number of bytes sent: %d\(\backslash\)n"},nbytes);
+163             POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"Number of bytes sent: %d\(\backslash\)n"},nbytes);
+164         \}
+165 
+166         \textcolor{comment}{/* Create a new thread to handle the connection and go back to accepting */}
+167         close(accepted\_socket);
+168         LOG\_STDOUT(INFO \textcolor{stringliteral}{"Socket Closed\(\backslash\)n"});
+169         POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"Socket Closed\(\backslash\)n"});
+170         \textcolor{comment}{/* Think of a mechanism to close this socket task as there is a while(1) loop */}
+171 
+172     \}
+173 
+174     \textcolor{comment}{// signal(SIGUSR1, signal\_handler);}
+175 
+176 \}
+\end{DoxyCode}

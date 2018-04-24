@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="temperature__sensor__task_8c" kind="file" language="C++">
+    <compoundname>temperature_sensor_task.c</compoundname>
+    <includes local="no">pthread.h</includes>
+    <includes local="no">fcntl.h</includes>
+    <includes local="no">sys/stat.h</includes>
+    <includes local="no">mqueue.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes refid="main__task_8h" local="yes">main_task.h</includes>
+    <includes refid="logger__task_8h" local="yes">logger_task.h</includes>
+    <includes refid="error__data_8h" local="yes">error_data.h</includes>
+    <includes refid="temperature__sensor__task_8h" local="yes">temperature_sensor_task.h</includes>
+    <includes refid="my__i2c_8h" local="yes">my_i2c.h</includes>
+    <includes refid="tmp102__sensor_8h" local="yes">tmp102_sensor.h</includes>
+    <includes refid="common__helper_8h" local="yes">common_helper.h</includes>
+    <incdepgraph>
+      <node id="926">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="923">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c</label>
+        <link refid="temperature_sensor_task.c"/>
+        <childnode refid="924" relation="include">
+        </childnode>
+        <childnode refid="925" relation="include">
+        </childnode>
+        <childnode refid="926" relation="include">
+        </childnode>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="928" relation="include">
+        </childnode>
+        <childnode refid="929" relation="include">
+        </childnode>
+        <childnode refid="930" relation="include">
+        </childnode>
+        <childnode refid="942" relation="include">
+        </childnode>
+        <childnode refid="939" relation="include">
+        </childnode>
+        <childnode refid="945" relation="include">
+        </childnode>
+        <childnode refid="948" relation="include">
+        </childnode>
+        <childnode refid="950" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+      </node>
+      <node id="948">
+        <label>my_i2c.h</label>
+        <link refid="my__i2c_8h"/>
+        <childnode refid="924" relation="include">
+        </childnode>
+        <childnode refid="949" relation="include">
+        </childnode>
+      </node>
+      <node id="950">
+        <label>tmp102_sensor.h</label>
+        <link refid="tmp102__sensor_8h"/>
+      </node>
+      <node id="930">
+        <label>main_task.h</label>
+        <link refid="main__task_8h"/>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="929" relation="include">
+        </childnode>
+        <childnode refid="928" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+        <childnode refid="939" relation="include">
+        </childnode>
+      </node>
+      <node id="935">
+        <label>stdint.h</label>
+      </node>
+      <node id="943">
+        <label>stdlib.h</label>
+      </node>
+      <node id="949">
+        <label>mraa/i2c.h</label>
+      </node>
+      <node id="945">
+        <label>temperature_sensor_task.h</label>
+        <link refid="temperature__sensor__task_8h"/>
+        <childnode refid="943" relation="include">
+        </childnode>
+        <childnode refid="929" relation="include">
+        </childnode>
+        <childnode refid="928" relation="include">
+        </childnode>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+        <childnode refid="944" relation="include">
+        </childnode>
+        <childnode refid="939" relation="include">
+        </childnode>
+        <childnode refid="946" relation="include">
+        </childnode>
+      </node>
+      <node id="944">
+        <label>my_time.h</label>
+        <link refid="my__time_8h"/>
+      </node>
+      <node id="942">
+        <label>logger_task.h</label>
+        <link refid="logger__task_8h"/>
+        <childnode refid="943" relation="include">
+        </childnode>
+        <childnode refid="929" relation="include">
+        </childnode>
+        <childnode refid="928" relation="include">
+        </childnode>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+        <childnode refid="944" relation="include">
+        </childnode>
+        <childnode refid="939" relation="include">
+        </childnode>
+      </node>
+      <node id="929">
+        <label>errno.h</label>
+      </node>
+      <node id="925">
+        <label>fcntl.h</label>
+      </node>
+      <node id="927">
+        <label>mqueue.h</label>
+      </node>
+      <node id="939">
+        <label>error_data.h</label>
+        <link refid="error__data_8h"/>
+        <childnode refid="937" relation="include">
+        </childnode>
+        <childnode refid="940" relation="include">
+        </childnode>
+        <childnode refid="936" relation="include">
+        </childnode>
+        <childnode refid="941" relation="include">
+        </childnode>
+      </node>
+      <node id="932">
+        <label>posixTimer.h</label>
+        <link refid="posixTimer_8h"/>
+        <childnode refid="933" relation="include">
+        </childnode>
+        <childnode refid="934" relation="include">
+        </childnode>
+        <childnode refid="935" relation="include">
+        </childnode>
+        <childnode refid="936" relation="include">
+        </childnode>
+        <childnode refid="937" relation="include">
+        </childnode>
+        <childnode refid="938" relation="include">
+        </childnode>
+      </node>
+      <node id="924">
+        <label>pthread.h</label>
+      </node>
+      <node id="936">
+        <label>sys/types.h</label>
+      </node>
+      <node id="928">
+        <label>string.h</label>
+      </node>
+      <node id="931">
+        <label>common_helper.h</label>
+        <link refid="common__helper_8h"/>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="924" relation="include">
+        </childnode>
+        <childnode refid="932" relation="include">
+        </childnode>
+      </node>
+      <node id="937">
+        <label>unistd.h</label>
+      </node>
+      <node id="947">
+        <label>semaphore.h</label>
+      </node>
+      <node id="938">
+        <label>signal.h</label>
+      </node>
+      <node id="933">
+        <label>time.h</label>
+      </node>
+      <node id="934">
+        <label>linux/types.h</label>
+      </node>
+      <node id="940">
+        <label>sys/syscall.h</label>
+      </node>
+      <node id="941">
+        <label>stdio.h</label>
+      </node>
+      <node id="946">
+        <label>sensor_common_object.h</label>
+        <link refid="sensor__common__object_8h"/>
+        <childnode refid="935" relation="include">
+        </childnode>
+        <childnode refid="947" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="temperature__sensor__task_8c_1a6550cb368d8a0ec6958a62cfb51fcb00" prot="public" static="no">
+        <name>MQ_TEMPERATURETASK_NAME</name>
+        <initializer>&quot;/temperaturetask_queue&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="25" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="temperature__sensor__task_8c_1af6c10feb32d718f7e369d3d947955dc5" prot="public" static="yes" mutable="no">
+        <type>mqd_t</type>
+        <definition>mqd_t temperaturetask_q</definition>
+        <argsstring></argsstring>
+        <name>temperaturetask_q</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="27" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="temperature__sensor__task_8c_1aef8b0b007a8236bcfd1fd7fbad0e4b13" prot="public" static="no" mutable="no">
+        <type>pthread_mutex_t</type>
+        <definition>pthread_mutex_t tempChangeLock</definition>
+        <argsstring></argsstring>
+        <name>tempChangeLock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="29" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="temperature__sensor__task_8c_1a391f3b829e5c835df4e11665c91826aa" prot="public" static="yes" mutable="no">
+        <type>float</type>
+        <definition>volatile float latest_temperature</definition>
+        <argsstring></argsstring>
+        <name>latest_temperature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="31" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="temperature__sensor__task_8c_1a4bea76689b1b882f95e488a1bb41f5f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float getTempTask_temperature</definition>
+        <argsstring>()</argsstring>
+        <name>getTempTask_temperature</name>
+        <briefdescription>
+<para>Get the TempTask temperature object MT-safe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>float </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="34" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="34" bodyend="41"/>
+        <referencedby refid="socket__task_8c_1adb9b673e72054ada7a350a7bb51dff05" compoundref="socket__task_8c" startline="178" endline="227">processRemoteRequest</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1ad5831217a5c4e4674cfc902134a5aa71" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void timer_handler_getAndUpdateTemperature</definition>
+        <argsstring>(union sigval sig)</argsstring>
+        <name>timer_handler_getAndUpdateTemperature</name>
+        <param>
+          <type>union sigval</type>
+          <declname>sig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="43" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="43" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1afebaba221409b026d6f4648ac50b0c4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mqd_t</type>
+        <definition>mqd_t getHandle_TemperatureTaskQueue</definition>
+        <argsstring>()</argsstring>
+        <name>getHandle_TemperatureTaskQueue</name>
+        <briefdescription>
+<para>Get the Handle TemperatureTaskQueue object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mqd_t </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="72" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1ad54a52f7c1962f12523c89f17484f5d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int temperature_task_queue_init</definition>
+        <argsstring>()</argsstring>
+        <name>temperature_task_queue_init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="82" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="82" bodyend="95"/>
+        <referencedby refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" compoundref="temperature__sensor__task_8c" startline="184" endline="238">temperature_task_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1adf36688df6c9b7833fff8c6d84febc3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void temperature_task_processMsg</definition>
+        <argsstring>()</argsstring>
+        <name>temperature_task_processMsg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="97" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="97" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int temperature_task_I2Cinit</definition>
+        <argsstring>(I2C_MASTER_HANDLE_T *i2c)</argsstring>
+        <name>temperature_task_I2Cinit</name>
+        <param>
+          <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+          <declname>i2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i2c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="153" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="153" bodyend="163"/>
+        <referencedby refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" compoundref="temperature__sensor__task_8c" startline="184" endline="238">temperature_task_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int temperature_task_I2Cdeinit</definition>
+        <argsstring>(I2C_MASTER_HANDLE_T *i2c)</argsstring>
+        <name>temperature_task_I2Cdeinit</name>
+        <param>
+          <type><ref refid="my__i2c_8h_1ab57e25e9caf06380c1d3587fa9866c1e" kindref="member">I2C_MASTER_HANDLE_T</ref> *</type>
+          <declname>i2c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i2c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="171" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="171" bodyend="182"/>
+        <referencedby refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" compoundref="temperature__sensor__task_8c" startline="184" endline="238">temperature_task_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="temperature__sensor__task_8c_1abc96664d611b8a19036cf6fcaaf92ac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* temperature_task_callback</definition>
+        <argsstring>(void *threadparam)</argsstring>
+        <name>temperature_task_callback</name>
+        <param>
+          <type>void *</type>
+          <declname>threadparam</declname>
+        </param>
+        <briefdescription>
+<para>Entry point of the temp task thread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>threadparam</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void* </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" line="184" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c" bodystart="184" bodyend="238"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-11 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#include<sp/>&lt;pthread.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fcntl.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>O_*<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>mode<sp/>constants<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mqueue.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="main__task_8h" kindref="compound">main_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger__task_8h" kindref="compound">logger_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error__data_8h" kindref="compound">error_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="temperature__sensor__task_8h" kindref="compound">temperature_sensor_task.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="my__i2c_8h" kindref="compound">my_i2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tmp102__sensor_8h" kindref="compound">tmp102_sensor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common__helper_8h" kindref="compound">common_helper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MQ_TEMPERATURETASK_NAME<sp/>&quot;/temperaturetask_queue&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>mqd_t<sp/>temperaturetask_q;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">pthread_mutex_t<sp/>tempChangeLock;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>latest_temperature;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="temperature__sensor__task_8h_1a4bea76689b1b882f95e488a1bb41f5f8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="temperature__sensor__task_8c_1a4bea76689b1b882f95e488a1bb41f5f8" kindref="member">getTempTask_temperature</ref>()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_lock(&amp;tempChangeLock);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>temp<sp/>=<sp/>latest_temperature;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_unlock(&amp;tempChangeLock);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>timer_handler_getAndUpdateTemperature(</highlight><highlight class="keyword">union</highlight><highlight class="normal"><sp/>sigval<sp/>sig)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>temperature;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" kindref="member">DEFINE_LOG_STRUCT</ref>(logtaskstruct,LT_MSG_LOG,TEMPERATURE_TASK_ID);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="tmp102__sensor_8h_1ab79ca2cd8f6ac2c6edb369185a4ec9e2" kindref="member">TMP102_getTemp_Celcius</ref>(&amp;temperature);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>==<sp/>0)<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>VALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Celcius:%.03f\n&quot;</highlight><highlight class="normal">,temperature);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>LOGVALUES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,INFO<sp/></highlight><highlight class="stringliteral">&quot;Celcius:%.03f\n&quot;</highlight><highlight class="normal">,temperature);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;Temperature<sp/>Sensor<sp/>Inactive\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,ERROR<sp/></highlight><highlight class="stringliteral">&quot;Temperature<sp/>Sensor<sp/>Inactive\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_lock(&amp;tempChangeLock);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>latest_temperature<sp/>=<sp/>temperature;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_mutex_unlock(&amp;tempChangeLock);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="temperature__sensor__task_8h_1afebaba221409b026d6f4648ac50b0c4e" refkind="member"><highlight class="normal">mqd_t<sp/><ref refid="temperature__sensor__task_8c_1afebaba221409b026d6f4648ac50b0c4e" kindref="member">getHandle_TemperatureTaskQueue</ref>()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temperaturetask_q;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="temperature__sensor__task_8c_1ad54a52f7c1962f12523c89f17484f5d9" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="temperature__sensor__task_8c_1ad54a52f7c1962f12523c89f17484f5d9" kindref="member">temperature_task_queue_init</ref>()</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">mq_attr<sp/>temperaturetaskQ_attr<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_msgsize<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structTEMPERATURETASKQ__MSG__T" kindref="compound">TEMPERATURETASKQ_MSG_T</ref>),</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_maxmsg<sp/>=<sp/>128,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_flags<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.mq_curmsgs<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>mq_unlink(MQ_TEMPERATURETASK_NAME);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>temperaturetask_q<sp/>=<sp/>mq_open(MQ_TEMPERATURETASK_NAME,<sp/>O_CREAT<sp/>|<sp/>O_RDWR,<sp/>0666,<sp/>&amp;temperaturetaskQ_attr);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temperaturetask_q;;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>temperature_task_processMsg()</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret,prio;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structTEMPERATURETASKQ__MSG__T" kindref="compound">TEMPERATURETASKQ_MSG_T</ref><sp/>queueData<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main__task_8h_1a457d4759d056b6c98f3966506d480eae" kindref="member">DEFINE_MAINTASK_STRUCT</ref>(maintaskRsp,MT_MSG_STATUS_RSP,TEMPERATURE_TASK_ID);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="logger__task_8h_1a006cfbef67bbc2a8a43363fb6aab41e9" kindref="member">DEFINE_LOG_STRUCT</ref>(logtaskstruct,LT_MSG_LOG,TEMPERATURE_TASK_ID);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//struct<sp/>timespec<sp/>recv_timeout<sp/>=<sp/>{0};</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>continue_flag<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(continue_flag)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(&amp;queueData,0,</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(queueData));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clock_gettime(CLOCK_REALTIME,<sp/>&amp;recv_timeout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recv_timeout.tv_sec<sp/>+=<sp/>3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ret<sp/>=<sp/>mq_timedreceive(temperaturetask_q,(char*)&amp;(queueData),sizeof(queueData),&amp;prio,<sp/>&amp;recv_timeout);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>mq_receive(temperaturetask_q,(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;(queueData),</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(queueData),&amp;prio);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;MQ_RECV:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,ERROR<sp/></highlight><highlight class="stringliteral">&quot;MQ_RECV:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(queueData.msgID)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_STATUS):</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Send<sp/>back<sp/>task<sp/>alive<sp/>response<sp/>to<sp/>main<sp/>task<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,INFO<sp/></highlight><highlight class="stringliteral">&quot;ALIVE<sp/>STATUS<sp/>by:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_MAINTASK(&amp;maintaskRsp,<sp/></highlight><highlight class="stringliteral">&quot;Temperature<sp/>sensor<sp/>task<sp/>Alive&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_GET_TEMP):</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_READ_DATA):</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_WRITE_CMD):</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_POWERDOWN):</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_POWERUP):</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal">(TEMP_MSG_TASK_EXIT):</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>continue_flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Temperature<sp/>Task<sp/>Exit<sp/>request<sp/>from:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST_MESSAGE_LOGTASK(&amp;logtaskstruct,INFO<sp/></highlight><highlight class="stringliteral">&quot;Temperature<sp/>Task<sp/>Exit<sp/>request<sp/>from:%s\n&quot;</highlight><highlight class="normal">,getTaskIdentfierString(queueData.sourceID));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" kindref="member">temperature_task_I2Cinit</ref>(<ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>*i2c)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>=<sp/><ref refid="my__i2c_8c_1acea2b6a0875bf63a179959a46b3cdf7d" kindref="member">I2Cmaster_Init</ref>(i2c)<sp/>!=0)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="my__i2c_8c_1a24206855ca77b181de1cfbe8e9e5051a" kindref="member">printErrorCode</ref>(ret);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;[FAIL]<sp/>I2C<sp/>Master<sp/>init<sp/>failed\n&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" kindref="member">temperature_task_I2Cdeinit</ref>(<ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>*i2c)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="my__i2c_8c_1a15136dcc397f046d0a000a781d060139" kindref="member">I2Cmaster_Destroy</ref>(i2c);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>!=0)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="my__i2c_8c_1a24206855ca77b181de1cfbe8e9e5051a" kindref="member">printErrorCode</ref>(ret);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(WARNING<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>Master<sp/>destroy<sp/>failed\n&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="temperature__sensor__task_8h_1abc96664d611b8a19036cf6fcaaf92ac8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="temperature__sensor__task_8c_1abc96664d611b8a19036cf6fcaaf92ac8" kindref="member">temperature_task_callback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*threadparam)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;TEMPERATURE<sp/>TASK<sp/>STARTED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="temperature__sensor__task_8c_1ad54a52f7c1962f12523c89f17484f5d9" kindref="member">temperature_task_queue_init</ref>();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;TEMPERATURE<sp/>TASK<sp/>INIT%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(ERR);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structi2c__handle" kindref="compound">I2C_MASTER_HANDLE_T</ref><sp/>i2c;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="temperature__sensor__task_8c_1ad16d2f35c6d97e33cfe57e3ab2497064" kindref="member">temperature_task_I2Cinit</ref>(&amp;i2c);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;[FAIL]<sp/>TEMPERATURE<sp/>TASK<sp/>SENSOR<sp/>INIT:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>FAIL_EXIT_SENSOR;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//exit(ERR);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ret<sp/>==<sp/>0)<sp/>{LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[OK]<sp/>Sensor<sp/>Test\n&quot;</highlight><highlight class="normal">);}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;[FAIL]<sp/>Sensor<sp/>Test\n&quot;</highlight><highlight class="normal">);}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;TEMPERATURE<sp/>TASK<sp/>INIT<sp/>COMPLETED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_barrier_wait(&amp;tasks_barrier);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Registering<sp/>a<sp/>timer<sp/>for<sp/>2<sp/>sec<sp/>to<sp/>update<sp/>the<sp/>task<sp/>temp<sp/>copy<sp/>by<sp/>getting<sp/>the<sp/>temperature<sp/>value<sp/>from<sp/>the<sp/>sensor*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>timer_t<sp/>timer_id;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/><ref refid="common__helper_8c_1a23124253b968391b9777fc3b8a0cc5ec" kindref="member">register_and_start_timer</ref>(&amp;timer_id,<sp/>2*MICROSEC,<sp/>0,<sp/>timer_handler_getAndUpdateTemperature,<sp/>&amp;timer_id))</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOG_STDOUT(ERROR<sp/>&quot;Timer<sp/>Error\n&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>FAIL_EXIT;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Process<sp/>Log<sp/>queue<sp/>msg<sp/>which<sp/>executes<sp/>untill<sp/>the<sp/>log_task_end<sp/>flag<sp/>is<sp/>set<sp/>to<sp/>true*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>temperature_task_processMsg();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="posixTimer_8c_1a91f15230e46caba2a2132b04e9c73e47" kindref="member">delete_timer</ref>(timer_id);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ERR<sp/>==<sp/>ret)</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_STDOUT(ERROR<sp/></highlight><highlight class="stringliteral">&quot;TEMPERATURE<sp/>TASK<sp/>DELETE<sp/>TIMER:%s\n&quot;</highlight><highlight class="normal">,strerror(errno));</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal">FAIL_EXIT:</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="temperature__sensor__task_8c_1a7b3917c753224bc64f378ca8e61cc941" kindref="member">temperature_task_I2Cdeinit</ref>(&amp;i2c);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal">FAIL_EXIT_SENSOR:</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>mq_close(temperaturetask_q);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>LOG_STDOUT(INFO<sp/></highlight><highlight class="stringliteral">&quot;Temperature<sp/>task<sp/>exit.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>SUCCESS;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/src/temperature_sensor_task.c"/>
+  </compounddef>
+</doxygen>

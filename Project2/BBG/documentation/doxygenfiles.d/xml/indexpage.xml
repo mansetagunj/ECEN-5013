@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>ECEN5013 Project 1</title>
+    <detaileddescription>
+<para><heading level="2">Author - Gunj Manseta (Embedded Systems Engineering - University of Colorado Boulder)</heading>
+</para><para><heading level="3">A multithreaded console application for BeagleBone black/green(Linux) having sensor interface, server, and logger</heading>
+</para><para><heading level="4">Code Documentation can be found at - <ulink url="http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html">Project Code Documentation webpage</ulink> (Ctrl+click for new tab)</heading>
+</para><para>The project includes 1 parent thread which is the main task. The main task spawns 4 child threads</para><para><orderedlist>
+<listitem><para>Temperature sensor task which is responsible for talking with the TMP102 sensor.</para></listitem><listitem><para>Light sensor task which is responsible for talking with the APDS9301 light sensor.</para></listitem><listitem><para>Socket task which is runs a TCP server and accepts connection from the client with various requests suchs as getting temperature and lux value from the sensor.</para></listitem><listitem><para>Logger task which is solely responsible for logging to a file setup in the config file.</para></listitem></orderedlist>
+</para><para>The sensor tasks talks with the sensor via a MT-safe I2Cmaster wrapper written around the Intel open source project mraa library intended for various boards.</para><para>The main task which is the parent task keeps a check of the children task if they are alive or not and if any of the thread is found to be dead or stuck for more than the timeout set by in the config file, the main task closes all the threads and exits gracefully.</para><para><heading level="3">This project is intended to run on the BeagleBone black/green."</heading>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

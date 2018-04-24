@@ -1,0 +1,21 @@
+\subsection*{Author -\/ Gunj Manseta (Embedded Systems Engineering -\/ University of Colorado Boulder)}
+
+\subsubsection*{A multithreaded console application for Beagle\+Bone black/green(Linux) having sensor interface, server, and logger}
+
+\paragraph*{Code Documentation can be found at -\/ \href{http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html}{\tt Project Code Documentation webpage} (Ctrl+click for new tab)}
+
+The project includes 1 parent thread which is the main task. The main task spawns 4 child threads
+
+
+\begin{DoxyEnumerate}
+\item Temperature sensor task which is responsible for talking with the T\+M\+P102 sensor.
+\item Light sensor task which is responsible for talking with the A\+P\+D\+S9301 light sensor.
+\item Socket task which is runs a T\+CP server and accepts connection from the client with various requests suchs as getting temperature and lux value from the sensor.
+\item Logger task which is solely responsible for logging to a file setup in the config file.
+\end{DoxyEnumerate}
+
+The sensor tasks talks with the sensor via a M\+T-\/safe I2\+Cmaster wrapper written around the Intel open source project mraa library intended for various boards.
+
+The main task which is the parent task keeps a check of the children task if they are alive or not and if any of the thread is found to be dead or stuck for more than the timeout set by in the config file, the main task closes all the threads and exits gracefully.
+
+\subsubsection*{This project is intended to run on the Beagle\+Bone black/green."}

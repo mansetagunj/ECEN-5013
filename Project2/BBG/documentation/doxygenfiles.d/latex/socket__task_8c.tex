@@ -1,0 +1,306 @@
+\hypertarget{socket__task_8c}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/socket\+\_\+task.c File Reference}
+\label{socket__task_8c}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/socket\+\_\+task.\+c@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/src/socket\+\_\+task.\+c}}
+{\ttfamily \#include $<$sys/socket.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$netinet/in.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}socket\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}logger\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}main\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}common\+\_\+helper.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sensor\+\_\+common\+\_\+object.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}light\+\_\+sensor\+\_\+task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}temperature\+\_\+sensor\+\_\+task.\+h\char`\"{}}\\*
+Include dependency graph for socket\+\_\+task.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{socket__task_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries S\+E\+R\+V\+E\+R\+\_\+\+P\+O\+RT}~3000\hypertarget{socket__task_8c_ac42367fe5c999ec6650de83e9d72fe8c}{}\label{socket__task_8c_ac42367fe5c999ec6650de83e9d72fe8c}
+
+\item 
+\#define {\bfseries S\+E\+R\+V\+E\+R\+\_\+\+IP}~\char`\"{}127.\+0.\+0.\+1\char`\"{}\hypertarget{socket__task_8c_a28d06fc286f28044ed3380969700ff3f}{}\label{socket__task_8c_a28d06fc286f28044ed3380969700ff3f}
+
+\item 
+\#define {\bfseries M\+A\+X\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+NS}~5\hypertarget{socket__task_8c_a053b7859476cc9867ec62c49e68d3fa1}{}\label{socket__task_8c_a053b7859476cc9867ec62c49e68d3fa1}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structREMOTE__RESPONSE__T}{R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+T} \hyperlink{socket__task_8c_adb9b673e72054ada7a350a7bb51dff05}{process\+Remote\+Request} (\hyperlink{structREMOTE__REQUEST__T}{R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+T} req\+\_\+in)
+\item 
+int \hyperlink{socket__task_8c_ace71e6ac2b8b6275085bc2dfda91e29c}{socket\+\_\+task\+\_\+init} (int server\+\_\+socket)
+\item 
+void $\ast$ \hyperlink{socket__task_8c_a11efeb37f1a462e32c153a30ba11f53a}{socket\+\_\+task\+\_\+callback} (void $\ast$threadparam)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sig\+\_\+atomic\+\_\+t {\bfseries socket\+Task\+\_\+continue} = 1\hypertarget{socket__task_8c_aa89fd33489e6b5755ebe654eb5ca5151}{}\label{socket__task_8c_aa89fd33489e6b5755ebe654eb5ca5151}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/09 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{socket\+\_\+task.\+c@{socket\+\_\+task.\+c}!process\+Remote\+Request@{process\+Remote\+Request}}
+\index{process\+Remote\+Request@{process\+Remote\+Request}!socket\+\_\+task.\+c@{socket\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{process\+Remote\+Request(\+R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+\+T req\+\_\+in)}{processRemoteRequest(REMOTE_REQUEST_T req_in)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+T} process\+Remote\+Request (
+\begin{DoxyParamCaption}
+\item[{{\bf R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+Q\+U\+E\+S\+T\+\_\+T}}]{req\+\_\+in}
+\end{DoxyParamCaption}
+)}\hypertarget{socket__task_8c_adb9b673e72054ada7a350a7bb51dff05}{}\label{socket__task_8c_adb9b673e72054ada7a350a7bb51dff05}
+
+\begin{DoxyParams}{Parameters}
+{\em req\+\_\+in} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structREMOTE__RESPONSE__T}{R\+E\+M\+O\+T\+E\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+T} 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+179 \{
+180     \hyperlink{structREMOTE__RESPONSE__T}{REMOTE\_RESPONSE\_T} rsp\_out = \{0\};
+181     \textcolor{keywordflow}{switch}(req\_in.request\_id)
+182     \{
+183         \textcolor{keywordflow}{case}(GET\_FUNC):
+184             rsp\_out.rsp\_id=GET\_FUNC;
+185             strncpy(rsp\_out.metadata,\textcolor{stringliteral}{"GET\_TEMP DAY\_NIGHT\(\backslash\)n"}, \textcolor{keyword}{sizeof}(rsp\_out.metadata));
+186             \textcolor{keywordflow}{break};
+187         \textcolor{keywordflow}{case}(GET\_TEMP\_C):
+188             rsp\_out.rsp\_id=GET\_TEMP\_C;
+189             rsp\_out.data.floatingData = \hyperlink{temperature__sensor__task_8c_a4bea76689b1b882f95e488a1bb41f5f8}{getTempTask\_temperature}();
+190             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST GET\_TEMP\_C:.03%f\(\backslash\)n"},rsp\_out.data.floatingData);
+191             \textcolor{keywordflow}{break};
+192         \textcolor{keywordflow}{case}(GET\_TEMP\_F):
+193             rsp\_out.rsp\_id=GET\_TEMP\_F;
+194             rsp\_out.data.floatingData = \hyperlink{temperature__sensor__task_8c_a4bea76689b1b882f95e488a1bb41f5f8}{getTempTask\_temperature}();
+195             rsp\_out.data.floatingData = (rsp\_out.data.floatingData * 1.8) + 32;
+196             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST GET\_TEMP\_F:%.03f\(\backslash\)n"},rsp\_out.data.floatingData);
+197             \textcolor{keywordflow}{break};
+198         \textcolor{keywordflow}{case}(GET\_TEMP\_K):
+199             rsp\_out.rsp\_id=GET\_TEMP\_K;
+200             rsp\_out.data.floatingData = \hyperlink{temperature__sensor__task_8c_a4bea76689b1b882f95e488a1bb41f5f8}{getTempTask\_temperature}() + 273.15;
+201             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST GET\_TEMP\_K:%.03f\(\backslash\)n"},rsp\_out.data.floatingData);
+202             \textcolor{keywordflow}{break};
+203         \textcolor{keywordflow}{case}(GET\_LUX):
+204             rsp\_out.rsp\_id=GET\_LUX;
+205             rsp\_out.data.floatingData = \hyperlink{light__sensor__task_8c_ac88a5567bdeac532053519330e94c6ab}{getLightTask\_lux}();
+206             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST GET\_LUX:%.03f\(\backslash\)n"},rsp\_out.data.floatingData);
+207             \textcolor{keywordflow}{break};
+208         \textcolor{keywordflow}{case}(GET\_DAY\_NIGHT):
+209             rsp\_out.rsp\_id=GET\_DAY\_NIGHT;
+210             rsp\_out.data.isNight = \hyperlink{light__sensor__task_8c_a2fb8d8bd6f3ac82658743d379b205a51}{getLightTask\_state}();
+211             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST GET\_DAY\_NIGHT\(\backslash\)n"});
+212             \textcolor{keywordflow}{break};
+213         \textcolor{keywordflow}{case}(CONN\_CLOSE\_REQ):
+214             rsp\_out.rsp\_id=CONN\_CLOSE\_RSP;
+215             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST CLOSE CONNECTION\(\backslash\)n"});
+216              \textcolor{keywordflow}{break};
+217         \textcolor{keywordflow}{case}(CONN\_KILL\_APP\_REQ):
+218             rsp\_out.rsp\_id=CONN\_KILL\_APP\_RSP;
+219             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST KILL APP\(\backslash\)n"});
+220              \textcolor{keywordflow}{break};
+221         \textcolor{keywordflow}{default}:
+222             LOG\_STDOUT(INFO \textcolor{stringliteral}{"REMOTE REQUEST INVALID\(\backslash\)n"});
+223             \textcolor{keywordflow}{break};
+224 
+225     \}
+226     \textcolor{keywordflow}{return} rsp\_out;
+227 \}\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{socket__task_8c_adb9b673e72054ada7a350a7bb51dff05_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{socket\+\_\+task.\+c@{socket\+\_\+task.\+c}!socket\+\_\+task\+\_\+callback@{socket\+\_\+task\+\_\+callback}}
+\index{socket\+\_\+task\+\_\+callback@{socket\+\_\+task\+\_\+callback}!socket\+\_\+task.\+c@{socket\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{socket\+\_\+task\+\_\+callback(void $\ast$threadparam)}{socket_task_callback(void *threadparam)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ socket\+\_\+task\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{threadparam}
+\end{DoxyParamCaption}
+)}\hypertarget{socket__task_8c_a11efeb37f1a462e32c153a30ba11f53a}{}\label{socket__task_8c_a11efeb37f1a462e32c153a30ba11f53a}
+
+\begin{DoxyParams}{Parameters}
+{\em threadparam} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+102 \{
+103     \textcolor{keywordtype}{int} server\_socket,accepted\_socket, option = 1;
+104     \textcolor{keyword}{struct }sockaddr\_in peer\_addr;
+105     \textcolor{keywordtype}{int} addrLen = \textcolor{keyword}{sizeof}(peer\_addr);
+106     LOG\_STDOUT(INFO \textcolor{stringliteral}{"SOCKET TASK STARTED\(\backslash\)n"});
+107 
+108     server\_socket  = \hyperlink{socket__task_8c_ace71e6ac2b8b6275085bc2dfda91e29c}{socket\_task\_init}(server\_socket);
+109     \textcolor{keywordflow}{if}(ERR == server\_socket)
+110     \{
+111         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Socket task init failed.\(\backslash\)n"});
+112         exit(ERR);
+113     \}
+114 
+115 
+116     LOG\_STDOUT(INFO \textcolor{stringliteral}{"SOCKET TASK INIT COMPLETED\(\backslash\)n"});
+117     pthread\_barrier\_wait(&tasks\_barrier);
+118 
+119     \hyperlink{logger__task_8h_a006cfbef67bbc2a8a43363fb6aab41e9}{DEFINE\_LOG\_STRUCT}(logData,LT\_MSG\_LOG,SOCKET\_TASK\_ID);
+120 
+121     \textcolor{keywordflow}{while}(socketTask\_continue)
+122     \{
+123         POST\_MESSAGE\_LOGTASK(&logData,\textcolor{stringliteral}{"Accepting connections...\(\backslash\)n"});
+124         accepted\_socket = accept(server\_socket, (\textcolor{keyword}{struct} sockaddr*)&peer\_addr,(socklen\_t*)&addrLen);
+125         \textcolor{keywordflow}{if}(accepted\_socket < 0)
+126         \{
+127             LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot accept:%s\(\backslash\)n"},strerror(errno));
+128             POST\_MESSAGE\_LOGTASK(&logData,ERROR \textcolor{stringliteral}{"Cannot accept:%s\(\backslash\)n"},strerror(errno));
+129             \textcolor{keywordflow}{continue};
+130         \}
+131 
+132         \textcolor{keywordtype}{char} peer\_IP[20] = \{0\};
+133         POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"Conn accepted. Peer Add: %s\(\backslash\)n"},inet\_ntop(AF\_INET, &peer\_addr.
+      sin\_addr, peer\_IP, \textcolor{keyword}{sizeof}(peer\_IP)));
+134         LOG\_STDOUT(INFO \textcolor{stringliteral}{"Connection accepted from peer Addr: %s\(\backslash\)n"},inet\_ntop(AF\_INET, &peer\_addr.sin\_addr, 
+      peer\_IP, \textcolor{keyword}{sizeof}(peer\_IP)));
+135 
+136         \textcolor{keywordflow}{while}(socketTask\_continue)
+137         \{
+138             \hyperlink{structREMOTE__REQUEST__T}{REMOTE\_REQUEST\_T} req\_in = \{0\};
+139             \hyperlink{structREMOTE__RESPONSE__T}{REMOTE\_RESPONSE\_T} rsp\_out = \{0\};
+140             \textcolor{keywordtype}{int} nbytes = 0;
+141             \textcolor{keywordflow}{do}\{
+142                 nbytes = recv(accepted\_socket, (((\textcolor{keywordtype}{char}*)&(req\_in))+nbytes), \textcolor{keyword}{sizeof}(req\_in), 0);
+143             \}\textcolor{keywordflow}{while}(nbytes < \textcolor{keyword}{sizeof}(req\_in) && nbytes != -1);
+144 
+145             LOG\_STDOUT(INFO \textcolor{stringliteral}{"--CLIENT REQUEST: bytes:%d ID:%d\(\backslash\)n"},nbytes,req\_in.request\_id);
+146             POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"--CLIENT REQUEST: bytes:%d ID:%d\(\backslash\)n"},nbytes,req\_in.
+      request\_id);
+147             rsp\_out = \hyperlink{socket__task_8c_adb9b673e72054ada7a350a7bb51dff05}{processRemoteRequest}(req\_in);
+148             
+149             \textcolor{keywordflow}{if}(rsp\_out.rsp\_id == CONN\_CLOSE\_RSP) 
+150                 \{\textcolor{keywordflow}{break};\}
+151             \textcolor{keywordflow}{if}(rsp\_out.rsp\_id == CONN\_KILL\_APP\_RSP) 
+152                 \{\textcolor{comment}{/* socketTask\_continue = 0; */} \textcolor{keywordflow}{break};\}
+153         
+154             nbytes = send(accepted\_socket , (\textcolor{keywordtype}{char}*)&rsp\_out , \textcolor{keyword}{sizeof}(rsp\_out), 0 );
+155             \textcolor{keywordflow}{if}(nbytes < \textcolor{keyword}{sizeof}(rsp\_out))
+156             \{
+157                 LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot send complete data\(\backslash\)n"});
+158                 POST\_MESSAGE\_LOGTASK(&logData,ERROR \textcolor{stringliteral}{"Cannot send complete data\(\backslash\)n"});
+159                 \textcolor{keywordflow}{break};
+160             \}
+161 
+162             LOG\_STDOUT(INFO \textcolor{stringliteral}{"Number of bytes sent: %d\(\backslash\)n"},nbytes);
+163             POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"Number of bytes sent: %d\(\backslash\)n"},nbytes);
+164         \}
+165 
+166         \textcolor{comment}{/* Create a new thread to handle the connection and go back to accepting */}
+167         close(accepted\_socket);
+168         LOG\_STDOUT(INFO \textcolor{stringliteral}{"Socket Closed\(\backslash\)n"});
+169         POST\_MESSAGE\_LOGTASK(&logData,INFO \textcolor{stringliteral}{"Socket Closed\(\backslash\)n"});
+170         \textcolor{comment}{/* Think of a mechanism to close this socket task as there is a while(1) loop */}
+171 
+172     \}
+173 
+174     \textcolor{comment}{// signal(SIGUSR1, signal\_handler);}
+175 
+176 \}
+\end{DoxyCode}
+\index{socket\+\_\+task.\+c@{socket\+\_\+task.\+c}!socket\+\_\+task\+\_\+init@{socket\+\_\+task\+\_\+init}}
+\index{socket\+\_\+task\+\_\+init@{socket\+\_\+task\+\_\+init}!socket\+\_\+task.\+c@{socket\+\_\+task.\+c}}
+\subsubsection[{\texorpdfstring{socket\+\_\+task\+\_\+init(int server\+\_\+socket)}{socket_task_init(int server_socket)}}]{\setlength{\rightskip}{0pt plus 5cm}int socket\+\_\+task\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{int}]{server\+\_\+socket}
+\end{DoxyParamCaption}
+)}\hypertarget{socket__task_8c_ace71e6ac2b8b6275085bc2dfda91e29c}{}\label{socket__task_8c_ace71e6ac2b8b6275085bc2dfda91e29c}
+
+\begin{DoxyParams}{Parameters}
+{\em server\+\_\+socket} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+59 \{
+60     \textcolor{keywordtype}{int} option = 1;
+61     \textcolor{keyword}{struct }sockaddr\_in addr;
+62     
+63     \textcolor{keywordflow}{if}((server\_socket = socket(AF\_INET,SOCK\_STREAM,0)) == 0)
+64     \{
+65         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Socket Creation:%s\(\backslash\)n"},strerror(errno));
+66         \textcolor{keywordflow}{return} ERR;
+67     \}
+68 
+69     LOG\_STDOUT(INFO \textcolor{stringliteral}{"Socket Created\(\backslash\)n"});
+70 
+71     \textcolor{keywordflow}{if} (setsockopt(server\_socket, SOL\_SOCKET, SO\_REUSEPORT | SO\_REUSEADDR, &(option), \textcolor{keyword}{sizeof}(option)))
+72     \{
+73         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot Set socket options:%s\(\backslash\)n"},strerror(errno));
+74         \textcolor{keywordflow}{return} ERR;
+75     \}
+76     \textcolor{comment}{/*Setting up the sockaddr\_in structure */}
+77     addr.sin\_family = AF\_INET;
+78     \textcolor{comment}{//addr.sin\_addr.s\_addr = inet\_addr(SERVER\_IP);  }
+79     addr.sin\_addr.s\_addr = INADDR\_ANY;  \textcolor{comment}{//Using local loopback  }
+80     addr.sin\_port = htons(SERVER\_PORT);
+81 
+82     \textcolor{keywordflow}{if}((bind(server\_socket,(\textcolor{keyword}{struct} sockaddr*)&addr, \textcolor{keyword}{sizeof}(addr))) < 0)
+83     \{
+84         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot bind the socket:%s\(\backslash\)n"},strerror(errno));
+85         \textcolor{keywordflow}{return} ERR;
+86     \}
+87 
+88     LOG\_STDOUT(INFO \textcolor{stringliteral}{"Socket binded\(\backslash\)n"});
+89 
+90     \textcolor{keywordflow}{if}(listen(server\_socket,MAX\_CONNECTIONS) < 0)
+91     \{
+92         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"Cannot listen:%s\(\backslash\)n"},strerror(errno));
+93         \textcolor{keywordflow}{return} ERR;
+94     \}
+95 
+96     LOG\_STDOUT(INFO \textcolor{stringliteral}{"Socket started listening on IP:%s PORT:%d\(\backslash\)n"},SERVER\_IP,SERVER\_PORT);
+97 
+98     \textcolor{keywordflow}{return} server\_socket;
+99 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{socket__task_8c_ace71e6ac2b8b6275085bc2dfda91e29c_icgraph}
+\end{center}
+\end{figure}
+
+

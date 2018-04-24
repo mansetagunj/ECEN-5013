@@ -1,0 +1,138 @@
+\hypertarget{common__helper_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/common\+\_\+helper.h File Reference}
+\label{common__helper_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/common\+\_\+helper.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/common\+\_\+helper.\+h}}
+{\ttfamily \#include $<$mqueue.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}posix\+Timer.\+h\char`\"{}}\\*
+Include dependency graph for common\+\_\+helper.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__helper_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__helper_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS}~4\hypertarget{common__helper_8h_aeb3dea598800d76fb6df4e66eb87eaf2}{}\label{common__helper_8h_aeb3dea598800d76fb6df4e66eb87eaf2}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries T\+A\+S\+K\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+T} \{ \\*
+{\bfseries L\+O\+G\+G\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+ID}, 
+{\bfseries T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E\+\_\+\+T\+A\+S\+K\+\_\+\+ID}, 
+{\bfseries S\+O\+C\+K\+E\+T\+\_\+\+T\+A\+S\+K\+\_\+\+ID}, 
+{\bfseries L\+I\+G\+H\+T\+\_\+\+T\+A\+S\+K\+\_\+\+ID}, 
+\\*
+{\bfseries M\+A\+I\+N\+\_\+\+T\+A\+S\+K\+\_\+\+ID}
+ \}\hypertarget{common__helper_8h_a8d5b3d16175933541aa53f183b77f2ae}{}\label{common__helper_8h_a8d5b3d16175933541aa53f183b77f2ae}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+mqd\+\_\+t {\bfseries get\+\_\+queue\+\_\+handle} (T\+A\+S\+K\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+T taskid)\hypertarget{common__helper_8h_ae2992ef59a491948e3b031929e7b130e}{}\label{common__helper_8h_ae2992ef59a491948e3b031929e7b130e}
+
+\item 
+int \hyperlink{common__helper_8h_a23124253b968391b9777fc3b8a0cc5ec}{register\+\_\+and\+\_\+start\+\_\+timer} (timer\+\_\+t $\ast$timer\+\_\+id, uint32\+\_\+t usec, uint8\+\_\+t oneshot, void($\ast$timer\+\_\+handler)(union sigval), void $\ast$handler\+Args)
+\begin{DoxyCompactList}\small\item\em Registers a timer, addigns the handler and starts it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile int {\bfseries alive\+Status} \mbox{[}N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS\mbox{]}\hypertarget{common__helper_8h_af5d4df1bffe487c45323aa4f523d8f31}{}\label{common__helper_8h_af5d4df1bffe487c45323aa4f523d8f31}
+
+\item 
+pthread\+\_\+mutex\+\_\+t {\bfseries alive\+State\+\_\+lock}\hypertarget{common__helper_8h_a39d6b183fe81ea1b36bb46c0344c036b}{}\label{common__helper_8h_a39d6b183fe81ea1b36bb46c0344c036b}
+
+\item 
+pthread\+\_\+t {\bfseries pthread\+\_\+id} \mbox{[}N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS\mbox{]}\hypertarget{common__helper_8h_a6e37d77f5e9dbfd89885b25b3d82e5b3}{}\label{common__helper_8h_a6e37d77f5e9dbfd89885b25b3d82e5b3}
+
+\item 
+pthread\+\_\+barrier\+\_\+t {\bfseries tasks\+\_\+barrier}\hypertarget{common__helper_8h_a69daefcb62e8c68de7d59303754d7a21}{}\label{common__helper_8h_a69daefcb62e8c68de7d59303754d7a21}
+
+\item 
+const char $\ast$const {\bfseries task\+\_\+identifier\+\_\+string} \mbox{[}N\+U\+M\+\_\+\+C\+H\+I\+L\+D\+\_\+\+T\+H\+R\+E\+A\+DS+1\mbox{]}\hypertarget{common__helper_8h_a7dde81770e24b729260585d7724ff62b}{}\label{common__helper_8h_a7dde81770e24b729260585d7724ff62b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/09 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{common\+\_\+helper.\+h@{common\+\_\+helper.\+h}!register\+\_\+and\+\_\+start\+\_\+timer@{register\+\_\+and\+\_\+start\+\_\+timer}}
+\index{register\+\_\+and\+\_\+start\+\_\+timer@{register\+\_\+and\+\_\+start\+\_\+timer}!common\+\_\+helper.\+h@{common\+\_\+helper.\+h}}
+\subsubsection[{\texorpdfstring{register\+\_\+and\+\_\+start\+\_\+timer(timer\+\_\+t $\ast$timer\+\_\+id, uint32\+\_\+t usec, uint8\+\_\+t oneshot, void($\ast$timer\+\_\+handler)(union sigval), void $\ast$handler\+Args)}{register_and_start_timer(timer_t *timer_id, uint32_t usec, uint8_t oneshot, void(*timer_handler)(union sigval), void *handlerArgs)}}]{\setlength{\rightskip}{0pt plus 5cm}int register\+\_\+and\+\_\+start\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{timer\+\_\+t $\ast$}]{timer\+\_\+id, }
+\item[{uint32\+\_\+t}]{usec, }
+\item[{uint8\+\_\+t}]{oneshot, }
+\item[{void($\ast$)(union sigval)}]{timer\+\_\+handler, }
+\item[{void $\ast$}]{handler\+Args}
+\end{DoxyParamCaption}
+)}\hypertarget{common__helper_8h_a23124253b968391b9777fc3b8a0cc5ec}{}\label{common__helper_8h_a23124253b968391b9777fc3b8a0cc5ec}
+
+
+Registers a timer, addigns the handler and starts it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & \\
+\hline
+{\em usec} & \\
+\hline
+{\em oneshot} & \\
+\hline
+{\em timer\+\_\+handler} & \\
+\hline
+{\em handler\+Args} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+57 \{
+58     \textcolor{keywordflow}{if}(\hyperlink{posixTimer_8c_a731c8c8f52f8feb4c14fb91b0274d94f}{register\_timer}(timer\_id, timer\_handler, timer\_id) == -1)
+59     \{
+60         LOG\_STDOUT(\textcolor{stringliteral}{"[ERROR] Register Timer\(\backslash\)n"});
+61         \textcolor{keywordflow}{return} ERR;
+62     \}
+63     \textcolor{comment}{// else}
+64     \textcolor{comment}{//  LOG\_STDOUT("[INFO] Timer created\(\backslash\)n");}
+65     
+66     \textcolor{keywordflow}{if}(\hyperlink{posixTimer_8c_a659e3544e54a6fb4aeed6c38f4a91ad2}{start\_timer}(*timer\_id , usec, oneshot) == -1)
+67     \{
+68         LOG\_STDOUT(\textcolor{stringliteral}{"[ERROR] Start Timer\(\backslash\)n"});
+69         \textcolor{keywordflow}{return} ERR;
+70     \}
+71     \textcolor{comment}{// else}
+72     \textcolor{comment}{//  LOG\_STDOUT("[INFO] Timer started\(\backslash\)n");}
+73 
+74 \}\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{common__helper_8h_a23124253b968391b9777fc3b8a0cc5ec_icgraph}
+\end{center}
+\end{figure}
+
+

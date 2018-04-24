@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="my__signals_8h" kind="file" language="C++">
+    <compoundname>my_signals.h</compoundname>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">signal.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includedby refid="main__task_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</includedby>
+    <includedby refid="my__signals_8c" local="yes">/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c</includedby>
+    <incdepgraph>
+      <node id="618">
+        <label>stdint.h</label>
+      </node>
+      <node id="615">
+        <label>sys/types.h</label>
+      </node>
+      <node id="616">
+        <label>unistd.h</label>
+      </node>
+      <node id="617">
+        <label>signal.h</label>
+      </node>
+      <node id="614">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h</label>
+        <link refid="my_signals.h"/>
+        <childnode refid="615" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+        <childnode refid="617" relation="include">
+        </childnode>
+        <childnode refid="618" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="620">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/main_task.c</label>
+        <link refid="main__task_8c"/>
+      </node>
+      <node id="619">
+        <label>/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h</label>
+        <link refid="my_signals.h"/>
+        <childnode refid="620" relation="include">
+        </childnode>
+        <childnode refid="621" relation="include">
+        </childnode>
+      </node>
+      <node id="621">
+        <label>/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c</label>
+        <link refid="my__signals_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="my__signals_8h_1a0e45ab7106dfdfab1129adbac64da0e6" prot="public" static="no">
+        <name>REG_SIG_USR1</name>
+        <initializer>(1&lt;&lt;0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="17" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="my__signals_8h_1a914eca0d337b1124ddb62fbafefac12b" prot="public" static="no">
+        <name>REG_SIG_USR2</name>
+        <initializer>(1&lt;&lt;1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="18" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="my__signals_8h_1a2fca85c0a15f6e61404ace932ceca979" prot="public" static="no">
+        <name>REG_SIG_INT</name>
+        <initializer>(1&lt;&lt;2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="19" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="my__signals_8h_1a7ed483de9d9805089ceb60d9d4c8bb2a" prot="public" static="no">
+        <name>REG_SIG_TERM</name>
+        <initializer>(1&lt;&lt;3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="20" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="my__signals_8h_1a1348f26f1d0b7c05aa713f8a13411ea9" prot="public" static="no">
+        <name>REG_SIG_TSTP</name>
+        <initializer>(1&lt;&lt;4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="21" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="my__signals_8h_1a33370f69916d47556a24af7835b0bdad" prot="public" static="no">
+        <name>REG_SIG_ALL</name>
+        <initializer>(0x1F)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="22" column="9" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="my__signals_8h_1a5b58cc6fd2b95b7ca20155ad5936e1f0" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t REG_SIGNAL_FLAG_t</definition>
+        <argsstring></argsstring>
+        <name>REG_SIGNAL_FLAG_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="24" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="my__signals_8h_1ab23ded226351ef07fcd948a6d04a06e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int register_signalHandler</definition>
+        <argsstring>(struct sigaction *sa, void(*handler)(int), REG_SIGNAL_FLAG_t signalMask)</argsstring>
+        <name>register_signalHandler</name>
+        <param>
+          <type>struct sigaction *</type>
+          <declname>sa</declname>
+        </param>
+        <param>
+          <type>void(*)(int)</type>
+          <declname>handler</declname>
+        </param>
+        <param>
+          <type>REG_SIGNAL_FLAG_t</type>
+          <declname>signalMask</declname>
+        </param>
+        <briefdescription>
+<para>Register asignal handler for specific signal masks. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sa</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>signalMask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h" line="34" column="1" bodyfile="/home/gunj/repos/ECEN-5013/Project1/src/my_signals.c" bodystart="12" bodyend="53"/>
+        <referencedby refid="main__task_8h_1a52c4c165f42a1ca113ba4bd55b00a293" compoundref="main__task_8c" startline="210" endline="309">main_task_entry</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Gunj Manseta </para></simplesect>
+<simplesect kind="date"><para>2018-03-18 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="9"><highlight class="preprocessor">#ifndef<sp/>MY_SIGNALS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MY_SIGNALS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;signal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SIG_USR1<sp/><sp/><sp/><sp/>(1&lt;&lt;0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SIG_USR2<sp/><sp/><sp/><sp/>(1&lt;&lt;1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SIG_INT<sp/><sp/><sp/><sp/><sp/>(1&lt;&lt;2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SIG_TERM<sp/><sp/><sp/><sp/>(1&lt;&lt;3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SIG_TSTP<sp/><sp/><sp/><sp/>(1&lt;&lt;4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SIG_ALL<sp/><sp/><sp/><sp/><sp/>(0x1F)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint8_t<sp/>REG_SIGNAL_FLAG_t<sp/>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="my__signals_8h_1ab23ded226351ef07fcd948a6d04a06e7" kindref="member">register_signalHandler</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>sigaction<sp/>*sa,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*handler)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">),<sp/>REG_SIGNAL_FLAG_t<sp/>signalMask);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/gunj/repos/ECEN-5013/Project1/include/common/my_signals.h"/>
+  </compounddef>
+</doxygen>

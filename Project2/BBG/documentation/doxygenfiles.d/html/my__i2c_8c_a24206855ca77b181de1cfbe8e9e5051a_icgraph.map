@@ -1,0 +1,7 @@
+<map id="printErrorCode" name="printErrorCode">
+<area shape="rect" id="node2" href="$light__sensor__task_8c.html#abb5f74ca3376b1b610b7dac47ecae8d8" title="light_task_queue_init" alt="" coords="179,5,323,32"/>
+<area shape="rect" id="node4" href="$temperature__sensor__task_8c.html#ad16d2f35c6d97e33cfe57e3ab2497064" title="temperature_task_I2Cinit" alt="" coords="167,56,335,83"/>
+<area shape="rect" id="node6" href="$temperature__sensor__task_8c.html#a7b3917c753224bc64f378ca8e61cc941" title="temperature_task_I2Cdeinit" alt="" coords="160,107,343,133"/>
+<area shape="rect" id="node3" href="$light__sensor__task_8h.html#a638f4ba787ad818d90477af9e572771c" title="Entry point of the light task thread. " alt="" coords="413,5,547,32"/>
+<area shape="rect" id="node5" href="$temperature__sensor__task_8h.html#abc96664d611b8a19036cf6fcaaf92ac8" title="Entry point of the temp task thread. " alt="" coords="391,81,569,108"/>
+</map>

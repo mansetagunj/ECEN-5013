@@ -1,0 +1,231 @@
+\hypertarget{logger__task_8h}{}\section{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/logger\+\_\+task.h File Reference}
+\label{logger__task_8h}\index{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/logger\+\_\+task.\+h@{/home/gunj/repos/\+E\+C\+E\+N-\/5013/\+Project1/include/common/logger\+\_\+task.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$mqueue.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}common\+\_\+helper.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}my\+\_\+time.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error\+\_\+data.\+h\char`\"{}}\\*
+Include dependency graph for logger\+\_\+task.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{logger__task_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{logger__task_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structLOGGERTASKQ__MSG__T}{L\+O\+G\+G\+E\+R\+T\+A\+S\+K\+Q\+\_\+\+M\+S\+G\+\_\+T}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries L\+T\+\_\+\+M\+S\+G\+\_\+\+S\+I\+ZE}~40\hypertarget{logger__task_8h_a3e0953f6f3a48d888c4966ec9d77eb47}{}\label{logger__task_8h_a3e0953f6f3a48d888c4966ec9d77eb47}
+
+\item 
+\#define \hyperlink{logger__task_8h_a006cfbef67bbc2a8a43363fb6aab41e9}{D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT}(name,  msg\+Id,  source\+Id)
+\begin{DoxyCompactList}\small\item\em Defines a Log struct with the name given and params with some default values. \end{DoxyCompactList}\item 
+\#define {\bfseries P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK}(p\+\_\+logstruct,  format, ...)
+\item 
+\#define {\bfseries P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT}(p\+\_\+logstruct,  format, ...)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef char {\bfseries L\+O\+G\+G\+E\+R\+\_\+\+T\+A\+S\+K\+\_\+\+M\+S\+G\+D\+A\+T\+A\+\_\+T}\hypertarget{logger__task_8h_a2d188b418a97bc2072c76cebf414a3a6}{}\label{logger__task_8h_a2d188b418a97bc2072c76cebf414a3a6}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries L\+O\+G\+G\+E\+R\+T\+A\+S\+K\+Q\+\_\+\+M\+S\+G\+I\+D\+\_\+T} \{ {\bfseries L\+T\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+US}, 
+{\bfseries L\+T\+\_\+\+M\+S\+G\+\_\+\+L\+OG}, 
+{\bfseries L\+T\+\_\+\+M\+S\+G\+\_\+\+T\+A\+S\+K\+\_\+\+E\+X\+IT}
+ \}\hypertarget{logger__task_8h_a94334c0c387ff34c6a268ee8ee6028ad}{}\label{logger__task_8h_a94334c0c387ff34c6a268ee8ee6028ad}
+
+\item 
+enum {\bfseries L\+O\+G\+\_\+\+L\+E\+V\+E\+L\+\_\+T} \{ {\bfseries L\+O\+G\+\_\+\+E\+R\+R\+OR}, 
+{\bfseries L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG}, 
+{\bfseries L\+O\+G\+\_\+\+I\+N\+FO}, 
+{\bfseries L\+O\+G\+\_\+\+A\+LL}
+ \}\hypertarget{logger__task_8h_aecf2a701f46029451c8733fde5134a89}{}\label{logger__task_8h_aecf2a701f46029451c8733fde5134a89}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+mqd\+\_\+t \hyperlink{logger__task_8h_ac3b7cda92012133de3b948c721737097}{get\+Handle\+\_\+\+Logger\+Task\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Get the Handle Logger\+Task\+Queue object. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{logger__task_8h_a7322e57eb5c8763112ad4d4a946601bf}{logger\+\_\+task\+\_\+callback} (void $\ast$threadparam)
+\begin{DoxyCompactList}\small\item\em Entry point of the logger task thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Gunj Manseta 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2018-\/03-\/09 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\index{logger\+\_\+task.\+h@{logger\+\_\+task.\+h}!D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT@{D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT@{D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT}!logger\+\_\+task.\+h@{logger\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT}{DEFINE_LOG_STRUCT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+I\+N\+E\+\_\+\+L\+O\+G\+\_\+\+S\+T\+R\+U\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{msg\+Id, }
+\item[{}]{source\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{logger__task_8h_a006cfbef67bbc2a8a43363fb6aab41e9}{}\label{logger__task_8h_a006cfbef67bbc2a8a43363fb6aab41e9}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{structLOGGERTASKQ__MSG__T}{LOGGERTASKQ\_MSG\_T} name = \{      \(\backslash\)
+        .msgID      = msgId,        \(\backslash\)
+        .loglevel   = LOG\_ALL,      \(\backslash\)
+        .sourceID   = sourceId,     \(\backslash\)
+        .timestamp  = \{0\},          \(\backslash\)
+        .msgData    = \{0\}           \(\backslash\)
+    \};
+\end{DoxyCode}
+
+
+Defines a Log struct with the name given and params with some default values. 
+
+\index{logger\+\_\+task.\+h@{logger\+\_\+task.\+h}!P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK}}
+\index{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK}!logger\+\_\+task.\+h@{logger\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK}{POST_MESSAGE_LOGTASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+SK(
+\begin{DoxyParamCaption}
+\item[{}]{p\+\_\+logstruct, }
+\item[{}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{logger__task_8h_a6ba2462c06e19df9d50d34bfd6ce91ee}{}\label{logger__task_8h_a6ba2462c06e19df9d50d34bfd6ce91ee}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        snprintf((p\_logstruct)->msgData,\textcolor{keyword}{sizeof}((p\_logstruct)->msgData),format, ##\_\_VA\_ARGS\_\_);   \(\backslash\)
+        set\_Log\_currentTimestamp(p\_logstruct); \(\backslash\)
+        \_\_POST\_MESSAGE\_LOGTASK(\hyperlink{logger__task_8h_ac3b7cda92012133de3b948c721737097}{getHandle\_LoggerTaskQueue}(), p\_logstruct, \textcolor{keyword}{sizeof}(*
+      p\_logstruct), 20); \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\index{logger\+\_\+task.\+h@{logger\+\_\+task.\+h}!P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT}}
+\index{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT@{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT}!logger\+\_\+task.\+h@{logger\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT}{POST_MESSAGE_LOGTASK_EXIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+O\+G\+T\+A\+S\+K\+\_\+\+E\+X\+IT(
+\begin{DoxyParamCaption}
+\item[{}]{p\+\_\+logstruct, }
+\item[{}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{logger__task_8h_a592a2c8319536ad2125b35bbf0d6a6f1}{}\label{logger__task_8h_a592a2c8319536ad2125b35bbf0d6a6f1}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do}\{ \(\backslash\)
+        snprintf((p\_logstruct)->msgData,\textcolor{keyword}{sizeof}((p\_logstruct)->msgData),format, ##\_\_VA\_ARGS\_\_);   \(\backslash\)
+        set\_Log\_currentTimestamp(p\_logstruct); \(\backslash\)
+        \_\_POST\_MESSAGE\_LOGTASK(\hyperlink{logger__task_8h_ac3b7cda92012133de3b948c721737097}{getHandle\_LoggerTaskQueue}(), p\_logstruct, \textcolor{keyword}{sizeof}(*
+      p\_logstruct), 50); \(\backslash\)
+    \}\textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\index{logger\+\_\+task.\+h@{logger\+\_\+task.\+h}!get\+Handle\+\_\+\+Logger\+Task\+Queue@{get\+Handle\+\_\+\+Logger\+Task\+Queue}}
+\index{get\+Handle\+\_\+\+Logger\+Task\+Queue@{get\+Handle\+\_\+\+Logger\+Task\+Queue}!logger\+\_\+task.\+h@{logger\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{get\+Handle\+\_\+\+Logger\+Task\+Queue()}{getHandle_LoggerTaskQueue()}}]{\setlength{\rightskip}{0pt plus 5cm}mqd\+\_\+t get\+Handle\+\_\+\+Logger\+Task\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{logger__task_8h_ac3b7cda92012133de3b948c721737097}{}\label{logger__task_8h_ac3b7cda92012133de3b948c721737097}
+
+
+Get the Handle Logger\+Task\+Queue object. 
+
+\begin{DoxyReturn}{Returns}
+mqd\+\_\+t 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+42 \{
+43     \textcolor{keywordflow}{return} loggertask\_q;
+44 \}
+\end{DoxyCode}
+\index{logger\+\_\+task.\+h@{logger\+\_\+task.\+h}!logger\+\_\+task\+\_\+callback@{logger\+\_\+task\+\_\+callback}}
+\index{logger\+\_\+task\+\_\+callback@{logger\+\_\+task\+\_\+callback}!logger\+\_\+task.\+h@{logger\+\_\+task.\+h}}
+\subsubsection[{\texorpdfstring{logger\+\_\+task\+\_\+callback(void $\ast$threadparam)}{logger_task_callback(void *threadparam)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ logger\+\_\+task\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{threadparam}
+\end{DoxyParamCaption}
+)}\hypertarget{logger__task_8h_a7322e57eb5c8763112ad4d4a946601bf}{}\label{logger__task_8h_a7322e57eb5c8763112ad4d4a946601bf}
+
+
+Entry point of the logger task thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em threadparam} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+144 \{
+145     LOG\_STDOUT(INFO \textcolor{stringliteral}{"LOGGER TASK STARTED\(\backslash\)n"});
+146 
+147     \textcolor{keywordtype}{char} *filename = \hyperlink{readConfiguration_8c_a6ec4251859d1107c4a9f457ff5ead99c}{configdata\_getLogpath}();
+148     FILE *fp;
+149     \textcolor{keywordflow}{if}(filename)
+150     \{
+151         fp = logger\_task\_file\_init(filename);
+152     \}
+153     \textcolor{keywordflow}{else}
+154     \{
+155         LOG\_STDOUT(WARNING \textcolor{stringliteral}{"No filename found from config file\(\backslash\)n"});
+156         fp = logger\_task\_file\_init(\textcolor{stringliteral}{"project1.log"});
+157     \}
+158     
+159     \textcolor{keywordflow}{if}(NULL == fp)
+160     \{
+161         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"LOGGER TASK LOG FILE INIT FAIL\(\backslash\)n"});
+162         exit(ERR);
+163     \}
+164 
+165     \textcolor{keywordtype}{int} ret = logger\_task\_queue\_init();
+166     \textcolor{keywordflow}{if}(ERR == ret)
+167     \{
+168         LOG\_STDOUT(ERROR \textcolor{stringliteral}{"LOGGER TASK INIT%s\(\backslash\)n"},strerror(errno));
+169         exit(ERR);
+170     \}
+171 
+172     LOG\_STDOUT(INFO \textcolor{stringliteral}{"LOGGER TASK INIT COMPLETED\(\backslash\)n"});
+173     \hyperlink{logger__task_8c_af208b116436178ee34bd80503c1bbe3e}{LT\_LOG}(fp,INFO \textcolor{stringliteral}{"LOGGER TASK INIT COMPLETED\(\backslash\)n"});
+174     pthread\_barrier\_wait(&tasks\_barrier);
+175 
+176 \textcolor{preprocessor}{    #ifdef VALUES}
+177     LOG\_STDOUT(INFO \textcolor{stringliteral}{"LOGGER TASK UP and RUNNING\(\backslash\)n"});
+178 \textcolor{preprocessor}{    #endif}
+179 \textcolor{preprocessor}{    #ifdef LOGVALUES}
+180     \hyperlink{logger__task_8c_af208b116436178ee34bd80503c1bbe3e}{LT\_LOG}(fp,INFO \textcolor{stringliteral}{"LOGGER TASK UP and RUNNING\(\backslash\)n"});
+181 \textcolor{preprocessor}{    #endif}
+182     \textcolor{comment}{/* Process Log queue msg which executes untill the log\_task\_end flag is set to true*/}
+183     logger\_task\_processMsg(fp);
+184 
+185     mq\_close(loggertask\_q);
+186     fflush(fp);
+187     fclose(fp);
+188     LOG\_STDOUT(INFO \textcolor{stringliteral}{"Logger Task Exit.\(\backslash\)n"});
+189     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void}*)SUCCESS;
+190 \}\end{DoxyCode}
