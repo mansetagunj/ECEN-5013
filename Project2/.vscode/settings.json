@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "communication_interface.h": "c",
+        "spi.h": "c"
+    }
+}
