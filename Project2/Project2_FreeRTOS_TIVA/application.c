@@ -24,7 +24,7 @@
 #include "my_uart.h"
 #include "heartbeat.h"
 #include "application.h"
-#include "logger_task.h"
+#include "communication_setup.h"
 
 #define CLOCK_FREQ 120000000
 uint32_t g_sysClock = CLOCK_FREQ;
@@ -43,16 +43,10 @@ void application_run()
    ROM_IntMasterEnable();
    printf("\n----- GUNJ Project2 --------\n");
 
-   LoggerTask_init();
+   CommTask_init();
 
    heartbeat_start(1000, 500);
 
-
-//   if(WorkerTask_init() != 0)
-//   {
-//       printf("ERROR - WORKER TASK INIT\n");
-//       while(1);
-//   }
 
    printf("SUCCESS - All tasks are created. Starting scheduler....\n");
 

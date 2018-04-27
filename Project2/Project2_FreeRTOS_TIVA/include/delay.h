@@ -18,7 +18,7 @@ extern uint32_t g_sysClock;
 #define DEBUG_ERROR(x) if( ( x ) == pdTRUE ) { taskDISABLE_INTERRUPTS(); while(1); }
 #endif
 #else
-#define configASSERT(x)
+#define DEBUG_ERROR(x)
 #endif
 
 static inline void DelayMs(uint32_t ms)

@@ -30,8 +30,6 @@
 // The priorities of the various tasks.
 //
 //*****************************************************************************
-#define PRIO_LOGGERTASK  1
-#define PRIO_MY_TASK1    1
-#define PRIO_MY_TASK2    1
+#define PRIO_COMM_SENDERTASK  1
 
 #endif // __PRIORITIES_H__

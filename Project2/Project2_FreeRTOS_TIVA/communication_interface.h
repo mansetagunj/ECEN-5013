@@ -38,12 +38,17 @@ void COMM_SEND(COMM_MSG_T comm_object)
 #else
 #ifdef COMM_TYPE_NRF
 #define COMM_INIT()                 comm_init_NRF()
-#define COMM_SEND(comm_object)      comm_sendNRF(comm_object)
+#define COMM_DEINIT()               comm_deinit_NRF()
+#define COMM_SEND(p_comm_object)    comm_sendNRF(p_comm_object)
+#define COMM_SENDRAW(packet,len)    comm_sendNRF_raw(packet, len)
 #define COMM_RECV()
 #else
 #define COMM_INIT()                 comm_init_UART(BAUD_921600)
+//Will be used only on BBG
+#define COMM_DEINIT()               comm_deinit_UART()
 //#define COMM_INIT()                 comm_init_UART(BAUD_115200)
-#define COMM_SEND(comm_object)      comm_sendUART(comm_object)
+#define COMM_SEND(p_comm_object)    comm_sendUART(p_comm_object)
+#define COMM_SENDRAW(packet,len)    comm_sendUARTRAW(packet,len)
 #define COMM_RECV()                 comm_recvUART(p_comm_object)
 #endif
 #endif
@@ -56,32 +61,37 @@ static uint8_t RXAddr[5] = {0xC2,0xC2,0xC2,0xC2,0xC2};
 static inline void comm_init_UART(BAUD_RATE_ENUM baudrate)
 {
     UART3_config(baudrate);
-//    UART3_config(BAUD_921600);
 }
 
-static inline void comm_sendUART(COMM_MSG_T comm_object)
+static inline void comm_sendUARTRAW(uint8_t* packet, size_t len)
 {
-    UART3_putRAW((uint8_t*)&comm_object, sizeof(comm_object));
+    UART3_putRAW(packet,len);
+}
+
+static inline void comm_sendUART(COMM_MSG_T *p_comm_object)
+{
+    UART3_putRAW((uint8_t*)p_comm_object, sizeof(COMM_MSG_T));
     /* This is needed to mark the end of send as the receiving side needs the line termination as the BeagleBone has opened the UART is canonical mode*/
     //UART3_putchar('\n');
 }
 
 static inline void comm_recvUART(COMM_MSG_T *comm_object)
 {
-//    UART3_putRAW((uint8_t*)&comm_object, sizeof(comm_object));
+    UART3_putRAW((uint8_t*)&comm_object, sizeof(comm_object));
     /* This is needed to mark the end of send as the receiving side needs the line termination as the BeagleBone has opened the UART is canonical mode*/
 //    UART3_putchar('\n');
 }
 
-
-
 void comm_init_NRF();
 
-void comm_sendNRF_raw(uint8_t *data, uint32_t len);
+void comm_sendNRF_raw(uint8_t *data, size_t len);
 
-static inline void comm_sendNRF(COMM_MSG_T comm_object)
+//TODO:
+void comm_recvNRF_raw(uint8_t *data, size_t len);
+
+static inline void comm_sendNRF(COMM_MSG_T *p_comm_object)
 {
-    NRF_transmit_data((uint8_t*)(&comm_object), sizeof(comm_object), true);
+    NRF_transmit_data((uint8_t*)(p_comm_object), sizeof(COMM_MSG_T), true);
 }
 
 #endif /* COMMUNICATION_INTERFACE_H_ */

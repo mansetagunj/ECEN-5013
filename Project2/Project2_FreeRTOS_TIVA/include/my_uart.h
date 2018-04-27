@@ -8,12 +8,17 @@
 #ifndef MY_UART_H_
 #define MY_UART_H_
 
-#include "driverlib/uart.h"
+#ifndef __USE_FREERTOS
+#define __USE_FREERTOS
+#endif
 
-#ifdef __USE_FREERTOS
+#include <stdbool.h>
+#include <stdint.h>
 #include "FreeRTOS.h"
 #include "semphr.h"
-#endif
+
+#include "driverlib/uart.h"
+
 
 
 typedef enum UART_num

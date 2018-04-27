@@ -15,9 +15,9 @@
 #include "FreeRTOS.h"
 #include "timers.h"
 
+#include <comm_sender_task.h>
 #include "delay.h"
 #include "my_uart.h"
-#include "logger_task.h"
 
 #define NUM_OF_TIMERS   2
 static TimerHandle_t timer_handles[NUM_OF_TIMERS];
@@ -31,13 +31,13 @@ void vTimerCallback(TimerHandle_t h_timer)
     {
         if(count%10 == 0)
         {
-            //TODO: Queue up the log task or notify the log task
-            NOTIFY_LOG_TASK(EVENT_LOG_HEARTBEAT);
+            //TODO: Queue up the comm_sender task or notify the comm_sender task
+            NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_HEARTBEAT);
         }
-        if(count%30 == 0)
-        {
-            NOTIFY_LOG_TASK(EVENT_LOG_BOARD_TYPE);
-        }
+//        if(count%30 == 0)
+//        {
+//            NOTIFY_LOG_TASK(EVENT_COMM_SENDER_BOARD_TYPE);
+//        }
         count++;
     }
     //TIMER_LED_HEARTBEAT

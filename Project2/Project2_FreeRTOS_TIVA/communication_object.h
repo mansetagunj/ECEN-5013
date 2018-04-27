@@ -20,50 +20,41 @@
 
 typedef enum
 {
-    HEARTBEAT = 0,
-    MSG,
-    STATUS,
-    ERROR,
-    INFO,
-    CLIENT_INFO_BOARD_TYPE,
-    CLIENT_INFO_UID,
-    CLIENT_INFO_CODE_VERSION,
-    REQ_LAST_ID, //THIS ID IS JUST TO CALCULATE THE NUM OF IDS. THIS IS NOT USED ANYWHERE
-}COMM_REQ_ID_T;
+    MSG_ID_HEARTBEAT = 0,
+    MSG_ID_MSG,
+    MSG_ID_STATUS,
+    MSG_ID_ERROR,
+    MSG_ID_INFO,
+    MSG_ID_PICTURE,
+    MSG_ID_OBJECT_DETECTED,
+    MSG_ID_CLIENT_INFO_BOARD_TYPE,
+    MSG_ID_CLIENT_INFO_UID,
+    MSG_ID_CLIENT_INFO_CODE_VERSION,
 
-#define REQ_NUM_OF_ID   REQ_LAST_ID
+    //The request id from the beaglebone
+    MSG_ID_GET_SENSOR_STATUS,
+    MSG_ID_GET_SENSOR_INFO,
+    MSG_ID_GET_CLIENT_INFO_BOARD_TYPE,
+    MSG_ID_GET_CLIENT_INFO_UID,
+    MSG_ID_GET_CLIENT_INFO_CODE_VERSION,
+    LAST_ID, //THIS ID IS JUST TO CALCULATE THE NUM OF IDS. THIS IS NOT USED ANYWHERE This cannot be more than 255
+}MSG_ID_T;
 
-static char * const REQ_COMM_ID_STRING[REQ_NUM_OF_ID]  =
+#define NUM_OF_ID   LAST_ID
+
+const static char * const MSG_ID_STRING[NUM_OF_ID]  =
 {
      "HEARTBEAT",
      "MSG",
      "STATUS",
      "ERROR",
      "INFO",
+     "PICTURE",
+     "OBJECT_DETECTED",
      "CLIENT_INFO_BOARD_TYPE",
      "CLIENT_INFO_UID",
      "CLIENT_INFO_CODE_VERSION",
-};
-
-typedef enum
-{
-    HEARTBEAT_ACK = 0,
-    GET_CURRENT_TASK,
-    GET_SENSOR_STATUS,
-    GET_SENSOR_INFO,
-    GET_CLIENT_INFO_BOARD_TYPE,
-    GET_CLIENT_INFO_UID,
-    GET_CLIENT_INFO_CODE_VERSION,
-    RSP_LAST_ID //THIS ID IS JUST TO CALCULATE THE NUM OF IDS. THIS IS NOT USED ANYWHERE
-}COMM_RSP_ID_T;
-
-
-#define RSP_NUM_OF_ID   RSP_LAST_ID
-
-static char * const RSP_COMM_ID_STRING[RSP_NUM_OF_ID]  =
-{
-     "HEARTBEAT_ACK",
-     "GET_CURRENT_TASK",
+     //The request id from the beaglebone
      "GET_SENSOR_STATUS",
      "GET_SENSOR_INFO",
      "GET_CLIENT_INFO_BOARD_TYPE",
@@ -71,23 +62,60 @@ static char * const RSP_COMM_ID_STRING[RSP_NUM_OF_ID]  =
      "GET_CLIENT_INFO_CODE_VERSION",
 };
 
-typedef uint32_t COMM_ID;
+//FOR DST and SRC Board ID
+#define BBG_BOARD_ID        (0x00)
+#define MY_TIVA_BOARD_ID    (0x01)
+#define XYZ_TIVA_BOARD_ID   (0x02)
 
-/* 32byte LOG MESSAGE STRUCTURE*/
+//For src and dst module ID
+//Add all the modules' UID here for TIVA BOARD
+#define TIVA_HEART_BEAT_MODULE   (1)
+#define TIVA_SENSOR_MODULE       (2)
+#define TIVA_CAMERA_MODULE       (3)
+#define TIVA_COMM_MODULE         (4)
+
+//Add all modules' UID here for BBG Board
+#define BBG_LOGGER_MODULE       (1)
+#define BBG_XYZ_MODULE          (2)
+
+typedef uint8_t MSG_ID;
+typedef uint8_t SRC_ID;
+typedef uint8_t SRC_BOARD_ID;
+typedef uint8_t DST_BOARD_ID;
+typedef uint8_t DST_ID;
+
+//This should be followed immediately by the PICTURE msg id
+typedef struct cam_packet
+{
+    size_t length;
+    void* frame;
+}CAMERA_PACKET_T;
+
+/*32byte LOG MESSAGE STRUCTURE*/
 typedef struct COMM_MSG
 {
-    COMM_ID ID;
-    char payload[26];
+    SRC_ID src_id;
+    SRC_BOARD_ID src_brd_id;
+    DST_ID dst_id;
+    DST_BOARD_ID dst_brd_id;
+    MSG_ID msg_id;
+    union custom_data
+    {
+        float distance_cm;
+        float sensor_value;
+        CAMERA_PACKET_T *camera_packet;
+        size_t nothing;
+    }data;
+    char message[14];
     uint16_t checksum;
-
 }COMM_MSG_T;
 
-static size_t COMM_MSG_SIZE = sizeof(COMM_MSG_T);;
+static size_t COMM_MSG_SIZE = sizeof(COMM_MSG_T);
 
 static uint16_t getCheckSum(const COMM_MSG_T *comm_msg)
 {
     uint16_t checkSum = 0;
-    uint8_t sizeOfPayload = strlen(comm_msg->payload) + sizeof(comm_msg->ID);
+    uint8_t sizeOfPayload = sizeof(COMM_MSG_T) - sizeof(comm_msg->checksum);
     uint8_t *p_payload = (uint8_t*)comm_msg;
     int i;
     for(i = 0; i < sizeOfPayload; i++)

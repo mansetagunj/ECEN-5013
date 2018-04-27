@@ -21,6 +21,13 @@ void comm_init_NRF()
     NRF_openWritePipe(TXAddr);
 }
 
+void comm_deinit_NRF()
+{
+    NRF_closeReadPipe(1);
+    NRF_closeWritePipe();
+    NRF_moduleDisable();
+}
+
 void comm_sendNRF_raw(uint8_t *data, uint32_t len)
 {
     if(len <= 32)
