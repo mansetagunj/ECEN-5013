@@ -13,17 +13,19 @@
 
 #include "posixTimer.h"
 
-#define NUM_CHILD_THREADS 4
 
 typedef enum
 {
-    LOGGER_TASK_ID,
+    LOGGER_TASK_ID = 0,
     TEMPERATURE_TASK_ID,
     SOCKET_TASK_ID,
     LIGHT_TASK_ID,
-    MAIN_TASK_ID
+    COMM_RECEIVER_ID,
+    MAIN_TASK_ID            //This MAINT TASK should alwys be on the last
 
 }TASK_IDENTIFIER_T;
+
+#define NUM_CHILD_THREADS (MAIN_TASK_ID)
 
 volatile int aliveStatus[NUM_CHILD_THREADS];
 

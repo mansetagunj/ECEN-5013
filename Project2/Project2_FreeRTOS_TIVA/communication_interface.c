@@ -5,7 +5,7 @@
  *      Author: Gunj Manseta
  */
 
-
+#if 0
 #include "communication_interface.h"
 
 /* NRF COMM FUNCTIONS*/
@@ -45,3 +45,5 @@ void comm_sendNRF_raw(uint8_t *data, uint32_t len)
 //    }
 
 }
+
+#endif

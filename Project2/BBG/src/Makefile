@@ -14,7 +14,7 @@ INCLUDES:= -I ../include/common -I ../include/cmocka -I ../include/BeagleBone
 
 OUTPUT_FILE_EXT:=.out
 
-OUTPUT_FILE:= project1$(OUTPUT_FILE_EXT)
+OUTPUT_FILE:= project2$(OUTPUT_FILE_EXT)
 
 
 .PHONY:build

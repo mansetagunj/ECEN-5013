@@ -9,6 +9,8 @@
 #ifndef MYUART_H
 #define MYUART_H
 
+#include <stdlib.h>
+
 typedef enum
 {
     COM_PORT1 = 1,  //"/dev/ttyS1"
@@ -68,6 +70,20 @@ int32_t UART_putstr(const char* str);
  * @return int32_t 
  */
 int32_t UART_read(void *object, size_t len);
+
+/**
+ * @brief 
+ * 
+ * @param time_ms 
+ * @return int32_t 
+ */
+int32_t UART_dataAvailable(uint32_t time_ms);
+
+/**
+ * @brief 
+ * 
+ */
+void UART_flush();
 
 
 #endif
