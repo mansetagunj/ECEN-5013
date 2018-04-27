@@ -25,10 +25,19 @@
 #include "heartbeat.h"
 #include "application.h"
 #include "communication_setup.h"
+#include "comm_sender_task.h"
 
 #define CLOCK_FREQ 120000000
 uint32_t g_sysClock = CLOCK_FREQ;
 
+
+void send_boardIdentification()
+{
+
+    NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
+    NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_UID);
+    NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_CODE_VERSION);
+}
 
 void application_run()
 {
@@ -44,6 +53,8 @@ void application_run()
    printf("\n----- GUNJ Project2 --------\n");
 
    CommTask_init();
+
+   send_boardIdentification();
 
    heartbeat_start(1000, 500);
 

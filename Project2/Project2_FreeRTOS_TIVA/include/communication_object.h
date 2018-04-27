@@ -106,7 +106,7 @@ typedef struct COMM_MSG
         CAMERA_PACKET_T *camera_packet;
         size_t nothing;
     }data;
-    char message[14];
+    char message[18];
     uint16_t checksum;
 }COMM_MSG_T;
 
