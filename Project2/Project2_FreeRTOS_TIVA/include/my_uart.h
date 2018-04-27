@@ -19,8 +19,6 @@
 
 #include "driverlib/uart.h"
 
-
-
 typedef enum UART_num
 {
     UART_0 = 0,

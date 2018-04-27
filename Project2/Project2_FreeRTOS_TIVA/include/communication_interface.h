@@ -58,10 +58,14 @@ void COMM_SEND(COMM_MSG_T comm_object)
 static uint8_t TXAddr[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
 static uint8_t RXAddr[5] = {0xC2,0xC2,0xC2,0xC2,0xC2};
 
+#ifdef TIVA_BOARD
 static inline void comm_init_UART(BAUD_RATE_ENUM baudrate)
 {
     UART3_config(baudrate);
 }
+
+static inline void comm_deinit_UART(){}
+
 
 static inline void comm_sendUARTRAW(uint8_t* packet, size_t len)
 {
@@ -75,12 +79,48 @@ static inline void comm_sendUART(COMM_MSG_T *p_comm_object)
     //UART3_putchar('\n');
 }
 
-static inline void comm_recvUART(COMM_MSG_T *comm_object)
+static inline size_t comm_recvUART(COMM_MSG_T *comm_object)
 {
-    UART3_putRAW((uint8_t*)&comm_object, sizeof(comm_object));
-    /* This is needed to mark the end of send as the receiving side needs the line termination as the BeagleBone has opened the UART is canonical mode*/
-//    UART3_putchar('\n');
+    return UART3_getRAW((uint8_t*)&comm_object, sizeof(COMM_MSG_T));
 }
+
+#else
+//For BBG
+
+static inline UART_FD_T comm_init_UART()
+{
+    return UART_Open(COM_PORT4);
+}
+
+static inline void comm_deinit_UART(UART_FD_T fd)
+{
+    UART_Close(fd);
+}
+
+static inline int32_t comm_sendUART(COMM_MSG_T *p_comm_object)
+{
+    return UART_putRAW((void*)p_comm_object,sizeof(COMM_MSG_T));
+}
+static inline int32_t comm_sendUARTRAW(COMM_MSG_T * comm_object, size_t len)
+{
+    return UART_putRAW((void*)comm_object,len);
+}
+
+static inline int32_t comm_recvUART(COMM_MSG_T *comm_object)
+{
+    int32_t available = UART_dataAvailable(100);
+    if(available == 1)
+    {
+        return UART_read((void*)comm_object,sizeof(COMM_MSG_T));
+    }
+    else
+        return available;
+}
+
+#endif
+
+//For BBG end
+
 
 void comm_init_NRF();
 

@@ -13,4 +13,4 @@
 const char * const BOARD_TYPE = "TM4C1294XL";
 const char * const OS = "FreeRTOS";
 const char * const CODE_VERSION = "v1.0";
-const char * const UID = "guma9188";
+const char * const UID = "Gunj_Manseta";
