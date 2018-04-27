@@ -68,6 +68,8 @@ UART_FD_T UART_Open(COM_PORT com_port)
 
     tio_config.c_cflag = BAUDRATE | CS8 | CLOCAL | CREAD;
     cfmakeraw(&tio_config);
+    tio_config.c_cc[VMIN]  = 0;
+    tio_config.c_cc[VTIME] = 1;
 
     tcflush(fd, TCIFLUSH);
     tcsetattr(fd, TCSANOW, &tio_config);
@@ -93,8 +95,16 @@ void UART_Close(UART_FD_T fd)
     else
     {
         if(fd == internal_fd)
+        {
             UART_Release(fd);
+            internal_fd = -1;
+        }
     }
+}
+
+void UART_flush()
+{
+    (internal_fd > 0) ? tcflush(internal_fd, TCIFLUSH): 0;
 }
 
 int32_t UART_putchar(char c)
@@ -104,6 +114,9 @@ int32_t UART_putchar(char c)
 
 int32_t UART_putRAW(void *object, size_t len)
 {
+    if(internal_fd < 0)
+        return -1;
+
     int32_t ret = 0, retry = 0, i =0;
     do
     {
@@ -127,23 +140,92 @@ int32_t UART_printf(const char *fmt, ...)
 
 int32_t UART_read(void *object, size_t len)
 {
+    if(internal_fd < 0)
+        return -1;
+
+    //printf("IN UART READ\n");
     int ret = 0, retry = 0, i =0;
     do
     {
         ret = read(internal_fd, object+i, len-i);
         i +=ret;
         retry++;
+        //printf("IN: i = %d ret: %d try: %d\n",i, ret, retry);
     }while(ret > -1 && i < len && retry < 16);
 
-    //printf("i = %d RET: %d RETRY: %d\n",i, ret, retry);
+    //(retry>=1) ? printf("i = %d ret: %d try: %d\n",i, ret, retry): 0;
     return ret;
+}
+
+int32_t UART_dataAvailable(uint32_t time_ms)
+{
+    if(internal_fd < 0)
+        return -1;
+
+    struct timeval timeout;
+
+    //dont wait
+    if (time_ms == 0)
+    {
+        timeout.tv_sec = 0;
+        timeout.tv_usec = 0;
+    } 
+    else 
+    {
+        timeout.tv_sec = time_ms / 1000;
+        timeout.tv_usec = (time_ms % 1000) * 1000;
+    }
+
+    fd_set readfds;
+
+    FD_ZERO(&readfds);
+    FD_SET(internal_fd, &readfds);
+
+    if(select(internal_fd + 1, &readfds, NULL, NULL, &timeout) > 0) 
+    {
+        return 1; 
+    }
+    else 
+    {
+        return 0;
+    }
 }
 
 #ifdef SELF_TEST
 #include <errno.h>
+#include <signal.h>
+#include <unistd.h>
+
+volatile sig_atomic_t flag = 1;
+#define SIGNAL "SIGNAL"
+
+void signal_handler(int signal)
+{
+    switch (signal)
+	{
+		case SIGINT:
+			printf(SIGNAL "SIGINT signal.\n");
+			flag = 0;
+            break;
+		case SIGTERM:
+			printf(SIGNAL "SIGTERM signal.\n");
+            flag = 0;
+			break;
+		case SIGTSTP:
+			printf(SIGNAL "SIGTSTP signal.\n");
+            flag = 0;
+			break;
+		default:
+			printf(SIGNAL "Invalid signal.\n");
+			break;
+	}
+}
 
 int main()
 {
+    signal(SIGINT, signal_handler);
+    signal(SIGTERM, signal_handler);
+    signal(SIGTSTP, signal_handler);
     printf("SIZE: %u\n",sizeof(COMM_MSG_T));
     int fd = UART_Open(COM_PORT4);
     if(fd == -1)
@@ -152,6 +234,7 @@ int main()
         return fd;
     }
     int ret = 0;
+    
     #ifdef LOOPBACK
 	COMM_MSG_T comm_msg = 
     {
@@ -175,7 +258,7 @@ int main()
     COMM_MSG_T recv_comm_msg = {0};
     
     #ifndef LOOPBACK
-    while(1)
+    while(flag)
     {
     #endif
     ret = UART_read(&recv_comm_msg,sizeof(recv_comm_msg));
@@ -185,7 +268,11 @@ int main()
         printf("Bytes recvd: %d\n",ret);
         
     uint16_t check = getCheckSum(&recv_comm_msg);
-    printf("Recvd:\nBOARDID: 0x%01x ID:%u, PAYLOAD:%s,\nGOT_CHECKSUM:%u ACTUAL_CHECKSUM:%u\n",GET_BOARD_UID_FROM_LOG_ID(recv_comm_msg.ID),GET_LOG_ID_FROM_LOG_ID(recv_comm_msg.ID),recv_comm_msg.payload,recv_comm_msg.checksum,check);
+    printf("\n*******\n     \
+    SRCID:%u, SRC_BRDID:%u, DST_ID:%u, MSGID:%u\n   \
+    MSG:%s\n    \
+    Checksum:%u ?= %u\n********\n",   \
+    recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.msg_id, recv_comm_msg.message,recv_comm_msg.checksum, check );   
     #ifndef LOOPBACK
     }
     #endif

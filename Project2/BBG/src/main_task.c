@@ -22,6 +22,7 @@
 #include "posixTimer.h"
 #include "common_helper.h"
 #include "readConfiguration.h"
+#include "comm_recv_task.h"
 #include "BB_Led.h"
 
 
@@ -30,6 +31,7 @@
 volatile int timeoutflag;
 volatile sig_atomic_t signal_exit;
 volatile int aliveStatus[NUM_CHILD_THREADS] = {0};
+extern volatile sig_atomic_t comm_recv_task_exit;
 
 void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
 {
@@ -37,6 +39,7 @@ void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
     temperature_task_callback,
     socket_task_callback,
     light_task_callback,
+    comm_recv_task_callback,
 };
 
 
@@ -200,6 +203,7 @@ void main_task_processMsg()
 
 void POST_EXIT_MESSAGE_ALL()
 {
+    comm_recv_task_exit = 1;
     DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
     DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
     DEFINE_TEMP_STRUCT(tempstruct,TEMP_MSG_TASK_EXIT,MAIN_TASK_ID)
@@ -207,6 +211,7 @@ void POST_EXIT_MESSAGE_ALL()
     POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
     pthread_cancel(pthread_id[SOCKET_TASK_ID]);
     POST_MESSAGE_LOGTASK_EXIT(&logstruct,"FIRE IN THE HOLE. EXIT EXIT!");
+    
 }
 
 int main_task_entry()
@@ -293,7 +298,7 @@ int main_task_entry()
         int retThread = 0;
         //  LOG_STDOUT(INFO "Pthread JOIN:%d\n",i);
         ret = pthread_join(pthread_id[i],(void*)&retThread);
-        //  LOG_STDOUT(INFO "ThreadID %d: Ret:%d\n",i,retThread);
+        LOG_STDOUT(INFO "ThreadID %d: Ret:%d\n",i,retThread);
         if(ret  != 0)
         {
             LOG_STDOUT(ERROR "Pthread join:%d:%s\n",i,strerror(errno));

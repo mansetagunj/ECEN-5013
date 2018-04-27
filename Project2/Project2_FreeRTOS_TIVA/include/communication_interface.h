@@ -121,7 +121,7 @@ static inline int32_t comm_recvUART(COMM_MSG_T *comm_object)
 
 //For BBG end
 
-
+#if 0
 void comm_init_NRF();
 
 void comm_sendNRF_raw(uint8_t *data, size_t len);
@@ -133,5 +133,7 @@ static inline void comm_sendNRF(COMM_MSG_T *p_comm_object)
 {
     NRF_transmit_data((uint8_t*)(p_comm_object), sizeof(COMM_MSG_T), true);
 }
+
+#endif
 
 #endif /* COMMUNICATION_INTERFACE_H_ */
