@@ -65,14 +65,14 @@ static void comm_sender_task_entry(void *params)
         xResult = xTaskNotifyWait( pdFALSE,    /* Don't clear bits on entry. */
                            ULONG_MAX,        /* Clear all bits on exit. */
                            &notifiedValue, /* Stores the notified value. */
-                           xMaxBlockTime);
+                           portMAX_DELAY);
 
         if( xResult == pdPASS )
         {
             /* A notification was received.  See which bits were set. */
             if(notifiedValue & EVENT_COMM_SENDER_BOARD_TYPE)
             {
-                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,BBG_BOARD_ID, BBG_LOGGER_MODULE);
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_COMM_MODULE, BBG_LOGGER_MODULE);
                 comm_msg.msg_id = MSG_ID_CLIENT_INFO_BOARD_TYPE;
                 comm_msg.src_id = TIVA_COMM_MODULE;
                 comm_msg.data.nothing = 1;
@@ -84,7 +84,7 @@ static void comm_sender_task_entry(void *params)
 
             if(notifiedValue & EVENT_COMM_SENDER_CODE_VERSION)
             {
-                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,BBG_BOARD_ID, BBG_LOGGER_MODULE);
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_COMM_MODULE, BBG_LOGGER_MODULE);
                 comm_msg.msg_id = MSG_ID_CLIENT_INFO_CODE_VERSION;
                 comm_msg.src_id = TIVA_COMM_MODULE;
                 comm_msg.data.nothing = 1;
@@ -96,7 +96,7 @@ static void comm_sender_task_entry(void *params)
 
             if(notifiedValue & EVENT_COMM_SENDER_UID)
             {
-                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,BBG_BOARD_ID, BBG_LOGGER_MODULE);
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_COMM_MODULE, BBG_LOGGER_MODULE);
                 comm_msg.msg_id = MSG_ID_CLIENT_INFO_UID;
                 comm_msg.src_id = TIVA_COMM_MODULE;
                 comm_msg.data.nothing = 1;
@@ -108,7 +108,7 @@ static void comm_sender_task_entry(void *params)
 
             if(notifiedValue & EVENT_COMM_SENDER_HEARTBEAT)
             {
-                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,BBG_BOARD_ID, BBG_LOGGER_MODULE);
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_HEART_BEAT_MODULE, BBG_LOGGER_MODULE);
                 comm_msg.msg_id = MSG_ID_HEARTBEAT;
                 comm_msg.src_id = TIVA_COMM_MODULE;
                 comm_msg.data.nothing = 1;
@@ -123,7 +123,6 @@ static void comm_sender_task_entry(void *params)
                 COMM_MSG_T comm_msg;
                 if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
-                    comm_msg.msg_id = MSG_ID_STATUS;
                     FILL_CHECKSUM(&comm_msg);
                     COMM_SEND(&comm_msg);
                     printf("STATUS: %s\n",comm_msg.message);
@@ -139,7 +138,6 @@ static void comm_sender_task_entry(void *params)
                 COMM_MSG_T comm_msg;
                 if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
-                    comm_msg.msg_id = MSG_ID_INFO;
                     FILL_CHECKSUM(&comm_msg);
                     COMM_SEND(&comm_msg);
                     printf("INFO: %s\n",comm_msg.message);
@@ -149,6 +147,7 @@ static void comm_sender_task_entry(void *params)
                     printf("[Error] Q RECV\n");
                 }
             }
+
 
             if(notifiedValue & EVENT_COMM_SENDER_MSG)
             {

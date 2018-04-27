@@ -30,6 +30,8 @@
 // The priorities of the various tasks.
 //
 //*****************************************************************************
-#define PRIO_COMM_SENDERTASK  1
+#define PRIO_COMM_SENDERTASK    1
+#define PRIO_COMM_RECEIVERTASK  1
+#define PRIO_DISPATCHERTASK     1
 
 #endif // __PRIORITIES_H__

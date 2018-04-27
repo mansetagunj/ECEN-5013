@@ -28,25 +28,24 @@
 #define EVENT_COMM_SENDER_CODE_VERSION   ((0x01)<<7)
 #define EVENT_COMM_SENDER_PICTURE        ((0x01)<<8)
 #define EVENT_COMM_SENDER_OBJECT_DETECTED   ((0x01)<<9)
-
 //Handy macros
 #define NOTIFY_COMM_OBJECT(EVENT_ID)       xTaskNotify(getComm_senderTaskHandle(),EVENT_ID,eSetBits)
 
-#define COMM_CREATE_OBJECT(name, src_board_id, source_id, dest_id)    COMM_MSG_T name = { .src_brd_id = src_board_id, .src_id = source_id, .dst_id = dest_id }
-#define COMM_OBJECT_MSGID(name,msgid)  name.msg_id = msgid
-#define FILL_CHECKSUM(p_comm_msg)    do{ (p_comm_msg)->checksum = getCheckSum(p_comm_msg); }while(0)
+#define COMM_CREATE_OBJECT(name, src_board_id, source_id, dest_id)    COMM_MSG_T name = { .src_brd_id = src_board_id, .src_id = source_id, .dst_id = dest_id, .dst_brd_id = BBG_BOARD_ID }
+#define COMM_OBJECT_MSGID(name,msgid)       name.msg_id = msgid
+#define FILL_CHECKSUM(p_comm_msg)           do{ (p_comm_msg)->checksum = getCheckSum(p_comm_msg); }while(0)
+#define COMM_FILL_MSG(comm_msg,p_str)       strncpy(comm_msg.message,p_str,sizeof(comm_msg.message))
 
 //TODO: include a mutex lock in here to make the enque and notification atomic. Let's see if needed
 #define ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg, EVENT_ID)    \
-        do{ \
-            if(xQueueSend(getComm_senderQueueHandle(), &comm_msg ,xMaxBlockTime) == pdPASS) \
+        ({ \
+            uint8_t status = xQueueSend(getComm_senderQueueHandle(), &comm_msg ,xMaxBlockTime); \
+            if(status == pdPASS) \
             {   \
-                xTaskNotify(getWorkerTaskHandle(),EVENT_ID,eSetBits);   \
-                pdPASS; \
+                xTaskNotify(getComm_senderTaskHandle(),EVENT_ID,eSetBits);   \
             }   \
-            else    \
-            {pdFAIL;}  \
-        }while(0)
+            status; \
+        })
 
 #define getComm_senderQueueHandle()           ({QueueHandle_t h = Comm_senderQueueHandle(NULL,1); h;})
 #define setComm_senderQueueHandle(handle)     Comm_senderQueueHandle(handle,0)

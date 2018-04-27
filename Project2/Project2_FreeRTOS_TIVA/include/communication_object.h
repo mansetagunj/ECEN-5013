@@ -22,8 +22,9 @@ typedef enum
 {
     MSG_ID_HEARTBEAT = 0,
     MSG_ID_MSG,
-    MSG_ID_STATUS,
+    MSG_ID_SENSOR_STATUS,
     MSG_ID_ERROR,
+    MSG_ID_SENSOR_INFO,
     MSG_ID_INFO,
     MSG_ID_PICTURE,
     MSG_ID_OBJECT_DETECTED,
@@ -64,8 +65,10 @@ const static char * const MSG_ID_STRING[NUM_OF_ID]  =
 
 //FOR DST and SRC Board ID
 #define BBG_BOARD_ID        (0x00)
-#define MY_TIVA_BOARD_ID    (0x01)
+#define TIVA_BOARD1_ID      (0x01)
 #define XYZ_TIVA_BOARD_ID   (0x02)
+
+#define MY_TIVA_BOARD_ID    TIVA_BOARD1_ID
 
 //For src and dst module ID
 //Add all the modules' UID here for TIVA BOARD
@@ -123,6 +126,12 @@ static uint16_t getCheckSum(const COMM_MSG_T *comm_msg)
         checkSum += *(p_payload+i);
     }
     return checkSum;
+}
+
+/*Return true if a match, return 0 is not a match*/
+static inline uint8_t verifyCheckSum(const COMM_MSG_T *comm_msg)
+{
+    return (getCheckSum(comm_msg) == comm_msg->checksum);
 }
 
 

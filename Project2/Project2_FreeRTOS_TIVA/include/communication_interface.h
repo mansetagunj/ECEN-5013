@@ -41,15 +41,15 @@ void COMM_SEND(COMM_MSG_T comm_object)
 #define COMM_DEINIT()               comm_deinit_NRF()
 #define COMM_SEND(p_comm_object)    comm_sendNRF(p_comm_object)
 #define COMM_SENDRAW(packet,len)    comm_sendNRF_raw(packet, len)
-#define COMM_RECV()
+#define COMM_RECV(p_comm_object)
 #else
-#define COMM_INIT()                 comm_init_UART(BAUD_921600)
+#define COMM_INIT()                 comm_init_UART()
 //Will be used only on BBG
-#define COMM_DEINIT()               comm_deinit_UART()
+#define COMM_DEINIT(fd)             comm_deinit_UART(fd)
 //#define COMM_INIT()                 comm_init_UART(BAUD_115200)
 #define COMM_SEND(p_comm_object)    comm_sendUART(p_comm_object)
 #define COMM_SENDRAW(packet,len)    comm_sendUARTRAW(packet,len)
-#define COMM_RECV()                 comm_recvUART(p_comm_object)
+#define COMM_RECV(p_comm_object)    comm_recvUART(p_comm_object)
 #endif
 #endif
 #define RX_PIPE 1
@@ -59,12 +59,12 @@ static uint8_t TXAddr[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
 static uint8_t RXAddr[5] = {0xC2,0xC2,0xC2,0xC2,0xC2};
 
 #ifdef TIVA_BOARD
-static inline void comm_init_UART(BAUD_RATE_ENUM baudrate)
+static inline void comm_init_UART()
 {
-    UART3_config(baudrate);
+    UART3_config(BAUD_921600);
 }
 
-static inline void comm_deinit_UART(){}
+static inline void comm_deinit_UART(int fd){}
 
 
 static inline void comm_sendUARTRAW(uint8_t* packet, size_t len)

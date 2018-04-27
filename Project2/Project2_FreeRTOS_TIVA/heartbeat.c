@@ -25,19 +25,19 @@ static TimerHandle_t timer_handles[NUM_OF_TIMERS];
 void vTimerCallback(TimerHandle_t h_timer)
 {
     static uint32_t led_val = (GPIO_PIN_1 | GPIO_PIN_0);
-    //TIMER_LOG_HEARTBEAT
     static uint32_t count = 0;
     if(h_timer == timer_handles[0])
     {
         if(count%10 == 0)
         {
-            //TODO: Queue up the comm_sender task or notify the comm_sender task
+            //Notify the comm_sender task with Heartbeat event
+            //TODO:Check for return value
             NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_HEARTBEAT);
         }
-//        if(count%30 == 0)
-//        {
-//            NOTIFY_LOG_TASK(EVENT_COMM_SENDER_BOARD_TYPE);
-//        }
+        if(count%30 == 0)
+        {
+            NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
+        }
         count++;
     }
     //TIMER_LED_HEARTBEAT
