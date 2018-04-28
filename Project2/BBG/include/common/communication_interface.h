@@ -46,7 +46,6 @@ void COMM_SEND(COMM_MSG_T comm_object)
 #define COMM_INIT()                 comm_init_UART()
 //Will be used only on BBG
 #define COMM_DEINIT(fd)             comm_deinit_UART(fd)
-//#define COMM_INIT()                 comm_init_UART(BAUD_115200)
 #define COMM_SEND(p_comm_object)    comm_sendUART(p_comm_object)
 #define COMM_SENDRAW(packet,len)    comm_sendUARTRAW(packet,len)
 #define COMM_RECV(p_comm_object)    comm_recvUART(p_comm_object)
@@ -79,9 +78,10 @@ static inline void comm_sendUART(COMM_MSG_T *p_comm_object)
     //UART3_putchar('\n');
 }
 
-static inline size_t comm_recvUART(COMM_MSG_T *comm_object)
+static inline size_t comm_recvUART(COMM_MSG_T *p_comm_object)
 {
-    return UART3_getRAW((uint8_t*)&comm_object, sizeof(COMM_MSG_T));
+    size_t ret = UART3_getRAW((uint8_t*)p_comm_object, sizeof(COMM_MSG_T));
+    return ret;
 }
 
 #else

@@ -118,16 +118,16 @@ void logger_task_processMsg(FILE *fp)
                 if(g_loglevel >= queueData.loglevel)
                 {
                     #ifdef STDOUT_LOG
-                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LOG_STDOUT(INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData.msgData);
                     #endif
-                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData.msgData);
                 }
                 break;
             case(LT_MSG_TASK_STATUS):
                 if(MAIN_TASK_ID == queueData.sourceID)
                 {
                     /* Send back task alive response to main task */
-                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData);
+                    LT_LOG(fp,INFO "[%s] Sender:%s\tMsg:%s",queueData.timestamp,getTaskIdentfierString(queueData.sourceID),queueData.msgData.msgData);
                     POST_MESSAGE_MAINTASK(&maintaskRsp, "Logger Alive");
                 }
                 break;

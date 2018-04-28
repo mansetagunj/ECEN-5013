@@ -9,6 +9,7 @@ endif
 CC:=gcc
 CC_CROSS:=arm-linux-gnueabihf-gcc
 CFLAGS:= -g3 -O0 -DBB_TYPE=$(BB_TYPE) -DSTDOUT_ALIVE #-DVALUES #-DLOGVALUES #-DSTDOUT_LOG #-std=gnu11
+CFLAGS += -funwind-tables -rdynamic -mapcs-frame
 LDFLAGS:= -lpthread -lrt -lmraa -lm
 INCLUDES:= -I ../include/common -I ../include/cmocka -I ../include/BeagleBone
 

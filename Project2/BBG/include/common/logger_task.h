@@ -17,6 +17,7 @@
 #include "common_helper.h"
 #include "my_time.h"
 #include "error_data.h"
+#include "communication_object.h"
 
 
 #define LT_MSG_SIZE 40
@@ -46,8 +47,10 @@ typedef struct
     char timestamp[20];
     LOG_LEVEL_T loglevel;
     TASK_IDENTIFIER_T sourceID;
+    union{
     LOGGER_TASK_MSGDATA_T msgData[LT_MSG_SIZE];
-
+    COMM_MSG_T comm_msg;
+    }msgData;
 }LOGGERTASKQ_MSG_T;
 
 /**
@@ -60,7 +63,7 @@ typedef struct
         .loglevel   = LOG_ALL,      \
         .sourceID   = sourceId,     \
         .timestamp  = {0},          \
-        .msgData    = {0}           \
+        .msgData.msgData    = {0}           \
     };                               
 
 /**
@@ -97,16 +100,16 @@ mqd_t getHandle_LoggerTaskQueue();
  */
 #define POST_MESSAGE_LOGTASK(p_logstruct, format, ...)  \
     do{ \
-        snprintf((p_logstruct)->msgData,sizeof((p_logstruct)->msgData),format, ##__VA_ARGS__);   \
+        snprintf((p_logstruct)->msgData.msgData,sizeof((p_logstruct)->msgData.msgData),format, ##__VA_ARGS__);   \
         set_Log_currentTimestamp(p_logstruct); \
         __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct), 20); \
     }while(0)
 
 #define POST_MESSAGE_LOGTASK_EXIT(p_logstruct, format, ...)  \
     do{ \
-        snprintf((p_logstruct)->msgData,sizeof((p_logstruct)->msgData),format, ##__VA_ARGS__);   \
+        snprintf((p_logstruct)->msgData.msgData,sizeof((p_logstruct)->msgData.msgData),format, ##__VA_ARGS__);   \
         set_Log_currentTimestamp(p_logstruct); \
-        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct), 50); \
+        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*p_logstruct), 20); \
     }while(0)
 
 /**

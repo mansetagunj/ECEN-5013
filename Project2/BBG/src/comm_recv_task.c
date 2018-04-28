@@ -12,6 +12,7 @@
 #include <mqueue.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
 #include "error_data.h"
 #include "common_helper.h"
@@ -66,9 +67,9 @@ void* comm_recv_task_callback(void *threadparam)
             retrycount = 0;
             LOG_STDOUT(INFO "\n*******\n\
             SRCID:%u, SRC_BRDID:%u, DST_ID:%u, DST_BRDID:%u MSGID:%u\n\
-            MSG:%s\n\
+            SensorVal: %f MSG:%s\n\
             Checksum:%u ?= %u\n********\n",\
-            recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.dst_brd_id,recv_comm_msg.msg_id, recv_comm_msg.message,recv_comm_msg.checksum, check );   
+            recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.dst_brd_id,recv_comm_msg.msg_id,recv_comm_msg.data.distance_cm,recv_comm_msg.message,recv_comm_msg.checksum, check );   
         }
         else
         {

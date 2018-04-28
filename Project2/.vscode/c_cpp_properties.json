@@ -36,7 +36,8 @@
                 "/usr/include/i386-linux-gnu",
                 "/usr/include",
                 "${workspaceFolder}/BBG/include/BeagleBone",
-                "${workspaceFolder}/BBG/include/common"
+                "${workspaceFolder}/BBG/include/common",
+                "/usr/include/i386-linux-gnu/bits"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

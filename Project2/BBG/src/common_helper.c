@@ -21,6 +21,7 @@ const char* const task_identifier_string[NUM_CHILD_THREADS+1] =
     (const char*)"Socket Task",
     (const char*)"Light Task",
     (const char*)"COMM Receiver Task",
+    (const char*)"COMM Sender Task",
     (const char*)"Main Task",
 
 };
