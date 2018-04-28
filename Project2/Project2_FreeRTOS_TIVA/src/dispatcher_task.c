@@ -47,7 +47,7 @@ static void dispatcher_task_entry(void *params)
 {
     /* Waits on the notification from comm_recv and deq comm item from the queue, process it depending on the msg id and dst id */
     /* Call function accordingly */
-    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(500);
+    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
     BaseType_t xResult;
     COMM_MSG_T comm_msg;
     while(1)
@@ -59,10 +59,13 @@ static void dispatcher_task_entry(void *params)
         if( xResult == pdPASS )
         {
             /* A Signal was received.  Dequeue the comm_msg from task queue */
-            if(xQueueReceive(h_dispatcherQueue,&comm_msg, xMaxBlockTime))
+            if(h_dispatcherQueue && xQueueReceive(h_dispatcherQueue,&comm_msg, xMaxBlockTime))
             {
                 if(!verifyCheckSum(&comm_msg))
+                {
+                    printf("Checksum error\n");
                     continue;
+                }
                 printf("DISPATCHING: %s\n",comm_msg.message);
                 /* Process the comm msg. Decide on which parameter do we need to dispatch it*/
                 if(comm_msg.dst_id == TIVA_COMM_MODULE)
@@ -70,13 +73,16 @@ static void dispatcher_task_entry(void *params)
                     switch(comm_msg.msg_id)
                     {
                     case MSG_ID_GET_CLIENT_INFO_BOARD_TYPE:
-                        NOTIFY_COMM_OBJECT(MSG_ID_CLIENT_INFO_BOARD_TYPE);
+                        printf("GET CLIENT INFO BOARD TYPE\n");
+                        NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
                         break;
                     case MSG_ID_GET_CLIENT_INFO_CODE_VERSION:
-                        NOTIFY_COMM_OBJECT(MSG_ID_CLIENT_INFO_CODE_VERSION);
+                        printf("GET CLIENT INFO CODE VERSION\n");
+                        NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_CODE_VERSION);
                         break;
                     case MSG_ID_GET_CLIENT_INFO_UID:
-                        NOTIFY_COMM_OBJECT(MSG_ID_GET_CLIENT_INFO_UID);
+                        printf("GET CLIENT INFO UID\n");
+                        NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_UID);
                         break;
                     default:
                         printf("Invalid Msg Id:%d from BOARD ID: %d\n",comm_msg.msg_id,comm_msg.src_brd_id);
@@ -130,10 +136,14 @@ static void dispatcher_task_entry(void *params)
                         ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
                     }
                 }
+                else
+                {
+                    printf("INVALID MODULE ID\n");
+                }
             }
             else
             {
-                printf("[Error] Q RECV\n");
+                printf("[Error] Q RECV %s\n",__FUNCTION__);
             }
         }
 //        else

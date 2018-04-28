@@ -26,6 +26,7 @@
 #include "application.h"
 #include "communication_setup.h"
 #include "comm_sender_task.h"
+#include "sonar_sensor_task.h"
 
 #define CLOCK_FREQ 120000000
 uint32_t g_sysClock = CLOCK_FREQ;
@@ -56,6 +57,12 @@ void application_run()
    send_boardIdentification();
 
    heartbeat_start(1000, 500);
+
+   if(SonarSensorTask_init())
+   {
+       printf("[ERROR] %s\n",__FUNCTION__);
+       while(1);
+   }
 
 
    printf("SUCCESS - All tasks are created. Starting scheduler....\n");

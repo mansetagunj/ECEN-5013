@@ -14,7 +14,6 @@
 #include "priorities.h"
 #include "timers.h"
 
-#include "my_tasks.h"
 #include "my_uart.h"
 
 #include "communication_interface.h"
@@ -56,7 +55,7 @@ TaskHandle_t Comm_senderTaskHandle(TaskHandle_t handle, bool get)
 
 static void comm_sender_task_entry(void *params)
 {
-    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(500);
+    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
     BaseType_t xResult;
     uint32_t notifiedValue = 0;
     while(1)
@@ -121,7 +120,7 @@ static void comm_sender_task_entry(void *params)
             if(notifiedValue & EVENT_COMM_SENDER_STATUS)
             {
                 COMM_MSG_T comm_msg;
-                if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
                     FILL_CHECKSUM(&comm_msg);
                     COMM_SEND(&comm_msg);
@@ -129,14 +128,14 @@ static void comm_sender_task_entry(void *params)
                 }
                 else
                 {
-                    printf("[Error] Q RECV\n");
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
                 }
             }
 
             if(notifiedValue & EVENT_COMM_SENDER_INFO)
             {
                 COMM_MSG_T comm_msg;
-                if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
                     FILL_CHECKSUM(&comm_msg);
                     COMM_SEND(&comm_msg);
@@ -144,7 +143,7 @@ static void comm_sender_task_entry(void *params)
                 }
                 else
                 {
-                    printf("[Error] Q RECV\n");
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
                 }
             }
 
@@ -152,7 +151,7 @@ static void comm_sender_task_entry(void *params)
             if(notifiedValue & EVENT_COMM_SENDER_MSG)
             {
                 COMM_MSG_T comm_msg;
-                if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
                     comm_msg.msg_id = MSG_ID_MSG;
                     FILL_CHECKSUM(&comm_msg);
@@ -161,14 +160,14 @@ static void comm_sender_task_entry(void *params)
                 }
                 else
                 {
-                    printf("[Error] Q RECV\n");
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
                 }
             }
 
             if(notifiedValue & EVENT_COMM_SENDER_ERROR)
             {
                 COMM_MSG_T comm_msg;
-                if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
                     comm_msg.msg_id = MSG_ID_ERROR;
                     FILL_CHECKSUM(&comm_msg);
@@ -177,30 +176,30 @@ static void comm_sender_task_entry(void *params)
                 }
                 else
                 {
-                    printf("[Error] Q RECV\n");
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
                 }
             }
 
             if(notifiedValue & EVENT_COMM_SENDER_OBJECT_DETECTED)
             {
                 COMM_MSG_T comm_msg;
-                if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
-                    comm_msg.msg_id = MSG_ID_OBJECT_DETECTED;
+//                    comm_msg.msg_id = MSG_ID_OBJECT_DETECTED;
                     FILL_CHECKSUM(&comm_msg);
                     COMM_SEND(&comm_msg);
                     printf("OBJECT DETECTED: %f cm\n",comm_msg.data.distance_cm);
                 }
                 else
                 {
-                    printf("[Error] Q RECV\n");
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
                 }
             }
 
             if(notifiedValue & EVENT_COMM_SENDER_PICTURE)
             {
                 COMM_MSG_T comm_msg;
-                if(xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
                 {
                     comm_msg.msg_id = MSG_ID_PICTURE;
                     FILL_CHECKSUM(&comm_msg);
@@ -224,7 +223,7 @@ static void comm_sender_task_entry(void *params)
                 }
                 else
                 {
-                    printf("[Error] Q RECV\n");
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
                 }
             }
 
@@ -244,12 +243,18 @@ uint8_t CommSenderTask_init()
 
     TaskHandle_t h_comm_senderTask;
 
+    xCOMM_SENDER_NOTIFY_MUTEX =  xSemaphoreCreateMutex();
+    if(xCOMM_SENDER_NOTIFY_MUTEX == NULL)
+    {
+        printf("Semaphore Create Error. %s\n",__FUNCTION__);
+    }
+
     /*Initializing the communication interface*/
     COMM_INIT();
 //    uint8_t data[32] = {0};
 //    NRF_read_data(data, 32);
     /* Create the task*/
-    if(xTaskCreate(comm_sender_task_entry, (const portCHAR *)"Comm_sender Task", 128, NULL,
+    if(xTaskCreate(comm_sender_task_entry, (const portCHAR *)"Comm_sender Task", 512, NULL,
                        tskIDLE_PRIORITY + PRIO_COMM_SENDERTASK, &h_comm_senderTask) != pdTRUE)
     {
         return (1);

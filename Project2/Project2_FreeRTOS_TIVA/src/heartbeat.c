@@ -34,10 +34,10 @@ void vTimerCallback(TimerHandle_t h_timer)
             //TODO:Check for return value
             NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_HEARTBEAT);
         }
-        if(count%30 == 0)
-        {
-            NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
-        }
+//        if(count%30 == 0)
+//        {
+//            NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
+//        }
         count++;
     }
     //TIMER_LED_HEARTBEAT

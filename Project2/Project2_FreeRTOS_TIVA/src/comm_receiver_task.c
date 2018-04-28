@@ -12,11 +12,12 @@
 #include "communication_interface.h"
 #include "comm_receiver_task.h"
 #include "dispatcher_task.h"
+#include "delay.h"
 
 /* Create the entry task*/
 static void comm_receiver_task_entry(void *params)
 {
-    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(500);
+    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
     /* Blocks on UART recv  OR get the notification from the UART RX ISR*/
     /* Enqueues the recvd msg to the dispatcher task queue*/
     COMM_MSG_T recv_comm_msg;
@@ -24,21 +25,19 @@ static void comm_receiver_task_entry(void *params)
     {
         memset(&recv_comm_msg, 0 , sizeof(recv_comm_msg));
         size_t ret = COMM_RECV(&recv_comm_msg);
-        //printf("RET:%d\n",ret);
         if(ret > 0)
         {
             if(ret != 32)
             {
                 printf("RECV error. Data garbage\n");
-            }
-            else if(recv_comm_msg.dst_brd_id != MY_TIVA_BOARD_ID)
+            }else
+            if(recv_comm_msg.dst_brd_id != MY_TIVA_BOARD_ID)
             {
                 printf("Invalid Board Id\n");
             }
             else
             {
                 /* Send to dispatcher */
-                //TODO:check the return type
                 uint8_t ret = ENQUEUE_NOTIFY_DISPATCHER_TASK(recv_comm_msg);
                 if(ret == pdFAIL)
                 {

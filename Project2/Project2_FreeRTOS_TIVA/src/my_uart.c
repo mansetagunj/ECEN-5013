@@ -72,6 +72,7 @@ void UART_config(UART_T uart, BAUD_RATE_ENUM baudrate)
 
 void UART_putRAW(UART_T uart, const uint8_t *data, size_t len)
 {
+    while(UARTBusy(UART[uart]));
     while(len--)
     {
         UARTCharPut(UART[uart], *data++);
@@ -83,17 +84,17 @@ size_t UART_getRAW(UART_T uart, uint8_t *data, size_t len)
     if(!UARTCharsAvail(UART[uart]))
         return 0;
     size_t i = 0, retrycount = 0;
-    while(i<len && retrycount < 8)
+    while(i<len && retrycount < 64)
     {
         int32_t c = UARTCharGetNonBlocking(UART[uart]);
-        if(c == -1)
-            retrycount++;
-        else
+        if(c != -1)
         {
             *(data+i) = c;
             retrycount = 0;
             i++;
         }
+        else
+            retrycount++;
     }
     return i;
 }
@@ -115,7 +116,7 @@ void UART_printf(UART_T uart, const char *fmt, ...)
     unsigned int u;
     char *s;
     double d;
-    char str[6];
+    char str[10];
     va_list argp;
 
     va_start(argp, fmt);
@@ -140,7 +141,7 @@ void UART_printf(UART_T uart, const char *fmt, ...)
                 d=-d;
                 UART_putchar(uart,'-');
             }
-            sprintf(str,"%f",d);
+            snprintf(str,sizeof(str),"%.02f",d);
             UART_putstr(uart, str);
             break;
         case 'c' :
