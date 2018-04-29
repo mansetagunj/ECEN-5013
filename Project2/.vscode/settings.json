@@ -6,6 +6,8 @@
         "array": "c",
         "slist": "c",
         "initializer_list": "c",
-        "utility": "c"
+        "utility": "c",
+        "chrono": "c",
+        "algorithm": "c"
     }
 }

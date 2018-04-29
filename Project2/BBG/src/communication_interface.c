@@ -18,6 +18,7 @@ int8_t comm_init_NRF()
 {
     if(count)
     {
+        count++;
         return 0;
     }
     int8_t status = NRF_moduleInit(NRF_USE_INTERRUPT, my_NRF_IntHandler);

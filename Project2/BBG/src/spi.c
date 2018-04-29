@@ -48,12 +48,13 @@ SPI_t SPI_init(SPI_t spi)
     {
         return 0;
     }
+    SPI[spi] = spi_context;
     status = mraa_spi_frequency(SPI[spi], SPI_2MZ);
     if (status != MRAA_SUCCESS)
     {
         return SPI_release(spi);
     }
-    SPI[spi] = spi_context;
+    
     opened[spi]++;
     return spi;
 }

@@ -248,7 +248,7 @@ int main_task_entry()
 
     /* Registering a timer for 5 sec to check that the barrier is passed */
     timer_t timer_id;
-    if(ERR == register_and_start_timer(&timer_id, 2*MICROSEC, 1, timer_handler_setup, &timer_id))
+    if(ERR == register_and_start_timer(&timer_id, 20*MICROSEC, 1, timer_handler_setup, &timer_id))
     {
         // LOG_STDOUT(ERROR "Timer Error\n");
         return ERR;
