@@ -13,18 +13,29 @@ void my_NRF_IntHandler()
 {
 }
 
+volatile uint8_t count = 0;
 int8_t comm_init_NRF()
 {
+    if(count)
+    {
+        return 0;
+    }
     int8_t status = NRF_moduleInit(NRF_USE_INTERRUPT, my_NRF_IntHandler);
     if(status == -1)
         return status;
     NRF_moduleSetup(NRF_DR_1Mbps, NRF_PW_MED);
     NRF_openReadPipe(1, RXAddr, sizeof(COMM_MSG_T)>32 ? 32 : sizeof(COMM_MSG_T));
     NRF_openWritePipe(TXAddr);
+    count++;
 }
 
 void comm_deinit_NRF()
 {
+    count--;
+    if(count)
+    {
+        return;
+    }
     NRF_closeReadPipe(1);
     NRF_closeWritePipe();
     NRF_moduleDisable();
