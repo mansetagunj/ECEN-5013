@@ -20,36 +20,53 @@
 
 #define DISTANCE_THRESHOLD_CM   10
 
-volatile uint8_t Sonar_sensorTaskInitDone = 0;
+#define SONAR_SENSOR_QUEUE_ITEMSIZE   (sizeof(COMM_MSG_T))
+#define SONAR_SENSOR_QUEUE_LENGTH     20
 
-static TaskHandle_t h_Sonar_sensorTask;
+volatile uint8_t TaskInitDone = 0;
+
+static TaskHandle_t h_sonar_sensorTask;
+static QueueHandle_t h_sonar_sensorQueue;
 
 static float current_sensor_distance_cm = 0;
 static uint8_t object_detected = 0;
 
-TaskHandle_t Sonar_sensorTaskHandle(TaskHandle_t handle, bool get)
+QueueHandle_t Sonar_sensorQueueHandle(QueueHandle_t handle, bool get)
 {
     if(get)
-        return h_Sonar_sensorTask;
+        return h_sonar_sensorQueue;
     else
     {
-        h_Sonar_sensorTask = handle;
-        return h_Sonar_sensorTask;
+        h_sonar_sensorQueue = handle;
+        return h_sonar_sensorQueue;
     }
 }
 
-static void send_sonarSensorValue()
+TaskHandle_t Sonar_sensorTaskHandle(TaskHandle_t handle, bool get)
 {
-    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
+    if(get)
+        return h_sonar_sensorTask;
+    else
+    {
+        h_sonar_sensorTask = handle;
+        return h_sonar_sensorTask;
+    }
+}
+
+static void send_sonarSensorValue(uint8_t dst_board_id, uint8_t dst_module_id)
+{
+    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,dst_module_id);
+    comm_msg.dst_brd_id = dst_board_id;
     comm_msg.msg_id = MSG_ID_SENSOR_STATUS;
     comm_msg.data.distance_cm = current_sensor_distance_cm;
     COMM_FILL_MSG(comm_msg,"Distance in cm");
     ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
 }
 
-static void send_sonarSensorInfo()
+static void send_sonarSensorInfo(uint8_t dst_board_id, uint8_t dst_module_id)
 {
-    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
+    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,dst_module_id);
+    comm_msg.dst_brd_id = dst_board_id;
     comm_msg.msg_id = MSG_ID_SENSOR_INFO;
     comm_msg.data.distance_cm = current_sensor_distance_cm;
     COMM_FILL_MSG(comm_msg,"Sonar/unit:cm/1s");
@@ -69,7 +86,7 @@ static void send_sonarObjectDetected()
 /* Create the entry task*/
 static void sonar_sensor_task_entry(void *params)
 {
-//        const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
+        const TickType_t xMaxBlockTime = pdMS_TO_TICKS(500);
         BaseType_t xResult;
         uint32_t notifiedValue = 0;
         while(1)
@@ -98,12 +115,30 @@ static void sonar_sensor_task_entry(void *params)
 
                 if(notifiedValue & EVENT_SONAR_REQUEST_GETVAL)
                 {
-                    send_sonarSensorValue();
+                    COMM_MSG_T comm_msg = {0};
+                    if(h_sonar_sensorQueue && xQueueReceive(h_sonar_sensorQueue,&comm_msg, xMaxBlockTime))
+                    {
+                        send_sonarSensorValue(comm_msg.src_brd_id, comm_msg.src_id);
+                    }
+                    else
+                    {
+                        printf("SONAR QUEUE Timeout\n");
+                    }
+
                 }
+
 
                 if(notifiedValue & EVENT_SONAR_SENSOR_INFO)
                 {
-                    send_sonarSensorInfo();
+                    COMM_MSG_T comm_msg = {0};
+                    if(h_sonar_sensorQueue && xQueueReceive(h_sonar_sensorQueue,&comm_msg, xMaxBlockTime))
+                    {
+                        send_sonarSensorInfo(comm_msg.src_brd_id, comm_msg.src_id);
+                    }
+                    else
+                    {
+                        printf("SONAR QUEUE Timeout\n");
+                    }
                 }
             }
 //            else
@@ -117,28 +152,24 @@ static void sonar_sensor_task_entry(void *params)
 
 void vPeriodicUpdateTimerCallback(TimerHandle_t h_timer)
 {
-//    static uint32_t count = 0;
-//    if((count%5==0) && object_detected)
-//    {
-//        object_detected = 0;
-//    }
-
     NOTIFY_SONAR_SENSOR_TASK(EVENT_SONAR_PERIODIC_UPDATEVAL);
-//    count++;
 }
 
 
 uint8_t SonarSensorTask_init()
 {
     Sonar_sensor_init();
-    TaskHandle_t h_Sonar_sensorTask;
+    TaskHandle_t h_Task;
+    QueueHandle_t h_sonar_sensorQ = xQueueCreate(SONAR_SENSOR_QUEUE_LENGTH, SONAR_SENSOR_QUEUE_ITEMSIZE);
+    setSonar_sensorQueueHandle(h_sonar_sensorQ);
+
 
     TimerHandle_t periodic_getDistance_timer = xTimerCreate("PERIODIC_GET_DISTANCE", pdMS_TO_TICKS(1000) , pdTRUE,  (void*)0, vPeriodicUpdateTimerCallback);
     DEBUG_ERROR(periodic_getDistance_timer == NULL);
 
 
     if(xTaskCreate(sonar_sensor_task_entry, (const portCHAR *)"Sonar Sensor Task", 1024, NULL,
-                           tskIDLE_PRIORITY + PRIO_SONAR_SENSOR_TASK, &h_Sonar_sensorTask) != pdTRUE)
+                           tskIDLE_PRIORITY + PRIO_SONAR_SENSOR_TASK, &h_Task) != pdTRUE)
     {
         return (1);
     }
@@ -149,7 +180,7 @@ uint8_t SonarSensorTask_init()
         return 1;
     }
 
-    setSonar_sensorTaskHandle(h_Sonar_sensorTask);
+    setSonar_sensorTaskHandle(h_Task);
 
     /* Return the createtask ret value */
     return 0;

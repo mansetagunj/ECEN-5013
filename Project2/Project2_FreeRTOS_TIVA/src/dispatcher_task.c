@@ -10,6 +10,7 @@
 #include "dispatcher_task.h"
 #include "communication_object.h"
 #include "comm_sender_task.h"
+#include "sonar_sensor_task.h"
 #include "my_uart.h"
 
 #define DISPATCHER_QUEUE_ITEMSIZE   (sizeof(COMM_MSG_T))
@@ -94,26 +95,23 @@ static void dispatcher_task_entry(void *params)
                 {
                     if(comm_msg.msg_id == MSG_ID_GET_SENSOR_STATUS)
                     {
-                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
-                        comm_msg.msg_id = MSG_ID_SENSOR_STATUS;
-                        comm_msg.data.distance_cm = 10.43;
-                        COMM_FILL_MSG(comm_msg,"Distance in cm");
-                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
+                        ENQUEUE_NOTIFY_SONAR_SENSOR_TASK(comm_msg, EVENT_SONAR_REQUEST_GETVAL);
                     }
                     else if(comm_msg.msg_id == MSG_ID_GET_SENSOR_INFO)
                     {
+                        ENQUEUE_NOTIFY_SONAR_SENSOR_TASK(comm_msg, EVENT_SONAR_SENSOR_INFO);
                         /* This should be done in the sensor task. Here, the queue/task should be filled/notified with object/event.*/
-                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
-                        comm_msg.msg_id = MSG_ID_SENSOR_INFO;
-                        comm_msg.data.distance_cm = 10.43;
-                        COMM_FILL_MSG(comm_msg,"Ultrasonic Sensor");
-                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
+//                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
+//                        comm_msg.msg_id = MSG_ID_SENSOR_INFO;
+//                        comm_msg.data.distance_cm = 10.43;
+//                        COMM_FILL_MSG(comm_msg,"Ultrasonic Sensor");
+//                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
                     }
                     else
                     {
-                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
+                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,comm_msg.src_id);
                         comm_msg.msg_id = MSG_ID_ERROR;
-                        comm_msg.data.distance_cm = 10.43;
+                        comm_msg.data.distance_cm = 0;
                         COMM_FILL_MSG(comm_msg,"Invalid Request");
                         ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
                     }

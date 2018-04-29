@@ -117,7 +117,7 @@ static inline void NRF_radio_disable()
 * Initialized the GPIO connections pertaining to the Nordic module
 * @return void
 **/
-void NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler);
+int8_t NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler);
 
 /**
 * @brief - Disable the GPIO connections set up earlier for the Nordic module
@@ -247,8 +247,8 @@ uint8_t NRF_read_En_AA();
 void NRF_write_setup_retry(uint8_t data);
 uint8_t NRF_read_setup_retry();
 
-void NRF_read_data(uint8_t *data, uint8_t len);
-void NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode);
+int8_t NRF_read_data(uint8_t *data, uint8_t len);
+int8_t NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode);
 
 void NRF_write_TXPayload(uint8_t *data, uint8_t len);
 void NRF_TX_pulse();

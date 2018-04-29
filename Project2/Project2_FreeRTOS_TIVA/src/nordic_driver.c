@@ -121,7 +121,7 @@ void NRF_gpioInit()
 //    GPIOIntEnable(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
 }
 
-void NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler)
+int8_t NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler)
 {
     SPI_clock_init(SPI_1, g_sysClock);
     SPI_init(SPI_1);
@@ -140,6 +140,7 @@ void NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler)
     {
         using_interrupt = 0;
     }
+    return 0;
 }
 
 void NRF_moduleSetup(NRF_DataRate_t DR, NRF_Power_t power)
@@ -495,7 +496,7 @@ void NRF_TX_pulse()
     NRF_radio_disable();
 }
 
-void NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode)
+int8_t NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode)
 {
 	if(txconfigured)
 	{
@@ -549,6 +550,7 @@ void NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode)
 	{
 		printf("TX mode not configured");
 	}
+	return 0;
 }
 
 NRF_read_RXPayload(uint8_t *data, uint8_t len)
@@ -563,7 +565,7 @@ NRF_read_RXPayload(uint8_t *data, uint8_t len)
     NRF_chip_disable();
 }
 
-void NRF_read_data(uint8_t *data, uint8_t len)
+int8_t NRF_read_data(uint8_t *data, uint8_t len)
 {
 	if(rxconfigured)
 	{
@@ -599,6 +601,7 @@ void NRF_read_data(uint8_t *data, uint8_t len)
 	{
 		printf("RX mode not configured");
 	}
+	return 0;
 }
 
 //#define SELF_TEST

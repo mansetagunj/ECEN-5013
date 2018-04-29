@@ -28,6 +28,7 @@ int8_t comm_init_NRF()
     NRF_openReadPipe(1, RXAddr, sizeof(COMM_MSG_T)>32 ? 32 : sizeof(COMM_MSG_T));
     NRF_openWritePipe(TXAddr);
     count++;
+
 }
 
 void comm_deinit_NRF()

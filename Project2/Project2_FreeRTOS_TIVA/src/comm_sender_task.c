@@ -107,6 +107,7 @@ static void comm_sender_task_entry(void *params)
 
             if(notifiedValue & EVENT_COMM_SENDER_HEARTBEAT)
             {
+                static uint32_t count = 0;
                 COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_HEART_BEAT_MODULE, BBG_LOGGER_MODULE);
                 comm_msg.msg_id = MSG_ID_HEARTBEAT;
                 comm_msg.src_id = TIVA_COMM_MODULE;
@@ -114,7 +115,7 @@ static void comm_sender_task_entry(void *params)
                 strncpy(comm_msg.message,"HEARTBEAT", sizeof(comm_msg.message));
                 FILL_CHECKSUM(&comm_msg);
                 COMM_SEND(&comm_msg);
-                printf("HEARTBEAT\n");
+                printf("[%u]HEARTBEAT\n",count++);
             }
 
             if(notifiedValue & EVENT_COMM_SENDER_STATUS)
