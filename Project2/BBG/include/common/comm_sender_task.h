@@ -18,7 +18,7 @@
 #include "common_helper.h"
 #include "communication_object.h"
 
-#define COMM_CREATE_OBJECT(name, src_board_id, source_id, dest_id)    COMM_MSG_T name = { .src_brd_id = src_board_id, .src_id = source_id, .dst_id = dest_id, .dst_brd_id = BBG_BOARD_ID }
+#define COMM_CREATE_OBJECT(name, src_board_id, source_id, dest_id)    COMM_MSG_T name = { .src_brd_id = src_board_id, .src_id = source_id, .dst_id = dest_id, .dst_brd_id = TIVA_BOARD1_ID }
 #define COMM_OBJECT_MSGID(comm_msg,msgid)   comm_msg.msg_id = msgid
 #define COMM_DST_BOARD_ID(comm_msg,dst_board_id)    comm_msg.dst_brd_id = dst_board_id
 #define FILL_CHECKSUM(p_comm_msg)           do{ (p_comm_msg)->checksum = getCheckSum(p_comm_msg); }while(0)
@@ -105,6 +105,21 @@ static inline void send_GET_CLIENT_INFO_UID(uint8_t board_id)
     FILL_CHECKSUM(&comm_msg);
     POST_MESSAGE_COMM_SENDTASK(&comm_msg, "BBG/Req/UID");
 }
+
+/**
+ * @brief 
+ * 
+ * @param board_id 
+ */
+static inline void send_GET_DISTANCE(uint8_t board_id, uint8_t src_module_id)
+{
+    COMM_CREATE_OBJECT(comm_msg,BBG_BOARD_ID, src_module_id, TIVA_SENSOR_MODULE);
+    COMM_OBJECT_MSGID(comm_msg,MSG_ID_GET_SENSOR_STATUS);
+    COMM_DST_BOARD_ID(comm_msg,board_id);
+    FILL_CHECKSUM(&comm_msg);
+    POST_MESSAGE_COMM_SENDTASK(&comm_msg, "BBG/Req/Distance");
+}
+
 
 /**
  * @brief 

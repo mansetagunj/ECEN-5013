@@ -22,6 +22,7 @@
 #include "sensor_common_object.h"
 #include "light_sensor_task.h"
 #include "temperature_sensor_task.h"
+#include "comm_sender_task.h"
 
 #define SERVER_PORT 	3000
 #define SERVER_IP       "127.0.0.1"
@@ -98,6 +99,8 @@ int socket_task_init(int server_socket)
     return server_socket;
 }
 
+float getDistanceData_cm();
+
 void* socket_task_callback(void* threadparam)
 {
     int server_socket,accepted_socket, option = 1;
@@ -141,15 +144,15 @@ void* socket_task_callback(void* threadparam)
 			do{
 				nbytes = recv(accepted_socket, (((char*)&(req_in))+nbytes), sizeof(req_in), 0);
 			}while(nbytes < sizeof(req_in) && nbytes != -1);
-
+			if(nbytes == -1)
+			{
+				LOG_STDOUT(INFO "SOME ERROR ON SOCKET\n");
+				continue;
+			}
 			LOG_STDOUT(INFO "--CLIENT REQUEST: bytes:%d ID:%d\n",nbytes,req_in.request_id);
 			POST_MESSAGE_LOGTASK(&logData,INFO "--CLIENT REQUEST: bytes:%d ID:%d\n",nbytes,req_in.request_id);
 			rsp_out = processRemoteRequest(req_in);
 			
-			if(rsp_out.rsp_id == CONN_CLOSE_RSP) 
-				{break;}
-			if(rsp_out.rsp_id == CONN_KILL_APP_RSP) 
-				{/* socketTask_continue = 0; */ break;}
 		
 			nbytes = send(accepted_socket , (char*)&rsp_out , sizeof(rsp_out), 0 );
 			if(nbytes < sizeof(rsp_out))
@@ -161,6 +164,11 @@ void* socket_task_callback(void* threadparam)
 
 			LOG_STDOUT(INFO "Number of bytes sent: %d\n",nbytes);
 			POST_MESSAGE_LOGTASK(&logData,INFO "Number of bytes sent: %d\n",nbytes);
+
+			if(rsp_out.rsp_id == CONN_CLOSE_RSP) 
+				{break;}
+			if(rsp_out.rsp_id == CONN_KILL_APP_RSP) 
+				{ socketTask_continue = 0; break;}
 		}
 
         /* Create a new thread to handle the connection and go back to accepting */
@@ -170,8 +178,6 @@ void* socket_task_callback(void* threadparam)
         /* Think of a mechanism to close this socket task as there is a while(1) loop */
 
     }
-
-	// signal(SIGUSR1, signal_handler);
 
 }
 
@@ -210,6 +216,18 @@ REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
 			rsp_out.data.isNight = getLightTask_state();
             LOG_STDOUT(INFO "REMOTE REQUEST GET_DAY_NIGHT\n");
             break;
+		case(GET_DISTANCE_CM):
+			LOG_STDOUT(INFO "REMOTE REQUEST GET_DISTANCE_CM\n");
+			rsp_out.rsp_id=GET_DISTANCE_CM;
+			rsp_out.data.floatingData = getDistanceData_cm();
+			LOG_STDOUT(INFO "SERVER RESPONSE GOT_DISTANCE_CM\n");
+			break;
+		case(GET_DISTANCE_M):
+			LOG_STDOUT(INFO "REMOTE REQUEST GET_DISTANCE_M\n");
+			rsp_out.rsp_id=GET_DISTANCE_M;
+			rsp_out.data.floatingData = (getDistanceData_cm()/100);
+			LOG_STDOUT(INFO "SERVER RESPONSE GOT_DISTANCE_M\n");
+			break;
     	case(CONN_CLOSE_REQ):
 			rsp_out.rsp_id=CONN_CLOSE_RSP;
 			LOG_STDOUT(INFO "REMOTE REQUEST CLOSE CONNECTION\n");
@@ -221,9 +239,26 @@ REMOTE_RESPONSE_T processRemoteRequest(REMOTE_REQUEST_T req_in)
 			POST_MESSAGE_TEMPERATURETASK_EXIT(&tempstruct);
             break;
         default:
+			rsp_out.rsp_id=GET_FUNC;
 			LOG_STDOUT(INFO "REMOTE REQUEST INVALID\n");
             break;
 
     }
 	return rsp_out;
+}
+
+uint8_t gotDistance = 0;
+COMM_MSG_T socket_comm_msg = {0};
+
+float getDistanceData_cm()
+{
+	/* Send the request to comm send task */
+	send_GET_DISTANCE(TIVA_BOARD1_ID,BBG_SOCKET_MODULE);
+	/* Wait for notification event from dispatcher */
+	while(gotDistance == 0);
+	gotDistance = 0;
+	/* Get the comm object and return it. */
+	float data = socket_comm_msg.data.distance_cm;
+	memset(&socket_comm_msg,0,sizeof(socket_comm_msg));
+	return data;
 }

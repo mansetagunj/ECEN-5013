@@ -45,6 +45,10 @@ int dispatcher_task_queue_init()
     return dispatcher_task_q;
 }
 
+/* from teh socket task */
+extern uint8_t gotDistance;
+extern COMM_MSG_T socket_comm_msg;
+
 /* Waits on the queue items containing the comm mgs, process it depending on the msg id and dst id */
 /* Call function accordingly */
 void dispatcher_task_processMsg()
@@ -94,15 +98,17 @@ void dispatcher_task_processMsg()
                 break;
             case BBG_COMM_MODULE:
                 break;       
-            case BBG_SOCKET_MODULE:     
+            case BBG_SOCKET_MODULE: 
+                memcpy(&socket_comm_msg,&queueData,sizeof(socket_comm_msg));
+                gotDistance = 1;
                 break;
-
             default:
                 LOG_STDOUT(INFO "Invalid msg id\n");
                 break;
 
         }
     }
+    gotDistance = 1;
 }
 
 /* Create the entry function */
