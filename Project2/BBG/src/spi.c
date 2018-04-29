@@ -5,73 +5,102 @@
  *      Author: Gunj Manseta
  */
 
-#if 0
+#if 1
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 
 #include "spi.h"
 
-static SPI_Type SPI[4] = {NULL,NULL,NULL,NULL};
+
+#define CHECK_SPI_NUM(spi)       ({if(spi > NUM_SPI_BUS-1)   \
+                                return 1;})
+
+static uint32_t opened[NUM_SPI_BUS] = {0};
+
+SPI_Type SPI[NUM_SPI_BUS] = {NULL,NULL,NULL,NULL};
+
+static SPI_t SPI_release(SPI_t spi)
+{
+    if(spi > NUM_SPI_BUS-1)   
+        return -1;
+    
+    mraa_result_t status = mraa_spi_stop(SPI[spi]);
+    if (status != MRAA_SUCCESS)
+        return -1;
+    return spi;
+}
+
+SPI_t SPI_init(SPI_t spi)
+{
+    if(spi > NUM_SPI_BUS-1)   
+        return -1;
+
+    if(opened[spi] && SPI[spi] != NULL)
+    {
+        opened[spi]++;
+        return spi;   
+    }
+    mraa_result_t status = MRAA_SUCCESS;
+
+    mraa_spi_context spi_context = mraa_spi_init(spi);
+    if(spi_context == NULL)
+    {
+        return 0;
+    }
+    status = mraa_spi_frequency(SPI[spi], SPI_2MZ);
+    if (status != MRAA_SUCCESS)
+    {
+        return SPI_release(spi);
+    }
+    SPI[spi] = spi_context;
+    opened[spi]++;
+    return spi;
+}
 
 void SPI_GPIO_init(SPI_t spi)
 {
+}
 
-    if(spi==SPI_0)
+SPI_t SPI_disable(SPI_t spi)
+{
+    if(spi > NUM_SPI_BUS-1)   
+        return -1;
+
+    opened[spi]--;
+    if(opened[spi])
     {
-        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-	    GPIOPinConfigure(GPIO_PA2_SSI0CLK);
-        GPIOPinConfigure(GPIO_PA3_SSI0FSS);
-        GPIOPinConfigure(GPIO_PA4_SSI0XDAT0);
-        GPIOPinConfigure(GPIO_PA5_SSI0XDAT1);
-
-        // The pins are assigned as follows:
-        //      PA5 - SSI0Tx
-        //      PA4 - SSI0Rx
-        //      PA3 - SSI0Fss
-        //      PA2 - SSI0CLK
-        GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_3 |
-                       GPIO_PIN_2);
-	}
-    else if(spi==SPI_1)
+        return spi;
+    }
+    else
     {
-        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
-        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
-        GPIOPinConfigure(GPIO_PB5_SSI1CLK);
-        GPIOPinConfigure(GPIO_PB4_SSI1FSS);
-        GPIOPinConfigure(GPIO_PE4_SSI1XDAT0);
-        GPIOPinConfigure(GPIO_PE5_SSI1XDAT1);
-
-        // The pins are assigned as follows:
-        //      PE4 - SSI0Tx
-        //      PE5 - SSI0Rx
-        //      PB4 - SSI0Fss
-        //      PB5 - SSI0CLK
-        GPIOPinTypeSSI(GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4);
-        GPIOPinTypeSSI(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4);
+        return SPI_release(spi);
     }
 }
 
-
-void SPI_write_packet(SPI_t spi, uint8_t* p, size_t length)
+int8_t SPI_write_packet(SPI_t spi, uint8_t* p, size_t length)
 {
+    CHECK_SPI_NUM(spi);
+
 	uint8_t i=0;
 	while (i<length)
 	{
 		SPI_write_byte(spi, *(p+i));
 		++i;
 	}
+    return length;
 }
 
-void SPI_read_packet(SPI_t spi, uint8_t* p, size_t length)
+int32_t  SPI_read_packet(SPI_t spi, uint8_t* p, size_t length)
 {
+    CHECK_SPI_NUM(spi);
 	uint8_t i=0;
 	while (i<length)
 	{
-	    SPI_write_byte(spi,0xFF);
 		*(p+i) = SPI_read_byte(spi);
 		++i;
 	}
+    return length;
 }
 
 void SPI0_IRQHandler()

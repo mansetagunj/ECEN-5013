@@ -6,7 +6,7 @@
 * @date - 19th April 2018
 **/
 
-#if 0
+#if 1
 #ifndef _SPI_H_
 #define _SPI_H_
 
@@ -20,6 +20,8 @@
 #define SPI_1MZ 1000000
 #define SPI_2MZ 2000000
 
+#define NOP 0xFF
+
 /**
 * @brief - Enum to allow flexibility of selection between SPI0 and SPI1
 **/
@@ -30,7 +32,10 @@ typedef enum{
 	SPI_3
 }SPI_t;
 
+#define NUM_SPI_BUS 4
 typedef mraa_spi_context SPI_Type;
+
+SPI_Type SPI[NUM_SPI_BUS];
 
 /**
 * @brief - Initialize the GPIO pins associated with SPI
@@ -39,6 +44,7 @@ typedef mraa_spi_context SPI_Type;
 * @return void
 **/
 void SPI_GPIO_init(SPI_t spi);
+
 
 /**
 * @brief - Enable the clock gate control for SPI
@@ -57,13 +63,13 @@ static inline void SPI_clock_init(SPI_t spi, uint32_t g_sysclock)
 * @param - spi SPI_t
 * @return void
 **/
-void SPI_init(SPI_t spi);
+SPI_t SPI_init(SPI_t spi);
 
 /**
-* @brief - Disable the GPIO pins earlier initialized for the SPI module
+* @brief - Disable the initialized SPI module
 * @return void
 **/
-void SPI_disable(SPI_t spi);
+SPI_t SPI_disable(SPI_t spi);
 
 /**
 * @brief - Blocks until SPI transmit buffer has completed transmitting
@@ -72,13 +78,13 @@ void SPI_disable(SPI_t spi);
 **/
 static inline void SPI_flush(SPI_t spi)
 {
-    while(SSIBusy(SPI[spi]));
+    
 }
 
 static inline void SPI_flushRXFIFO(SPI_t spi)
 {
-    uint32_t garbage;
-    while(SSIDataGetNonBlocking(SPI[spi], &garbage));
+    /* Check if it doesnt get an infinite loop */
+    while(mraa_spi_write(SPI[spi], NOP));
 }
 
 
@@ -87,11 +93,9 @@ static inline void SPI_flushRXFIFO(SPI_t spi)
 * @param - spi SPI_t
 * @return uint8_t
 **/
-static inline uint8_t SPI_read_byte(SPI_t spi)
+static inline int8_t SPI_read_byte(SPI_t spi)
 {
-    uint32_t data;
-    SSIDataGet(SPI[spi], &data);
-    return ((uint8_t)(data & 0xFF));
+    return mraa_spi_write(SPI[spi], NOP);
 }
 
 /**
@@ -99,24 +103,20 @@ static inline uint8_t SPI_read_byte(SPI_t spi)
 * @param - spi SPI_t
 * @return uint8_t
 **/
-static inline uint8_t SPI_read_byte_NonBlocking(SPI_t spi)
+static inline int8_t SPI_read_byte_NonBlocking(SPI_t spi)
 {
-
-    uint32_t data;
-    SSIDataGetNonBlocking(SPI[spi], &data);
-    return ((uint8_t)(data & 0xFF));
+    return mraa_spi_write(SPI[spi], NOP);
 }
 
 /**
 * @brief - Write a single byte on to the SPI bus
 * @param - spi SPI_t
 * @param - byte uint8_t
-* @return void
+* @return uint8_t
 **/
-static inline void SPI_write_byte(SPI_t spi, uint8_t byte)
+static inline int8_t SPI_write_byte(SPI_t spi, uint8_t byte)
 {
-    SSIDataPut(SPI[spi],((uint32_t)byte & 0x000000FF));
-    SPI_flush(spi);
+    return mraa_spi_write(SPI[spi],byte);
 }
 
 /**
@@ -127,10 +127,7 @@ static inline void SPI_write_byte(SPI_t spi, uint8_t byte)
 **/
 static inline void SPI_write_byte_NonBlocking(SPI_t spi, uint8_t byte)
 {
-
-    SPI_flush(spi);
-    SSIDataPutNonBlocking(SPI[spi],((uint32_t)byte & 0x000000FF));
-    SPI_flush(spi);
+    mraa_spi_write(SPI[spi],byte);
 }
 
 /**
@@ -141,7 +138,7 @@ static inline void SPI_write_byte_NonBlocking(SPI_t spi, uint8_t byte)
 * @param - length size_t
 * @return void
 **/
-void SPI_write_packet(SPI_t spi, uint8_t* p, size_t length);
+int8_t SPI_write_packet(SPI_t spi, uint8_t* p, size_t length);
 
 /**
 * @brief - Read a packet from the SPI bus
@@ -151,7 +148,7 @@ void SPI_write_packet(SPI_t spi, uint8_t* p, size_t length);
 * @param - length size_t
 * @return void
 **/
-void SPI_read_packet(SPI_t spi, uint8_t* p, size_t length);
+int32_t SPI_read_packet(SPI_t spi, uint8_t* p, size_t length);
 
 
 #endif /* SOURCES_SPI0_H_ */

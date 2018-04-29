@@ -6,37 +6,21 @@
 * @date - 19th April 2017
 **/
 
-#if 0
+
 #ifndef __NORDIC_DRIVER_H__
 #define __NORDIC_DRIVER_H__
 
+#if 1
 
 #include <stdbool.h>
 #include <stdint.h>
 
 #include "delay.h"
 
-#define NORDIC_CE_SYSCTL_PORT       SYSCTL_PERIPH_GPIOE
-#define NORDIC_CSN_SYSCTL_PORT      SYSCTL_PERIPH_GPIOE
-#define NORDIC_IRQ_SYSCTL_PORT      SYSCTL_PERIPH_GPIOE
+#include "spi.h"
+#include "mraa/spi.h"
+#include "mraa/gpio.h"
 
-//#define NORDIC_CE_PORT  GPIO_PORTC_BASE
-//#define NORDIC_CE_PIN   GPIO_PIN_4
-//
-//#define NORDIC_CSN_PORT GPIO_PORTC_BASE
-//#define NORDIC_CSN_PIN  GPIO_PIN_5
-//
-//#define NORDIC_IRQ_PORT GPIO_PORTC_BASE
-//#define NORDIC_IRQ_PIN  GPIO_PIN_6
-
-#define NORDIC_CE_PORT  GPIO_PORTE_BASE
-#define NORDIC_CE_PIN   GPIO_PIN_0
-
-#define NORDIC_CSN_PORT GPIO_PORTE_BASE
-#define NORDIC_CSN_PIN  GPIO_PIN_1
-
-#define NORDIC_IRQ_PORT GPIO_PORTE_BASE
-#define NORDIC_IRQ_PIN  GPIO_PIN_2
 
 #define NORDIC_STATUS_RX_DR_MASK			(1<<6)
 #define NORDIC_STATUS_TX_DS_MASK			(1<<5)
@@ -66,7 +50,8 @@ typedef enum{
 
 }NRF_Power_t;
 
-extern uint32_t g_sysClock;
+extern mraa_gpio_context NRF_CSN_GPIO;
+extern mraa_gpio_context NRF_CE_GPIO;
 
 
 /**
@@ -75,7 +60,10 @@ extern uint32_t g_sysClock;
 **/
 static inline void NRF_chip_enable()
 {
-	GPIOPinWrite(NORDIC_CSN_PORT, NORDIC_CSN_PIN, 0);
+	mraa_result_t status = mraa_gpio_write(NRF_CSN_GPIO, 0);
+    if (status != MRAA_SUCCESS) 
+    {
+    }
 	DelayUs(50);
 }
 
@@ -85,7 +73,10 @@ static inline void NRF_chip_enable()
 **/
 static inline void NRF_chip_disable()
 {
-	GPIOPinWrite(NORDIC_CSN_PORT, NORDIC_CSN_PIN, NORDIC_CSN_PIN);
+    mraa_result_t status = mraa_gpio_write(NRF_CSN_GPIO, 1);
+    if (status != MRAA_SUCCESS) 
+    {
+    }
 }
 
 /**
@@ -94,7 +85,10 @@ static inline void NRF_chip_disable()
 **/
 static inline void NRF_radio_enable()
 {
-    GPIOPinWrite(NORDIC_CE_PORT,NORDIC_CE_PIN, NORDIC_CE_PIN);
+    mraa_result_t status = mraa_gpio_write(NRF_CE_GPIO, 1);
+    if (status != MRAA_SUCCESS) 
+    {
+    }
 }
 
 /**
@@ -103,15 +97,18 @@ static inline void NRF_radio_enable()
 **/
 static inline void NRF_radio_disable()
 {
-    GPIOPinWrite(NORDIC_CE_PORT,NORDIC_CE_PIN, 0);
+    mraa_result_t status = mraa_gpio_write(NRF_CE_GPIO, 0);
+    if (status != MRAA_SUCCESS) 
+    {
+    }
 }
 
 /**
 * @brief - Initialize the NRF module
 * Initialized the GPIO connections pertaining to the Nordic module
-* @return void
+* @return int8_t
 **/
-void NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler);
+int8_t NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler);
 
 /**
 * @brief - Disable the GPIO connections set up earlier for the Nordic module
@@ -241,8 +238,8 @@ uint8_t NRF_read_En_AA();
 void NRF_write_setup_retry(uint8_t data);
 uint8_t NRF_read_setup_retry();
 
-void NRF_read_data(uint8_t *data, uint8_t len);
-void NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode);
+int32_t NRF_read_data(uint8_t *data, uint8_t len);
+int32_t NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode);
 
 void NRF_write_TXPayload(uint8_t *data, uint8_t len);
 void NRF_TX_pulse();
