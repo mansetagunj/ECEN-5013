@@ -24,6 +24,7 @@
 #include "readConfiguration.h"
 #include "comm_recv_task.h"
 #include "comm_sender_task.h"
+#include "dispatcher_task.h"
 #include "BB_Led.h"
 
 
@@ -41,7 +42,8 @@ void* (*thread_callbacks[NUM_CHILD_THREADS])(void *) =
     socket_task_callback,
     light_task_callback,
     comm_recv_task_callback,
-    comm_sender_task_callback
+    comm_sender_task_callback,
+    dispatcher_task_callback
 };
 
 extern void install_segfault_signal();
@@ -208,6 +210,7 @@ void POST_EXIT_MESSAGE_ALL()
 {
     comm_recv_task_exit = 1;
     POST_MESSAGE_COMM_SENDTASK_EXIT("EXIT");
+    POST_MESSAGE_DISPATCHERTASK_EXIT("EXIT");
     LOG_STDOUT(WARNING "FIRE IN THE HOLE. EXIT EXIT!\n");
     DEFINE_LOG_STRUCT(logstruct,LT_MSG_TASK_EXIT,MAIN_TASK_ID);
     DEFINE_LIGHT_STRUCT(lightstruct,LIGHT_MSG_TASK_EXIT,MAIN_TASK_ID)
@@ -220,7 +223,9 @@ void POST_EXIT_MESSAGE_ALL()
 
 int main_task_entry()
 {
+    #ifdef SEG_FAULT_HANDLER
     install_segfault_signal();
+    #endif
     /* Making the timeout flag true, this should be unset=false within 5 sec else the timer checking the operation 
     will send a kill signal and the app will close
     This is to make sure that the barrier is passed within 5 secs. Extra safety feature which might not be neccessary at all.

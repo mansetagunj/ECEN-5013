@@ -43,7 +43,7 @@ int comm_sender_task_queue_init()
     mq_unlink(MQ_COMM_SENDER_TASK_NAME);
     comm_sender_task_q = mq_open(MQ_COMM_SENDER_TASK_NAME, O_CREAT | O_RDWR, 0666, &comm_sender_taskQ_attr);
 
-    return comm_sender_task_q;;
+    return comm_sender_task_q;
 }
 
 void comm_sender_task_processMsg()
@@ -84,9 +84,9 @@ void comm_sender_task_processMsg()
                     LOG_STDOUT(WARNING "COMM SEND NO HOST\n");
                 break;
             case MSG_ID_GET_CLIENT_INFO_BOARD_TYPE:
-                break;
                 if(sizeof(queueData) != COMM_SEND(&queueData))
                     LOG_STDOUT(WARNING "COMM SEND NO HOST\n");
+                break;
             case MSG_ID_GET_CLIENT_INFO_UID:
                 if(sizeof(queueData) != COMM_SEND(&queueData))
                     LOG_STDOUT(WARNING "COMM SEND NO HOST\n");
@@ -97,6 +97,7 @@ void comm_sender_task_processMsg()
                 break;
             default:
                 LOG_STDOUT(INFO "Invalid msg id\n");
+                break;
 
         }
     }
@@ -109,7 +110,7 @@ void* comm_sender_task_callback(void *threadparam)
     int ret = comm_sender_task_queue_init();
     if(ERR == ret)
     {
-        LOG_STDOUT(ERROR "LOGGER TASK INIT%s\n",strerror(errno));
+        LOG_STDOUT(ERROR "COMM SENDER INIT%s\n",strerror(errno));
         //exit(ERR);
         goto EXIT;
     }

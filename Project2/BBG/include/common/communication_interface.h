@@ -41,7 +41,7 @@ void COMM_SEND(COMM_MSG_T comm_object)
 #define COMM_DEINIT()               comm_deinit_NRF()
 #define COMM_SEND(p_comm_object)    comm_sendNRF(p_comm_object)
 #define COMM_SENDRAW(packet,len)    comm_sendNRF_raw(packet, len)
-#define COMM_RECV(p_comm_object)
+#define COMM_RECV(p_comm_object)    comm_recvNRF(p_comm_object);
 #else
 #define COMM_INIT()                 comm_init_UART()
 //Will be used only on BBG
@@ -128,6 +128,7 @@ int32_t comm_sendNRF_raw(uint8_t *data, size_t len);
 
 //TODO:
 int32_t comm_recvNRF_raw(uint8_t *data, size_t len);
+int32_t comm_recvNRF(COMM_MSG_T *p_comm_object);
 
 static inline int32_t comm_sendNRF(COMM_MSG_T *p_comm_object)
 {

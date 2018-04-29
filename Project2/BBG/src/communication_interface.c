@@ -48,4 +48,13 @@ int32_t comm_sendNRF_raw(uint8_t *data, uint32_t len)
 
 }
 
+int32_t comm_recvNRF_raw(uint8_t *data, size_t len)
+{
+
+}
+int32_t comm_recvNRF(COMM_MSG_T *p_comm_object)
+{
+    return NRF_read_data((uint8_t*)p_comm_object, sizeof(COMM_MSG_T));
+}
+
 #endif

@@ -45,22 +45,22 @@ typedef enum
 
 const static char * const MSG_ID_STRING[NUM_OF_ID]  =
 {
-     "HEARTBEAT",
-     "MSG",
-     "STATUS",
-     "ERROR",
-     "INFO",
-     "PICTURE",
-     "OBJECT_DETECTED",
-     "CLIENT_INFO_BOARD_TYPE",
-     "CLIENT_INFO_UID",
-     "CLIENT_INFO_CODE_VERSION",
-     //The request id from the beaglebone
-     "GET_SENSOR_STATUS",
-     "GET_SENSOR_INFO",
-     "GET_CLIENT_INFO_BOARD_TYPE",
-     "GET_CLIENT_INFO_UID",
-     "GET_CLIENT_INFO_CODE_VERSION",
+    "HEARTBEAT",
+    "MSG",
+    "STATUS",
+    "ERROR",
+    "INFO",
+    "PICTURE",
+    "OBJECT_DETECTED",
+    "CLIENT_INFO_BOARD_TYPE",
+    "CLIENT_INFO_UID",
+    "CLIENT_INFO_CODE_VERSION",
+    //The request id from the beaglebone
+    "GET_SENSOR_STATUS",
+    "GET_SENSOR_INFO",
+    "GET_CLIENT_INFO_BOARD_TYPE",
+    "GET_CLIENT_INFO_UID",
+    "GET_CLIENT_INFO_CODE_VERSION",
 };
 
 //FOR DST and SRC Board ID
@@ -79,7 +79,9 @@ const static char * const MSG_ID_STRING[NUM_OF_ID]  =
 
 //Add all modules' UID here for BBG Board
 #define BBG_LOGGER_MODULE       (1)
-#define BBG_XYZ_MODULE          (2)
+#define BBG_COMM_MODULE         (2)
+#define BBG_SOCKET_MODULE       (3)
+#define BBG_XYZ_MODULE          (4)
 
 typedef uint8_t MSG_ID;
 typedef uint8_t SRC_ID;

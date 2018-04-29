@@ -57,7 +57,7 @@ void crit_err_hdlr(int sig_num, siginfo_t * info, void * ucontext)
                                                                                                                 
     free(messages);                                                                                           
                                                                                                                 
-    //exit(EXIT_FAILURE);                                                                                       
+    exit(EXIT_FAILURE);                                                                                       
 }               
 
 
@@ -73,7 +73,7 @@ void handler(int sig)
     // print out all the frames to stderr
     fprintf(stderr, "Error: signal %d:\n", sig);
     backtrace_symbols_fd(array, size, STDERR_FILENO);
-    exit(1);
+    exit(EXIT_FAILURE);
 }
 
 

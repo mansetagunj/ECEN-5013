@@ -31,6 +31,13 @@
  */
 #define LT_LOG(fp,format, ...) do{fprintf(fp,"[PID:%d][TID:%ld]",getpid(),syscall(SYS_gettid)); fprintf(fp,format, ##__VA_ARGS__); fflush(fp);}while(0)
 
+#define LT_LOG_COMM(fp,recv_comm_msg)   \
+            ({LT_LOG(fp,INFO "\n*******\
+            \nSRCID:%u, SRC_BRDID:%u, DST_ID:%u, DST_BRDID:%u MSGID:%u\
+            \nSensorVal: %.2f MSG:%s\
+            \nChecksum:%u\n********\n",\
+            recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.dst_brd_id,recv_comm_msg.msg_id,recv_comm_msg.data.distance_cm,recv_comm_msg.message,recv_comm_msg.checksum);})   
+
 /* Keeping the log level to the higest level to log everything. 
     Should be configure at compile time using compile time switch
  */
@@ -114,6 +121,12 @@ void logger_task_processMsg(FILE *fp)
                 LT_LOG(fp,INFO "Logger Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 LOG_STDOUT(INFO "Logger Task Exit request from:%s\n",getTaskIdentfierString(queueData.sourceID));
                 break;
+            
+            case(LT_MSG_COMM_MSG):
+                LT_LOG(fp,INFO "[%s] Sender:%s\tCOMM_MSG",queueData.timestamp,getTaskIdentfierString(queueData.sourceID));
+                LT_LOG_COMM(fp,queueData.msgData.commMsg);
+                break;
+                
             case(LT_MSG_LOG):
                 if(g_loglevel >= queueData.loglevel)
                 {

@@ -23,6 +23,8 @@ typedef enum
     GET_LUX,
     GET_DAY_NIGHT,
     GET_FUNC,
+    GET_DISTANCE_CM,
+    GET_DISTANCE_M,
     CONN_CLOSE_REQ,
     CONN_CLOSE_RSP,
     CONN_KILL_APP_REQ,

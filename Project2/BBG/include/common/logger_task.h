@@ -28,8 +28,9 @@ typedef enum
 {
     LT_MSG_TASK_STATUS,
     LT_MSG_LOG,
-    LT_MSG_TASK_EXIT
-    
+    LT_MSG_TASK_EXIT,
+    LT_MSG_COMM_MSG
+
 }LOGGERTASKQ_MSGID_T;
 
 typedef enum
@@ -49,7 +50,7 @@ typedef struct
     TASK_IDENTIFIER_T sourceID;
     union{
     LOGGER_TASK_MSGDATA_T msgData[LT_MSG_SIZE];
-    COMM_MSG_T comm_msg;
+    COMM_MSG_T commMsg;
     }msgData;
 }LOGGERTASKQ_MSG_T;
 
@@ -65,6 +66,9 @@ typedef struct
         .timestamp  = {0},          \
         .msgData.msgData    = {0}           \
     };                               
+
+#define LOG_FILL_COMM_MSG(p_log_struct, comm_msg) \
+    memcpy(&(p_log_struct)->msgData.commMsg,&comm_msg, sizeof((p_log_struct)->msgData.commMsg))
 
 /**
  * @brief Set the Log loglevel
@@ -93,6 +97,18 @@ static inline void set_Log_currentTimestamp(LOGGERTASKQ_MSG_T *log_msg)
  * @return mqd_t 
  */
 mqd_t getHandle_LoggerTaskQueue();
+
+/**
+ * @brief 
+ * 
+ */
+#define POST_COMM_MSG_LOGTASK(p_logstruct, comm_msg)  \
+    do{ \
+        (p_logstruct)->msgID = LT_MSG_COMM_MSG; \
+        LOG_FILL_COMM_MSG(p_logstruct, comm_msg); \
+        set_Log_currentTimestamp(p_logstruct); \
+        __POST_MESSAGE_LOGTASK(getHandle_LoggerTaskQueue(), p_logstruct, sizeof(*(p_logstruct)), 20); \
+    }while(0)
 
 /**
  * @brief 

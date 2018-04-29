@@ -19,6 +19,7 @@
 #include "comm_recv_task.h"
 #include "communication_object.h"
 #include "communication_interface.h"
+#include "dispatcher_task.h"
 
 volatile sig_atomic_t comm_recv_task_exit = 0;
 
@@ -65,18 +66,26 @@ void* comm_recv_task_callback(void *threadparam)
                 continue;
             }
             retrycount = 0;
-            LOG_STDOUT(INFO "\n*******\n\
+            if(recv_comm_msg.dst_brd_id != BBG_BOARD_ID)
+            {
+                LOG_STDOUT(INFO "Not my Board ID. I am not touching it.\n");
+                continue;
+            }
+            POST_MESSAGE_DISPATCHERTASK(&recv_comm_msg);
+            LOG_STDOUT_COMM(recv_comm_msg);
+            /* LOG_STDOUT(INFO "\n*******\n\
             SRCID:%u, SRC_BRDID:%u, DST_ID:%u, DST_BRDID:%u MSGID:%u\n\
             SensorVal: %f MSG:%s\n\
             Checksum:%u ?= %u\n********\n",\
-            recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.dst_brd_id,recv_comm_msg.msg_id,recv_comm_msg.data.distance_cm,recv_comm_msg.message,recv_comm_msg.checksum, check );   
+            recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.dst_brd_id,recv_comm_msg.msg_id,recv_comm_msg.data.distance_cm,recv_comm_msg.message,recv_comm_msg.checksum, check );  
+            */ 
         }
         else
         {
             retrycount++;
             if(retrycount > 55)
             {
-                LOG_STDOUT(WARNING "TIVA CONNECTED?\n");
+                LOG_STDOUT(WARNING "TIVA CONNECTED????\n");
                 retrycount = 0;
             }
         }

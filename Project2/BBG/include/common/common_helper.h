@@ -22,6 +22,7 @@ typedef enum
     LIGHT_TASK_ID,
     COMM_RECEIVER_ID,
     COMM_SENDER_ID,
+    DISPATCHER_TASK_ID,
     MAIN_TASK_ID            //This MAINT TASK should alwys be on the last
 
 }TASK_IDENTIFIER_T;
