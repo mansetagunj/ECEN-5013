@@ -181,7 +181,7 @@ static int8_t getFrame()
         return 0;
     }
 
-    //free(buffer);
+    free(buffer);
     return 1;
 }
 
