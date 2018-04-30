@@ -117,8 +117,8 @@ void* comm_recv_task_callback(void *threadparam)
 
 static int8_t getFrame()
 {
-    /* uint8_t buffer_320p[3600] = {0};
-    uint8_t buffer_640p[8500] = {0}; */
+    //uint8_t buffer_320p[3600] = {0};
+    //uint8_t buffer_640p[9000] = {0};
     uint8_t *buffer = (uint8_t*)malloc(sizeof(uint8_t)*p640);
     //uint8_t *buffer = buffer_640p;
     uint8_t temp = 0, temp_last = 0;
@@ -170,16 +170,18 @@ static int8_t getFrame()
         
     if(done)
     {
-        char newFilename[25] = {0};
+        char newFilename[50] = {0};
         snprintf(newFilename,sizeof(newFilename),"%s_%u.%s","image",((unsigned)time(NULL)&0xFFFFFF),"jpg");
         FILE *fp = fopen(newFilename, "wb");
         fwrite(buffer,i,1,fp);
+        fflush(fp);
         fclose(fp);
         //image_count++;
         free(buffer);
         return 0;
     }
-    free(buffer);
+
+    //free(buffer);
     return 1;
 }
 
