@@ -1,0 +1,4651 @@
+/*
+ * delay.h
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef DELAY_H_
+#define DELAY_H_
+
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+
+extern uint32_t g_sysClock;
+
+#ifdef DEBUG
+#ifndef DEBUG_ERROR
+#define DEBUG_ERROR(x) if( ( x ) == pdTRUE ) { taskDISABLE_INTERRUPTS(); while(1); }
+#endif
+#else
+#define DEBUG_ERROR(x)
+#endif
+
+static inline void DelayMs(uint32_t ms)
+{
+    MAP_SysCtlDelay((g_sysClock/ (1000 * 3))*ms);
+}
+
+static inline void DelayUs(uint32_t us)
+{
+    MAP_SysCtlDelay((g_sysClock/ (1000000 * 3))*us);
+}
+
+
+#endif /* DELAY_H_ */
+/*
+ * heartbeat.h
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef HEARTBEAT_H_
+#define HEARTBEAT_H_
+
+
+void heartbeat_start(uint32_t log_heartbeat_time_ms, uint32_t led_heartbeat_time_ms);
+
+#endif /* HEARTBEAT_H_ */
+/*
+ * dispatcher_task.h
+ *
+ *  Created on: 26-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef INCLUDE_DISPATCHER_TASK_H_
+#define INCLUDE_DISPATCHER_TASK_H_
+
+#include <stdbool.h>
+#include <stdint.h>
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "task.h"
+
+//TODO: include a mutex lock in here to make the enque and notification atomic. Let's see if needed
+#define ENQUEUE_NOTIFY_DISPATCHER_TASK(comm_msg)    \
+        ({ \
+            uint8_t status = xQueueSend(getDispatcherQueueHandle(), &comm_msg ,xMaxBlockTime);  \
+            if(status == pdPASS) \
+            {   \
+                xTaskNotifyGive(getDispatcherTaskHandle());   \
+            }   \
+            status; \
+        })
+
+#define getDispatcherQueueHandle()           ({QueueHandle_t h = DispatcherQueueHandle(NULL,1); h;})
+#define setDispatcherQueueHandle(handle)     DispatcherQueueHandle(handle,0)
+
+#define getDispatcherTaskHandle()           ({TaskHandle_t h = DispatcherTaskHandle(NULL,1); h;})
+#define setDispatcherTaskHandle(handle)     DispatcherTaskHandle(handle,0)
+
+QueueHandle_t DispatcherQueueHandle(QueueHandle_t handle, bool get);
+TaskHandle_t DispatcherTaskHandle(TaskHandle_t handle, bool get);
+
+
+uint8_t DispatcherTask_init();
+
+
+#endif /* INCLUDE_DISPATCHER_TASK_H_ */
+/**
+* @file - nordic_driver.h
+* @brief - Header file for the driver functions of the NRF240L
+*
+* @author Gunj University of Colorado Boulder
+* @date - 19th April 2017
+**/
+
+#ifndef __NORDIC_DRIVER_H__
+#define __NORDIC_DRIVER_H__
+
+
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "inc/hw_memmap.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/sysctl.h"
+
+#include "driverlib/gpio.h"
+
+#include "delay.h"
+
+#define NORDIC_CE_SYSCTL_PORT       SYSCTL_PERIPH_GPIOE
+#define NORDIC_CSN_SYSCTL_PORT      SYSCTL_PERIPH_GPIOE
+#define NORDIC_IRQ_SYSCTL_PORT      SYSCTL_PERIPH_GPIOE
+
+//#define NORDIC_CE_PORT  GPIO_PORTC_BASE
+//#define NORDIC_CE_PIN   GPIO_PIN_4
+//
+//#define NORDIC_CSN_PORT GPIO_PORTC_BASE
+//#define NORDIC_CSN_PIN  GPIO_PIN_5
+//
+//#define NORDIC_IRQ_PORT GPIO_PORTC_BASE
+//#define NORDIC_IRQ_PIN  GPIO_PIN_6
+
+#define NORDIC_CE_PORT  GPIO_PORTE_BASE
+#define NORDIC_CE_PIN   GPIO_PIN_0
+
+#define NORDIC_CSN_PORT GPIO_PORTE_BASE
+#define NORDIC_CSN_PIN  GPIO_PIN_1
+
+#define NORDIC_IRQ_PORT GPIO_PORTE_BASE
+#define NORDIC_IRQ_PIN  GPIO_PIN_2
+
+#define NORDIC_STATUS_RX_DR_MASK			(1<<6)
+#define NORDIC_STATUS_TX_DS_MASK			(1<<5)
+#define NORDIC_STATUS_MAX_RT_MASK           (1<<4)
+
+typedef void (*NRF_INT_HANDLER_T)(void);
+
+typedef enum{
+
+	NRF_Mode_TX = 0,
+	NRF_Mode_RX = 1
+
+}NRF_Mode_t;
+
+typedef enum{
+
+    NRF_DR_1Mbps = 0,
+    NRF_DR_2Mbps = 1
+
+}NRF_DataRate_t;
+
+typedef enum{
+
+    NRF_PW_LOW = 0,
+    NRF_PW_MED = 2,
+    NRF_PW_HIGH = 3
+
+}NRF_Power_t;
+
+extern uint32_t g_sysClock;
+
+
+/**
+* @brief - Enable the chip select connection to Nordic
+* @return void
+**/
+static inline void NRF_chip_enable()
+{
+	GPIOPinWrite(NORDIC_CSN_PORT, NORDIC_CSN_PIN, 0);
+	DelayUs(50);
+}
+
+/**
+* @brief - Disable the chip select connection to Nordic
+* @return void
+**/
+static inline void NRF_chip_disable()
+{
+	GPIOPinWrite(NORDIC_CSN_PORT, NORDIC_CSN_PIN, NORDIC_CSN_PIN);
+}
+
+/**
+* @brief - Enable TX/RX from the Nordic module
+* @return void
+**/
+static inline void NRF_radio_enable()
+{
+    GPIOPinWrite(NORDIC_CE_PORT,NORDIC_CE_PIN, NORDIC_CE_PIN);
+}
+
+/**
+* @brief - Disable TX/RX from the Nordic module
+* @return void
+**/
+static inline void NRF_radio_disable()
+{
+    GPIOPinWrite(NORDIC_CE_PORT,NORDIC_CE_PIN, 0);
+}
+
+/**
+* @brief - Initialize the NRF module
+* Initialized the GPIO connections pertaining to the Nordic module
+* @return void
+**/
+int8_t NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler);
+
+/**
+* @brief - Disable the GPIO connections set up earlier for the Nordic module
+* @return void
+**/
+void NRF_moduleDisable();
+
+/**
+* @brief - Read a register from the NRF module
+* @param - regAdd uint8_t
+* @return uint8_t
+**/
+uint8_t NRF_read_register(uint8_t regAdd);
+
+/**
+* @brief - Write to a register from the NRF module
+* @param - regAdd uint8_t
+* @param - value uint8_t
+* @return void
+**/
+void NRF_write_register(uint8_t regAdd, uint8_t value);
+
+/**
+* @brief - Write to the NRF module's status register
+* @param - statusValue uint8_t
+* @return void
+**/
+void NRF_write_status(uint8_t statusValue);
+
+/**
+* @brief - Read the NRF module's status register
+* @return uint8_t
+**/
+uint8_t NRF_read_status();
+
+/**
+* @brief - Write to the NRF module's config register
+* @param - configValue uint8_t
+* @return void
+**/
+void NRF_write_config(uint8_t configValue);
+
+/**
+* @brief - Read the NRF module's config register
+* @return uint8_t
+**/
+uint8_t NRF_read_config();
+
+
+/**
+* @brief - Read the NRF module's RF setup register
+* @return uint8_t
+**/
+uint8_t NRF_read_rf_setup();
+
+/**
+* @brief - Write to the NRF module's RF setup register
+* @param - rfStatusValue uint8_t
+* @return void
+**/
+void NRF_write_rf_setup(uint8_t rfSetupValue);
+
+/**
+* @brief - Read the NRF module's RF CH register
+* @return uint8_t
+**/
+uint8_t NRF_read_rf_ch();
+
+/**
+* @brief - Write to the NRF module's RF CH register
+* @param - channel uint8_t
+* @return void
+**/
+void NRF_write_rf_ch(uint8_t channel);
+
+/**
+* @brief - Reads 5 bytes of the NRF module's TX ADDR register
+* @param - address uint8_t *
+* @return void
+**/
+void NRF_read_TX_ADDR(uint8_t * address);
+
+/**
+* @brief - Writes 5 bytes of the NRF module's TX ADDR register
+* @param - tx_addr uint8_t *
+* @return void
+**/
+void NRF_write_TX_ADDR(uint8_t * tx_addr);
+
+/**
+* @brief - Read the NRF module's FIFO status register
+* @return address uint8_t
+**/
+uint8_t NRF_read_fifo_status();
+
+/**
+* @brief - Send the command FLUSH_TX to the NRF module
+* @return void
+**/
+void NRF_flush_tx_fifo();
+
+/**
+* @brief - Send the command FLUSH_RX to the NRF module
+* @return void
+**/
+void NRF_flush_rx_fifo();
+
+/**
+* @brief - Send the activation command to the NRF module
+* Activates the features: R_RX_PL_WID, W_ACK_PAYLOAD, W_TX_PAYLOAD_NOACK
+* @return void
+**/
+
+void NRF_moduleSetup(NRF_DataRate_t DR, NRF_Power_t power);
+
+void NRF_write_status(uint8_t statusValue);
+
+uint8_t NRF_read_status();
+
+void NRF_activate_cmd();
+
+void NRF_read_RX_PIPE_ADDR(uint8_t pipe_num, uint8_t *address);
+void NRF_write_RX_PIPE_ADDR(uint8_t pipe_num, uint8_t *rx_addr);
+
+void NRF_write_En_AA(uint8_t data);
+uint8_t NRF_read_En_AA();
+void NRF_write_setup_retry(uint8_t data);
+uint8_t NRF_read_setup_retry();
+
+int8_t NRF_read_data(uint8_t *data, uint8_t len);
+int8_t NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode);
+
+void NRF_write_TXPayload(uint8_t *data, uint8_t len);
+void NRF_TX_pulse();
+
+
+void NRF_openReadPipe(uint8_t rx_pipe_number, uint8_t rx_addr[5], uint8_t payload_size);
+
+void NRF_openWritePipe(uint8_t tx_addr[5]);
+
+void NRF_closeWritePipe();
+
+void NRF_closeReadPipe(uint8_t rx_pipe_number);
+
+
+
+#endif /* __NORDIC_DRIVER_H__ */
+/*
+ * communication_object.h
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef COMMUNICATION_OBJECT_H_
+#define COMMUNICATION_OBJECT_H_
+
+#include <string.h>
+
+#ifndef BOARD_UID_SHIFT
+#define BOARD_UID_SHIFT 24
+#endif
+
+#define GET_BOARD_UID_FROM_LOG_ID(id)   ((uint32_t)((id & (0xFFU<<BOARD_UID_SHIFT))>>BOARD_UID_SHIFT))
+#define GET_LOG_ID_FROM_LOG_ID(id)      ((id & (~(0xFFU<<BOARD_UID_SHIFT))))
+
+
+typedef enum
+{
+    MSG_ID_HEARTBEAT = 0,
+    MSG_ID_MSG,
+    MSG_ID_SENSOR_STATUS,
+    MSG_ID_ERROR,
+    MSG_ID_SENSOR_INFO,
+    MSG_ID_INFO,
+    MSG_ID_PICTURE,
+    MSG_ID_OBJECT_DETECTED,
+    MSG_ID_CLIENT_INFO_BOARD_TYPE,
+    MSG_ID_CLIENT_INFO_UID,
+    MSG_ID_CLIENT_INFO_CODE_VERSION,
+
+    //The request id from the beaglebone
+    MSG_ID_GET_SENSOR_STATUS,
+    MSG_ID_GET_SENSOR_INFO,
+    MSG_ID_GET_CLIENT_INFO_BOARD_TYPE,
+    MSG_ID_GET_CLIENT_INFO_UID,
+    MSG_ID_GET_CLIENT_INFO_CODE_VERSION,
+    LAST_ID, //THIS ID IS JUST TO CALCULATE THE NUM OF IDS. THIS IS NOT USED ANYWHERE This cannot be more than 255
+}MSG_ID_T;
+
+#define NUM_OF_ID   LAST_ID
+
+const static char * const MSG_ID_STRING[NUM_OF_ID]  =
+{
+    "HEARTBEAT",
+    "MSG",
+    "STATUS",
+    "ERROR",
+    "INFO",
+    "PICTURE",
+    "OBJECT_DETECTED",
+    "CLIENT_INFO_BOARD_TYPE",
+    "CLIENT_INFO_UID",
+    "CLIENT_INFO_CODE_VERSION",
+    //The request id from the beaglebone
+    "GET_SENSOR_STATUS",
+    "GET_SENSOR_INFO",
+    "GET_CLIENT_INFO_BOARD_TYPE",
+    "GET_CLIENT_INFO_UID",
+    "GET_CLIENT_INFO_CODE_VERSION",
+};
+
+//FOR DST and SRC Board ID
+#define BBG_BOARD_ID        (0x00)
+#define TIVA_BOARD1_ID      (0x01)
+#define XYZ_TIVA_BOARD_ID   (0x02)
+
+#define MY_TIVA_BOARD_ID    TIVA_BOARD1_ID
+
+//For src and dst module ID
+//Add all the modules' UID here for TIVA BOARD
+#define TIVA_HEART_BEAT_MODULE   (1)
+#define TIVA_SENSOR_MODULE       (2)
+#define TIVA_CAMERA_MODULE       (3)
+#define TIVA_COMM_MODULE         (4)
+
+//Add all modules' UID here for BBG Board
+#define BBG_LOGGER_MODULE       (1)
+#define BBG_COMM_MODULE         (2)
+#define BBG_SOCKET_MODULE       (3)
+#define BBG_XYZ_MODULE          (4)
+
+typedef uint8_t MSG_ID;
+typedef uint8_t SRC_ID;
+typedef uint8_t SRC_BOARD_ID;
+typedef uint8_t DST_BOARD_ID;
+typedef uint8_t DST_ID;
+
+//This should be followed immediately by the PICTURE msg id
+typedef struct cam_packet
+{
+    size_t length;
+    void* frame;
+}CAMERA_PACKET_T;
+
+/*32byte LOG MESSAGE STRUCTURE*/
+typedef struct COMM_MSG
+{
+    SRC_ID src_id;
+    SRC_BOARD_ID src_brd_id;
+    DST_ID dst_id;
+    DST_BOARD_ID dst_brd_id;
+    MSG_ID msg_id;
+    union custom_data
+    {
+        float distance_cm;
+        float sensor_value;
+        CAMERA_PACKET_T *camera_packet;
+        size_t nothing;
+    }data;
+    char message[18];
+    uint16_t checksum;
+}COMM_MSG_T;
+
+static size_t COMM_MSG_SIZE = sizeof(COMM_MSG_T);
+
+static uint16_t getCheckSum(const COMM_MSG_T *comm_msg)
+{
+    uint16_t checkSum = 0;
+    uint8_t sizeOfPayload = sizeof(COMM_MSG_T) - sizeof(comm_msg->checksum);
+    uint8_t *p_payload = (uint8_t*)comm_msg;
+    int i;
+    for(i = 0; i < sizeOfPayload; i++)
+    {
+        checkSum += *(p_payload+i);
+    }
+    return checkSum;
+}
+
+/*Return true if a match, return 0 is not a match*/
+static inline uint8_t verifyCheckSum(const COMM_MSG_T *comm_msg)
+{
+    return (getCheckSum(comm_msg) == comm_msg->checksum);
+}
+
+
+#endif /* COMMUNICATION_OBJECT_H_ */
+/*
+ * communication_setup.h
+ *
+ *  Created on: 26-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef INCLUDE_COMMUNICATION_SETUP_H_
+#define INCLUDE_COMMUNICATION_SETUP_H_
+
+
+void CommTask_init();
+
+
+#endif /* INCLUDE_COMMUNICATION_SETUP_H_ */
+/*
+ * sonar_sensor.h
+ *
+ *  Created on: 28-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef INCLUDE_SONAR_SENSOR_H_
+#define INCLUDE_SONAR_SENSOR_H_
+
+
+void Sonar_sensor_init();
+float sonarSensor_getDistance();
+
+#endif /* INCLUDE_SONAR_SENSOR_H_ */
+/*
+ * comm_receiver_task.h
+ *
+ *  Created on: 26-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef INCLUDE_COMM_RECEIVER_TASK_H_
+#define INCLUDE_COMM_RECEIVER_TASK_H_
+
+
+uint8_t CommReceiverTask_init();
+
+#endif /* INCLUDE_COMM_RECEIVER_TASK_H_ */
+/*
+ * my_uart.h
+ *
+ *  Created on: 05-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef MY_UART_H_
+#define MY_UART_H_
+
+#ifndef __USE_FREERTOS
+#define __USE_FREERTOS
+#endif
+
+#include <stdbool.h>
+#include <stdint.h>
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+#include "driverlib/uart.h"
+
+typedef enum UART_num
+{
+    UART_0 = 0,
+    UART_1 = 1,
+    UART_2 = 2,
+    UART_3 = 3,
+}UART_T;
+
+/**
+* @brief - Available Baud rates for the UART
+*/
+typedef enum BAUD_RATE
+{
+    BAUD_921600 = 921600,
+    BAUD_460800 = 460800,
+    BAUD_230400 = 230400,
+    BAUD_115200 = 115200,
+    BAUD_38400  = 38400,
+    BAUD_57200  = 57200,
+    BAUD_9600   = 9600,
+
+}BAUD_RATE_ENUM;
+
+extern const uint32_t UART[4];
+
+#ifdef __USE_FREERTOS
+
+xSemaphoreHandle g_pUARTMutex[4];
+
+/* MACROS are threadsafe */
+#define printf(fmt, ...)    xSemaphoreTake(g_pUARTMutex[UART_0], portMAX_DELAY); UART0_printf(fmt, ##__VA_ARGS__); xSemaphoreGive(g_pUARTMutex[UART_0])
+#define puts(str)           xSemaphoreTake(g_pUARTMutex[UART_0], portMAX_DELAY); UART0_putstr(str); xSemaphoreGive(g_pUARTMutex[UART_0])
+#else
+
+#define printf(fmt, ...)        UART0_printf(fmt, ##__VA_ARGS__)
+#define puts(str)               UART0_putstr(str)
+#define logger_log(ID, fmt, ...) UART0_printf(fmt, ##__VA_ARGS__)
+
+#endif
+
+#define UART_putchar(uart,ch)   (ch == '\n') ? UARTCharPut(UART[uart], '\r'): 0; UARTCharPut(UART[uart], ch)
+#define UART0_putchar(ch)     (ch == '\n') ? UARTCharPut(UART0_BASE, '\r'): 0; UARTCharPut(UART0_BASE, ch)
+#define UART3_putchar(ch)     (ch == '\n') ? UARTCharPut(UART3_BASE, '\r'): 0; UARTCharPut(UART3_BASE, ch)
+
+#define UART0_putstr(str)     UART_putstr(UART_0,str)
+#define UART3_putstr(str)     UART_putstr(UART_3,str)
+
+#define UART3_putRAW(p_data, len)    UART_putRAW(UART_3, p_data, len)
+
+#define UART0_getRAW(p_data,len)    UART_getRAW(UART_0, p_data, len)
+#define UART3_getRAW(p_data,len)    UART_getRAW(UART_3, p_data, len)
+
+#define UART0_config(baudrate)  UART_config(UART_0, baudrate)
+#define UART3_config(baudrate)  UART_config(UART_3, baudrate)
+
+#define UART0_printf(fmt, ...)  UART_printf(UART_0,fmt, ##__VA_ARGS__)
+#define UART3_printf(fmt, ...)  UART_printf(UART_3,fmt, ##__VA_ARGS__)
+
+void UART_config(UART_T uart, BAUD_RATE_ENUM baudrate);
+void UART_putstr(UART_T uart, const char *str);
+void UART_printf(UART_T uart, const char *fmt, ...);
+void UART_putRAW(UART_T uart, const uint8_t *data, size_t len);
+size_t UART_getRAW(UART_T uart, uint8_t *data, size_t len);
+
+#endif /* MY_UART_H_ */
+/*
+ * communication_interface.h
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef COMMUNICATION_INTERFACE_H_
+#define COMMUNICATION_INTERFACE_H_
+
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "my_uart.h"
+#include "nordic_driver.h"
+#include "communication_object.h"
+
+#define NRF_USE_INTERRUPT   (1)
+#define NRF_NOTUSE_INTERRUPT   (0)
+
+//#define COMM_TYPE_NRF
+//#define RUN_TIME_SWITCH
+#ifdef RUN_TIME_SWITCH
+volatile uint8_t comm_type_uart = 1;
+
+#define COMM_INIT()                 comm_init_NRF(); comm_init_UART(BAUD_115200)
+void COMM_SEND(COMM_MSG_T comm_object)
+{
+    if(comm_type_uart)
+    {
+        comm_sendUART(comm_object);
+    }
+    else
+    {
+        comm_sendNRF(comm_object);
+    }
+}
+#else
+#ifdef COMM_TYPE_NRF
+#define COMM_INIT(fd)               comm_init_NRF()
+#define COMM_DEINIT(fd)             comm_deinit_NRF()
+#define COMM_SEND(p_comm_object)    comm_sendNRF(p_comm_object)
+#define COMM_SENDRAW(packet,len)    comm_sendNRF_raw(packet, len)
+#define COMM_RECV(p_comm_object)    comm_recvNRF(p_comm_object);
+#else
+#define COMM_INIT()                 comm_init_UART()
+//Will be used only on BBG
+#define COMM_DEINIT(fd)             comm_deinit_UART(fd)
+#define COMM_SEND(p_comm_object)    comm_sendUART(p_comm_object)
+#define COMM_SENDRAW(packet,len)    comm_sendUARTRAW(packet,len)
+#define COMM_RECV(p_comm_object)    comm_recvUART(p_comm_object)
+#endif
+#endif
+#define RX_PIPE 1
+
+//0x54,0x4d,0x52,0x68,0x7C
+static uint8_t TXAddr[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+static uint8_t RXAddr[5] = {0xC2,0xC2,0xC2,0xC2,0xC2};
+
+#ifdef TIVA_BOARD
+static inline void comm_init_UART()
+{
+    UART3_config(BAUD_921600);
+}
+
+static inline void comm_deinit_UART(int fd){}
+
+
+static inline void comm_sendUARTRAW(uint8_t* packet, size_t len)
+{
+    UART3_putRAW(packet,len);
+}
+
+static inline void comm_sendUART(COMM_MSG_T *p_comm_object)
+{
+    UART3_putRAW((uint8_t*)p_comm_object, sizeof(COMM_MSG_T));
+    /* This is needed to mark the end of send as the receiving side needs the line termination as the BeagleBone has opened the UART is canonical mode*/
+    //UART3_putchar('\n');
+}
+
+static inline size_t comm_recvUART(COMM_MSG_T *p_comm_object)
+{
+    size_t ret = UART3_getRAW((uint8_t*)p_comm_object, sizeof(COMM_MSG_T));
+    return ret;
+}
+
+#else
+//For BBG
+
+static inline UART_FD_T comm_init_UART()
+{
+    return UART_Open(COM_PORT4);
+}
+
+static inline void comm_deinit_UART(UART_FD_T fd)
+{
+    UART_Close(fd);
+}
+
+static inline int32_t comm_sendUART(COMM_MSG_T *p_comm_object)
+{
+    return UART_putRAW((void*)p_comm_object,sizeof(COMM_MSG_T));
+}
+static inline int32_t comm_sendUARTRAW(COMM_MSG_T * comm_object, size_t len)
+{
+    return UART_putRAW((void*)comm_object,len);
+}
+
+static inline int32_t comm_recvUART(COMM_MSG_T *comm_object)
+{
+    int32_t available = UART_dataAvailable(100);
+    if(available == 1)
+    {
+        return UART_read((void*)comm_object,sizeof(COMM_MSG_T));
+    }
+    else
+        return available;
+}
+
+#endif
+
+//For BBG end
+
+
+int8_t comm_init_NRF();
+void comm_deinit_NRF();
+
+int32_t comm_sendNRF_raw(uint8_t *data, size_t len);
+
+//TODO:
+int32_t comm_recvNRF_raw(uint8_t *data, size_t len);
+int32_t comm_recvNRF(COMM_MSG_T *p_comm_object);
+
+static inline int32_t comm_sendNRF(COMM_MSG_T *p_comm_object)
+{
+    return NRF_transmit_data((uint8_t*)(p_comm_object), sizeof(COMM_MSG_T), true);
+}
+
+
+#endif /* COMMUNICATION_INTERFACE_H_ */
+/*
+ * cam_header.h
+ *
+ *  Created on: 29-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef CAM_HEADER_H_
+#define CAM_HEADER_H_
+
+
+#define MAX_FIFO_SIZE       0x5FFFF         //384KByte
+
+#define RWBIT                                   0x80  //READ AND WRITE BIT IS BIT[7]
+
+#define ARDUCHIP_TEST1          0x00  //TEST register
+
+
+#define ARDUCHIP_MODE           0x02  //Mode register
+#define MCU2LCD_MODE            0x00
+#define CAM2LCD_MODE            0x01
+#define LCD2MCU_MODE            0x02
+
+#define ARDUCHIP_TIM            0x03  //Timming control
+
+//#define FIFO_PWRDN_MASK           0x20    //0 = Normal operation, 1 = FIFO power down
+//#define LOW_POWER_MODE              0x40      //0 = Normal mode,          1 = Low power mode
+
+#define ARDUCHIP_FIFO           0x04  //FIFO and I2C control
+#define FIFO_CLEAR_MASK         0x01
+#define FIFO_START_MASK         0x02
+#define FIFO_RDPTR_RST_MASK     0x10
+#define FIFO_WRPTR_RST_MASK     0x20
+
+#define ARDUCHIP_GPIO             0x06  //GPIO Write Register
+#if !(defined (ARDUCAM_SHIELD_V2) || defined (ARDUCAM_SHIELD_REVC))
+#define GPIO_RESET_MASK         0x01  //0 = Sensor reset,                           1 =  Sensor normal operation
+#define GPIO_PWDN_MASK          0x02  //0 = Sensor normal operation,    1 = Sensor standby
+#define GPIO_PWREN_MASK         0x04    //0 = Sensor LDO disable,           1 = sensor LDO enable
+#endif
+
+#define BURST_FIFO_READ         0x3C  //Burst FIFO read operation
+#define SINGLE_FIFO_READ        0x3D  //Single FIFO read operation
+
+#define ARDUCHIP_REV            0x40  //ArduCHIP revision
+#define VER_LOW_MASK            0x3F
+#define VER_HIGH_MASK           0xC0
+
+#define ARDUCHIP_TRIG           0x41  //Trigger source
+#define VSYNC_MASK              0x01
+#define SHUTTER_MASK            0x02
+#define CAP_DONE_MASK           0x08
+
+#define FIFO_SIZE1              0x42  //Camera write FIFO size[7:0] for burst to read
+#define FIFO_SIZE2              0x43  //Camera write FIFO size[15:8]
+#define FIFO_SIZE3              0x44  //Camera write FIFO size[18:16]
+
+#endif /* CAM_HEADER_H_ */
+#ifndef OV2640_REGS_H
+#define OV2640_REGS_H
+//#include "ArduCAM.h"
+//#include <avr/pgmspace.h>
+
+#define OV2640_CHIPID_HIGH 	0x0A
+#define OV2640_CHIPID_LOW 	0x0B
+
+
+const uint8_t  OV2640_JPEG_INIT[192][2]  =
+{
+  { 0xff, 0x00 },
+  { 0x2c, 0xff },
+  { 0x2e, 0xdf },
+  { 0xff, 0x01 },
+  { 0x3c, 0x32 },
+  { 0x11, 0x00 },
+  { 0x09, 0x02 },
+  { 0x04, 0x28 },
+  { 0x13, 0xe5 },
+  { 0x14, 0x48 },
+  { 0x2c, 0x0c },
+  { 0x33, 0x78 },
+  { 0x3a, 0x33 },
+  { 0x3b, 0xfB },
+  { 0x3e, 0x00 },
+  { 0x43, 0x11 },
+  { 0x16, 0x10 },
+  { 0x39, 0x92 },
+  { 0x35, 0xda },
+  { 0x22, 0x1a },
+  { 0x37, 0xc3 },
+  { 0x23, 0x00 },
+  { 0x34, 0xc0 },
+  { 0x36, 0x1a },
+  { 0x06, 0x88 },
+  { 0x07, 0xc0 },
+  { 0x0d, 0x87 },
+  { 0x0e, 0x41 },
+  { 0x4c, 0x00 },
+  { 0x48, 0x00 },
+  { 0x5B, 0x00 },
+  { 0x42, 0x03 },
+  { 0x4a, 0x81 },
+  { 0x21, 0x99 },
+  { 0x24, 0x40 },
+  { 0x25, 0x38 },
+  { 0x26, 0x82 },
+  { 0x5c, 0x00 },
+  { 0x63, 0x00 },
+  { 0x61, 0x70 },
+  { 0x62, 0x80 },
+  { 0x7c, 0x05 },
+  { 0x20, 0x80 },
+  { 0x28, 0x30 },
+  { 0x6c, 0x00 },
+  { 0x6d, 0x80 },
+  { 0x6e, 0x00 },
+  { 0x70, 0x02 },
+  { 0x71, 0x94 },
+  { 0x73, 0xc1 },
+  { 0x12, 0x40 },
+  { 0x17, 0x11 },
+  { 0x18, 0x43 },
+  { 0x19, 0x00 },
+  { 0x1a, 0x4b },
+  { 0x32, 0x09 },
+  { 0x37, 0xc0 },
+  { 0x4f, 0x60 },
+  { 0x50, 0xa8 },
+  { 0x6d, 0x00 },
+  { 0x3d, 0x38 },
+  { 0x46, 0x3f },
+  { 0x4f, 0x60 },
+  { 0x0c, 0x3c },
+  { 0xff, 0x00 },
+  { 0xe5, 0x7f },
+  { 0xf9, 0xc0 },
+  { 0x41, 0x24 },
+  { 0xe0, 0x14 },
+  { 0x76, 0xff },
+  { 0x33, 0xa0 },
+  { 0x42, 0x20 },
+  { 0x43, 0x18 },
+  { 0x4c, 0x00 },
+  { 0x87, 0xd5 },
+  { 0x88, 0x3f },
+  { 0xd7, 0x03 },
+  { 0xd9, 0x10 },
+  { 0xd3, 0x82 },
+  { 0xc8, 0x08 },
+  { 0xc9, 0x80 },
+  { 0x7c, 0x00 },
+  { 0x7d, 0x00 },
+  { 0x7c, 0x03 },
+  { 0x7d, 0x48 },
+  { 0x7d, 0x48 },
+  { 0x7c, 0x08 },
+  { 0x7d, 0x20 },
+  { 0x7d, 0x10 },
+  { 0x7d, 0x0e },
+  { 0x90, 0x00 },
+  { 0x91, 0x0e },
+  { 0x91, 0x1a },
+  { 0x91, 0x31 },
+  { 0x91, 0x5a },
+  { 0x91, 0x69 },
+  { 0x91, 0x75 },
+  { 0x91, 0x7e },
+  { 0x91, 0x88 },
+  { 0x91, 0x8f },
+  { 0x91, 0x96 },
+  { 0x91, 0xa3 },
+  { 0x91, 0xaf },
+  { 0x91, 0xc4 },
+  { 0x91, 0xd7 },
+  { 0x91, 0xe8 },
+  { 0x91, 0x20 },
+  { 0x92, 0x00 },
+  { 0x93, 0x06 },
+  { 0x93, 0xe3 },
+  { 0x93, 0x05 },
+  { 0x93, 0x05 },
+  { 0x93, 0x00 },
+  { 0x93, 0x04 },
+  { 0x93, 0x00 },
+  { 0x93, 0x00 },
+  { 0x93, 0x00 },
+  { 0x93, 0x00 },
+  { 0x93, 0x00 },
+  { 0x93, 0x00 },
+  { 0x93, 0x00 },
+  { 0x96, 0x00 },
+  { 0x97, 0x08 },
+  { 0x97, 0x19 },
+  { 0x97, 0x02 },
+  { 0x97, 0x0c },
+  { 0x97, 0x24 },
+  { 0x97, 0x30 },
+  { 0x97, 0x28 },
+  { 0x97, 0x26 },
+  { 0x97, 0x02 },
+  { 0x97, 0x98 },
+  { 0x97, 0x80 },
+  { 0x97, 0x00 },
+  { 0x97, 0x00 },
+  { 0xc3, 0xed },
+  { 0xa4, 0x00 },
+  { 0xa8, 0x00 },
+  { 0xc5, 0x11 },
+  { 0xc6, 0x51 },
+  { 0xbf, 0x80 },
+  { 0xc7, 0x10 },
+  { 0xb6, 0x66 },
+  { 0xb8, 0xA5 },
+  { 0xb7, 0x64 },
+  { 0xb9, 0x7C },
+  { 0xb3, 0xaf },
+  { 0xb4, 0x97 },
+  { 0xb5, 0xFF },
+  { 0xb0, 0xC5 },
+  { 0xb1, 0x94 },
+  { 0xb2, 0x0f },
+  { 0xc4, 0x5c },
+  { 0xc0, 0x64 },
+  { 0xc1, 0x4B },
+  { 0x8c, 0x00 },
+  { 0x86, 0x3D },
+  { 0x50, 0x00 },
+  { 0x51, 0xC8 },
+  { 0x52, 0x96 },
+  { 0x53, 0x00 },
+  { 0x54, 0x00 },
+  { 0x55, 0x00 },
+  { 0x5a, 0xC8 },
+  { 0x5b, 0x96 },
+  { 0x5c, 0x00 },
+  { 0xd3, 0x00 },	//{ 0xd3, 0x7f },
+  { 0xc3, 0xed },
+  { 0x7f, 0x00 },
+  { 0xda, 0x00 },
+  { 0xe5, 0x1f },
+  { 0xe1, 0x67 },
+  { 0xe0, 0x00 },
+  { 0xdd, 0x7f },
+  { 0x05, 0x00 },
+  { 0x12, 0x40 },
+  { 0xd3, 0x04 },	//{ 0xd3, 0x7f },
+  { 0xc0, 0x16 },
+  { 0xC1, 0x12 },
+  { 0x8c, 0x00 },
+  { 0x86, 0x3d },
+  { 0x50, 0x00 },
+  { 0x51, 0x2C },
+  { 0x52, 0x24 },
+  { 0x53, 0x00 },
+  { 0x54, 0x00 },
+  { 0x55, 0x00 },
+  { 0x5A, 0x2c },
+  { 0x5b, 0x24 },
+  { 0x5c, 0x00 },
+  { 0xff, 0xff },
+};
+
+const uint8_t OV2640_YUV422[10][2]  =
+{
+  { 0xFF, 0x00 },
+  { 0x05, 0x00 },
+  { 0xDA, 0x10 },
+  { 0xD7, 0x03 },
+  { 0xDF, 0x00 },
+  { 0x33, 0x80 },
+  { 0x3C, 0x40 },
+  { 0xe1, 0x77 },
+  { 0x00, 0x00 },
+  { 0xff, 0xff },
+};
+
+const uint8_t OV2640_JPEG[9][2]  =
+{
+  { 0xe0, 0x14 },
+  { 0xe1, 0x77 },
+  { 0xe5, 0x1f },
+  { 0xd7, 0x03 },
+  { 0xda, 0x10 },
+  { 0xe0, 0x00 },
+  { 0xFF, 0x01 },
+  { 0x04, 0x08 },
+  { 0xff, 0xff },
+};
+
+/* JPG 160x120 */
+const uint8_t OV2640_160x120_JPEG[40][2]  =
+{
+  { 0xff, 0x01 },
+  { 0x12, 0x40 },
+  { 0x17, 0x11 },
+  { 0x18, 0x43 },
+  { 0x19, 0x00 },
+  { 0x1a, 0x4b },
+  { 0x32, 0x09 },
+  { 0x4f, 0xca },
+  { 0x50, 0xa8 },
+  { 0x5a, 0x23 },
+  { 0x6d, 0x00 },
+  { 0x39, 0x12 },
+  { 0x35, 0xda },
+  { 0x22, 0x1a },
+  { 0x37, 0xc3 },
+  { 0x23, 0x00 },
+  { 0x34, 0xc0 },
+  { 0x36, 0x1a },
+  { 0x06, 0x88 },
+  { 0x07, 0xc0 },
+  { 0x0d, 0x87 },
+  { 0x0e, 0x41 },
+  { 0x4c, 0x00 },
+  { 0xff, 0x00 },
+  { 0xe0, 0x04 },
+  { 0xc0, 0x64 },
+  { 0xc1, 0x4b },
+  { 0x86, 0x35 },
+  { 0x50, 0x92 },
+  { 0x51, 0xc8 },
+  { 0x52, 0x96 },
+  { 0x53, 0x00 },
+  { 0x54, 0x00 },
+  { 0x55, 0x00 },
+  { 0x57, 0x00 },
+  { 0x5a, 0x28 },
+  { 0x5b, 0x1e },
+  { 0x5c, 0x00 },
+  { 0xe0, 0x00 },
+  { 0xff, 0xff },
+};
+
+/* JPG, 0x176x144 */
+
+const uint8_t OV2640_176x144_JPEG[40][2]  =
+{
+  { 0xff, 0x01 },
+  { 0x12, 0x40 },
+  { 0x17, 0x11 },
+  { 0x18, 0x43 },
+  { 0x19, 0x00 },
+  { 0x1a, 0x4b },
+  { 0x32, 0x09 },
+  { 0x4f, 0xca },
+  { 0x50, 0xa8 },
+  { 0x5a, 0x23 },
+  { 0x6d, 0x00 },
+  { 0x39, 0x12 },
+  { 0x35, 0xda },
+  { 0x22, 0x1a },
+  { 0x37, 0xc3 },
+  { 0x23, 0x00 },
+  { 0x34, 0xc0 },
+  { 0x36, 0x1a },
+  { 0x06, 0x88 },
+  { 0x07, 0xc0 },
+  { 0x0d, 0x87 },
+  { 0x0e, 0x41 },
+  { 0x4c, 0x00 },
+  { 0xff, 0x00 },
+  { 0xe0, 0x04 },
+  { 0xc0, 0x64 },
+  { 0xc1, 0x4b },
+  { 0x86, 0x35 },
+  { 0x50, 0x92 },
+  { 0x51, 0xc8 },
+  { 0x52, 0x96 },
+  { 0x53, 0x00 },
+  { 0x54, 0x00 },
+  { 0x55, 0x00 },
+  { 0x57, 0x00 },
+  { 0x5a, 0x2c },
+  { 0x5b, 0x24 },
+  { 0x5c, 0x00 },
+  { 0xe0, 0x00 },
+  { 0xff, 0xff },
+};
+
+/* JPG 320x240 */
+
+const uint8_t OV2640_320x240_JPEG[40][2]  =
+{
+  { 0xff, 0x01 },
+  { 0x12, 0x40 },
+  { 0x17, 0x11 },
+  { 0x18, 0x43 },
+  { 0x19, 0x00 },
+  { 0x1a, 0x4b },
+  { 0x32, 0x09 },
+  { 0x4f, 0xca },
+  { 0x50, 0xa8 },
+  { 0x5a, 0x23 },
+  { 0x6d, 0x00 },
+  { 0x39, 0x12 },
+  { 0x35, 0xda },
+  { 0x22, 0x1a },
+  { 0x37, 0xc3 },
+  { 0x23, 0x00 },
+  { 0x34, 0xc0 },
+  { 0x36, 0x1a },
+  { 0x06, 0x88 },
+  { 0x07, 0xc0 },
+  { 0x0d, 0x87 },
+  { 0x0e, 0x41 },
+  { 0x4c, 0x00 },
+  { 0xff, 0x00 },
+  { 0xe0, 0x04 },
+  { 0xc0, 0x64 },
+  { 0xc1, 0x4b },
+  { 0x86, 0x35 },
+  { 0x50, 0x89 },
+  { 0x51, 0xc8 },
+  { 0x52, 0x96 },
+  { 0x53, 0x00 },
+  { 0x54, 0x00 },
+  { 0x55, 0x00 },
+  { 0x57, 0x00 },
+  { 0x5a, 0x50 },
+  { 0x5b, 0x3c },
+  { 0x5c, 0x00 },
+  { 0xe0, 0x00 },
+  { 0xff, 0xff },
+};
+
+
+
+
+const uint8_t OV2640_640x480_JPEG2[40][2] =
+{
+	{0xff,0x01},		//001
+	{0x11,0x01},		//002
+	{0x12,0x00},		//003
+	{0x17,0x11},		//004
+	{0x18,0x75},		//005
+	{0x32,0x36},		//006
+	{0x19,0x01},		//007
+	{0x1a,0x97},		//008
+	{0x03,0x0f},		//009
+	{0x37,0x40},		//010
+	{0x4f,0xbb},		//011
+	{0x50,0x9c},		//012
+	{0x5a,0x57},		//013
+	{0x6d,0x80},		//014
+	{0x3d,0x34},		//015
+	{0x39,0x02},		//016
+	{0x35,0x88},		//017
+	{0x22,0x0a},		//018
+	{0x37,0x40},		//019
+	{0x34,0xa0},		//020
+	{0x06,0x02},		//021
+	{0x0d,0xb7},		//022
+	{0x0e,0x01},		//023
+	{0xff,0x00},		//024
+	{0xe0,0x04},		//025
+	{0xc0,0xc8},		//026
+	{0xc1,0x96},		//027
+	{0x86,0x3d},		//028
+	{0x50,0x89},		//029
+	{0x51,0x90},		//030
+	{0x52,0x2c},		//031
+	{0x53,0x00},		//032
+	{0x54,0x00},		//033
+	{0x55,0x88},		//034
+	{0x57,0x00},		//035
+	{0x5a,0xa0},		//036
+	{0x5b,0x78},		//037
+	{0x5c,0x00},		//038
+	{0xd3,0x04},		//039
+	{0xe0,0x00},		//040
+};
+
+const uint8_t OV2640_640x480_JPEG[41][2] =
+{
+    {0xff, 0x01},
+    {0x11, 0x01},
+    {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02
+    {0x17, 0x11}, // HREFST[10:3]
+    {0x18, 0x75}, // HREFEND[10:3]
+    {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+    {0x19, 0x01}, // VSTRT[9:2]
+    {0x1a, 0x97}, // VEND[9:2]
+    {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+    {0x37, 0x40},
+    {0x4f, 0xbb},
+    {0x50, 0x9c},
+    {0x5a, 0x57},
+    {0x6d, 0x80},
+    {0x3d, 0x34},
+    {0x39, 0x02},
+    {0x35, 0x88},
+    {0x22, 0x0a},
+    {0x37, 0x40},
+    {0x34, 0xa0},
+    {0x06, 0x02},
+    {0x0d, 0xb7},
+    {0x0e, 0x01},
+    {0xff, 0x00},
+    {0xe0, 0x04},
+    {0xc0, 0xc8},
+    {0xc1, 0x96},
+    {0x86, 0x3d},
+    {0x50, 0x89},
+    {0x51, 0x90},
+    {0x52, 0x2c},
+    {0x53, 0x00},
+    {0x54, 0x00},
+    {0x55, 0x88},
+    {0x57, 0x00},
+    {0x5a, 0xa0},
+    {0x5b, 0x78},
+    {0x5c, 0x00},
+    {0xd3, 0x04},
+    {0xe0, 0x00},
+    {0xff, 0xff},
+};
+
+#endif
+/**
+* @file - spi.h
+* @brief - Header file for the library functions for SPI
+*
+* @author Gunj University of Colorado Boulder
+* @date - 19th April 2018
+**/
+
+#ifndef _SPI_H_
+#define _SPI_H_
+
+#include <stdbool.h>
+#include <stdint.h>
+#include "inc/hw_memmap.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/sysctl.h"
+
+#include "driverlib/gpio.h"
+#include "driverlib/ssi.h"
+#include "driverlib/debug.h"
+
+#include "my_uart.h"
+
+#define SPI_1MZ 1000000
+#define SPI_2MZ 2000000
+
+/**
+* @brief - Enum to allow flexibility of selection between SPI0 and SPI1
+**/
+typedef enum{
+	SPI_0,
+	SPI_1,
+	SPI_2,
+	SPI_3
+}SPI_t;
+
+typedef uint32_t SPI_Type;
+typedef uint32_t SPI_SYSCTL_Type;
+
+extern const SPI_Type SPI[4];
+
+extern const SPI_SYSCTL_Type SPI_SYSCTL[4];
+
+/**
+* @brief - Initialize the GPIO pins associated with SPI
+* Configure SPI in 3 wire mode and use a GPIO pin for chip select
+* @param - spi SPI_t
+* @return void
+**/
+void SPI_GPIO_init(SPI_t spi);
+
+/**
+* @brief - Enable the clock gate control for SPI
+* @param - spi SPI_t
+* @return void
+**/
+static inline void SPI_clock_init(SPI_t spi, uint32_t g_sysclock)
+{
+    MAP_SysCtlPeripheralEnable(SPI_SYSCTL[spi]);
+    uint32_t src = SSIClockSourceGet(SPI[spi]);
+    if(src == SSI_CLOCK_SYSTEM)
+    {
+        printf("SSI Using System Clock\n");
+    }
+    else if(src == SSI_CLOCK_PIOSC)
+    {
+        printf("SSI Using PIOSC\n");
+    }
+
+    //SSIAdvModeSet(SPI[spi], SSI_ADV_MODE_LEGACY);
+
+    SSIConfigSetExpClk(SPI[spi], g_sysclock, SSI_FRF_MOTO_MODE_0,
+                           SSI_MODE_MASTER, SPI_1MZ, 8);
+
+}
+
+
+
+/**
+* @brief - Perform the initialization routine for the SPI module
+* @param - spi SPI_t
+* @return void
+**/
+static inline void SPI_init(SPI_t spi /*, uint32_t g_sysclock*/)
+{
+//    SSIConfigSetExpClk(SPI[spi], g_sysclock, SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, SPI_1MZ, 8);
+    SPI_GPIO_init(spi);
+    SSIEnable(SPI[spi]);
+}
+
+/**
+* @brief - Disable the GPIO pins earlier initialized for the SPI module
+* @return void
+**/
+static inline void SPI_disable(SPI_t spi)
+{
+    SSIDisable(SPI[spi]);
+    MAP_SysCtlPeripheralDisable(SPI_SYSCTL[spi]);
+}
+
+/**
+* @brief - Blocks until SPI transmit buffer has completed transmitting
+* @param - spi SPI_t
+* @return void
+**/
+static inline void SPI_flush(SPI_t spi)
+{
+    while(SSIBusy(SPI[spi]));
+}
+
+static inline void SPI_flushRXFIFO(SPI_t spi)
+{
+    uint32_t garbage;
+    while(SSIDataGetNonBlocking(SPI[spi], &garbage));
+}
+
+
+/**
+* @brief - Read a single byte from the SPI bus
+* @param - spi SPI_t
+* @return uint8_t
+**/
+static inline uint8_t SPI_read_byte(SPI_t spi)
+{
+    uint32_t data;
+    SSIDataGet(SPI[spi], &data);
+    return ((uint8_t)(data & 0xFF));
+}
+
+/**
+* @brief - Read a single byte from the SPI bus without waiting
+* @param - spi SPI_t
+* @return uint8_t
+**/
+static inline uint8_t SPI_read_byte_NonBlocking(SPI_t spi)
+{
+
+    uint32_t data;
+    SSIDataGetNonBlocking(SPI[spi], &data);
+    return ((uint8_t)(data & 0xFF));
+}
+
+/**
+* @brief - Write a single byte on to the SPI bus
+* @param - spi SPI_t
+* @param - byte uint8_t
+* @return void
+**/
+static inline void SPI_write_byte(SPI_t spi, uint8_t byte)
+{
+    SSIDataPut(SPI[spi],((uint32_t)byte & 0x000000FF));
+    SPI_flush(spi);
+}
+
+/**
+* @brief - Write a single byte on to the SPI bus without blocking
+* @param - spi SPI_t
+* @param - byte uint8_t
+* @return void
+**/
+static inline void SPI_write_byte_NonBlocking(SPI_t spi, uint8_t byte)
+{
+
+    SPI_flush(spi);
+    SSIDataPutNonBlocking(SPI[spi],((uint32_t)byte & 0x000000FF));
+    SPI_flush(spi);
+}
+
+/**
+* @brief - Send a packet on to the SPI bus
+* Send multiple bytes given a pointer to an array and the number of bytes to be sent
+* @param - spi SPI_t
+* @param - p uint8_t
+* @param - length size_t
+* @return void
+**/
+void SPI_write_packet(SPI_t spi, uint8_t* p, size_t length);
+
+/**
+* @brief - Read a packet from the SPI bus
+* Read multiple bytes given a pointer to an array for storage and the number of bytes to be read
+* @param - spi SPI_t
+* @param - p uint8_t *
+* @param - length size_t
+* @return void
+**/
+void SPI_read_packet(SPI_t spi, uint8_t* p, size_t length);
+
+
+#endif /* SOURCES_SPI0_H_ */
+/*
+ * ultrasonic_sensor_task.h
+ *
+ *  Created on: 27-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef INCLUDE_SONAR_SENSOR_TASK_H_
+#define INCLUDE_SONAR_SENSOR_TASK_H_
+
+#include <stdbool.h>
+#include <stdint.h>
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "semphr.h"
+#include "task.h"
+#include <string.h>
+
+#define EVENT_SONAR_PERIODIC_UPDATEVAL   ((0x01)<<0)
+#define EVENT_SONAR_REQUEST_GETVAL       ((0x01)<<1)
+#define EVENT_SONAR_SENSOR_INFO          ((0x01)<<2)
+
+//Handy macros
+#define NOTIFY_SONAR_SENSOR_TASK(EVENT_ID)    xTaskNotify(getSonar_sensorTaskHandle(),EVENT_ID,eSetBits)
+
+#define ENQUEUE_NOTIFY_SONAR_SENSOR_TASK(comm_msg, EVENT_ID)    \
+        ({ \
+            uint8_t status = xQueueSend(getSonar_sensorQueueHandle(), &comm_msg ,xMaxBlockTime);  \
+            if(status == pdPASS) \
+            {   \
+                xTaskNotify(getSonar_sensorTaskHandle(),EVENT_ID,eSetBits); \
+            }   \
+            status; \
+        })
+
+#define getSonar_sensorQueueHandle()           ({QueueHandle_t h = Sonar_sensorQueueHandle(NULL,1); h;})
+#define setSonar_sensorQueueHandle(handle)     Sonar_sensorQueueHandle(handle,0)
+
+#define getSonar_sensorTaskHandle()           ({TaskHandle_t h = Sonar_sensorTaskHandle(NULL,1); h;})
+#define setSonar_sensorTaskHandle(handle)     Sonar_sensorTaskHandle(handle,0)
+
+QueueHandle_t Sonar_sensorQueueHandle(QueueHandle_t handle, bool get);
+TaskHandle_t Sonar_sensorTaskHandle(TaskHandle_t handle, bool get);
+
+uint8_t SonarSensorTask_init();
+
+#endif /* INCLUDE_SONAR_SENSOR_TASK_H_ */
+/*
+ * comm_sender_task.h
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef COMM_SENDER_TASK_H_
+#define COMM_SENDER_TASK_H_
+
+#include <stdbool.h>
+#include <stdint.h>
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "semphr.h"
+#include "task.h"
+#include <string.h>
+#include "communication_object.h"
+#include "my_uart.h"
+
+#define EVENT_COMM_SENDER_HEARTBEAT      ((0x01)<<0)
+#define EVENT_COMM_SENDER_MSG            ((0x01)<<1)
+#define EVENT_COMM_SENDER_STATUS         ((0x01)<<2)
+#define EVENT_COMM_SENDER_ERROR          ((0x01)<<3)
+#define EVENT_COMM_SENDER_INFO           ((0x01)<<4)
+#define EVENT_COMM_SENDER_BOARD_TYPE     ((0x01)<<5)
+#define EVENT_COMM_SENDER_UID            ((0x01)<<6)
+#define EVENT_COMM_SENDER_CODE_VERSION   ((0x01)<<7)
+#define EVENT_COMM_SENDER_PICTURE        ((0x01)<<8)
+#define EVENT_COMM_SENDER_OBJECT_DETECTED   ((0x01)<<9)
+//Handy macros
+#define NOTIFY_COMM_OBJECT(EVENT_ID)       xTaskNotify(getComm_senderTaskHandle(),EVENT_ID,eSetBits)
+
+#define COMM_CREATE_OBJECT(name, src_board_id, source_id, dest_id)    COMM_MSG_T name = { .src_brd_id = src_board_id, .src_id = source_id, .dst_id = dest_id, .dst_brd_id = BBG_BOARD_ID }
+#define COMM_OBJECT_MSGID(comm_msg,msgid)   comm_msg.msg_id = msgid
+#define FILL_CHECKSUM(p_comm_msg)           do{ (p_comm_msg)->checksum = getCheckSum(p_comm_msg); }while(0)
+#define COMM_FILL_MSG(comm_msg,p_str)       strncpy(comm_msg.message,p_str,sizeof(comm_msg.message))
+
+
+SemaphoreHandle_t xCOMM_SENDER_NOTIFY_MUTEX;
+
+//TODO: include a mutex lock in here to make the enque and notification atomic. Let's see if needed
+#define ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg, EVENT_ID)    \
+        ({ \
+            uint8_t status = xSemaphoreTake(xCOMM_SENDER_NOTIFY_MUTEX, portMAX_DELAY); \
+            if(status == pdTRUE) \
+            {status = xQueueSend(getComm_senderQueueHandle(), &comm_msg ,pdMS_TO_TICKS(500)); \
+            if(status == pdPASS) \
+            {   \
+                xTaskNotify(getComm_senderTaskHandle(),EVENT_ID,eSetBits);   \
+            }   \
+            xSemaphoreGive(xCOMM_SENDER_NOTIFY_MUTEX); }\
+            else    \
+            { printf("SemTake Handle error. %s\n",__FUNCTION__);}   \
+            status; \
+        })
+
+#define getComm_senderQueueHandle()           ({QueueHandle_t h = Comm_senderQueueHandle(NULL,1); h;})
+#define setComm_senderQueueHandle(handle)     Comm_senderQueueHandle(handle,0)
+
+#define getComm_senderTaskHandle()           ({TaskHandle_t h = Comm_senderTaskHandle(NULL,1); h;})
+#define setComm_senderTaskHandle(handle)     Comm_senderTaskHandle(handle,0)
+
+QueueHandle_t Comm_senderQueueHandle(QueueHandle_t handle, bool get);
+TaskHandle_t Comm_senderTaskHandle(TaskHandle_t handle, bool get);
+
+uint8_t CommSenderTask_init();
+
+
+#endif /* COMM_SENDER_TASK_H_ */
+/*
+ * camera_interface.h
+ *
+ *  Created on: 29-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef INCLUDE_CAMERA_INTERFACE_H_
+#define INCLUDE_CAMERA_INTERFACE_H_
+
+
+
+void CameraInit();
+uint32_t SendFrame();
+void I2C_init();
+
+/* Ported functions from arducam arduino library*/
+void wrSensorReg8_8(uint8_t reg, uint8_t data);
+uint8_t rdSensorReg8_8(uint8_t reg);
+void wrSensorRegs8_8(uint8_t **array_reg_value_pair);
+uint8_t get_bit(uint8_t addr, uint8_t bit);
+uint32_t read_fifo_length();
+uint8_t read_reg(uint8_t reg);
+void write_reg(uint8_t reg, uint8_t value);
+uint8_t read_fifo_burst();
+uint8_t transfer(uint8_t val);
+
+
+static inline void write(uint8_t data)
+{
+//    UARTCharPut(UART0_BASE, data);
+    UARTCharPut(UART3_BASE, data);
+}
+
+static inline void CS_LOW()
+{
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_2, 0);
+}
+
+static inline void CS_HIGH()
+{
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_2, GPIO_PIN_2);
+}
+
+
+
+#endif /* INCLUDE_CAMERA_INTERFACE_H_ */
+/*
+ * application.h
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef APPLICATION_H_
+#define APPLICATION_H_
+
+void application_run();
+
+#endif /* APPLICATION_H_ */
+/*
+ * communication_setup.c
+ *
+ *  Created on: 26-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include "my_uart.h"
+#include "comm_sender_task.h"
+#include "comm_receiver_task.h"
+#include "dispatcher_task.h"
+
+void CommTask_init()
+{
+    if(CommSenderTask_init())
+    {
+        printf("[ERROR] %s\n",__FUNCTION__);
+        while(1);
+    }
+
+    if(CommReceiverTask_init())
+    {
+        printf("[ERROR] %s\n",__FUNCTION__);
+        while(1);
+    }
+
+    if(DispatcherTask_init())
+    {
+        printf("[ERROR] %s\n",__FUNCTION__);
+        while(1);
+    }
+}
+/*
+ * dispatcher_task.c
+ *
+ *  Created on: 26-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include "priorities.h"
+
+#include "dispatcher_task.h"
+#include "communication_object.h"
+#include "comm_sender_task.h"
+#include "sonar_sensor_task.h"
+#include "my_uart.h"
+
+#define DISPATCHER_QUEUE_ITEMSIZE   (sizeof(COMM_MSG_T))
+#define DISPATCHER_QUEUE_LENGTH     20
+
+
+volatile uint8_t dispatcherTaskInitDone = 0;
+static QueueHandle_t h_dispatcherQueue;
+static TaskHandle_t h_dispatcherTask;
+
+QueueHandle_t DispatcherQueueHandle(QueueHandle_t handle, bool get)
+{
+    if(get)
+        return h_dispatcherQueue;
+    else
+    {
+        h_dispatcherQueue = handle;
+        return h_dispatcherQueue;
+    }
+}
+
+TaskHandle_t DispatcherTaskHandle(TaskHandle_t handle, bool get)
+{
+    if(get)
+        return h_dispatcherTask;
+    else
+    {
+        h_dispatcherTask = handle;
+        return h_dispatcherTask;
+    }
+}
+
+/* Create the entry function */
+static void dispatcher_task_entry(void *params)
+{
+    /* Waits on the notification from comm_recv and deq comm item from the queue, process it depending on the msg id and dst id */
+    /* Call function accordingly */
+    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
+    BaseType_t xResult;
+    COMM_MSG_T comm_msg;
+    while(1)
+    {
+        /* Wait to be notified of an interrupt. */
+        xResult = ulTaskNotifyTake( pdFALSE,    /* Using as counting semaphore. */
+                                    portMAX_DELAY);
+
+        if( xResult == pdPASS )
+        {
+            /* A Signal was received.  Dequeue the comm_msg from task queue */
+            if(h_dispatcherQueue && xQueueReceive(h_dispatcherQueue,&comm_msg, xMaxBlockTime))
+            {
+                if(!verifyCheckSum(&comm_msg))
+                {
+                    printf("Checksum error\n");
+                    continue;
+                }
+                printf("DISPATCHING: %s\n",comm_msg.message);
+                /* Process the comm msg. Decide on which parameter do we need to dispatch it*/
+                if(comm_msg.dst_id == TIVA_COMM_MODULE)
+                {
+                    switch(comm_msg.msg_id)
+                    {
+                    case MSG_ID_GET_CLIENT_INFO_BOARD_TYPE:
+                        printf("GET CLIENT INFO BOARD TYPE\n");
+                        NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
+                        break;
+                    case MSG_ID_GET_CLIENT_INFO_CODE_VERSION:
+                        printf("GET CLIENT INFO CODE VERSION\n");
+                        NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_CODE_VERSION);
+                        break;
+                    case MSG_ID_GET_CLIENT_INFO_UID:
+                        printf("GET CLIENT INFO UID\n");
+                        NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_UID);
+                        break;
+                    default:
+                        printf("Invalid Msg Id:%d from BOARD ID: %d\n",comm_msg.msg_id,comm_msg.src_brd_id);
+                        break;
+                    }
+
+                }
+                else if(comm_msg.dst_id == TIVA_SENSOR_MODULE)
+                {
+                    if(comm_msg.msg_id == MSG_ID_GET_SENSOR_STATUS)
+                    {
+                        ENQUEUE_NOTIFY_SONAR_SENSOR_TASK(comm_msg, EVENT_SONAR_REQUEST_GETVAL);
+                    }
+                    else if(comm_msg.msg_id == MSG_ID_GET_SENSOR_INFO)
+                    {
+                        ENQUEUE_NOTIFY_SONAR_SENSOR_TASK(comm_msg, EVENT_SONAR_SENSOR_INFO);
+                    }
+                    else
+                    {
+                        COMM_CREATE_OBJECT(send_comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,comm_msg.src_id);
+                        send_comm_msg.msg_id = MSG_ID_ERROR;
+                        send_comm_msg.data.distance_cm = 0;
+                        COMM_FILL_MSG(send_comm_msg,"Invalid Request");
+                        ENQUE_NOTIFY_COMM_SENDER_TASK(send_comm_msg,EVENT_COMM_SENDER_STATUS);
+                    }
+                }
+                else if(comm_msg.dst_id == TIVA_CAMERA_MODULE)
+                {
+                    if(comm_msg.msg_id == MSG_ID_GET_SENSOR_STATUS)
+                    {
+                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_CAMERA_MODULE,BBG_LOGGER_MODULE);
+                        comm_msg.msg_id = MSG_ID_SENSOR_STATUS;
+                        comm_msg.data.sensor_value = 0.12;
+                        COMM_FILL_MSG(comm_msg,"160x140/jpeg");
+                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
+                    }
+                    else if(comm_msg.msg_id == MSG_ID_GET_SENSOR_INFO)
+                    {
+                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_CAMERA_MODULE,BBG_LOGGER_MODULE);
+                        comm_msg.msg_id = MSG_ID_SENSOR_INFO;
+                        COMM_FILL_MSG(comm_msg,"ArduCAM/jpeg");
+                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
+                    }
+                }
+                else
+                {
+                    printf("INVALID MODULE ID\n");
+                }
+            }
+            else
+            {
+                printf("[Error] Q RECV %s\n",__FUNCTION__);
+            }
+        }
+//        else
+//        {
+//            printf("DISPATCHER NOTIFICATION: TIMEOUT\n");
+//        }
+    }
+}
+
+uint8_t DispatcherTask_init()
+{
+    /* Creating a Queue required for getting the comm msg recv from comm recv task */
+    QueueHandle_t h_dispatcherQ = xQueueCreate(DISPATCHER_QUEUE_LENGTH, DISPATCHER_QUEUE_ITEMSIZE);
+    setDispatcherQueueHandle(h_dispatcherQ);
+
+    TaskHandle_t h_dispatcherTask;
+
+    /* Create the task*/
+    if(xTaskCreate(dispatcher_task_entry, (const portCHAR *)"Dispatcher Task", 128, NULL,
+                       tskIDLE_PRIORITY + PRIO_DISPATCHERTASK, &h_dispatcherTask) != pdTRUE)
+    {
+        return (1);
+    }
+
+    //Setting the dispatcher task handle for future use
+    setDispatcherTaskHandle(h_dispatcherTask);
+    /* Return the createtask ret value */
+    return 0;
+
+}
+
+
+/*
+ * application_hooks.c
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#ifndef APPLICATION_HOOKS_C_
+#define APPLICATION_HOOKS_C_
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "my_uart.h"
+
+void vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
+{
+    //
+    // This function can not return, so loop forever.  Interrupts are disabled
+    // on entry to this function, so no processor interrupts will interrupt
+    // this loop.
+    //
+    //TODO: notify logging task
+    printf("\nSTACK ERROR - TASK: %s\n",pcTaskName);
+    while(1)
+    {
+    }
+}
+
+void vApplicationMallocFailedHook( void )
+{
+    //TODO: notify logging task
+    printf("\nMALLOC ERROR\n");
+    while(1)
+    {
+    }
+}
+
+#endif /* APPLICATION_HOOKS_C_ */
+/*
+ * application.c
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdint.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+#include "inc/hw_ints.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/rom.h"
+#include "inc/hw_memmap.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
+//#include "queue.h"
+//#include "semphr.h"
+
+#include "my_uart.h"
+#include "heartbeat.h"
+#include "application.h"
+#include "communication_setup.h"
+#include "comm_sender_task.h"
+#include "sonar_sensor_task.h"
+#include "camera_interface.h"
+
+//#define CLOCK_FREQ 120000000
+#define CLOCK_FREQ 16000000
+uint32_t g_sysClock = CLOCK_FREQ;
+
+
+void send_boardIdentification()
+{
+    NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
+    NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_UID);
+    NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_CODE_VERSION);
+}
+
+void application_run()
+{
+    // Set the clocking to run directly from the crystal at 120MHz.
+   g_sysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
+                                            SYSCTL_OSC_MAIN |
+                                            SYSCTL_USE_PLL |
+                                            SYSCTL_CFG_VCO_480), g_sysClock);
+
+//   UART0_config(BAUD_115200);
+   UART0_config(BAUD_921600);
+   ROM_IntMasterEnable();
+   printf("\n----- GUNJ Project2 --------\n");
+
+   CommTask_init();
+   CameraInit();
+
+   send_boardIdentification();
+
+   heartbeat_start(1000, 500);
+
+   if(SonarSensorTask_init())
+   {
+       printf("[ERROR] %s\n",__FUNCTION__);
+       while(1);
+   }
+
+
+   printf("SUCCESS - All tasks are created. Starting scheduler....\n");
+
+   vTaskStartScheduler();
+
+   while(1);
+
+
+}
+/*
+ * sonar_sensor_task.c
+ *
+ *  Created on: 27-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "FreeRTOS.h"
+#include "timers.h"
+#include "priorities.h"
+#include <limits.h>
+
+#include "sonar_sensor_task.h"
+#include "comm_sender_task.h"
+#include "communication_object.h"
+#include "sonar_sensor.h"
+#include "delay.h"
+
+#define DISTANCE_THRESHOLD_CM   10
+
+#define SONAR_SENSOR_QUEUE_ITEMSIZE   (sizeof(COMM_MSG_T))
+#define SONAR_SENSOR_QUEUE_LENGTH     20
+
+volatile uint8_t TaskInitDone = 0;
+
+static TaskHandle_t h_sonar_sensorTask;
+static QueueHandle_t h_sonar_sensorQueue;
+
+static float current_sensor_distance_cm = 0;
+static uint8_t object_detected = 0;
+
+QueueHandle_t Sonar_sensorQueueHandle(QueueHandle_t handle, bool get)
+{
+    if(get)
+        return h_sonar_sensorQueue;
+    else
+    {
+        h_sonar_sensorQueue = handle;
+        return h_sonar_sensorQueue;
+    }
+}
+
+TaskHandle_t Sonar_sensorTaskHandle(TaskHandle_t handle, bool get)
+{
+    if(get)
+        return h_sonar_sensorTask;
+    else
+    {
+        h_sonar_sensorTask = handle;
+        return h_sonar_sensorTask;
+    }
+}
+
+static void send_sonarSensorValue(uint8_t dst_board_id, uint8_t dst_module_id)
+{
+    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,dst_module_id);
+    comm_msg.dst_brd_id = dst_board_id;
+    comm_msg.msg_id = MSG_ID_SENSOR_STATUS;
+    comm_msg.data.distance_cm = current_sensor_distance_cm;
+    COMM_FILL_MSG(comm_msg,"Distance in cm");
+    ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
+}
+
+static void send_sonarSensorInfo(uint8_t dst_board_id, uint8_t dst_module_id)
+{
+    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,dst_module_id);
+    comm_msg.dst_brd_id = dst_board_id;
+    comm_msg.msg_id = MSG_ID_SENSOR_INFO;
+    comm_msg.data.distance_cm = current_sensor_distance_cm;
+    COMM_FILL_MSG(comm_msg,"Sonar/unit:cm/1s");
+    ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_INFO);
+}
+
+static void send_sonarObjectDetected()
+{
+    COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
+    comm_msg.msg_id = MSG_ID_OBJECT_DETECTED;
+    comm_msg.data.distance_cm = current_sensor_distance_cm;
+    COMM_FILL_MSG(comm_msg,"Sonar/Th:10cm");
+    ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_OBJECT_DETECTED);
+}
+
+
+/* Create the entry task*/
+static void sonar_sensor_task_entry(void *params)
+{
+        const TickType_t xMaxBlockTime = pdMS_TO_TICKS(500);
+        BaseType_t xResult;
+        uint32_t notifiedValue = 0;
+        while(1)
+        {
+            /* Wait to be notified of an interrupt. */
+            xResult = xTaskNotifyWait( pdFALSE,    /* Don't clear bits on entry. */
+                              ULONG_MAX,        /* Clear all bits on exit. */
+                              &notifiedValue, /* Stores the notified value. */
+                              portMAX_DELAY);
+
+            if( xResult == pdPASS )
+            {
+                if(notifiedValue & EVENT_SONAR_PERIODIC_UPDATEVAL)
+                {
+                    //Perform Measurement
+                    current_sensor_distance_cm = sonarSensor_getDistance();
+//                    printf("Distance: %f\n",current_sensor_distance_cm);
+                    (object_detected%5 == 0)  ? object_detected = 0 : object_detected++;
+                    if(!object_detected && (current_sensor_distance_cm > 0) && (current_sensor_distance_cm < DISTANCE_THRESHOLD_CM))
+                    {
+                        //Notify object detected
+                        send_sonarObjectDetected();
+                        object_detected = 1;
+                    }
+                }
+
+                if(notifiedValue & EVENT_SONAR_REQUEST_GETVAL)
+                {
+                    COMM_MSG_T comm_msg = {0};
+                    if(h_sonar_sensorQueue && xQueueReceive(h_sonar_sensorQueue,&comm_msg, xMaxBlockTime))
+                    {
+                        send_sonarSensorValue(comm_msg.src_brd_id, comm_msg.src_id);
+                    }
+                    else
+                    {
+                        printf("SONAR QUEUE Timeout\n");
+                    }
+
+                }
+
+
+                if(notifiedValue & EVENT_SONAR_SENSOR_INFO)
+                {
+                    COMM_MSG_T comm_msg = {0};
+                    if(h_sonar_sensorQueue && xQueueReceive(h_sonar_sensorQueue,&comm_msg, xMaxBlockTime))
+                    {
+                        send_sonarSensorInfo(comm_msg.src_brd_id, comm_msg.src_id);
+                    }
+                    else
+                    {
+                        printf("SONAR QUEUE Timeout\n");
+                    }
+                }
+            }
+//            else
+//            {
+//                printf("SENSOR NOTIFICATION: TIMEOUT\n");
+//            }
+        }
+
+
+}
+
+void vPeriodicUpdateTimerCallback(TimerHandle_t h_timer)
+{
+    NOTIFY_SONAR_SENSOR_TASK(EVENT_SONAR_PERIODIC_UPDATEVAL);
+}
+
+
+uint8_t SonarSensorTask_init()
+{
+    Sonar_sensor_init();
+    TaskHandle_t h_Task;
+    QueueHandle_t h_sonar_sensorQ = xQueueCreate(SONAR_SENSOR_QUEUE_LENGTH, SONAR_SENSOR_QUEUE_ITEMSIZE);
+    setSonar_sensorQueueHandle(h_sonar_sensorQ);
+
+
+    TimerHandle_t periodic_getDistance_timer = xTimerCreate("PERIODIC_GET_DISTANCE", pdMS_TO_TICKS(1000) , pdTRUE,  (void*)0, vPeriodicUpdateTimerCallback);
+    DEBUG_ERROR(periodic_getDistance_timer == NULL);
+
+
+    if(xTaskCreate(sonar_sensor_task_entry, (const portCHAR *)"Sonar Sensor Task", 1024, NULL,
+                           tskIDLE_PRIORITY + PRIO_SONAR_SENSOR_TASK, &h_Task) != pdTRUE)
+    {
+        return (1);
+    }
+
+    if((xTimerStart(periodic_getDistance_timer, 0)) != pdTRUE)
+    {
+//        DEBUG_ERROR(1);
+        return 1;
+    }
+
+    setSonar_sensorTaskHandle(h_Task);
+
+    /* Return the createtask ret value */
+    return 0;
+}
+/*
+ * spi.c
+ *
+ *  Created on: Dec 1, 2017
+ *      Author: Gunj Manseta
+ */
+
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#include "inc/hw_memmap.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+
+#include "driverlib/gpio.h"
+#include "driverlib/ssi.h"
+
+#include "spi.h"
+
+const SPI_Type SPI[4] = {SSI0_BASE, SSI1_BASE, SSI2_BASE, SSI3_BASE};
+
+const SPI_SYSCTL_Type SPI_SYSCTL[4] = {SYSCTL_PERIPH_SSI0, SYSCTL_PERIPH_SSI1, SYSCTL_PERIPH_SSI2, SYSCTL_PERIPH_SSI3};
+
+
+void SPI_GPIO_init(SPI_t spi)
+{
+
+    if(spi==SPI_0)
+    {
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+	    GPIOPinConfigure(GPIO_PA2_SSI0CLK);
+        GPIOPinConfigure(GPIO_PA3_SSI0FSS);
+        GPIOPinConfigure(GPIO_PA4_SSI0XDAT0);
+        GPIOPinConfigure(GPIO_PA5_SSI0XDAT1);
+
+        // The pins are assigned as follows:
+        //      PA5 - SSI0Tx
+        //      PA4 - SSI0Rx
+        //      PA3 - SSI0Fss
+        //      PA2 - SSI0CLK
+        GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_3 |
+                       GPIO_PIN_2);
+	}
+    else if(spi==SPI_1)
+    {
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+        GPIOPinConfigure(GPIO_PB5_SSI1CLK);
+        GPIOPinConfigure(GPIO_PB4_SSI1FSS);
+        GPIOPinConfigure(GPIO_PE4_SSI1XDAT0);
+        GPIOPinConfigure(GPIO_PE5_SSI1XDAT1);
+
+        // The pins are assigned as follows:
+        //      PE4 - SSI0Tx
+        //      PE5 - SSI0Rx
+        //      PB4 - SSI0Fss
+        //      PB5 - SSI0CLK
+        GPIOPinTypeSSI(GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4);
+        GPIOPinTypeSSI(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4);
+    }
+    else if(spi==SPI_2)
+    {
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+        GPIOPinConfigure(GPIO_PD3_SSI2CLK);
+        GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_2);
+        //GPIOPinConfigure(GPIO_PD2_SSI2FSS);
+        GPIOPinConfigure(GPIO_PD1_SSI2XDAT0);
+        GPIOPinConfigure(GPIO_PD0_SSI2XDAT1);
+
+        // The pins are assigned as follows:
+        //      PD1 - SSI0Tx
+        //      PD0 - SSI0Rx
+        //      PD2 - SSI0Fss
+        //      PD3 - SSI0CLK
+        GPIOPinTypeSSI(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_3);
+    }
+}
+
+
+void SPI_write_packet(SPI_t spi, uint8_t* p, size_t length)
+{
+	uint8_t i=0;
+	while (i<length)
+	{
+		SPI_write_byte(spi, *(p+i));
+		++i;
+	}
+}
+
+void SPI_read_packet(SPI_t spi, uint8_t* p, size_t length)
+{
+	uint8_t i=0;
+	while (i<length)
+	{
+	    SPI_write_byte(spi,0xFF);
+		*(p+i) = SPI_read_byte(spi);
+		++i;
+	}
+}
+
+void SPI0_IRQHandler()
+{
+
+}
+/*
+ * camera_interface.c
+ *
+ *  Created on: 29-Apr-2018
+ *      Author: Gunj Manseta
+ */
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+#include "inc/hw_memmap.h"
+#include "driverlib/timer.h"
+#include "driverlib/gpio.h"
+#include "driverlib/i2c.h"
+#include "driverlib/pin_map.h"
+
+
+#include "my_uart.h"
+#include "delay.h"
+#include "spi.h"
+#include "ov2640_regs.h"
+#include "cam_header.h"
+#include "camera_interface.h"
+
+#define SLAVE_ADDRESS (0x60)
+
+uint8_t read_fifo_burst()
+{
+    uint8_t temp = 0, temp_last = 0;
+    uint32_t length = 0;
+    length = read_fifo_length();
+    uint8_t is_header = 0;
+
+    if (length >= MAX_FIFO_SIZE) //512 kb
+    {
+        printf("ACK CMD Oversize");
+        return 0;
+    }
+    if (length == 0 ) //0 kb
+    {
+        printf("ACK CMD Size is 0");
+        return 0;
+    }
+    CS_LOW();
+
+//    set_fifo_burst();//Set fifo burst mode
+    transfer(BURST_FIFO_READ);
+    temp =  transfer(0x00);
+    length--;
+    while ( length-- )
+    {
+        temp_last = temp;
+        temp =  transfer(0x00);
+        if (is_header == 1)
+        {
+            write(temp);
+        }
+        else
+        if ((temp == 0xD8) & (temp_last == 0xFF))
+        {
+            is_header = 1;
+            //printACKIMG();
+            write(temp_last);
+            write(temp);
+        }
+        if ( (temp == 0xD9) && (temp_last == 0xFF) ) //If find the end ,break while,
+        {
+            break;
+        }
+        DelayUs(15);
+    }
+
+    CS_HIGH();
+
+    write_reg(ARDUCHIP_FIFO, FIFO_CLEAR_MASK);
+
+    return length;
+}
+
+uint32_t SendFrame()
+{
+    //    myCAM.flush_fifo();
+    write_reg(ARDUCHIP_FIFO, FIFO_RDPTR_RST_MASK);
+     //Clear the capture done flag
+    //     myCAM.clear_fifo_flag();
+    write_reg(ARDUCHIP_FIFO, FIFO_CLEAR_MASK);
+     //Start capture
+    //     myCAM.start_capture();
+    write_reg(ARDUCHIP_FIFO, FIFO_START_MASK);
+
+    while (!get_bit(ARDUCHIP_TRIG , CAP_DONE_MASK));
+
+    write_reg(ARDUCHIP_FIFO, FIFO_CLEAR_MASK);
+
+    uint8_t ret = read_fifo_burst();
+
+    DelayMs(20);
+
+    return ret;
+
+}
+
+
+void CameraInit()
+{
+    SPI_clock_init(SPI_2,g_sysClock);
+    SPI_init(SPI_2);
+    I2C_init();
+
+    while (1) {
+      //Check if the ArduCAM SPI bus is OK
+      write_reg(ARDUCHIP_TEST1, 0x55);
+      uint8_t temp = read_reg(ARDUCHIP_TEST1);
+
+      if (temp != 0x55) {
+        //Serial.println(F("SPI interface Error!"));
+        DelayUs(1000); continue;
+      } else {
+//          printf("Camera SPI working. \n");
+          break;
+      }
+    }
+
+     uint8_t vid = 0, pid = 0;
+     wrSensorReg8_8(0xff, 0x01);
+     DelayUs(1000);
+     while(1)
+     {
+         vid = rdSensorReg8_8(OV2640_CHIPID_HIGH);
+         pid = rdSensorReg8_8(OV2640_CHIPID_LOW);
+         if ((vid == 0x26 ) && ( pid == 0x42 ))
+         {
+             printf("Found OV2640 module!\n");
+             break;
+         }
+
+
+    }
+
+    //CAM INIT on jpeg
+    wrSensorReg8_8(0xff, 0x01);
+    wrSensorReg8_8(0x12, 0x80);
+    DelayUs(1000);
+    wrSensorRegs8_8(OV2640_JPEG_INIT);
+    DelayUs(1000);
+    wrSensorRegs8_8(OV2640_YUV422);
+    DelayUs(1000);
+    wrSensorRegs8_8(OV2640_JPEG);
+    DelayUs(1000);
+    wrSensorReg8_8(0xff, 0x01);
+    wrSensorReg8_8(0x15, 0x00);
+//    wrSensorRegs8_8(OV2640_160x120_JPEG);
+//    wrSensorRegs8_8(OV2640_320x240_JPEG);
+    wrSensorRegs8_8(OV2640_640x480_JPEG);
+    DelayUs(1000);
+    wrSensorReg8_8(0xff, 0x00);
+    wrSensorReg8_8(0x44, 0x32);
+
+}
+
+void I2C_init()
+{
+    //enable GPIO peripheral that contains I2C 0
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C0);
+
+    //reset module
+    SysCtlPeripheralReset(SYSCTL_PERIPH_I2C0);
+
+    // Configure the pin muxing for I2C0 functions on port B2 and B3.
+    GPIOPinConfigure(GPIO_PB2_I2C0SCL);
+    GPIOPinConfigure(GPIO_PB3_I2C0SDA);
+
+    // Select the I2C function for these pins.
+    GPIOPinTypeI2CSCL(GPIO_PORTB_BASE, GPIO_PIN_2);
+    GPIOPinTypeI2C(GPIO_PORTB_BASE, GPIO_PIN_3);
+
+    // Enable and initialize the I2C0 master module.  Use the system clock for
+    // the I2C0 module.  The last parameter sets the I2C data transfer rate.
+    // If false the data rate is set to 100kbps and if true the data rate will
+    // be set to 400kbps.
+    I2CMasterInitExpClk(I2C0_BASE, g_sysClock, true);
+
+    I2CTxFIFOFlush(I2C0_BASE);
+    I2CRxFIFOFlush(I2C0_BASE);
+    //clear I2C FIFOs
+    //HWREG(I2C0_BASE + I2C_O_FIFOCTL) = 80008000;
+
+}
+
+
+
+
+uint8_t get_bit(uint8_t addr, uint8_t bit)
+{
+  uint8_t temp;
+  temp = read_reg(addr);
+  temp = temp & bit;
+  return temp;
+}
+
+
+uint32_t read_fifo_length()
+{
+    uint8_t len1,len2,len3;
+    uint32_t length=0;
+    len1 = read_reg(FIFO_SIZE1);
+    len2 = read_reg(FIFO_SIZE2);
+    len3 = read_reg(FIFO_SIZE3) & 0x7f;
+    length = ((len3 << 16) | (len2 << 8) | len1) & 0x07fffff;
+    return length;
+}
+
+uint8_t transfer(uint8_t val)
+{
+    SPI_write_byte(SPI_2, val);
+    uint8_t value = SPI_read_byte(SPI_2);
+    return value;
+}
+
+uint8_t read_reg(uint8_t reg)
+{
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_2, 0);
+    SPI_write_byte(SPI_2, reg);
+    SPI_read_byte(SPI_2);
+    SPI_write_byte(SPI_2, 0xFF);
+    uint8_t value = SPI_read_byte(SPI_2);
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_2, GPIO_PIN_2);
+    return value;
+}
+
+void write_reg(uint8_t reg, uint8_t value)
+{
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_2, 0);
+    SPI_write_byte(SPI_2, reg | 0x80);
+    SPI_read_byte(SPI_2);
+    SPI_write_byte(SPI_2, value);
+    SPI_read_byte(SPI_2);
+    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_2, GPIO_PIN_2);
+}
+
+void wrSensorRegs8_8(uint8_t **array_reg_value_pair)
+{
+    uint8_t reg_addr = 0;
+    uint8_t reg_val = 0;
+    uint8_t *next = array_reg_value_pair;
+    uint32_t count = 0;
+    while ((reg_addr != 0xff) | (reg_val != 0xff))
+    {
+      reg_addr = *(next);
+      reg_val = *(next+1);
+      wrSensorReg8_8(reg_addr, reg_val);
+      next+=2;
+      count++;
+    }
+//    printf("ACK CMD Count %u, NEXT: %u REG: 0x%x, Dat: 0x%x\n", count, next, reg_addr, reg_val);
+}
+
+uint8_t rdSensorReg8_8(uint8_t reg)
+{
+    I2CMasterSlaveAddrSet(I2C0_BASE, (SLAVE_ADDRESS)>>1, false);
+    //specify register to be read
+    I2CMasterDataPut(I2C0_BASE, reg);
+
+    //send control byte and register address byte to slave device
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+
+    //wait for MCU to finish transaction
+    while(I2CMasterBusy(I2C0_BASE));
+
+    //specify that we are going to read from slave device
+    I2CMasterSlaveAddrSet(I2C0_BASE, (SLAVE_ADDRESS| 0x01) >>1, true);
+
+    //send control byte and read from the register we
+    //specified
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_RECEIVE);
+
+    //wait for MCU to finish transaction
+    while(I2CMasterBusy(I2C0_BASE));
+
+    //return data pulled from the specified register
+    uint8_t val =  I2CMasterDataGet(I2C0_BASE);
+
+    while(I2CMasterBusy(I2C0_BASE));
+    return val;
+}
+
+
+void wrSensorReg8_8(uint8_t reg, uint8_t data)
+{
+    I2CMasterSlaveAddrSet(I2C0_BASE, (SLAVE_ADDRESS>>1), false);
+    I2CMasterDataPut(I2C0_BASE, reg);
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);
+    while(I2CMasterBusy(I2C0_BASE));
+
+    I2CMasterDataPut(I2C0_BASE, data);
+    //send next data that was just placed into FIFO
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH);
+    // Wait until MCU is done transferring.
+    while(I2CMasterBusy(I2C0_BASE));
+}
+/*
+ * heartbeat.c
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_memmap.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+
+#include "FreeRTOS.h"
+#include "timers.h"
+
+#include <comm_sender_task.h>
+#include "delay.h"
+#include "my_uart.h"
+
+#define NUM_OF_TIMERS   2
+static TimerHandle_t timer_handles[NUM_OF_TIMERS];
+
+void vTimerCallback(TimerHandle_t h_timer)
+{
+    static uint32_t led_val = (GPIO_PIN_1 | GPIO_PIN_0);
+    static uint32_t count = 0;
+    if(h_timer == timer_handles[0])
+    {
+        if(count%5 == 0)
+        {
+            //Notify the comm_sender task with Heartbeat event
+            //TODO:Check for return value
+            NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_HEARTBEAT);
+        }
+//        if(count%30 == 0)
+//        {
+//            NOTIFY_COMM_OBJECT(EVENT_COMM_SENDER_BOARD_TYPE);
+//        }
+        count++;
+    }
+    //TIMER_LED_HEARTBEAT
+    else if(h_timer == timer_handles[1])
+    {
+        led_val ^= (GPIO_PIN_1 | GPIO_PIN_0);
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1 | GPIO_PIN_0, led_val);
+    }
+}
+
+void heartbeat_start(uint32_t log_heartbeat_time_ms, uint32_t led_heartbeat_time_ms)
+{
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
+    MAP_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1 | GPIO_PIN_0);
+
+    timer_handles[0] = xTimerCreate("TIMER_LOG_HEARTBEAT", pdMS_TO_TICKS(log_heartbeat_time_ms) , pdTRUE,  (void*)0, vTimerCallback);
+    DEBUG_ERROR(timer_handles[0] == NULL);
+
+    timer_handles[1] = xTimerCreate("TIMER_LED_HEARTBEAT", pdMS_TO_TICKS(led_heartbeat_time_ms) , pdTRUE,  (void*)0, vTimerCallback);
+
+    DEBUG_ERROR(timer_handles[1] == NULL);
+
+    if((xTimerStart(timer_handles[0], 0)) != pdTRUE)
+    {
+        DEBUG_ERROR(1);
+    }
+
+    if((xTimerStart(timer_handles[1], 0)) != pdTRUE)
+    {
+        DEBUG_ERROR(1);
+    }
+}
+/**
+* @file - nordic_driver.c
+* @brief - Implementation file for the driver functions of the NRF240L
+*
+* @author Gunj/Ashish University of Colorado Boulder
+* @date - 8 Dec 2017
+**/
+
+
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#include "driverlib/rom_map.h"
+#include "driverlib/interrupt.h"
+#include "my_uart.h"
+
+#include "nordic_driver.h"
+#include "spi.h"
+
+//Commands Byte
+#define NORDIC_TXFIFO_FLUSH_CMD	(0xE1)
+#define NORDIC_RXFIFO_FLUSH_CMD	(0xE2)
+#define NORDIC_W_TXPAYLD_CMD	(0xA0)
+#define NORDIC_R_RXPAYLD_CMD	(0x61)
+#define NORDIC_ACTIVATE_CMD		(0x50)
+#define NORDIC_ACTIVATE_DATA	(0x73)
+#define NORDIC_RXPAYLD_W_CMD	(0x60)
+#define NORDIC_NOP				(0xFF)
+//Register Addresses
+#define NORDIC_CONFIG_REG		(0x00)
+#define NORDIC_EN_AA_REG        (0x01)
+#define NORDIC_EN_RXADDR_REG    (0x02)
+#define NODIC_SETUP_RETR_REG    (0x04)
+#define NORDIC_STATUS_REG 		(0x07)
+#define NORDIC_RF_SETUP_REG		(0x06)
+#define NORDIC_RF_CH_REG		(0x05)
+#define NORDIC_TX_ADDR_REG		(0x10)
+#define NORDIC_TX_ADDR_LEN		(5)
+
+#define NORDIC_RX_ADDR_P0_REG   (0x0A)
+#define NORDIC_RX_ADDR_P1_REG   (0x0B)
+#define NORDIC_RX_ADDR_P2_REG   (0x0C)
+#define NORDIC_RX_ADDR_P3_REG   (0x0D)
+#define NORDIC_RX_ADDR_P4_REG   (0x0E)
+#define NORDIC_RX_ADDR_P5_REG   (0x0F)
+
+#define NORDIC_FIFO_STATUS_REG	(0x17)
+#define NORDIC_RX_PW_P0_REG		(0x11)
+
+#define DEFAULT_TX_ADDRESS_1B	(0xE7)
+#define DEFAULT_TX_ADDRESS_2B	(0xE7)
+#define DEFAULT_TX_ADDRESS_3B	(0xE7)
+#define DEFAULT_TX_ADDRESS_4B	(0xE7)
+#define DEFAULT_TX_ADDRESS_5B	(0xE7)
+
+//Masks
+#define NORDIC_CONFIG_MAX_RT_MASK       4
+#define NORDIC_CONFIG_MAX_RT_INT(x)     ((((uint8_t)x)<<NORDIC_CONFIG_MAX_RT_MASK)&(1<<NORDIC_CONFIG_MAX_RT_MASK))
+
+#define NORDIC_CONFIG_RX_DR_MASK		6
+#define NORDIC_CONFIG_RX_DR_INT(x)		((((uint8_t)x)<<NORDIC_CONFIG_RX_DR_MASK)&(1<<NORDIC_CONFIG_RX_DR_MASK))
+
+#define NORDIC_CONFIG_TX_DS_MASK		5
+#define NORDIC_CONFIG_TX_DS_INT(x)		((((uint8_t)x)<<NORDIC_CONFIG_TX_DS_MASK)&(1<<NORDIC_CONFIG_TX_DS_MASK))
+
+#define NORDIC_CONFIG_PWR_UP_MASK		1
+#define NORDIC_CONFIG_PWR_UP(x)			((((uint8_t)x)<<NORDIC_CONFIG_PWR_UP_MASK)&(1<<NORDIC_CONFIG_PWR_UP_MASK))
+
+#define NORDIC_CONFIG_PRIM_RX_MASK		0
+#define NORDIC_CONFIG_PRIM_RX(x)		((((uint8_t)x)<<NORDIC_CONFIG_PRIM_RX_MASK)&(1<<NORDIC_CONFIG_PRIM_RX_MASK))
+
+
+#define NORDIC_STATUS_TX_FULL_MASK			(1<<0)
+#define NORDIC_FIFO_STATUS_TX_FULL_MASK		(1<<5)
+#define NORDIC_FIFO_STATUS_RX_FULL_MASK		(1<<1)
+#define NORDIC_FIFO_STATUS_TX_EMPTY_MASK	(1<<4)
+#define NORDIC_FIFO_STATUS_RX_EMPTY_MASK	(0<<5)
+
+#define NORDIC_INT_MAXRT_MASK   (1<<3)
+#define NORDIC_INT_TXDS_MASK    (1<<4)
+#define NORDIC_INT_TXDR_MASK    (1<<5)
+
+volatile uint8_t txconfigured = 0;
+volatile uint8_t rxconfigured = 0;
+
+volatile uint8_t transmitted = 0;
+volatile uint8_t received = 0;
+volatile uint8_t retry_error = 0;
+
+static uint8_t using_interrupt = 0;
+
+extern uint32_t g_sysClock;
+
+void NRF_IntHandler(void);
+
+static NRF_INT_HANDLER_T user_handler;
+
+void NRF_gpioInit()
+{
+    //Enabling the GPIO PC4 for Nordic CE pin
+    MAP_SysCtlPeripheralEnable(NORDIC_CE_SYSCTL_PORT);
+    GPIOPinTypeGPIOOutput(NORDIC_CE_PORT, NORDIC_CE_PIN);
+    GPIOPinWrite(NORDIC_CE_PORT, NORDIC_CE_PIN, 0);
+
+    //Enabling the GPIO PC5 for Nordic CSN pin
+    MAP_SysCtlPeripheralEnable(NORDIC_CSN_SYSCTL_PORT);
+    GPIOPinTypeGPIOOutput(NORDIC_CSN_PORT, NORDIC_CSN_PIN);
+    GPIOPinWrite(NORDIC_CSN_PORT, NORDIC_CSN_PIN, NORDIC_CSN_PIN);
+
+    //Enabling the GPIO PC6 for Nordic IRQ pin
+    MAP_SysCtlPeripheralEnable(NORDIC_IRQ_SYSCTL_PORT);
+
+    GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
+    GPIOPinTypeGPIOInput(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
+    GPIOIntUnregister(NORDIC_IRQ_PORT);
+    GPIOIntClear(NORDIC_IRQ_PORT,0xFFFF);
+    GPIOIntTypeSet(NORDIC_IRQ_PORT, NORDIC_IRQ_PIN, GPIO_LOW_LEVEL);
+//    GPIOIntRegister(NORDIC_IRQ_PORT, NRF_IntHandler);
+//    GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
+//    GPIOIntEnable(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
+}
+
+int8_t NRF_moduleInit(uint8_t use_interrupt, NRF_INT_HANDLER_T handler)
+{
+    SPI_clock_init(SPI_1, g_sysClock);
+    SPI_init(SPI_1);
+    DelayMs(1);
+
+    NRF_gpioInit();
+    if(use_interrupt)
+    {
+        using_interrupt = 1;
+        user_handler = handler;
+        GPIOIntRegister(NORDIC_IRQ_PORT, NRF_IntHandler);
+        GPIOIntDisable(NORDIC_IRQ_PORT,0xFFFF);
+        GPIOIntEnable(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
+    }
+    else
+    {
+        using_interrupt = 0;
+    }
+    return 0;
+}
+
+void NRF_moduleSetup(NRF_DataRate_t DR, NRF_Power_t power)
+{
+    //Clearing all interrupts
+    NRF_write_status(0);
+    //Disabling all interrupts and init in power down TX mode
+    NRF_write_config(0x78);
+    NRF_write_rf_ch(44);
+    NRF_write_rf_setup((power<<1) | (DR<<3) | 1);
+    //ADDR LEN as 5bytes
+    NRF_write_register(0x03, 0x03);
+    DelayMs(1);
+}
+
+void NRF_moduleDisable()
+{
+    using_interrupt = 0;
+    uint8_t config = NRF_read_config();
+    NRF_write_config(config & ~NORDIC_CONFIG_PWR_UP(1));
+	SPI_disable(SPI_1);
+	GPIOIntClear(NORDIC_IRQ_PORT,NORDIC_IRQ_PIN);
+	GPIOIntUnregister(NORDIC_IRQ_PORT);
+}
+
+uint8_t NRF_read_register(uint8_t regAdd)
+{
+	//SPI_clear_RXbuffer(SPI_1);	//used to clear the previously value in the RX FIFO
+	uint8_t readValue = 0;
+
+	//CSN High to low for new command
+	NRF_chip_disable();
+	NRF_chip_enable();
+
+	SPI_write_byte(SPI_1,regAdd);
+	SPI_read_byte(SPI_1);	//used to clear the previously value in the RX FIFO
+	SPI_write_byte(SPI_1,0xFF);
+	readValue = SPI_read_byte(SPI_1);
+
+	//Marking the end of transaction by CSN high
+	NRF_chip_disable();
+
+	return readValue;
+}
+
+void NRF_write_command(uint8_t command)
+{
+	//CSN High to low for new command
+	NRF_chip_disable();
+	NRF_chip_enable();
+
+	SPI_write_byte(SPI_1,command);
+	//SPI_clear_RXbuffer(SPI_1);	//used to clear the previously value in the RX FIFO
+	SPI_read_byte(SPI_1);
+
+	//Marking the end of transaction by CSN high
+	NRF_chip_disable();
+}
+
+void NRF_write_register(uint8_t regAdd, uint8_t value)
+{
+	//SPI_clear_RXbuffer(SPI_1);	//used to clear the previously value in the RX FIFO
+
+	//CSN High to low for new command
+	NRF_chip_disable();
+	NRF_chip_enable();
+
+	SPI_write_byte(SPI_1,regAdd | 0x20);
+	SPI_read_byte(SPI_1);	//used to clear the previously value in the RX FIFO
+	SPI_write_byte(SPI_1,value);
+	SPI_read_byte(SPI_1);	//used to clear the previously value in the RX FIFO
+
+	//Marking the end of transaction by CSN high
+	NRF_chip_disable();
+}
+
+void NRF_write_status(uint8_t statusValue)
+{
+	NRF_write_register(NORDIC_STATUS_REG, statusValue);
+}
+
+uint8_t NRF_read_status()
+{
+    uint8_t readValue = 0;
+
+    //CSN High to low for new command
+    NRF_chip_disable();
+    NRF_chip_enable();
+
+    SPI_write_byte(SPI_1,NORDIC_NOP);
+    readValue = SPI_read_byte(SPI_1);   //used to clear the previously value in the RX FIFO
+
+    //Marking the end of transaction by CSN high
+    NRF_chip_disable();
+
+    return readValue;
+}
+
+void NRF_write_config(uint8_t configValue)
+{
+	NRF_write_register(NORDIC_CONFIG_REG, configValue);
+}
+
+uint8_t NRF_read_config()
+{
+	return NRF_read_register(NORDIC_CONFIG_REG);
+}
+
+uint8_t NRF_read_rf_setup()
+{
+	return NRF_read_register(NORDIC_RF_SETUP_REG);
+}
+
+void NRF_write_rf_setup(uint8_t rfSetupValue)
+{
+	NRF_write_register(NORDIC_RF_SETUP_REG, rfSetupValue);
+}
+
+uint8_t NRF_read_rf_ch()
+{
+	return NRF_read_register(NORDIC_RF_CH_REG);
+}
+
+void NRF_write_rf_ch(uint8_t channel)
+{
+	NRF_write_register(NORDIC_RF_CH_REG, channel);
+}
+
+void NRF_write_En_AA(uint8_t data)
+{
+    NRF_write_register(NORDIC_EN_AA_REG, data);
+}
+
+uint8_t NRF_read_En_AA()
+{
+    return NRF_read_register(NORDIC_EN_AA_REG);
+}
+
+void NRF_write_setup_retry(uint8_t data)
+{
+    NRF_write_register(NODIC_SETUP_RETR_REG, data);
+}
+
+uint8_t NRF_read_setup_retry()
+{
+    return NRF_read_register(NODIC_SETUP_RETR_REG);
+}
+
+void NRF_read_TX_ADDR(uint8_t *address)
+{
+	uint8_t i = 0;
+
+	NRF_chip_disable();
+	NRF_chip_enable();
+
+	SPI_write_byte(SPI_1,NORDIC_TX_ADDR_REG);
+	SPI_read_byte(SPI_1);	//used to clear the previously value in the RX FIFO
+	//SPI_read_byte(SPI_1);	//used to clear the previously value in the RX FIFO
+	while(i < NORDIC_TX_ADDR_LEN)
+	{
+		SPI_write_byte(SPI_1, 0xFF);	//Dummy to get the data
+		*(address+i) = SPI_read_byte(SPI_1);
+		i++;
+	}
+
+	NRF_chip_disable();
+}
+
+void NRF_write_TX_ADDR(uint8_t * tx_addr)
+{
+	NRF_chip_disable();
+	NRF_chip_enable();
+
+	SPI_write_byte(SPI_1,NORDIC_TX_ADDR_REG | 0x20);
+	SPI_read_byte(SPI_1);	//used to clear the previously value in the RX FIFO
+	SPI_write_packet(SPI_1,tx_addr,NORDIC_TX_ADDR_LEN);
+	SPI_flushRXFIFO(SPI_1);
+
+	NRF_chip_disable();
+}
+
+void NRF_read_RX_PIPE_ADDR(uint8_t pipe_num, uint8_t *address)
+{
+    if(pipe_num > 5)
+        return;
+//    uint8_t i = 0;
+
+    NRF_chip_disable();
+    NRF_chip_enable();
+
+    SPI_write_byte(SPI_1,(NORDIC_RX_ADDR_P0_REG + pipe_num));
+    SPI_read_byte(SPI_1);   //used to clear the previously value in the RX FIFO
+    //SPI_read_byte(SPI_1); //used to clear the previously value in the RX FIFO
+    size_t ADDR_LEN = NORDIC_TX_ADDR_LEN;
+    pipe_num > 2 ? ADDR_LEN = 1: 0;
+//    while(i < ADDR_LEN)
+//    {
+//        SPI_write_byte(SPI_1, 0xFF);    //Dummy to get the data
+//        *(address+i) = SPI_read_byte(SPI_1);
+//        i++;
+//    }
+    SPI_read_packet(SPI_1, address, ADDR_LEN);
+
+    NRF_chip_disable();
+}
+
+void NRF_write_RX_PIPE_ADDR(uint8_t pipe_num, uint8_t *rx_addr)
+{
+    if(pipe_num > 5)
+        return;
+
+    NRF_chip_disable();
+    NRF_chip_enable();
+
+    SPI_write_byte(SPI_1,(NORDIC_RX_ADDR_P0_REG + pipe_num) | 0x20);
+    SPI_read_byte(SPI_1);   //used to clear the previously value in the RX FIFO
+    size_t ADDR_LEN = NORDIC_TX_ADDR_LEN;
+    pipe_num > 1 ? ADDR_LEN = 1: 0;
+    SPI_write_packet(SPI_1,rx_addr,ADDR_LEN);
+    SPI_flushRXFIFO(SPI_1);
+
+    NRF_chip_disable();
+}
+
+
+uint8_t NRF_read_fifo_status()
+{
+	return NRF_read_register(NORDIC_FIFO_STATUS_REG);
+}
+
+void NRF_flush_tx_fifo()
+{
+	NRF_write_command(NORDIC_TXFIFO_FLUSH_CMD);
+}
+
+void NRF_flush_rx_fifo()
+{
+	NRF_write_command(NORDIC_RXFIFO_FLUSH_CMD);
+}
+
+void NRF_activate_cmd()
+{
+	NRF_write_register(NORDIC_ACTIVATE_CMD, NORDIC_ACTIVATE_DATA);
+}
+
+void NRF_enable_RX_PIPE(uint8_t rx_pipe_number)
+{
+    if(rx_pipe_number > 5)
+        return;
+    uint8_t ret = NRF_read_register(NORDIC_EN_RXADDR_REG);
+    NRF_write_register(NORDIC_EN_RXADDR_REG, ret | (1<<rx_pipe_number));
+
+}
+void NRF_disable_RX_PIPE(uint8_t rx_pipe_number)
+{
+    if(rx_pipe_number > 5)
+        return;
+    uint8_t ret = NRF_read_register(NORDIC_EN_RXADDR_REG);
+    NRF_write_register(NORDIC_EN_RXADDR_REG, ret & (~(1<<rx_pipe_number)));
+}
+
+static void NRF_mode_configure(NRF_Mode_t mode, uint8_t rx_pipe_number, uint8_t addr[5], uint8_t payload_size)
+{
+	if(mode < 2)
+	{
+	    NRF_radio_disable();
+		uint8_t configureRead = NRF_read_config();
+
+		if(mode == NRF_Mode_TX)
+		{
+			txconfigured = 1;
+			configureRead &= ~(NORDIC_CONFIG_TX_DS_INT(1));// | NORDIC_CONFIG_MAX_RT_INT(1));
+			NRF_flush_tx_fifo();
+	        NRF_write_En_AA(0);
+	        NRF_write_setup_retry(0);
+	        NRF_write_TX_ADDR(addr);
+	        NRF_write_RX_PIPE_ADDR(rx_pipe_number, addr);
+	        NRF_enable_RX_PIPE(rx_pipe_number);
+	        NRF_write_register((NORDIC_RX_PW_P0_REG), payload_size);
+	        NRF_write_config(configureRead | NORDIC_CONFIG_PWR_UP(1));
+	        DelayMs(2);
+		}
+		else
+		{
+			rxconfigured = 1;
+			configureRead |= NORDIC_CONFIG_PWR_UP(1) | NORDIC_CONFIG_PRIM_RX(1);
+			configureRead &= ~(NORDIC_CONFIG_RX_DR_INT(1));
+			NRF_flush_rx_fifo();
+			NRF_enable_RX_PIPE(rx_pipe_number);
+			NRF_write_RX_PIPE_ADDR(rx_pipe_number, addr);
+			NRF_write_register((NORDIC_RX_PW_P0_REG + rx_pipe_number), payload_size);
+			NRF_write_config(configureRead);
+			NRF_radio_enable();
+		}
+
+		DelayMs(2);
+		printf("NORDIC Configured in %s mode\n", ((mode)?"RX MODE":"TX MODE"));
+
+	}
+	else
+	{
+		printf("INVALID MODE\n");
+	}
+}
+
+void NRF_openReadPipe(uint8_t rx_pipe_number, uint8_t rx_addr[5], uint8_t payload_size)
+{
+    NRF_mode_configure(NRF_Mode_RX, rx_pipe_number, rx_addr, payload_size);
+}
+
+void NRF_openWritePipe(uint8_t tx_addr[5])
+{
+    NRF_mode_configure(NRF_Mode_TX, 0, tx_addr, 5);
+//    NRF_mode_configure(NRF_Mode_TX, 0, tx_addr, 32);
+}
+
+void NRF_closeWritePipe()
+{
+    txconfigured = 0;
+    uint8_t configureRead = NRF_read_config();
+    configureRead |= (NORDIC_CONFIG_TX_DS_INT(1)  | NORDIC_CONFIG_MAX_RT_INT(1));
+    NRF_write_config(configureRead);
+    NRF_disable_RX_PIPE(0);
+}
+
+void NRF_closeReadPipe(uint8_t rx_pipe_number)
+{
+    NRF_radio_disable();
+    rxconfigured = 0;
+    uint8_t configureRead = NRF_read_config();
+    configureRead |= NORDIC_CONFIG_RX_DR_INT(1);
+    NRF_write_config(configureRead);
+    NRF_disable_RX_PIPE(rx_pipe_number);
+}
+
+void NRF_write_TXPayload(uint8_t *data, uint8_t len)
+{
+    NRF_chip_disable();
+    NRF_chip_enable();
+    SPI_write_byte(SPI_1, NORDIC_W_TXPAYLD_CMD);
+    SPI_read_byte(SPI_1); //used to clear the previously value in the RX FIFO
+
+    SPI_write_packet(SPI_1,data, len);  //loading the FIFO with data  before enabling the CE pin
+    SPI_flushRXFIFO(SPI_1);
+    NRF_chip_disable();
+}
+
+void NRF_TX_pulse()
+{
+    NRF_radio_enable();
+    //Delay of min 10us
+    DelayUs(20);
+    NRF_radio_disable();
+}
+
+int8_t NRF_transmit_data(uint8_t *data, uint8_t len, uint8_t toRXMode)
+{
+	if(txconfigured)
+	{
+	    uint8_t configureRead = NRF_read_config();
+	    configureRead &= ~NORDIC_CONFIG_PRIM_RX(1);
+	    NRF_write_config(configureRead);
+	    configureRead = NRF_read_config();
+	    DelayUs(130);
+
+		NRF_radio_disable();
+
+		NRF_write_TXPayload(data, len);
+
+		NRF_TX_pulse();
+
+		printf("Data written");
+
+		if(using_interrupt)
+		{
+            while(transmitted == 0 && retry_error == 0);	//wait till TX data is transmitted from FIFO
+            if(retry_error)
+            {
+                retry_error = 0;
+                printf("Data Retry Error\n");
+            }
+            else
+            {
+                transmitted = 0; printf("Data Transmitted\n");
+            }
+		}
+		else
+		{
+            uint8_t status = 0;
+            do
+            {
+                status = NRF_read_status();
+            }while(!((NORDIC_STATUS_TX_DS_MASK | NORDIC_STATUS_MAX_RT_MASK) & status));
+            NRF_write_status(NORDIC_STATUS_TX_DS_MASK | NORDIC_STATUS_MAX_RT_MASK | NORDIC_STATUS_MAX_RT_MASK);
+		}
+
+		if(toRXMode)
+		{
+            configureRead &= ~(NORDIC_CONFIG_PRIM_RX(1));
+            NRF_write_config(configureRead);
+            NRF_flush_rx_fifo();
+            NRF_radio_enable();
+		}
+
+	}
+	else
+	{
+		printf("TX mode not configured");
+	}
+	return 0;
+}
+
+NRF_read_RXPayload(uint8_t *data, uint8_t len)
+{
+    NRF_chip_enable();
+
+    SPI_write_byte(SPI_1, NORDIC_R_RXPAYLD_CMD);
+    SPI_read_byte(SPI_1);   //used to clear the previously value in the RX FIFO
+    SPI_read_packet(SPI_1,data,len);
+    SPI_flush(SPI_1);
+
+    NRF_chip_disable();
+}
+
+int8_t NRF_read_data(uint8_t *data, uint8_t len)
+{
+	if(rxconfigured)
+	{
+	    NRF_radio_enable();
+	    uint8_t val = NRF_read_fifo_status();
+	    val = NRF_read_config();
+	    //TODO: Check how to move forward with this? Call this function after we know that the data is avail or check with the
+	    //Status reg if data is available
+	    if(using_interrupt)
+	    {
+	        while(received == 0)	//wait till RX data in FIFO
+	        {
+	            val = NRF_read_fifo_status();
+	        }
+	        received = 0;
+	    }
+	    else
+	    {
+	        uint8_t status = 0;
+	        do
+	        {
+	            status = NRF_read_status();
+	        }while(!(NORDIC_STATUS_RX_DR_MASK & status));
+	    }
+
+		printf("Data received");
+
+		NRF_read_RXPayload(data, len);
+
+		printf("Data read");
+	}
+	else
+	{
+		printf("RX mode not configured");
+	}
+	return 0;
+}
+
+//#define SELF_TEST
+#ifdef SELF_TEST
+
+void Nordic_Test()
+{
+    NRF_moduleInit();
+    NRF_moduleSetup(NRF_DR_1Mbps, NRF_PW_LOW);
+    DelayMs(100);
+
+    printf( "SPI Initialized\n");
+    printf("Nordic Initialized\n");
+    printf("Nordic Test\n");
+//    NRF_write_status(0);
+//    uint8_t sendValue = 0x08;
+//    uint8_t readValue = 0;
+//    NRF_write_config(sendValue);
+//    readValue = NRF_read_config();
+//    printf("Recv: 0x%x\n",readValue);
+//    if(readValue == sendValue)
+//    {
+//        printf("Write/Read Config Value Matched\n");
+//        printf("Sent: 0x%x\n",sendValue);
+//        printf("Recv: 0x%x\n",readValue);
+//    }
+//
+//    DelayMs(5);
+//
+//    NRF_write_register(NORDIC_STATUS_REG,0);
+//    sendValue = 44;
+//    NRF_write_rf_ch(sendValue);
+//    readValue = NRF_read_rf_ch();
+//    if(readValue == sendValue)
+//    {
+//        printf("Write/Read RF CH Value Matched\n");
+//        printf("Sent: 0x%x\n",sendValue);
+//        printf("Recv: 0x%x\n",readValue);
+//    }
+//
+//    //sendValue = 0x0F;
+//    sendValue = 0x07 ;
+//    NRF_write_rf_setup(sendValue);
+//    readValue = NRF_read_rf_setup();
+//    if(readValue == sendValue)
+//    {
+//        printf("Write/Read RF Setup Value Matched\n");
+//        printf("Sent: 0x%x\n",sendValue);
+//        printf("Recv: 0x%x\n",readValue);
+//    }
+//
+//    NRF_write_register(0x03, 3);
+//
+////    uint8_t sendAddr[5] = {0xBA,0x56,0xBA,0x56,0xBA};
+//    uint8_t sendAddr[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+//    printf("TX ADDRESSES SET: 0x%x%x%x%x%x\n",sendAddr[0],sendAddr[1],sendAddr[2],sendAddr[3],sendAddr[4]);
+//    NRF_write_TX_ADDR(sendAddr);
+//    uint8_t readAddr[5];
+//    NRF_read_TX_ADDR(readAddr);
+//    printf("TX ADDRESSES GET: 0x%x%x%x%x%x\n",readAddr[0],readAddr[1],readAddr[2],readAddr[3],readAddr[4]);
+//
+//    NRF_read_RX_P0_ADDR(readAddr);
+//    printf("RX ADDRESSES GET: 0x%x%x%x%x%x\n",readAddr[0],readAddr[1],readAddr[2],readAddr[3],readAddr[4]);
+//
+//    NRF_write_RX_P0_ADDR(sendAddr);
+//    NRF_read_RX_P0_ADDR(readAddr);
+//    printf("RX ADDRESSES GET: 0x%x%x%x%x%x\n",readAddr[0],readAddr[1],readAddr[2],readAddr[3],readAddr[4]);
+
+
+
+
+//    NRF_Mode_t mode = NRF_Mode_RX;
+//    printf("Configuring NRF in %d mode",mode);
+//    NRF_mode_configure(mode);
+//    uint8_t Data[2] = {0};
+//    NRF_read_data(Data,2);
+//    printf("Nordic Data Recvd: 0x%x, 0x%x", Data[0],Data[1]);
+
+    uint8_t sendAddr[5] = {0xE7,0xE7,0xE7,0xE7,0xE7};
+    NRF_openWritePipe(sendAddr);
+    printf("Configuring NRF in TX mode");
+    uint8_t readAddr[5];
+    NRF_read_TX_ADDR(readAddr);
+    logger_log(INFO,"TX ADDRESSES GET: 0x%x%x%x%x%x\n",readAddr[0],readAddr[1],readAddr[2],readAddr[3],readAddr[4]);
+
+    //NRF_read_RX_P0_ADDR(readAddr);
+    logger_log(INFO,"RX ADDRESSES GET: 0x%x%x%x%x%x\n",readAddr[0],readAddr[1],readAddr[2],readAddr[3],readAddr[4]);
+
+    NRF_read_RX_PIPE_ADDR(0, readAddr);
+    logger_log(INFO,"RX ADDRESSES GET: 0x%x%x%x%x%x\n",readAddr[0],readAddr[1],readAddr[2],readAddr[3],readAddr[4]);
+
+    uint8_t Data[5] = {0x55,0xBB,0xBB,0xBB,0xBB};
+    NRF_transmit_data(Data,5, false);
+    printf("Nordic Data Sent: 0x%x, 0x%x", Data[0],Data[1]);
+
+    printf("Nordic Test End\n");
+
+    NRF_moduleDisable();
+}
+#endif
+
+void NRF_IntHandler(void)
+{
+    MAP_IntMasterDisable();
+        uint32_t int_status = GPIOIntStatus(NORDIC_IRQ_PORT, false);
+        if(int_status & NORDIC_IRQ_PIN)
+        {
+            GPIOIntClear(NORDIC_IRQ_PORT, NORDIC_IRQ_PIN);
+            uint8_t NRF_int_reason = NRF_read_status();
+            if(NRF_int_reason & NORDIC_STATUS_TX_DS_MASK)
+            {
+                NRF_write_status(NRF_int_reason | NORDIC_STATUS_TX_DS_MASK);
+                transmitted = 1;
+//                printf("NRF TX Complete\n");
+            }
+            if(NRF_int_reason & NORDIC_STATUS_RX_DR_MASK)
+            {
+                NRF_write_status(NRF_int_reason | NORDIC_STATUS_RX_DR_MASK);
+                NRF_flush_rx_fifo();
+                //TODO: Notification to the handler for the Nordic Data recv task
+                user_handler();
+                received = 1;
+                printf("NRF RX Complete\n");
+            }
+            if(NRF_int_reason & NORDIC_STATUS_MAX_RT_MASK)
+            {
+                NRF_write_status(NRF_int_reason | NORDIC_STATUS_MAX_RT_MASK);
+                NRF_flush_tx_fifo();
+                //TODO: Notification to the handler for the Nordic Data recv task
+                user_handler();
+                retry_error = 1;
+//                printf("NRF TX RETRY ERROR\n");
+            }
+        }
+        MAP_IntMasterEnable();
+}
+
+
+
+/*
+ * comm_sender_task.c
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <limits.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "priorities.h"
+#include "timers.h"
+
+#include "my_uart.h"
+
+#include "communication_interface.h"
+#include "comm_sender_task.h"
+#include "camera_interface.h"
+
+#define COMM_SENDER_QUEUE_ITEMSIZE   (sizeof(COMM_MSG_T))
+#define COMM_SENDER_QUEUE_LENGTH     20
+
+extern const char * const BOARD_TYPE;
+extern const char * const OS;
+extern const char * const CODE_VERSION;
+extern const char * const UID;
+
+volatile uint8_t comm_senderTaskInitDone = 0;
+static QueueHandle_t h_comm_senderQueue;
+static TaskHandle_t h_comm_senderTask;
+
+QueueHandle_t Comm_senderQueueHandle(QueueHandle_t handle, bool get)
+{
+    if(get)
+        return h_comm_senderQueue;
+    else
+    {
+        h_comm_senderQueue = handle;
+        return h_comm_senderQueue;
+    }
+}
+
+TaskHandle_t Comm_senderTaskHandle(TaskHandle_t handle, bool get)
+{
+    if(get)
+        return h_comm_senderTask;
+    else
+    {
+        h_comm_senderTask = handle;
+        return h_comm_senderTask;
+    }
+}
+
+static void comm_sender_task_entry(void *params)
+{
+    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
+    BaseType_t xResult;
+    uint32_t notifiedValue = 0;
+    while(1)
+    {
+        /* Wait to be notified of an interrupt. */
+        xResult = xTaskNotifyWait( pdFALSE,    /* Don't clear bits on entry. */
+                           ULONG_MAX,        /* Clear all bits on exit. */
+                           &notifiedValue, /* Stores the notified value. */
+                           portMAX_DELAY);
+
+        if( xResult == pdPASS )
+        {
+            /* A notification was received.  See which bits were set. */
+            if(notifiedValue & EVENT_COMM_SENDER_BOARD_TYPE)
+            {
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_COMM_MODULE, BBG_LOGGER_MODULE);
+                comm_msg.msg_id = MSG_ID_CLIENT_INFO_BOARD_TYPE;
+                comm_msg.src_id = TIVA_COMM_MODULE;
+                comm_msg.data.nothing = 1;
+                strncpy(comm_msg.message,BOARD_TYPE, sizeof(comm_msg.message));
+                FILL_CHECKSUM(&comm_msg);
+                COMM_SEND(&comm_msg);
+                printf("BOARD_TYPE: %s\n",BOARD_TYPE);
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_CODE_VERSION)
+            {
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_COMM_MODULE, BBG_LOGGER_MODULE);
+                comm_msg.msg_id = MSG_ID_CLIENT_INFO_CODE_VERSION;
+                comm_msg.src_id = TIVA_COMM_MODULE;
+                comm_msg.data.nothing = 1;
+                strncpy(comm_msg.message,CODE_VERSION, sizeof(comm_msg.message));
+                FILL_CHECKSUM(&comm_msg);
+                COMM_SEND(&comm_msg);
+                printf("CODE_VERSION: %s\n",CODE_VERSION);
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_UID)
+            {
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_COMM_MODULE, BBG_LOGGER_MODULE);
+                comm_msg.msg_id = MSG_ID_CLIENT_INFO_UID;
+                comm_msg.src_id = TIVA_COMM_MODULE;
+                comm_msg.data.nothing = 1;
+                strncpy(comm_msg.message,UID, sizeof(comm_msg.message));
+                FILL_CHECKSUM(&comm_msg);
+                COMM_SEND(&comm_msg);
+                printf("UID: %s\n",UID);
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_HEARTBEAT)
+            {
+                static uint32_t count = 0;
+                COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_HEART_BEAT_MODULE, BBG_LOGGER_MODULE);
+                comm_msg.msg_id = MSG_ID_HEARTBEAT;
+                comm_msg.src_id = TIVA_COMM_MODULE;
+                comm_msg.data.nothing = 1;
+                strncpy(comm_msg.message,"HEARTBEAT", sizeof(comm_msg.message));
+                FILL_CHECKSUM(&comm_msg);
+                COMM_SEND(&comm_msg);
+                printf("[%u]HEARTBEAT\n",count++);
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_STATUS)
+            {
+                COMM_MSG_T comm_msg;
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                {
+                    FILL_CHECKSUM(&comm_msg);
+                    COMM_SEND(&comm_msg);
+                    printf("STATUS: %s\n",comm_msg.message);
+                }
+                else
+                {
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
+                }
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_INFO)
+            {
+                COMM_MSG_T comm_msg;
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                {
+                    FILL_CHECKSUM(&comm_msg);
+                    COMM_SEND(&comm_msg);
+                    printf("INFO: %s\n",comm_msg.message);
+                }
+                else
+                {
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
+                }
+            }
+
+
+            if(notifiedValue & EVENT_COMM_SENDER_MSG)
+            {
+                COMM_MSG_T comm_msg;
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                {
+                    comm_msg.msg_id = MSG_ID_MSG;
+                    FILL_CHECKSUM(&comm_msg);
+                    COMM_SEND(&comm_msg);
+                    printf("MSG: %s\n",comm_msg.message);
+                }
+                else
+                {
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
+                }
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_ERROR)
+            {
+                COMM_MSG_T comm_msg;
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                {
+                    comm_msg.msg_id = MSG_ID_ERROR;
+                    FILL_CHECKSUM(&comm_msg);
+                    COMM_SEND(&comm_msg);
+                    printf("STATUS: %s\n",comm_msg.message);
+                }
+                else
+                {
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
+                }
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_OBJECT_DETECTED)
+            {
+                COMM_MSG_T comm_msg;
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                {
+//                    comm_msg.msg_id = MSG_ID_OBJECT_DETECTED;
+                    FILL_CHECKSUM(&comm_msg);
+                    COMM_SEND(&comm_msg);
+                    printf("OBJECT DETECTED: %f cm\n",comm_msg.data.distance_cm);
+                    DelayUs(500);
+                    //Sending the camera frame from here
+                    SendFrame();
+                }
+                else
+                {
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
+                }
+            }
+
+            if(notifiedValue & EVENT_COMM_SENDER_PICTURE)
+            {
+                COMM_MSG_T comm_msg;
+                if(h_comm_senderQueue && xQueueReceive(h_comm_senderQueue,&comm_msg,xMaxBlockTime))
+                {
+                    comm_msg.msg_id = MSG_ID_PICTURE;
+                    FILL_CHECKSUM(&comm_msg);
+                    COMM_SEND(&comm_msg);
+                    printf("SENDING PICTURE of size: %u\n",comm_msg.data.camera_packet->length);
+                    //Now extract the CAMERA_PACKET and send the raw frame from buffer pointer provided in the camera packet
+                    //The camera frame data buffer should exit in the memory
+                    CAMERA_PACKET_T *packet;
+                    if(comm_msg.data.camera_packet)
+                    {
+                        packet = comm_msg.data.camera_packet;
+                    }
+                    else
+                    {
+                        printf("[ERROR] NULL CAMERA PACKT");
+                        packet->length = 0;
+                        packet->frame = NULL;
+                    }
+                    COMM_SENDRAW(packet->frame,packet->length);
+                    printf("SUCCESS: SEND PICTURE\n");
+                }
+                else
+                {
+                    printf("[Error] Q RECV %s\n",__FUNCTION__);
+                }
+            }
+
+        }
+//        else
+//        {
+//            printf("COMM_SENDER NOTIFICATION: TIMEOUT\n");
+//        }
+    }
+}
+
+uint8_t CommSenderTask_init()
+{
+    /* Creating a Queue required for Logging the msg */
+    QueueHandle_t h_comm_senderQ = xQueueCreate(COMM_SENDER_QUEUE_LENGTH, COMM_SENDER_QUEUE_ITEMSIZE);
+    setComm_senderQueueHandle(h_comm_senderQ);
+
+    TaskHandle_t h_comm_senderTask;
+
+    xCOMM_SENDER_NOTIFY_MUTEX =  xSemaphoreCreateMutex();
+    if(xCOMM_SENDER_NOTIFY_MUTEX == NULL)
+    {
+        printf("Semaphore Create Error. %s\n",__FUNCTION__);
+    }
+
+    /*Initializing the communication interface*/
+    COMM_INIT();
+//    uint8_t data[32] = {0};
+//    NRF_read_data(data, 32);
+    /* Create the task*/
+    if(xTaskCreate(comm_sender_task_entry, (const portCHAR *)"Comm_sender Task", 512, NULL,
+                       tskIDLE_PRIORITY + PRIO_COMM_SENDERTASK, &h_comm_senderTask) != pdTRUE)
+    {
+        return (1);
+    }
+
+    //Setting the comm_sender task handle for future use
+    setComm_senderTaskHandle(h_comm_senderTask);
+    /* Return the createtask ret value */
+    return 0;
+}
+
+
+
+
+/*
+ * sonar_sensor.c
+ *
+ *  Created on: 28-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_timer.h"
+#include "inc/hw_types.h"
+#include "driverlib/timer.h"
+#include "driverlib/gpio.h"
+#include "driverlib/interrupt.h"
+
+#include "delay.h"
+#include "sonar_sensor.h"
+#ifdef DEBUG
+#include "my_uart.h"
+#endif
+
+#ifdef DEBUG
+#undef DEBUG
+#endif
+
+#define ULTRASONIC_PORT         GPIO_PORTK_BASE
+#define ULTRASONIC_TRIGGER_PIN  GPIO_PIN_0
+#define ULTRASONIC_ECHO_PIN     GPIO_PIN_1
+#define HIGH(PIN)               PIN
+#define LOW(PIN)                0
+
+extern uint32_t g_sysClock;
+
+//const float distance_factor = (1.0/120.0);
+const float distance_factor = (1.0/16.0);
+//static float distance_factor = (float)(1.0/(g_sysClock/1000000));
+
+//start and end for echo pulse
+volatile uint32_t pulse_down=0, pulse_up =0;
+
+volatile uint8_t sensor_busy = 0;
+
+void TimerInit();
+void echo_interrupt();
+
+void Sonar_sensor_init()
+{
+    //Configuring the timer required to capture the pulse
+    TimerInit();
+
+    //Configure Trigger pin
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);
+    DelayUs(100);
+    GPIOPinTypeGPIOOutput(ULTRASONIC_PORT, ULTRASONIC_TRIGGER_PIN);
+
+    //Configure Echo pin
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);
+    DelayUs(10);
+    GPIOPinTypeGPIOInput(ULTRASONIC_PORT, ULTRASONIC_ECHO_PIN);
+    GPIOIntEnable(ULTRASONIC_PORT, ULTRASONIC_ECHO_PIN);
+    GPIOIntTypeSet(ULTRASONIC_PORT, ULTRASONIC_ECHO_PIN,GPIO_BOTH_EDGES);
+    GPIOIntRegister(ULTRASONIC_PORT,echo_interrupt);
+//    IntMasterEnable();
+
+}
+
+float sonarSensor_getDistance()
+{
+    uint32_t iteration = 0, retryCount = 0;
+    float distance_old = 0, distance = 0;
+    while(iteration < 10 && retryCount < 10)
+    {
+        //Check if the sensor is busy
+        if(sensor_busy != 1)
+        {
+            //Give the required pulse of 10uS to trigger
+            GPIOPinWrite(ULTRASONIC_PORT, ULTRASONIC_TRIGGER_PIN, ULTRASONIC_TRIGGER_PIN);
+            DelayUs(10);
+            GPIOPinWrite(ULTRASONIC_PORT, ULTRASONIC_TRIGGER_PIN, 0);
+
+            /*Wait while the reading is measured. The sensor_busy is cleared by the falling edge of echo pin which
+             *is done in the interrupt
+             */
+            while(sensor_busy != 0);
+
+            //Converts
+            pulse_up = pulse_down - pulse_up;
+            distance =(float)(distance_factor * pulse_up);
+            distance = distance/58;
+
+    #ifdef DEBUG
+            printf("[IN]Distance = %f cm \n" ,distance);
+    #endif
+            (distance_old < distance) ? distance_old = distance : 0;
+            iteration++;
+        }
+        else
+        {
+            retryCount++;
+    #ifdef DEBUG
+            printf("Retry: %d\n" ,retryCount);
+    #endif
+        }
+    }
+
+    return (distance > distance_old) ?  distance : distance_old;
+}
+
+void TimerInit()
+{
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
+  DelayUs(10);
+  TimerConfigure(TIMER2_BASE, TIMER_CFG_PERIODIC_UP);
+  //TimerEnable(TIMER2_BASE,TIMER_A);
+}
+
+void echo_interrupt()
+{
+    IntMasterDisable();
+    //Clear interrupt flag
+    GPIOIntClear(ULTRASONIC_PORT, ULTRASONIC_ECHO_PIN);
+
+    /*Echo pulse rising edge*/
+    if(GPIOPinRead(ULTRASONIC_PORT, ULTRASONIC_ECHO_PIN) == ULTRASONIC_ECHO_PIN)
+    {
+        HWREG(TIMER2_BASE + TIMER_O_TAV) = 0; //Loads value 0 into the timer.
+//        pulse_up = TimerValueGet(TIMER2_BASE,TIMER_A);
+        pulse_up = 0;
+        TimerEnable(TIMER2_BASE,TIMER_A);
+        sensor_busy=1;
+    }
+    /*Echo pulse falling edge*/
+    else
+    {
+        pulse_down = TimerValueGet(TIMER2_BASE,TIMER_A);
+        TimerDisable(TIMER2_BASE,TIMER_A);
+        sensor_busy=0;
+    }
+
+    IntMasterEnable();
+}
+/*
+ * my_uart.c
+ *
+ *  Created on: 05-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include "inc/hw_memmap.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/pin_map.h"
+#include "my_uart.h"
+
+#define UART_CONFIG_NORMAL  (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |UART_CONFIG_PAR_NONE)
+
+char* convert(UART_T uart, unsigned int num, int base);
+
+extern uint32_t g_sysClock;
+
+const uint32_t UART[4] = {UART0_BASE, UART1_BASE, UART2_BASE, UART3_BASE};
+
+void UART_config(UART_T uart, BAUD_RATE_ENUM baudrate)
+{
+
+    if(uart == UART_0)
+    {
+        // Enable the GPIO Peripheral used by the UART.
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+        // Enable UART0
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+        while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_UART0))
+        {
+        }
+
+        // Configure GPIO Pins for UART mode.
+        MAP_GPIOPinConfigure(GPIO_PA0_U0RX);
+        MAP_GPIOPinConfigure(GPIO_PA1_U0TX);
+        MAP_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+
+    }
+    else if(uart == UART_3)
+    {
+        // Enable the GPIO Peripheral used by the UART.
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+        // Enable UART0
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART3);
+        while(!MAP_SysCtlPeripheralReady(SYSCTL_PERIPH_UART3))
+        {
+        }
+
+        // Configure GPIO Pins for UART mode.
+        MAP_GPIOPinConfigure(GPIO_PA4_U3RX);
+        MAP_GPIOPinConfigure(GPIO_PA5_U3TX);
+        MAP_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_5);
+
+
+    }
+
+#ifdef __USE_FREERTOS
+    g_pUARTMutex[uart] = xSemaphoreCreateMutex();
+#endif
+    // Use the system clock oscillator as the UART clock source.
+    //UARTClockSourceSet(UART[uart], UART_CLOCK_SYSTEM);
+    UARTConfigSetExpClk(UART[uart], g_sysClock, baudrate, UART_CONFIG_NORMAL);
+    UARTEnable(UART[uart]);
+}
+
+void UART_putRAW(UART_T uart, const uint8_t *data, size_t len)
+{
+    while(UARTBusy(UART[uart]));
+    while(len--)
+    {
+        UARTCharPut(UART[uart], *data++);
+    }
+}
+
+size_t UART_getRAW(UART_T uart, uint8_t *data, size_t len)
+{
+    if(!UARTCharsAvail(UART[uart]))
+        return 0;
+    size_t i = 0, retrycount = 0;
+    while(i<len && retrycount < 64)
+    {
+        int32_t c = UARTCharGetNonBlocking(UART[uart]);
+        if(c != -1)
+        {
+            *(data+i) = c;
+            retrycount = 0;
+            i++;
+        }
+        else
+            retrycount++;
+    }
+    return i;
+}
+
+void UART_putstr(UART_T uart, const char *str)
+{
+    while(*str)
+    {
+        if(*str == '\n')
+            UARTCharPut(UART[uart], '\r');
+        UARTCharPut(UART[uart], *str++);
+    }
+}
+
+void UART_printf(UART_T uart, const char *fmt, ...)
+{
+    const char *p;
+    int i;
+    unsigned int u;
+    char *s;
+    double d;
+    char str[10];
+    va_list argp;
+
+    va_start(argp, fmt);
+
+    p=fmt;
+    for(p=fmt; *p!='\0';p++)
+    {
+        if(*p != '%')
+        {
+            UART_putchar(uart,*p);
+            continue;
+        }
+
+        p++;
+
+        switch(*p)
+        {
+        case 'f' :
+            d=va_arg(argp,double);
+            if(d<0)
+            {
+                d=-d;
+                UART_putchar(uart,'-');
+            }
+            snprintf(str,sizeof(str),"%.02f",d);
+            UART_putstr(uart, str);
+            break;
+        case 'c' :
+            i=va_arg(argp,int);
+            UART0_putchar(i);
+            break;
+        case 'd' :
+            i=va_arg(argp,int);
+            if(i<0)
+            {
+                i=-i;
+                UART0_putchar('-');
+            }
+            UART_putstr(uart, convert(uart,i,10));
+            break;
+        case 'o':
+            i=va_arg(argp,unsigned int);
+            UART_putstr(uart, convert(uart,i,8));
+            break;
+        case 's':
+            s=va_arg(argp,char *);
+            UART_putstr(uart, s);
+            break;
+        case 'u':
+            u=va_arg(argp,unsigned int);
+            UART_putstr(uart, convert(uart,u,10));
+            break;
+        case 'x':
+            u=va_arg(argp,unsigned int);
+            UART_putstr(uart, convert(uart,u,16));
+            break;
+        case '%':
+            UART_putchar(uart,'%');
+            break;
+        }
+    }
+
+    va_end(argp);
+}
+
+static char buf0[35];
+static char buf1[2];
+static char buf2[2];
+static char buf3[35];
+char * const buff_arr[4] = {buf0, buf1, buf2, buf3};
+
+char* convert(UART_T uart, unsigned int num, int base)
+{
+    //static char buf[50];
+    char *ptr = buff_arr[uart];
+
+    ptr=&(buff_arr[uart])[sizeof(buff_arr[uart])-1];
+    *ptr='\0';
+    do
+    {
+        *--ptr="0123456789abcdef"[num%base];
+        num/=base;
+    }while(num!=0);
+    return(ptr);
+}
+/*
+ * communication_interface.c
+ *
+ *  Created on: 22-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#if 1
+#include "communication_interface.h"
+
+/* NRF COMM FUNCTIONS*/
+void my_NRF_IntHandler()
+{
+}
+
+volatile uint8_t count = 0;
+int8_t comm_init_NRF()
+{
+    if(count)
+    {
+        count++;
+        return 0;
+    }
+    int8_t status = NRF_moduleInit(NRF_USE_INTERRUPT, my_NRF_IntHandler);
+    if(status == -1)
+        return status;
+    NRF_moduleSetup(NRF_DR_1Mbps, NRF_PW_MED);
+    NRF_openReadPipe(1, RXAddr, sizeof(COMM_MSG_T)>32 ? 32 : sizeof(COMM_MSG_T));
+    NRF_openWritePipe(TXAddr);
+    count++;
+
+}
+
+void comm_deinit_NRF()
+{
+    count--;
+    if(count)
+    {
+        return;
+    }
+    NRF_closeReadPipe(1);
+    NRF_closeWritePipe();
+    NRF_moduleDisable();
+}
+
+int32_t comm_sendNRF_raw(uint8_t *data, uint32_t len)
+{
+    if(len <= 32)
+    {
+        NRF_transmit_data(data, len, true);
+    }
+//    else
+//    {
+//        size_t i = 0;
+//        while(i < len)
+//        {
+//            NRF_transmit_data(data+i, 32 - (i%32), false);
+//            i = i+32;
+//        }
+//    }
+
+}
+
+int32_t comm_recvNRF_raw(uint8_t *data, size_t len)
+{
+
+}
+int32_t comm_recvNRF(COMM_MSG_T *p_comm_object)
+{
+    return NRF_read_data((uint8_t*)p_comm_object, sizeof(COMM_MSG_T));
+}
+
+#endif
+/*
+ * board_identification.c
+ *
+ *  Created on: 23-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#define BOARD_UID_SHIFT 24
+//TODO: Move the below constant strings to somewhere suitable
+const char * const BOARD_TYPE = "TM4C1294XL";
+const char * const OS = "FreeRTOS";
+const char * const CODE_VERSION = "v1.0";
+const char * const UID = "Gunj_Manseta";
+/*
+ * main.c
+ *
+ *  Created on: 05-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include "application.h"
+
+int main()
+{
+    application_run();
+
+    //Will never come here
+    return 0;
+}
+/*
+ * comm_receiver_task.c
+ *
+ *  Created on: 26-Apr-2018
+ *      Author: Gunj Manseta
+ */
+
+#include "priorities.h"
+
+#include "my_uart.h"
+#include "communication_object.h"
+#include "communication_interface.h"
+#include "comm_receiver_task.h"
+#include "dispatcher_task.h"
+#include "delay.h"
+
+/* Create the entry task*/
+static void comm_receiver_task_entry(void *params)
+{
+    const TickType_t xMaxBlockTime = pdMS_TO_TICKS(5000);
+    /* Blocks on UART recv  OR get the notification from the UART RX ISR*/
+    /* Enqueues the recvd msg to the dispatcher task queue*/
+    COMM_MSG_T recv_comm_msg;
+    while(1)
+    {
+        memset(&recv_comm_msg, 0 , sizeof(recv_comm_msg));
+        size_t ret = COMM_RECV(&recv_comm_msg);
+        if(ret > 0)
+        {
+            if(ret != 32)
+            {
+                printf("RECV error. Data garbage\n");
+            }else
+            if(recv_comm_msg.dst_brd_id != MY_TIVA_BOARD_ID)
+            {
+                printf("Invalid Board Id\n");
+            }
+            else
+            {
+                /* Send to dispatcher */
+                uint8_t ret = ENQUEUE_NOTIFY_DISPATCHER_TASK(recv_comm_msg);
+                if(ret == pdFAIL)
+                {
+                    printf("DISPATCHER NOTIFY ERROR\n");
+                    continue;
+                }
+                printf("\n*******\n\
+                SRCID:%u, SRC_BRDID:%u, DST_ID:%u, MSGID:%u\n\
+                MSG:%s\n\
+                Checksum:%u ?= %u\n********\n",\
+                recv_comm_msg.src_id, recv_comm_msg.src_brd_id, recv_comm_msg.dst_id,recv_comm_msg.msg_id, recv_comm_msg.message,recv_comm_msg.checksum, getCheckSum(&recv_comm_msg));
+            }
+        }
+    }
+}
+
+
+/* Create the init */
+uint8_t CommReceiverTask_init()
+{
+    TaskHandle_t h_comm_receiverTask;
+
+    /*Initializing the communication interface. Not needed. Comm receiver is doing it*/
+    //COMM_INIT();
+//    uint8_t data[32] = {0};
+//    NRF_read_data(data, 32);
+    /* Create the task*/
+    if(xTaskCreate(comm_receiver_task_entry, (const portCHAR *)"Comm_receiver Task", 128, NULL,
+                       tskIDLE_PRIORITY + PRIO_COMM_RECEIVERTASK, &h_comm_receiverTask) != pdTRUE)
+    {
+        return (1);
+    }
+
+    //Setting the comm_receiver task handle for future use
+//    setComm_receiverTaskHandle(h_comm_receiverTask);
+    /* Return the createtask ret value */
+    return 0;
+}
+
+//*****************************************************************************
+//
+// startup_ccs.c - Startup code for use with TI's Code Composer Studio.
+//
+// Copyright (c) 2012-2017 Texas Instruments Incorporated.  All rights reserved.
+// Software License Agreement
+// 
+// Texas Instruments (TI) is supplying this software for use solely and
+// exclusively on TI's microcontroller products. The software is owned by
+// TI and/or its suppliers, and is protected under applicable copyright
+// laws. You may not combine this software with "viral" open-source
+// software in order to form a larger program.
+// 
+// THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
+// NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
+// NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
+// CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
+// DAMAGES, FOR ANY REASON WHATSOEVER.
+// 
+// This is part of revision 2.1.4.178 of the EK-TM4C123GXL Firmware Package.
+//
+//*****************************************************************************
+
+#include <stdint.h>
+#include "inc/hw_nvic.h"
+#include "inc/hw_types.h"
+
+//*****************************************************************************
+//
+// Forward declaration of the default fault handlers.
+//
+//*****************************************************************************
+void ResetISR(void);
+static void NmiSR(void);
+static void FaultISR(void);
+static void IntDefaultHandler(void);
+
+//*****************************************************************************
+//
+// External declaration for the reset handler that is to be called when the
+// processor is started
+//
+//*****************************************************************************
+extern void _c_int00(void);
+
+//*****************************************************************************
+//
+// Linker variable that marks the top of the stack.
+//
+//*****************************************************************************
+extern uint32_t __STACK_TOP;
+
+//*****************************************************************************
+//
+// External declarations for the interrupt handlers used by the application.
+//
+//*****************************************************************************
+extern void xPortPendSVHandler(void);
+extern void vPortSVCHandler(void);
+extern void xPortSysTickHandler(void);
+
+//*****************************************************************************
+//
+// The vector table.  Note that the proper constructs must be placed on this to
+// ensure that it ends up at physical address 0x0000.0000 or at the start of
+// the program if located at a start address other than 0.
+//
+//*****************************************************************************
+#pragma DATA_SECTION(g_pfnVectors, ".intvecs")
+void (* const g_pfnVectors[])(void) =
+{
+    (void (*)(void))((uint32_t)&__STACK_TOP),
+                                            // The initial stack pointer
+    ResetISR,                               // The reset handler
+    NmiSR,                                  // The NMI handler
+    FaultISR,                               // The hard fault handler
+    IntDefaultHandler,                      // The MPU fault handler
+    IntDefaultHandler,                      // The bus fault handler
+    IntDefaultHandler,                      // The usage fault handler
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    vPortSVCHandler,                        // SVCall handler
+    IntDefaultHandler,                      // Debug monitor handler
+    0,                                      // Reserved
+    xPortPendSVHandler,                     // The PendSV handler
+    xPortSysTickHandler,                    // The SysTick handler
+    IntDefaultHandler,                      // GPIO Port A
+    IntDefaultHandler,                      // GPIO Port B
+    IntDefaultHandler,                      // GPIO Port C
+    IntDefaultHandler,                      // GPIO Port D
+    IntDefaultHandler,                      // GPIO Port E
+    IntDefaultHandler,                      // UART0 Rx and Tx
+    IntDefaultHandler,                      // UART1 Rx and Tx
+    IntDefaultHandler,                      // SSI0 Rx and Tx
+    IntDefaultHandler,                      // I2C0 Master and Slave
+    IntDefaultHandler,                      // PWM Fault
+    IntDefaultHandler,                      // PWM Generator 0
+    IntDefaultHandler,                      // PWM Generator 1
+    IntDefaultHandler,                      // PWM Generator 2
+    IntDefaultHandler,                      // Quadrature Encoder 0
+    IntDefaultHandler,                      // ADC Sequence 0
+    IntDefaultHandler,                      // ADC Sequence 1
+    IntDefaultHandler,                      // ADC Sequence 2
+    IntDefaultHandler,                      // ADC Sequence 3
+    IntDefaultHandler,                      // Watchdog timer
+    IntDefaultHandler,                      // Timer 0 subtimer A
+    IntDefaultHandler,                      // Timer 0 subtimer B
+    IntDefaultHandler,                      // Timer 1 subtimer A
+    IntDefaultHandler,                      // Timer 1 subtimer B
+    IntDefaultHandler,                      // Timer 2 subtimer A
+    IntDefaultHandler,                      // Timer 2 subtimer B
+    IntDefaultHandler,                      // Analog Comparator 0
+    IntDefaultHandler,                      // Analog Comparator 1
+    IntDefaultHandler,                      // Analog Comparator 2
+    IntDefaultHandler,                      // System Control (PLL, OSC, BO)
+    IntDefaultHandler,                      // FLASH Control
+    IntDefaultHandler,                      // GPIO Port F
+    IntDefaultHandler,                      // GPIO Port G
+    IntDefaultHandler,                      // GPIO Port H
+    IntDefaultHandler,                      // UART2 Rx and Tx
+    IntDefaultHandler,                      // SSI1 Rx and Tx
+    IntDefaultHandler,                      // Timer 3 subtimer A
+    IntDefaultHandler,                      // Timer 3 subtimer B
+    IntDefaultHandler,                      // I2C1 Master and Slave
+    IntDefaultHandler,                      // Quadrature Encoder 1
+    IntDefaultHandler,                      // CAN0
+    IntDefaultHandler,                      // CAN1
+    0,                                      // Reserved
+    0,                                      // Reserved
+    IntDefaultHandler,                      // Hibernate
+    IntDefaultHandler,                      // USB0
+    IntDefaultHandler,                      // PWM Generator 3
+    IntDefaultHandler,                      // uDMA Software Transfer
+    IntDefaultHandler,                      // uDMA Error
+    IntDefaultHandler,                      // ADC1 Sequence 0
+    IntDefaultHandler,                      // ADC1 Sequence 1
+    IntDefaultHandler,                      // ADC1 Sequence 2
+    IntDefaultHandler,                      // ADC1 Sequence 3
+    0,                                      // Reserved
+    0,                                      // Reserved
+    IntDefaultHandler,                      // GPIO Port J
+    IntDefaultHandler,                      // GPIO Port K
+    IntDefaultHandler,                      // GPIO Port L
+    IntDefaultHandler,                      // SSI2 Rx and Tx
+    IntDefaultHandler,                      // SSI3 Rx and Tx
+    IntDefaultHandler,                      // UART3 Rx and Tx
+    IntDefaultHandler,                      // UART4 Rx and Tx
+    IntDefaultHandler,                      // UART5 Rx and Tx
+    IntDefaultHandler,                      // UART6 Rx and Tx
+    IntDefaultHandler,                      // UART7 Rx and Tx
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    IntDefaultHandler,                      // I2C2 Master and Slave
+    IntDefaultHandler,                      // I2C3 Master and Slave
+    IntDefaultHandler,                      // Timer 4 subtimer A
+    IntDefaultHandler,                      // Timer 4 subtimer B
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    0,                                      // Reserved
+    IntDefaultHandler,                      // Timer 5 subtimer A
+    IntDefaultHandler,                      // Timer 5 subtimer B
+    IntDefaultHandler,                      // Wide Timer 0 subtimer A
+    IntDefaultHandler,                      // Wide Timer 0 subtimer B
+    IntDefaultHandler,                      // Wide Timer 1 subtimer A
+    IntDefaultHandler,                      // Wide Timer 1 subtimer B
+    IntDefaultHandler,                      // Wide Timer 2 subtimer A
+    IntDefaultHandler,                      // Wide Timer 2 subtimer B
+    IntDefaultHandler,                      // Wide Timer 3 subtimer A
+    IntDefaultHandler,                      // Wide Timer 3 subtimer B
+    IntDefaultHandler,                      // Wide Timer 4 subtimer A
+    IntDefaultHandler,                      // Wide Timer 4 subtimer B
+    IntDefaultHandler,                      // Wide Timer 5 subtimer A
+    IntDefaultHandler,                      // Wide Timer 5 subtimer B
+    IntDefaultHandler,                      // FPU
+    0,                                      // Reserved
+    0,                                      // Reserved
+    IntDefaultHandler,                      // I2C4 Master and Slave
+    IntDefaultHandler,                      // I2C5 Master and Slave
+    IntDefaultHandler,                      // GPIO Port M
+    IntDefaultHandler,                      // GPIO Port N
+    IntDefaultHandler,                      // Quadrature Encoder 2
+    0,                                      // Reserved
+    0,                                      // Reserved
+    IntDefaultHandler,                      // GPIO Port P (Summary or P0)
+    IntDefaultHandler,                      // GPIO Port P1
+    IntDefaultHandler,                      // GPIO Port P2
+    IntDefaultHandler,                      // GPIO Port P3
+    IntDefaultHandler,                      // GPIO Port P4
+    IntDefaultHandler,                      // GPIO Port P5
+    IntDefaultHandler,                      // GPIO Port P6
+    IntDefaultHandler,                      // GPIO Port P7
+    IntDefaultHandler,                      // GPIO Port Q (Summary or Q0)
+    IntDefaultHandler,                      // GPIO Port Q1
+    IntDefaultHandler,                      // GPIO Port Q2
+    IntDefaultHandler,                      // GPIO Port Q3
+    IntDefaultHandler,                      // GPIO Port Q4
+    IntDefaultHandler,                      // GPIO Port Q5
+    IntDefaultHandler,                      // GPIO Port Q6
+    IntDefaultHandler,                      // GPIO Port Q7
+    IntDefaultHandler,                      // GPIO Port R
+    IntDefaultHandler,                      // GPIO Port S
+    IntDefaultHandler,                      // PWM 1 Generator 0
+    IntDefaultHandler,                      // PWM 1 Generator 1
+    IntDefaultHandler,                      // PWM 1 Generator 2
+    IntDefaultHandler,                      // PWM 1 Generator 3
+    IntDefaultHandler                       // PWM 1 Fault
+};
+
+//*****************************************************************************
+//
+// This is the code that gets called when the processor first starts execution
+// following a reset event.  Only the absolutely necessary set is performed,
+// after which the application supplied entry() routine is called.  Any fancy
+// actions (such as making decisions based on the reset cause register, and
+// resetting the bits in that register) are left solely in the hands of the
+// application.
+//
+//*****************************************************************************
+void
+ResetISR(void)
+{
+    //
+    // Jump to the CCS C initialization routine.  This will enable the
+    // floating-point unit as well, so that does not need to be done here.
+    //
+    __asm("    .global _c_int00\n"
+          "    b.w     _c_int00");
+}
+
+//*****************************************************************************
+//
+// This is the code that gets called when the processor receives a NMI.  This
+// simply enters an infinite loop, preserving the system state for examination
+// by a debugger.
+//
+//*****************************************************************************
+static void
+NmiSR(void)
+{
+    //
+    // Enter an infinite loop.
+    //
+    while(1)
+    {
+    }
+}
+
+//*****************************************************************************
+//
+// This is the code that gets called when the processor receives a fault
+// interrupt.  This simply enters an infinite loop, preserving the system state
+// for examination by a debugger.
+//
+//*****************************************************************************
+static void
+FaultISR(void)
+{
+    //
+    // Enter an infinite loop.
+    //
+    while(1)
+    {
+    }
+}
+
+//*****************************************************************************
+//
+// This is the code that gets called when the processor receives an unexpected
+// interrupt.  This simply enters an infinite loop, preserving the system state
+// for examination by a debugger.
+//
+//*****************************************************************************
+static void
+IntDefaultHandler(void)
+{
+    //
+    // Go into an infinite loop.
+    //
+    while(1)
+    {
+    }
+}
+//*****************************************************************************
+//
+// priorities.h - Priorities for the various FreeRTOS tasks.
+//
+// Copyright (c) 2012-2017 Texas Instruments Incorporated.  All rights reserved.
+// Software License Agreement
+// 
+// Texas Instruments (TI) is supplying this software for use solely and
+// exclusively on TI's microcontroller products. The software is owned by
+// TI and/or its suppliers, and is protected under applicable copyright
+// laws. You may not combine this software with "viral" open-source
+// software in order to form a larger program.
+// 
+// THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
+// NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
+// NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
+// CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
+// DAMAGES, FOR ANY REASON WHATSOEVER.
+// 
+// This is part of revision 2.1.4.178 of the EK-TM4C123GXL Firmware Package.
+//
+//*****************************************************************************
+
+#ifndef __PRIORITIES_H__
+#define __PRIORITIES_H__
+
+//*****************************************************************************
+//
+// The priorities of the various tasks.
+//
+//*****************************************************************************
+#define PRIO_COMM_SENDERTASK    1
+#define PRIO_COMM_RECEIVERTASK  1
+#define PRIO_DISPATCHERTASK     1
+#define PRIO_SONAR_SENSOR_TASK  2
+
+#endif // __PRIORITIES_H__
+/*
+    FreeRTOS V7.0.2 - Copyright (C) 2011 Real Time Engineers Ltd.
+
+
+    ***************************************************************************
+     *                                                                       *
+     *    FreeRTOS tutorial books are available in pdf and paperback.        *
+     *    Complete, revised, and edited pdf reference manuals are also       *
+     *    available.                                                         *
+     *                                                                       *
+     *    Purchasing FreeRTOS documentation will not only help you, by       *
+     *    ensuring you get running as quickly as possible and with an        *
+     *    in-depth knowledge of how to use FreeRTOS, it will also help       *
+     *    the FreeRTOS project to continue with its mission of providing     *
+     *    professional grade, cross platform, de facto standard solutions    *
+     *    for microcontrollers - completely free of charge!                  *
+     *                                                                       *
+     *    >>> See http://www.FreeRTOS.org/Documentation for details. <<<     *
+     *                                                                       *
+     *    Thank you for using FreeRTOS, and thank you for your support!      *
+     *                                                                       *
+    ***************************************************************************
+
+
+    This file is part of the FreeRTOS distribution.
+
+    FreeRTOS is free software; you can redistribute it and/or modify it under
+    the terms of the GNU General Public License (version 2) as published by the
+    Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+    >>>NOTE<<< The modification to the GPL is included to allow you to
+    distribute a combined work that includes FreeRTOS without being obliged to
+    provide the source code for proprietary components outside of the FreeRTOS
+    kernel.  FreeRTOS is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+    more details. You should have received a copy of the GNU General Public
+    License and the FreeRTOS license exception along with FreeRTOS; if not it
+    can be viewed here: http://www.freertos.org/a00114.html and also obtained
+    by writing to Richard Barry, contact details for whom are available on the
+    FreeRTOS WEB site.
+
+    1 tab == 4 spaces!
+
+    http://www.FreeRTOS.org - Documentation, latest information, license and
+    contact details.
+
+    http://www.SafeRTOS.com - A version that is certified for use in safety
+    critical systems.
+
+    http://www.OpenRTOS.com - Commercial support, development, porting,
+    licensing and training services.
+*/
+
+#ifndef FREERTOS_CONFIG_H
+#define FREERTOS_CONFIG_H
+
+/*-----------------------------------------------------------
+ * Application specific definitions.
+ *
+ * These definitions should be adjusted for your particular hardware and
+ * application requirements.
+ *
+ * THESE PARAMETERS ARE DESCRIBED WITHIN THE 'CONFIGURATION' SECTION OF THE
+ * FreeRTOS API DOCUMENTATION AVAILABLE ON THE FreeRTOS.org WEB SITE.
+ *
+ * See http://www.freertos.org/a00110.html.
+ *----------------------------------------------------------*/
+
+#define configUSE_PREEMPTION                1
+#define configUSE_IDLE_HOOK                 0
+#define configUSE_TICK_HOOK                 0
+#define configUSE_MALLOC_FAILED_HOOK        1
+//#define configCPU_CLOCK_HZ                  ( ( unsigned long ) 50000000 )
+#define configCPU_CLOCK_HZ                  ( ( unsigned long ) 16000000 )
+#define configTICK_RATE_HZ                  ( ( portTickType ) 1000 )
+#define configMINIMAL_STACK_SIZE            ( ( unsigned short ) 200 )
+#define configTOTAL_HEAP_SIZE               ( ( size_t ) ( 30000 ) )
+#define configMAX_TASK_NAME_LEN             ( 12 )
+#define configUSE_TRACE_FACILITY            1
+#define configUSE_16_BIT_TICKS              0
+#define configIDLE_SHOULD_YIELD             0
+#define configUSE_CO_ROUTINES               0
+#define configUSE_MUTEXES                   1
+#define configUSE_RECURSIVE_MUTEXES         1
+#define configCHECK_FOR_STACK_OVERFLOW      2
+
+#define configUSE_TASK_NOTIFICATIONS        1
+
+/* Software timer related definitions. */
+#define configUSE_TIMERS                        1
+#define configTIMER_TASK_PRIORITY               3
+#define configTIMER_QUEUE_LENGTH                10
+#define configTIMER_TASK_STACK_DEPTH            configMINIMAL_STACK_SIZE
+
+#define configMAX_PRIORITIES                16
+#define configMAX_CO_ROUTINE_PRIORITIES     ( 2 )
+#define configQUEUE_REGISTRY_SIZE           10
+
+/* Set the following definitions to 1 to include the API function, or zero
+to exclude the API function. */
+
+#define INCLUDE_vTaskPrioritySet            1
+#define INCLUDE_uxTaskPriorityGet           1
+#define INCLUDE_vTaskDelete                 1
+#define INCLUDE_vTaskCleanUpResources       0
+#define INCLUDE_vTaskSuspend                1
+#define INCLUDE_vTaskDelayUntil             1
+#define INCLUDE_vTaskDelay                  1
+#define INCLUDE_uxTaskGetStackHighWaterMark 1
+
+/* Be ENORMOUSLY careful if you want to modify these two values and make sure
+ * you read http://www.freertos.org/a00110.html#kernel_priority first!
+ */
+#define configKERNEL_INTERRUPT_PRIORITY         ( 7 << 5 )    /* Priority 7, or 0xE0 as only the top three bits are implemented.  This is the lowest priority. */
+#define configMAX_SYSCALL_INTERRUPT_PRIORITY     ( 5 << 5 )  /* Priority 5, or 0xA0 as only the top three bits are implemented. */
+
+#endif /* FREERTOS_CONFIG_H */
