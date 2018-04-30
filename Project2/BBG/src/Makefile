@@ -40,7 +40,7 @@ TEST_CONFIG:
 .PHONY:TEST_UART
 TEST_UART:
 	$(CC_CROSS) $(CFLAGS) -DSELF_TEST $(INCLUDES) -o test_uart my_uart.c #-DLOOPBACK
-	scp test_uart gunj@192.168.7.2:~/
+	scp test_uart my_uart.c gunj@192.168.7.2:~/
 
 .PHONY:MAKE_TEST
 MAKE_TEST: TEST_CONFIG

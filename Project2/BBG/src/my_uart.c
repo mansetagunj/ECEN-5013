@@ -195,6 +195,7 @@ int32_t UART_dataAvailable(uint32_t time_ms)
 #include <errno.h>
 #include <signal.h>
 #include <unistd.h>
+#include <stdio.h>
 
 volatile sig_atomic_t flag = 1;
 #define SIGNAL "SIGNAL"
@@ -235,6 +236,7 @@ int main()
     }
     int ret = 0;
     
+    #ifdef UART_COMM_TEST
     #ifdef LOOPBACK
 	COMM_MSG_T comm_msg = 
     {
@@ -276,10 +278,72 @@ int main()
     #ifndef LOOPBACK
     }
     #endif
+    #endif
+
+    #ifdef CAMERA_TEST
+    uint8_t buffer[3600] = {0};
+    uint8_t temp = 0, temp_last = 0;
+    uint32_t len = 0;
+    char buff[4] = {0};
+    int i = 0;
+    uint8_t done = 0;
+    uint32_t retry = 0;
+    struct packet pack = {0};
+    uint8_t getpix = 0;
+    uint8_t header = 0;
+        while(1)
+        {
+        int32_t ret = UART_read((uint8_t*)&getpix,1);
+        /* Some error */
+        //printf("RET:%d Retry:%d\n",ret,retrycount);
+        if(ret == -1)
+        {
+            /* LOG error */
+            printf("COMM RECV\n");
+        }
+        else if(ret > 0 && (getpix == 0xFF || header == 1) ) 
+        {
+            if(ret == 1)
+            {
+                if(getpix == 0xFF)
+                    header = 1;
+                buffer[i] = getpix;
+                printf("0x%x\n",buffer[i]);
+                if(temp_last == 0xFF && buffer[i] == 0xD9)
+                {
+                    printf("EOF found\n");
+                    done = 1;
+                    break;
+                }
+                temp_last  = buffer[i];
+                i++;
+            }
+        }
+        else
+        {
+            retry++;
+            if(retry > 54)
+            {
+                printf("COnnected?\n");
+            }
+        }
+        }
+        
+    if(done)
+    {
+        char newFilename[40] = {0};
+        snprintf(newFilename,sizeof(newFilename),"%u_%s.%s",image_count,"image","jpg");
+        FILE *fp = fopen(newFilename, "wb");
+        fwrite(buffer,i,1,fp);
+        fclose(fp);
+    }
+
+    #endif
+
     tcflush(fd, TCIFLUSH);
     UART_Close(fd);
 
 	return 0;
 }
-
 #endif
+

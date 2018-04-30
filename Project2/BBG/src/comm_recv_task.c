@@ -23,6 +23,8 @@
 
 volatile sig_atomic_t comm_recv_task_exit = 0;
 
+static int8_t getFrame();
+
 /* Create the entry function */
 void* comm_recv_task_callback(void *threadparam)
 {
@@ -71,6 +73,18 @@ void* comm_recv_task_callback(void *threadparam)
                 LOG_STDOUT(INFO "Not my Board ID. I am not touching it.\n");
                 continue;
             }
+            if(recv_comm_msg.msg_id == MSG_ID_OBJECT_DETECTED)
+            {
+                if(getFrame())
+                {
+                    LOG_STDOUT(ERROR "Frame save error.\n");
+                }
+                else
+                {
+                    LOG_STDOUT(INFO "Frame saved successfully.\n");
+                }
+
+            }
             POST_MESSAGE_DISPATCHERTASK(&recv_comm_msg);
             LOG_STDOUT_COMM(recv_comm_msg);
             /* LOG_STDOUT(INFO "\n*******\n\
@@ -83,7 +97,7 @@ void* comm_recv_task_callback(void *threadparam)
         else
         {
             retrycount++;
-            if(retrycount > 55)
+            if(retrycount > 100)
             {
                 LOG_STDOUT(WARNING "TIVA CONNECTED????\n");
                 retrycount = 0;
@@ -97,5 +111,75 @@ void* comm_recv_task_callback(void *threadparam)
     return (void*)SUCCESS;
 
 }
-/* Blocks on UART recv */
-/* Get the msg and enque it to dispatcher task */
+
+#define p320    4000
+#define p640    9000    
+
+static int8_t getFrame()
+{
+    /* uint8_t buffer_320p[3600] = {0};
+    uint8_t buffer_640p[8500] = {0}; */
+    uint8_t *buffer = (uint8_t*)malloc(sizeof(uint8_t)*p640);
+    //uint8_t *buffer = buffer_640p;
+    uint8_t temp = 0, temp_last = 0;
+    uint32_t len = 0;
+    int i = 0;
+    uint8_t done = 0;
+    uint32_t retry = 0;
+    uint8_t getpix = 0;
+    uint8_t header = 0;
+    //static uint32_t image_count = 0;
+    while(1)
+    {
+        int32_t ret = UART_read((uint8_t*)&getpix,1);
+        /* Some error */
+        //printf("RET:%d Retry:%d\n",ret,retrycount);
+        if(ret == -1)
+        {
+            /* LOG error */
+            LOG_STDOUT(ERROR "Frame Recv\n");
+        }
+        else if(ret > 0 && (getpix == 0xFF || header == 1) ) 
+        {
+            if(ret == 1)
+            {
+                if(getpix == 0xFF)
+                    header = 1;
+                buffer[i] = getpix;
+                //printf("0x%x ",buffer[i]);
+                if(temp_last == 0xFF && buffer[i] == 0xD9)
+                {
+                    LOG_STDOUT(INFO "EOF found\n");
+                    done = 1;
+                    break;
+                }
+                temp_last  = buffer[i];
+                i++;
+            }
+        }
+        else
+        {
+            retry++;
+            if(retry > 1024)
+            {
+                //printf("Connected?\n");
+                break;
+            }
+        }
+    }
+        
+    if(done)
+    {
+        char newFilename[25] = {0};
+        snprintf(newFilename,sizeof(newFilename),"%s_%u.%s","image",((unsigned)time(NULL)&0xFFFFFF),"jpg");
+        FILE *fp = fopen(newFilename, "wb");
+        fwrite(buffer,i,1,fp);
+        fclose(fp);
+        //image_count++;
+        free(buffer);
+        return 0;
+    }
+    free(buffer);
+    return 1;
+}
+
