@@ -100,20 +100,14 @@ static void dispatcher_task_entry(void *params)
                     else if(comm_msg.msg_id == MSG_ID_GET_SENSOR_INFO)
                     {
                         ENQUEUE_NOTIFY_SONAR_SENSOR_TASK(comm_msg, EVENT_SONAR_SENSOR_INFO);
-                        /* This should be done in the sensor task. Here, the queue/task should be filled/notified with object/event.*/
-//                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,BBG_LOGGER_MODULE);
-//                        comm_msg.msg_id = MSG_ID_SENSOR_INFO;
-//                        comm_msg.data.distance_cm = 10.43;
-//                        COMM_FILL_MSG(comm_msg,"Ultrasonic Sensor");
-//                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
                     }
                     else
                     {
-                        COMM_CREATE_OBJECT(comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,comm_msg.src_id);
-                        comm_msg.msg_id = MSG_ID_ERROR;
-                        comm_msg.data.distance_cm = 0;
-                        COMM_FILL_MSG(comm_msg,"Invalid Request");
-                        ENQUE_NOTIFY_COMM_SENDER_TASK(comm_msg,EVENT_COMM_SENDER_STATUS);
+                        COMM_CREATE_OBJECT(send_comm_msg,MY_TIVA_BOARD_ID,TIVA_SENSOR_MODULE,comm_msg.src_id);
+                        send_comm_msg.msg_id = MSG_ID_ERROR;
+                        send_comm_msg.data.distance_cm = 0;
+                        COMM_FILL_MSG(send_comm_msg,"Invalid Request");
+                        ENQUE_NOTIFY_COMM_SENDER_TASK(send_comm_msg,EVENT_COMM_SENDER_STATUS);
                     }
                 }
                 else if(comm_msg.dst_id == TIVA_CAMERA_MODULE)

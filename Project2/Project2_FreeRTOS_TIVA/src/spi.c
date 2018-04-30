@@ -60,6 +60,22 @@ void SPI_GPIO_init(SPI_t spi)
         GPIOPinTypeSSI(GPIO_PORTB_BASE, GPIO_PIN_5 | GPIO_PIN_4);
         GPIOPinTypeSSI(GPIO_PORTE_BASE, GPIO_PIN_5 | GPIO_PIN_4);
     }
+    else if(spi==SPI_2)
+    {
+        MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+        GPIOPinConfigure(GPIO_PD3_SSI2CLK);
+        GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_2);
+        //GPIOPinConfigure(GPIO_PD2_SSI2FSS);
+        GPIOPinConfigure(GPIO_PD1_SSI2XDAT0);
+        GPIOPinConfigure(GPIO_PD0_SSI2XDAT1);
+
+        // The pins are assigned as follows:
+        //      PD1 - SSI0Tx
+        //      PD0 - SSI0Rx
+        //      PD2 - SSI0Fss
+        //      PD3 - SSI0CLK
+        GPIOPinTypeSSI(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_3);
+    }
 }
 
 

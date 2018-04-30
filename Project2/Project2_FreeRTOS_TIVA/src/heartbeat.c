@@ -28,7 +28,7 @@ void vTimerCallback(TimerHandle_t h_timer)
     static uint32_t count = 0;
     if(h_timer == timer_handles[0])
     {
-        if(count%10 == 0)
+        if(count%5 == 0)
         {
             //Notify the comm_sender task with Heartbeat event
             //TODO:Check for return value

@@ -33,8 +33,11 @@
 #define HIGH(PIN)               PIN
 #define LOW(PIN)                0
 
+extern uint32_t g_sysClock;
 
-const float distance_factor = (1.0/120.0);
+//const float distance_factor = (1.0/120.0);
+const float distance_factor = (1.0/16.0);
+//static float distance_factor = (float)(1.0/(g_sysClock/1000000));
 
 //start and end for echo pulse
 volatile uint32_t pulse_down=0, pulse_up =0;

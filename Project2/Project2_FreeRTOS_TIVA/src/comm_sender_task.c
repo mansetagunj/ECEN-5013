@@ -18,6 +18,7 @@
 
 #include "communication_interface.h"
 #include "comm_sender_task.h"
+#include "camera_interface.h"
 
 #define COMM_SENDER_QUEUE_ITEMSIZE   (sizeof(COMM_MSG_T))
 #define COMM_SENDER_QUEUE_LENGTH     20
@@ -190,6 +191,9 @@ static void comm_sender_task_entry(void *params)
                     FILL_CHECKSUM(&comm_msg);
                     COMM_SEND(&comm_msg);
                     printf("OBJECT DETECTED: %f cm\n",comm_msg.data.distance_cm);
+                    DelayUs(500);
+                    //Sending the camera frame from here
+                    SendFrame();
                 }
                 else
                 {

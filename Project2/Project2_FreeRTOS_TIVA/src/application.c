@@ -27,8 +27,10 @@
 #include "communication_setup.h"
 #include "comm_sender_task.h"
 #include "sonar_sensor_task.h"
+#include "camera_interface.h"
 
-#define CLOCK_FREQ 120000000
+//#define CLOCK_FREQ 120000000
+#define CLOCK_FREQ 16000000
 uint32_t g_sysClock = CLOCK_FREQ;
 
 
@@ -53,6 +55,7 @@ void application_run()
    printf("\n----- GUNJ Project2 --------\n");
 
    CommTask_init();
+   CameraInit();
 
    send_boardIdentification();
 
