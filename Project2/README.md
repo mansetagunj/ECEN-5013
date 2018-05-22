@@ -9,7 +9,9 @@
 - Communication of the Client(TIVA) to Server(BBG) via compile-time swappable UART(tested) or RF layer  
 - Detailed Messaging structure to handle communication among multiple modules(threads/sfotware components) running on multiple boards
 
-### Hardware components:   
+----------------------------------------------------------
+
+### Hardware components:  
 #### TIVA C series TM4C1294XL development board running FreeRTOS  
 - HC-SR04 Ultrasonic Sensor (GPIO and Timers)  
 - Arducam OV2640 2MP camera module (SPI/GPIO/I2C)  
@@ -18,7 +20,9 @@
 #### BeagleBone Green  running Debian distro Linux  
 - TMP102 temperature sensor (I2C)  
 - APDS9301 luminosity sensor (I2C)  
-- NRF24L01(+) (SPI/GPIO)    
+- NRF24L01(+) (SPI/GPIO)
+
+-------------------------------------------------
 
 ### Software Components:
 #### Tiva+FreeRTOS
@@ -38,6 +42,8 @@
 - Logging task  
 - HW drivers  
 - Messaging Queues, and Mutexes  
+
+--------------------------------------------
 
 ### Messaging structure:
 ```
@@ -60,11 +66,15 @@ COMM_MSG -
     uint16_t checksum;
 ```
 
-### Software Architecture Diagram:
+-----------------------------------------
+
+### Software Architecture Diagram:  
 #### TIVA + FreeRTOS
 ![TIVA_SOFT_ARCH](Project_TIVA_Arch.jpg)
+--------------------------
 #### BBG + Linux
 ![BBG_SOFT_ARCH](Project_BBG_Arch.jpg)
 
+-------------------------------------------
 
 #### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project2/BBG/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
