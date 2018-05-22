@@ -59,42 +59,12 @@ COMM_MSG -
     /* Message authentication */  
     uint16_t checksum;
 ```
-```
-MSG ID:
-    MSG_ID_HEARTBEAT = 0,
-    MSG_ID_MSG,
-    MSG_ID_SENSOR_STATUS,
-    MSG_ID_ERROR,
-    MSG_ID_SENSOR_INFO,
-    MSG_ID_INFO,
-    MSG_ID_PICTURE,
-    MSG_ID_OBJECT_DETECTED,
-    MSG_ID_CLIENT_INFO_BOARD_TYPE,
-    MSG_ID_CLIENT_INFO_UID,
-    MSG_ID_CLIENT_INFO_CODE_VERSION,
 
-    //For BBG server
-    MSG_ID_GET_SENSOR_STATUS,
-    MSG_ID_GET_SENSOR_INFO,
-    MSG_ID_GET_CLIENT_INFO_BOARD_TYPE,
-    MSG_ID_GET_CLIENT_INFO_UID,
-    MSG_ID_GET_CLIENT_INFO_CODE_VERSION,
-```
-```
-#define BBG_BOARD_ID        (0x00)
-#define TIVA_BOARD1_ID      (0x01)
-#define XYZ_TIVA_BOARD_ID   (0x02)
-
-#define TIVA_HEART_BEAT_MODULE   (1)
-#define TIVA_SENSOR_MODULE       (2)
-#define TIVA_CAMERA_MODULE       (3)
-#define TIVA_COMM_MODULE         (4)
-
-#define BBG_LOGGER_MODULE       (1)
-#define BBG_COMM_MODULE         (2)
-#define BBG_SOCKET_MODULE       (3)
-#define BBG_XYZ_MODULE          (4)
-```
+### Software Architecture Diagram
+### TIVA + FreeRTOS
+![TIVA_SOFT_ARCH](Project_TIVA_Arch.jpg)
+### BBG + Linux
+![BBG_SOFT_ARCH](Project_BBG_Arch.jpg)
 
 
 #### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project2/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
