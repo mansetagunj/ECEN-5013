@@ -60,11 +60,11 @@ COMM_MSG -
     uint16_t checksum;
 ```
 
-### Software Architecture Diagram
-### TIVA + FreeRTOS
+### Software Architecture Diagram:
+#### TIVA + FreeRTOS
 ![TIVA_SOFT_ARCH](Project_TIVA_Arch.jpg)
-### BBG + Linux
+#### BBG + Linux
 ![BBG_SOFT_ARCH](Project_BBG_Arch.jpg)
 
 
-#### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project2/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
+#### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project2/BBG/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
