@@ -2,20 +2,101 @@
 
 ## Author - Gunj Manseta (Embedded Systems Engineering - University of Colorado Boulder)
 
-### A multithreaded console application for BeagleBone black/green(Linux) having sensor interface, server, and logger
+### Features:
+Proximity camera capture device  
+Captures image if the object found to be at a specific distance from the sensor  
+The image frame captured, gets stored on the server – BeagleBoneGreen  
+Remote Logging  
+Remote Client – Connects to the BBG via sockets to get the sensor values, and close the server.  
+Communication of the Client(TIVA) to Server(BBG) via compile-time swappable UART(tested) or RF layer  
+Detailed Messaging structure to handle communication among multiple modules(threads/sfotware components) running on multiple boards
 
-#### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
+### Hardware components 
+#### TIVA C series TM4C1294XL development board running FreeRTOS
+- HC-SR04 Ultrasonic Sensor (GPIO and Timers)  
+- Arducam OV2640 2MP camera module (SPI/GPIO/I2C)  
+- NRF24L01(+) (SPI/GPIO)  
 
-The project includes 1 parent thread which is the main task. The main task spawns 4 child threads
+#### BeagleBone Green  running Debian distro Linux
+- TMP102 temperature sensor (I2C)  
+- APDS9301 luminosity sensor (I2C)  
+- NRF24L01(+) (SPI/GPIO)    
 
-1. Temperature  sensor task which is responsible for talking with the TMP102 sensor.
-2. Light sensor task which is responsible for talking with the APDS9301 light sensor.
+### Software Components
+#### Tiva+FreeRTOS
+- Sensor tasks  
+- Communication Module tasks – Comm recv, Comm Send, Dispatcher  
+- Heartbeat timer  
+- Camera Interface    
+- Sonar Sensor interface  
+- Driverlib  
+- Messaging Queues, Task Notifications, and Mutexes  
 
-3. Socket task which is runs a TCP server and accepts connection from the client with various requests suchs as getting temperature and lux value from the sensor.
-4. Logger task which is solely responsible for logging to a file setup in the config file.
+##### BBG+Linux
+- Sensor tasks  
+- Communication Module tasks – Comm recv, Comm Send, Dispatcher  
+- Heartbeat  
+- Socket Server for remote access of on-board and Tiva sensor, and to close the application  
+- Logging task  
+- HW drivers  
+- Messaging Queues, and Mutexes  
 
-The sensor tasks talks with the sensor via a MT-safe I2Cmaster wrapper written around the Intel open source project mraa library intended for various boards.
+### Messaging structure
+```
+COMM_MSG -  
+    /* Transport Layer Start */
+    SRC_ID src_id;
+    SRC_BOARD_ID src_brd_id;
+    DST_ID dst_id;
+    DST_BOARD_ID dst_brd_id;
+    /* Transport Layer End */
+    /* Message Layer Start */  
+    MSG_ID msg_id;
+    union custom_data {
+        float distance_cm;
+        float sensor_value; 
+    } data;
+    char message[18];
+    /* Message Layer End */
+    /* Message authentication */  
+    uint16_t checksum;
+```
+```
+MSG ID:
+    MSG_ID_HEARTBEAT = 0,
+    MSG_ID_MSG,
+    MSG_ID_SENSOR_STATUS,
+    MSG_ID_ERROR,
+    MSG_ID_SENSOR_INFO,
+    MSG_ID_INFO,
+    MSG_ID_PICTURE,
+    MSG_ID_OBJECT_DETECTED,
+    MSG_ID_CLIENT_INFO_BOARD_TYPE,
+    MSG_ID_CLIENT_INFO_UID,
+    MSG_ID_CLIENT_INFO_CODE_VERSION,
 
-The main task which is the parent task keeps a check of the children task if they are alive or not and if any of the thread is found to be dead or stuck for more than the timeout set by in the config file, the main task closes all the threads and exits gracefully.
+    //For BBG server
+    MSG_ID_GET_SENSOR_STATUS,
+    MSG_ID_GET_SENSOR_INFO,
+    MSG_ID_GET_CLIENT_INFO_BOARD_TYPE,
+    MSG_ID_GET_CLIENT_INFO_UID,
+    MSG_ID_GET_CLIENT_INFO_CODE_VERSION,
+```
+```
+#define BBG_BOARD_ID        (0x00)
+#define TIVA_BOARD1_ID      (0x01)
+#define XYZ_TIVA_BOARD_ID   (0x02)
 
-### This project is intended to run on the BeagleBone black/green."
+#define TIVA_HEART_BEAT_MODULE   (1)
+#define TIVA_SENSOR_MODULE       (2)
+#define TIVA_CAMERA_MODULE       (3)
+#define TIVA_COMM_MODULE         (4)
+
+#define BBG_LOGGER_MODULE       (1)
+#define BBG_COMM_MODULE         (2)
+#define BBG_SOCKET_MODULE       (3)
+#define BBG_XYZ_MODULE          (4)
+```
+
+
+#### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project2/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
