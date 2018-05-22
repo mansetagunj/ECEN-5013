@@ -19,5 +19,14 @@
   
 6. Project 1  
   A multithreaded console application for BeagleBone black/green(Linux) having sensor interface, server, and logger  
-  More detail in the Project1 README.md
-  [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
+  More detail in the Project1 [README.md](Project1/README.md)   
+  [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project1/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)   
+  
+7. Project 2 
+  Multi-controller project   
+  ARM cortex M4 with FreeRTOS having multi-threaded application with sensors and communication interface   
+  BeagleBone Green with Linux having multithreaded console application with sensors, server, logger and communication interface   
+  Software Architecture Diagram:      
+    [TIVA+FreeRTOS](Project2/Project_TIVA_Arch.jpg)   
+    [BBG+Linux](Project2/Project_BBG_Arch.jpg)   
+  More detail in the Project2 [README.md](Project2/README.md)   
