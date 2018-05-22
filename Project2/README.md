@@ -7,7 +7,7 @@
 - Remote Logging  
 - Remote Client – Connects to the BBG via sockets to get the sensor values, and close the server.  
 - Communication of the Client(TIVA) to Server(BBG) via compile-time swappable UART(tested) or RF layer  
-- Detailed Messaging structure to handle communication among multiple modules(threads/sfotware components) running on multiple boards
+- Detailed Messaging structure to handle communication among multiple modules(threads/software components) running on multiple boards
 
 ----------------------------------------------------------
 
@@ -76,5 +76,8 @@ COMM_MSG -
 ![BBG_SOFT_ARCH](Project_BBG_Arch.jpg)
 
 -------------------------------------------
+
+#### Sample image captured from the Arducam OV2642 module (2MP 640x480)
+![Sample Image Capture](image_15119758.jpg)
 
 #### Code Documentation can be found at - [Project Code Documentation webpage](http://htmlpreview.github.io/?https://github.com/mansetagunj/ECEN-5013/blob/master/Project2/BBG/documentation/doxygenfiles.d/html/index.html "Documentation WebPage") (Ctrl+click for new tab)
