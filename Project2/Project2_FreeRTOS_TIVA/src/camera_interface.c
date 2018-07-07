@@ -25,6 +25,8 @@
 
 #define SLAVE_ADDRESS (0x60)
 
+static uint8_t camera_error_flag = 0;
+
 uint8_t read_fifo_burst()
 {
     uint8_t temp = 0, temp_last = 0;
@@ -34,12 +36,12 @@ uint8_t read_fifo_burst()
 
     if (length >= MAX_FIFO_SIZE) //512 kb
     {
-        printf("ACK CMD Oversize");
+        printf("Camera frame oversize.\n");
         return 0;
     }
     if (length == 0 ) //0 kb
     {
-        printf("ACK CMD Size is 0");
+        printf("Camera Frame size is 0.\n");
         return 0;
     }
     CS_LOW();
@@ -80,6 +82,11 @@ uint8_t read_fifo_burst()
 
 uint32_t SendFrame()
 {
+    if(camera_error_flag)
+    {
+        printf(FAIL "Camera interface error. Cannot send frame\n");
+        return 0;
+    }
     //    myCAM.flush_fifo();
     write_reg(ARDUCHIP_FIFO, FIFO_RDPTR_RST_MASK);
      //Clear the capture done flag
@@ -89,9 +96,15 @@ uint32_t SendFrame()
     //     myCAM.start_capture();
     write_reg(ARDUCHIP_FIFO, FIFO_START_MASK);
 
-    while (!get_bit(ARDUCHIP_TRIG , CAP_DONE_MASK));
-
+    uint32_t retryCount = (1<<24);
+    while ((!get_bit(ARDUCHIP_TRIG , CAP_DONE_MASK)) && retryCount) { DelayUs(10); retryCount--;}
     write_reg(ARDUCHIP_FIFO, FIFO_CLEAR_MASK);
+
+    if(retryCount == 0)
+    {
+        printf(FAIL "Failed to get frame done flag\n");
+        return 0;
+    }
 
     uint8_t ret = read_fifo_burst();
 
@@ -108,7 +121,8 @@ void CameraInit()
     SPI_init(SPI_2);
     I2C_init();
 
-    while (1) {
+    uint32_t retryCount = 0;
+    while (retryCount < 2048) {
       //Check if the ArduCAM SPI bus is OK
       write_reg(ARDUCHIP_TEST1, 0x55);
       uint8_t temp = read_reg(ARDUCHIP_TEST1);
@@ -117,26 +131,43 @@ void CameraInit()
         //Serial.println(F("SPI interface Error!"));
         DelayUs(1000); continue;
       } else {
-//          printf("Camera SPI working. \n");
+          printf(OK "Camera SPI Interface working. \n");
           break;
       }
+      retryCount++;
     }
+    if(retryCount > 2047)
+    {
+        camera_error_flag = 1;
+        printf(FAIL "Camera SPI interface error\n");
+        return;
+    }
+    retryCount = 0;
 
-     uint8_t vid = 0, pid = 0;
-     wrSensorReg8_8(0xff, 0x01);
-     DelayUs(1000);
-     while(1)
-     {
-         vid = rdSensorReg8_8(OV2640_CHIPID_HIGH);
-         pid = rdSensorReg8_8(OV2640_CHIPID_LOW);
-         if ((vid == 0x26 ) && ( pid == 0x42 ))
-         {
-             printf("Found OV2640 module!\n");
+    uint8_t vid = 0, pid = 0;
+    wrSensorReg8_8(0xff, 0x01);
+    DelayUs(1000);
+    while(retryCount < 2048)
+    {
+        vid = rdSensorReg8_8(OV2640_CHIPID_HIGH);
+        pid = rdSensorReg8_8(OV2640_CHIPID_LOW);
+        if ((vid == 0x26 ) && ( pid == 0x42 ))
+        {
+             printf(OK "Camera I2C interface Done. ModuleID: 0x%x%x\n",vid,pid);
              break;
-         }
-
-
+        }
+        retryCount++;
     }
+    if(retryCount > 2047)
+    {
+         camera_error_flag = 1;
+         printf(FAIL "Camera I2C interface error\n");
+         return;
+    }
+
+    retryCount = 0;
+    printf(OK "Found OV2640 module!\n");
+    camera_error_flag = 0;
 
     //CAM INIT on jpeg
     wrSensorReg8_8(0xff, 0x01);
@@ -157,6 +188,7 @@ void CameraInit()
     wrSensorReg8_8(0xff, 0x00);
     wrSensorReg8_8(0x44, 0x32);
 
+    printf(OK "Camera module initialized. Format:JPEG, RES:640x480!\n");
 }
 
 void I2C_init()
@@ -181,6 +213,7 @@ void I2C_init()
     // If false the data rate is set to 100kbps and if true the data rate will
     // be set to 400kbps.
     I2CMasterInitExpClk(I2C0_BASE, g_sysClock, true);
+//    I2CMasterInitExpClk(I2C0_BASE, 40000000, true);
 
     I2CTxFIFOFlush(I2C0_BASE);
     I2CRxFIFOFlush(I2C0_BASE);

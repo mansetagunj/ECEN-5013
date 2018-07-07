@@ -103,7 +103,9 @@ static void sonar_sensor_task_entry(void *params)
                 {
                     //Perform Measurement
                     current_sensor_distance_cm = sonarSensor_getDistance();
-//                    printf("Distance: %f\n",current_sensor_distance_cm);
+#ifdef DEBUG
+                    //printf("Sonar Sensor Distance: %f\n",current_sensor_distance_cm);
+#endif
                     (object_detected%5 == 0)  ? object_detected = 0 : object_detected++;
                     if(!object_detected && (current_sensor_distance_cm > 0) && (current_sensor_distance_cm < DISTANCE_THRESHOLD_CM))
                     {
@@ -164,7 +166,7 @@ uint8_t SonarSensorTask_init()
     setSonar_sensorQueueHandle(h_sonar_sensorQ);
 
 
-    TimerHandle_t periodic_getDistance_timer = xTimerCreate("PERIODIC_GET_DISTANCE", pdMS_TO_TICKS(1000) , pdTRUE,  (void*)0, vPeriodicUpdateTimerCallback);
+    TimerHandle_t periodic_getDistance_timer = xTimerCreate("PERIODIC_GET_DISTANCE", pdMS_TO_TICKS(500) , pdTRUE,  (void*)0, vPeriodicUpdateTimerCallback);
     DEBUG_ERROR(periodic_getDistance_timer == NULL);
 
 

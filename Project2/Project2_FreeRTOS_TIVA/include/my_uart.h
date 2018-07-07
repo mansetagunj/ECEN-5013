@@ -27,6 +27,8 @@ typedef enum UART_num
     UART_3 = 3,
 }UART_T;
 
+#define OK "[OK] "
+#define FAIL "[FAIL] "
 /**
 * @brief - Available Baud rates for the UART
 */

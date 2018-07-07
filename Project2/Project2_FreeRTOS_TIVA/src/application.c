@@ -52,10 +52,13 @@ void application_run()
 //   UART0_config(BAUD_115200);
    UART0_config(BAUD_921600);
    ROM_IntMasterEnable();
-   printf("\n----- GUNJ Project2 --------\n");
+   printf("\n----- ECEN5013 GUNJ Project2 --------\n");
+   printf(OK "STDOUT UART0 configured\n");
 
    CommTask_init();
+   printf(OK "COMM TASKS Initialized\n");
    CameraInit();
+   printf(OK "Camera Interface Ready\n");
 
    send_boardIdentification();
 
