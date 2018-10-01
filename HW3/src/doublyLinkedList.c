@@ -3,6 +3,7 @@
  *
  * @Created on: 02-Feb-2018
  * @Author: Gunj Manseta
+ * @Credits: Linux Kernel Source code and the original developer of the Linked List data structure in Linux Kernel Source code
  */
 
 #include "doublyLinkedList.h"
