@@ -27,6 +27,6 @@
   ARM cortex M4 with FreeRTOS having multi-threaded application with sensors and communication interface   
   BeagleBone Green with Linux having multithreaded console application with sensors, server, logger and communication interface   
   Software Architecture Diagram:      
-    [TIVA+FreeRTOS](Project2/Project_TIVA_Arch.jpg)   
-    [BBG+Linux](Project2/Project_BBG_Arch.jpg)   
+    [TIVA+FreeRTOS](https://github.com/mansetagunj/ECEN-5013/tree/master/Project2#tiva--freertos)   
+    [BBG+Linux](https://github.com/mansetagunj/ECEN-5013/tree/master/Project2#bbg--linux)   
   More detail in the Project2 [README.md](Project2/README.md)   
